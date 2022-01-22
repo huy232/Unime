@@ -3,6 +3,7 @@ body {
   font-family: 'Inter', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
 }
 
 code {
@@ -11,4 +12,8 @@ code {
 
 *{
   box-sizing: border-box;
+}
+ 
+html, body{
+  background-color:#121212 !important
 }

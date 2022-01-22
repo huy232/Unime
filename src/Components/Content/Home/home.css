@@ -1,3 +1,14 @@
+h1, .h5{
+    color: white !important
+}
+
+.anime-h1{
+    color: black !important;
+    background-color: #ffc107;
+    box-shadow: 5px 10px #495057;
+    padding-left: 14px;
+}
+
 .mySwiper {
   position: relative;
   text-align: center;
@@ -25,7 +36,7 @@
 
 .inner:hover{
     transition: all 0.5s ease-in-out;
-    opacity: 0.6
+    opacity: 0.8
 }
 
 .inner:after {
@@ -40,6 +51,104 @@
     --swiper-theme-color: red
 }
 
+.swiper-button-next, .swiper-button-prev {
+    --swiper-theme-color: red;
+}
 
+.overlay {
+    position: absolute;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .icon{
+    color: red !important;
+    cursor: pointer;
+  }
+
+  .inner:hover .overlay {
+    opacity: 1;
+  }
+
+  .card-container:hover{
+    transition: all 0.3s ease-in-out;
+    opacity: 0.7
+  }
+
+
+  .card{
+      height: auto;
+    background-color: rgba(0, 0, 0, 0.5) !important
+  }
+
+  .h5{
+    font-size: 1rem !important;
+  }
+
+  .swiper-slide {
+      height: inherit !important
+  }
+
+  .newSwiper {
+      width: 95%;
+  }
+  .card-body{
+      min-height:4rem;
+      max-height:4rem;
+      background-color: #343a40
+  }
+
+  @media screen and (min-width: 992px){
+    .card-container:hover .overlay-card {
+        opacity: 1
+    }
+    .card-container{
+        position: relative;
+    }
+
+    .overlay-card {
+        position: absolute;
+        opacity: 0;
+        transition: all 0.5s ease-in-out;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+  }
+
+  @media screen and (max-width: 992px) {
+    .swiper-button-next, .swiper-button-prev {
+        display: none !important
+    }
+
+    .bottom-left {
+        background-color: transparent
+    }
+
+    .bottom-left h3, .bottom-left > p {
+        font-size: 1em;        
+    }
+    
+    .bottom-left p {
+        display: none    
+    }
+
+    .card-body{
+        min-height:6rem;
+        max-height:6rem;
+        background-color: #343a40
+    }
+
+    .overlay-card{
+        display: none
+    }
+
+    .anime-h1{
+        padding-left: 0
+    }
+  }
 
 
