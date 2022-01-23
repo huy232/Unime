@@ -84,15 +84,7 @@ function HomeSkeleton() {
 							<SwiperSlide key={anime}>
 								<Card>
 									<div className="card-container">
-										<Card.Img variant="top" />
-										<Skeleton
-											variant="rectangular"
-											width="100%"
-											height="150px"
-										/>
-										<div className="overlay-card">
-											<a className="icon"></a>
-										</div>
+										<Card.Img variant="top" src={anime.thumbnail} />
 									</div>
 
 									<Card.Body>
@@ -141,9 +133,6 @@ function HomeSkeleton() {
 								<Card>
 									<div className="card-container">
 										<Card.Img variant="top" src={anime.thumbnail} />
-										<div className="overlay-card">
-											<a className="icon">{<BsFillPlayFill size={40} />}</a>
-										</div>
 									</div>
 
 									<Card.Body>
