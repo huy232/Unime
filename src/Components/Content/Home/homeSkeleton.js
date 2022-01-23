@@ -29,8 +29,8 @@ function HomeSkeleton() {
 				onSlideChange={(swiper) => {}}
 				className="mySwiper"
 			>
-				{[0, 1, 2, 3, 4, 5, 6].map((slider) => (
-					<SwiperSlide key={slider}>
+				{[0, 1, 2, 3, 4, 5, 6].map((slider, i) => (
+					<SwiperSlide key={i}>
 						<div className="inner">
 							<Skeleton
 								className="skeleton-thumbnail"
@@ -80,8 +80,8 @@ function HomeSkeleton() {
 					}}
 				>
 					<CardGroup>
-						{[0, 1, 2, 3, 4].map((anime) => (
-							<SwiperSlide key={anime}>
+						{[0, 1, 2, 3, 4].map((anime, i) => (
+							<SwiperSlide key={i}>
 								<Card>
 									<div className="card-container">
 										<Card.Img variant="top" src={anime.thumbnail} />
@@ -128,8 +128,8 @@ function HomeSkeleton() {
 					}}
 				>
 					<CardGroup>
-						{[0, 1, 2, 3, 4, 5, 6].map((anime) => (
-							<SwiperSlide key={anime.slug}>
+						{[0, 1, 2, 3, 4, 5, 6].map((anime, i) => (
+							<SwiperSlide key={i}>
 								<Card>
 									<div className="card-container">
 										<Card.Img variant="top" src={anime.thumbnail} />

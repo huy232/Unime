@@ -100,6 +100,10 @@ h1, .h5{
       max-height:4rem;
       background-color: #343a40
   }
+  .anime-card .card-body{
+    min-height: 7.5rem;
+    max-height: 7.5rem;
+  }
 
   .card-img-top {
     width: 100%;
@@ -206,8 +210,8 @@ h1, .h5{
     }
 
     .card-body{
-        min-height:6rem;
-        max-height:6rem;
+        min-height:6.5rem;
+        max-height:6.5rem;
         background-color: #343a40
     }
 

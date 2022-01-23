@@ -152,7 +152,13 @@ function Home({ instance }) {
 												</div>
 											</div>
 
-											<Card.Body>
+											<Card.Body
+												style={{
+													display: "flex",
+													flexDirection: "column",
+													justifyContent: "space-between",
+												}}
+											>
 												<Card.Title>
 													<TextTruncate
 														line={2}
@@ -161,6 +167,22 @@ function Home({ instance }) {
 														text={anime.name}
 													/>
 												</Card.Title>
+												<Card.Text
+													variant="bottom"
+													style={{
+														backgroundColor: "rgba(0, 0, 0, 0.3)",
+														borderRadius: "10px",
+														padding: "5px",
+													}}
+												>
+													<TextTruncate
+														line={2}
+														element="span"
+														truncateText="..."
+														text={anime.newestEpisode.name}
+														style={{ color: "#b3b300" }}
+													/>
+												</Card.Text>
 											</Card.Body>
 										</Card>
 									</SwiperSlide>
