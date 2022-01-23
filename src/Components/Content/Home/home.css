@@ -151,4 +151,11 @@ h1, .h5{
     }
   }
 
+  @media screen and (max-width: 930px){
+    .mySwiper {
+        max-width: 100%;
+        max-height: auto;
+      }
+  }
+
 
