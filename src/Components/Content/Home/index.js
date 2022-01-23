@@ -81,7 +81,17 @@ function Home({ instance }) {
 							MỚI NHẤT
 						</h1>
 						<Swiper
-							slidesPerView={4}
+							breakpoints={{
+								640: {
+									slidesPerView: 1,
+								},
+								768: {
+									slidesPerView: 2,
+								},
+								992: {
+									slidesPerView: 3,
+								},
+							}}
 							spaceBetween={20}
 							grabCursor={true}
 							mousewheel={true}
