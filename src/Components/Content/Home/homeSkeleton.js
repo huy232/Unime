@@ -106,6 +106,57 @@ function HomeSkeleton() {
 					</CardGroup>
 				</Swiper>
 			</div>
+
+			<div className="anime-card-today" style={{ marginTop: "42px" }}>
+				<div className="center-title">
+					<h1 className="anime-top-day-h1" style={{ marginBottom: "42px" }}>
+						XEM NHIỀU TRONG NGÀY
+					</h1>
+				</div>
+
+				<Swiper
+					breakpoints={{
+						640: {
+							slidesPerView: 1,
+						},
+						768: {
+							slidesPerView: 3,
+						},
+						992: {
+							slidesPerView: 5,
+						},
+					}}
+					spaceBetween={20}
+					grabCursor={true}
+					mousewheel={true}
+					lazy={true}
+					className="newSwiper h-100"
+					pagination={{
+						type: "progressbar",
+					}}
+				>
+					<CardGroup>
+						{[0, 1, 2, 3, 4, 5, 6].map((anime) => (
+							<SwiperSlide key={anime.slug}>
+								<Card>
+									<div className="card-container">
+										<Card.Img variant="top" src={anime.thumbnail} />
+										<div className="overlay-card">
+											<a className="icon">{<BsFillPlayFill size={40} />}</a>
+										</div>
+									</div>
+
+									<Card.Body>
+										<Card.Title>
+											<Skeleton variant="text" />
+										</Card.Title>
+									</Card.Body>
+								</Card>
+							</SwiperSlide>
+						))}
+					</CardGroup>
+				</Swiper>
+			</div>
 		</>
 	)
 }
