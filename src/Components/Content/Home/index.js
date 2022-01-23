@@ -34,6 +34,9 @@ function Home({ instance }) {
 		await getSlide()
 		await getNew()
 		await setDone(true)
+		return () => {
+			setDone(true)
+		}
 	}, [])
 
 	return (

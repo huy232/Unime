@@ -17,6 +17,7 @@
     "react-fullscreen-loading": "^0.0.4",
     "react-icons": "^4.3.1",
     "react-loading-skeleton": "^3.0.2",
+    "react-router-bootstrap": "^0.26.0",
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.0",
     "react-text-truncate": "^0.17.0",

@@ -7,6 +7,8 @@ import { Route, Routes } from "react-router-dom"
 import Header from "./Components/Shared/Header"
 
 import Home from "./Components/Content/Home"
+import AnimeList from "./Components/Content/AnimeList"
+import AnimeGenre from "./Components/Content/AnimeGenre"
 
 function App() {
 	const instance = axios.create({
@@ -19,6 +21,11 @@ function App() {
 			<div className="content" style={{ marginTop: "80px" }}>
 				<Routes>
 					<Route exact path="/" element={<Home instance={instance} />} />
+					<Route path="/anime" element={<AnimeList instance={instance} />} />
+					<Route
+						path="/anime/:genre"
+						element={<AnimeGenre instance={instance} />}
+					/>
 				</Routes>
 			</div>
 		</div>

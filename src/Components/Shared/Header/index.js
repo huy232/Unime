@@ -1,6 +1,7 @@
 import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap"
 import { Link } from "react-router-dom"
 import { GENRES } from "../../../constants"
+import { LinkContainer } from "react-router-bootstrap"
 import "./header.css"
 function Header() {
 	return (
@@ -17,7 +18,9 @@ function Header() {
 						</Nav.Link>
 						<NavDropdown title="Thể loại" id="collasible-nav-dropdown">
 							{GENRES.map((genre) => (
-								<NavDropdown.Item>{genre.name}</NavDropdown.Item>
+								<LinkContainer to={`/anime/${genre.slug}`} key={genre.slug}>
+									<NavDropdown.Item>{genre.name}</NavDropdown.Item>
+								</LinkContainer>
 							))}
 						</NavDropdown>
 					</Nav>
