@@ -1,0 +1,114 @@
+import { BsEyeFill, BsFillPlayFill } from "react-icons/bs"
+import { Card, Button, CardGroup, Row } from "react-bootstrap"
+import Skeleton from "@mui/material/Skeleton"
+import "./home.css"
+// SWIPER
+import { Swiper, SwiperSlide } from "swiper/react"
+
+import "swiper/css"
+import "swiper/css/pagination"
+import "swiper/css/navigation"
+import SwiperCore, { Pagination, Navigation, Mousewheel, Lazy } from "swiper"
+SwiperCore.use([Pagination, Navigation, Mousewheel, Lazy])
+
+// ---------------------------
+
+function HomeSkeleton() {
+	return (
+		<>
+			<Swiper
+				slidesPerView={1}
+				pagination={{
+					type: "progressbar",
+				}}
+				navigation={true}
+				loop={true}
+				grabCursor={true}
+				mousewheel={true}
+				lazy={true}
+				onSlideChange={(swiper) => {}}
+				className="mySwiper"
+			>
+				{[0, 1, 2, 3, 4, 5].map((slider) => (
+					<SwiperSlide key={slider}>
+						<div className="inner">
+							<Skeleton
+								variant="rectangular"
+								width="100%"
+								height="460px"
+								animation="wave"
+							/>
+							<div className="overlay">
+								<a className="icon">{<BsFillPlayFill size={70} />}</a>
+							</div>
+						</div>
+						<div className="bottom-left">
+							<h3>{<Skeleton />}</h3>
+							<p>
+								<BsEyeFill /> {<Skeleton variant="text" />}
+							</p>
+						</div>
+					</SwiperSlide>
+				))}
+			</Swiper>
+
+			<div className="anime-card" style={{ marginTop: "42px" }}>
+				<h1
+					className="anime-h1"
+					style={{ marginBottom: "42px", width: "200px" }}
+				>
+					MỚI NHẤT
+				</h1>
+				<Swiper
+					breakpoints={{
+						640: {
+							slidesPerView: 1,
+						},
+						768: {
+							slidesPerView: 3,
+						},
+						992: {
+							slidesPerView: 5,
+						},
+					}}
+					spaceBetween={20}
+					grabCursor={true}
+					mousewheel={true}
+					lazy={true}
+					className="newSwiper h-100"
+					pagination={{
+						type: "progressbar",
+					}}
+				>
+					<CardGroup>
+						{[0, 1, 2, 3, 4].map((anime) => (
+							<SwiperSlide key={anime}>
+								<Card>
+									<div className="card-container">
+										<Card.Img variant="top" />
+										<Skeleton
+											variant="rectangular"
+											width="100%"
+											height="150px"
+										/>
+										<div className="overlay-card">
+											<a className="icon">{<BsFillPlayFill size={40} />}</a>
+										</div>
+									</div>
+
+									<Card.Body>
+										<Card.Title>
+											<Skeleton variant="text" />
+										</Card.Title>
+									</Card.Body>
+								</Card>
+							</SwiperSlide>
+						))}
+					</CardGroup>
+				</Swiper>
+			</div>
+		</>
+	)
+}
+
+export default HomeSkeleton

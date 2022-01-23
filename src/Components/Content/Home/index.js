@@ -4,6 +4,7 @@ import { Card, Button, CardGroup, Row } from "react-bootstrap"
 import Loading from "react-fullscreen-loading"
 import TextTruncate from "react-text-truncate"
 import "./home.css"
+import HomeSkeleton from "./homeSkeleton"
 // SWIPER
 import { Swiper, SwiperSlide } from "swiper/react"
 
@@ -39,7 +40,7 @@ function Home({ instance }) {
 	return (
 		<>
 			{!done ? (
-				<Loading loading={true} background="#000000" loaderColor="#FFFF00" />
+				<HomeSkeleton />
 			) : (
 				<>
 					<Swiper
