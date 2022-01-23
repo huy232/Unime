@@ -1,9 +1,10 @@
 import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap"
 import { Link } from "react-router-dom"
+import { GENRES } from "../../../constants"
 import "./header.css"
 function Header() {
 	return (
-		<Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+		<Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" fixed="top">
 			<Container>
 				<Navbar.Brand as={Link} to="/">
 					Mirai
@@ -15,7 +16,9 @@ function Header() {
 							Anime
 						</Nav.Link>
 						<NavDropdown title="Thể loại" id="collasible-nav-dropdown">
-							<NavDropdown.Item>Action</NavDropdown.Item>
+							{GENRES.map((genre) => (
+								<NavDropdown.Item>{genre.name}</NavDropdown.Item>
+							))}
 						</NavDropdown>
 					</Nav>
 				</Navbar.Collapse>

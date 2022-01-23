@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react"
 import { BsEyeFill, BsFillPlayFill } from "react-icons/bs"
 import { Card, Button, CardGroup, Row } from "react-bootstrap"
-import Loading from "react-fullscreen-loading"
 import TextTruncate from "react-text-truncate"
 import "./home.css"
 import HomeSkeleton from "./homeSkeleton"

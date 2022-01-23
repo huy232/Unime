@@ -16,10 +16,11 @@ function App() {
 	return (
 		<div className="App">
 			<Header />
-			<div className="content"></div>
-			<Routes>
-				<Route exact path="/" element={<Home instance={instance} />} />
-			</Routes>
+			<div className="content" style={{ marginTop: "80px" }}>
+				<Routes>
+					<Route exact path="/" element={<Home instance={instance} />} />
+				</Routes>
+			</div>
 		</div>
 	)
 }
