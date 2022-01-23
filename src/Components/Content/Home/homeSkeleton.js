@@ -40,14 +40,12 @@ function HomeSkeleton() {
 								animation="wave"
 							/>
 							<div className="overlay">
-								<a className="icon">{<BsFillPlayFill size={70} />}</a>
+								<a className="icon"></a>
 							</div>
 						</div>
 						<div className="bottom-left">
 							<h3>{<Skeleton />}</h3>
-							<p>
-								<BsEyeFill /> {<Skeleton variant="text" />}
-							</p>
+							<p>{<Skeleton variant="text" />}</p>
 						</div>
 					</SwiperSlide>
 				))}
@@ -93,7 +91,7 @@ function HomeSkeleton() {
 											height="150px"
 										/>
 										<div className="overlay-card">
-											<a className="icon">{<BsFillPlayFill size={40} />}</a>
+											<a className="icon"></a>
 										</div>
 									</div>
 

@@ -15,5 +15,6 @@ code {
 }
  
 html, body{
-  background-color:#121212 !important
+  background-color:#121212 !important;
+  min-width: 500px
 }

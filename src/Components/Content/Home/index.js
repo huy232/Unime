@@ -19,6 +19,7 @@ SwiperCore.use([Pagination, Navigation, Mousewheel, Lazy])
 function Home({ instance }) {
 	const [sliders, setSliders] = useState([])
 	const [newAnime, setNewAnime] = useState([])
+	const [rankToday, setRankToday] = useState([])
 	const [done, setDone] = useState(false)
 
 	useEffect(() => {
@@ -45,6 +46,20 @@ function Home({ instance }) {
 				})
 				.then((data) => {
 					setNewAnime(data.data.data)
+				})
+				.catch((thrown) => {
+					if (axios.isCancel(thrown)) {
+						console.log("Request Canceled", thrown.message)
+					}
+				})
+		}
+		const getRankToday = async () => {
+			await instance
+				.get("/top", {
+					cancelToken: source.token,
+				})
+				.then((data) => {
+					setRankToday(data.data.data)
 					setDone(true)
 				})
 				.catch((thrown) => {
@@ -55,7 +70,7 @@ function Home({ instance }) {
 		}
 		getSlide()
 		getNew()
-
+		getRankToday()
 		return () => {
 			source.cancel()
 		}
@@ -128,6 +143,62 @@ function Home({ instance }) {
 						>
 							<CardGroup>
 								{newAnime.map((anime) => (
+									<SwiperSlide key={anime.slug}>
+										<Card>
+											<div className="card-container">
+												<Card.Img variant="top" src={anime.thumbnail} />
+												<div className="overlay-card">
+													<a className="icon">{<BsFillPlayFill size={40} />}</a>
+												</div>
+											</div>
+
+											<Card.Body>
+												<Card.Title>
+													<TextTruncate
+														line={2}
+														element="span"
+														truncateText="…"
+														text={anime.name}
+													/>
+												</Card.Title>
+											</Card.Body>
+										</Card>
+									</SwiperSlide>
+								))}
+							</CardGroup>
+						</Swiper>
+					</div>
+
+					<div className="anime-card-today" style={{ marginTop: "42px" }}>
+						<div className="center-title">
+							<h1 className="anime-top-day-h1" style={{ marginBottom: "42px" }}>
+								XEM NHIỀU TRONG NGÀY
+							</h1>
+						</div>
+
+						<Swiper
+							breakpoints={{
+								640: {
+									slidesPerView: 1,
+								},
+								768: {
+									slidesPerView: 3,
+								},
+								992: {
+									slidesPerView: 5,
+								},
+							}}
+							spaceBetween={20}
+							grabCursor={true}
+							mousewheel={true}
+							lazy={true}
+							className="newSwiper h-100"
+							pagination={{
+								type: "progressbar",
+							}}
+						>
+							<CardGroup>
+								{rankToday.map((anime) => (
 									<SwiperSlide key={anime.slug}>
 										<Card>
 											<div className="card-container">

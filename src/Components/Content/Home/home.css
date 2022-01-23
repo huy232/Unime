@@ -101,6 +101,75 @@ h1, .h5{
       background-color: #343a40
   }
 
+  .card-img-top {
+    width: 100%;
+    height: 10vw;
+    -o-object-fit: cover;
+       object-fit: cover;
+}
+
+.center-title{
+  text-align:center
+}
+
+.anime-top-day-h1{
+  color: black !important;
+  display: inline-block;
+  background-color: #ffa781;
+  box-shadow: 0px 8px 0px #5b0e2d, 
+  -10px 8px 0px #5b0e2d, 10px 8px 0px #5b0e2d;
+  -webkit-animation-name: backgroundColorPalette;
+          animation-name: backgroundColorPalette;
+          -webkit-animation-duration: 5s;
+                  animation-duration: 5s;
+	-webkit-animation-iteration-count: infinite;
+	        animation-iteration-count: infinite;
+	-webkit-animation-direction: alternate;
+	        animation-direction: alternate;
+	-webkit-animation-timing-function: linear;
+	        animation-timing-function: linear; 
+}
+
+@-webkit-keyframes backgroundColorPalette {
+	0% {
+		background: #565554;
+	}
+	25% {
+		background: #2e86ab;
+	}
+	50% {
+		background: #f6f5ae;
+	}
+	75% {
+		background: #f5f749;
+	}
+	100% {
+		background: #f24236;
+	}
+}
+
+@keyframes backgroundColorPalette {
+	0% {
+		background: #565554;
+	}
+	25% {
+		background: #2e86ab;
+	}
+	50% {
+		background: #f6f5ae;
+	}
+	75% {
+		background: #f5f749;
+	}
+	100% {
+		background: #f24236;
+	}
+}
+
+.anime-card-today .card-body {
+  background-color: #330000 !important
+}
+
   @media screen and (min-width: 992px){
     .card-container:hover .overlay-card {
         opacity: 1
@@ -149,6 +218,13 @@ h1, .h5{
     .anime-h1{
         padding-left: 0
     }
+    .card-img-top {
+      width: 100%;
+      height: 16vw;
+      -o-object-fit: cover;
+         object-fit: cover;
+    }
+
   }
 
   @media screen and (min-width: 1000px) {
@@ -185,6 +261,12 @@ h1, .h5{
     .skeleton-thumbnail {
         max-height: 222px
     }
+    .card-img-top {
+      width: 100%;
+      height: 40vw;
+      -o-object-fit: cover;
+         object-fit: cover;
+    }
   }
   
   @media screen and (max-width: 500px) {
@@ -200,6 +282,7 @@ h1, .h5{
         max-height: auto;
       }
   }
+
 
 
 
