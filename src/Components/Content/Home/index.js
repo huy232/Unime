@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { BsEyeFill, BsFillPlayFill } from "react-icons/bs"
 import { Card, Button, CardGroup, Row } from "react-bootstrap"
+import axios from "axios"
 import TextTruncate from "react-text-truncate"
 import "./home.css"
 import HomeSkeleton from "./homeSkeleton"
@@ -20,22 +21,43 @@ function Home({ instance }) {
 	const [newAnime, setNewAnime] = useState([])
 	const [done, setDone] = useState(false)
 
-	const getSlide = async () => {
-		const { data } = await instance.get("/slide")
-		setSliders(data.data)
-	}
+	useEffect(() => {
+		const CancelToken = axios.CancelToken
+		const source = CancelToken.source()
 
-	const getNew = async () => {
-		const { data } = await instance.get("/newest")
-		setNewAnime(data.data)
-	}
+		const getSlide = async () => {
+			await instance
+				.get("/slide", {
+					cancelToken: source.token,
+				})
+				.then((data) => setSliders(data.data.data))
+				.catch((thrown) => {
+					if (axios.isCancel(thrown)) {
+						console.log("Request Canceled", thrown.message)
+					}
+				})
+		}
 
-	useEffect(async () => {
-		await getSlide()
-		await getNew()
-		await setDone(true)
+		const getNew = async () => {
+			await instance
+				.get("/newest", {
+					cancelToken: source.token,
+				})
+				.then((data) => {
+					setNewAnime(data.data.data)
+					setDone(true)
+				})
+				.catch((thrown) => {
+					if (axios.isCancel(thrown)) {
+						console.log("Request Canceled", thrown.message)
+					}
+				})
+		}
+		getSlide()
+		getNew()
+
 		return () => {
-			setDone(true)
+			source.cancel()
 		}
 	}, [])
 
