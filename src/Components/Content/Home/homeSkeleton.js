@@ -29,7 +29,7 @@ function HomeSkeleton() {
 				onSlideChange={(swiper) => {}}
 				className="mySwiper"
 			>
-				{[0, 1, 2, 3, 4, 5].map((slider) => (
+				{[0, 1, 2, 3, 4, 5, 6].map((slider) => (
 					<SwiperSlide key={slider}>
 						<div className="inner">
 							<Skeleton
