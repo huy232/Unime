@@ -33,6 +33,7 @@ function HomeSkeleton() {
 					<SwiperSlide key={slider}>
 						<div className="inner">
 							<Skeleton
+								className="skeleton-thumbnail"
 								variant="rectangular"
 								width="100%"
 								height="460px"

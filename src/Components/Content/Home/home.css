@@ -157,5 +157,17 @@ h1, .h5{
         max-height: auto;
       }
   }
+  
+  @media screen and (max-width: 1024px) {
+    .skeleton-thumbnail {
+        max-height: 200px
+    }
+  }
+
+  @media screen and (max-width: 840px) {
+    .skeleton-thumbnail {
+        max-height: 140px
+    }
+  }
 
 
