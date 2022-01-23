@@ -151,23 +151,57 @@ h1, .h5{
     }
   }
 
+  @media screen and (min-width: 1000px) {
+    .skeleton-thumbnail {
+        max-height: 330px
+    }
+  }
+
+  @media screen and (min-width: 1400px) {
+    .skeleton-thumbnail {
+        max-height: 343px
+    }
+  }
+    
+  @media screen and (max-width: 1024px) {
+    .skeleton-thumbnail {
+        max-height: 250px
+    }
+  }
+
+  @media screen and (max-width: 840px) {
+    .skeleton-thumbnail {
+        max-height: 220px
+    }
+  }
+  
+  @media screen and (max-width: 840px) {
+    .skeleton-thumbnail {
+        max-height: 244px
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .skeleton-thumbnail {
+        max-height: 222px
+    }
+  }
+  
+  @media screen and (max-width: 500px) {
+    .skeleton-thumbnail {
+        max-height: 142px
+    }
+  }
+
+
   @media screen and (max-width: 930px){
     .mySwiper {
         max-width: 100%;
         max-height: auto;
       }
   }
-  
-  @media screen and (max-width: 1024px) {
-    .skeleton-thumbnail {
-        max-height: 200px
-    }
-  }
 
-  @media screen and (max-width: 840px) {
-    .skeleton-thumbnail {
-        max-height: 140px
-    }
-  }
+
+
 
 
