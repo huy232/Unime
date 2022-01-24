@@ -105,8 +105,8 @@ h1, .h5{
       background-color: #343a40
   }
   .anime-card .card-body{
-    min-height: 7.5rem;
-    max-height: 7.5rem;
+    min-height: 7.7rem;
+    max-height: 7.7rem;
   }
 
   .card-img-top {
@@ -136,6 +136,24 @@ h1, .h5{
 	        animation-direction: alternate;
 	-webkit-animation-timing-function: linear;
 	        animation-timing-function: linear; 
+}
+
+.clearfix{
+  content: "";
+  clear: both;
+}
+
+.description-card{
+  color: white !important;
+  min-height: 100% ;
+  max-height: 100% !important;
+}
+
+.description-cover-img{
+  min-height: 450px;
+  max-height: 450px;
+  -o-object-fit: cover;
+     object-fit: cover
 }
 
 @-webkit-keyframes backgroundColorPalette {
@@ -198,6 +216,55 @@ h1, .h5{
           user-select: none !important;
 }
 
+.description-title{
+  color: #F05454 !important;
+  padding-bottom: 10px;
+  text-align: center;
+  font-weight: 700 !important;
+  font-size: 2rem !important;
+  margin-bottom: 0!important;
+  line-height: none!important;
+  background-color: #121212 
+}
+.my-anchor-css-class{
+  padding: 2px 10px;
+  border-radius: 5px;
+  background-color: black;
+  color: white;
+  text-decoration: none
+}
+
+.my-anchor-css-class:hover{
+  color: yellow;
+  transition: all 0.3s linear;
+  opacity: 0.6
+}
+
+.content-css{
+  line-height: 1.5
+}
+
+.studio {
+  color: yellow;
+  margin: 5px 10px;
+  background-color: #92A9BD;
+  border: 2px solid #92A9BD;
+  border-radius: 5px;
+  padding: 3px
+}
+
+.studio-text{
+  color: orange
+}
+
+.title-box{
+  color: white;
+  background-color: #222831 !important
+}
+
+.title-box > span {
+  margin: 5px 5px;
+}
 
   @media screen and (min-width: 992px){
     .card-container:hover .overlay-card {
@@ -235,8 +302,8 @@ h1, .h5{
     }
 
     .card-body{
-        min-height:6.5rem;
-        max-height:6.5rem;
+        min-height:6.7rem;
+        max-height:6.7rem;
         background-color: #343a40
     }
 

@@ -158,6 +158,7 @@ function HomeSkeleton() {
 				>
 					CÓ THỂ BẠN SẼ THÍCH ĐÓ
 				</h1>
+				<div className="clearfix"></div>
 			</div>
 		</>
 	)

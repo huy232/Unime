@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react"
 import { BsEyeFill, BsFillPlayFill } from "react-icons/bs"
-import { Card, Button, CardGroup, Row } from "react-bootstrap"
+import { Card, Button, CardGroup, Row, Placeholder } from "react-bootstrap"
 import axios from "axios"
 import TextTruncate from "react-text-truncate"
 import "./home.css"
 import HomeSkeleton from "./homeSkeleton"
+import ShowMoreText from "react-show-more-text"
 // SWIPER
 import { Swiper, SwiperSlide } from "swiper/react"
 
@@ -20,6 +21,7 @@ function Home({ instance }) {
 	const [sliders, setSliders] = useState([])
 	const [newAnime, setNewAnime] = useState([])
 	const [rankToday, setRankToday] = useState([])
+	const [randomAnime, setRandomAnime] = useState({})
 	const [done, setDone] = useState(false)
 
 	useEffect(() => {
@@ -53,6 +55,7 @@ function Home({ instance }) {
 					}
 				})
 		}
+
 		const getRankToday = async () => {
 			await instance
 				.get("/top", {
@@ -60,6 +63,21 @@ function Home({ instance }) {
 				})
 				.then((data) => {
 					setRankToday(data.data.data)
+				})
+				.catch((thrown) => {
+					if (axios.isCancel(thrown)) {
+						console.log("Request Canceled", thrown.message)
+					}
+				})
+		}
+
+		const getRandom = async () => {
+			await instance
+				.get("/today", {
+					cancelToken: source.token,
+				})
+				.then((data) => {
+					setRandomAnime(data.data.data)
 					setDone(true)
 				})
 				.catch((thrown) => {
@@ -71,6 +89,7 @@ function Home({ instance }) {
 		getSlide()
 		getNew()
 		getRankToday()
+		getRandom()
 		return () => {
 			source.cancel()
 		}
@@ -249,7 +268,7 @@ function Home({ instance }) {
 
 					<div className="today-section" style={{ marginTop: "42px" }}>
 						<h1
-							className="today-h1"
+							className="today-h1 "
 							style={{
 								marginBottom: "42px",
 								float: "right",
@@ -258,6 +277,70 @@ function Home({ instance }) {
 						>
 							CÓ THỂ BẠN SẼ THÍCH ĐÓ
 						</h1>
+
+						<div className="clearfix"></div>
+						<div className="row w-100">
+							<div className="col-9">
+								<Card>
+									<Card.Title className="description-title">
+										{randomAnime?.AnimeName?.todayTitle}
+									</Card.Title>
+									<Card.Img variant="bottom" src={randomAnime?.BannerImg} />
+									<Card.Body className="description-card">
+										<ShowMoreText
+											/* Default options */
+											lines={4}
+											more="Hiện thêm"
+											less="Rút gọn"
+											className="content-css"
+											anchorClass="my-anchor-css-class"
+											expanded={false}
+											truncatedEndingComponent={"... "}
+										>
+											<Card.Text>{randomAnime?.Description}</Card.Text>
+										</ShowMoreText>
+									</Card.Body>
+
+									<Card.Footer
+										style={{
+											display: "flex",
+											alignItems: "center",
+											width: "100%",
+											maxWidth: "100%",
+										}}
+									>
+										<span className="studio-text">
+											STUDIO: {randomAnime.Studio || "null"}
+										</span>
+									</Card.Footer>
+								</Card>
+							</div>
+							<div className="col-3">
+								<img
+									src={
+										randomAnime?.CoverImg?.large ||
+										randomAnime?.CoverImg?.medium ||
+										randomAnime?.CoverImg?.small
+									}
+									style={{ maxWidth: "100%" }}
+								/>
+
+								<div
+									className="title-box"
+									style={{ display: "flex", flexDirection: "column" }}
+								>
+									<span className="english" style={{ color: "#f6d365" }}>
+										Anh: {randomAnime?.AnimeAllTitle?.english || "null"}
+									</span>
+									<span className="native" style={{ color: "#d4fc79" }}>
+										Nhật: {randomAnime?.AnimeAllTitle?.native || "null"}
+									</span>
+									<span className="romaji" style={{ color: "#fa709a" }}>
+										Romaji: {randomAnime?.AnimeAllTitle?.romaji || "null"}
+									</span>
+								</div>
+							</div>
+						</div>
 					</div>
 				</>
 			)}
