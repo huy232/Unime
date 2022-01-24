@@ -262,7 +262,8 @@ h1, .h5{
 
 .title-box{
   color: white;
-  background-color: #222831 !important
+  background-color: #222831 !important;
+  padding: 0 5px
 }
 
 .title-box > span {

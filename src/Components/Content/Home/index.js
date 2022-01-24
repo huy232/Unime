@@ -289,41 +289,59 @@ function Home({ instance }) {
 							<div className="col-9">
 								<Card>
 									<Card.Title className="description-title">
-										{!randomAnime ? (
-											<Skeleton variant="text" />
+										{!randomAnime?.AnimeName ? (
+											<Skeleton
+												variant="text"
+												animation="wave"
+												sx={{ bgcolor: "grey.900" }}
+											/>
 										) : (
 											randomAnime?.AnimeName?.todayTitle
 										)}
 									</Card.Title>
 
-									{!randomAnime ? (
+									{!randomAnime?.BannerImg ? (
 										<Skeleton
 											variant="rectangular"
 											width="100%"
-											style={{ minHeight: "400px" }}
+											height="250px"
+											animation="wave"
+											sx={{ bgcolor: "grey.900" }}
 										/>
 									) : (
-										<Card.Img variant="bottom" src={randomAnime?.BannerImg} />
+										<Card.Img
+											variant="bottom"
+											src={randomAnime?.BannerImg}
+											style={{
+												maxHeight: "250px",
+												minHeight: "250px",
+												objectFit: "cover",
+											}}
+										/>
 									)}
 
 									<Card.Body className="description-card">
-										<ShowMoreText
-											lines={4}
-											more="Hiện thêm"
-											less="Rút gọn"
-											className="content-css"
-											anchorClass="my-anchor-css-class"
-											expanded={false}
-											truncatedEndingComponent={"... "}
-										>
-											<Card.Text>
-												{!randomAnime ? (
-													<Skeleton variant="text" />
-												) : (
-													randomAnime?.Description
-												)}
-											</Card.Text>
-										</ShowMoreText>
+										{console.log(randomAnime?.Description)}
+										{!randomAnime?.Description ||
+										randomAnime?.Description.trim() == "" ? (
+											<Skeleton
+												variant="text"
+												animation="wave"
+												sx={{ bgcolor: "grey.900" }}
+											/>
+										) : (
+											<ShowMoreText
+												lines={4}
+												more="Hiện thêm"
+												less="Rút gọn"
+												className="content-css"
+												anchorClass="my-anchor-css-class"
+												expanded={false}
+												truncatedEndingComponent={"... "}
+											>
+												<Card.Text>{randomAnime?.Description.trim()}</Card.Text>
+											</ShowMoreText>
+										)}
 									</Card.Body>
 
 									<Card.Footer
@@ -335,8 +353,12 @@ function Home({ instance }) {
 										}}
 									>
 										<span className="studio-text">
-											{!randomAnime ? (
-												<Skeleton variant="text" />
+											{!randomAnime?.Studio ? (
+												<Skeleton
+													variant="text"
+													animation="wave"
+													sx={{ bgcolor: "grey.900" }}
+												/>
 											) : (
 												"Studio: " + randomAnime?.Studio
 											)}
@@ -362,11 +384,15 @@ function Home({ instance }) {
 											alignItems: "center",
 										}}
 									>
-										{!randomAnime ? (
-											<Skeleton variant="text" />
+										{!randomAnime?.Duration ? (
+											<Skeleton
+												variant="text"
+												animation="wave"
+												sx={{ bgcolor: "grey.900" }}
+											/>
 										) : (
 											<>
-												<BsStopwatchFill />: {randomAnime?.Duration} phút
+												<BsStopwatchFill />: ~{randomAnime?.Duration} phút/ tập
 											</>
 										)}
 									</div>
@@ -378,8 +404,12 @@ function Home({ instance }) {
 											alignItems: "center",
 										}}
 									>
-										{!randomAnime ? (
-											<Skeleton variant="text" />
+										{!randomAnime?.EpisodeTotal ? (
+											<Skeleton
+												variant="text"
+												animation="wave"
+												sx={{ bgcolor: "grey.900" }}
+											/>
 										) : (
 											<>
 												<BsTv />: {randomAnime?.EpisodeTotal} tập
@@ -390,20 +420,29 @@ function Home({ instance }) {
 							</div>
 							<div className="col-3">
 								<div className="image-box">
-									{!randomAnime ? (
+									{!randomAnime?.CoverImg ? (
 										<Skeleton
 											variant="rectangular"
 											width="100%"
-											style={{ minHeight: "300px" }}
+											style={{ minHeight: "300px", maxHeight: "300px" }}
+											animation="wave"
+											sx={{ bgcolor: "grey.900" }}
 										/>
 									) : (
+										// eslint-disable-next-line jsx-a11y/alt-text
 										<img
 											src={
 												randomAnime?.CoverImg?.large ||
 												randomAnime?.CoverImg?.medium ||
 												randomAnime?.CoverImg?.small
 											}
-											style={{ maxWidth: "100%", width: "100%" }}
+											style={{
+												maxWidth: "100%",
+												width: "100%",
+												minHeight: "350px",
+												maxHeight: "500px",
+												objectFit: "cover",
+											}}
 										/>
 									)}
 									<div
@@ -411,22 +450,34 @@ function Home({ instance }) {
 										style={{ display: "flex", flexDirection: "column" }}
 									>
 										<span className="english" style={{ color: "#f6d365" }}>
-											{!randomAnime ? (
-												<Skeleton variant="text" />
+											{!randomAnime?.AnimeAllTitle ? (
+												<Skeleton
+													variant="text"
+													animation="wave"
+													sx={{ bgcolor: "grey.900" }}
+												/>
 											) : (
 												"Anh: " + randomAnime?.AnimeAllTitle?.english
 											)}
 										</span>
 										<span className="native" style={{ color: "#d4fc79" }}>
-											{!randomAnime ? (
-												<Skeleton variant="text" />
+											{!randomAnime?.AnimeAllTitle ? (
+												<Skeleton
+													variant="text"
+													animation="wave"
+													sx={{ bgcolor: "grey.900" }}
+												/>
 											) : (
 												"Nhật: " + randomAnime?.AnimeAllTitle?.native
 											)}
 										</span>
 										<span className="romaji" style={{ color: "#fa709a" }}>
-											{!randomAnime ? (
-												<Skeleton variant="text" />
+											{!randomAnime?.AnimeAllTitle ? (
+												<Skeleton
+													variant="text"
+													animation="wave"
+													sx={{ bgcolor: "grey.900" }}
+												/>
 											) : (
 												"Romaji: " + randomAnime?.AnimeAllTitle?.romaji
 											)}
