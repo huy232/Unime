@@ -310,7 +310,7 @@ function Home({ instance }) {
 										}}
 									>
 										<span className="studio-text">
-											STUDIO: {randomAnime.Studio || "null"}
+											STUDIO: {randomAnime.Studio ? randomAnime.Studio : "null"}
 										</span>
 									</Card.Footer>
 								</Card>
