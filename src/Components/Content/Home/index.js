@@ -1,6 +1,12 @@
 import { useEffect, useState } from "react"
-import { BsEyeFill, BsFillPlayFill } from "react-icons/bs"
+import {
+	BsEyeFill,
+	BsFillPlayFill,
+	BsStopwatchFill,
+	BsTv,
+} from "react-icons/bs"
 import { Card, Button, CardGroup, Row, Placeholder } from "react-bootstrap"
+import Skeleton from "@mui/material/Skeleton"
 import axios from "axios"
 import TextTruncate from "react-text-truncate"
 import "./home.css"
@@ -283,12 +289,25 @@ function Home({ instance }) {
 							<div className="col-9">
 								<Card>
 									<Card.Title className="description-title">
-										{randomAnime?.AnimeName?.todayTitle}
+										{!randomAnime ? (
+											<Skeleton variant="text" />
+										) : (
+											randomAnime?.AnimeName?.todayTitle
+										)}
 									</Card.Title>
-									<Card.Img variant="bottom" src={randomAnime?.BannerImg} />
+
+									{!randomAnime ? (
+										<Skeleton
+											variant="rectangular"
+											width="100%"
+											style={{ minHeight: "400px" }}
+										/>
+									) : (
+										<Card.Img variant="bottom" src={randomAnime?.BannerImg} />
+									)}
+
 									<Card.Body className="description-card">
 										<ShowMoreText
-											/* Default options */
 											lines={4}
 											more="Hiện thêm"
 											less="Rút gọn"
@@ -297,7 +316,13 @@ function Home({ instance }) {
 											expanded={false}
 											truncatedEndingComponent={"... "}
 										>
-											<Card.Text>{randomAnime?.Description}</Card.Text>
+											<Card.Text>
+												{!randomAnime ? (
+													<Skeleton variant="text" />
+												) : (
+													randomAnime?.Description
+												)}
+											</Card.Text>
 										</ShowMoreText>
 									</Card.Body>
 
@@ -310,34 +335,103 @@ function Home({ instance }) {
 										}}
 									>
 										<span className="studio-text">
-											STUDIO: {randomAnime?.Studio || "null"}
+											{!randomAnime ? (
+												<Skeleton variant="text" />
+											) : (
+												"Studio: " + randomAnime?.Studio
+											)}
 										</span>
 									</Card.Footer>
 								</Card>
-							</div>
-							<div className="col-3">
-								<img
-									src={
-										randomAnime?.CoverImg?.large ||
-										randomAnime?.CoverImg?.medium ||
-										randomAnime?.CoverImg?.small
-									}
-									style={{ maxWidth: "100%", width: "100%" }}
-								/>
 
 								<div
-									className="title-box"
-									style={{ display: "flex", flexDirection: "column" }}
+									className="info-today"
+									style={{
+										float: "right",
+										display: "flex",
+										flexDirection: "column",
+										alignItems: "flex-end",
+										boxShadow: "-5px 5px 0px 2px #761515",
+									}}
 								>
-									<span className="english" style={{ color: "#f6d365" }}>
-										Anh: {randomAnime?.AnimeAllTitle?.english || "null"}
-									</span>
-									<span className="native" style={{ color: "#d4fc79" }}>
-										Nhật: {randomAnime?.AnimeAllTitle?.native || "null"}
-									</span>
-									<span className="romaji" style={{ color: "#fa709a" }}>
-										Romaji: {randomAnime?.AnimeAllTitle?.romaji || "null"}
-									</span>
+									<div
+										className="episode-time"
+										style={{
+											display: "inline-flex",
+											flexDirection: "row",
+											alignItems: "center",
+										}}
+									>
+										{!randomAnime ? (
+											<Skeleton variant="text" />
+										) : (
+											<>
+												<BsStopwatchFill />: {randomAnime?.Duration} phút
+											</>
+										)}
+									</div>
+									<div
+										className="episodes"
+										style={{
+											display: "inline-flex",
+											flexDirection: "row",
+											alignItems: "center",
+										}}
+									>
+										{!randomAnime ? (
+											<Skeleton variant="text" />
+										) : (
+											<>
+												<BsTv />: {randomAnime?.EpisodeTotal} tập
+											</>
+										)}
+									</div>
+								</div>
+							</div>
+							<div className="col-3">
+								<div className="image-box">
+									{!randomAnime ? (
+										<Skeleton
+											variant="rectangular"
+											width="100%"
+											style={{ minHeight: "300px" }}
+										/>
+									) : (
+										<img
+											src={
+												randomAnime?.CoverImg?.large ||
+												randomAnime?.CoverImg?.medium ||
+												randomAnime?.CoverImg?.small
+											}
+											style={{ maxWidth: "100%", width: "100%" }}
+										/>
+									)}
+									<div
+										className="title-box"
+										style={{ display: "flex", flexDirection: "column" }}
+									>
+										<span className="english" style={{ color: "#f6d365" }}>
+											{!randomAnime ? (
+												<Skeleton variant="text" />
+											) : (
+												"Anh: " + randomAnime?.AnimeAllTitle?.english
+											)}
+										</span>
+										<span className="native" style={{ color: "#d4fc79" }}>
+											{!randomAnime ? (
+												<Skeleton variant="text" />
+											) : (
+												"Nhật: " + randomAnime?.AnimeAllTitle?.native
+											)}
+										</span>
+										<span className="romaji" style={{ color: "#fa709a" }}>
+											{!randomAnime ? (
+												<Skeleton variant="text" />
+											) : (
+												"Romaji: " + randomAnime?.AnimeAllTitle?.romaji
+											)}
+										</span>
+									</div>
 								</div>
 							</div>
 						</div>
