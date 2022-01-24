@@ -246,6 +246,19 @@ function Home({ instance }) {
 							</CardGroup>
 						</Swiper>
 					</div>
+
+					<div className="today-section" style={{ marginTop: "42px" }}>
+						<h1
+							className="today-h1"
+							style={{
+								marginBottom: "42px",
+								float: "right",
+								marginRight: "30px",
+							}}
+						>
+							CÓ THỂ BẠN SẼ THÍCH ĐÓ
+						</h1>
+					</div>
 				</>
 			)}
 		</>
