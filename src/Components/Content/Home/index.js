@@ -322,7 +322,7 @@ function Home({ instance }) {
 										randomAnime?.CoverImg?.medium ||
 										randomAnime?.CoverImg?.small
 									}
-									style={{ maxWidth: "100%" }}
+									style={{ maxWidth: "100%", width: "100%" }}
 								/>
 
 								<div
