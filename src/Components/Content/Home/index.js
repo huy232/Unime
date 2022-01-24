@@ -321,7 +321,6 @@ function Home({ instance }) {
 									)}
 
 									<Card.Body className="description-card">
-										{console.log(randomAnime?.Description)}
 										{!randomAnime?.Description ||
 										randomAnime?.Description.trim() == "" ? (
 											<Skeleton
