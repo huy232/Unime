@@ -302,6 +302,10 @@ h1, .h5{
   background-color: yellow
 }
 
+.characterSlider{
+  margin-right: 230px!important
+}
+
   @media screen and (min-width: 992px){
     .card-container:hover .overlay-card {
         opacity: 1

@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 import { useEffect, useState } from "react"
 import {
 	BsEyeFill,
@@ -359,59 +360,246 @@ function Home({ instance }) {
 													sx={{ bgcolor: "grey.900" }}
 												/>
 											) : (
-												"Studio: " + randomAnime?.Studio
+												<>
+													<span style={{ fontWeight: "700" }}>Studio:</span>{" "}
+													{randomAnime?.Studio}
+												</>
 											)}
 										</span>
 									</Card.Footer>
 								</Card>
 
 								<div
-									className="info-today"
-									style={{
-										float: "right",
-										display: "flex",
-										flexDirection: "column",
-										alignItems: "flex-end",
-										boxShadow: "-5px 5px 0px 2px #761515",
-									}}
+									className="info-character-wrapper"
+									style={{ marginTop: "22px" }}
 								>
-									<div
-										className="episode-time"
-										style={{
-											display: "inline-flex",
-											flexDirection: "row",
-											alignItems: "center",
-										}}
-									>
-										{!randomAnime?.Duration ? (
-											<Skeleton
-												variant="text"
-												animation="wave"
-												sx={{ bgcolor: "grey.900" }}
-											/>
-										) : (
-											<>
-												<BsStopwatchFill />: ~{randomAnime?.Duration} phút/ tập
-											</>
-										)}
+									<div className="wrapper">
+										<div
+											className="info-today"
+											style={{
+												float: "right",
+												display: "flex",
+												flexDirection: "column",
+												alignItems: "flex-end",
+												boxShadow: "-5px 5px 0px 2px #761515",
+											}}
+										>
+											<div
+												className="episode-time"
+												style={{
+													display: "inline-flex",
+													flexDirection: "row",
+													alignItems: "center",
+												}}
+											>
+												{!randomAnime?.Duration ? (
+													<Skeleton
+														variant="text"
+														animation="wave"
+														sx={{ bgcolor: "grey.900" }}
+													/>
+												) : (
+													<>
+														<BsStopwatchFill />: ~{randomAnime?.Duration} phút/
+														tập
+													</>
+												)}
+											</div>
+											<div
+												className="episodes"
+												style={{
+													display: "inline-flex",
+													flexDirection: "row",
+													alignItems: "center",
+												}}
+											>
+												{!randomAnime?.EpisodeTotal ? (
+													<Skeleton
+														variant="text"
+														animation="wave"
+														sx={{ bgcolor: "grey.900" }}
+													/>
+												) : (
+													<>
+														<BsTv />: {randomAnime?.EpisodeTotal} tập
+													</>
+												)}
+											</div>
+										</div>
+
+										<div
+											className="release-date"
+											style={{
+												display: "inline-block",
+												float: "right",
+												clear: "right",
+												color: "black",
+												textAlign: "right",
+												width: "150px",
+												marginTop: "20px",
+												backgroundColor: "#290149",
+												boxShadow: "-5px 5px 0px 2px #A9333A",
+												padding: "10px",
+											}}
+										>
+											{!randomAnime?.EndDate ? (
+												<Skeleton
+													variant="text"
+													animation="wave"
+													sx={{ bgcolor: "grey.900" }}
+												/>
+											) : (
+												<>
+													<span
+														style={{
+															width: "100%",
+															textAlign: "left",
+															backgroundColor: "#FFF8F3",
+															paddingLeft: "4.5px",
+															fontWeight: "900",
+														}}
+													>
+														KẾT THÚC
+													</span>
+													<br />
+													<span style={{ fontWeight: "700", color: "#FFE227" }}>
+														NGÀY
+													</span>
+													<div
+														className="day"
+														style={{
+															backgroundColor: "#3FA796",
+															color: "black",
+															marginLeft: "25%",
+															paddingRight: "4.5px",
+														}}
+													>
+														{!randomAnime?.EndDate.day ? (
+															<Skeleton
+																variant="text"
+																animation="wave"
+																sx={{ bgcolor: "grey.900" }}
+															/>
+														) : (
+															randomAnime?.EndDate.day
+														)}
+													</div>
+													<span style={{ fontWeight: "700", color: "#FFE227" }}>
+														THÁNG
+													</span>
+													<div
+														className="month"
+														style={{
+															backgroundColor: "#8267BE",
+															color: "black",
+															marginLeft: "45%",
+															paddingRight: "4.5px",
+														}}
+													>
+														{!randomAnime?.EndDate.month ? (
+															<Skeleton
+																variant="text"
+																animation="wave"
+																sx={{ bgcolor: "grey.900" }}
+															/>
+														) : (
+															randomAnime?.EndDate.month
+														)}
+													</div>
+													<span style={{ fontWeight: "700", color: "#FFE227" }}>
+														NĂM
+													</span>
+													<div
+														className="year"
+														style={{
+															backgroundColor: "#781D42",
+															color: "black",
+															marginLeft: "70%",
+															paddingRight: "4.5px",
+														}}
+													>
+														{!randomAnime?.EndDate.year ? (
+															<Skeleton
+																variant="text"
+																animation="wave"
+																sx={{ bgcolor: "grey.900" }}
+															/>
+														) : (
+															randomAnime?.EndDate.year
+														)}
+													</div>
+												</>
+											)}
+										</div>
 									</div>
+
 									<div
-										className="episodes"
-										style={{
-											display: "inline-flex",
-											flexDirection: "row",
-											alignItems: "center",
-										}}
+										className="character-detail"
+										style={{ marginTop: "20px" }}
 									>
-										{!randomAnime?.EpisodeTotal ? (
+										{!randomAnime?.CharacterDetail ? (
 											<Skeleton
-												variant="text"
+												variant="rectangular"
+												width="100%"
+												style={{ minHeight: "300px", maxHeight: "300px" }}
 												animation="wave"
 												sx={{ bgcolor: "grey.900" }}
 											/>
 										) : (
 											<>
-												<BsTv />: {randomAnime?.EpisodeTotal} tập
+												<Swiper
+													slidesPerView="auto"
+													spaceBetween={40}
+													navigation={false}
+													loop={true}
+													grabCursor={true}
+													mousewheel={true}
+													className="characterSlider"
+												>
+													{randomAnime?.CharacterDetail.map((character, i) => (
+														<SwiperSlide
+															key={i}
+															style={{
+																width: "auto",
+																display: "flex",
+																flexDirection: "column",
+																color: "#42EADDFF",
+															}}
+														>
+															<img
+																src={
+																	!character.image.large
+																		? character.image.medium
+																		: character.image.large
+																}
+																style={{
+																	objectFit: "fill",
+																	width: "120px",
+																	height: "160px",
+																}}
+															/>
+															<p
+																style={{
+																	wordWrap: "break-word",
+																	width: "120px",
+																}}
+															>
+																{!character.name.english
+																	? character.name.native
+																	: character.name.english}
+															</p>
+														</SwiperSlide>
+													))}
+												</Swiper>
+												<h4
+													style={{
+														color: "white",
+														fontWeight: "700",
+														paddingLeft: "34px",
+													}}
+												>
+													DÀN NHÂN VẬT
+												</h4>
 											</>
 										)}
 									</div>
@@ -456,7 +644,10 @@ function Home({ instance }) {
 													sx={{ bgcolor: "grey.900" }}
 												/>
 											) : (
-												"Anh: " + randomAnime?.AnimeAllTitle?.english
+												<>
+													<span style={{ fontWeight: "700" }}>ANH:</span>{" "}
+													{randomAnime?.AnimeAllTitle?.english}
+												</>
 											)}
 										</span>
 										<span className="native" style={{ color: "#d4fc79" }}>
@@ -467,7 +658,10 @@ function Home({ instance }) {
 													sx={{ bgcolor: "grey.900" }}
 												/>
 											) : (
-												"Nhật: " + randomAnime?.AnimeAllTitle?.native
+												<>
+													<span style={{ fontWeight: "700" }}>NHẬT:</span>{" "}
+													{randomAnime?.AnimeAllTitle?.native}
+												</>
 											)}
 										</span>
 										<span className="romaji" style={{ color: "#fa709a" }}>
@@ -478,7 +672,10 @@ function Home({ instance }) {
 													sx={{ bgcolor: "grey.900" }}
 												/>
 											) : (
-												"Romaji: " + randomAnime?.AnimeAllTitle?.romaji
+												<>
+													<span style={{ fontWeight: "700" }}>ROMAJI:</span>{" "}
+													{randomAnime?.AnimeAllTitle?.romaji}
+												</>
 											)}
 										</span>
 									</div>
