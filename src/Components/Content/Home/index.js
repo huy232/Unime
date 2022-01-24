@@ -592,6 +592,7 @@ function Home({ instance }) {
 													))}
 												</Swiper>
 												<h4
+													className="character-title"
 													style={{
 														color: "white",
 														fontWeight: "700",

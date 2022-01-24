@@ -397,6 +397,12 @@ h1, .h5{
       -o-object-fit: cover;
          object-fit: cover;
     }
+    .english, .native, .romaji {
+      font-size: 14px;
+    }
+    .character-title{
+      padding-left: 0!important
+    }
   }
   
   @media screen and (max-width: 500px) {
