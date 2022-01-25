@@ -415,6 +415,10 @@ h1, .h5{
     .skeleton-thumbnail {
         max-height: 142px
     }
+
+    .characterSlider{
+      margin-right: 185px !important
+    }
   }
 
 

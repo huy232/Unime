@@ -19,8 +19,8 @@ function Header() {
 
 		setVisible(
 			(prevScrollPos > currentScrollPos &&
-				prevScrollPos - currentScrollPos > 70) ||
-				currentScrollPos < 70
+				prevScrollPos - currentScrollPos > 100) ||
+				currentScrollPos < 100
 		)
 
 		setPrevScrollPos(currentScrollPos)

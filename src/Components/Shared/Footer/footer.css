@@ -1,0 +1,35 @@
+.footer {
+    justify-content: flex-end;
+    display: flex;
+    flex-direction: row;
+    background: gray;
+    color: white;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    height: 2.5rem; 
+    margin-top: 100px;
+    align-items: center
+  }
+  .footer > div {
+      padding-left: 30px;
+  }
+
+.facebook-icon svg:hover,
+.discord-icon svg:hover,
+.github-icon svg:hover,
+.go-up-icon svg:hover {
+    transition: all 0.4s ease-in-out;
+    opacity: 1;
+    cursor: pointer;
+    background: black;
+
+}
+
+.facebook-icon svg,
+.discord-icon svg,
+.github-icon svg,
+.go-up-icon svg {
+    border-radius: 10px;
+    padding: 3px
+}
