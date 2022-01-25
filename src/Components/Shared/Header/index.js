@@ -1,24 +1,31 @@
-import { useEffect, useState, useRef } from "react"
+import { useEffect, useState } from "react"
 import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap"
 import { Link } from "react-router-dom"
 import { GENRES } from "../../../constants"
 import { LinkContainer } from "react-router-bootstrap"
+import { debounce } from "../../../Utilities/debounce"
 import "./header.css"
 function Header() {
-	const [hideNavbar, setHideNavbar] = useState(false)
-	const [scrollVertical, setScrollVertical] = useState(0)
+	const [prevScrollPos, setPrevScrollPos] = useState(0)
+	const [visible, setVisible] = useState(true)
+
+	const handleScroll = debounce(() => {
+		const currentScrollPos = window.pageYOffset
+
+		setVisible(
+			(prevScrollPos > currentScrollPos &&
+				prevScrollPos - currentScrollPos > 70) ||
+				currentScrollPos < 70
+		)
+
+		setPrevScrollPos(currentScrollPos)
+	}, 100)
 
 	useEffect(() => {
-		navbarCalculate()
-	}, [hideNavbar])
+		window.addEventListener("scroll", handleScroll)
 
-	const navbarCalculate = () => {
-		if (window.scrollY > 0) {
-			setHideNavbar(true)
-		} else setHideNavbar(false)
-	}
-
-	window.addEventListener("scroll", navbarCalculate)
+		return () => window.removeEventListener("scroll", handleScroll)
+	}, [prevScrollPos, visible, handleScroll])
 
 	return (
 		<>
@@ -28,7 +35,7 @@ function Header() {
 				bg="dark"
 				variant="dark"
 				fixed="top"
-				className={!hideNavbar ? "" : "fixed-top-hide"}
+				className={visible ? "" : "fixed-top-hide"}
 			>
 				<Container>
 					<Navbar.Brand as={Link} to="/">
