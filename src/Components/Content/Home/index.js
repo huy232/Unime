@@ -122,17 +122,17 @@ function Home({ instance }) {
 						className="mySwiper"
 					>
 						{sliders.map((slider) => (
-							<SwiperSlide key={slider.slug}>
+							<SwiperSlide key={slider?.slug}>
 								<div className="inner">
-									<img src={slider.thumbnail} alt={slider.name} />
+									<img src={slider?.thumbnail} alt={slider?.name} />
 									<div className="overlay">
 										<a className="icon">{<BsFillPlayFill size={70} />}</a>
 									</div>
 								</div>
 								<div className="bottom-left">
-									<h3>{slider.name}</h3>
+									<h3>{slider?.name}</h3>
 									<p>
-										<BsEyeFill /> {slider.views}
+										<BsEyeFill /> {slider?.views}
 									</p>
 								</div>
 							</SwiperSlide>
@@ -169,10 +169,10 @@ function Home({ instance }) {
 						>
 							<CardGroup>
 								{newAnime.map((anime) => (
-									<SwiperSlide key={anime.slug}>
+									<SwiperSlide key={anime?.slug}>
 										<Card>
 											<div className="card-container">
-												<Card.Img variant="top" src={anime.thumbnail} />
+												<Card.Img variant="top" src={anime?.thumbnail} />
 												<div className="overlay-card">
 													<a className="icon">{<BsFillPlayFill size={40} />}</a>
 												</div>
@@ -190,7 +190,7 @@ function Home({ instance }) {
 														line={2}
 														element="span"
 														truncateText="…"
-														text={anime.name}
+														text={anime?.name}
 													/>
 												</Card.Title>
 												<Card.Text
@@ -205,7 +205,7 @@ function Home({ instance }) {
 														line={2}
 														element="span"
 														truncateText="..."
-														text={anime.newestEpisode.name}
+														text={anime?.newestEpisode.name}
 														style={{ color: "#b3b300" }}
 													/>
 												</Card.Text>
@@ -247,10 +247,10 @@ function Home({ instance }) {
 						>
 							<CardGroup>
 								{rankToday.map((anime) => (
-									<SwiperSlide key={anime.slug}>
+									<SwiperSlide key={anime?.slug}>
 										<Card>
 											<div className="card-container">
-												<Card.Img variant="top" src={anime.thumbnail} />
+												<Card.Img variant="top" src={anime?.thumbnail} />
 												<div className="overlay-card">
 													<a className="icon">{<BsFillPlayFill size={40} />}</a>
 												</div>
@@ -262,7 +262,7 @@ function Home({ instance }) {
 														line={2}
 														element="span"
 														truncateText="…"
-														text={anime.name}
+														text={anime?.name}
 													/>
 												</Card.Title>
 											</Card.Body>
@@ -559,7 +559,7 @@ function Home({ instance }) {
 													className="characterSlider"
 												>
 													{!randomAnime?.CharacterDetail
-														? [0, 1, 2, 3, 4, 5, 6].map((skeleton, i) => (
+														? [0, 1, 2, 3, 4, 5, 6].map((i) => (
 																<Skeleton
 																	key={i}
 																	variant="rectangular"
