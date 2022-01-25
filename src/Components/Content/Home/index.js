@@ -42,9 +42,7 @@ function Home({ instance }) {
 				})
 				.then((data) => setSliders(data.data.data))
 				.catch((thrown) => {
-					if (axios.isCancel(thrown)) {
-						console.log("Request Canceled", thrown.message)
-					}
+					if (axios.isCancel(thrown)) return
 				})
 		}
 
@@ -57,9 +55,7 @@ function Home({ instance }) {
 					setNewAnime(data.data.data)
 				})
 				.catch((thrown) => {
-					if (axios.isCancel(thrown)) {
-						console.log("Request Canceled", thrown.message)
-					}
+					if (axios.isCancel(thrown)) return
 				})
 		}
 
@@ -72,9 +68,7 @@ function Home({ instance }) {
 					setRankToday(data.data.data)
 				})
 				.catch((thrown) => {
-					if (axios.isCancel(thrown)) {
-						console.log("Request Canceled", thrown.message)
-					}
+					if (axios.isCancel(thrown)) return
 				})
 		}
 
@@ -88,9 +82,7 @@ function Home({ instance }) {
 					setDone(true)
 				})
 				.catch((thrown) => {
-					if (axios.isCancel(thrown)) {
-						console.log("Request Canceled", thrown.message)
-					}
+					if (axios.isCancel(thrown)) return
 				})
 		}
 		getSlide()

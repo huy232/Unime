@@ -1,0 +1,11 @@
+.infinite-scroll-component {
+overflow: none !important
+}
+
+@media screen and (max-width: 992px){
+    .card-body{
+        min-height: 4.7rem
+    }
+}
+
+@media screen and (max-width: 768px){}
