@@ -2,7 +2,7 @@
     justify-content: flex-end;
     display: flex;
     flex-direction: row;
-    background: gray;
+    background: rgb(73, 72, 72);
     color: white;
     position: relative;
     bottom: 0;
@@ -31,5 +31,19 @@
 .github-icon svg,
 .go-up-icon svg {
     border-radius: 10px;
-    padding: 3px
+    padding: 3px;
+    text-decoration: none;
+}
+
+.facebook-icon svg{
+    color: #4267B2
+}
+.discord-icon svg{
+    color: #7289da
+}
+.github-icon svg{
+    color: whitesmoke
+}
+.go-up-icon svg{
+    color: #ff7700
 }
