@@ -1,5 +1,5 @@
 .footer {
-    justify-content: flex-end;
+    
     display: flex;
     flex-direction: row;
     background: rgb(73, 72, 72);
@@ -46,4 +46,8 @@
 }
 .go-up-icon svg{
     color: #ff7700
+}
+
+.last{
+    margin-left: auto
 }

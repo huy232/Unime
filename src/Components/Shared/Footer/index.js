@@ -32,7 +32,7 @@ function Footer() {
 				</a>
 			</div>
 			<div
-				className="go-up-icon"
+				className="go-up-icon last"
 				style={{ marginRight: "50px" }}
 				onClick={handleScrollToTop}
 			>
