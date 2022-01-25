@@ -479,6 +479,7 @@ function Home({ instance }) {
 																variant="text"
 																animation="wave"
 																sx={{ bgcolor: "grey.900" }}
+																style={{ paddingLeft: "4.5px" }}
 															/>
 														) : (
 															randomAnime?.EndDate.day
@@ -501,6 +502,7 @@ function Home({ instance }) {
 																variant="text"
 																animation="wave"
 																sx={{ bgcolor: "grey.900" }}
+																style={{ paddingLeft: "4.5px" }}
 															/>
 														) : (
 															randomAnime?.EndDate.month
@@ -523,6 +525,7 @@ function Home({ instance }) {
 																variant="text"
 																animation="wave"
 																sx={{ bgcolor: "grey.900" }}
+																style={{ paddingLeft: "4.5px" }}
 															/>
 														) : (
 															randomAnime?.EndDate.year
@@ -556,40 +559,53 @@ function Home({ instance }) {
 													mousewheel={true}
 													className="characterSlider"
 												>
-													{randomAnime?.CharacterDetail.map((character, i) => (
-														<SwiperSlide
-															key={i}
-															style={{
-																width: "auto",
-																display: "flex",
-																flexDirection: "column",
-																color: "#42EADDFF",
-															}}
-														>
-															<img
-																src={
-																	!character.image.large
-																		? character.image.medium
-																		: character.image.large
-																}
-																style={{
-																	objectFit: "fill",
-																	width: "120px",
-																	height: "160px",
-																}}
-															/>
-															<p
-																style={{
-																	wordWrap: "break-word",
-																	width: "120px",
-																}}
-															>
-																{!character.name.english
-																	? character.name.native
-																	: character.name.english}
-															</p>
-														</SwiperSlide>
-													))}
+													{!randomAnime?.CharacterDetail
+														? [0, 1, 2, 3, 4, 5, 6].map((skeleton, i) => (
+																<Skeleton
+																	key={i}
+																	variant="rectangular"
+																	width="100%"
+																	style={{ width: "120px", height: "160px" }}
+																	animation="wave"
+																	sx={{ bgcolor: "grey.900" }}
+																/>
+														  ))
+														: randomAnime?.CharacterDetail.map(
+																(character, i) => (
+																	<SwiperSlide
+																		key={i}
+																		style={{
+																			width: "auto",
+																			display: "flex",
+																			flexDirection: "column",
+																			color: "#42EADDFF",
+																		}}
+																	>
+																		<img
+																			src={
+																				!character.image.large
+																					? character.image.medium
+																					: character.image.large
+																			}
+																			style={{
+																				objectFit: "fill",
+																				width: "120px",
+																				height: "160px",
+																			}}
+																		/>
+																		<p
+																			style={{
+																				wordWrap: "break-word",
+																				width: "120px",
+																			}}
+																		>
+																			{!character.name.english
+																				? character.name.native
+																				: character.name.english}
+																		</p>
+																	</SwiperSlide>
+																)
+														  )}
 												</Swiper>
 												<h4
 													className="character-title"
