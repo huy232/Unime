@@ -305,7 +305,7 @@ function Home({ instance }) {
 										<Skeleton
 											variant="rectangular"
 											width="100%"
-											height="250px"
+											height="400px"
 											animation="wave"
 											sx={{ bgcolor: "grey.900" }}
 										/>
