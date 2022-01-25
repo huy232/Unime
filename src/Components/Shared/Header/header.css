@@ -39,5 +39,54 @@
 
 .fixed-top-hide {
     transition: all 0.5s ease-in-out;
-    top: -70px!important
+    top: -100% !important
+}
+
+.dropdown-menu{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-width: 600px;
+    min-width: 25rem !important
+}
+
+.dropdown-item {
+    display: inline-block !important;
+    width: 30% !important;
+}
+
+.dropdown-menu a:hover{
+    transition: 0.3s;
+    opacity: 0.6;
+
+}
+
+.search-icon:hover{
+    transition: 0.3s;
+    color:white;
+    scale: 1.2
+}
+
+.collapse {
+    transition: 0.4s !important
+}
+
+.show {
+    transition: 0.4s !important
+}
+
+.collapsing {
+    transition: 0.4s !important
+}
+
+.search-navbar label {
+    color: white
+}
+
+.search-navbar input {
+    color: white;
+    background-color:rgba(0, 0, 0, .6)
+}
+
+@media screen and (max-width: 992px) {
 }

@@ -6,7 +6,7 @@ import {
 	BsStopwatchFill,
 	BsTv,
 } from "react-icons/bs"
-import { Card, Button, CardGroup, Row, Placeholder } from "react-bootstrap"
+import { Card, CardGroup } from "react-bootstrap"
 import Skeleton from "@mui/material/Skeleton"
 import axios from "axios"
 import TextTruncate from "react-text-truncate"
