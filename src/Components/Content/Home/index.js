@@ -314,8 +314,7 @@ function Home({ instance }) {
 											variant="bottom"
 											src={randomAnime?.BannerImg}
 											style={{
-												maxHeight: "250px",
-												minHeight: "250px",
+												height: "400px",
 												objectFit: "cover",
 											}}
 										/>
@@ -470,7 +469,7 @@ function Home({ instance }) {
 														style={{
 															backgroundColor: "#3FA796",
 															color: "black",
-															marginLeft: "25%",
+															marginLeft: "65%",
 															paddingRight: "4.5px",
 														}}
 													>
@@ -516,7 +515,7 @@ function Home({ instance }) {
 														style={{
 															backgroundColor: "#781D42",
 															color: "black",
-															marginLeft: "70%",
+															marginLeft: "25%",
 															paddingRight: "4.5px",
 														}}
 													>

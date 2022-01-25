@@ -147,6 +147,7 @@ h1, .h5{
   color: white !important;
   min-height: 100% ;
   max-height: 100% !important;
+  background-color: black !important
 }
 
 .description-cover-img{
