@@ -304,8 +304,13 @@ h1, .h5{
 }
 
 .characterSlider{
-  margin-right: 230px!important
+  margin-right: 230px!important;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
+
 
   @media screen and (min-width: 992px){
     .card-container:hover .overlay-card {

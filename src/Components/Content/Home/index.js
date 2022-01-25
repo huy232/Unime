@@ -612,6 +612,7 @@ function Home({ instance }) {
 														color: "white",
 														fontWeight: "700",
 														paddingLeft: "34px",
+														userSelect: "none",
 													}}
 												>
 													DÀN NHÂN VẬT
