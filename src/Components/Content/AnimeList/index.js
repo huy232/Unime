@@ -7,29 +7,35 @@ import TextTruncate from "react-text-truncate"
 import Skeleton from "@mui/material/Skeleton"
 import { BsFillPlayFill } from "react-icons/bs"
 import "./animelist.css"
+
+const PAGE_NUMBER = 1
+
 function AnimeList({ instance }) {
 	const CancelToken = axios.CancelToken
 	const source = CancelToken.source()
 
 	const [animeList, setAnimeList] = useState([])
-	const [page, setPage] = useState(1)
+	const [page, setPage] = useState(PAGE_NUMBER)
 	const [totalPage, setTotalPage] = useState(91)
 	const getList = async () => {
+		const CancelToken = axios.CancelToken
+		const source = CancelToken.source()
 		await instance
 			.get(`/anime?page=${page}`, {
 				cancelToken: source.token,
 			})
 			.then((response) => {
-				const newPage = page + 1
-				setPage(newPage)
+				console.log(page)
 				const newList = response.data.data.map((anime) => ({
 					slug: anime.slug,
 					thumbnail: anime.thumbnail,
 					name: anime.name,
 					views: anime.views,
 				}))
-				setAnimeList((prev) => [...prev, ...newList])
-				setTotalPage(response.data.data.pagination.totalPage)
+				setTotalPage(response.data.pagination.totalPage)
+				setAnimeList((prev) => {
+					return [...new Set([...prev, ...newList])]
+				})
 			})
 			.catch((thrown) => {
 				if (axios.isCancel(thrown)) return
@@ -37,12 +43,19 @@ function AnimeList({ instance }) {
 	}
 
 	useEffect(() => {
+		const CancelToken = axios.CancelToken
+		const source = CancelToken.source()
 		getList()
 
 		return () => {
 			source.cancel()
 		}
-	}, [])
+	}, [page])
+
+	const scrollThreshold = () => {
+		const newPage = page + 1
+		setPage(newPage)
+	}
 
 	return (
 		<>
@@ -57,7 +70,7 @@ function AnimeList({ instance }) {
 				<InfiniteScroll
 					style={{ overflow: "none" }}
 					dataLength={animeList.length}
-					next={getList}
+					next={getList && scrollThreshold}
 					hasMore={page === totalPage ? false : true}
 					loader={
 						<Row xs={1} sm={2} md={3} lg={4}>

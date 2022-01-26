@@ -574,9 +574,9 @@ function Home({ instance }) {
 																	>
 																		<img
 																			src={
-																				!character.image.large
-																					? character.image.medium
-																					: character.image.large
+																				!character?.image?.large
+																					? character?.image?.medium
+																					: character?.image?.large
 																			}
 																			style={{
 																				objectFit: "fill",
