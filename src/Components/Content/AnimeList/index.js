@@ -25,7 +25,6 @@ function AnimeList({ instance }) {
 				cancelToken: source.token,
 			})
 			.then((response) => {
-				console.log(page)
 				const newList = response.data.data.map((anime) => ({
 					slug: anime.slug,
 					thumbnail: anime.thumbnail,
