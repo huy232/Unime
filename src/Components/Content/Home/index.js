@@ -600,7 +600,11 @@ function Home({ instance }) {
 									<Skeleton
 										variant="rectangular"
 										width="100%"
-										style={{ minHeight: "300px", maxHeight: "300px" }}
+										style={{
+											minHeight: "300px",
+											maxHeight: "300px",
+											width: "auto",
+										}}
 										animation="wave"
 										sx={{ bgcolor: "grey.900" }}
 									/>

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom"
 import axios from "axios"
 import { Card, Row, Col } from "react-bootstrap"
 import { debounce } from "../../../Utilities/debounce"
@@ -9,6 +9,7 @@ import { BsFillPlayFill } from "react-icons/bs"
 
 function Search({ instance }) {
 	const { searchSlug } = useParams()
+	const navigate = useNavigate()
 
 	const [searchData, setSearchData] = useState([])
 
@@ -33,6 +34,11 @@ function Search({ instance }) {
 			source.cancel()
 		}
 	}, [searchSlug])
+
+	const handleGetSlug = (slug) => {
+		navigate(`/info/${slug}`)
+	}
+
 	return (
 		<>
 			<div
@@ -44,7 +50,7 @@ function Search({ instance }) {
 			<Row xs={1} sm={2} md={3} lg={4}>
 				{searchData.map((anime) => (
 					<Col key={anime.slug}>
-						<Card>
+						<Card onClick={() => handleGetSlug(anime.slug)}>
 							<div className="card-container">
 								<Card.Img variant="top" src={anime.thumbnail} fluid="true" />
 								<div className="overlay-card">
