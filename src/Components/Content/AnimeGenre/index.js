@@ -19,30 +19,6 @@ function AnimeGenre({ instance }) {
 	const [totalPage, setTotalPage] = useState(2)
 	const [translateGenreAnime, setTranslateGenreAnime] = useState("")
 
-	const getList = async () => {
-		const CancelToken = axios.CancelToken
-		const source = CancelToken.source()
-		await instance
-			.get(`/anime/${genre}?page=${page}`, {
-				cancelToken: source.token,
-			})
-			.then((response) => {
-				const newList = response.data.data.map((anime) => ({
-					slug: anime.slug,
-					thumbnail: anime.thumbnail,
-					name: anime.name,
-					views: anime.views,
-				}))
-				setTotalPage(response.data.pagination.totalPage)
-				setAnimeList((prev) => {
-					return [...new Set([...prev, ...newList])]
-				})
-			})
-			.catch((thrown) => {
-				if (axios.isCancel(thrown)) return
-			})
-	}
-
 	const scrollThreshold = () => {
 		const newPage = page + 1
 		setPage(newPage)
@@ -52,6 +28,28 @@ function AnimeGenre({ instance }) {
 		const CancelToken = axios.CancelToken
 		const source = CancelToken.source()
 		if (genre === genreAnime) {
+			const getList = async () => {
+				await instance
+					.get(`/anime/${genre}?page=${page}`, {
+						cancelToken: source.token,
+					})
+					.then((response) => {
+						const newList = response.data.data.map((anime) => ({
+							slug: anime.slug,
+							thumbnail: anime.thumbnail,
+							name: anime.name,
+							views: anime.views,
+						}))
+						setTotalPage(response.data.pagination.totalPage)
+						setAnimeList((prev) => {
+							return [...new Set([...prev, ...newList])]
+						})
+					})
+					.catch((thrown) => {
+						if (axios.isCancel(thrown)) return
+					})
+			}
+
 			getList()
 			translateGenre()
 		} else {
@@ -84,7 +82,7 @@ function AnimeGenre({ instance }) {
 					style={{ overflow: "none" }}
 					dataLength={animeList.length}
 					scrollThreshold={0.95}
-					next={getList && scrollThreshold}
+					next={scrollThreshold}
 					hasMore={page === totalPage ? false : true}
 					loader={
 						<Row xs={1} sm={2} md={3} lg={4}>

@@ -13,6 +13,7 @@ import TextTruncate from "react-text-truncate"
 import "./home.css"
 import HomeSkeleton from "./homeSkeleton"
 import ShowMoreText from "react-show-more-text"
+import { toast } from "react-toastify"
 // SWIPER
 import { Swiper, SwiperSlide } from "swiper/react"
 
@@ -43,6 +44,17 @@ function Home({ instance }) {
 				.then((data) => setSliders(data.data.data))
 				.catch((thrown) => {
 					if (axios.isCancel(thrown)) return
+					else {
+						toast.error("Lỗi gì đó á, ấn F5 đi!", {
+							position: "top-right",
+							autoClose: 5000,
+							hideProgressBar: true,
+							closeOnClick: true,
+							pauseOnHover: true,
+							draggable: true,
+							progress: undefined,
+						})
+					}
 				})
 		}
 
@@ -56,6 +68,17 @@ function Home({ instance }) {
 				})
 				.catch((thrown) => {
 					if (axios.isCancel(thrown)) return
+					else {
+						toast.error("Lỗi gì đó á, ấn F5 đi!", {
+							position: "top-right",
+							autoClose: 5000,
+							hideProgressBar: true,
+							closeOnClick: true,
+							pauseOnHover: true,
+							draggable: true,
+							progress: undefined,
+						})
+					}
 				})
 		}
 
@@ -69,6 +92,17 @@ function Home({ instance }) {
 				})
 				.catch((thrown) => {
 					if (axios.isCancel(thrown)) return
+					else {
+						toast.error("Lỗi gì đó á, ấn F5 đi!", {
+							position: "top-right",
+							autoClose: 5000,
+							hideProgressBar: true,
+							closeOnClick: true,
+							pauseOnHover: true,
+							draggable: true,
+							progress: undefined,
+						})
+					}
 				})
 		}
 
@@ -83,6 +117,17 @@ function Home({ instance }) {
 				})
 				.catch((thrown) => {
 					if (axios.isCancel(thrown)) return
+					else {
+						toast.error("Lỗi gì đó á, ấn F5 đi!", {
+							position: "top-right",
+							autoClose: 5000,
+							hideProgressBar: true,
+							closeOnClick: true,
+							pauseOnHover: true,
+							draggable: true,
+							progress: undefined,
+						})
+					}
 				})
 		}
 		getSlide()
