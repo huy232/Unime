@@ -2,6 +2,7 @@ import "./App.css"
 import { API } from "./constants"
 import axios from "axios"
 
+import { useEffect } from "react"
 import { Route, Routes } from "react-router-dom"
 
 import Header from "./Components/Shared/Header"
@@ -17,9 +18,13 @@ function App() {
 		baseURL: API,
 	})
 
-	window.onbeforeunload = function () {
+	useEffect(() => {
+		window.onbeforeunload = function () {
+			window.scrollTo(0, 0)
+		}
+
 		window.scrollTo(0, 0)
-	}
+	}, [])
 
 	return (
 		<div className="App">

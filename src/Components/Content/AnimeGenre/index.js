@@ -109,16 +109,16 @@ function AnimeGenre({ instance }) {
 							))}
 						</Row>
 					}
-					endMessage={<h4>NO MORE THINGS TO LOAD</h4>}
+					endMessage={<h4>BẠN ĐÃ LƯỚT HẾT TRƠN RỒI!</h4>}
 				>
 					<Row xs={1} sm={2} md={3} lg={4}>
 						{animeList.map((anime) => (
-							<Col key={anime.slug}>
+							<Col key={anime?.slug}>
 								<Card>
 									<div className="card-container">
 										<Card.Img
 											variant="top"
-											src={anime.thumbnail}
+											src={anime?.thumbnail}
 											fluid="true"
 										/>
 										<div className="overlay-card">
