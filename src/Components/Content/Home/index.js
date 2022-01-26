@@ -369,7 +369,7 @@ function Home({ instance }) {
 									/>
 								) : (
 									<ShowMoreText
-										lines={4}
+										lines={2}
 										more="Hiện thêm"
 										less="Rút gọn"
 										className="content-css"
