@@ -44,7 +44,7 @@ function Home({ instance }) {
 				.then((data) => setSliders(data.data.data))
 				.catch((thrown) => {
 					if (axios.isCancel(thrown)) return
-					else {
+					if (thrown.response.status === 500) {
 						toast.error("Lỗi gì đó á, ấn F5 đi!", {
 							position: "top-right",
 							autoClose: 5000,
@@ -68,7 +68,7 @@ function Home({ instance }) {
 				})
 				.catch((thrown) => {
 					if (axios.isCancel(thrown)) return
-					else {
+					if (thrown.response.status === 500) {
 						toast.error("Lỗi gì đó á, ấn F5 đi!", {
 							position: "top-right",
 							autoClose: 5000,
@@ -92,7 +92,7 @@ function Home({ instance }) {
 				})
 				.catch((thrown) => {
 					if (axios.isCancel(thrown)) return
-					else {
+					if (thrown.response.status === 500) {
 						toast.error("Lỗi gì đó á, ấn F5 đi!", {
 							position: "top-right",
 							autoClose: 5000,
@@ -117,7 +117,7 @@ function Home({ instance }) {
 				})
 				.catch((thrown) => {
 					if (axios.isCancel(thrown)) return
-					else {
+					if (thrown.response.status === 500) {
 						toast.error("Lỗi gì đó á, ấn F5 đi!", {
 							position: "top-right",
 							autoClose: 5000,
