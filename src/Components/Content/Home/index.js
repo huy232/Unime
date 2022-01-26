@@ -465,7 +465,7 @@ function Home({ instance }) {
 															paddingRight: "4.5px",
 														}}
 													>
-														{!randomAnime?.EndDate.day ? (
+														{!randomAnime?.EndDate?.day ? (
 															<Skeleton
 																variant="text"
 																animation="wave"
@@ -473,7 +473,7 @@ function Home({ instance }) {
 																style={{ paddingLeft: "4.5px" }}
 															/>
 														) : (
-															randomAnime?.EndDate.day
+															randomAnime?.EndDate?.day
 														)}
 													</div>
 													<span style={{ fontWeight: "700", color: "#FFE227" }}>
@@ -488,7 +488,7 @@ function Home({ instance }) {
 															paddingRight: "4.5px",
 														}}
 													>
-														{!randomAnime?.EndDate.month ? (
+														{!randomAnime?.EndDate?.month ? (
 															<Skeleton
 																variant="text"
 																animation="wave"
@@ -496,7 +496,7 @@ function Home({ instance }) {
 																style={{ paddingLeft: "4.5px" }}
 															/>
 														) : (
-															randomAnime?.EndDate.month
+															randomAnime?.EndDate?.month
 														)}
 													</div>
 													<span style={{ fontWeight: "700", color: "#FFE227" }}>
@@ -511,7 +511,7 @@ function Home({ instance }) {
 															paddingRight: "4.5px",
 														}}
 													>
-														{!randomAnime?.EndDate.year ? (
+														{!randomAnime?.EndDate?.year ? (
 															<Skeleton
 																variant="text"
 																animation="wave"
@@ -519,7 +519,7 @@ function Home({ instance }) {
 																style={{ paddingLeft: "4.5px" }}
 															/>
 														) : (
-															randomAnime?.EndDate.year
+															randomAnime?.EndDate?.year
 														)}
 													</div>
 												</>
@@ -590,9 +590,9 @@ function Home({ instance }) {
 																				width: "120px",
 																			}}
 																		>
-																			{!character.name.english
-																				? character.name.native
-																				: character.name.english}
+																			{!character?.name?.english
+																				? character?.name?.native
+																				: character?.name?.english}
 																		</p>
 																	</SwiperSlide>
 																)
