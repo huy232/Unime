@@ -36,6 +36,7 @@ function Header() {
 	const handleSubmit = (e) => {
 		e.preventDefault()
 		navigate(`/search/${encodeURI(input)}`)
+		setInput("")
 	}
 	const handleKeypress = (e) => {
 		//it triggers by pressing the enter key
