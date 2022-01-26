@@ -31,7 +31,6 @@ function Home({ instance }) {
 	const [done1, setDone1] = useState(false)
 	const [done2, setDone2] = useState(false)
 	const [done3, setDone3] = useState(false)
-	const [done4, setDone4] = useState(false)
 
 	useEffect(() => {
 		const CancelToken = axios.CancelToken
@@ -86,7 +85,6 @@ function Home({ instance }) {
 				})
 				.then((data) => {
 					setRandomAnime(data.data.data)
-					setDone4(true)
 				})
 				.catch((thrown) => {
 					if (axios.isCancel(thrown)) return
@@ -111,9 +109,6 @@ function Home({ instance }) {
 				navigation={true}
 				loop={true}
 				grabCursor={true}
-				mousewheel={true}
-				lazy={true}
-				onSlideChange={(swiper) => {}}
 				className="mySwiper"
 			>
 				{!done1
@@ -176,8 +171,6 @@ function Home({ instance }) {
 					}}
 					spaceBetween={20}
 					grabCursor={true}
-					mousewheel={true}
-					lazy={true}
 					className="newSwiper h-100"
 					pagination={{
 						type: "progressbar",
@@ -270,8 +263,6 @@ function Home({ instance }) {
 					}}
 					spaceBetween={20}
 					grabCursor={true}
-					mousewheel={true}
-					lazy={true}
 					className="newSwiper h-100"
 					pagination={{
 						type: "progressbar",
@@ -370,7 +361,7 @@ function Home({ instance }) {
 
 							<Card.Body className="description-card">
 								{!randomAnime?.Description ||
-								randomAnime?.Description.trim() == "" ? (
+								randomAnime?.Description.trim() === "" ? (
 									<Skeleton
 										variant="text"
 										animation="wave"
@@ -599,7 +590,6 @@ function Home({ instance }) {
 											navigation={false}
 											loop={true}
 											grabCursor={true}
-											mousewheel={true}
 											className="characterSlider"
 										>
 											{!randomAnime?.CharacterDetail

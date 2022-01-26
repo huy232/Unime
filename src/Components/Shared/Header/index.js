@@ -13,7 +13,6 @@ import "./header.css"
 function Header() {
 	let navigate = useNavigate()
 	const [input, setInput] = useState("")
-	const [submit, setSubmit] = useState("")
 	const [prevScrollPos, setPrevScrollPos] = useState(0)
 	const [visible, setVisible] = useState(true)
 
@@ -46,11 +45,11 @@ function Header() {
 	}
 	const handleScrollToTop = () => {
 		window.scrollTo(0, 0)
+		window.history.scrollRestoration = "manual"
 	}
 
 	useEffect(() => {
 		window.addEventListener("scroll", handleScroll)
-
 		return () => window.removeEventListener("scroll", handleScroll)
 	}, [prevScrollPos, visible, handleScroll])
 

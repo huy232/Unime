@@ -109,7 +109,6 @@ function AnimeGenre({ instance }) {
 							))}
 						</Row>
 					}
-					endMessage={<h4>BẠN ĐÃ LƯỚT HẾT TRƠN RỒI!</h4>}
 				>
 					<Row xs={1} sm={2} md={3} lg={4}>
 						{animeList.map((anime) => (

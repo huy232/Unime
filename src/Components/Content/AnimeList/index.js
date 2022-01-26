@@ -2,7 +2,6 @@ import { useEffect, useState } from "react"
 import InfiniteScroll from "react-infinite-scroll-component"
 import axios from "axios"
 import { Card, Row, Col } from "react-bootstrap"
-import { debounce } from "../../../Utilities/debounce"
 import TextTruncate from "react-text-truncate"
 import Skeleton from "@mui/material/Skeleton"
 import { BsFillPlayFill } from "react-icons/bs"
@@ -93,7 +92,6 @@ function AnimeList({ instance }) {
 							))}
 						</Row>
 					}
-					endMessage={<h4>HẾT RỒI</h4>}
 				>
 					<Row xs={1} sm={2} md={3} lg={4}>
 						{animeList.map((anime) => (
