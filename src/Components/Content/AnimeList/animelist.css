@@ -2,6 +2,19 @@
 overflow: none !important
 }
 
+.overlay-card{
+    position: absolute;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.card-img-top:hover .overlay-card {
+    opacity: 1
+}
+
 @media screen and (max-width: 992px){
     .card-body{
         min-height: 4.7rem

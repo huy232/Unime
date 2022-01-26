@@ -5,6 +5,7 @@ import { Card, Row, Col } from "react-bootstrap"
 import { debounce } from "../../../Utilities/debounce"
 import TextTruncate from "react-text-truncate"
 import Skeleton from "@mui/material/Skeleton"
+import { BsFillPlayFill } from "react-icons/bs"
 import "./animelist.css"
 function AnimeList({ instance }) {
 	const CancelToken = axios.CancelToken
@@ -89,7 +90,16 @@ function AnimeList({ instance }) {
 						{animeList.map((anime) => (
 							<Col key={anime.slug}>
 								<Card>
-									<Card.Img variant="top" src={anime.thumbnail} fluid="true" />
+									<div className="card-container">
+										<Card.Img
+											variant="top"
+											src={anime.thumbnail}
+											fluid="true"
+										/>
+										<div className="overlay-card">
+											<a className="icon">{<BsFillPlayFill size={40} />}</a>
+										</div>
+									</div>
 									<Card.Body>
 										<Card.Title>
 											<TextTruncate

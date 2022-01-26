@@ -40,6 +40,9 @@ function Header() {
 			handleSubmit()
 		}
 	}
+	const handleScrollToTop = () => {
+		window.scrollTo(0, 0)
+	}
 
 	useEffect(() => {
 		window.addEventListener("scroll", handleScroll)
@@ -58,18 +61,22 @@ function Header() {
 				className={visible ? "" : "fixed-top-hide"}
 			>
 				<Container>
-					<Navbar.Brand as={Link} to="/">
+					<Navbar.Brand as={Link} to="/" onClick={handleScrollToTop}>
 						Mirai
 					</Navbar.Brand>
 					<Navbar.Toggle aria-controls="responsive-navbar-nav" />
 					<Navbar.Collapse id="responsive-navbar-nav">
 						<Nav className="me-auto">
-							<Nav.Link as={Link} to="/anime">
+							<Nav.Link as={Link} to="/anime" onClick={handleScrollToTop}>
 								<div className="anime-nav">Anime</div>
 							</Nav.Link>
 							<NavDropdown title="Thể loại" id="collasible-nav-dropdown">
 								{GENRES.map((genre) => (
-									<LinkContainer to={`/anime/${genre.slug}`} key={genre.slug}>
+									<LinkContainer
+										to={`/anime/${genre.slug}`}
+										key={genre.slug}
+										onClick={handleScrollToTop}
+									>
 										<NavDropdown.Item>{genre.name}</NavDropdown.Item>
 									</LinkContainer>
 								))}

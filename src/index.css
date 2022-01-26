@@ -18,8 +18,8 @@ html, body{
   background-color:#121212 !important;
   min-width: 500px;
   scroll-behavior: smooth;
-  overflow-x: hidden !important
 }
+
 
 :root {
   --code-color: #FF6C5C;
@@ -37,12 +37,12 @@ pre {
   background-color: var(--code-bg-color);
 }
 
-.code-block {
+/* .code-block {
   max-height: 100px;
   padding: 8px 7px 5px 15px;
   margin: 0px 0px 0px 0px;
   border-radius: 7px;
-}
+} */
 
 ::-webkit-scrollbar-corner { background: rgba(0,0,0,0.5); }
 
@@ -54,7 +54,7 @@ pre {
 /* Works on Chrome, Edge, and Safari */
 *::-webkit-scrollbar {
   width: 8px;
-  height: 8px;
+  height: 0;
 }
 
 *::-webkit-scrollbar-track {

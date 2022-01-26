@@ -128,7 +128,7 @@ function HomeSkeleton() {
 					}}
 				>
 					<CardGroup>
-						{[0, 1, 2, 3, 4, 5, 6].map((anime, i) => (
+						{[0, 1, 2, 3, 4].map((anime, i) => (
 							<SwiperSlide key={i}>
 								<Card>
 									<div className="card-container">
