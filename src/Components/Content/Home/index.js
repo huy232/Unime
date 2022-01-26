@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/alt-text */
 import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
 import {
 	BsEyeFill,
 	BsFillPlayFill,
@@ -24,6 +25,8 @@ SwiperCore.use([Pagination, Navigation, Mousewheel, Lazy])
 // ---------------------------
 
 function Home({ instance }) {
+	const navigate = useNavigate()
+
 	const [sliders, setSliders] = useState([])
 	const [newAnime, setNewAnime] = useState([])
 	const [rankToday, setRankToday] = useState([])
@@ -36,7 +39,6 @@ function Home({ instance }) {
 	useEffect(() => {
 		const CancelToken = axios.CancelToken
 		const source = CancelToken.source()
-
 		const getSlide = () => {
 			instance
 				.get("/slide", {
@@ -101,6 +103,10 @@ function Home({ instance }) {
 		}
 	}, [])
 
+	const handleGetSlug = (slug) => {
+		navigate(`/info/${slug}`)
+	}
+
 	return (
 		<>
 			<Swiper
@@ -110,7 +116,6 @@ function Home({ instance }) {
 				}}
 				navigation={true}
 				loop={true}
-				grabCursor={true}
 				className="mySwiper"
 			>
 				{!done1
@@ -135,7 +140,10 @@ function Home({ instance }) {
 							</SwiperSlide>
 					  ))
 					: sliders.map((slider) => (
-							<SwiperSlide key={slider?.slug}>
+							<SwiperSlide
+								key={slider?.slug}
+								onClick={() => handleGetSlug(slider?.slug)}
+							>
 								<div className="inner">
 									<img src={slider?.thumbnail} alt={slider?.name} />
 									<div className="overlay">
@@ -172,7 +180,6 @@ function Home({ instance }) {
 						},
 					}}
 					spaceBetween={20}
-					grabCursor={true}
 					className="newSwiper h-100"
 					pagination={{
 						type: "progressbar",
@@ -196,7 +203,10 @@ function Home({ instance }) {
 									</SwiperSlide>
 							  ))
 							: newAnime.map((anime) => (
-									<SwiperSlide key={anime?.slug}>
+									<SwiperSlide
+										key={anime?.slug}
+										onClick={() => handleGetSlug(anime?.slug)}
+									>
 										<Card>
 											<div className="card-container">
 												<Card.Img variant="top" src={anime?.thumbnail} />
@@ -264,7 +274,6 @@ function Home({ instance }) {
 						},
 					}}
 					spaceBetween={20}
-					grabCursor={true}
 					className="newSwiper h-100"
 					pagination={{
 						type: "progressbar",
@@ -288,7 +297,10 @@ function Home({ instance }) {
 									</SwiperSlide>
 							  ))
 							: rankToday.map((anime) => (
-									<SwiperSlide key={anime?.slug}>
+									<SwiperSlide
+										key={anime?.slug}
+										onClick={() => handleGetSlug(anime?.slug)}
+									>
 										<Card>
 											<div className="card-container">
 												<Card.Img variant="top" src={anime?.thumbnail} />
@@ -349,6 +361,7 @@ function Home({ instance }) {
 									height="400px"
 									animation="wave"
 									sx={{ bgcolor: "grey.900" }}
+									onClick={() => handleGetSlug(randomAnime?.Slug)}
 								/>
 							) : (
 								<Card.Img
@@ -358,6 +371,7 @@ function Home({ instance }) {
 										height: "400px",
 										objectFit: "cover",
 									}}
+									onClick={() => handleGetSlug(randomAnime?.Slug)}
 								/>
 							)}
 
@@ -687,6 +701,7 @@ function Home({ instance }) {
 										maxHeight: "500px",
 										objectFit: "cover",
 									}}
+									onClick={() => handleGetSlug(randomAnime?.Slug)}
 								/>
 							)}
 							<div

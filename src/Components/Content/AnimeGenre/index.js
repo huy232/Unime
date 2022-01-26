@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { useParams } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom"
 import { GENRES } from "../../../constants"
 import InfiniteScroll from "react-infinite-scroll-component"
 import axios from "axios"
@@ -11,6 +11,7 @@ import { BsFillPlayFill } from "react-icons/bs"
 const PAGE_NUMBER = 1
 
 function AnimeGenre({ instance }) {
+	const navigate = useNavigate()
 	const { genre } = useParams()
 
 	const [animeList, setAnimeList] = useState([])
@@ -71,6 +72,10 @@ function AnimeGenre({ instance }) {
 		}
 	}
 
+	const handleGetSlug = (slug) => {
+		navigate(`/info/${slug}`)
+	}
+
 	return (
 		<>
 			<div>
@@ -113,7 +118,7 @@ function AnimeGenre({ instance }) {
 					<Row xs={1} sm={2} md={3} lg={4}>
 						{animeList.map((anime) => (
 							<Col key={anime?.slug}>
-								<Card>
+								<Card onClick={() => handleGetSlug(anime.slug)}>
 									<div className="card-container">
 										<Card.Img
 											variant="top"

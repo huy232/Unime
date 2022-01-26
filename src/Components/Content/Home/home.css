@@ -78,6 +78,7 @@ h1, .h5{
   }
 
   .card-container:hover{
+    cursor: pointer;
     transition: all 0.3s ease-in-out;
     opacity: 0.7
   }

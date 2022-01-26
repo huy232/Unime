@@ -12,6 +12,7 @@ import Home from "./Components/Content/Home"
 import AnimeList from "./Components/Content/AnimeList"
 import AnimeGenre from "./Components/Content/AnimeGenre"
 import Search from "./Components/Content/Search"
+import AnimeInfo from "./Components/Content/AnimeInfo"
 
 function App() {
 	const instance = axios.create({
@@ -36,6 +37,10 @@ function App() {
 					<Route
 						path="search/:searchSlug"
 						element={<Search instance={instance} />}
+					/>
+					<Route
+						path="info/:anime"
+						element={<AnimeInfo instance={instance} />}
 					/>
 				</Routes>
 			</div>

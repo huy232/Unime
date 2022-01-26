@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
 import InfiniteScroll from "react-infinite-scroll-component"
 import axios from "axios"
 import { Card, Row, Col } from "react-bootstrap"
@@ -10,6 +11,8 @@ import "./animelist.css"
 const PAGE_NUMBER = 1
 
 function AnimeList({ instance }) {
+	const navigate = useNavigate()
+
 	const [animeList, setAnimeList] = useState([])
 	const [page, setPage] = useState(PAGE_NUMBER)
 	const [totalPage, setTotalPage] = useState(91)
@@ -50,6 +53,10 @@ function AnimeList({ instance }) {
 	const scrollThreshold = () => {
 		const newPage = page + 1
 		setPage(newPage)
+	}
+
+	const handleGetSlug = (slug) => {
+		navigate(`/info/${slug}`)
 	}
 
 	return (
@@ -96,7 +103,7 @@ function AnimeList({ instance }) {
 					<Row xs={1} sm={2} md={3} lg={4}>
 						{animeList.map((anime) => (
 							<Col key={anime.slug}>
-								<Card>
+								<Card onClick={() => handleGetSlug(anime.slug)}>
 									<div className="card-container">
 										<Card.Img
 											variant="top"
