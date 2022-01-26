@@ -31,13 +31,14 @@ function Home({ instance }) {
 	const [done1, setDone1] = useState(false)
 	const [done2, setDone2] = useState(false)
 	const [done3, setDone3] = useState(false)
+	const [done4, setDone4] = useState(false)
 
 	useEffect(() => {
 		const CancelToken = axios.CancelToken
 		const source = CancelToken.source()
 
-		const getSlide = async () => {
-			await instance
+		const getSlide = () => {
+			instance
 				.get("/slide", {
 					cancelToken: source.token,
 				})
@@ -50,8 +51,8 @@ function Home({ instance }) {
 				})
 		}
 
-		const getNew = async () => {
-			await instance
+		const getNew = () => {
+			instance
 				.get("/newest", {
 					cancelToken: source.token,
 				})
@@ -64,8 +65,8 @@ function Home({ instance }) {
 				})
 		}
 
-		const getRankToday = async () => {
-			await instance
+		const getRankToday = () => {
+			instance
 				.get("/top", {
 					cancelToken: source.token,
 				})
@@ -78,13 +79,14 @@ function Home({ instance }) {
 				})
 		}
 
-		const getRandom = async () => {
-			await instance
+		const getRandom = () => {
+			instance
 				.get("/today", {
 					cancelToken: source.token,
 				})
 				.then((data) => {
 					setRandomAnime(data.data.data)
+					setDone4(true)
 				})
 				.catch((thrown) => {
 					if (axios.isCancel(thrown)) return
@@ -112,7 +114,7 @@ function Home({ instance }) {
 				className="mySwiper"
 			>
 				{!done1
-					? [0, 1, 2, 3, 4, 5, 6].map((slider, i) => (
+					? [0].map((i) => (
 							<SwiperSlide key={i}>
 								<div className="inner">
 									<Skeleton
@@ -572,9 +574,15 @@ function Home({ instance }) {
 									)}
 								</div>
 							</div>
-
+							{/* {console.log(
+								!done4
+									? "skeleton"
+									: !randomAnime?.CharacterDetail?.length
+									? "skeleton again"
+									: randomAnime.CharacterDetail.length
+							)} */}
 							<div className="character-detail" style={{ marginTop: "20px" }}>
-								{!randomAnime?.CharacterDetail ? (
+								{!done4 ? (
 									<Skeleton
 										variant="rectangular"
 										width="100%"
@@ -584,60 +592,60 @@ function Home({ instance }) {
 									/>
 								) : (
 									<>
-										<Swiper
-											slidesPerView="auto"
-											spaceBetween={40}
-											navigation={false}
-											loop={true}
-											grabCursor={true}
-											className="characterSlider"
-										>
-											{!randomAnime?.CharacterDetail
-												? [0, 1, 2, 3, 4, 5, 6].map((i) => (
-														<Skeleton
-															key={i}
-															variant="rectangular"
-															width="100%"
-															style={{ width: "120px", height: "160px" }}
-															animation="wave"
-															sx={{ bgcolor: "grey.900" }}
-														/>
-												  ))
-												: randomAnime?.CharacterDetail.map((character, i) => (
-														<SwiperSlide
-															key={i}
+										{!randomAnime?.CharacterDetail?.length ? (
+											<Skeleton
+												variant="rectangular"
+												width="100%"
+												style={{ minHeight: "300px", maxHeight: "300px" }}
+												animation="wave"
+												sx={{ bgcolor: "grey.900" }}
+											/>
+										) : (
+											<Swiper
+												slidesPerView="auto"
+												spaceBetween={40}
+												navigation={false}
+												loop={true}
+												grabCursor={true}
+												className="character-slider"
+											>
+												{randomAnime.CharacterDetail.map((character, i) => (
+													<SwiperSlide
+														className="character-detail-slide"
+														key={i}
+														style={{
+															width: "auto",
+															display: "flex",
+															flexDirection: "column",
+															color: "#42EADDFF",
+														}}
+													>
+														<img
+															className="character-detail-image"
+															src={
+																!character?.image?.large
+																	? character?.image?.medium
+																	: character?.image?.large
+															}
 															style={{
-																width: "auto",
-																display: "flex",
-																flexDirection: "column",
-																color: "#42EADDFF",
+																objectFit: "fill",
+																width: "120px",
+																height: "160px",
 															}}
+														/>
+														<p
+															className="character-detail-word"
+															style={{ wordWrap: "break-word", width: "120px" }}
 														>
-															<img
-																src={
-																	!character?.image?.large
-																		? character?.image?.medium
-																		: character?.image?.large
-																}
-																style={{
-																	objectFit: "fill",
-																	width: "120px",
-																	height: "160px",
-																}}
-															/>
-															<p
-																style={{
-																	wordWrap: "break-word",
-																	width: "120px",
-																}}
-															>
-																{!character?.name?.english
-																	? character?.name?.native
-																	: character?.name?.english}
-															</p>
-														</SwiperSlide>
-												  ))}
-										</Swiper>
+															{!character?.name?.english
+																? character?.name?.native
+																: character?.name?.english}
+														</p>
+													</SwiperSlide>
+												))}
+											</Swiper>
+										)}
+
 										<h4
 											className="character-title"
 											style={{

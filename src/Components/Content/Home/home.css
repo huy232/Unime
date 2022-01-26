@@ -303,7 +303,7 @@ h1, .h5{
   background-color: yellow
 }
 
-.characterSlider{
+.character-slider{
   margin-right: 230px!important;
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -416,7 +416,7 @@ h1, .h5{
         max-height: 142px
     }
 
-    .characterSlider{
+    .character-slider{
       margin-right: 185px !important
     }
   }
