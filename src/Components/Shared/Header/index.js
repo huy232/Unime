@@ -6,9 +6,12 @@ import { LinkContainer } from "react-router-bootstrap"
 import { debounce } from "../../../Utilities/debounce"
 import TextField from "@mui/material/TextField"
 import { BsSearch } from "react-icons/bs"
+import { useNavigate } from "react-router-dom"
+
 import "./header.css"
 
 function Header() {
+	let navigate = useNavigate()
 	const [input, setInput] = useState("")
 	const [submit, setSubmit] = useState("")
 	const [prevScrollPos, setPrevScrollPos] = useState(0)
@@ -32,7 +35,7 @@ function Header() {
 
 	const handleSubmit = (e) => {
 		e.preventDefault()
-		alert("you have searched for - " + input)
+		navigate(`/search/${encodeURI(input)}`)
 	}
 	const handleKeypress = (e) => {
 		//it triggers by pressing the enter key

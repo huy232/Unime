@@ -14,7 +14,7 @@ function AnimeList({ instance }) {
 	const [animeList, setAnimeList] = useState([])
 	const [page, setPage] = useState(1)
 	const [totalPage, setTotalPage] = useState(91)
-	const getList = debounce(async () => {
+	const getList = async () => {
 		await instance
 			.get(`/anime?page=${page}`, {
 				cancelToken: source.token,
@@ -34,7 +34,7 @@ function AnimeList({ instance }) {
 			.catch((thrown) => {
 				if (axios.isCancel(thrown)) return
 			})
-	}, 1000)
+	}
 
 	useEffect(() => {
 		getList()

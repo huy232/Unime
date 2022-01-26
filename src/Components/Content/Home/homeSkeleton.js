@@ -1,5 +1,4 @@
-import { BsEyeFill, BsFillPlayFill } from "react-icons/bs"
-import { Card, Button, CardGroup, Row } from "react-bootstrap"
+import { Card, CardGroup } from "react-bootstrap"
 import Skeleton from "@mui/material/Skeleton"
 import "./home.css"
 // SWIPER

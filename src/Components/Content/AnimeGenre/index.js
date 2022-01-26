@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
 import { GENRES } from "../../../constants"
 import InfiniteScroll from "react-infinite-scroll-component"
@@ -6,7 +6,6 @@ import axios from "axios"
 import { Card, Row, Col } from "react-bootstrap"
 import TextTruncate from "react-text-truncate"
 import Skeleton from "@mui/material/Skeleton"
-import { debounce } from "../../../Utilities/debounce"
 import { BsFillPlayFill } from "react-icons/bs"
 
 const PAGE_NUMBER = 1
