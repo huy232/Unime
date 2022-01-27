@@ -25,3 +25,11 @@
     margin-left: auto;
     margin-right: 25px
 }
+
+@media screen and (max-width: 1024px){
+
+    .info-box{
+        flex-direction: column !important 
+    }
+
+}
