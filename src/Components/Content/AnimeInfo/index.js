@@ -51,15 +51,15 @@ function AnimeInfo({ instance }) {
 							animation="wave"
 							sx={{ bgcolor: "grey.900" }}
 						/>
-					) : !info.animeInfo?.BannerImg ? (
+					) : !info?.animeInfo?.BannerImg ? (
 						<img
-							src={info.animeInfo?.BannerImg}
+							src={info?.animeInfo?.BannerImg}
 							className="banner-info-image"
 							style={{ width: "auto" }}
 						/>
 					) : (
 						<img
-							src={info.animeInfo?.BannerImg}
+							src={info?.animeInfo?.BannerImg}
 							className="banner-info-image"
 						/>
 					)}
@@ -94,9 +94,9 @@ function AnimeInfo({ instance }) {
 							) : (
 								<img
 									src={
-										info.animeInfo?.CoverImg?.large ||
-										info.animeInfo?.CoverImg?.medium ||
-										info.animeInfo?.CoverImg?.small
+										info?.animeInfo?.CoverImg?.large ||
+										info?.animeInfo?.CoverImg?.medium ||
+										info?.animeInfo?.CoverImg?.small
 									}
 									className="cover-image"
 								/>
