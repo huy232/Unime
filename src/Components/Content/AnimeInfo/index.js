@@ -6,6 +6,7 @@ import axios from "axios"
 import ReactPlayer from "react-player"
 import { Card, Row, Col } from "react-bootstrap"
 import TextTruncate from "react-text-truncate"
+import { BsFillPlayFill } from "react-icons/bs"
 import "./animeinfo.css"
 
 // SWIPER
@@ -269,13 +270,20 @@ function AnimeInfo({ instance }) {
 									{episodeList[selectedChunk]?.map((eachEpisode, i) => (
 										<Col key={i}>
 											<Card>
-												<Card.Img
-													variant="top"
-													src={
-														eachEpisode?.thumbnail_medium ||
-														eachEpisode?.thumbnail_small
-													}
-												/>
+												<div className="card-container">
+													<Card.Img
+														variant="top"
+														src={
+															eachEpisode?.thumbnail_medium ||
+															eachEpisode?.thumbnail_small
+														}
+													/>
+													<div className="overlay-card">
+														<a className="icon">
+															{<BsFillPlayFill size={40} />}
+														</a>
+													</div>
+												</div>
 												<Card.Body>
 													<Card.Title>
 														<TextTruncate
