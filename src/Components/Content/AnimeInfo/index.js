@@ -187,11 +187,24 @@ function AnimeInfo({ instance }) {
 								</div>
 							</div>
 						</div>
+
+						<div
+							className="box-anime-film-trailer"
+							style={{ marginTop: "40px" }}
+						>
+							{videoUrl ? (
+								<>
+									<h3>XEM THỬ NẾU BẠN CHƯA RÕ</h3>
+									<div className="youtube-link">
+										<ReactPlayer url={videoUrl} />
+									</div>
+								</>
+							) : (
+								""
+							)}
+						</div>
 					</div>
 				</div>
-			</div>
-			<div className="box-anime-film-detail" style={{ marginTop: "40px" }}>
-				{videoUrl ? <ReactPlayer url={videoUrl} /> : ""}
 			</div>
 		</>
 	)
