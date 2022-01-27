@@ -94,6 +94,7 @@ h1, .h5{
   }
 
   .swiper-slide {
+    text-align: start!important;
       height: inherit !important
   }
 

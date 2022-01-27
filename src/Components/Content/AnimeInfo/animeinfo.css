@@ -6,8 +6,11 @@
     overflow: hidden;
 }
 
+.cover-wrapper{
+    min-width: 420px
+}
+
 .cover-image{
-    text-align:center;
     -o-object-fit: cover;
        object-fit: cover;
     min-width: 160px;
@@ -81,7 +84,8 @@
     position: relative;
     list-style:none;
     padding: 0;
-    width: 90%
+    width: 90%;
+    height: 100px
 }
 
 .wrapper-info-bottom{
@@ -126,6 +130,29 @@
     content: "";
     clear: both;
   }
+
+  .detail-cover-info{
+    margin-top: -60px;
+      text-align: right
+  }
+
+.detail-cover-info > div {
+    color: white;
+    max-width: 420px
+}
+
+.detail-cover-info > div > h5{
+    padding: 2px 10px;
+    display: inline-block;
+    background-color: #282828;
+    border-radius: 15px;
+    color: white
+  }
+
+li.episode-chunk:hover{
+    transition: all 0.4s linear;
+    opacity: 0.7
+}
 
 @media screen and (max-width: 1024px){
 

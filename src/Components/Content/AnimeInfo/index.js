@@ -110,12 +110,11 @@ function AnimeInfo({ instance }) {
 						<div
 							className="info-image"
 							style={{
+								display: "block",
+								textAlign: "center",
 								maxHeight: "330px",
-								maxWidth: "160px",
-								minWidth: "160px",
 								minHeight: "330px",
 								marginTop: "-5rem",
-								marginLeft: "3rem",
 							}}
 						>
 							{loading ? (
@@ -125,6 +124,7 @@ function AnimeInfo({ instance }) {
 									height="226px"
 									animation="wave"
 									sx={{ bgcolor: "grey.900" }}
+									style={{ marginLeft: "auto", marginRight: "auto" }}
 								/>
 							) : (
 								<img
@@ -136,6 +136,113 @@ function AnimeInfo({ instance }) {
 									className="cover-image"
 								/>
 							)}
+						</div>
+						<div className="detail-cover-info">
+							<div className="format">
+								{info?.animeInfo?.Format ? (
+									<>
+										{" "}
+										<h5>ĐỊNH DẠNG</h5> <p>{info?.animeInfo?.Format}</p>
+									</>
+								) : (
+									""
+								)}
+							</div>
+							<div className="title">
+								{info?.animeInfo?.Format ? (
+									<>
+										{" "}
+										<h5>TÊN PHIM</h5>
+										{info?.animeInfo?.Title?.romaji ? (
+											<>
+												<h6>
+													ROMAJI <p>{info?.animeInfo?.Title?.romaji}</p>
+												</h6>
+											</>
+										) : (
+											""
+										)}
+										{info?.animeInfo?.Title?.english ? (
+											<>
+												<h6>
+													TIẾNG ANH <p>{info?.animeInfo?.Title?.english}</p>
+												</h6>
+											</>
+										) : (
+											""
+										)}
+										{info?.animeInfo?.Title?.native ? (
+											<>
+												<h6>
+													TIẾNG NHẬT <p>{info?.animeInfo?.Title?.native}</p>
+												</h6>
+											</>
+										) : (
+											""
+										)}
+									</>
+								) : (
+									""
+								)}
+							</div>
+							<div className="source">
+								{info?.animeInfo?.Source ? (
+									<>
+										{" "}
+										<h5>CHUYỂN THỂ TỪ</h5> <p>{info?.animeInfo?.Source}</p>
+									</>
+								) : (
+									""
+								)}
+							</div>
+							<div className="popularity">
+								{info?.animeInfo?.Popularity ? (
+									<>
+										{" "}
+										<h5>ĐỘ NỔI BẬT</h5>{" "}
+										<p>{info?.animeInfo?.Popularity.toLocaleString()}</p>
+									</>
+								) : (
+									""
+								)}
+							</div>
+							<div className="favourite">
+								{info?.animeInfo?.Favourite ? (
+									<>
+										{" "}
+										<h5>YÊU THÍCH</h5>{" "}
+										<p>{info?.animeInfo?.Favourite.toLocaleString()}</p>
+									</>
+								) : (
+									""
+								)}
+							</div>
+							<div className="popularity">
+								{info?.animeInfo?.Trending ? (
+									<>
+										{" "}
+										<h5>THỜI THƯỢNG</h5>{" "}
+										<p>{info?.animeInfo?.Trending.toLocaleString()}</p>
+									</>
+								) : (
+									""
+								)}
+							</div>
+							<div className="studios">
+								{info?.animeInfo?.Studio ? (
+									<>
+										{" "}
+										<h5>STUDIO</h5>{" "}
+										<p>
+											{info?.animeInfo?.Studio.map(
+												(studio) => `${studio.name + ", "}`
+											)}
+										</p>
+									</>
+								) : (
+									""
+								)}
+							</div>
 						</div>
 					</div>
 					<div className="info-detail ">
@@ -231,7 +338,10 @@ function AnimeInfo({ instance }) {
 								<Swiper
 									slidesPerView="auto"
 									className="swiper-container"
-									navigation={true}
+									navigation={false}
+									pagination={{
+										type: "fraction",
+									}}
 								>
 									{episodeList.map((episodeChunk, i) => (
 										<SwiperSlide
@@ -264,7 +374,7 @@ function AnimeInfo({ instance }) {
 									))}
 								</Swiper>
 							</div>
-							<div id="spacer" style={{ width: "100%", height: "132px" }}></div>
+							<div id="spacer" style={{ width: "100%", height: "165px" }}></div>
 							<div className="episode-list-detail">
 								<Row xs={1} sm={2} md={3} lg={4} className="w-100 g-4">
 									{episodeList[selectedChunk]?.map((eachEpisode, i) => (
