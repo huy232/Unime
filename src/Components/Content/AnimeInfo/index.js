@@ -196,7 +196,7 @@ function AnimeInfo({ instance }) {
 								<>
 									<h3>XEM THỬ NẾU BẠN CHƯA RÕ</h3>
 									<div className="youtube-link">
-										<ReactPlayer url={videoUrl} />
+										<ReactPlayer url={videoUrl} controls={true} />
 									</div>
 								</>
 							) : (
