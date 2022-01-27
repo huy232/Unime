@@ -364,6 +364,7 @@ function Home({ instance }) {
 								/>
 							) : (
 								<Card.Img
+									className="today-banner-card-image"
 									variant="bottom"
 									src={randomAnime?.BannerImg}
 									style={{
@@ -704,6 +705,7 @@ function Home({ instance }) {
 										maxHeight: "500px",
 										objectFit: "cover",
 									}}
+									className="today-cover-image"
 									onClick={() => handleGetSlug(randomAnime?.Slug)}
 								/>
 							)}

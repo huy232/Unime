@@ -158,6 +158,15 @@ h1, .h5{
      object-fit: cover
 }
 
+.today-banner-card-image, .today-cover-image{
+  cursor: pointer;
+}
+
+.today-banner-card-image:hover, .today-cover-image:hover{
+  transition: all 1s linear;
+  opacity: 0.6
+}
+
 @-webkit-keyframes backgroundColorPalette {
 	0% {
 		background: #565554;
