@@ -26,7 +26,7 @@ function App() {
 	return (
 		<div className="App">
 			<Header />
-			<div className="content" style={{ marginTop: "90px" }}>
+			<div className="content" style={{ marginTop: "90px", width: "100%" }}>
 				<Routes>
 					<Route exact path="/" element={<Home instance={instance} />} />
 					<Route path="/anime" element={<AnimeList instance={instance} />} />

@@ -613,7 +613,7 @@ function Home({ instance }) {
 										{!randomAnime?.CharacterDetail?.length ? (
 											<Skeleton
 												variant="rectangular"
-												width="100%"
+												width="auto"
 												style={{ minHeight: "300px", maxHeight: "300px" }}
 												animation="wave"
 												sx={{ bgcolor: "grey.900" }}

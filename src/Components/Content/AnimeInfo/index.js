@@ -1,5 +1,7 @@
+/* eslint-disable jsx-a11y/alt-text */
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
+import Skeleton from "@mui/material/Skeleton"
 import axios from "axios"
 import "./animeinfo.css"
 
@@ -7,6 +9,7 @@ function AnimeInfo({ instance }) {
 	const { anime } = useParams()
 
 	const [info, setInfo] = useState({})
+	const [loading, setLoading] = useState(true)
 
 	useEffect(() => {
 		window.scrollTo(0, 0)
@@ -22,6 +25,7 @@ function AnimeInfo({ instance }) {
 				})
 				.then((response) => {
 					setInfo(response.data.data)
+					setLoading(false)
 				})
 				.catch((thrown) => {
 					if (axios.isCancel(thrown)) return
@@ -37,19 +41,22 @@ function AnimeInfo({ instance }) {
 
 	return (
 		<>
-			<div
-				className="banner-anime-overlay w-100 w-full"
-				style={{
-					zIndex: 0,
-					position: "relative",
-					marginTop: "-90px",
-					maxHeight: "450px",
-					minHeight: "450px",
-					overflow: "hidden",
-				}}
-			>
+			<div className="banner-anime-overlay">
 				<div className="banner-anime-image">
-					<img src={info.animeInfo?.BannerImg} className="mw-100 w-100" />
+					{loading ? (
+						<Skeleton
+							variant="rectangular"
+							width="100%"
+							height="450px"
+							animation="wave"
+							sx={{ bgcolor: "grey.900" }}
+						/>
+					) : (
+						<img
+							src={info.animeInfo?.BannerImg}
+							className="banner-info-image"
+						/>
+					)}
 				</div>
 			</div>
 
@@ -70,10 +77,20 @@ function AnimeInfo({ instance }) {
 								marginLeft: "3rem",
 							}}
 						>
-							<img
-								src={info.animeInfo?.CoverImg?.large}
-								className="cover-image"
-							/>
+							{loading ? (
+								<Skeleton
+									variant="rectangular"
+									width="160px"
+									height="226px"
+									animation="wave"
+									sx={{ bgcolor: "grey.900" }}
+								/>
+							) : (
+								<img
+									src={info.animeInfo?.CoverImg?.large}
+									className="cover-image"
+								/>
+							)}
 						</div>
 					</div>
 					<div className="info-detail ">
@@ -85,25 +102,25 @@ function AnimeInfo({ instance }) {
 						<div className="description">
 							<p>{info?.description}</p>
 						</div>
-						<div className="bottom-detail">
+						<div className="bottom-detail" style={{ marginTop: "50px" }}>
 							<div className="country">
-								<h6>Quốc gia</h6>{" "}
+								<h6>QUỐC GIA</h6>{" "}
 								<div className="country-element">
 									{info?.animeInfo?.Country}
 								</div>
 							</div>
 							<div className="score">
-								<h6>Điểm số</h6>{" "}
+								<h6>ĐIỂM SỐ</h6>{" "}
 								<div className="score-element">{info?.animeInfo?.Score}</div>
 							</div>
 							<div className="duration">
-								<h6>Thời lượng tập phim</h6>
+								<h6>THỜI LƯỢNG</h6>
 								<div className="duration-element">
-									{info?.animeInfo?.Duration} phút
+									{`${info?.animeInfo?.Duration} phút`}
 								</div>
 							</div>
 							<div className="views">
-								<h6>Lượt xem</h6>
+								<h6>LƯỢT XEM</h6>
 								<div className="views-element">
 									{info?.views?.toLocaleString()}
 								</div>

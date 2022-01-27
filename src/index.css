@@ -16,8 +16,8 @@ code {
 html, body{
   width: 100%;
   background-color:#121212 !important;
-  min-width: 500px;
   scroll-behavior: smooth;
+  border: 0 !important
 }
 
 
@@ -36,13 +36,6 @@ pre {
   line-height: var(--code-line-height);
   background-color: var(--code-bg-color);
 }
-
-/* .code-block {
-  max-height: 100px;
-  padding: 8px 7px 5px 15px;
-  margin: 0px 0px 0px 0px;
-  border-radius: 7px;
-} */
 
 ::-webkit-scrollbar-corner { background: rgba(0,0,0,0.5); }
 
