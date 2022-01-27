@@ -75,7 +75,7 @@ function AnimeList({ instance }) {
 					next={scrollThreshold}
 					hasMore={page === totalPage ? false : true}
 					loader={
-						<Row xs={1} sm={2} md={3} lg={4}>
+						<Row xs={1} sm={2} md={3} lg={4} className="w-100 w-full">
 							{[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((skeleton) => (
 								<Col key={skeleton}>
 									<Card>
@@ -100,7 +100,7 @@ function AnimeList({ instance }) {
 						</Row>
 					}
 				>
-					<Row xs={1} sm={2} md={3} lg={4}>
+					<Row xs={1} sm={2} md={3} lg={4} className="w-100 w-full">
 						{animeList.map((anime) => (
 							<Col key={anime.slug}>
 								<Card onClick={() => handleGetSlug(anime.slug)}>

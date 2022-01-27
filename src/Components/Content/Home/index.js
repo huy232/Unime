@@ -361,7 +361,6 @@ function Home({ instance }) {
 									height="400px"
 									animation="wave"
 									sx={{ bgcolor: "grey.900" }}
-									onClick={() => handleGetSlug(randomAnime?.Slug)}
 								/>
 							) : (
 								<Card.Img
