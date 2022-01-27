@@ -51,6 +51,12 @@ function AnimeInfo({ instance }) {
 							animation="wave"
 							sx={{ bgcolor: "grey.900" }}
 						/>
+					) : !info.animeInfo?.BannerImg ? (
+						<img
+							src={info.animeInfo?.BannerImg}
+							className="banner-info-image"
+							style={{ width: "auto" }}
+						/>
 					) : (
 						<img
 							src={info.animeInfo?.BannerImg}
@@ -87,7 +93,11 @@ function AnimeInfo({ instance }) {
 								/>
 							) : (
 								<img
-									src={info.animeInfo?.CoverImg?.large}
+									src={
+										info.animeInfo?.CoverImg?.large ||
+										info.animeInfo?.CoverImg?.medium ||
+										info.animeInfo?.CoverImg?.small
+									}
 									className="cover-image"
 								/>
 							)}
@@ -100,13 +110,15 @@ function AnimeInfo({ instance }) {
 							</h2>
 						</div>
 						<div className="description">
-							<p>{info?.description}</p>
+							<p>{!info?.description ? "" : `${info?.description}`}</p>
 						</div>
 						<div className="bottom-detail" style={{ marginTop: "50px" }}>
 							<div className="country">
 								<h6>QUỐC GIA</h6>{" "}
 								<div className="country-element">
-									{info?.animeInfo?.Country}
+									{!info?.animeInfo?.Country
+										? ""
+										: `${info?.animeInfo?.Country}`}
 								</div>
 							</div>
 							<div className="score">
@@ -116,7 +128,9 @@ function AnimeInfo({ instance }) {
 							<div className="duration">
 								<h6>THỜI LƯỢNG</h6>
 								<div className="duration-element">
-									{`${info?.animeInfo?.Duration} phút`}
+									{!info?.animeInfo?.Duration
+										? ""
+										: `${info?.animeInfo?.Duration} phút`}
 								</div>
 							</div>
 							<div className="views">
