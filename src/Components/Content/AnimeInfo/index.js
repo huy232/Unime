@@ -4,7 +4,20 @@ import { useParams } from "react-router-dom"
 import Skeleton from "@mui/material/Skeleton"
 import axios from "axios"
 import ReactPlayer from "react-player"
+import { Card, Row, Col } from "react-bootstrap"
+import TextTruncate from "react-text-truncate"
 import "./animeinfo.css"
+
+// SWIPER
+import { Swiper, SwiperSlide } from "swiper/react"
+
+import "swiper/css"
+import "swiper/css/pagination"
+import "swiper/css/navigation"
+import SwiperCore, { Pagination, Navigation } from "swiper"
+SwiperCore.use([Pagination, Navigation])
+
+// ---------------------------
 
 function AnimeInfo({ instance }) {
 	const { anime } = useParams()
@@ -12,11 +25,10 @@ function AnimeInfo({ instance }) {
 	const [info, setInfo] = useState({})
 	const [videoUrl, setVideoUrl] = useState("")
 	const [loading, setLoading] = useState(true)
+	const [episodeList, setEpisodeList] = useState([])
+	const [selectedChunk, setSelectedChunk] = useState(0)
 
 	useEffect(() => {
-		window.scrollTo(0, 0)
-		window.history.scrollRestoration = "manual"
-
 		const CancelToken = axios.CancelToken
 		const source = CancelToken.source()
 
@@ -38,6 +50,15 @@ function AnimeInfo({ instance }) {
 						const joinUrl = newUrl + myDomain
 						setVideoUrl(joinUrl)
 					}
+
+					const episodeListChunk = []
+
+					while (response.data.data.episodes.length) {
+						episodeListChunk.push(response.data.data.episodes.splice(0, 12))
+					}
+
+					setEpisodeList(episodeListChunk)
+
 					setLoading(false)
 				})
 				.catch((thrown) => {
@@ -202,6 +223,74 @@ function AnimeInfo({ instance }) {
 							) : (
 								""
 							)}
+						</div>
+						<div className="episode-wrapper" style={{ marginTop: "35px" }}>
+							<div className="episode-list">
+								<h4>DANH SÁCH TẬP PHIM</h4>
+								<Swiper
+									slidesPerView="auto"
+									className="swiper-container"
+									navigation={true}
+								>
+									{episodeList.map((episodeChunk, i) => (
+										<SwiperSlide
+											onClick={() => {
+												setSelectedChunk(i)
+											}}
+											key={i}
+											style={{
+												width: "160px",
+											}}
+										>
+											<li
+												className="episode-chunk"
+												style={
+													selectedChunk === i
+														? {
+																color: "black",
+																backgroundColor: "white",
+																borderRadius: "8px",
+																transition: "all 0.4s linear",
+														  }
+														: {}
+												}
+											>
+												{`${episodeChunk[0].name} - ${
+													episodeChunk[episodeChunk.length - 1].name
+												}`}
+											</li>
+										</SwiperSlide>
+									))}
+								</Swiper>
+							</div>
+							<div id="spacer" style={{ width: "100%", height: "132px" }}></div>
+							<div className="episode-list-detail">
+								<Row xs={1} sm={2} md={3} lg={4} className="w-100 g-4">
+									{episodeList[selectedChunk]?.map((eachEpisode, i) => (
+										<Col key={i}>
+											<Card>
+												<Card.Img
+													variant="top"
+													src={
+														eachEpisode?.thumbnail_medium ||
+														eachEpisode?.thumbnail_small
+													}
+												/>
+												<Card.Body>
+													<Card.Title>
+														<TextTruncate
+															line={2}
+															element="span"
+															truncateText="…"
+															text={eachEpisode?.full_name}
+														/>
+													</Card.Title>
+												</Card.Body>
+											</Card>
+										</Col>
+									))}
+								</Row>
+							</div>
 						</div>
 					</div>
 				</div>

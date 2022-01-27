@@ -19,7 +19,8 @@
 .info-detail{
     width: 100%;
     color: white;
-    margin-left: 5%
+    margin-left: 5%;
+    position: relative
 }
 
 .banner-anime-image{
@@ -72,6 +73,59 @@
     margin-left: auto;
     margin-right: 25px
 }
+
+.swiper-container{
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    list-style:none;
+    padding: 0;
+    width: 90%
+}
+
+.wrapper-info-bottom{
+    position: relative;
+    width: 100%
+}
+
+.episode-list{
+    position: absolute;
+    width: 100%
+}
+
+.swiper-wrapper{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    
+}
+
+.swiper-slide{
+    text-align:center;
+    margin-left: auto;
+    margin-right: auto
+}
+
+.swiper-slide > li {
+    display: inline-block
+
+}
+
+.episode-chunk {
+    cursor: pointer;
+    padding: 8px
+}
+
+.episode-list-detail{
+    margin-top: 40px;
+    width: 100%
+}
+
+.clearfix{
+    content: "";
+    clear: both;
+  }
 
 @media screen and (max-width: 1024px){
 
