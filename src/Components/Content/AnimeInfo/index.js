@@ -3,12 +3,14 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import Skeleton from "@mui/material/Skeleton"
 import axios from "axios"
+import ReactPlayer from "react-player"
 import "./animeinfo.css"
 
 function AnimeInfo({ instance }) {
 	const { anime } = useParams()
 
 	const [info, setInfo] = useState({})
+	const [videoUrl, setVideoUrl] = useState("")
 	const [loading, setLoading] = useState(true)
 
 	useEffect(() => {
@@ -25,6 +27,17 @@ function AnimeInfo({ instance }) {
 				})
 				.then((response) => {
 					setInfo(response.data.data)
+					if (response.data.data?.animeInfo?.Trailer) {
+						const url = response.data.data?.animeInfo?.Trailer
+						const newUrl = url.replace(
+							"https://www.youtube.com/watch?v=",
+							"https://www.youtube-nocookie.com/embed/"
+						)
+						const myDomain = "&origin=https://mirai-huy8856.vercel.app/"
+
+						const joinUrl = newUrl + myDomain
+						setVideoUrl(joinUrl)
+					}
 					setLoading(false)
 				})
 				.catch((thrown) => {
@@ -106,11 +119,31 @@ function AnimeInfo({ instance }) {
 					<div className="info-detail ">
 						<div className="anime-title">
 							<h2 style={{ color: `${info?.animeInfo?.CoverImg?.color}` }}>
-								{info?.name}
+								{loading ? (
+									<Skeleton
+										variant="text"
+										animation="wave"
+										sx={{ bgcolor: "grey.900" }}
+									/>
+								) : (
+									info?.name
+								)}
 							</h2>
 						</div>
 						<div className="description">
-							<p>{!info?.description ? "" : `${info?.description}`}</p>
+							<p>
+								{loading ? (
+									<Skeleton
+										variant="text"
+										animation="wave"
+										sx={{ bgcolor: "grey.900" }}
+									/>
+								) : !info?.description ? (
+									""
+								) : (
+									`${info?.description}`
+								)}
+							</p>
 						</div>
 						<div className="bottom-detail" style={{ marginTop: "50px" }}>
 							<div className="country">
@@ -156,6 +189,9 @@ function AnimeInfo({ instance }) {
 						</div>
 					</div>
 				</div>
+			</div>
+			<div className="box-anime-film-detail" style={{ marginTop: "40px" }}>
+				{videoUrl ? <ReactPlayer url={videoUrl} /> : ""}
 			</div>
 		</>
 	)
