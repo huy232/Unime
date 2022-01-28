@@ -3,7 +3,7 @@ import { API } from "./constants"
 import axios from "axios"
 
 import { useEffect } from "react"
-import { Route, Routes } from "react-router-dom"
+import { Route, Routes, useLocation } from "react-router-dom"
 
 import Header from "./Components/Shared/Header"
 import Footer from "./Components/Shared/Footer"
@@ -13,6 +13,7 @@ import AnimeList from "./Components/Content/AnimeList"
 import AnimeGenre from "./Components/Content/AnimeGenre"
 import Search from "./Components/Content/Search"
 import AnimeInfo from "./Components/Content/AnimeInfo"
+import AnimeWatch from "./Components/Content/AnimeWatch"
 
 function App() {
 	const instance = axios.create({
@@ -22,10 +23,15 @@ function App() {
 	useEffect(() => {
 		window.history.scrollRestoration = "manual"
 	}, [])
-
+	const pathname = useLocation()
 	return (
 		<div className="App">
-			<Header />
+			{window.location.pathname ===
+			`/watch/${pathname.pathname.split("/")[2]}` ? (
+				""
+			) : (
+				<Header />
+			)}
 			<div className="content" style={{ marginTop: "90px", width: "100%" }}>
 				<Routes>
 					<Route exact path="/" element={<Home instance={instance} />} />
@@ -42,9 +48,18 @@ function App() {
 						path="info/:anime"
 						element={<AnimeInfo instance={instance} />}
 					/>
+					<Route
+						path="watch/:anime"
+						element={<AnimeWatch instance={instance} />}
+					/>
 				</Routes>
 			</div>
-			<Footer />
+			{window.location.pathname ===
+			`/watch/${pathname.pathname.split("/")[2]}` ? (
+				""
+			) : (
+				<Footer />
+			)}
 		</div>
 	)
 }

@@ -1,0 +1,12 @@
+.player-wrapper {
+    position: relative;
+    z-index: 100000
+  }
+  
+  .react-player {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  

@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/alt-text */
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom"
 import Skeleton from "@mui/material/Skeleton"
 import axios from "axios"
 import ReactPlayer from "react-player"
@@ -21,6 +21,7 @@ SwiperCore.use([Pagination, Navigation])
 // ---------------------------
 
 function AnimeInfo({ instance }) {
+	const navigate = useNavigate()
 	const { anime } = useParams()
 
 	const [info, setInfo] = useState({})
@@ -73,6 +74,14 @@ function AnimeInfo({ instance }) {
 			source.cancel()
 		}
 	}, [])
+
+	const handleClick = (index) => {
+		if (index > 0) {
+			navigate(`/watch/${info.animeSlug}?index=${index - 1}`)
+		} else {
+			navigate(`/watch/${info.animeSlug}?index=${index}`)
+		}
+	}
 
 	return (
 		<>
@@ -379,7 +388,7 @@ function AnimeInfo({ instance }) {
 								<Row xs={1} sm={2} md={3} lg={4} className="w-100 g-4">
 									{episodeList[selectedChunk]?.map((eachEpisode, i) => (
 										<Col key={i}>
-											<Card>
+											<Card onClick={() => handleClick(eachEpisode.name)}>
 												<div className="card-container">
 													<Card.Img
 														variant="top"
