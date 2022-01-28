@@ -116,6 +116,18 @@ export default ({
 	onFastForward,
 	muted,
 	onMute,
+	onVolumeChange,
+	onVolumeSeekUp,
+	volume,
+	playbackRate,
+	onPlaybackRateChange,
+	onToggleFullScreen,
+	played,
+	onSeek,
+	onSeekMouseDown,
+	onSeekMouseUp,
+	elapsedTime,
+	totalDuration,
 }) => {
 	const navigate = useNavigate()
 	const classes = useStyles()
@@ -213,8 +225,11 @@ export default ({
 					<PrettoSlider
 						min={0}
 						max={100}
-						defaultValue={20}
+						defaultValue={played * 100}
 						valueLabelDisplay="auto"
+						onChange={onSeek}
+						onMouseDown={onSeekMouseDown}
+						onChangeCommitted={onSeekMouseUp}
 					/>
 				</Grid>
 
@@ -229,7 +244,9 @@ export default ({
 						</IconButton>
 
 						<Button variant="text" style={{ color: "#fff", marginLeft: 16 }}>
-							<Typography>05:05</Typography>
+							<Typography>
+								{elapsedTime}/{totalDuration}
+							</Typography>
 						</Button>
 
 						<IconButton onClick={onMute} className={classes.bottomIcons}>
@@ -243,8 +260,10 @@ export default ({
 						<Slider
 							min={0}
 							max={100}
-							defaultValue={100}
+							value={volume * 100}
 							className={classes.volumeSlider}
+							onChange={onVolumeChange}
+							onChangeCommitted={onVolumeSeekUp}
 						/>
 					</Grid>
 				</Grid>
@@ -254,7 +273,7 @@ export default ({
 						variant="text"
 						className={classes.bottomIcons}
 					>
-						<Typography>1x</Typography>
+						<Typography>{playbackRate}X</Typography>
 					</Button>
 
 					<Popover
@@ -273,14 +292,25 @@ export default ({
 					>
 						<Grid container direction="column-reverse">
 							{[0.5, 1, 1.5, 2].map((rate) => (
-								<Button variant="text" key={rate}>
-									<Typography color="secondary">{rate}</Typography>
+								<Button
+									onClick={() => onPlaybackRateChange(rate)}
+									variant="text"
+									key={rate}
+								>
+									<Typography
+										color={rate === playbackRate ? "secondary" : "null"}
+									>
+										{rate}
+									</Typography>
 								</Button>
 							))}
 						</Grid>
 					</Popover>
 
-					<IconButton className={classes.bottomIcons}>
+					<IconButton
+						onClick={onToggleFullScreen}
+						className={classes.bottomIcons}
+					>
 						<Fullscreen fontSize="small" />
 					</IconButton>
 				</Grid>
