@@ -21,7 +21,7 @@ import {
 	VolumeOff,
 	Fullscreen,
 } from "@material-ui/icons"
-
+import PropTypes from "prop-types"
 import { useNavigate } from "react-router-dom"
 
 const useStyles = makeStyles({
@@ -56,16 +56,6 @@ const useStyles = makeStyles({
 		height: "1px !important",
 	},
 })
-
-function ValueLabelComponent(props) {
-	const { children, value } = props
-
-	return (
-		<Tooltip enterTouchDelay={0} placement="top" title={value}>
-			{children}
-		</Tooltip>
-	)
-}
 
 const PrettoSlider = styled(Slider)({
 	color: "rgba(255,0,0,0.5)",
@@ -225,8 +215,8 @@ export default ({
 					<PrettoSlider
 						min={0}
 						max={100}
-						defaultValue={played * 100}
-						valueLabelDisplay="auto"
+						value={played * 100}
+						valueLabelDisplay="off"
 						onChange={onSeek}
 						onMouseDown={onSeekMouseDown}
 						onChangeCommitted={onSeekMouseUp}
@@ -298,7 +288,7 @@ export default ({
 									key={rate}
 								>
 									<Typography
-										color={rate === playbackRate ? "secondary" : "null"}
+										color={rate === playbackRate ? "secondary" : "primary"}
 									>
 										{rate}
 									</Typography>

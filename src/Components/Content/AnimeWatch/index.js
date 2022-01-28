@@ -97,7 +97,7 @@ function AnimeWatch({ instance }) {
 	}
 
 	const handleProgress = (changeState) => {
-		if (!state.seeking) {
+		if (!seeking) {
 			setState({ ...state, ...changeState })
 		}
 	}
