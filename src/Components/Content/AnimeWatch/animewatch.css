@@ -1,12 +1,7 @@
-.player-wrapper {
-    position: relative;
-    z-index: 100000
-  }
-  
-  .react-player {
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
-
-  
+.MuiSlider-valueLabel{
+  background-color: rgba(255,0,0,0.6)!important
+}
+.MuiContainer-root{
+  padding-left: 0 !important;
+  padding-right: 0 !important
+}

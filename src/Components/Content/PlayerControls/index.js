@@ -1,0 +1,290 @@
+/* eslint-disable import/no-anonymous-default-export */
+import React from "react"
+import {
+	Container,
+	Grid,
+	Typography,
+	Button,
+	makeStyles,
+	IconButton,
+	Popover,
+} from "@material-ui/core/"
+import Tooltip from "@mui/material/Tooltip"
+import { styled } from "@mui/material/styles"
+import Slider from "@mui/material/Slider"
+import {
+	FastRewind,
+	FastForward,
+	PlayArrow,
+	Pause,
+	VolumeUp,
+	VolumeOff,
+	Fullscreen,
+} from "@material-ui/icons"
+
+import { useNavigate } from "react-router-dom"
+
+const useStyles = makeStyles({
+	controlsWrapper: {
+		position: "absolute",
+		top: 0,
+		left: 0,
+		right: 0,
+		bottom: 0,
+		background: "rgba(0,0,0,0.6)",
+		display: "flex",
+		flexDirection: "column",
+		justifyContent: "space-between",
+		zIndex: 1,
+	},
+	controlIcons: {
+		color: "#777",
+		transform: "scale(0.9)",
+		"&:hover": {
+			color: "#fff",
+			transform: "scale(1)",
+		},
+	},
+	bottomIcons: {
+		color: "#999",
+		"&:hover": {
+			color: "#fff",
+		},
+	},
+	volumeSlider: {
+		width: "100px !important",
+		height: "1px !important",
+	},
+})
+
+function ValueLabelComponent(props) {
+	const { children, value } = props
+
+	return (
+		<Tooltip enterTouchDelay={0} placement="top" title={value}>
+			{children}
+		</Tooltip>
+	)
+}
+
+const PrettoSlider = styled(Slider)({
+	color: "rgba(255,0,0,0.5)",
+	height: 8,
+	"& .MuiSlider-track": {
+		border: "none",
+	},
+	"& .MuiSlider-thumb": {
+		height: 24,
+		width: 24,
+		backgroundColor: "#fff",
+		border: "2px solid currentColor",
+		"&:focus, &:hover, &.Mui-active, &.Mui-focusVisible": {
+			boxShadow: "inherit",
+		},
+		"&:before": {
+			display: "none",
+		},
+	},
+	"& .MuiSlider-valueLabel": {
+		lineHeight: 1.2,
+		fontSize: 12,
+		background: "unset",
+		padding: 0,
+		width: 32,
+		height: 32,
+		borderRadius: "50% 50% 50% 0",
+		backgroundColor: "#52af77",
+		transformOrigin: "bottom left",
+		transform: "translate(50%, -100%) rotate(-45deg) scale(0)",
+		"&:before": { display: "none" },
+		"&.MuiSlider-valueLabelOpen": {
+			transform: "translate(50%, -100%) rotate(-45deg) scale(1)",
+		},
+		"& > *": {
+			transform: "rotate(45deg)",
+		},
+	},
+})
+
+export default ({
+	anime,
+	title,
+	currentEpisodeName,
+	onPlayPause,
+	playing,
+	onRewind,
+	onFastForward,
+	muted,
+	onMute,
+}) => {
+	const navigate = useNavigate()
+	const classes = useStyles()
+	const [anchorEl, setAnchorEl] = React.useState(null)
+
+	const handlePopover = (event) => {
+		setAnchorEl(event.currentTarget)
+	}
+
+	const handleClose = () => {
+		setAnchorEl(null)
+	}
+	const handleGoBack = () => {
+		navigate(`/info/${anime}`)
+	}
+	const open = Boolean(anchorEl)
+	const id = open ? "playbackrate-popover" : undefined
+
+	return (
+		<div className={classes.controlsWrapper}>
+			{/* Top Controls */}
+			<Grid
+				container
+				direction="row"
+				alignItems="center"
+				justifyContent="space-between"
+				style={{ padding: 16 }}
+			>
+				<Grid item>
+					<Button
+						variant="contained"
+						color="primary"
+						onClick={() => {
+							handleGoBack()
+						}}
+					>
+						Quay lại
+					</Button>
+				</Grid>
+				<Grid item>
+					<Typography
+						variant="h5"
+						style={{ color: "white", textAlign: "right" }}
+					>
+						{title}
+					</Typography>
+					<Typography variant="h6" style={{ color: "white" }}>
+						{currentEpisodeName}
+					</Typography>
+				</Grid>
+			</Grid>
+
+			{/* Middle Controls */}
+
+			<Grid
+				container
+				direction="row"
+				alignItems="center"
+				justifyContent="center"
+			>
+				<IconButton
+					onClick={onRewind}
+					className={classes.controlIcons}
+					aria-label="rewind"
+				>
+					<FastRewind />
+				</IconButton>
+
+				<IconButton
+					onClick={onPlayPause}
+					className={classes.controlIcons}
+					aria-label="rewind"
+				>
+					{playing ? <Pause /> : <PlayArrow />}
+				</IconButton>
+
+				<IconButton
+					onClick={onFastForward}
+					className={classes.controlIcons}
+					aria-label="rewind"
+				>
+					<FastForward />
+				</IconButton>
+			</Grid>
+
+			{/* Bottom Controls */}
+
+			<Grid
+				container
+				direction="row"
+				justifyContent="space-between"
+				alignItems="center"
+			>
+				<Grid item xs={12}>
+					<PrettoSlider
+						min={0}
+						max={100}
+						defaultValue={20}
+						valueLabelDisplay="auto"
+					/>
+				</Grid>
+
+				<Grid item>
+					<Grid container alignItems="center" direction="row">
+						<IconButton onClick={onPlayPause} className={classes.bottomIcons}>
+							{playing ? (
+								<Pause fontSize="small" />
+							) : (
+								<PlayArrow fontSize="small" />
+							)}
+						</IconButton>
+
+						<Button variant="text" style={{ color: "#fff", marginLeft: 16 }}>
+							<Typography>05:05</Typography>
+						</Button>
+
+						<IconButton onClick={onMute} className={classes.bottomIcons}>
+							{muted ? (
+								<VolumeOff fontSize="small" />
+							) : (
+								<VolumeUp fontSize="small" />
+							)}
+						</IconButton>
+
+						<Slider
+							min={0}
+							max={100}
+							defaultValue={100}
+							className={classes.volumeSlider}
+						/>
+					</Grid>
+				</Grid>
+				<Grid item>
+					<Button
+						onClick={handlePopover}
+						variant="text"
+						className={classes.bottomIcons}
+					>
+						<Typography>1x</Typography>
+					</Button>
+
+					<Popover
+						id={id}
+						open={open}
+						anchorEl={anchorEl}
+						onClose={handleClose}
+						anchorOrigin={{
+							vertical: "top",
+							horizontal: "center",
+						}}
+						transformOrigin={{
+							vertical: "bottom",
+							horizontal: "center",
+						}}
+					>
+						<Grid container direction="column-reverse">
+							{[0.5, 1, 1.5, 2].map((rate) => (
+								<Button variant="text" key={rate}>
+									<Typography color="secondary">{rate}</Typography>
+								</Button>
+							))}
+						</Grid>
+					</Popover>
+
+					<IconButton className={classes.bottomIcons}>
+						<Fullscreen fontSize="small" />
+					</IconButton>
+				</Grid>
+			</Grid>
+		</div>
+	)
+}
