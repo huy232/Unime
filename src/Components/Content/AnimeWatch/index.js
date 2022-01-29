@@ -54,7 +54,7 @@ function AnimeWatch({ instance }) {
 
 	const [state, setState] = useState({
 		playing: true,
-		muted: true,
+		muted: false,
 		volume: 1,
 		playbackRate: 1.0,
 		played: 0,
@@ -209,6 +209,7 @@ function AnimeWatch({ instance }) {
 							volume={volume}
 							playbackRate={playbackRate}
 							onProgress={handleProgress}
+							playsinline={true}
 						/>
 						<PlayerControls
 							ref={controlsRef}

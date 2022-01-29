@@ -1,13 +1,13 @@
 /* eslint-disable import/no-anonymous-default-export */
 import React, { forwardRef } from "react"
 import {
-	Container,
 	Grid,
 	Typography,
 	Button,
 	makeStyles,
 	IconButton,
 	Popover,
+	Menu,
 } from "@material-ui/core/"
 import Tooltip from "@mui/material/Tooltip"
 import { styled } from "@mui/material/styles"
@@ -293,7 +293,7 @@ export default forwardRef(
 							<Typography>{playbackRate}X</Typography>
 						</Button>
 
-						<Popover
+						<Menu
 							id={id}
 							open={open}
 							anchorEl={anchorEl}
@@ -322,7 +322,7 @@ export default forwardRef(
 									</Button>
 								))}
 							</Grid>
-						</Popover>
+						</Menu>
 
 						<IconButton
 							onClick={onToggleFullScreen}
