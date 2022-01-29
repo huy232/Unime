@@ -55,6 +55,9 @@ const useStyles = makeStyles({
 		width: "100px !important",
 		height: "1px !important",
 		color: "rgba(255,0,0,0.5)!important",
+		"@media screen and (max-width: 640px)": {
+			width: "50px !important",
+		},
 	},
 })
 

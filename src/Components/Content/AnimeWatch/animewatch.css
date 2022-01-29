@@ -14,3 +14,10 @@
   transition: all 0.5s linear;
   background-color: rgba(255,0,0,1) !important
 }
+
+
+@media screen and (max-width: 640px) {
+  .MuiTypography-root{
+    font-size: 0.7rem !important
+  }
+}
