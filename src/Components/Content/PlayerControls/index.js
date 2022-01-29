@@ -31,7 +31,7 @@ const useStyles = makeStyles({
 		left: 0,
 		right: 0,
 		bottom: 0,
-		background: "rgba(0,0,0,0.6)",
+		background: "rgba(0,0,0,0)",
 		display: "flex",
 		flexDirection: "column",
 		justifyContent: "space-between",
