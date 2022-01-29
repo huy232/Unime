@@ -5,3 +5,12 @@
   padding-left: 0 !important;
   padding-right: 0 !important
 }
+
+.go-back-button .MuiButton-label {
+  color: white!important
+}
+
+.go-back-button:hover {
+  transition: all 0.5s linear;
+  background-color: rgba(255,0,0,1) !important
+}

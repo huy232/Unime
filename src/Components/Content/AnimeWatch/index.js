@@ -33,10 +33,14 @@ const format = (seconds) => {
 	return `${mm}:${ss}`
 }
 
+let count = 0
+
 function AnimeWatch({ instance }) {
 	const classes = useStyles()
 	const playerRef = useRef(null)
 	const playerContainerRef = useRef(null)
+	const controlsRef = useRef(null)
+
 	const { anime } = useParams()
 	const queryParams = new URLSearchParams(window.location.search)
 	const index = queryParams.get("index")
@@ -45,6 +49,8 @@ function AnimeWatch({ instance }) {
 	const [title, setTitle] = useState("")
 	const [currentEpisodeName, setCurrentEpisodeName] = useState("")
 	const [video, setVideo] = useState("")
+
+	const [timeDisplayFormat, setTimeDisplayFormat] = useState("normal")
 
 	const [state, setState] = useState({
 		playing: true,
@@ -97,6 +103,15 @@ function AnimeWatch({ instance }) {
 	}
 
 	const handleProgress = (changeState) => {
+		if (count > 2) {
+			controlsRef.current.style.visibility = "hidden"
+			count = 0
+		}
+
+		if (controlsRef.current.style.visibility == "visible") {
+			count += 1
+		}
+
 		if (!seeking) {
 			setState({ ...state, ...changeState })
 		}
@@ -115,6 +130,17 @@ function AnimeWatch({ instance }) {
 		playerRef.current.seekTo(newValue / 100)
 	}
 
+	const handleChangeDisplayFormat = () => {
+		setTimeDisplayFormat(
+			timeDisplayFormat === "normal" ? "remaining" : "normal"
+		)
+	}
+
+	const handleMouseMove = () => {
+		controlsRef.current.style.visibility = "visible"
+		count = 0
+	}
+
 	const currentTime = playerRef.current
 		? playerRef.current.getCurrentTime()
 		: "00: 00"
@@ -122,7 +148,10 @@ function AnimeWatch({ instance }) {
 		? playerRef.current.getDuration()
 		: "00: 00"
 
-	const elapsedTime = format(currentTime)
+	const elapsedTime =
+		timeDisplayFormat === "normal"
+			? format(currentTime)
+			: `-${format(duration - currentTime)}`
 	const totalDuration = format(duration)
 
 	useEffect(() => {
@@ -164,7 +193,11 @@ function AnimeWatch({ instance }) {
 		<>
 			<div style={{ marginTop: "-90px" }}>
 				<Container maxWidth={false}>
-					<div ref={playerContainerRef} className={classes.playerWrapper}>
+					<div
+						ref={playerContainerRef}
+						className={classes.playerWrapper}
+						onMouseMove={handleMouseMove}
+					>
 						<ReactPlayer
 							ref={playerRef}
 							className="react-player"
@@ -178,6 +211,7 @@ function AnimeWatch({ instance }) {
 							onProgress={handleProgress}
 						/>
 						<PlayerControls
+							ref={controlsRef}
 							anime={anime}
 							title={title}
 							currentEpisodeName={currentEpisodeName}
@@ -199,6 +233,7 @@ function AnimeWatch({ instance }) {
 							onSeekMouseUp={handleSeekMouseUp}
 							elapsedTime={elapsedTime}
 							totalDuration={totalDuration}
+							onChangeDisplayFormat={handleChangeDisplayFormat}
 						/>
 					</div>
 				</Container>

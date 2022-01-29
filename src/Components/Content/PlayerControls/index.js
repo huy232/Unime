@@ -1,5 +1,5 @@
 /* eslint-disable import/no-anonymous-default-export */
-import React from "react"
+import React, { forwardRef } from "react"
 import {
 	Container,
 	Grid,
@@ -54,8 +54,19 @@ const useStyles = makeStyles({
 	volumeSlider: {
 		width: "100px !important",
 		height: "1px !important",
+		color: "rgba(255,0,0,0.5)!important",
 	},
 })
+
+function ValueLabelComponent(props) {
+	const { children, value } = props
+
+	return (
+		<Tooltip enterTouchDelay={0} placement="top" title={value}>
+			{children}
+		</Tooltip>
+	)
+}
 
 const PrettoSlider = styled(Slider)({
 	color: "rgba(255,0,0,0.5)",
@@ -96,215 +107,229 @@ const PrettoSlider = styled(Slider)({
 	},
 })
 
-export default ({
-	anime,
-	title,
-	currentEpisodeName,
-	onPlayPause,
-	playing,
-	onRewind,
-	onFastForward,
-	muted,
-	onMute,
-	onVolumeChange,
-	onVolumeSeekUp,
-	volume,
-	playbackRate,
-	onPlaybackRateChange,
-	onToggleFullScreen,
-	played,
-	onSeek,
-	onSeekMouseDown,
-	onSeekMouseUp,
-	elapsedTime,
-	totalDuration,
-}) => {
-	const navigate = useNavigate()
-	const classes = useStyles()
-	const [anchorEl, setAnchorEl] = React.useState(null)
+export default forwardRef(
+	(
+		{
+			anime,
+			title,
+			currentEpisodeName,
+			onPlayPause,
+			playing,
+			onRewind,
+			onFastForward,
+			muted,
+			onMute,
+			onVolumeChange,
+			onVolumeSeekUp,
+			volume,
+			playbackRate,
+			onPlaybackRateChange,
+			onToggleFullScreen,
+			played,
+			onSeek,
+			onSeekMouseDown,
+			onSeekMouseUp,
+			elapsedTime,
+			totalDuration,
+			onChangeDisplayFormat,
+		},
+		ref
+	) => {
+		const navigate = useNavigate()
+		const classes = useStyles()
+		const [anchorEl, setAnchorEl] = React.useState(null)
 
-	const handlePopover = (event) => {
-		setAnchorEl(event.currentTarget)
-	}
+		const handlePopover = (event) => {
+			setAnchorEl(event.currentTarget)
+		}
 
-	const handleClose = () => {
-		setAnchorEl(null)
-	}
-	const handleGoBack = () => {
-		navigate(`/info/${anime}`)
-	}
-	const open = Boolean(anchorEl)
-	const id = open ? "playbackrate-popover" : undefined
+		const handleClose = () => {
+			setAnchorEl(null)
+		}
+		const handleGoBack = () => {
+			navigate(`/info/${anime}`)
+		}
+		const open = Boolean(anchorEl)
+		const id = open ? "playbackrate-popover" : undefined
 
-	return (
-		<div className={classes.controlsWrapper}>
-			{/* Top Controls */}
-			<Grid
-				container
-				direction="row"
-				alignItems="center"
-				justifyContent="space-between"
-				style={{ padding: 16 }}
-			>
-				<Grid item>
-					<Button
-						variant="contained"
-						color="primary"
-						onClick={() => {
-							handleGoBack()
-						}}
-					>
-						Quay lại
-					</Button>
-				</Grid>
-				<Grid item>
-					<Typography
-						variant="h5"
-						style={{ color: "white", textAlign: "right" }}
-					>
-						{title}
-					</Typography>
-					<Typography variant="h6" style={{ color: "white" }}>
-						{currentEpisodeName}
-					</Typography>
-				</Grid>
-			</Grid>
-
-			{/* Middle Controls */}
-
-			<Grid
-				container
-				direction="row"
-				alignItems="center"
-				justifyContent="center"
-			>
-				<IconButton
-					onClick={onRewind}
-					className={classes.controlIcons}
-					aria-label="rewind"
+		return (
+			<div className={classes.controlsWrapper} ref={ref}>
+				{/* Top Controls */}
+				<Grid
+					container
+					direction="row"
+					alignItems="center"
+					justifyContent="space-between"
+					style={{ padding: 16 }}
 				>
-					<FastRewind />
-				</IconButton>
-
-				<IconButton
-					onClick={onPlayPause}
-					className={classes.controlIcons}
-					aria-label="rewind"
-				>
-					{playing ? <Pause /> : <PlayArrow />}
-				</IconButton>
-
-				<IconButton
-					onClick={onFastForward}
-					className={classes.controlIcons}
-					aria-label="rewind"
-				>
-					<FastForward />
-				</IconButton>
-			</Grid>
-
-			{/* Bottom Controls */}
-
-			<Grid
-				container
-				direction="row"
-				justifyContent="space-between"
-				alignItems="center"
-			>
-				<Grid item xs={12}>
-					<PrettoSlider
-						min={0}
-						max={100}
-						value={played * 100}
-						valueLabelDisplay="off"
-						onChange={onSeek}
-						onMouseDown={onSeekMouseDown}
-						onChangeCommitted={onSeekMouseUp}
-					/>
-				</Grid>
-
-				<Grid item>
-					<Grid container alignItems="center" direction="row">
-						<IconButton onClick={onPlayPause} className={classes.bottomIcons}>
-							{playing ? (
-								<Pause fontSize="small" />
-							) : (
-								<PlayArrow fontSize="small" />
-							)}
-						</IconButton>
-
-						<Button variant="text" style={{ color: "#fff", marginLeft: 16 }}>
-							<Typography>
-								{elapsedTime}/{totalDuration}
-							</Typography>
+					<Grid item>
+						<Button
+							variant="contained"
+							style={{ backgroundColor: "rgba(255,0,0,0.4)" }}
+							className="go-back-button"
+							onClick={() => {
+								handleGoBack()
+							}}
+						>
+							Quay lại
 						</Button>
-
-						<IconButton onClick={onMute} className={classes.bottomIcons}>
-							{muted ? (
-								<VolumeOff fontSize="small" />
-							) : (
-								<VolumeUp fontSize="small" />
-							)}
-						</IconButton>
-
-						<Slider
-							min={0}
-							max={100}
-							value={volume * 100}
-							className={classes.volumeSlider}
-							onChange={onVolumeChange}
-							onChangeCommitted={onVolumeSeekUp}
-						/>
+					</Grid>
+					<Grid item>
+						<Typography
+							variant="h5"
+							style={{ color: "white", textAlign: "right" }}
+						>
+							{title}
+						</Typography>
+						<Typography variant="h6" style={{ color: "white" }}>
+							{currentEpisodeName}
+						</Typography>
 					</Grid>
 				</Grid>
-				<Grid item>
-					<Button
-						onClick={handlePopover}
-						variant="text"
-						className={classes.bottomIcons}
-					>
-						<Typography>{playbackRate}X</Typography>
-					</Button>
 
-					<Popover
-						id={id}
-						open={open}
-						anchorEl={anchorEl}
-						onClose={handleClose}
-						anchorOrigin={{
-							vertical: "top",
-							horizontal: "center",
-						}}
-						transformOrigin={{
-							vertical: "bottom",
-							horizontal: "center",
-						}}
+				{/* Middle Controls */}
+
+				<Grid
+					container
+					direction="row"
+					alignItems="center"
+					justifyContent="center"
+				>
+					<IconButton
+						onClick={onRewind}
+						className={classes.controlIcons}
+						aria-label="rewind"
 					>
-						<Grid container direction="column-reverse">
-							{[0.5, 1, 1.5, 2].map((rate) => (
-								<Button
-									onClick={() => onPlaybackRateChange(rate)}
-									variant="text"
-									key={rate}
-								>
-									<Typography
-										color={rate === playbackRate ? "secondary" : "primary"}
-									>
-										{rate}
-									</Typography>
-								</Button>
-							))}
-						</Grid>
-					</Popover>
+						<FastRewind />
+					</IconButton>
 
 					<IconButton
-						onClick={onToggleFullScreen}
-						className={classes.bottomIcons}
+						onClick={onPlayPause}
+						className={classes.controlIcons}
+						aria-label="rewind"
 					>
-						<Fullscreen fontSize="small" />
+						{playing ? <Pause /> : <PlayArrow />}
+					</IconButton>
+
+					<IconButton
+						onClick={onFastForward}
+						className={classes.controlIcons}
+						aria-label="rewind"
+					>
+						<FastForward />
 					</IconButton>
 				</Grid>
-			</Grid>
-		</div>
-	)
-}
+
+				{/* Bottom Controls */}
+
+				<Grid
+					container
+					direction="row"
+					justifyContent="space-between"
+					alignItems="center"
+				>
+					<Grid item xs={12}>
+						<PrettoSlider
+							min={0}
+							max={100}
+							value={played * 100}
+							// ValueLabelComponent={(props) => (
+							// 	<ValueLabelComponent {...props} value={elapsedTime} />
+							// )}
+							valueLabelDisplay="off"
+							onChange={onSeek}
+							onMouseDown={onSeekMouseDown}
+							onChangeCommitted={onSeekMouseUp}
+						/>
+					</Grid>
+
+					<Grid item>
+						<Grid container alignItems="center" direction="row">
+							<IconButton onClick={onPlayPause} className={classes.bottomIcons}>
+								{playing ? (
+									<Pause fontSize="small" />
+								) : (
+									<PlayArrow fontSize="small" />
+								)}
+							</IconButton>
+
+							<Button
+								onClick={onChangeDisplayFormat}
+								variant="text"
+								style={{ color: "#fff", marginLeft: 16 }}
+							>
+								<Typography>
+									{elapsedTime}/{totalDuration}
+								</Typography>
+							</Button>
+
+							<IconButton onClick={onMute} className={classes.bottomIcons}>
+								{muted ? (
+									<VolumeOff fontSize="small" />
+								) : (
+									<VolumeUp fontSize="small" />
+								)}
+							</IconButton>
+
+							<Slider
+								min={0}
+								max={100}
+								value={volume * 100}
+								className={classes.volumeSlider}
+								onChange={onVolumeChange}
+								onChangeCommitted={onVolumeSeekUp}
+							/>
+						</Grid>
+					</Grid>
+					<Grid item>
+						<Button
+							onClick={handlePopover}
+							variant="text"
+							className={classes.bottomIcons}
+						>
+							<Typography>{playbackRate}X</Typography>
+						</Button>
+
+						<Popover
+							id={id}
+							open={open}
+							anchorEl={anchorEl}
+							onClose={handleClose}
+							anchorOrigin={{
+								vertical: "top",
+								horizontal: "center",
+							}}
+							transformOrigin={{
+								vertical: "bottom",
+								horizontal: "center",
+							}}
+						>
+							<Grid container direction="column-reverse">
+								{[0.5, 1, 1.5, 2].map((rate) => (
+									<Button
+										onClick={() => onPlaybackRateChange(rate)}
+										variant="text"
+										key={rate}
+									>
+										<Typography
+											color={rate === playbackRate ? "secondary" : "primary"}
+										>
+											{rate}
+										</Typography>
+									</Button>
+								))}
+							</Grid>
+						</Popover>
+
+						<IconButton
+							onClick={onToggleFullScreen}
+							className={classes.bottomIcons}
+						>
+							<Fullscreen fontSize="small" />
+						</IconButton>
+					</Grid>
+				</Grid>
+			</div>
+		)
+	}
+)
