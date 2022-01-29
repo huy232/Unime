@@ -60,6 +60,7 @@ function AnimeWatch({ instance }) {
 		played: 0,
 		seeking: false,
 	})
+	const [next, setNext] = useState(null)
 
 	const { playing, muted, volume, playbackRate, played, seeking } = state
 
@@ -165,6 +166,10 @@ function AnimeWatch({ instance }) {
 				})
 				.then(async (response) => {
 					const mainId = response.data.data.id
+					const numIndex = Number(index)
+					if (response.data.data.episodes[numIndex + 1] !== undefined) {
+						setNext(numIndex + 1)
+					} else setNext(null)
 					setTitle(response.data.data.name)
 					setInfo(response.data.data.episodes)
 
@@ -187,7 +192,7 @@ function AnimeWatch({ instance }) {
 		return () => {
 			source.cancel()
 		}
-	}, [])
+	}, [index])
 
 	return (
 		<>
@@ -235,6 +240,7 @@ function AnimeWatch({ instance }) {
 							elapsedTime={elapsedTime}
 							totalDuration={totalDuration}
 							onChangeDisplayFormat={handleChangeDisplayFormat}
+							next={next}
 						/>
 					</div>
 				</Container>

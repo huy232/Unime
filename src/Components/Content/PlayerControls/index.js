@@ -135,6 +135,7 @@ export default forwardRef(
 			elapsedTime,
 			totalDuration,
 			onChangeDisplayFormat,
+			next,
 		},
 		ref
 	) => {
@@ -154,6 +155,10 @@ export default forwardRef(
 		}
 		const open = Boolean(anchorEl)
 		const id = open ? "playbackrate-popover" : undefined
+
+		const handleNext = () => {
+			navigate(`?index=${next}`)
+		}
 
 		return (
 			<div className={classes.controlsWrapper} ref={ref}>
@@ -177,7 +182,7 @@ export default forwardRef(
 							Quay lại
 						</Button>
 					</Grid>
-					<Grid item>
+					<Grid item style={{ textAlign: "end" }}>
 						<Typography
 							variant="h5"
 							style={{ color: "white", textAlign: "right" }}
@@ -187,6 +192,21 @@ export default forwardRef(
 						<Typography variant="h6" style={{ color: "white" }}>
 							{currentEpisodeName}
 						</Typography>
+						{next ? (
+							<Button
+								variant="contained"
+								style={{
+									backgroundColor: "rgba(255,0,0,0.4)",
+									color: "white",
+								}}
+								className="go-next-button"
+								onClick={() => handleNext()}
+							>
+								Tập tới
+							</Button>
+						) : (
+							""
+						)}
 					</Grid>
 				</Grid>
 
@@ -293,7 +313,7 @@ export default forwardRef(
 							<Typography>{playbackRate}X</Typography>
 						</Button>
 
-						<Menu
+						<Popover
 							id={id}
 							open={open}
 							anchorEl={anchorEl}
@@ -322,7 +342,7 @@ export default forwardRef(
 									</Button>
 								))}
 							</Grid>
-						</Menu>
+						</Popover>
 
 						<IconButton
 							onClick={onToggleFullScreen}
