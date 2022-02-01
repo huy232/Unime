@@ -21,6 +21,14 @@ overflow: none !important
     align-items: center
 }
 
+.row-anime{
+    margin-left: 0!important;
+}
+
+.row-anime > .col {
+    margin-top: 20px
+}
+
 @media screen and (max-width: 992px){
     .card-body{
         min-height: 4.7rem
