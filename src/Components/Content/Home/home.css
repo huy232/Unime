@@ -485,13 +485,24 @@ h1, .h5{
     }
 
     .character-title{
-      width: 130px!important;
       text-align:center!important
     }
 
     .col-3{
       padding-right: 0!important;
       padding-left: 0!important;
+    }
+    
+    .info-character-wrapper{
+      display: flex;
+      flex-direction:column
+    }
+
+    .character-slider{
+      width: 100%;
+    }
+    .character-title{
+      display: block
     }
     
   }
