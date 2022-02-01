@@ -1,11 +1,9 @@
 
 .video-js.vjs-fluid{
+    padding-top:0;
     height: 100vh!important
 }
 
-.vjs_video_3-dimensions.vjs-fluid{
-    padding-top:0
-}
 
 .video-js .vjs-play-progress{
     background-color: #d95656!important
