@@ -462,6 +462,15 @@ h1, .h5{
   }
   
   @media screen and (max-width: 500px) {
+    .flex-mobile{
+      padding-right: 0!important;
+      padding-left: 0!important
+    }
+
+    .flex-responsive{
+      margin: 0!important
+    }
+
     .skeleton-thumbnail {
         max-height: 142px
     }
@@ -469,6 +478,22 @@ h1, .h5{
     .character-slider{
       margin-right: 185px !important
     }
+
+    .character-slider img{
+      width: 80px!important;
+      height: 120px!important;
+    }
+
+    .character-title{
+      width: 130px!important;
+      text-align:center!important
+    }
+
+    .col-3{
+      padding-right: 0!important;
+      padding-left: 0!important;
+    }
+    
   }
 
 
@@ -478,6 +503,7 @@ h1, .h5{
         max-height: auto;
       }
   }
+
 
   
 
