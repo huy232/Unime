@@ -28,7 +28,9 @@ function AnimeInfo({ instance }) {
 	const [videoUrl, setVideoUrl] = useState("")
 	const [loading, setLoading] = useState(true)
 	const [episodeList, setEpisodeList] = useState([])
+	const [specialEpisodeList, setSpecialEpisodeList] = useState([])
 	const [selectedChunk, setSelectedChunk] = useState(0)
+	const [selectedSpecialChunk, setSelectedSpecialChunk] = useState(0)
 
 	useEffect(() => {
 		const CancelToken = axios.CancelToken
@@ -54,13 +56,20 @@ function AnimeInfo({ instance }) {
 					}
 
 					const episodeListChunk = []
-
+					const specialEpisodeListChunk = []
 					while (response.data.data.episodes.length) {
 						episodeListChunk.push(response.data.data.episodes.splice(0, 12))
 					}
+					if (response.data.data?.special_episodes.length > 0) {
+						while (response.data.data.special_episodes.length) {
+							specialEpisodeListChunk.push(
+								response.data.data.special_episodes.splice(0, 12)
+							)
+						}
+					}
 
 					setEpisodeList(episodeListChunk)
-
+					setSpecialEpisodeList(specialEpisodeListChunk)
 					setLoading(false)
 				})
 				.catch((thrown) => {
@@ -83,6 +92,9 @@ function AnimeInfo({ instance }) {
 		}
 	}
 
+	const handleSpecialEpisodeClick = (specialEpisodeId) => {
+		navigate(`/watch/${info.animeSlug}?specialid=${specialEpisodeId}`)
+	}
 	return (
 		<>
 			<div className="banner-anime-overlay">
@@ -425,6 +437,105 @@ function AnimeInfo({ instance }) {
 								</Row>
 							</div>
 						</div>
+
+						{specialEpisodeList.length > 0 ? (
+							<div
+								className="special-episode-wrapper"
+								style={{ marginTop: "46px" }}
+							>
+								<div className="episode-list">
+									<h4>DANH SÁCH TẬP ĐIỂM TÂM</h4>
+									<Swiper
+										slidesPerView="auto"
+										className="swiper-container"
+										navigation={false}
+										pagination={{
+											type: "fraction",
+										}}
+									>
+										{specialEpisodeList.map((episodeChunk, i) => (
+											<SwiperSlide
+												onClick={() => {
+													setSelectedSpecialChunk(i)
+												}}
+												key={i}
+												style={{
+													width: "160px",
+												}}
+											>
+												<li
+													className="episode-chunk"
+													style={
+														selectedSpecialChunk === i
+															? {
+																	color: "black",
+																	backgroundColor: "white",
+																	borderRadius: "8px",
+																	transition: "all 0.4s linear",
+															  }
+															: {}
+													}
+												>
+													{`${i}`}
+												</li>
+											</SwiperSlide>
+										))}
+									</Swiper>
+								</div>
+								<div
+									id="spacer"
+									style={{ width: "100%", height: "165px" }}
+								></div>
+								<div className="episode-list-detail">
+									<Row
+										xs={1}
+										sm={2}
+										md={3}
+										lg={4}
+										className="w-100 g-4 episode-anime-row"
+									>
+										{specialEpisodeList[selectedSpecialChunk]?.map(
+											(eachEpisode, i) => (
+												<Col key={i}>
+													<Card
+														onClick={() =>
+															handleSpecialEpisodeClick(eachEpisode.id)
+														}
+													>
+														<div className="card-container">
+															<Card.Img
+																variant="top"
+																src={
+																	eachEpisode?.thumbnail_medium ||
+																	eachEpisode?.thumbnail_small
+																}
+															/>
+															<div className="overlay-card">
+																<a className="icon">
+																	{<BsFillPlayFill size={40} />}
+																</a>
+															</div>
+														</div>
+														<Card.Body>
+															<Card.Title>
+																<TextTruncate
+																	line={2}
+																	element="span"
+																	truncateText="…"
+																	text={eachEpisode?.full_name}
+																/>
+															</Card.Title>
+														</Card.Body>
+													</Card>
+												</Col>
+											)
+										)}
+									</Row>
+								</div>
+							</div>
+						) : (
+							""
+						)}
 					</div>
 				</div>
 			</div>

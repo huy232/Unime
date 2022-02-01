@@ -2,10 +2,9 @@ import { useEffect, useState } from "react"
 import { useParams, useNavigate } from "react-router-dom"
 import axios from "axios"
 import { Card, Row, Col } from "react-bootstrap"
-import { debounce } from "../../../Utilities/debounce"
 import TextTruncate from "react-text-truncate"
-import Skeleton from "@mui/material/Skeleton"
 import { BsFillPlayFill } from "react-icons/bs"
+import "./search.css"
 
 function Search({ instance }) {
 	const { searchSlug } = useParams()
@@ -47,7 +46,7 @@ function Search({ instance }) {
 			>
 				<h1 style={{ display: "inline-block" }}>TÌM KIẾM</h1>
 			</div>
-			<Row xs={1} sm={2} md={3} lg={4}>
+			<Row xs={1} sm={2} md={3} lg={4} className="search-anime-row">
 				{searchData.map((anime) => (
 					<Col key={anime.slug}>
 						<Card onClick={() => handleGetSlug(anime.slug)}>

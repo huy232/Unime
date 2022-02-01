@@ -159,7 +159,22 @@ li.episode-chunk:hover{
     .info-box{
         flex-direction: column !important 
     }
-
+    .detail-cover-info > div {
+        color: white;
+        max-width: none!important
+    }
+    .detail-cover-info{
+        text-align: center
+    }
+    .anime-title{
+        text-align: center;
+    }
+    .bottom-detail{
+        text-align:center
+    }
+    .info-detail{
+        margin-left: 0
+    }
 }
 
 @media screen and (max-width: 768px){

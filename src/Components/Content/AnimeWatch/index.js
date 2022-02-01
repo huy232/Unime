@@ -12,7 +12,7 @@ function AnimeWatch({ instance }) {
 	const { anime } = useParams()
 	const queryParams = new URLSearchParams(window.location.search)
 	const index = queryParams.get("index")
-
+	const specialid = queryParams.get("specialid")
 	const [info, setInfo] = useState([])
 	const [titleAnime, setTitleAnime] = useState("")
 	const [currentEpisodeName, setCurrentEpisodeName] = useState("")
@@ -30,20 +30,33 @@ function AnimeWatch({ instance }) {
 				})
 				.then(async (response) => {
 					const mainId = response.data.data.id
-					const numIndex = Number(index)
 					setTitleAnime(response.data.data.name)
 					setInfo(response.data.data.episodes)
 
-					await instance
-						.get(`/anime/${mainId}/episodes/${numIndex}`, {
-							cancelToken: source.token,
-						})
-						.then((res) => {
-							// VIDEO URL IS HERE
-							const videoUrlResponse = res.data.data.videoSource
-							setVideoUrl(videoUrlResponse)
-							setCurrentEpisodeName(res.data.data.full_name)
-						})
+					if (index !== null) {
+						const numIndex = Number(index)
+						await instance
+							.get(`/anime/${mainId}/episodes/${numIndex}`, {
+								cancelToken: source.token,
+							})
+							.then((res) => {
+								// VIDEO URL IS HERE
+								const videoUrlResponse = res.data.data.videoSource
+								setVideoUrl(videoUrlResponse)
+								setCurrentEpisodeName(res.data.data.full_name)
+							})
+					}
+					if (specialid !== null) {
+						const numSpecialId = Number(specialid)
+						await instance
+							.get(`/specialanime/${mainId}/${numSpecialId}`)
+							.then((res) => {
+								// VIDEO URL IS HERE
+								const videoUrlResponse = res.data.data.videoSource
+								setVideoUrl(videoUrlResponse)
+								setCurrentEpisodeName(res.data.data.full_name)
+							})
+					}
 				})
 				.catch((thrown) => {
 					if (axios.isCancel(thrown)) return
