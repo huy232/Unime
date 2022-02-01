@@ -380,6 +380,36 @@ h1, .h5{
          object-fit: cover;
     }
 
+    .flex-responsive{
+      flex-direction: column;
+      margin: 0 auto
+    }
+
+    .flex-mobile{
+      width: 100% !important
+    }
+    
+    .col-9 .card{
+      border-right: 0px!important;
+      padding-right: 0!important;
+      -o-border-image: none!important;
+         border-image: none!important
+
+    }
+
+    .col-9{
+      padding: 0
+    }
+    
+    .col-3{
+      width: 100% !important;
+      border-left: 0px!important;
+      -o-border-image:none!important;
+         border-image:none!important;
+         margin-top: 30px!important
+    }
+    
+
   }
 
   @media screen and (min-width: 1000px) {
@@ -421,6 +451,13 @@ h1, .h5{
     }
     .character-title{
       padding-left: 0!important
+    }
+    .flex-mobile{
+      padding-right: 0!important
+    }
+    .col-3{
+      text-align:center;
+      padding-right: 0!important
     }
   }
   

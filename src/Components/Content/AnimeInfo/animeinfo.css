@@ -161,3 +161,41 @@ li.episode-chunk:hover{
     }
 
 }
+
+@media screen and (max-width: 768px){
+    .cover-wrapper{
+        min-width: 0 !important
+    }
+    .info-detail{
+        margin-left: 0
+    }
+    .bottom-detail{
+        flex-direction: column
+    }
+    .bottom-detail > div:not(:first-child):not(:last-child){
+        margin-left: 0
+    }
+    .bottom-detail div:is(:last-child){
+        margin-left: 0;
+        margin-right: 0
+    }
+    .youtube-link{
+        width: 100%
+    }
+
+    .youtube-link div {
+        width: auto!important;
+        height: auto!important;
+    }
+
+    .episode-anime-row > .col{
+        padding: 0;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .episode-anime-row{
+        margin-left: 0!important;
+        margin-right: 0!important
+    }
+}

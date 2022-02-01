@@ -115,7 +115,7 @@ function AnimeGenre({ instance }) {
 						</Row>
 					}
 				>
-					<Row xs={1} sm={2} md={3} lg={4} className="w-100 w-full">
+					<Row xs={1} sm={2} md={3} lg={4} className="w-100 w-full row-anime">
 						{animeList.map((anime) => (
 							<Col key={anime?.slug}>
 								<Card onClick={() => handleGetSlug(anime.slug)}>

@@ -385,7 +385,13 @@ function AnimeInfo({ instance }) {
 							</div>
 							<div id="spacer" style={{ width: "100%", height: "165px" }}></div>
 							<div className="episode-list-detail">
-								<Row xs={1} sm={2} md={3} lg={4} className="w-100 g-4">
+								<Row
+									xs={1}
+									sm={2}
+									md={3}
+									lg={4}
+									className="w-100 g-4 episode-anime-row"
+								>
 									{episodeList[selectedChunk]?.map((eachEpisode, i) => (
 										<Col key={i}>
 											<Card onClick={() => handleClick(eachEpisode.name)}>

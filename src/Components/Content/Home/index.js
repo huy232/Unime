@@ -339,8 +339,8 @@ function Home({ instance }) {
 				</h1>
 
 				<div className="clearfix"></div>
-				<div className="row w-100">
-					<div className="col-9">
+				<div className="row w-100 flex-responsive">
+					<div className="col-9 flex-mobile">
 						<Card>
 							<Card.Title className="description-title">
 								{!randomAnime?.AnimeName ? (

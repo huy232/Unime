@@ -90,3 +90,13 @@
 
 @media screen and (max-width: 992px) {
 }
+
+@media screen and (max-width: 768px){
+    .dropdown-menu{
+        min-width: 0rem!important
+    }
+    .dropdown-menu > a {
+        font-size: 0.7rem;
+        width: 50%!important;
+    }
+}
