@@ -437,6 +437,12 @@ h1, .h5{
   }
 
   @media screen and (max-width: 768px) {
+    .flex-responsive{
+      margin: 0
+    }
+    .col-9{
+      padding: 0
+    }
     .skeleton-thumbnail {
         max-height: 222px
     }
@@ -503,6 +509,13 @@ h1, .h5{
     }
     .character-title{
       display: block
+    }
+
+    .info-today{
+      width: 100%
+    }
+    .release-date{
+      width: 100% !important
     }
     
   }
