@@ -15,6 +15,28 @@
   background-color: rgba(255,0,0,1) !important
 }
 
+.back-arrow{
+  top: 0;
+  left: 0;
+  position: fixed;
+}
+
+.back-arrow:hover{
+
+  transition: 0.3s;
+  color: white
+}
+
+.plyr {
+  min-height: 100vh;
+  max-height: 100vh
+}
+
+video {
+  min-height: 100vh;
+  max-height: 100vh
+}
+
 
 @media screen and (max-width: 640px) {
   .MuiTypography-root{

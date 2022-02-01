@@ -757,6 +757,7 @@ function Home({ instance }) {
 								</span>
 							</div>
 						</div>
+						<div className="extra-info-box"></div>
 					</div>
 				</div>
 			</div>
