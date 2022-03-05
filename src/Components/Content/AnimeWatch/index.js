@@ -19,18 +19,6 @@ function AnimeWatch({ instance }) {
 
 	const [videoUrl, setVideoUrl] = useState("")
 
-	const handleClickEpisode = (name) => {
-		if (name > 0) {
-			navigate(`?index=${name - 1}`)
-		} else {
-			navigate(`?index=${name}`)
-		}
-	}
-
-	const handleGoBack = () => {
-		navigate(`/info/${anime}`)
-	}
-
 	useEffect(() => {
 		const CancelToken = axios.CancelToken
 		const source = CancelToken.source()
@@ -96,34 +84,6 @@ function AnimeWatch({ instance }) {
 								info={info}
 								index={index}
 							/>
-							{index !== null ? (
-								<>
-									<div className="episode-list-bracket">
-										<h4>DANH SÁCH TẬP PHIM</h4>
-										<div
-											className="episodes-bracket"
-											style={{ overflow: "scroll", maxHeight: "95vh" }}
-										>
-											{info.map((episode) => (
-												<button
-													onClick={() => handleClickEpisode(episode.name)}
-													key={episode.name}
-												>
-													{episode.full_name}
-												</button>
-											))}
-										</div>
-									</div>
-									<div
-										className="back-button-episode"
-										style={{ position: "absolute", zIndex: "2" }}
-									>
-										<button onClick={() => handleGoBack()}>Quay lại</button>
-									</div>
-								</>
-							) : (
-								""
-							)}
 						</>
 					) : (
 						""
