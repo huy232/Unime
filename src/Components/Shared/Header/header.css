@@ -2,6 +2,10 @@
     transition: 0.6s
 }
 
+.me-auto{
+    align-items: center;
+}
+
 .navbar-brand{
     font-size: 32px;
     padding: 10px 20px;

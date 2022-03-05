@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/anchor-has-content */
+/* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/alt-text */
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
@@ -7,7 +9,7 @@ import {
 	BsStopwatchFill,
 	BsTv,
 } from "react-icons/bs"
-import { Card, CardGroup } from "react-bootstrap"
+import { Card, CardGroup, Table } from "react-bootstrap"
 import Skeleton from "@mui/material/Skeleton"
 import axios from "axios"
 import TextTruncate from "react-text-truncate"
@@ -761,6 +763,29 @@ function Home({ instance }) {
 					</div>
 				</div>
 			</div>
+			{/* <div className="ranking-list" style={{ marginTop: "44px" }}>
+				<div className="ranking-header">
+					<h1>BẢNG XẾP HẠNG</h1>
+				</div>
+				<div className="ranking-detail">
+					<Table striped bordered hover>
+						<thead>
+							<tr>
+								<th>Vị trí</th>
+								<th>Anime</th>
+								<th>Lượt xem</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>1</td>
+								<td>Mark</td>
+								<td>Otto</td>
+							</tr>
+						</tbody>
+					</Table>
+				</div>
+			</div> */}
 		</>
 	)
 }

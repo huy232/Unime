@@ -27,9 +27,38 @@
   color: white
 }
 
-.plyr {
-  min-height: 100vh;
-  max-height: 100vh
+.video-js.vjs-fluid{
+  width: 80% !important
+}
+
+.episode-list-bracket{
+  position: inherit;
+  width: 20% !important
+}
+
+.episode-list-bracket h4{
+  text-align: center;
+  font-size: 1rem;
+  color: white
+}
+
+.episodes-bracket button{
+  border-radius: 5px;
+  border: none;
+  color: white;
+  background-color: black;
+  width: 100%;
+  margin-top: 10px;
+  text-align: left
+}
+
+.back-button-episode button{
+  color: white;
+  background-color: rgba(255, 255,255, 0.2);
+  border-radius: 5px;
+  border: none;
+  margin-top: 5px;
+  margin-left: 5px
 }
 
 video {
