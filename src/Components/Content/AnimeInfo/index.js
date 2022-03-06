@@ -21,7 +21,6 @@ SwiperCore.use([Pagination, Navigation])
 // ---------------------------
 
 function AnimeInfo({ instance }) {
-	const navigate = useNavigate()
 	const { anime } = useParams()
 
 	const [info, setInfo] = useState({})
@@ -67,7 +66,7 @@ function AnimeInfo({ instance }) {
 							)
 						}
 					}
-
+					document.title = response.data.data?.name
 					setEpisodeList(episodeListChunk)
 					setSpecialEpisodeList(specialEpisodeListChunk)
 					setLoading(false)

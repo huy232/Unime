@@ -16,6 +16,7 @@ import axios from "axios"
 import TextTruncate from "react-text-truncate"
 import "./home.css"
 import ShowMoreText from "react-show-more-text"
+import useDocumentTitle from "../DocumentTitleHook"
 // SWIPER
 import { Swiper, SwiperSlide } from "swiper/react"
 
@@ -105,6 +106,8 @@ function Home({ instance }) {
 			source.cancel()
 		}
 	}, [])
+
+	useDocumentTitle("Trang chủ - Mirai")
 
 	return (
 		<>

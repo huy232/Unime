@@ -8,14 +8,11 @@ import VideoPlayer from "../VideoJsHook/index"
 import "./animewatch.css"
 
 function AnimeWatch({ instance }) {
-	const navigate = useNavigate()
 	const { anime } = useParams()
 	const queryParams = new URLSearchParams(window.location.search)
 	const index = queryParams.get("index")
 	const specialid = queryParams.get("specialid")
 	const [info, setInfo] = useState([])
-	const [titleAnime, setTitleAnime] = useState("")
-	const [currentEpisodeName, setCurrentEpisodeName] = useState("")
 
 	const [videoUrl, setVideoUrl] = useState("")
 
@@ -30,7 +27,6 @@ function AnimeWatch({ instance }) {
 				})
 				.then(async (response) => {
 					const mainId = response.data.data.id
-					setTitleAnime(response.data.data.name)
 					setInfo(response.data.data.episodes)
 
 					if (index !== null) {
@@ -43,7 +39,6 @@ function AnimeWatch({ instance }) {
 								// VIDEO URL IS HERE
 								const videoUrlResponse = res.data.data.videoSource
 								setVideoUrl(videoUrlResponse)
-								setCurrentEpisodeName(res.data.data.full_name)
 							})
 					}
 					if (specialid !== null) {
@@ -54,7 +49,6 @@ function AnimeWatch({ instance }) {
 								// VIDEO URL IS HERE
 								const videoUrlResponse = res.data.data.videoSource
 								setVideoUrl(videoUrlResponse)
-								setCurrentEpisodeName(res.data.data.full_name)
 							})
 					}
 				})

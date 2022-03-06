@@ -7,11 +7,11 @@ import { Card, Row, Col } from "react-bootstrap"
 import TextTruncate from "react-text-truncate"
 import LoadingSpin from "react-loading-spin"
 import { BsFillPlayFill } from "react-icons/bs"
+import useDocumentTitle from "../DocumentTitleHook"
 
 const PAGE_NUMBER = 1
 
 function AnimeGenre({ instance }) {
-	const navigate = useNavigate()
 	const { genre } = useParams()
 
 	const [animeList, setAnimeList] = useState([])
@@ -76,6 +76,7 @@ function AnimeGenre({ instance }) {
 		<>
 			<div>
 				<h1>ANIME {translateGenreAnime}</h1>
+				{useDocumentTitle(`Thể loại ${translateGenreAnime} - Mirai`)}
 			</div>
 			<div className="anime-list">
 				<InfiniteScroll

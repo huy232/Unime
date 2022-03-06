@@ -6,13 +6,12 @@ import { Card, Row, Col } from "react-bootstrap"
 import TextTruncate from "react-text-truncate"
 import { BsFillPlayFill } from "react-icons/bs"
 import LoadingSpin from "react-loading-spin"
+import useDocumentTitle from "../DocumentTitleHook"
 import "./animelist.css"
 
 const PAGE_NUMBER = 1
 
 function AnimeList({ instance }) {
-	const navigate = useNavigate()
-
 	const [animeList, setAnimeList] = useState([])
 	const [page, setPage] = useState(PAGE_NUMBER)
 	const [totalPage, setTotalPage] = useState(91)
@@ -49,6 +48,8 @@ function AnimeList({ instance }) {
 			source.cancel()
 		}
 	}, [page])
+
+	useDocumentTitle("Tất cả Anime - Mirai")
 
 	const scrollThreshold = () => {
 		const newPage = page + 1
