@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/alt-text */
 import { useEffect, useState } from "react"
-import { useParams, useNavigate } from "react-router-dom"
+import { useParams, useNavigate, Link } from "react-router-dom"
 import Skeleton from "@mui/material/Skeleton"
 import axios from "axios"
 import ReactPlayer from "react-player"
@@ -83,18 +83,6 @@ function AnimeInfo({ instance }) {
 			source.cancel()
 		}
 	}, [])
-
-	const handleClick = (index) => {
-		if (index > 0) {
-			navigate(`/watch/${info.animeSlug}?index=${index - 1}`)
-		} else {
-			navigate(`/watch/${info.animeSlug}?index=${index}`)
-		}
-	}
-
-	const handleSpecialEpisodeClick = (specialEpisodeId) => {
-		navigate(`/watch/${info.animeSlug}?specialid=${specialEpisodeId}`)
-	}
 	return (
 		<>
 			<div className="banner-anime-overlay">
@@ -406,32 +394,71 @@ function AnimeInfo({ instance }) {
 								>
 									{episodeList[selectedChunk]?.map((eachEpisode, i) => (
 										<Col key={i}>
-											<Card onClick={() => handleClick(eachEpisode.name)}>
-												<div className="card-container">
-													<Card.Img
-														variant="top"
-														src={
-															eachEpisode?.thumbnail_medium ||
-															eachEpisode?.thumbnail_small
-														}
-													/>
-													<div className="overlay-card">
-														<a className="icon">
-															{<BsFillPlayFill size={40} />}
-														</a>
-													</div>
-												</div>
-												<Card.Body>
-													<Card.Title>
-														<TextTruncate
-															line={2}
-															element="span"
-															truncateText="…"
-															text={eachEpisode?.full_name}
-														/>
-													</Card.Title>
-												</Card.Body>
-											</Card>
+											<nav>
+												{eachEpisode.name > 0 ? (
+													<Link
+														to={`/watch/${anime}?index=${eachEpisode.name - 1}`}
+													>
+														<Card>
+															<div className="card-container">
+																<Card.Img
+																	variant="top"
+																	src={
+																		eachEpisode?.thumbnail_medium ||
+																		eachEpisode?.thumbnail_small
+																	}
+																/>
+																<div className="overlay-card">
+																	<div className="icon">
+																		{<BsFillPlayFill size={40} />}
+																	</div>
+																</div>
+															</div>
+															<Card.Body>
+																<Card.Title>
+																	<TextTruncate
+																		line={2}
+																		element="span"
+																		truncateText="…"
+																		text={eachEpisode?.full_name}
+																	/>
+																</Card.Title>
+															</Card.Body>
+														</Card>
+													</Link>
+												) : (
+													<Link
+														to={`/watch/${anime}?index=${eachEpisode.name}`}
+													>
+														<Card>
+															<div className="card-container">
+																<Card.Img
+																	variant="top"
+																	src={
+																		eachEpisode?.thumbnail_medium ||
+																		eachEpisode?.thumbnail_small
+																	}
+																/>
+																<div className="overlay-card">
+																	<div className="icon">
+																		{<BsFillPlayFill size={40} />}
+																	</div>
+																</div>
+															</div>
+															<Card.Body>
+																<Card.Title>
+																	<TextTruncate
+																		line={2}
+																		element="span"
+																		truncateText="…"
+																		text={eachEpisode?.full_name}
+																	/>
+																</Card.Title>
+															</Card.Body>
+														</Card>
+													</Link>
+												)}
+											</nav>
 										</Col>
 									))}
 								</Row>
@@ -497,36 +524,38 @@ function AnimeInfo({ instance }) {
 										{specialEpisodeList[selectedSpecialChunk]?.map(
 											(eachEpisode, i) => (
 												<Col key={i}>
-													<Card
-														onClick={() =>
-															handleSpecialEpisodeClick(eachEpisode.id)
-														}
-													>
-														<div className="card-container">
-															<Card.Img
-																variant="top"
-																src={
-																	eachEpisode?.thumbnail_medium ||
-																	eachEpisode?.thumbnail_small
-																}
-															/>
-															<div className="overlay-card">
-																<a className="icon">
-																	{<BsFillPlayFill size={40} />}
-																</a>
-															</div>
-														</div>
-														<Card.Body>
-															<Card.Title>
-																<TextTruncate
-																	line={2}
-																	element="span"
-																	truncateText="…"
-																	text={eachEpisode?.full_name}
-																/>
-															</Card.Title>
-														</Card.Body>
-													</Card>
+													<nav>
+														<Link
+															to={`/watch/${anime}?specialid=${eachEpisode.id}`}
+														>
+															<Card>
+																<div className="card-container">
+																	<Card.Img
+																		variant="top"
+																		src={
+																			eachEpisode?.thumbnail_medium ||
+																			eachEpisode?.thumbnail_small
+																		}
+																	/>
+																	<div className="overlay-card">
+																		<div className="icon">
+																			{<BsFillPlayFill size={40} />}
+																		</div>
+																	</div>
+																</div>
+																<Card.Body>
+																	<Card.Title>
+																		<TextTruncate
+																			line={2}
+																			element="span"
+																			truncateText="…"
+																			text={eachEpisode?.full_name}
+																		/>
+																	</Card.Title>
+																</Card.Body>
+															</Card>
+														</Link>
+													</nav>
 												</Col>
 											)
 										)}

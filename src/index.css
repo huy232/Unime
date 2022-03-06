@@ -21,7 +21,9 @@ html, body{
   min-height: 100vh
 }
 
-
+a {
+  text-decoration: none !important;
+}
 
 :root {
   --code-color: #FF6C5C;

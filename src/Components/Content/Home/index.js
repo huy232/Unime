@@ -9,6 +9,7 @@ import {
 	BsStopwatchFill,
 	BsTv,
 } from "react-icons/bs"
+import { Link } from "react-router-dom"
 import { Card, CardGroup, Table } from "react-bootstrap"
 import Skeleton from "@mui/material/Skeleton"
 import axios from "axios"
@@ -105,10 +106,6 @@ function Home({ instance }) {
 		}
 	}, [])
 
-	const handleGetSlug = (slug) => {
-		navigate(`/info/${slug}`)
-	}
-
 	return (
 		<>
 			<Swiper
@@ -142,22 +139,25 @@ function Home({ instance }) {
 							</SwiperSlide>
 					  ))
 					: sliders.map((slider) => (
-							<SwiperSlide
-								key={slider?.slug}
-								onClick={() => handleGetSlug(slider?.slug)}
-							>
-								<div className="inner">
-									<img src={slider?.thumbnail} alt={slider?.name} />
-									<div className="overlay">
-										<a className="icon">{<BsFillPlayFill size={70} />}</a>
-									</div>
-								</div>
-								<div className="bottom-left">
-									<h3>{slider?.name}</h3>
-									<p>
-										<BsEyeFill /> {slider?.views}
-									</p>
-								</div>
+							<SwiperSlide key={slider?.slug}>
+								<nav>
+									<Link to={`/info/${slider?.slug}`}>
+										<div className="inner">
+											<img src={slider?.thumbnail} alt={slider?.name} />
+											<div className="overlay">
+												<div className="icon">
+													{<BsFillPlayFill size={70} />}
+												</div>
+											</div>
+										</div>
+										<div className="bottom-left">
+											<h3>{slider?.name}</h3>
+											<p>
+												<BsEyeFill /> {slider?.views}
+											</p>
+										</div>
+									</Link>
+								</nav>
 							</SwiperSlide>
 					  ))}
 			</Swiper>
@@ -205,51 +205,54 @@ function Home({ instance }) {
 									</SwiperSlide>
 							  ))
 							: newAnime.map((anime) => (
-									<SwiperSlide
-										key={anime?.slug}
-										onClick={() => handleGetSlug(anime?.slug)}
-									>
-										<Card>
-											<div className="card-container">
-												<Card.Img variant="top" src={anime?.thumbnail} />
-												<div className="overlay-card">
-													<a className="icon">{<BsFillPlayFill size={40} />}</a>
-												</div>
-											</div>
+									<SwiperSlide key={anime?.slug}>
+										<nav>
+											<Link to={`info/${anime?.slug}`}>
+												<Card>
+													<div className="card-container">
+														<Card.Img variant="top" src={anime?.thumbnail} />
+														<div className="overlay-card">
+															<div className="icon">
+																{<BsFillPlayFill size={40} />}
+															</div>
+														</div>
+													</div>
 
-											<Card.Body
-												style={{
-													display: "flex",
-													flexDirection: "column",
-													justifyContent: "space-between",
-												}}
-											>
-												<Card.Title>
-													<TextTruncate
-														line={2}
-														element="span"
-														truncateText="…"
-														text={anime?.name}
-													/>
-												</Card.Title>
-												<Card.Text
-													variant="bottom"
-													style={{
-														backgroundColor: "rgba(0, 0, 0, 0.3)",
-														borderRadius: "10px",
-														padding: "5px",
-													}}
-												>
-													<TextTruncate
-														line={2}
-														element="span"
-														truncateText="..."
-														text={anime?.newestEpisode.name}
-														style={{ color: "#b3b300" }}
-													/>
-												</Card.Text>
-											</Card.Body>
-										</Card>
+													<Card.Body
+														style={{
+															display: "flex",
+															flexDirection: "column",
+															justifyContent: "space-between",
+														}}
+													>
+														<Card.Title>
+															<TextTruncate
+																line={2}
+																element="span"
+																truncateText="…"
+																text={anime?.name}
+															/>
+														</Card.Title>
+														<Card.Text
+															variant="bottom"
+															style={{
+																backgroundColor: "rgba(0, 0, 0, 0.3)",
+																borderRadius: "10px",
+																padding: "5px",
+															}}
+														>
+															<TextTruncate
+																line={2}
+																element="span"
+																truncateText="..."
+																text={anime?.newestEpisode.name}
+																style={{ color: "#b3b300" }}
+															/>
+														</Card.Text>
+													</Card.Body>
+												</Card>
+											</Link>
+										</nav>
 									</SwiperSlide>
 							  ))}
 					</CardGroup>
@@ -299,29 +302,32 @@ function Home({ instance }) {
 									</SwiperSlide>
 							  ))
 							: rankToday.map((anime) => (
-									<SwiperSlide
-										key={anime?.slug}
-										onClick={() => handleGetSlug(anime?.slug)}
-									>
-										<Card>
-											<div className="card-container">
-												<Card.Img variant="top" src={anime?.thumbnail} />
-												<div className="overlay-card">
-													<a className="icon">{<BsFillPlayFill size={40} />}</a>
-												</div>
-											</div>
+									<SwiperSlide key={anime?.slug}>
+										<nav>
+											<Link to={`info/${anime?.slug}`}>
+												<Card>
+													<div className="card-container">
+														<Card.Img variant="top" src={anime?.thumbnail} />
+														<div className="overlay-card">
+															<div className="icon">
+																{<BsFillPlayFill size={40} />}
+															</div>
+														</div>
+													</div>
 
-											<Card.Body>
-												<Card.Title>
-													<TextTruncate
-														line={2}
-														element="span"
-														truncateText="…"
-														text={anime?.name}
-													/>
-												</Card.Title>
-											</Card.Body>
-										</Card>
+													<Card.Body>
+														<Card.Title>
+															<TextTruncate
+																line={2}
+																element="span"
+																truncateText="…"
+																text={anime?.name}
+															/>
+														</Card.Title>
+													</Card.Body>
+												</Card>
+											</Link>
+										</nav>
 									</SwiperSlide>
 							  ))}
 					</CardGroup>
@@ -365,16 +371,19 @@ function Home({ instance }) {
 									sx={{ bgcolor: "grey.900" }}
 								/>
 							) : (
-								<Card.Img
-									className="today-banner-card-image"
-									variant="bottom"
-									src={randomAnime?.BannerImg}
-									style={{
-										height: "400px",
-										objectFit: "cover",
-									}}
-									onClick={() => handleGetSlug(randomAnime?.Slug)}
-								/>
+								<nav>
+									<Link to={`/info/${randomAnime?.Slug}`}>
+										<Card.Img
+											className="today-banner-card-image"
+											variant="bottom"
+											src={randomAnime?.BannerImg}
+											style={{
+												height: "400px",
+												objectFit: "cover",
+											}}
+										/>
+									</Link>
+								</nav>
 							)}
 
 							<Card.Body className="description-card">
@@ -590,13 +599,6 @@ function Home({ instance }) {
 									)}
 								</div>
 							</div>
-							{/* {console.log(
-								!done4
-									? "skeleton"
-									: !randomAnime?.CharacterDetail?.length
-									? "skeleton again"
-									: randomAnime.CharacterDetail.length
-							)} */}
 							<div className="character-detail" style={{ marginTop: "20px" }}>
 								{!done4 ? (
 									<Skeleton
@@ -694,23 +696,27 @@ function Home({ instance }) {
 								/>
 							) : (
 								// eslint-disable-next-line jsx-a11y/alt-text
-								<img
-									src={
-										randomAnime?.CoverImg?.large ||
-										randomAnime?.CoverImg?.medium ||
-										randomAnime?.CoverImg?.small
-									}
-									style={{
-										maxWidth: "100%",
-										width: "100%",
-										minHeight: "350px",
-										maxHeight: "500px",
-										objectFit: "cover",
-									}}
-									className="today-cover-image"
-									onClick={() => handleGetSlug(randomAnime?.Slug)}
-								/>
+								<nav>
+									<Link to={`/info/${randomAnime?.Slug}`}>
+										<img
+											src={
+												randomAnime?.CoverImg?.large ||
+												randomAnime?.CoverImg?.medium ||
+												randomAnime?.CoverImg?.small
+											}
+											style={{
+												maxWidth: "100%",
+												width: "100%",
+												minHeight: "350px",
+												maxHeight: "500px",
+												objectFit: "cover",
+											}}
+											className="today-cover-image"
+										/>
+									</Link>
+								</nav>
 							)}
+
 							<div
 								className="title-box"
 								style={{ display: "flex", flexDirection: "column" }}

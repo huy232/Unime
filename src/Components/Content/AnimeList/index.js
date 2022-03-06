@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, Link } from "react-router-dom"
 import InfiniteScroll from "react-infinite-scroll-component"
 import axios from "axios"
 import { Card, Row, Col } from "react-bootstrap"
@@ -55,10 +55,6 @@ function AnimeList({ instance }) {
 		setPage(newPage)
 	}
 
-	const handleGetSlug = (slug) => {
-		navigate(`/info/${slug}`)
-	}
-
 	return (
 		<>
 			<div
@@ -86,28 +82,34 @@ function AnimeList({ instance }) {
 					<Row xs={1} sm={2} md={3} lg={4} className="w-100 w-full row-anime">
 						{animeList.map((anime) => (
 							<Col key={anime.slug}>
-								<Card onClick={() => handleGetSlug(anime.slug)}>
-									<div className="card-container">
-										<Card.Img
-											variant="top"
-											src={anime.thumbnail}
-											fluid="true"
-										/>
-										<div className="overlay-card">
-											<a className="icon">{<BsFillPlayFill size={40} />}</a>
-										</div>
-									</div>
-									<Card.Body>
-										<Card.Title>
-											<TextTruncate
-												line={2}
-												element="span"
-												truncateText="…"
-												text={anime?.name}
-											/>
-										</Card.Title>
-									</Card.Body>
-								</Card>
+								<nav>
+									<Link to={`/info/${anime.slug}`}>
+										<Card>
+											<div className="card-container">
+												<Card.Img
+													variant="top"
+													src={anime.thumbnail}
+													fluid="true"
+												/>
+												<div className="overlay-card">
+													<div className="icon">
+														{<BsFillPlayFill size={40} />}
+													</div>
+												</div>
+											</div>
+											<Card.Body>
+												<Card.Title>
+													<TextTruncate
+														line={2}
+														element="span"
+														truncateText="…"
+														text={anime?.name}
+													/>
+												</Card.Title>
+											</Card.Body>
+										</Card>
+									</Link>
+								</nav>
 								<div className="w-100"></div>
 							</Col>
 						))}
