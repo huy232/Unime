@@ -24,6 +24,7 @@
     "react-fullscreen-loading": "^0.0.4",
     "react-icons": "^4.3.1",
     "react-infinite-scroll-component": "^6.1.0",
+    "react-loading-icons": "^1.0.8",
     "react-loading-skeleton": "^3.0.2",
     "react-loading-spin": "^2.1.9",
     "react-player": "^2.9.0",

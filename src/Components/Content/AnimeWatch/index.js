@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react"
 import { useParams } from "react-router-dom"
 import axios from "axios"
-import { useNavigate } from "react-router-dom"
+import { ThreeDots } from "react-loading-icons"
 import VideoPlayer from "../VideoJsHook/index"
 // import "plyr-react/dist/plyr.css"
 
@@ -80,7 +80,21 @@ function AnimeWatch({ instance }) {
 							/>
 						</>
 					) : (
-						""
+						<div
+							className="loading-request"
+							style={{
+								display: "flex",
+								margin: "0 auto",
+								height: "100vh",
+								flexDirection: "column",
+								justifyContent: "center",
+							}}
+						>
+							<ThreeDots fill="#a30f0f" />
+							<div className="loading-text" style={{ color: "white" }}>
+								Đang tải phim
+							</div>
+						</div>
 					)}
 				</div>
 			</div>
