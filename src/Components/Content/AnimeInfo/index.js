@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/alt-text */
 import { useEffect, useState } from "react"
-import { useParams, useNavigate, Link } from "react-router-dom"
+import { useParams, Link } from "react-router-dom"
 import Skeleton from "@mui/material/Skeleton"
 import axios from "axios"
 import ReactPlayer from "react-player"
@@ -394,9 +394,9 @@ function AnimeInfo({ instance }) {
 									{episodeList[selectedChunk]?.map((eachEpisode, i) => (
 										<Col key={i}>
 											<nav>
-												{eachEpisode.name > 0 ? (
+												{info?.name == "Vua Hải Tặc" ? (
 													<Link
-														to={`/watch/${anime}?index=${eachEpisode.name - 1}`}
+														to={`/watch/${anime}?index=${eachEpisode.name}`}
 													>
 														<Card>
 															<div className="card-container">
@@ -427,7 +427,7 @@ function AnimeInfo({ instance }) {
 													</Link>
 												) : (
 													<Link
-														to={`/watch/${anime}?index=${eachEpisode.name}`}
+														to={`/watch/${anime}?index=${eachEpisode.name - 1}`}
 													>
 														<Card>
 															<div className="card-container">
