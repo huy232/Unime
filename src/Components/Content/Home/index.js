@@ -545,7 +545,7 @@ function Home({ instance }) {
 													}}
 												>
 													{!randomAnime?.EndDate?.day
-														? "Không tìm thấy"
+														? "??"
 														: randomAnime?.EndDate?.day}
 												</div>
 												<span style={{ fontWeight: "700", color: "#FFE227" }}>
@@ -561,7 +561,7 @@ function Home({ instance }) {
 													}}
 												>
 													{!randomAnime?.EndDate?.month
-														? "Không tìm thấy"
+														? "??"
 														: randomAnime?.EndDate?.month}
 												</div>
 												<span style={{ fontWeight: "700", color: "#FFE227" }}>
@@ -577,7 +577,7 @@ function Home({ instance }) {
 													}}
 												>
 													{!randomAnime?.EndDate?.year
-														? "Không tìm thấy"
+														? "????"
 														: randomAnime?.EndDate?.year}
 												</div>
 											</>
