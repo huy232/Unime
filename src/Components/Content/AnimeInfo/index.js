@@ -425,9 +425,40 @@ function AnimeInfo({ instance }) {
 															</Card.Body>
 														</Card>
 													</Link>
-												) : (
+												) : eachEpisode.name > 0 ? (
 													<Link
 														to={`/watch/${anime}?index=${eachEpisode.name - 1}`}
+													>
+														<Card>
+															<div className="card-container">
+																<Card.Img
+																	variant="top"
+																	src={
+																		eachEpisode?.thumbnail_medium ||
+																		eachEpisode?.thumbnail_small
+																	}
+																/>
+																<div className="overlay-card">
+																	<div className="icon">
+																		{<BsFillPlayFill size={40} />}
+																	</div>
+																</div>
+															</div>
+															<Card.Body>
+																<Card.Title>
+																	<TextTruncate
+																		line={2}
+																		element="span"
+																		truncateText="…"
+																		text={eachEpisode?.full_name}
+																	/>
+																</Card.Title>
+															</Card.Body>
+														</Card>
+													</Link>
+												) : (
+													<Link
+														to={`/watch/${anime}?index=${eachEpisode.name}`}
 													>
 														<Card>
 															<div className="card-container">
