@@ -336,465 +336,428 @@ function Home({ instance }) {
 					</CardGroup>
 				</Swiper>
 			</div>
+			{!randomAnime?.BannerImg && !randomAnime?.CoverImg ? (
+				""
+			) : (
+				<div className="today-section" style={{ marginTop: "42px" }}>
+					<h1
+						className="today-h1 "
+						style={{
+							marginBottom: "42px",
+							float: "right",
+							marginRight: "30px",
+						}}
+					>
+						CÓ THỂ BẠN SẼ THÍCH ĐÓ
+					</h1>
 
-			<div className="today-section" style={{ marginTop: "42px" }}>
-				<h1
-					className="today-h1 "
-					style={{
-						marginBottom: "42px",
-						float: "right",
-						marginRight: "30px",
-					}}
-				>
-					CÓ THỂ BẠN SẼ THÍCH ĐÓ
-				</h1>
-
-				<div className="clearfix"></div>
-				<div className="row w-100 flex-responsive">
-					<div className="col-9 flex-mobile">
-						<Card>
-							<Card.Title className="description-title">
-								{!randomAnime?.AnimeName ? (
-									<Skeleton
-										variant="text"
-										animation="wave"
-										sx={{ bgcolor: "grey.900" }}
-									/>
-								) : (
-									randomAnime?.AnimeName?.todayTitle
-								)}
-							</Card.Title>
-
-							{!randomAnime?.BannerImg ? (
-								<Skeleton
-									variant="rectangular"
-									width="100%"
-									height="400px"
-									animation="wave"
-									sx={{ bgcolor: "grey.900" }}
-								/>
-							) : (
-								<nav>
-									<Link to={`/info/${randomAnime?.Slug}`}>
-										<Card.Img
-											className="today-banner-card-image"
-											variant="bottom"
-											src={randomAnime?.BannerImg}
-											style={{
-												height: "400px",
-												objectFit: "cover",
-											}}
-										/>
-									</Link>
-								</nav>
-							)}
-
-							<Card.Body className="description-card">
-								{!randomAnime?.Description ||
-								randomAnime?.Description.trim() === "" ? (
-									<Skeleton
-										variant="text"
-										animation="wave"
-										sx={{ bgcolor: "grey.900" }}
-									/>
-								) : (
-									<ShowMoreText
-										lines={2}
-										more="Hiện thêm"
-										less="Rút gọn"
-										className="content-css"
-										anchorClass="my-anchor-css-class"
-										expanded={false}
-										truncatedEndingComponent={"... "}
-									>
-										<Card.Text>{randomAnime?.Description.trim()}</Card.Text>
-									</ShowMoreText>
-								)}
-							</Card.Body>
-
-							<Card.Footer
-								style={{
-									display: "flex",
-									alignItems: "center",
-									width: "100%",
-									maxWidth: "100%",
-								}}
-							>
-								<span className="studio-text">
-									{!randomAnime?.Studio ? (
+					<div className="clearfix"></div>
+					<div className="row w-100 flex-responsive">
+						<div className="col-9 flex-mobile">
+							<Card>
+								<Card.Title className="description-title">
+									{!randomAnime?.AnimeName ? (
 										<Skeleton
 											variant="text"
 											animation="wave"
 											sx={{ bgcolor: "grey.900" }}
 										/>
 									) : (
-										<>
-											<span style={{ fontWeight: "700" }}>Studio:</span>{" "}
-											{randomAnime?.Studio}
-										</>
+										randomAnime?.AnimeName?.todayTitle
 									)}
-								</span>
-							</Card.Footer>
-						</Card>
+								</Card.Title>
 
-						<div
-							className="info-character-wrapper"
-							style={{ marginTop: "22px" }}
-						>
-							<div className="wrapper">
-								<div
-									className="info-today"
-									style={{
-										float: "right",
-										display: "flex",
-										flexDirection: "column",
-										alignItems: "flex-end",
-										boxShadow: "-5px 5px 0px 2px #761515",
-									}}
-								>
-									<div
-										className="episode-time"
-										style={{
-											display: "inline-flex",
-											flexDirection: "row",
-											alignItems: "center",
-										}}
-									>
-										{!randomAnime?.Duration ? (
-											<Skeleton
-												variant="text"
-												animation="wave"
-												sx={{ bgcolor: "grey.900" }}
-											/>
-										) : (
-											<>
-												<BsStopwatchFill />: ~{randomAnime?.Duration} phút/ tập
-											</>
-										)}
-									</div>
-									<div
-										className="episodes"
-										style={{
-											display: "inline-flex",
-											flexDirection: "row",
-											alignItems: "center",
-										}}
-									>
-										{!randomAnime?.EpisodeTotal ? (
-											<Skeleton
-												variant="text"
-												animation="wave"
-												sx={{ bgcolor: "grey.900" }}
-											/>
-										) : (
-											<>
-												<BsTv />: {randomAnime?.EpisodeTotal} tập
-											</>
-										)}
-									</div>
-								</div>
-
-								<div
-									className="release-date"
-									style={{
-										display: "inline-block",
-										float: "right",
-										clear: "right",
-										color: "black",
-										textAlign: "right",
-										width: "150px",
-										marginTop: "20px",
-										backgroundColor: "#290149",
-										boxShadow: "-5px 5px 0px 2px #A9333A",
-										padding: "10px",
-									}}
-								>
-									{!randomAnime?.EndDate ? (
-										<Skeleton
-											variant="text"
-											animation="wave"
-											sx={{ bgcolor: "grey.900" }}
-										/>
-									) : (
-										<>
-											<span
-												style={{
-													width: "100%",
-													textAlign: "left",
-													backgroundColor: "#FFF8F3",
-													paddingLeft: "4.5px",
-													fontWeight: "900",
-												}}
-											>
-												KẾT THÚC
-											</span>
-											<br />
-											<span style={{ fontWeight: "700", color: "#FFE227" }}>
-												NGÀY
-											</span>
-											<div
-												className="day"
-												style={{
-													backgroundColor: "#3FA796",
-													color: "black",
-													marginLeft: "65%",
-													paddingRight: "4.5px",
-												}}
-											>
-												{!randomAnime?.EndDate?.day ? (
-													<Skeleton
-														variant="text"
-														animation="wave"
-														sx={{ bgcolor: "grey.900" }}
-														style={{ paddingLeft: "4.5px" }}
-													/>
-												) : (
-													randomAnime?.EndDate?.day
-												)}
-											</div>
-											<span style={{ fontWeight: "700", color: "#FFE227" }}>
-												THÁNG
-											</span>
-											<div
-												className="month"
-												style={{
-													backgroundColor: "#8267BE",
-													color: "black",
-													marginLeft: "45%",
-													paddingRight: "4.5px",
-												}}
-											>
-												{!randomAnime?.EndDate?.month ? (
-													<Skeleton
-														variant="text"
-														animation="wave"
-														sx={{ bgcolor: "grey.900" }}
-														style={{ paddingLeft: "4.5px" }}
-													/>
-												) : (
-													randomAnime?.EndDate?.month
-												)}
-											</div>
-											<span style={{ fontWeight: "700", color: "#FFE227" }}>
-												NĂM
-											</span>
-											<div
-												className="year"
-												style={{
-													backgroundColor: "#781D42",
-													color: "black",
-													marginLeft: "25%",
-													paddingRight: "4.5px",
-												}}
-											>
-												{!randomAnime?.EndDate?.year ? (
-													<Skeleton
-														variant="text"
-														animation="wave"
-														sx={{ bgcolor: "grey.900" }}
-														style={{ paddingLeft: "4.5px" }}
-													/>
-												) : (
-													randomAnime?.EndDate?.year
-												)}
-											</div>
-										</>
-									)}
-								</div>
-							</div>
-							<div className="character-detail" style={{ marginTop: "20px" }}>
-								{!done4 ? (
+								{!randomAnime?.BannerImg ? (
 									<Skeleton
 										variant="rectangular"
 										width="100%"
-										style={{
-											minHeight: "300px",
-											maxHeight: "300px",
-											width: "auto",
-										}}
+										height="400px"
 										animation="wave"
 										sx={{ bgcolor: "grey.900" }}
 									/>
 								) : (
-									<>
-										{!randomAnime?.CharacterDetail?.length ? (
+									<nav>
+										<Link to={`/info/${randomAnime?.Slug}`}>
+											<Card.Img
+												className="today-banner-card-image"
+												variant="bottom"
+												src={randomAnime?.BannerImg}
+												style={{
+													height: "400px",
+													objectFit: "cover",
+												}}
+											/>
+										</Link>
+									</nav>
+								)}
+
+								<Card.Body className="description-card">
+									{!randomAnime?.Description ||
+									randomAnime?.Description.trim() === "" ? (
+										<Skeleton
+											variant="text"
+											animation="wave"
+											sx={{ bgcolor: "grey.900" }}
+										/>
+									) : (
+										<ShowMoreText
+											lines={2}
+											more="Hiện thêm"
+											less="Rút gọn"
+											className="content-css"
+											anchorClass="my-anchor-css-class"
+											expanded={false}
+											truncatedEndingComponent={"... "}
+										>
+											<Card.Text>{randomAnime?.Description.trim()}</Card.Text>
+										</ShowMoreText>
+									)}
+								</Card.Body>
+
+								<Card.Footer
+									style={{
+										display: "flex",
+										alignItems: "center",
+										width: "100%",
+										maxWidth: "100%",
+									}}
+								>
+									<span className="studio-text">
+										{!randomAnime?.Studio ? (
 											<Skeleton
-												variant="rectangular"
-												width="auto"
-												style={{ minHeight: "300px", maxHeight: "300px" }}
+												variant="text"
 												animation="wave"
 												sx={{ bgcolor: "grey.900" }}
 											/>
 										) : (
-											<Swiper
-												slidesPerView="auto"
-												spaceBetween={40}
-												navigation={false}
-												loop={true}
-												grabCursor={true}
-												className="character-slider"
-											>
-												{randomAnime.CharacterDetail.map((character, i) => (
-													<SwiperSlide
-														className="character-detail-slide"
-														key={i}
-														style={{
-															width: "auto",
-															display: "flex",
-															flexDirection: "column",
-															color: "#42EADDFF",
-														}}
-													>
-														<img
-															className="character-detail-image"
-															src={
-																!character?.image?.large
-																	? character?.image?.medium
-																	: character?.image?.large
-															}
-															style={{
-																objectFit: "fill",
-																width: "120px",
-																height: "160px",
-															}}
-														/>
-														<p
-															className="character-detail-word"
-															style={{ wordWrap: "break-word", width: "120px" }}
-														>
-															{!character?.name?.english
-																? character?.name?.native
-																: character?.name?.english}
-														</p>
-													</SwiperSlide>
-												))}
-											</Swiper>
+											<>
+												<span style={{ fontWeight: "700" }}>Studio:</span>{" "}
+												{randomAnime?.Studio}
+											</>
 										)}
-
-										<h4
-											className="character-title"
-											style={{
-												color: "white",
-												fontWeight: "700",
-												paddingLeft: "34px",
-												userSelect: "none",
-											}}
-										>
-											DÀN NHÂN VẬT
-										</h4>
-									</>
-								)}
-							</div>
-						</div>
-					</div>
-					<div className="col-3">
-						<div className="image-box">
-							{!randomAnime?.CoverImg ? (
-								<Skeleton
-									variant="rectangular"
-									width="100%"
-									style={{ minHeight: "300px", maxHeight: "300px" }}
-									animation="wave"
-									sx={{ bgcolor: "grey.900" }}
-								/>
-							) : (
-								// eslint-disable-next-line jsx-a11y/alt-text
-								<nav>
-									<Link to={`/info/${randomAnime?.Slug}`}>
-										<img
-											src={
-												randomAnime?.CoverImg?.large ||
-												randomAnime?.CoverImg?.medium ||
-												randomAnime?.CoverImg?.small
-											}
-											style={{
-												maxWidth: "100%",
-												width: "100%",
-												minHeight: "350px",
-												maxHeight: "500px",
-												objectFit: "cover",
-											}}
-											className="today-cover-image"
-										/>
-									</Link>
-								</nav>
-							)}
+									</span>
+								</Card.Footer>
+							</Card>
 
 							<div
-								className="title-box"
-								style={{ display: "flex", flexDirection: "column" }}
+								className="info-character-wrapper"
+								style={{ marginTop: "22px" }}
 							>
-								<span className="english" style={{ color: "#f6d365" }}>
-									{!randomAnime?.AnimeAllTitle ? (
+								<div className="wrapper">
+									<div
+										className="info-today"
+										style={{
+											float: "right",
+											display: "flex",
+											flexDirection: "column",
+											alignItems: "flex-end",
+											boxShadow: "-5px 5px 0px 2px #761515",
+										}}
+									>
+										<div
+											className="episode-time"
+											style={{
+												display: "inline-flex",
+												flexDirection: "row",
+												alignItems: "center",
+											}}
+										>
+											{!randomAnime?.Duration ? (
+												<Skeleton
+													variant="text"
+													animation="wave"
+													sx={{ bgcolor: "grey.900" }}
+												/>
+											) : (
+												<>
+													<BsStopwatchFill />: ~{randomAnime?.Duration} phút/
+													tập
+												</>
+											)}
+										</div>
+										<div
+											className="episodes"
+											style={{
+												display: "inline-flex",
+												flexDirection: "row",
+												alignItems: "center",
+											}}
+										>
+											{!randomAnime?.EpisodeTotal ? (
+												<Skeleton
+													variant="text"
+													animation="wave"
+													sx={{ bgcolor: "grey.900" }}
+												/>
+											) : (
+												<>
+													<BsTv />: {randomAnime?.EpisodeTotal} tập
+												</>
+											)}
+										</div>
+									</div>
+
+									<div
+										className="release-date"
+										style={{
+											display: "inline-block",
+											float: "right",
+											clear: "right",
+											color: "black",
+											textAlign: "right",
+											width: "150px",
+											marginTop: "20px",
+											backgroundColor: "#290149",
+											boxShadow: "-5px 5px 0px 2px #A9333A",
+											padding: "10px",
+										}}
+									>
+										{!randomAnime?.EndDate ? (
+											<Skeleton
+												variant="text"
+												animation="wave"
+												sx={{ bgcolor: "grey.900" }}
+											/>
+										) : (
+											<>
+												<span
+													style={{
+														width: "100%",
+														textAlign: "left",
+														backgroundColor: "#FFF8F3",
+														paddingLeft: "4.5px",
+														fontWeight: "900",
+													}}
+												>
+													KẾT THÚC
+												</span>
+												<br />
+												<span style={{ fontWeight: "700", color: "#FFE227" }}>
+													NGÀY
+												</span>
+												<div
+													className="day"
+													style={{
+														backgroundColor: "#3FA796",
+														color: "black",
+														marginLeft: "65%",
+														paddingRight: "4.5px",
+													}}
+												>
+													{!randomAnime?.EndDate?.day
+														? "Không tìm thấy"
+														: randomAnime?.EndDate?.day}
+												</div>
+												<span style={{ fontWeight: "700", color: "#FFE227" }}>
+													THÁNG
+												</span>
+												<div
+													className="month"
+													style={{
+														backgroundColor: "#8267BE",
+														color: "black",
+														marginLeft: "45%",
+														paddingRight: "4.5px",
+													}}
+												>
+													{!randomAnime?.EndDate?.month
+														? "Không tìm thấy"
+														: randomAnime?.EndDate?.month}
+												</div>
+												<span style={{ fontWeight: "700", color: "#FFE227" }}>
+													NĂM
+												</span>
+												<div
+													className="year"
+													style={{
+														backgroundColor: "#781D42",
+														color: "black",
+														marginLeft: "25%",
+														paddingRight: "4.5px",
+													}}
+												>
+													{!randomAnime?.EndDate?.year
+														? "Không tìm thấy"
+														: randomAnime?.EndDate?.year}
+												</div>
+											</>
+										)}
+									</div>
+								</div>
+								<div className="character-detail" style={{ marginTop: "20px" }}>
+									{!done4 ? (
 										<Skeleton
-											variant="text"
+											variant="rectangular"
+											width="100%"
+											style={{
+												minHeight: "300px",
+												maxHeight: "300px",
+												width: "auto",
+											}}
 											animation="wave"
 											sx={{ bgcolor: "grey.900" }}
 										/>
 									) : (
 										<>
-											<span style={{ fontWeight: "700" }}>ANH:</span>{" "}
-											{randomAnime?.AnimeAllTitle?.english}
+											{!randomAnime?.CharacterDetail?.length ? (
+												<Skeleton
+													variant="rectangular"
+													width="auto"
+													style={{ minHeight: "300px", maxHeight: "300px" }}
+													animation="wave"
+													sx={{ bgcolor: "grey.900" }}
+												/>
+											) : (
+												<Swiper
+													slidesPerView="auto"
+													spaceBetween={40}
+													navigation={false}
+													loop={true}
+													grabCursor={true}
+													className="character-slider"
+												>
+													{randomAnime.CharacterDetail.map((character, i) => (
+														<SwiperSlide
+															className="character-detail-slide"
+															key={i}
+															style={{
+																width: "auto",
+																display: "flex",
+																flexDirection: "column",
+																color: "#42EADDFF",
+															}}
+														>
+															<img
+																className="character-detail-image"
+																src={
+																	!character?.image?.large
+																		? character?.image?.medium
+																		: character?.image?.large
+																}
+																style={{
+																	objectFit: "fill",
+																	width: "120px",
+																	height: "160px",
+																}}
+															/>
+															<p
+																className="character-detail-word"
+																style={{
+																	wordWrap: "break-word",
+																	width: "120px",
+																}}
+															>
+																{!character?.name?.english
+																	? character?.name?.native
+																	: character?.name?.english}
+															</p>
+														</SwiperSlide>
+													))}
+												</Swiper>
+											)}
+
+											<h4
+												className="character-title"
+												style={{
+													color: "white",
+													fontWeight: "700",
+													paddingLeft: "34px",
+													userSelect: "none",
+												}}
+											>
+												DÀN NHÂN VẬT
+											</h4>
 										</>
 									)}
-								</span>
-								<span className="native" style={{ color: "#d4fc79" }}>
-									{!randomAnime?.AnimeAllTitle ? (
-										<Skeleton
-											variant="text"
-											animation="wave"
-											sx={{ bgcolor: "grey.900" }}
-										/>
-									) : (
-										<>
-											<span style={{ fontWeight: "700" }}>NHẬT:</span>{" "}
-											{randomAnime?.AnimeAllTitle?.native}
-										</>
-									)}
-								</span>
-								<span className="romaji" style={{ color: "#fa709a" }}>
-									{!randomAnime?.AnimeAllTitle ? (
-										<Skeleton
-											variant="text"
-											animation="wave"
-											sx={{ bgcolor: "grey.900" }}
-										/>
-									) : (
-										<>
-											<span style={{ fontWeight: "700" }}>ROMAJI:</span>{" "}
-											{randomAnime?.AnimeAllTitle?.romaji}
-										</>
-									)}
-								</span>
+								</div>
 							</div>
 						</div>
-						<div className="extra-info-box"></div>
+						<div className="col-3">
+							<div className="image-box">
+								{!randomAnime?.CoverImg ? (
+									<Skeleton
+										variant="rectangular"
+										width="100%"
+										style={{ minHeight: "300px", maxHeight: "300px" }}
+										animation="wave"
+										sx={{ bgcolor: "grey.900" }}
+									/>
+								) : (
+									// eslint-disable-next-line jsx-a11y/alt-text
+									<nav>
+										<Link to={`/info/${randomAnime?.Slug}`}>
+											<img
+												src={
+													randomAnime?.CoverImg?.large ||
+													randomAnime?.CoverImg?.medium ||
+													randomAnime?.CoverImg?.small
+												}
+												style={{
+													maxWidth: "100%",
+													width: "100%",
+													minHeight: "350px",
+													maxHeight: "500px",
+													objectFit: "cover",
+												}}
+												className="today-cover-image"
+											/>
+										</Link>
+									</nav>
+								)}
+
+								<div
+									className="title-box"
+									style={{ display: "flex", flexDirection: "column" }}
+								>
+									<span className="english" style={{ color: "#f6d365" }}>
+										{!randomAnime?.AnimeAllTitle ? (
+											<Skeleton
+												variant="text"
+												animation="wave"
+												sx={{ bgcolor: "grey.900" }}
+											/>
+										) : (
+											<>
+												<span style={{ fontWeight: "700" }}>ANH:</span>{" "}
+												{randomAnime?.AnimeAllTitle?.english}
+											</>
+										)}
+									</span>
+									<span className="native" style={{ color: "#d4fc79" }}>
+										{!randomAnime?.AnimeAllTitle ? (
+											<Skeleton
+												variant="text"
+												animation="wave"
+												sx={{ bgcolor: "grey.900" }}
+											/>
+										) : (
+											<>
+												<span style={{ fontWeight: "700" }}>NHẬT:</span>{" "}
+												{randomAnime?.AnimeAllTitle?.native}
+											</>
+										)}
+									</span>
+									<span className="romaji" style={{ color: "#fa709a" }}>
+										{!randomAnime?.AnimeAllTitle ? (
+											<Skeleton
+												variant="text"
+												animation="wave"
+												sx={{ bgcolor: "grey.900" }}
+											/>
+										) : (
+											<>
+												<span style={{ fontWeight: "700" }}>ROMAJI:</span>{" "}
+												{randomAnime?.AnimeAllTitle?.romaji}
+											</>
+										)}
+									</span>
+								</div>
+							</div>
+							<div className="extra-info-box"></div>
+						</div>
 					</div>
 				</div>
-			</div>
-			{/* <div className="ranking-list" style={{ marginTop: "44px" }}>
-				<div className="ranking-header">
-					<h1>BẢNG XẾP HẠNG</h1>
-				</div>
-				<div className="ranking-detail">
-					<Table striped bordered hover>
-						<thead>
-							<tr>
-								<th>Vị trí</th>
-								<th>Anime</th>
-								<th>Lượt xem</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>1</td>
-								<td>Mark</td>
-								<td>Otto</td>
-							</tr>
-						</tbody>
-					</Table>
-				</div>
-			</div> */}
+			)}
 		</>
 	)
 }
