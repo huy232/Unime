@@ -5,7 +5,6 @@ import Skeleton from "@mui/material/Skeleton"
 import axios from "axios"
 import ReactPlayer from "react-player"
 import { Card, Row, Col } from "react-bootstrap"
-import TextTruncate from "react-text-truncate"
 import { BsFillPlayFill } from "react-icons/bs"
 import "./animeinfo.css"
 
@@ -418,12 +417,9 @@ function AnimeInfo({ instance }) {
 																	{eachEpisode?.full_name == "Trailer" ? (
 																		"Movie"
 																	) : (
-																		<TextTruncate
-																			line={2}
-																			element="span"
-																			truncateText="…"
-																			text={eachEpisode?.full_name}
-																		/>
+																		<p className="webclamp">
+																			{eachEpisode?.full_name}
+																		</p>
 																	)}
 																</Card.Title>
 															</Card.Body>
@@ -453,12 +449,9 @@ function AnimeInfo({ instance }) {
 																	{eachEpisode?.full_name == "Trailer" ? (
 																		"Movie"
 																	) : (
-																		<TextTruncate
-																			line={2}
-																			element="span"
-																			truncateText="…"
-																			text={eachEpisode?.full_name}
-																		/>
+																		<p className="webclamp">
+																			{eachEpisode?.full_name}
+																		</p>
 																	)}
 																</Card.Title>
 															</Card.Body>
@@ -488,12 +481,9 @@ function AnimeInfo({ instance }) {
 																	{eachEpisode?.full_name == "Trailer" ? (
 																		"Movie"
 																	) : (
-																		<TextTruncate
-																			line={2}
-																			element="span"
-																			truncateText="…"
-																			text={eachEpisode?.full_name}
-																		/>
+																		<p className="webclamp">
+																			{eachEpisode?.full_name}
+																		</p>
 																	)}
 																</Card.Title>
 															</Card.Body>
@@ -587,12 +577,9 @@ function AnimeInfo({ instance }) {
 																</div>
 																<Card.Body>
 																	<Card.Title>
-																		<TextTruncate
-																			line={2}
-																			element="span"
-																			truncateText="…"
-																			text={eachEpisode?.full_name}
-																		/>
+																		<p className="webclamp">
+																			{eachEpisode?.full_name}
+																		</p>
 																	</Card.Title>
 																</Card.Body>
 															</Card>

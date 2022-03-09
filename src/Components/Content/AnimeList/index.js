@@ -3,7 +3,6 @@ import { Link } from "react-router-dom"
 import InfiniteScroll from "react-infinite-scroll-component"
 import axios from "axios"
 import { Card, Row, Col } from "react-bootstrap"
-import TextTruncate from "react-text-truncate"
 import { BsFillPlayFill } from "react-icons/bs"
 import LoadingSpin from "react-loading-spin"
 import useDocumentTitle from "../DocumentTitleHook"
@@ -100,12 +99,7 @@ function AnimeList({ instance }) {
 											</div>
 											<Card.Body>
 												<Card.Title>
-													<TextTruncate
-														line={2}
-														element="span"
-														truncateText="…"
-														text={anime?.name}
-													/>
+													<p className="webclamp">{anime?.name}</p>
 												</Card.Title>
 											</Card.Body>
 										</Card>

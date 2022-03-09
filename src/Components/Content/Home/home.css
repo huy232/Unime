@@ -528,6 +528,16 @@ h1, .h5{
       }
   }
 
+  .webclamp {
+    word-break: break-word;
+	overflow: hidden;
+	text-overflow: clip;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+  margin: -10px !important;
+  padding: 4px !important;
+  }
 
   
 

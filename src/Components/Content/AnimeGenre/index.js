@@ -4,7 +4,6 @@ import { GENRES } from "../../../constants"
 import InfiniteScroll from "react-infinite-scroll-component"
 import axios from "axios"
 import { Card, Row, Col } from "react-bootstrap"
-import TextTruncate from "react-text-truncate"
 import LoadingSpin from "react-loading-spin"
 import { BsFillPlayFill } from "react-icons/bs"
 import useDocumentTitle from "../DocumentTitleHook"
@@ -115,12 +114,7 @@ function AnimeGenre({ instance }) {
 											</div>
 											<Card.Body>
 												<Card.Title>
-													<TextTruncate
-														line={2}
-														element="span"
-														truncateText="…"
-														text={anime?.name}
-													/>
+													<p className="webclamp">{anime?.name}</p>
 												</Card.Title>
 											</Card.Body>
 										</Card>

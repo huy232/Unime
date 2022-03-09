@@ -2,7 +2,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/alt-text */
 import { useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom"
 import {
 	BsEyeFill,
 	BsFillPlayFill,
@@ -10,10 +9,9 @@ import {
 	BsTv,
 } from "react-icons/bs"
 import { Link } from "react-router-dom"
-import { Card, CardGroup, Table } from "react-bootstrap"
+import { Card, CardGroup } from "react-bootstrap"
 import Skeleton from "@mui/material/Skeleton"
 import axios from "axios"
-import TextTruncate from "react-text-truncate"
 import "./home.css"
 import ShowMoreText from "react-show-more-text"
 import useDocumentTitle from "../DocumentTitleHook"
@@ -29,8 +27,6 @@ SwiperCore.use([Pagination, Navigation, Mousewheel, Lazy])
 // ---------------------------
 
 function Home({ instance }) {
-	const navigate = useNavigate()
-
 	const [sliders, setSliders] = useState([])
 	const [newAnime, setNewAnime] = useState([])
 	const [rankToday, setRankToday] = useState([])
@@ -229,12 +225,7 @@ function Home({ instance }) {
 														}}
 													>
 														<Card.Title>
-															<TextTruncate
-																line={2}
-																element="span"
-																truncateText="…"
-																text={anime?.name}
-															/>
+															<p className="webclamp">{anime?.name}</p>
 														</Card.Title>
 														<Card.Text
 															variant="bottom"
@@ -242,15 +233,11 @@ function Home({ instance }) {
 																backgroundColor: "rgba(0, 0, 0, 0.3)",
 																borderRadius: "10px",
 																padding: "5px",
+																color: "#b3b300",
 															}}
+															className="webclamp"
 														>
-															<TextTruncate
-																line={2}
-																element="span"
-																truncateText="..."
-																text={anime?.newestEpisode.name}
-																style={{ color: "#b3b300" }}
-															/>
+															{anime?.newestEpisode.name}
 														</Card.Text>
 													</Card.Body>
 												</Card>
@@ -320,12 +307,7 @@ function Home({ instance }) {
 
 													<Card.Body>
 														<Card.Title>
-															<TextTruncate
-																line={2}
-																element="span"
-																truncateText="…"
-																text={anime?.name}
-															/>
+															<p className="webclamp">{anime?.name}</p>
 														</Card.Title>
 													</Card.Body>
 												</Card>

@@ -2,7 +2,6 @@ import { useEffect, useState } from "react"
 import { useParams, Link } from "react-router-dom"
 import axios from "axios"
 import { Card, Row, Col } from "react-bootstrap"
-import TextTruncate from "react-text-truncate"
 import { BsFillPlayFill } from "react-icons/bs"
 import "./search.css"
 
@@ -59,12 +58,7 @@ function Search({ instance }) {
 									</div>
 									<Card.Body>
 										<Card.Title>
-											<TextTruncate
-												line={2}
-												element="span"
-												truncateText="…"
-												text={anime?.name}
-											/>
+											<p className="webclamp">{anime?.name}</p>
 										</Card.Title>
 									</Card.Body>
 								</Card>
