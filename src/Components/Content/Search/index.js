@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useParams, useNavigate } from "react-router-dom"
+import { useParams, Link } from "react-router-dom"
 import axios from "axios"
 import { Card, Row, Col } from "react-bootstrap"
 import TextTruncate from "react-text-truncate"
@@ -8,7 +8,6 @@ import "./search.css"
 
 function Search({ instance }) {
 	const { searchSlug } = useParams()
-	const navigate = useNavigate()
 
 	const [searchData, setSearchData] = useState([])
 
@@ -34,10 +33,6 @@ function Search({ instance }) {
 		}
 	}, [searchSlug])
 
-	const handleGetSlug = (slug) => {
-		navigate(`/info/${slug}`)
-	}
-
 	return (
 		<>
 			<div
@@ -49,24 +44,32 @@ function Search({ instance }) {
 			<Row xs={1} sm={2} md={3} lg={4} className="search-anime-row">
 				{searchData.map((anime) => (
 					<Col key={anime.slug}>
-						<Card onClick={() => handleGetSlug(anime.slug)}>
-							<div className="card-container">
-								<Card.Img variant="top" src={anime.thumbnail} fluid="true" />
-								<div className="overlay-card">
-									<a className="icon">{<BsFillPlayFill size={40} />}</a>
-								</div>
-							</div>
-							<Card.Body>
-								<Card.Title>
-									<TextTruncate
-										line={2}
-										element="span"
-										truncateText="…"
-										text={anime?.name}
-									/>
-								</Card.Title>
-							</Card.Body>
-						</Card>
+						<nav>
+							<Link to={`/info/${anime.slug}`}>
+								<Card>
+									<div className="card-container">
+										<Card.Img
+											variant="top"
+											src={anime.thumbnail}
+											fluid="true"
+										/>
+										<div className="overlay-card">
+											<div className="icon">{<BsFillPlayFill size={40} />}</div>
+										</div>
+									</div>
+									<Card.Body>
+										<Card.Title>
+											<TextTruncate
+												line={2}
+												element="span"
+												truncateText="…"
+												text={anime?.name}
+											/>
+										</Card.Title>
+									</Card.Body>
+								</Card>
+							</Link>
+						</nav>
 						<div className="w-100"></div>
 					</Col>
 				))}

@@ -415,12 +415,16 @@ function AnimeInfo({ instance }) {
 															</div>
 															<Card.Body>
 																<Card.Title>
-																	<TextTruncate
-																		line={2}
-																		element="span"
-																		truncateText="…"
-																		text={eachEpisode?.full_name}
-																	/>
+																	{eachEpisode?.full_name == "Trailer" ? (
+																		"Movie"
+																	) : (
+																		<TextTruncate
+																			line={2}
+																			element="span"
+																			truncateText="…"
+																			text={eachEpisode?.full_name}
+																		/>
+																	)}
 																</Card.Title>
 															</Card.Body>
 														</Card>
