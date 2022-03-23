@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom"
 import axios from "axios"
 import { ThreeDots } from "react-loading-icons"
 import VideoPlayer from "../VideoJsHook/index"
+import useDocumentTitle from "../DocumentTitleHook"
 // import "plyr-react/dist/plyr.css"
 
 import "./animewatch.css"
@@ -13,6 +14,7 @@ function AnimeWatch({ instance }) {
 	const index = queryParams.get("index")
 	const specialid = queryParams.get("specialid")
 	const [info, setInfo] = useState([])
+	const [watchDetail, setWatchDetail] = useState("Đang tải")
 
 	const [videoUrl, setVideoUrl] = useState("")
 
@@ -38,6 +40,9 @@ function AnimeWatch({ instance }) {
 							.then((res) => {
 								// VIDEO URL IS HERE
 								const videoUrlResponse = res.data.data.videoSource
+								const watchFilm = res.data.data.film_name
+								const watchEpisodeName = res.data.data.full_name
+								setWatchDetail(watchFilm + ` (${watchEpisodeName})`)
 								setVideoUrl(videoUrlResponse)
 							})
 					}
@@ -63,6 +68,8 @@ function AnimeWatch({ instance }) {
 			source.cancel()
 		}
 	}, [Number(index), instance])
+
+	useDocumentTitle(watchDetail)
 
 	return (
 		<>
