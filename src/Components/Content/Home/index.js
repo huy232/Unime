@@ -597,6 +597,7 @@ function Home({ instance }) {
 													loop={true}
 													grabCursor={true}
 													className="character-slider"
+													style={{ marginLeft: "30px" }}
 												>
 													{randomAnime.CharacterDetail.map((character, i) => (
 														<SwiperSlide
