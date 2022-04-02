@@ -390,6 +390,7 @@ function Home({ instance }) {
 											anchorClass="my-anchor-css-class"
 											expanded={false}
 											truncatedEndingComponent={"... "}
+											style={{ transition: "linear 1s" }}
 										>
 											<Card.Text>{randomAnime?.Description.trim()}</Card.Text>
 										</ShowMoreText>
