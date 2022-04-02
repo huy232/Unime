@@ -28,7 +28,7 @@ h1, .h5{
 
 .bottom-left {
     position: absolute;
-    bottom: 8px;
+    top: 8px;
     left: 16px;
     text-align: left;
     color: white;
@@ -543,6 +543,10 @@ h1, .h5{
 	-webkit-box-orient: vertical;
   margin: -10px !important;
   padding: 4px !important;
+  }
+
+  .content-css:after{
+    transition: linear 1s;
   }
 
   
