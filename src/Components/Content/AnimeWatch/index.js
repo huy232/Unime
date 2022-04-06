@@ -1,5 +1,5 @@
-import { useState, useEffect, useRef } from "react"
-import { useParams } from "react-router-dom"
+import { useState, useEffect } from "react"
+import { useParams, Link } from "react-router-dom"
 import axios from "axios"
 import { ThreeDots } from "react-loading-icons"
 import VideoPlayer from "../VideoJsHook/index"
@@ -14,6 +14,7 @@ function AnimeWatch({ instance }) {
 	const index = queryParams.get("index")
 	const specialid = queryParams.get("specialid")
 	const [info, setInfo] = useState([])
+	const [name, setName] = useState("")
 	const [watchDetail, setWatchDetail] = useState("Đang tải")
 
 	const [videoUrl, setVideoUrl] = useState("")
@@ -42,6 +43,7 @@ function AnimeWatch({ instance }) {
 								const videoUrlResponse = res.data.data.videoSource
 								const watchFilm = res.data.data.film_name
 								const watchEpisodeName = res.data.data.full_name
+								setName(watchFilm)
 								setWatchDetail(watchFilm + ` (${watchEpisodeName})`)
 								setVideoUrl(videoUrlResponse)
 							})
@@ -71,6 +73,9 @@ function AnimeWatch({ instance }) {
 
 	useDocumentTitle(watchDetail)
 
+	const chooseEpisode = (index) => {
+		window.location.href = `http://localhost:3000/watch/${anime}?index=${index}`
+	}
 	return (
 		<>
 			<div style={{ marginTop: "-90px" }}>
@@ -85,6 +90,63 @@ function AnimeWatch({ instance }) {
 								info={info}
 								index={index}
 							/>
+							<div
+								className="episode-content"
+								style={{
+									overflow: "scroll",
+									maxHeight: "100vh",
+									minHeight: "100vh",
+								}}
+							>
+								<h4
+									style={{
+										fontSize: "24px",
+										textAlign: "center",
+										color: "white",
+									}}
+								>
+									Danh sách tập phim
+								</h4>
+								<div className="episode-bracket">
+									{anime != "vua-hai-tac"
+										? info.map((item) => (
+												<div
+													className={
+														parseInt(index) == parseInt(item.name - 1)
+															? "episodes active"
+															: "episodes"
+													}
+													key={item.name}
+												>
+													<Link
+														to={`/watch/${anime}?index=${item.name - 1}`}
+														onClick={() => chooseEpisode(item.name - 1)}
+														style={{ color: "white" }}
+													>
+														<p>{item.full_name}</p>
+													</Link>
+												</div>
+										  ))
+										: info.map((item) => (
+												<div
+													className={
+														parseInt(index) == parseInt(item.name)
+															? "episodes active"
+															: "episodes"
+													}
+													key={item.name}
+												>
+													<Link
+														to={`/watch/${anime}?index=${item.name}`}
+														onClick={() => chooseEpisode(item.name)}
+														style={{ color: "white" }}
+													>
+														<p>{item.full_name}</p>
+													</Link>
+												</div>
+										  ))}
+								</div>
+							</div>
 						</>
 					) : (
 						<div
