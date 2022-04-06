@@ -74,7 +74,7 @@ function AnimeWatch({ instance }) {
 	useDocumentTitle(watchDetail)
 
 	const chooseEpisode = (index) => {
-		window.location.href = `http://localhost:3000/watch/${anime}?index=${index}`
+		window.location.href = `https://mirai-huy8856.vercel.app/watch/${anime}?index=${index}`
 	}
 	return (
 		<>
