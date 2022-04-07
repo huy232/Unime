@@ -58,6 +58,9 @@ function AnimeWatch({ instance }) {
 								setVideoUrl(videoUrlResponse)
 							})
 					}
+					document
+						.getElementsByClassName("active")[0]
+						.scrollIntoView({ behavior: "smooth" })
 				})
 				.catch((thrown) => {
 					if (axios.isCancel(thrown)) return
@@ -72,7 +75,6 @@ function AnimeWatch({ instance }) {
 	}, [Number(index), instance])
 
 	useDocumentTitle(watchDetail)
-
 	const chooseEpisode = (index) => {
 		window.location.href = `https://mirai-huy8856.vercel.app/watch/${anime}?index=${index}`
 	}
@@ -98,15 +100,17 @@ function AnimeWatch({ instance }) {
 									minHeight: "100vh",
 								}}
 							>
-								<h4
-									style={{
-										fontSize: "24px",
-										textAlign: "center",
-										color: "white",
-									}}
-								>
-									Danh sách tập phim
-								</h4>
+								<div className="episode-section">
+									<h4
+										style={{
+											fontSize: "24px",
+											textAlign: "center",
+											color: "white",
+										}}
+									>
+										DANH SÁCH TẬP PHIM
+									</h4>
+								</div>
 								<div className="episode-bracket">
 									{anime != "vua-hai-tac"
 										? info.map((item) => (

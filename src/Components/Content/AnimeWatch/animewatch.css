@@ -41,6 +41,7 @@ video {
 }
 
 .episode-content{
+  margin-left: 20px;
   width: 30%
 }
 
@@ -58,6 +59,12 @@ video {
 	-webkit-box-orient: vertical;
   overflow: hidden;
   word-break: break-word;
+  line-height: 1.8;
+  height: 78px
+}
+
+.episodes a p {
+  margin: 0!important;
 }
 
 .episodes:hover{
