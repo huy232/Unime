@@ -120,11 +120,11 @@ function AnimeWatch({ instance }) {
 															? "episodes active"
 															: "episodes"
 													}
+													onClick={() => chooseEpisode(item.name - 1)}
 													key={item.name}
 												>
 													<Link
 														to={`/watch/${anime}?index=${item.name - 1}`}
-														onClick={() => chooseEpisode(item.name - 1)}
 														style={{ color: "white" }}
 													>
 														<p>{item.full_name}</p>
@@ -138,11 +138,11 @@ function AnimeWatch({ instance }) {
 															? "episodes active"
 															: "episodes"
 													}
+													onClick={() => chooseEpisode(item.name)}
 													key={item.name}
 												>
 													<Link
 														to={`/watch/${anime}?index=${item.name}`}
-														onClick={() => chooseEpisode(item.name)}
 														style={{ color: "white" }}
 													>
 														<p>{item.full_name}</p>
