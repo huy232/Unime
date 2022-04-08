@@ -459,7 +459,7 @@ function Home({ instance }) {
 											)}
 										</div>
 										<div
-											className="episodes"
+											className="episodes-today"
 											style={{
 												display: "inline-flex",
 												flexDirection: "row",
