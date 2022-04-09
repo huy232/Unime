@@ -507,6 +507,7 @@ h1, .h5{
 
     .character-slider{
       width: 100%;
+      margin-left: 0 !important;
     }
     .character-title{
       display: block
@@ -522,6 +523,9 @@ h1, .h5{
     }
     .day, .month, .year{
       margin-left: 0!important;
+    }
+    .character-detail{
+      width: 100% !important;
     }
     
   }
