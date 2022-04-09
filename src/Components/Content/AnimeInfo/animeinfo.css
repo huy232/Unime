@@ -217,4 +217,20 @@ li.episode-chunk:hover{
         width: auto !important;
         min-height: auto!important
     }
+    .detail-cover-info{
+        margin: 20px;
+        margin-top: 0px;
+    }
+    .description{
+        margin: 20px;
+    }
+    .bottom-detail{
+        margin: 20px;
+        margin-top: 50px
+    }
+    .episode-list-detail{
+        width: 80% !important;
+        margin: 0 auto !important;
+    }
+
 }
