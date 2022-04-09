@@ -228,10 +228,6 @@ li.episode-chunk:hover{
         margin: 20px;
         margin-top: 50px
     }
-    .episode-list-detail{
-        width: 80% !important;
-        margin: 0 auto !important;
-    }
     .card-body{
         padding: 0;
         padding-top: 10px;
