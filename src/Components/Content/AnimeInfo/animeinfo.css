@@ -232,5 +232,10 @@ li.episode-chunk:hover{
         width: 80% !important;
         margin: 0 auto !important;
     }
-
+    .card-body{
+        padding: 0;
+        padding-top: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
 }
