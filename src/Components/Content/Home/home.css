@@ -109,8 +109,8 @@ h1, .h5{
       background-color: #343a40
   }
   .anime-card .card-body{
-    min-height: 7.7rem;
-    max-height: 7.7rem;
+    min-height: 10rem;
+    max-height: 10rem;
   }
 
   .card-img-top {
@@ -549,8 +549,21 @@ h1, .h5{
 	display: -webkit-box;
 	-webkit-line-clamp: 2;
 	-webkit-box-orient: vertical;
-  /* margin: -10px !important;
-  padding: 4px !important; */
+  /* margin: -10px !important; */
+  padding: 3px !important;
+  }
+
+  .webclamp__home {
+    word-break: break-word;
+	overflow: hidden;
+	text-overflow: clip;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+  /* margin: -10px !important; */
+  /* padding: 3px !important; */
+  min-height: 65px;
+  max-height: 65px;
   }
 
   .content-css:after{

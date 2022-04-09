@@ -231,13 +231,14 @@ function Home({ instance }) {
 															variant="bottom"
 															style={{
 																backgroundColor: "rgba(0, 0, 0, 0.3)",
-																borderRadius: "10px",
-																padding: "5px",
+																borderRadius: "6px",
 																color: "#b3b300",
 															}}
-															className="webclamp"
+															className="webclamp__home"
 														>
-															{anime?.newestEpisode.name}
+															<p style={{ paddingLeft: "5px" }}>
+																{anime?.newestEpisode.name}
+															</p>
 														</Card.Text>
 													</Card.Body>
 												</Card>
