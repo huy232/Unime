@@ -304,7 +304,9 @@ function Home({ instance }) {
 														</div>
 													</div>
 
-													<Card.Body>
+													<Card.Body
+														style={{ maxHeight: "5rem", minHeight: "5rem" }}
+													>
 														<Card.Title>
 															<p className="webclamp">{anime?.name}</p>
 														</Card.Title>
