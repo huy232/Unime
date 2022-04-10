@@ -446,7 +446,9 @@ function AnimeInfo({ instance }) {
 																	</div>
 																</div>
 															</div>
-															<Card.Body>
+															<Card.Body
+																style={{ minHeight: "5rem", maxHeight: "5rem" }}
+															>
 																<Card.Title>
 																	{eachEpisode?.full_name == "Trailer" ? (
 																		"Movie"

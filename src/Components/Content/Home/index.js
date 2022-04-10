@@ -236,9 +236,7 @@ function Home({ instance }) {
 															}}
 															className="webclamp__home"
 														>
-															<p style={{ paddingLeft: "5px" }}>
-																{anime?.newestEpisode.name}
-															</p>
+															<span>{anime?.newestEpisode.name}</span>
 														</Card.Text>
 													</Card.Body>
 												</Card>
