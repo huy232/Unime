@@ -40,9 +40,41 @@ video {
   width: 100%
 }
 
+.video-active {
+  width: 100% !important;
+}
+
 .episode-content{
-  margin-left: 20px;
-  width: 30%
+  /* margin-left: 20px; */
+  min-width: 30vh;
+  max-width: 30vh;
+  position: relative
+}
+
+.episode-section{
+  position: absolute;
+  width: 100%;
+  z-index: 1000;
+}
+
+.episode-section-fixed{
+  /* position: fixed; */
+  display:flex;
+  flex-direction: row;
+  background-color: black
+}
+
+.episode-section-title{
+  width: 100%;
+  display: inline-block;
+}
+
+.episode-bracket{
+  width: 100%;
+  margin-top: 40px;
+  overflow: scroll;
+  min-height: 95vh;
+  max-height: 95vh;
 }
 
 .episodes{
@@ -65,6 +97,10 @@ video {
 
 .episodes a p {
   margin: 0!important;
+}
+
+.active-hide {
+  width: 0;
 }
 
 .episodes:hover{

@@ -7,6 +7,7 @@ import useDocumentTitle from "../DocumentTitleHook"
 // import "plyr-react/dist/plyr.css"
 
 import "./animewatch.css"
+import { GpsFixedOutlined } from "@mui/icons-material"
 
 function AnimeWatch({ instance }) {
 	const { anime } = useParams()
@@ -16,8 +17,8 @@ function AnimeWatch({ instance }) {
 	const [info, setInfo] = useState([])
 	const [name, setName] = useState("")
 	const [watchDetail, setWatchDetail] = useState("Đang tải")
-
 	const [videoUrl, setVideoUrl] = useState("")
+	const [isActive, setActive] = useState(true)
 
 	useEffect(() => {
 		const CancelToken = axios.CancelToken
@@ -78,6 +79,11 @@ function AnimeWatch({ instance }) {
 	const chooseEpisode = (index) => {
 		window.location.href = `https://mirai-huy8856.vercel.app/watch/${anime}?index=${index}`
 	}
+
+	const toggleButton = () => {
+		setActive(!isActive)
+	}
+
 	return (
 		<>
 			<div style={{ marginTop: "-90px" }}>
@@ -94,60 +100,80 @@ function AnimeWatch({ instance }) {
 							/>
 							<div
 								className="episode-content"
-								style={{
-									overflow: "scroll",
-									maxHeight: "100vh",
-									minHeight: "100vh",
-								}}
+								style={
+									isActive
+										? {
+												// overflow: "scroll",
+												// maxHeight: "100vh",
+												// minHeight: "100vh",
+										  }
+										: {
+												position: "fixed",
+												right: 0,
+										  }
+								}
 							>
 								<div className="episode-section">
-									<h4
-										style={{
-											fontSize: "24px",
-											textAlign: "center",
-											color: "white",
-										}}
-									>
-										DANH SÁCH TẬP PHIM
-									</h4>
+									<div className="episode-section-fixed">
+										<h5
+											className="episode-section-title"
+											style={{
+												// fontSize: "24px",
+												textAlign: "center",
+												color: "white",
+											}}
+										>
+											DANH SÁCH TẬP PHIM
+										</h5>
+										{/* <button
+											className="episode-section-btn"
+											onClick={() => toggleButton()}
+										>
+											Đóng/Mở
+										</button> */}
+									</div>
 								</div>
-								<div className="episode-bracket">
+								<div
+									className={
+										isActive ? "episode-bracket" : "episode-bracket active-hide"
+									}
+								>
 									{anime != "vua-hai-tac"
 										? info.map((item) => (
-												<div
-													className={
-														parseInt(index) == parseInt(item.name - 1)
-															? "episodes active"
-															: "episodes"
-													}
-													onClick={() => chooseEpisode(item.name - 1)}
+												<Link
+													to={`/watch/${anime}?index=${item.name - 1}`}
+													style={{ color: "white" }}
 													key={item.name}
 												>
-													<Link
-														to={`/watch/${anime}?index=${item.name - 1}`}
-														style={{ color: "white" }}
+													<div
+														className={
+															parseInt(index) == parseInt(item.name - 1)
+																? "episodes active"
+																: "episodes"
+														}
+														onClick={() => chooseEpisode(item.name - 1)}
 													>
 														<p>{item.full_name}</p>
-													</Link>
-												</div>
+													</div>
+												</Link>
 										  ))
 										: info.map((item) => (
-												<div
-													className={
-														parseInt(index) == parseInt(item.name)
-															? "episodes active"
-															: "episodes"
-													}
-													onClick={() => chooseEpisode(item.name)}
+												<Link
+													to={`/watch/${anime}?index=${item.name}`}
+													style={{ color: "white" }}
 													key={item.name}
 												>
-													<Link
-														to={`/watch/${anime}?index=${item.name}`}
-														style={{ color: "white" }}
+													<div
+														className={
+															parseInt(index) == parseInt(item.name)
+																? "episodes active"
+																: "episodes"
+														}
+														onClick={() => chooseEpisode(item.name)}
 													>
 														<p>{item.full_name}</p>
-													</Link>
-												</div>
+													</div>
+												</Link>
 										  ))}
 								</div>
 							</div>
@@ -164,7 +190,10 @@ function AnimeWatch({ instance }) {
 							}}
 						>
 							<ThreeDots fill="#a30f0f" />
-							<div className="loading-text" style={{ color: "white" }}>
+							<div
+								className="loading-text"
+								style={{ color: "white", textAlign: "center" }}
+							>
 								Đang tải phim
 							</div>
 						</div>

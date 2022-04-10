@@ -564,6 +564,8 @@ h1, .h5{
   /* padding: 3px !important; */
   min-height: 65px;
   max-height: 65px;
+  padding-right: 8px !important;
+  padding-left: 8px !important;
   }
 
   .content-css:after{
