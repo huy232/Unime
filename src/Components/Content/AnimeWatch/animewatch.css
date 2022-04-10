@@ -70,11 +70,13 @@ video {
 }
 
 .episode-bracket{
-  width: 100%;
+  /* width: 100%; */
   margin-top: 40px;
   overflow: scroll;
   min-height: 95vh;
   max-height: 95vh;
+  /* margin-left: 15px;
+  margin-right: 15px; */
 }
 
 .episodes{
@@ -82,9 +84,8 @@ video {
   color: rgb(192, 190, 190) !important;
   background-color: rgb(139, 114, 114);
   border-radius: 8px;
-  width: 100%;
+  width: 90%;
   cursor: pointer;
-  margin-top: 20px;
   text-overflow: clip;
 	display: -webkit-box;
 	-webkit-line-clamp: 2;
@@ -92,7 +93,9 @@ video {
   overflow: hidden;
   word-break: break-word;
   line-height: 1.8;
-  height: 78px
+  height: 78px;
+  margin: 0 auto;
+  margin-top: 20px;
 }
 
 .episodes a p {
