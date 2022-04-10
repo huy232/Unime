@@ -349,15 +349,8 @@ function Home({ instance }) {
 										randomAnime?.AnimeName?.todayTitle
 									)}
 								</Card.Title>
-
 								{!randomAnime?.BannerImg ? (
-									<Skeleton
-										variant="rectangular"
-										width="100%"
-										height="400px"
-										animation="wave"
-										sx={{ bgcolor: "grey.900" }}
-									/>
+									""
 								) : (
 									<nav>
 										<Link to={`/info/${randomAnime?.Slug}`}>
@@ -447,11 +440,9 @@ function Home({ instance }) {
 											}}
 										>
 											{!randomAnime?.Duration ? (
-												<Skeleton
-													variant="text"
-													animation="wave"
-													sx={{ bgcolor: "grey.900" }}
-												/>
+												<>
+													<BsStopwatchFill />: ??? phút/ tập
+												</>
 											) : (
 												<>
 													<BsStopwatchFill />: ~{randomAnime?.Duration} phút/
@@ -468,11 +459,9 @@ function Home({ instance }) {
 											}}
 										>
 											{!randomAnime?.EpisodeTotal ? (
-												<Skeleton
-													variant="text"
-													animation="wave"
-													sx={{ bgcolor: "grey.900" }}
-												/>
+												<>
+													<BsTv />: ??? tập
+												</>
 											) : (
 												<>
 													<BsTv />: {randomAnime?.EpisodeTotal} tập
@@ -584,13 +573,7 @@ function Home({ instance }) {
 									) : (
 										<>
 											{!randomAnime?.CharacterDetail?.length ? (
-												<Skeleton
-													variant="rectangular"
-													width="auto"
-													style={{ minHeight: "300px", maxHeight: "300px" }}
-													animation="wave"
-													sx={{ bgcolor: "grey.900" }}
-												/>
+												""
 											) : (
 												<Swiper
 													slidesPerView="auto"
@@ -640,18 +623,21 @@ function Home({ instance }) {
 													))}
 												</Swiper>
 											)}
-
-											<h4
-												className="character-title"
-												style={{
-													color: "white",
-													fontWeight: "700",
-													paddingLeft: "34px",
-													userSelect: "none",
-												}}
-											>
-												DÀN NHÂN VẬT
-											</h4>
+											{!randomAnime?.CharacterDetail?.length ? (
+												""
+											) : (
+												<h4
+													className="character-title"
+													style={{
+														color: "white",
+														fontWeight: "700",
+														paddingLeft: "34px",
+														userSelect: "none",
+													}}
+												>
+													DÀN NHÂN VẬT
+												</h4>
+											)}
 										</>
 									)}
 								</div>
