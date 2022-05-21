@@ -121,11 +121,13 @@ video {
   }
 
   .video-js-wrapper{
-    display: block;
+    display: block !important;
   }
 
   .episode-content{
-    width: 80% !important;
+    max-width: auto !important;
+    min-width: unset !important;
+    width: 90% !important;
     margin: 0 auto;
   }
 }
