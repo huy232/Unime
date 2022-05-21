@@ -562,8 +562,8 @@ h1, .h5{
 	-webkit-box-orient: vertical;
   /* margin: -10px !important; */
   /* padding: 3px !important; */
-  min-height: 65px;
-  max-height: 65px;
+  min-height: 50px;
+  max-height: 50px;
   padding-right: 8px !important;
   padding-left: 8px !important;
   }

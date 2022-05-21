@@ -119,4 +119,13 @@ video {
   .MuiTypography-root{
     font-size: 0.7rem !important
   }
+
+  .video-js-wrapper{
+    display: block;
+  }
+
+  .episode-content{
+    width: 80% !important;
+    margin: 0 auto;
+  }
 }

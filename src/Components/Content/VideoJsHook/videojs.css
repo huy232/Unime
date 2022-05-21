@@ -36,9 +36,6 @@
     color: white
 }
 
-.video-js .vjs-tech{
-}
-
 .top-wrapper{
     display: flex;
     flex-direction: row;
@@ -49,20 +46,4 @@
     font-size: 40px;
     background-color: red;
     margin-left: 20px
-}
-
-.go-back-btn{
-    position: fixed!important;
-    top: 0;
-    left: 0;
-    height: 100px!important;
-    width: 100px!important;
-}
-
-.go-next-btn{
-    position: fixed!important;
-    top: 0;
-    right: 0;
-    height: 100px!important;
-    width: 100px!important;
 }
