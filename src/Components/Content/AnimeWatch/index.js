@@ -102,7 +102,7 @@ function AnimeWatch({ instance }) {
 									<div className="episode-section-fixed">
 										<button
 											onClick={() => goBackButton()}
-											style={{ backgroundColor: "black" }}
+											style={{ backgroundColor: "black", border: "none" }}
 										>
 											<BsFillArrowLeftSquareFill style={{ color: "white" }} />
 										</button>
