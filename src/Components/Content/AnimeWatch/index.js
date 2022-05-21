@@ -167,6 +167,7 @@ function AnimeWatch({ instance }) {
 								height: "100vh",
 								flexDirection: "column",
 								justifyContent: "center",
+								alignItems: "center",
 							}}
 						>
 							<ThreeDots fill="#a30f0f" />
