@@ -125,7 +125,7 @@ video {
   }
 
   .episode-content{
-    max-width: auto !important;
+    max-width: none !important;
     min-width: unset !important;
     width: 90% !important;
     margin: 0 auto;
