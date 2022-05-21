@@ -1,15 +1,15 @@
 import { useState, useEffect } from "react"
-import { useParams, Link } from "react-router-dom"
+import { useParams, Link, useNavigate } from "react-router-dom"
 import axios from "axios"
 import { ThreeDots } from "react-loading-icons"
 import VideoPlayer from "../VideoJsHook/index"
 import useDocumentTitle from "../DocumentTitleHook"
-// import "plyr-react/dist/plyr.css"
+import { BsFillArrowLeftSquareFill } from "react-icons/bs"
 
 import "./animewatch.css"
-import { GpsFixedOutlined } from "@mui/icons-material"
 
 function AnimeWatch({ instance }) {
+	const navigate = useNavigate()
 	const { anime } = useParams()
 	const queryParams = new URLSearchParams(window.location.search)
 	const index = queryParams.get("index")
@@ -18,7 +18,6 @@ function AnimeWatch({ instance }) {
 	const [name, setName] = useState("")
 	const [watchDetail, setWatchDetail] = useState("Đang tải")
 	const [videoUrl, setVideoUrl] = useState("")
-	const [isActive, setActive] = useState(true)
 
 	useEffect(() => {
 		const CancelToken = axios.CancelToken
@@ -80,8 +79,8 @@ function AnimeWatch({ instance }) {
 		window.location.href = `https://mirai-huy8856.vercel.app/watch/${anime}?index=${index}`
 	}
 
-	const toggleButton = () => {
-		setActive(!isActive)
+	const goBackButton = () => {
+		navigate(`/info/${anime}`)
 	}
 
 	return (
@@ -98,46 +97,24 @@ function AnimeWatch({ instance }) {
 								info={info}
 								index={index}
 							/>
-							<div
-								className="episode-content"
-								style={
-									isActive
-										? {
-												// overflow: "scroll",
-												// maxHeight: "100vh",
-												// minHeight: "100vh",
-										  }
-										: {
-												position: "fixed",
-												right: 0,
-										  }
-								}
-							>
+							<div className="episode-content">
 								<div className="episode-section">
 									<div className="episode-section-fixed">
+										<button onClick={() => goBackButton()}>
+											<BsFillArrowLeftSquareFill />
+										</button>
 										<h5
 											className="episode-section-title"
 											style={{
-												// fontSize: "24px",
 												textAlign: "center",
 												color: "white",
 											}}
 										>
 											DANH SÁCH TẬP PHIM
 										</h5>
-										{/* <button
-											className="episode-section-btn"
-											onClick={() => toggleButton()}
-										>
-											Đóng/Mở
-										</button> */}
 									</div>
 								</div>
-								<div
-									className={
-										isActive ? "episode-bracket" : "episode-bracket active-hide"
-									}
-								>
+								<div className="episode-bracket">
 									{anime != "vua-hai-tac"
 										? info.map((item) => (
 												<Link
