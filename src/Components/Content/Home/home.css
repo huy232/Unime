@@ -551,6 +551,7 @@ h1, .h5{
 	-webkit-box-orient: vertical;
   /* margin: -10px !important; */
   padding: 3px !important;
+  line-height: 1.6;
   }
 
   .webclamp__home {
