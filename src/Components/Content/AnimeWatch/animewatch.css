@@ -93,7 +93,7 @@ video {
   overflow: hidden;
   word-break: break-word;
   line-height: 1.8;
-  height: 57px !important;
+  max-height: 75px;
   margin: 0 auto;
   margin-top: 20px;
 }
