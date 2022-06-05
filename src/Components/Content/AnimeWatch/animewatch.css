@@ -80,6 +80,7 @@ video {
 }
 
 .episodes{
+  min-height: 60px;
   padding: 3px;
   color: rgb(192, 190, 190) !important;
   background-color: rgb(139, 114, 114);
