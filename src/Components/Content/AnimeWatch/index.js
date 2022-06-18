@@ -83,6 +83,45 @@ function AnimeWatch({ instance }) {
 		navigate(`/info/${anime}`)
 	}
 
+	const skip = (time) => {
+		document.getElementById("vjs_video_3_html5_api").currentTime =
+			document.getElementById("vjs_video_3_html5_api").currentTime + time
+	}
+
+	const seekForward = () => {
+		skip(1)
+	}
+
+	const seekBackward = () => {
+		skip(-1)
+	}
+
+	const playVideo = () => {
+		document.getElementById("vjs_video_3_html5_api").play()
+	}
+
+	const pauseVideo = () => {
+		document.getElementById("vjs_video_3_html5_api").pause()
+	}
+
+	var togglePlayVideo = true
+	const toggleVideo = () => {
+		togglePlayVideo ? playVideo() : pauseVideo()
+		togglePlayVideo = !togglePlayVideo
+	}
+
+	document.addEventListener("keydown", (e) => {
+		if (e.key == "ArrowRight") {
+			seekForward()
+		}
+		if (e.key == "ArrowLeft") {
+			seekBackward()
+		}
+		if (e.key == " ") {
+			toggleVideo()
+		}
+	})
+
 	return (
 		<>
 			<div style={{ marginTop: "-90px" }}>

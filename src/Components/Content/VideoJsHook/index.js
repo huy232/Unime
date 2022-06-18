@@ -22,6 +22,7 @@ const usePlayer = ({ src, controls, autoplay, anime, info, index }) => {
 				overrideNative: true,
 			},
 		},
+		playbackRates: [0.5, 1, 1.5, 2],
 		plugins: {
 			qualityLevel: {},
 			hlsQualitySelector: { displayCurrentQuality: true },
