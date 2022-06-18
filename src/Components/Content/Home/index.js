@@ -218,6 +218,7 @@ function Home({ instance }) {
 													</div>
 
 													<Card.Body
+														className="card-body-home"
 														style={{
 															display: "flex",
 															flexDirection: "column",

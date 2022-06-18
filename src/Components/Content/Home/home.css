@@ -103,14 +103,20 @@ h1, .h5{
   .newSwiper {
       width: 95%;
   }
-  .card-body{
-      min-height:4rem;
-      max-height:4rem;
+  .card-body-home{
+      min-height:10rem !important;
+      max-height:10rem !important;
       background-color: #343a40
   }
   .anime-card .card-body{
     min-height: 10rem;
     max-height: 10rem;
+  }
+
+  .card-body{
+    min-height: 7rem;
+    max-height: 7rem;
+    background-color: #343a40
   }
 
   .card-img-top {
@@ -468,6 +474,9 @@ h1, .h5{
     .col-3{
       text-align:center;
       padding-right: 0!important
+    }
+    .card{
+      margin: 10px;
     }
   }
   
