@@ -89,25 +89,33 @@ function AnimeWatch({ instance }) {
 	}
 
 	const seekForward = () => {
-		skip(1)
+		skip(0.5)
 	}
 
 	const seekBackward = () => {
-		skip(-1)
+		skip(-0.5)
 	}
 
-	const playVideo = () => {
-		document.getElementById("vjs_video_3_html5_api").play()
+	const seekUpVolume = () => {
+		document.getElementById("vjs_video_3_html5_api").volume = Math.min(
+			1,
+			document.getElementById("vjs_video_3_html5_api").volume + 0.01
+		)
 	}
 
-	const pauseVideo = () => {
-		document.getElementById("vjs_video_3_html5_api").pause()
+	const seekDownVolume = () => {
+		document.getElementById("vjs_video_3_html5_api").volume = Math.max(
+			0,
+			document.getElementById("vjs_video_3_html5_api").volume - 0.01
+		)
 	}
 
-	var togglePlayVideo = true
-	const toggleVideo = () => {
-		togglePlayVideo ? playVideo() : pauseVideo()
-		togglePlayVideo = !togglePlayVideo
+	const toggleMute = () => {
+		if (document.getElementById("vjs_video_3_html5_api").volume == 1) {
+			document.getElementById("vjs_video_3_html5_api").volume = 0
+		} else {
+			document.getElementById("vjs_video_3_html5_api").volume = 1
+		}
 	}
 
 	document.addEventListener("keydown", (e) => {
@@ -117,8 +125,14 @@ function AnimeWatch({ instance }) {
 		if (e.key == "ArrowLeft") {
 			seekBackward()
 		}
-		if (e.key == " ") {
-			toggleVideo()
+		if (e.key == "ArrowUp") {
+			seekUpVolume()
+		}
+		if (e.key == "ArrowDown") {
+			seekDownVolume()
+		}
+		if (e.key == "m" || e.key == "M") {
+			toggleMute()
 		}
 	})
 
