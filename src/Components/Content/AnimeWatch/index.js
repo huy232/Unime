@@ -118,23 +118,25 @@ function AnimeWatch({ instance }) {
 		}
 	}
 
-	document.addEventListener("keydown", (e) => {
-		if (e.key == "ArrowRight") {
-			seekForward()
-		}
-		if (e.key == "ArrowLeft") {
-			seekBackward()
-		}
-		if (e.key == "ArrowUp") {
-			seekUpVolume()
-		}
-		if (e.key == "ArrowDown") {
-			seekDownVolume()
-		}
-		if (e.key == "m" || e.key == "M") {
-			toggleMute()
-		}
-	})
+	if (videoUrl) {
+		document.addEventListener("keydown", (e) => {
+			if (e.key == "ArrowRight") {
+				seekForward()
+			}
+			if (e.key == "ArrowLeft") {
+				seekBackward()
+			}
+			if (e.key == "ArrowUp") {
+				seekUpVolume()
+			}
+			if (e.key == "ArrowDown") {
+				seekDownVolume()
+			}
+			if (e.key == "m" || e.key == "M") {
+				toggleMute()
+			}
+		})
+	}
 
 	return (
 		<>
