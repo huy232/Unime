@@ -137,7 +137,7 @@ function Home({ instance }) {
 								</div>
 							</SwiperSlide>
 					  ))
-					: sliders.map((slider) => (
+					: sliders?.map((slider) => (
 							<SwiperSlide key={slider?.slug}>
 								<nav>
 									<Link to={`/info/${slider?.slug}`}>
