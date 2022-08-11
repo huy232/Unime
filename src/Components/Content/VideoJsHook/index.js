@@ -12,6 +12,16 @@ videojs.registerPlugin("hlsQualitySelector", videojsHlsQualitySelector)
 
 const usePlayer = ({ src, controls, autoplay, anime, info, index }) => {
 	const options = {
+		userActions: {
+			hotkeys: {
+				fullscreenKey: function (event) {
+					return event.which === 13
+				},
+				playPauseKey: function (event) {
+					return event.which === 32
+				},
+			},
+		},
 		fill: true,
 		fluid: true,
 		preload: "auto",
