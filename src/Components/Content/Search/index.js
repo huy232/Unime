@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom"
 import axios from "axios"
 import { Card, Row, Col } from "react-bootstrap"
 import { BsFillPlayFill } from "react-icons/bs"
+import useDocumentTitle from "../DocumentTitleHook"
 import "./search.css"
 
 function Search({ instance }) {
@@ -31,6 +32,8 @@ function Search({ instance }) {
 			source.cancel()
 		}
 	}, [searchSlug])
+
+	useDocumentTitle(`Tìm kiếm`)
 
 	return (
 		<>
