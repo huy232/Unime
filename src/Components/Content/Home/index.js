@@ -34,23 +34,8 @@ function Home({ instance }) {
 					<MostWatched instance={instance} />
 				</CardGroup>
 			</div>
-			<div className="today-section" style={{ marginTop: "42px" }}>
-				<h1
-					className="today-h1 "
-					style={{
-						marginBottom: "42px",
-						float: "right",
-						marginRight: "30px",
-					}}
-				>
-					CÓ THỂ BẠN SẼ THÍCH ĐÓ
-				</h1>
 
-				<div className="clearfix"></div>
-				<div className="row w-100 flex-responsive">
-					<RandomAnime instance={instance} />
-				</div>
-			</div>
+			<RandomAnime instance={instance} />
 		</>
 	)
 }

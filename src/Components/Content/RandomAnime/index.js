@@ -32,16 +32,39 @@ function RandomAnime({ instance }) {
 
 	return (
 		<>
-			<div className="col-9 flex-mobile">
-				<RandomAnimeTitle randomAnime={randomAnime} />
-				<div className="info-character-wrapper" style={{ marginTop: "22px" }}>
-					<RandomAnimeInfo randomAnime={randomAnime} />
-					<CharacterDetail randomAnime={randomAnime} done={done} />
+			{}
+			{Object.keys(randomAnime).length === 0 ? (
+				""
+			) : (
+				<div className="today-section" style={{ marginTop: "42px" }}>
+					<h1
+						className="today-h1 "
+						style={{
+							marginBottom: "42px",
+							float: "right",
+							marginRight: "30px",
+						}}
+					>
+						CÓ THỂ BẠN SẼ THÍCH ĐÓ
+					</h1>
+					<div className="clearfix"></div>
+					<div className="row w-100 flex-responsive">
+						<div className="col-9 flex-mobile">
+							<RandomAnimeTitle randomAnime={randomAnime} />
+							<div
+								className="info-character-wrapper"
+								style={{ marginTop: "22px" }}
+							>
+								<RandomAnimeInfo randomAnime={randomAnime} />
+								<CharacterDetail randomAnime={randomAnime} done={done} />
+							</div>
+						</div>
+						<div className="col-3">
+							<RandomAnimeRightCover randomAnime={randomAnime} />
+						</div>
+					</div>
 				</div>
-			</div>
-			<div className="col-3">
-				<RandomAnimeRightCover randomAnime={randomAnime} />
-			</div>
+			)}
 		</>
 	)
 }
