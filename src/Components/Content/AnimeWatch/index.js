@@ -89,24 +89,24 @@ function AnimeWatch({ instance }) {
 	}
 
 	const seekForward = () => {
-		skip(1)
+		skip(10)
 	}
 
 	const seekBackward = () => {
-		skip(-0.5)
+		skip(-5)
 	}
 
 	const seekUpVolume = () => {
 		document.getElementsByTagName("video")[0].volume = Math.min(
 			1,
-			document.getElementsByTagName("video")[0].volume + 0.01
+			document.getElementsByTagName("video")[0].volume + 0.04
 		)
 	}
 
 	const seekDownVolume = () => {
 		document.getElementsByTagName("video")[0].volume = Math.max(
 			0,
-			document.getElementsByTagName("video")[0].volume - 0.01
+			document.getElementsByTagName("video")[0].volume - 0.04
 		)
 	}
 
