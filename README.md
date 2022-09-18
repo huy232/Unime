@@ -3,7 +3,7 @@
 </p>
 MIRAI is an anime website that provides you anime for completely free without ads.
 
-The site: [MIRAI](https://mirai-huy8856.vercel.app/)
+The site: [MIRAI](https://mirai-anime.vercel.app/)
 
 <h2>Motivation</h2>
 Before I learned HTML/CSS/Javascript to become a web developer, I'd always dreamt of creating an anime page for myself to watch without ads, which drove me to learn the necessary technology and tools required for this first "from scratch" project.
@@ -58,6 +58,7 @@ Before I learned HTML/CSS/Javascript to become a web developer, I'd always dream
 ![WatchPage](./public/gif/Watch.gif)
 
 
+Everything is responsive, shrink down the web page or using it on device for further more detail.
 
 ## Improve
 - A better way for writing these kinds of projects in the future.
@@ -73,3 +74,7 @@ Before I learned HTML/CSS/Javascript to become a web developer, I'd always dream
 - Use `git i` to install all needed dependencies in this project.
 - Use `npm start` to run the project.
 - Feel free to modify, fork, make it better or observe it if you're new to coding.
+
+This page will only working until 28 November, since it's the day Heroku will shut down Free Plan, which will affect my Back-End, that's the data that I'm using for MIRAI.
+
+Feel free to contact or bug report to me, if you see any better solution, more optimize ways of coding or just want to share it with me, I'll gladly and kindly listen to it, have a nice day!
