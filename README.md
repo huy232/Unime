@@ -32,19 +32,19 @@ Before I learned HTML/CSS/Javascript to become a web developer, I'd always dream
 ## Showcase
 
 HOME PAGE
-![HomePage](https://i.imgur.com/DbozGGz.gif)
+![HomePage](https://i.imgur.com/xzNMQRd.gif)
 
 Anime/Category Page with Infinite Load
-![Anime](https://i.imgur.com/TNNrCP1.gif)
+![Anime](https://i.imgur.com/bN3b74Z.gif)
 
 Search Page
 ![Search](https://i.imgur.com/qxvCQzv.gif)
 
 Info Page with Youtube, Anilist, and anime Data
-![InfoPage](https://i.imgur.com/mpjVcd6.gif)
+![InfoPage](https://i.imgur.com/nW7LCf2.gif)
 
 Watch page
-![WatchPage](https://i.imgur.com/r1xjlnt.gif)
+![WatchPage](https://i.imgur.com/rgHP0De.gif)
 
 ## Improve
 - A better way for writing these kinds of projects in the future.
