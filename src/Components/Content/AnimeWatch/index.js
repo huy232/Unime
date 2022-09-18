@@ -84,12 +84,12 @@ function AnimeWatch({ instance }) {
 	}
 
 	const skip = (time) => {
-		document.getElementById("vjs_video_3_html5_api").currentTime =
-			document.getElementById("vjs_video_3_html5_api").currentTime + time
+		document.getElementsByTagName("video")[0].currentTime =
+			document.getElementsByTagName("video")[0].currentTime + time
 	}
 
 	const seekForward = () => {
-		skip(0.5)
+		skip(1)
 	}
 
 	const seekBackward = () => {
@@ -97,42 +97,42 @@ function AnimeWatch({ instance }) {
 	}
 
 	const seekUpVolume = () => {
-		document.getElementById("vjs_video_3_html5_api").volume = Math.min(
+		document.getElementsByTagName("video")[0].volume = Math.min(
 			1,
-			document.getElementById("vjs_video_3_html5_api").volume + 0.01
+			document.getElementsByTagName("video")[0].volume + 0.01
 		)
 	}
 
 	const seekDownVolume = () => {
-		document.getElementById("vjs_video_3_html5_api").volume = Math.max(
+		document.getElementsByTagName("video")[0].volume = Math.max(
 			0,
-			document.getElementById("vjs_video_3_html5_api").volume - 0.01
+			document.getElementsByTagName("video")[0].volume - 0.01
 		)
 	}
 
 	const toggleMute = () => {
-		if (document.getElementById("vjs_video_3_html5_api").volume == 1) {
-			document.getElementById("vjs_video_3_html5_api").volume = 0
+		if (document.getElementsByTagName("video")[0].volume === 1) {
+			document.getElementsByTagName("video")[0].volume = 0
 		} else {
-			document.getElementById("vjs_video_3_html5_api").volume = 1
+			document.getElementsByTagName("video")[0].volume = 1
 		}
 	}
 
 	if (videoUrl) {
 		document.addEventListener("keydown", (e) => {
-			if (e.key == "ArrowRight") {
+			if (e.key === "ArrowRight") {
 				seekForward()
 			}
-			if (e.key == "ArrowLeft") {
+			if (e.key === "ArrowLeft") {
 				seekBackward()
 			}
-			if (e.key == "ArrowUp") {
+			if (e.key === "ArrowUp") {
 				seekUpVolume()
 			}
-			if (e.key == "ArrowDown") {
+			if (e.key === "ArrowDown") {
 				seekDownVolume()
 			}
-			if (e.key == "m" || e.key == "M") {
+			if (e.key === "m" || e.key === "M") {
 				toggleMute()
 			}
 		})
@@ -182,7 +182,7 @@ function AnimeWatch({ instance }) {
 												>
 													<div
 														className={
-															parseInt(index) == parseInt(item.name - 1)
+															parseInt(index) === parseInt(item.name - 1)
 																? "episodes active"
 																: "episodes"
 														}
@@ -200,7 +200,7 @@ function AnimeWatch({ instance }) {
 												>
 													<div
 														className={
-															parseInt(index) == parseInt(item.name)
+															parseInt(index) === parseInt(item.name)
 																? "episodes active"
 																: "episodes"
 														}
