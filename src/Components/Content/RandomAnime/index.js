@@ -32,8 +32,7 @@ function RandomAnime({ instance }) {
 
 	return (
 		<>
-			{}
-			{Object.keys(randomAnime).length === 0 ? (
+			{Object.keys(randomAnime || {}).length === 0 ? (
 				""
 			) : (
 				<div className="today-section" style={{ marginTop: "42px" }}>
