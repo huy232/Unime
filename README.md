@@ -1,16 +1,13 @@
 <div style="text-align: center;">
 <h1>MIRAI</h1>
-### MIRAI is an anime website that provides you anime for completely free without ads.
+MIRAI is an anime website that provides you anime for completely free without ads.
 
-Here's the site: [MIRAI](https://mirai-huy8856.vercel.app/)
-
+The site: [MIRAI](https://mirai-huy8856.vercel.app/)
 </div>
-
 <h2>Motivation</h2>
 Before I learned HTML/CSS/Javascript to become a web developer, I'd always dreamt of creating an anime page for myself to watch without ads, which drove me to learn the necessary technology and tools required for this first "from scratch" project.
 
 ## Table of contents
-
 - [TECHNOLOGIES](#technologies)
 - [SHOWCASE](#showcase)
 - [WHAT NEED TO IMPROVE](#improve)
@@ -18,7 +15,6 @@ Before I learned HTML/CSS/Javascript to become a web developer, I'd always dream
 - [INSTALLATION](#installation)
 
 ## Technologies
-
 - ReactJS
 - HTML
 - CSS
@@ -35,15 +31,20 @@ Before I learned HTML/CSS/Javascript to become a web developer, I'd always dream
 
 ## Showcase
 
-![Home page](http://i.imgur.com/2cwRJNUh.gif)
+HOME PAGE
+![HomePage](http://i.imgur.com/2cwRJNUh.gif)
 
-![Anime/Category Page with Infinite Load](http://i.imgur.com/4LiP5Ynh.gif)
+Anime/Category Page with Infinite Load
+![Anime](http://i.imgur.com/4LiP5Ynh.gif)
 
+Search Page
 ![Search](https://i.imgur.com/HokytyG.gif)
 
-![Info Page](https://i.imgur.com/Oln3I9T.gif)
+Info Page with Youtube, Anilist, and anime Data
+![InfoPage](https://i.imgur.com/Oln3I9T.gif)
 
-![Watch Page](http://i.imgur.com/jcQa7f4h.gif)
+Watch page
+![WatchPage](http://i.imgur.com/jcQa7f4h.gif)
 
 ## Improve
 
