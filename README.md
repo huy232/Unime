@@ -32,33 +32,30 @@ Before I learned HTML/CSS/Javascript to become a web developer, I'd always dream
 ## Showcase
 
 HOME PAGE
-![HomePage](http://i.imgur.com/2cwRJNUh.gif)
+![HomePage](https://imgur.com/DbozGGz)
 
 Anime/Category Page with Infinite Load
-![Anime](http://i.imgur.com/4LiP5Ynh.gif)
+![Anime](https://imgur.com/TNNrCP1)
 
 Search Page
-![Search](https://i.imgur.com/HokytyG.gif)
+![Search](https://imgur.com/qxvCQzv)
 
 Info Page with Youtube, Anilist, and anime Data
-![InfoPage](https://i.imgur.com/Oln3I9T.gif)
+![InfoPage](https://imgur.com/mpjVcd6)
 
 Watch page
-![WatchPage](http://i.imgur.com/jcQa7f4h.gif)
+![WatchPage](https://imgur.com/r1xjlnt)
 
 ## Improve
-
 - A better way for writing these kinds of projects in the future.
 - Apply more ways and technologies needed (like Redux, useMemo, useRef, etc. for more flexibility in handling data)
 - Fix bugs if it's still around, but I'm trying on other projects, so progress on this will be plodding.
 
 # SOURCES
-
 - This is a free project, the data is from ![Vuighe.net](https://vuighe.net/), please support them.
 - Combine with ![Anilist.co](https://anilist.co/) data and ![Youtube](https://www.youtube.com/) for trailer provider and further information for anime.
 
 # Installation
-
 - Simply use `git clone https://github.com/huy232/mirai.git` to clone my project to your local.
 - Use `git i` to install all needed dependencies in this project.
 - Use `npm start` to run the project.
