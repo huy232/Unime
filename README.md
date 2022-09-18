@@ -32,19 +32,19 @@ Before I learned HTML/CSS/Javascript to become a web developer, I'd always dream
 ## Showcase
 
 HOME PAGE
-![HomePage](https://imgur.com/DbozGGz)
+![HomePage](https://i.imgur.com/DbozGGz.gif)
 
 Anime/Category Page with Infinite Load
-![Anime](https://imgur.com/TNNrCP1)
+![Anime](https://i.imgur.com/TNNrCP1.gif)
 
 Search Page
-![Search](https://imgur.com/qxvCQzv)
+![Search](https://i.imgur.com/qxvCQzv.gif)
 
 Info Page with Youtube, Anilist, and anime Data
-![InfoPage](https://imgur.com/mpjVcd6)
+![InfoPage](https://i.imgur.com/mpjVcd6.gif)
 
 Watch page
-![WatchPage](https://imgur.com/r1xjlnt)
+![WatchPage](https://i.imgur.com/r1xjlnt.gif)
 
 ## Improve
 - A better way for writing these kinds of projects in the future.
@@ -52,8 +52,8 @@ Watch page
 - Fix bugs if it's still around, but I'm trying on other projects, so progress on this will be plodding.
 
 # SOURCES
-- This is a free project, the data is from ![Vuighe.net](https://vuighe.net/), please support them.
-- Combine with ![Anilist.co](https://anilist.co/) data and ![Youtube](https://www.youtube.com/) for trailer provider and further information for anime.
+- This is a free project, the data is from [Vuighe.net](https://vuighe.net/), please support them.
+- Combine with [Anilist.co](https://anilist.co/) data and [Youtube](https://www.youtube.com/) for trailer provider and further information for anime.
 
 # Installation
 - Simply use `git clone https://github.com/huy232/mirai.git` to clone my project to your local.
