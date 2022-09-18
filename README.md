@@ -1,70 +1,64 @@
-# Getting Started with Create React App
+<div style="text-align: center;">
+<h1>MIRAI</h1>
+### MIRAI is an anime website that provides you anime for completely free without ads.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Here's the site: [MIRAI](https://mirai-huy8856.vercel.app/)
 
-## Available Scripts
+</div>
 
-In the project directory, you can run:
+<h2>Motivation</h2>
+Before I learned HTML/CSS/Javascript to become a web developer, I'd always dreamt of creating an anime page for myself to watch without ads, which drove me to learn the necessary technology and tools required for this first "from scratch" project.
 
-### `npm start`
+## Table of contents
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- [TECHNOLOGIES](#technologies)
+- [SHOWCASE](#showcase)
+- [WHAT NEED TO IMPROVE](#improve)
+- [SOURCES](#sources)
+- [INSTALLATION](#installation)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Technologies
 
-### `npm test`
+- ReactJS
+- HTML
+- CSS
+- Javascript
+- Bootstrap
+- Heroku
+- Vercel
+- React Router DOM
+- Swiper
+- AXIOS
+- MUI
+- React Icons
+- etc.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Showcase
 
-### `npm run build`
+![Home page](http://i.imgur.com/2cwRJNUh.gif)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![Anime/Category Page with Infinite Load](http://i.imgur.com/4LiP5Ynh.gif)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![Search](https://i.imgur.com/HokytyG.gif)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![Info Page](https://i.imgur.com/Oln3I9T.gif)
 
-### `npm run eject`
+![Watch Page](http://i.imgur.com/jcQa7f4h.gif)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Improve
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- A better way for writing these kinds of projects in the future.
+- Apply more ways and technologies needed (like Redux, useMemo, useRef, etc. for more flexibility in handling data)
+- Fix bugs if it's still around, but I'm trying on other projects, so progress on this will be plodding.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+# SOURCES
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- This is a free project, the data is from ![Vuighe.net](https://vuighe.net/), please support them.
+- Combine with ![Anilist.co](https://anilist.co/) data and ![Youtube](https://www.youtube.com/) for trailer provider and further information for anime.
 
-## Learn More
+# Installation
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Simply use `git clone https://github.com/huy232/mirai.git` to clone my project to your local.
+- Use `git i` to install all needed dependencies in this project.
+- Use `npm start` to run the project.
+- Feel free to modify, fork, make it better or observe it if you're new to coding.
