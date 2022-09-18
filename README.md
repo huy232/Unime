@@ -31,19 +31,25 @@ Before I learned HTML/CSS/Javascript to become a web developer, I'd always dream
 
 ## Showcase
 <div style="text-align: center;">
+
 <h3>HOME PAGE</h3>
+
 ![HomePage](./public/gif/HomePage.gif)
 
 <h3>Anime/Category Page with Infinite Load</h3>
+
 ![Anime](./public/gif/Anime.gif)
 
 <h3>Search Page</h3>
+
 ![Search](https://i.imgur.com/qxvCQzv.gif)
 
 <h3>Info Page with Youtube, Anilist, and anime Data</h3>
+
 ![InfoPage](./public/gif/Info.gif)
 
 <h3>Watch page</h3>
+
 ![WatchPage](./public/gif/Watch.gif)
 </div>
 ## Improve
