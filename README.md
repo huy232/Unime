@@ -31,27 +31,33 @@ Before I learned HTML/CSS/Javascript to become a web developer, I'd always dream
 
 ## Showcase
 <div style="text-align: center;">
-
 <h3>HOME PAGE</h3>
+</div>
 
 ![HomePage](./public/gif/HomePage.gif)
-
+<div style="text-align: center;">
 <h3>Anime/Category Page with Infinite Load</h3>
+</div>
 
 ![Anime](./public/gif/Anime.gif)
-
+<div style="text-align: center;">
 <h3>Search Page</h3>
+</div>
 
 ![Search](https://i.imgur.com/qxvCQzv.gif)
-
+<div style="text-align: center;">
 <h3>Info Page with Youtube, Anilist, and anime Data</h3>
+</div>
 
 ![InfoPage](./public/gif/Info.gif)
-
+<div style="text-align: center;">
 <h3>Watch page</h3>
+</div>
 
 ![WatchPage](./public/gif/Watch.gif)
-</div>
+
+
+
 ## Improve
 - A better way for writing these kinds of projects in the future.
 - Apply more ways and technologies needed (like Redux, useMemo, useRef, etc. for more flexibility in handling data)
