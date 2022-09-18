@@ -1,9 +1,10 @@
-<div style="text-align: center;">
+<p align="center">
 <h1>MIRAI</h1>
+</p>
 MIRAI is an anime website that provides you anime for completely free without ads.
 
 The site: [MIRAI](https://mirai-huy8856.vercel.app/)
-</div>
+
 <h2>Motivation</h2>
 Before I learned HTML/CSS/Javascript to become a web developer, I'd always dreamt of creating an anime page for myself to watch without ads, which drove me to learn the necessary technology and tools required for this first "from scratch" project.
 
@@ -30,29 +31,29 @@ Before I learned HTML/CSS/Javascript to become a web developer, I'd always dream
 - etc.
 
 ## Showcase
-<div style="text-align: center;">
+<p align="center">
 <h3>HOME PAGE</h3>
-</div>
+</p>
 
 ![HomePage](./public/gif/HomePage.gif)
-<div style="text-align: center;">
+<p align="center">
 <h3>Anime/Category Page with Infinite Load</h3>
-</div>
+</p>
 
 ![Anime](./public/gif/Anime.gif)
-<div style="text-align: center;">
+<p align="center">
 <h3>Search Page</h3>
-</div>
+</p>
 
 ![Search](https://i.imgur.com/qxvCQzv.gif)
-<div style="text-align: center;">
+<p align="center">
 <h3>Info Page with Youtube, Anilist, and anime Data</h3>
-</div>
+</p>
 
 ![InfoPage](./public/gif/Info.gif)
-<div style="text-align: center;">
+<p align="center">
 <h3>Watch page</h3>
-</div>
+</p>
 
 ![WatchPage](./public/gif/Watch.gif)
 
