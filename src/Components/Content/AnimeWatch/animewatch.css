@@ -80,7 +80,6 @@ video {
 }
 
 .episodes{
-  min-height: 60px;
   padding: 3px;
   color: rgb(192, 190, 190) !important;
   background-color: rgb(139, 114, 114);
@@ -93,9 +92,8 @@ video {
 	-webkit-box-orient: vertical;
   overflow: hidden;
   word-break: break-word;
-  line-height: 1.8;
-  margin: 0 auto;
-  margin-top: 20px;
+  margin: 20px auto 0;
+  height: 66px;
 }
 
 .episodes a p {
