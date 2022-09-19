@@ -7,7 +7,10 @@ function InfoTrailer({ videoUrl }) {
 					<>
 						<h3>XEM THỬ NẾU BẠN CHƯA RÕ</h3>
 						<div className="youtube-link">
-							<ReactPlayer url={videoUrl} controls={true} />
+							<ReactPlayer
+								url={`${videoUrl}&origin=https://mirai-huy8856.vercel.app/`}
+								controls={true}
+							/>
 						</div>
 					</>
 				) : (

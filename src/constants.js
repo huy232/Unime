@@ -1,4 +1,5 @@
-const url = "https://mirai-reborn.herokuapp.com/api"
+// const url = "https://mirai-reborn.herokuapp.com/api"
+const url = "https://mirai-backend.onrender.com/api"
 
 const genres = [
 	{ slug: "hanh-dong", name: "Hành Động" },

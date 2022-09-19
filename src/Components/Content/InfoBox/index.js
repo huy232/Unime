@@ -9,8 +9,7 @@ function InfoBox({ info, loading }) {
 					style={{
 						display: "block",
 						textAlign: "center",
-						maxHeight: "330px",
-						minHeight: "330px",
+						height: "300px",
 						marginTop: "-5rem",
 					}}
 				>

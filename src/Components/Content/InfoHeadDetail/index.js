@@ -8,7 +8,7 @@ function InfoHeadDetail({ info, loading }) {
 				</h2>
 			</div>
 			<div className="description">
-				<p>
+				<p className="anime-description-paragraph">
 					{loading ? (
 						<DescriptionSkeleton />
 					) : !info?.description ? (

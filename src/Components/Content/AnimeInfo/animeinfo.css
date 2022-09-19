@@ -15,8 +15,10 @@
        object-fit: cover;
     min-width: 160px;
     max-width: 160px;
-    max-height: 226px;
-    border: none
+    max-height: 260px;
+    min-height: 260px;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px
 }
 
 .info-detail{
@@ -47,22 +49,44 @@
     bottom: 0;
 }
 
+.anime-title{
+    margin-top: 10px;
+}
+
+.description{
+    margin: 20px 30px 0;
+}
+
+.anime-description-paragraph{
+    line-height: 1.8;
+    padding: 20px;
+    border-radius: 20px;
+    background: rgba(163, 163, 163, 0.2);
+    box-shadow: rgb(0 0 0 / 10%) 0px 4px 4px 0px, rgb(0 0 0 / 5%) 0px 1px 6px 0px, rgb(0 0 0 / 10%) 0px 8px 8px 0px, rgb(0 0 0 / 10%) 0px 16px 16px 0px, rgb(0 0 0 / 15%) 8px 32px 32px 0px, rgb(0 0 0 / 15%) 8px 64px 64px 0px;
+}
+
+
 .bottom-detail{
     display: flex;
     flex-direction: row
 }
 
+.bottom-detail > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px 0
+}
+
 .bottom-detail > div h6{
     border-radius: 10px;
     color: #282828;
-    background-color: #A0A0A0;
     padding: 5px;
     display: inline-block;
 }
 
-
 /* SECTION OF TITLE */
-/* .country h6{
+.country h6{
     background-color:#f98866
 }
 .score h6{
@@ -76,7 +100,7 @@
 }
 .release-date h6{
     background-color: #BA5536
-} */
+}
 
 
 
@@ -84,9 +108,10 @@
     margin-left: 30px;
 }
 
-.bottom-detail div:is(:last-child){
+.bottom-detail .release-date{
     margin-left: auto;
-    margin-right: 25px
+    margin-right: 25px;
+    align-items: flex-end
 }
 
 .swiper-container{
@@ -168,8 +193,7 @@
     clear: both;
   }
 
-  .detail-cover-info{
-    margin-top: -60px;
+.detail-cover-info{
       text-align: right
   }
 
@@ -227,7 +251,8 @@ li.episode-chunk:hover{
     .bottom-detail > div:not(:first-child):not(:last-child){
         margin-left: 0
     }
-    .bottom-detail div:is(:last-child){
+    .bottom-detail .release-date{
+        align-items: center;
         margin-left: 0;
         margin-right: 0
     }
