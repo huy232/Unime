@@ -31,8 +31,20 @@
 }
 
 .banner-info-image{
+    position: absolute;
     min-height: 450px;
     width: 100%;
+    -o-object-fit: cover;
+       object-fit: cover
+}
+
+.banner-overlay{
+    display: block;
+    height: 180px;
+    position: absolute;
+    width: 100%;
+    background-image: linear-gradient(179deg,transparent 30%,rgba(18,18,18, 0.6),#151515);
+    bottom: 0;
 }
 
 .bottom-detail{
@@ -78,7 +90,7 @@
 }
 
 .swiper-container{
-    margin-top: 50px;
+    margin-top: 8px;
     margin-left: auto;
     margin-right: auto;
     position: relative;
@@ -86,6 +98,18 @@
     padding: 0;
     width: 90%;
     height: 100px
+}
+
+.swiper-info{
+    display: flex;
+    flex-direction: column-reverse;
+    height: auto
+}
+
+.swiper-info .swiper-pagination{
+    position: relative;
+    bottom: 0;
+    margin: 8px 0
 }
 
 .wrapper-info-bottom{
@@ -96,6 +120,19 @@
 .episode-list{
     position: absolute;
     width: 100%
+}
+
+.list-episode-title-main{
+    display: block;
+    text-align: center;
+}
+
+.list-episode-title-main h4{
+    width: 30%;
+    margin-top: 30px;
+    display: inline-block;
+    border-top: 4px solid rgb(231, 229, 229);
+    padding-top: 8px;
 }
 
 .swiper-wrapper{

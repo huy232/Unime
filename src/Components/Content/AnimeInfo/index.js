@@ -88,11 +88,13 @@ function AnimeInfo({ instance }) {
 							sx={{ bgcolor: "grey.900" }}
 						/>
 					) : (
-						<img
-							src={info?.animeInfo?.BannerImg}
-							className="banner-info-image"
-							style={{ width: "auto" }}
-						/>
+						<>
+							<img
+								src={info?.animeInfo?.BannerImg}
+								className="banner-info-image"
+							/>
+							<div className="banner-overlay"></div>
+						</>
 					)}
 				</div>
 			</div>

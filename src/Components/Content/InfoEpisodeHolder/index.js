@@ -13,10 +13,12 @@ function InfoEpisodeHolder({ episodeList, selectedChunk, setSelectedChunk }) {
 	return (
 		<>
 			<div className="episode-list">
-				<h4>DANH SÁCH TẬP PHIM</h4>
+				<div className="list-episode-title-main">
+					<h4 style={{ marginTop: "30px" }}>DANH SÁCH TẬP PHIM</h4>
+				</div>
 				<Swiper
 					slidesPerView="auto"
-					className="swiper-container"
+					className="swiper-container swiper-info"
 					navigation={false}
 					pagination={{
 						type: "fraction",
@@ -30,6 +32,9 @@ function InfoEpisodeHolder({ episodeList, selectedChunk, setSelectedChunk }) {
 							key={i}
 							style={{
 								width: "160px",
+								display: "flex",
+								justifyContent: "center",
+								alignItems: "center",
 							}}
 						>
 							<li
