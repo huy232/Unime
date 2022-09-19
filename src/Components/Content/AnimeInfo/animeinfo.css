@@ -13,10 +13,8 @@
 .cover-image{
     -o-object-fit: cover;
        object-fit: cover;
-    min-width: 160px;
-    max-width: 160px;
-    max-height: 260px;
-    min-height: 260px;
+    height: 260px;
+    width: auto;
     border: none;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px
 }
@@ -34,8 +32,8 @@
 
 .banner-info-image{
     position: absolute;
-    min-height: 450px;
-    width: 100%;
+    height: 450px;
+    width: auto;
     -o-object-fit: cover;
        object-fit: cover
 }
