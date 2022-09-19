@@ -157,7 +157,8 @@ h1, .h5{
   color: white !important;
   min-height: 100% ;
   max-height: 100% !important;
-  background-color: black !important
+  background: rgba(163, 163, 163, 0.2)!important;
+  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
 }
 
 .description-cover-img{
@@ -247,9 +248,9 @@ h1, .h5{
   background-color: #121212 
 }
 .my-anchor-css-class{
-  display: inline-block;
   float: right;
-  margin-left: auto;
+  margin-top: 20px;
+  margin-left: 20px;
   padding: 2px 10px;
   border-radius: 5px;
   background-color: black;
@@ -291,15 +292,15 @@ h1, .h5{
 }
 
 .col-9 .card {
+  margin-left: 20px;
   border-right: 5px solid !important;
   padding-right: 20px;
--o-border-image:
-  linear-gradient(to bottom, #ff9966, #ff99cc) 1 100%;
-   border-image:
-  linear-gradient(to bottom, #ff9966, #ff99cc) 1 100%;
+-o-border-image: linear-gradient(to bottom, #ff9966, #ff99cc) 1 100%;
+  border-image: linear-gradient(to bottom, #ff9966, #ff99cc) 1 100%;
   border-left: 0px;
-    border-bottom: 0px;
-    border-top: 0px
+  border-bottom: 0px;
+  border-top: 0px;
+  background-color: #121212 !important
 }
 
 .col-3{
@@ -311,6 +312,11 @@ h1, .h5{
     border-bottom: 0px !important;
     border-top: 0px !important;
     border-right: 0px !important;
+}
+
+
+.col-3 .image-box{
+  box-shadow: rgb(0 0 0 / 17%) 0px -23px 25px 0px inset, rgb(0 0 0 / 15%) 0px -36px 30px 0px inset, rgb(0 0 0 / 10%) 0px -79px 40px 0px inset, rgb(0 0 0 / 6%) 0px 2px 1px, rgb(0 0 0 / 9%) 0px 4px 2px, rgb(0 0 0 / 9%) 0px 8px 4px, rgb(0 0 0 / 9%) 0px 16px 8px, rgb(0 0 0 / 9%) 0px 32px 16px;
 }
 
 .info-today{
@@ -418,7 +424,6 @@ h1, .h5{
          border-image:none!important;
          margin-top: 30px!important
     }
-    
 
   }
 

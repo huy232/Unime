@@ -30,7 +30,7 @@ function RandomAnime({ instance }) {
 		return () => {
 			source.cancel()
 		}
-	}, [])
+	}, [instance])
 
 	return (
 		<>

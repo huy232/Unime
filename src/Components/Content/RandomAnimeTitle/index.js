@@ -44,8 +44,7 @@ function RandomAnimeTitle({ randomAnime }) {
 							className="content-css"
 							anchorClass="my-anchor-css-class"
 							expanded={false}
-							truncatedEndingComponent={"... "}
-							style={{ transition: "linear 1s" }}
+							truncatedEndingComponent={"..."}
 						>
 							<Card.Text>{randomAnime?.Description.trim()}</Card.Text>
 						</ShowMoreText>
