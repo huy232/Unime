@@ -14,7 +14,7 @@ function useDocumentTitle(title, prevailOnUnmount = false) {
 				document.title = "Đang tải"
 			}
 		},
-		[]
+		[prevailOnUnmount]
 	)
 }
 

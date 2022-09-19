@@ -1,11 +1,11 @@
 // COMPONENTS
-import NewAnime from "../NewAnime"
-import MostWatched from "../MostWatched"
-import RandomAnime from "../RandomAnime"
-
+import loadable from "@loadable/component"
 import { CardGroup } from "react-bootstrap"
 import "./home.css"
 import useDocumentTitle from "../DocumentTitleHook"
+const NewAnime = loadable(() => import("../NewAnime"))
+const MostWatched = loadable(() => import("../MostWatched"))
+const RandomAnime = loadable(() => import("../RandomAnime"))
 
 function Home({ instance }) {
 	useDocumentTitle("Trang chủ - Mirai")

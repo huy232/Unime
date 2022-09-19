@@ -132,7 +132,7 @@ function InfoBox({ info, loading }) {
 								<h5>STUDIO</h5>{" "}
 								<p>
 									{info?.animeInfo?.Studio.map((studio, i, arr) =>
-										i != arr.length - 1
+										i !== arr.length - 1
 											? `${studio.name + ", "}`
 											: `${studio.name}`
 									)}

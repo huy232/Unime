@@ -1,6 +1,6 @@
 import { Card, Row, Col } from "react-bootstrap"
 import { BsFillPlayFill } from "react-icons/bs"
-import { useParams, Link } from "react-router-dom"
+import { Link } from "react-router-dom"
 
 function InfoAnimeEpisodeHandle({ anime, info, episodeList, selectedChunk }) {
 	return (
@@ -18,7 +18,7 @@ function InfoAnimeEpisodeHandle({ anime, info, episodeList, selectedChunk }) {
 						{episodeList[selectedChunk]?.map((eachEpisode, i) => (
 							<Col key={i}>
 								<nav>
-									{info?.name == "Vua Hải Tặc" ? (
+									{info?.name === "Vua Hải Tặc" ? (
 										<Link to={`/watch/${anime}?index=${eachEpisode.name}`}>
 											<Card>
 												<div className="card-container">
@@ -37,7 +37,7 @@ function InfoAnimeEpisodeHandle({ anime, info, episodeList, selectedChunk }) {
 												</div>
 												<Card.Body>
 													<Card.Title>
-														{eachEpisode?.full_name == "Trailer" ? (
+														{eachEpisode?.full_name === "Trailer" ? (
 															"Movie"
 														) : (
 															<p className="webclamp">
@@ -72,7 +72,7 @@ function InfoAnimeEpisodeHandle({ anime, info, episodeList, selectedChunk }) {
 													}}
 												>
 													<Card.Title>
-														{eachEpisode?.full_name == "Trailer" ? (
+														{eachEpisode?.full_name === "Trailer" ? (
 															"Movie"
 														) : (
 															<p className="webclamp">
@@ -102,7 +102,7 @@ function InfoAnimeEpisodeHandle({ anime, info, episodeList, selectedChunk }) {
 												</div>
 												<Card.Body>
 													<Card.Title>
-														{eachEpisode?.full_name == "Trailer" ? (
+														{eachEpisode?.full_name === "Trailer" ? (
 															"Movie"
 														) : (
 															<p className="webclamp">

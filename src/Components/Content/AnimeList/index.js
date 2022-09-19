@@ -46,7 +46,7 @@ function AnimeList({ instance }) {
 		return () => {
 			source.cancel()
 		}
-	}, [page])
+	}, [instance, page])
 
 	useDocumentTitle("Tất cả Anime - Mirai")
 

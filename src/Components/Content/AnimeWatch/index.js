@@ -4,9 +4,8 @@ import axios from "axios"
 import VideoPlayer from "../VideoJsHook/index"
 import useDocumentTitle from "../DocumentTitleHook"
 import { BsFillArrowLeftSquareFill } from "react-icons/bs"
-
-import "./animewatch.css"
 import LoadingRequest from "../LoadingRequest"
+import "./animewatch.css"
 
 function AnimeWatch({ instance }) {
 	const navigate = useNavigate()

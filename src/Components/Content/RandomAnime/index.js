@@ -1,9 +1,11 @@
+import loadable from "@loadable/component"
 import { useEffect, useState } from "react"
-import RandomAnimeTitle from "../RandomAnimeTitle"
-import RandomAnimeInfo from "../RandomAnimeInfo"
-import CharacterDetail from "../CharacterDetail"
-import RandomAnimeRightCover from "../RandomAnimeRightCover"
 import axios from "axios"
+// COMPONENTS
+const RandomAnimeTitle = loadable(() => import("../RandomAnimeTitle"))
+const RandomAnimeInfo = loadable(() => import("../RandomAnimeInfo"))
+const CharacterDetail = loadable(() => import("../CharacterDetail"))
+const RandomAnimeRightCover = loadable(() => import("../RandomAnimeRightCover"))
 
 function RandomAnime({ instance }) {
 	const [randomAnime, setRandomAnime] = useState({})

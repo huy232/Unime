@@ -1,17 +1,20 @@
-/* eslint-disable jsx-a11y/alt-text */
+import loadable from "@loadable/component"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-// COMPONENTS
-import InfoBox from "../InfoBox"
-import InfoTrailer from "../InfoTrailer"
-import InfoHeadDetail from "../InfoHeadDetail"
-import InfoEpisodeHolder from "../InfoEpisodeHolder"
-import InfoSpecialEpisodeList from "../InfoSpecialEpisodeList"
-import InfoAnimeEpisodeHandle from "../InfoAnimeEpisodeHandle"
-// STUFFS
 import Skeleton from "@mui/material/Skeleton"
 import axios from "axios"
 import "./animeinfo.css"
+// COMPONENTS
+const InfoBox = loadable(() => import("../InfoBox"))
+const InfoTrailer = loadable(() => import("../InfoTrailer"))
+const InfoHeadDetail = loadable(() => import("../InfoHeadDetail"))
+const InfoEpisodeHolder = loadable(() => import("../InfoEpisodeHolder"))
+const InfoSpecialEpisodeList = loadable(() =>
+	import("../InfoSpecialEpisodeList")
+)
+const InfoAnimeEpisodeHandle = loadable(() =>
+	import("../InfoAnimeEpisodeHandle")
+)
 
 function AnimeInfo({ instance }) {
 	const { anime } = useParams()
@@ -74,7 +77,7 @@ function AnimeInfo({ instance }) {
 		return () => {
 			source.cancel()
 		}
-	}, [])
+	}, [anime, instance])
 	return (
 		<>
 			<div className="banner-anime-overlay">
@@ -92,6 +95,7 @@ function AnimeInfo({ instance }) {
 							<img
 								src={info?.animeInfo?.BannerImg}
 								className="banner-info-image"
+								alt=""
 							/>
 							<div className="banner-overlay"></div>
 						</>
