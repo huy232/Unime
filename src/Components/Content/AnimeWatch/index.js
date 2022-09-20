@@ -41,11 +41,9 @@ function AnimeWatch({ instance }) {
 								let videoUrlResponse = ""
 								// VIDEO URL IS HERE
 								if (typeof res.data.data?.videoSource !== "undefined") {
-									console.log("Run videoSource")
 									videoUrlResponse = res.data.data.videoSource
 									setVideoUrl(videoUrlResponse)
 								} else {
-									console.log("Run Embed")
 									videoUrlResponse = res.data.data.embedSource
 									setVideoEmbed(videoUrlResponse)
 								}
@@ -146,7 +144,6 @@ function AnimeWatch({ instance }) {
 
 	return (
 		<>
-			{console.log({ videoUrl: videoUrl, videoEmbed: videoEmbed })}
 			<div style={{ marginTop: "-90px" }}>
 				<div
 					className="video-js-wrapper"
@@ -170,6 +167,8 @@ function AnimeWatch({ instance }) {
 							width="100%"
 							height="100%"
 							title="videoFrame"
+							frame-src="self"
+							frame-ancestors="self"
 						/>
 					) : (
 						<LoadingRequest />
