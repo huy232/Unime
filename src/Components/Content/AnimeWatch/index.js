@@ -14,9 +14,9 @@ function AnimeWatch({ instance }) {
 	const index = queryParams.get("index")
 	const specialid = queryParams.get("specialid")
 	const [info, setInfo] = useState([])
-	const [name, setName] = useState("")
 	const [watchDetail, setWatchDetail] = useState("Đang tải")
 	const [videoUrl, setVideoUrl] = useState("")
+	const [videoEmbed, setVideoEmbed] = useState("")
 
 	useEffect(() => {
 		const CancelToken = axios.CancelToken
@@ -38,13 +38,20 @@ function AnimeWatch({ instance }) {
 								cancelToken: source.token,
 							})
 							.then((res) => {
+								let videoUrlResponse = ""
 								// VIDEO URL IS HERE
-								const videoUrlResponse = res.data.data.videoSource
+								if (typeof res.data.data?.videoSource !== "undefined") {
+									console.log("Run videoSource")
+									videoUrlResponse = res.data.data.videoSource
+									setVideoUrl(videoUrlResponse)
+								} else {
+									console.log("Run Embed")
+									videoUrlResponse = res.data.data.embedSource
+									setVideoEmbed(videoUrlResponse)
+								}
 								const watchFilm = res.data.data.film_name
 								const watchEpisodeName = res.data.data.full_name
-								setName(watchFilm)
 								setWatchDetail(watchFilm + ` (${watchEpisodeName})`)
-								setVideoUrl(videoUrlResponse)
 							})
 					}
 					if (specialid !== null) {
@@ -139,9 +146,13 @@ function AnimeWatch({ instance }) {
 
 	return (
 		<>
+			{console.log({ videoUrl: videoUrl, videoEmbed: videoEmbed })}
 			<div style={{ marginTop: "-90px" }}>
-				<div className="video-js-wrapper" style={{ display: "flex" }}>
-					{videoUrl ? (
+				<div
+					className="video-js-wrapper"
+					style={{ display: "flex", height: "100vh" }}
+				>
+					{videoUrl !== "" ? (
 						<>
 							<VideoPlayer
 								src={videoUrl}
@@ -151,76 +162,84 @@ function AnimeWatch({ instance }) {
 								info={info}
 								index={index}
 							/>
-							<div className="episode-content">
-								<div className="episode-section">
-									<div className="episode-section-fixed">
-										<button
-											onClick={() => goBackButton()}
-											style={{
-												backgroundColor: "black",
-												border: "none",
-												display: "flex",
-												alignItems: "center",
-												justifyContent: "center",
-											}}
-										>
-											<BsFillArrowLeftSquareFill style={{ color: "white" }} />
-										</button>
-										<h5
-											className="episode-section-title"
-											style={{
-												textAlign: "center",
-												color: "white",
-											}}
-										>
-											DANH SÁCH TẬP PHIM
-										</h5>
-									</div>
-								</div>
-								<div className="episode-bracket">
-									{anime !== "vua-hai-tac"
-										? info.map((item) => (
-												<Link
-													to={`/watch/${anime}?index=${item.name - 1}`}
-													style={{ color: "white" }}
-													key={item.name}
-												>
-													<div
-														className={
-															parseInt(index) === parseInt(item.name - 1)
-																? "episodes active"
-																: "episodes"
-														}
-														onClick={() => chooseEpisode(item.name - 1)}
-													>
-														<p>{item.full_name}</p>
-													</div>
-												</Link>
-										  ))
-										: info.map((item) => (
-												<Link
-													to={`/watch/${anime}?index=${item.name}`}
-													style={{ color: "white" }}
-													key={item.name}
-												>
-													<div
-														className={
-															parseInt(index) === parseInt(item.name)
-																? "episodes active"
-																: "episodes"
-														}
-														onClick={() => chooseEpisode(item.name)}
-													>
-														<p>{item.full_name}</p>
-													</div>
-												</Link>
-										  ))}
-								</div>
-							</div>
 						</>
+					) : videoEmbed !== "" ? (
+						<iframe
+							src={videoEmbed}
+							allow="autoplay; fullscreen"
+							width="100%"
+							height="100%"
+							title="videoFrame"
+						/>
 					) : (
 						<LoadingRequest />
 					)}
+					<div className="episode-content">
+						<div className="episode-section">
+							<div className="episode-section-fixed">
+								<button
+									onClick={() => goBackButton()}
+									style={{
+										backgroundColor: "black",
+										border: "none",
+										display: "flex",
+										alignItems: "center",
+										justifyContent: "center",
+									}}
+								>
+									<BsFillArrowLeftSquareFill style={{ color: "white" }} />
+								</button>
+								<h5
+									className="episode-section-title"
+									style={{
+										textAlign: "center",
+										color: "white",
+									}}
+								>
+									DANH SÁCH TẬP PHIM
+								</h5>
+							</div>
+						</div>
+						<div className="episode-bracket">
+							{anime !== "vua-hai-tac"
+								? info.map((item) => (
+										<Link
+											to={`/watch/${anime}?index=${item.name - 1}`}
+											style={{ color: "white" }}
+											key={item.name}
+										>
+											<div
+												className={
+													parseInt(index) === parseInt(item.name - 1)
+														? "episodes active"
+														: "episodes"
+												}
+												onClick={() => chooseEpisode(item.name - 1)}
+											>
+												<p>{item.full_name}</p>
+											</div>
+										</Link>
+								  ))
+								: info.map((item) => (
+										<Link
+											to={`/watch/${anime}?index=${item.name}`}
+											style={{ color: "white" }}
+											key={item.name}
+										>
+											<div
+												className={
+													parseInt(index) === parseInt(item.name)
+														? "episodes active"
+														: "episodes"
+												}
+												onClick={() => chooseEpisode(item.name)}
+											>
+												<p>{item.full_name}</p>
+											</div>
+										</Link>
+								  ))}
+						</div>
+					</div>
 				</div>
 			</div>
 		</>

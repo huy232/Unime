@@ -1,8 +1,7 @@
 .banner-anime-overlay{
     position: relative;
     margin-top: -90px;
-    max-height: 450px;
-    min-height: 450px;
+    height: 450px;
     overflow: hidden;
 }
 
@@ -32,8 +31,8 @@
 
 .banner-info-image{
     position: absolute;
-    height: 450px;
-    width: auto;
+    min-height: 450px;
+    width: 100%;
     -o-object-fit: cover;
        object-fit: cover
 }
@@ -274,8 +273,8 @@ li.episode-chunk:hover{
         margin-right: 0!important
     }
     .banner-info-image{
-        width: auto !important;
-        min-height: auto!important
+        width: 100% !important;
+        height: auto!important
     }
     .detail-cover-info{
         margin: 20px;

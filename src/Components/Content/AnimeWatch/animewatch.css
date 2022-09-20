@@ -45,9 +45,7 @@ video {
 }
 
 .episode-content{
-  /* margin-left: 20px; */
-  min-width: 30vh;
-  max-width: 30vh;
+  width: 40vh;
   position: relative
 }
 
@@ -55,11 +53,13 @@ video {
   /* position: absolute; */
   width: 100%;
   z-index: 1000;
+  height: 70px;
 }
 
 .episode-section-fixed{
   /* position: fixed; */
   display:flex;
+  height: 100%;
   flex-direction: row;
   background-color: black
 }
@@ -71,8 +71,7 @@ video {
 
 .episode-bracket{
   overflow: scroll;
-  min-height: 90vh;
-  max-height: 90vh;
+  height: calc(100vh - 70px);
 }
 
 .episodes{
