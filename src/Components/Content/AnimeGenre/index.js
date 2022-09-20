@@ -65,7 +65,7 @@ function AnimeGenre({ instance }) {
 
 	const translateGenre = () => {
 		for (let i = 0; i < GENRES.length; i++) {
-			if (genreAnime == GENRES[i].slug) {
+			if (genreAnime === GENRES[i].slug) {
 				setTranslateGenreAnime(GENRES[i].name)
 			}
 		}
@@ -75,7 +75,7 @@ function AnimeGenre({ instance }) {
 		<>
 			<div>
 				<h1>ANIME {translateGenreAnime}</h1>
-				{useDocumentTitle(`Thể loại ${translateGenreAnime} - Mirai`)}
+				{useDocumentTitle(`Thể loại ${translateGenreAnime} - Unime`)}
 			</div>
 			<div className="anime-list">
 				<InfiniteScroll

@@ -8,7 +8,7 @@ const MostWatched = loadable(() => import("../MostWatched"))
 const RandomAnime = loadable(() => import("../RandomAnime"))
 
 function Home({ instance }) {
-	useDocumentTitle("Trang chủ - Mirai")
+	useDocumentTitle("Trang chủ - Unime")
 
 	return (
 		<>

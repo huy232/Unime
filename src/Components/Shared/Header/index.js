@@ -65,7 +65,7 @@ function Header() {
 			>
 				<Container>
 					<Navbar.Brand as={Link} to="/" onClick={handleScrollToTop}>
-						Mirai
+						UNIME
 					</Navbar.Brand>
 					<Navbar.Toggle aria-controls="responsive-navbar-nav" />
 					<Navbar.Collapse id="responsive-navbar-nav">

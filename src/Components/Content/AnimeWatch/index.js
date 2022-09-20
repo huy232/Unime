@@ -75,7 +75,7 @@ function AnimeWatch({ instance }) {
 
 	useDocumentTitle(watchDetail)
 	const chooseEpisode = (index) => {
-		window.location.href = `https://mirai-huy8856.vercel.app/watch/${anime}?index=${index}`
+		window.location.href = `https://unime.vercel.app/watch/${anime}?index=${index}`
 	}
 
 	const goBackButton = () => {
@@ -178,7 +178,7 @@ function AnimeWatch({ instance }) {
 									</div>
 								</div>
 								<div className="episode-bracket">
-									{anime != "vua-hai-tac"
+									{anime !== "vua-hai-tac"
 										? info.map((item) => (
 												<Link
 													to={`/watch/${anime}?index=${item.name - 1}`}

@@ -44,7 +44,7 @@ function AnimeInfo({ instance }) {
 							"https://www.youtube.com/watch?v=",
 							"https://www.youtube-nocookie.com/embed/"
 						)
-						const myDomain = "&origin=https://mirai-huy8856.vercel.app/"
+						const myDomain = "&origin=https://unime.vercel.app/"
 
 						const joinUrl = newUrl + myDomain
 						setVideoUrl(joinUrl)

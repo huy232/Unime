@@ -41,6 +41,12 @@
   transform-origin:0 50%;
 }
 
+.nav-link, .nav-item.dropdown{
+    display: flex;
+    align-items: center;
+    padding: 0 0.5rem
+}
+
 .fixed-top-hide {
     transition: all 0.5s ease-in-out;
     top: -100% !important

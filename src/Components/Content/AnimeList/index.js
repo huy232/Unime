@@ -48,7 +48,7 @@ function AnimeList({ instance }) {
 		}
 	}, [instance, page])
 
-	useDocumentTitle("Tất cả Anime - Mirai")
+	useDocumentTitle("Tất cả Anime - Unime")
 
 	const scrollThreshold = () => {
 		const newPage = page + 1
