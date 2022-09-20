@@ -47,6 +47,8 @@ function CharacterDetail({ randomAnime, done }) {
 											display: "flex",
 											flexDirection: "column",
 											color: "#42EADDFF",
+											alignItems: "center",
+											justifyContent: "center",
 										}}
 									>
 										<img
@@ -62,13 +64,7 @@ function CharacterDetail({ randomAnime, done }) {
 												height: "160px",
 											}}
 										/>
-										<p
-											className="character-detail-word"
-											style={{
-												wordWrap: "break-word",
-												width: "120px",
-											}}
-										>
+										<p className="character-detail-word">
 											{!character?.name?.english
 												? character?.name?.native
 												: character?.name?.english}

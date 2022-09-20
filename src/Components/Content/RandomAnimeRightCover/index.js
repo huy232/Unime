@@ -25,9 +25,8 @@ function RandomAnimeRightCover({ randomAnime }) {
 									randomAnime?.CoverImg?.small
 								}
 								style={{
-									maxWidth: "100%",
 									width: "100%",
-									height: "500px",
+									height: "auto",
 									objectFit: "fill",
 								}}
 								className="today-cover-image"
