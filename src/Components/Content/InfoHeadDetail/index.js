@@ -4,9 +4,11 @@ import { GENRES } from "../../../constants"
 
 function InfoHeadDetail({ info, loading }) {
 	const resultCategory = GENRES.filter((genre) => {
-		return info.genres.find(
-			(selectedGenre) => selectedGenre.name === genre.name
-		)
+		if (Object.keys(info).length !== 0) {
+			return info.genres.find(
+				(selectedGenre) => selectedGenre.name === genre.name
+			)
+		}
 	})
 	return (
 		<>
@@ -19,13 +21,11 @@ function InfoHeadDetail({ info, loading }) {
 				{loading
 					? ""
 					: resultCategory.map((genre) => (
-							<>
-								<div className="category-genre" key={genre.slug}>
-									<LinkContainer to={`/anime/${genre.slug}`}>
-										<div className="genre-name">{genre.name}</div>
-									</LinkContainer>
-								</div>
-							</>
+							<div className="category-genre" key={genre.slug}>
+								<LinkContainer to={`/anime/${genre.slug}`}>
+									<div className="genre-name">{genre.name}</div>
+								</LinkContainer>
+							</div>
 					  ))}
 			</div>
 			<div className="description">

@@ -65,6 +65,7 @@ function AnimeInfo({ instance }) {
 					document.title = response.data.data?.name
 					setEpisodeList(episodeListChunk)
 					setSpecialEpisodeList(specialEpisodeListChunk)
+					window.scrollTo(0, 0)
 					setLoading(false)
 				})
 				.catch((thrown) => {
