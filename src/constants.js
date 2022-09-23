@@ -11,6 +11,7 @@ const genres = [
 	{ slug: "truong-hoc", name: "Trường Học" },
 	{ slug: "trinh-tham", name: "Trinh Thám" },
 	{ slug: "am-nhac", name: "Âm Nhạc" },
+	{ slug: "chuyen-sinh", name: "Chuyển Sinh" },
 	{ slug: "phieu-luu", name: "Phiêu Lưu" },
 	{ slug: "sieu-nhien", name: "Siêu Nhiên" },
 	{ slug: "doi-thuong", name: "Đời Thường" },
@@ -19,6 +20,7 @@ const genres = [
 	{ slug: "game", name: "Game" },
 	{ slug: "the-thao", name: "Thể Thao" },
 	{ slug: "kich-tinh", name: "Kịch Tính" },
+	{ slug: "phap-thuat", name: "Pháp Thuật" },
 ]
 
 export const API = url

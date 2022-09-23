@@ -122,12 +122,14 @@ function AnimeInfo({ instance }) {
 							episodeList={episodeList}
 							selectedChunk={selectedChunk}
 							setSelectedChunk={setSelectedChunk}
+							loading={loading}
 						/>
 						<InfoAnimeEpisodeHandle
 							anime={anime}
 							info={info}
 							episodeList={episodeList}
 							selectedChunk={selectedChunk}
+							loading={loading}
 						/>
 
 						{specialEpisodeList.length > 0 ? (
@@ -136,6 +138,7 @@ function AnimeInfo({ instance }) {
 								setSelectedSpecialChunk={setSelectedSpecialChunk}
 								selectedSpecialChunk={selectedSpecialChunk}
 								anime={anime}
+								loading={loading}
 							/>
 						) : (
 							""

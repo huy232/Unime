@@ -1,3 +1,4 @@
+import { LinkContainer } from "react-router-bootstrap"
 import DescriptionSkeleton from "../DescriptionSkeleton"
 function InfoHeadDetail({ info, loading }) {
 	return (
@@ -6,6 +7,17 @@ function InfoHeadDetail({ info, loading }) {
 				<h2 style={{ color: `${info?.animeInfo?.CoverImg?.color}` }}>
 					{loading ? <DescriptionSkeleton /> : info?.name}
 				</h2>
+			</div>
+			<div className="anime-type-category">
+				{loading
+					? ""
+					: info.genres.map((genre) => (
+							<div className="category-genre">
+								<LinkContainer to={`/anime/${genre.slug}`} key={genre.slug}>
+									<div className="genre-name">{genre.name}</div>
+								</LinkContainer>
+							</div>
+					  ))}
 			</div>
 			<div className="description">
 				<p className="anime-description-paragraph">
