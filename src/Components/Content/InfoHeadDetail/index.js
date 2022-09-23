@@ -1,6 +1,13 @@
 import { LinkContainer } from "react-router-bootstrap"
 import DescriptionSkeleton from "../DescriptionSkeleton"
+import { GENRES } from "../../../constants"
+
 function InfoHeadDetail({ info, loading }) {
+	const resultCategory = GENRES.filter((genre) => {
+		return info.genres.find(
+			(selectedGenre) => selectedGenre.name === genre.name
+		)
+	})
 	return (
 		<>
 			<div className="anime-title">
@@ -11,12 +18,14 @@ function InfoHeadDetail({ info, loading }) {
 			<div className="anime-type-category">
 				{loading
 					? ""
-					: info.genres.map((genre) => (
-							<div className="category-genre">
-								<LinkContainer to={`/anime/${genre.slug}`} key={genre.slug}>
-									<div className="genre-name">{genre.name}</div>
-								</LinkContainer>
-							</div>
+					: resultCategory.map((genre) => (
+							<>
+								<div className="category-genre" key={genre.slug}>
+									<LinkContainer to={`/anime/${genre.slug}`}>
+										<div className="genre-name">{genre.name}</div>
+									</LinkContainer>
+								</div>
+							</>
 					  ))}
 			</div>
 			<div className="description">
