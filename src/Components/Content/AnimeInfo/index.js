@@ -97,9 +97,10 @@ function AnimeInfo({ instance }) {
 								className="banner-info-image"
 								alt=""
 								style={
-									info?.animeInfo?.BannerImg !== null
-										? {}
-										: { minHeight: "auto" }
+									info?.animeInfo?.BannerImg === null ||
+									typeof info?.animeInfo?.BannerImg === "undefined"
+										? { minHeight: "auto" }
+										: {}
 								}
 							/>
 							<div className="banner-overlay"></div>
