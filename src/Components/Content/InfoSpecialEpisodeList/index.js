@@ -20,7 +20,7 @@ function InfoSpecialEpisodeList({
 	return (
 		<>
 			<div className="special-episode-wrapper" style={{ marginTop: "46px" }}>
-				<div className="episode-list">
+				<div className="episode-list" style={{ textAlign: "center" }}>
 					<h4>DANH SÁCH TẬP ĐIỂM TÂM</h4>
 					<Swiper
 						slidesPerView="auto"
@@ -38,6 +38,9 @@ function InfoSpecialEpisodeList({
 								key={i}
 								style={{
 									width: "160px",
+									display: "flex",
+									justifyContent: "center",
+									alignItems: "center",
 								}}
 							>
 								<li
@@ -71,7 +74,10 @@ function InfoSpecialEpisodeList({
 						{specialEpisodeList[selectedSpecialChunk]?.map((eachEpisode, i) => (
 							<Col key={i}>
 								<nav>
-									<Link to={`/watch/${anime}?specialid=${eachEpisode.id}`}>
+									<Link
+										to={`/watch/${anime}?specialid=${eachEpisode.id}`}
+										title={eachEpisode?.full_name}
+									>
 										<Card>
 											<div className="card-container">
 												<Card.Img

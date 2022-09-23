@@ -59,6 +59,9 @@ function AnimeWatch({ instance }) {
 							.then((res) => {
 								// VIDEO URL IS HERE
 								const videoUrlResponse = res.data.data.videoSource
+								const watchFilm = res.data.data.film_name
+								const watchEpisodeName = res.data.data.full_name
+								setWatchDetail(watchFilm + ` (${watchEpisodeName})`)
 								setVideoUrl(videoUrlResponse)
 							})
 					}

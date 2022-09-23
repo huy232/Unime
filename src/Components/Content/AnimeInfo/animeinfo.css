@@ -207,6 +207,16 @@
     color: white
   }
 
+.episode-anime-row{
+    margin: 0!important
+}
+  
+.episode-anime-row > .col{
+    padding: 10px;
+    margin-left: 0;
+    margin-right: 0;
+}
+
 li.episode-chunk:hover{
     transition: all 0.4s linear;
     opacity: 0.7
@@ -262,16 +272,6 @@ li.episode-chunk:hover{
         height: auto!important;
     }
 
-    .episode-anime-row > .col{
-        padding: 0;
-        margin-left: 0;
-        margin-right: 0;
-    }
-
-    .episode-anime-row{
-        margin-left: 0!important;
-        margin-right: 0!important
-    }
     .banner-info-image{
         width: 100% !important;
         height: auto!important

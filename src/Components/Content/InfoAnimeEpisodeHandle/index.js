@@ -19,7 +19,10 @@ function InfoAnimeEpisodeHandle({ anime, info, episodeList, selectedChunk }) {
 							<Col key={i}>
 								<nav>
 									{info?.name === "Vua Hải Tặc" ? (
-										<Link to={`/watch/${anime}?index=${eachEpisode.name}`}>
+										<Link
+											to={`/watch/${anime}?index=${eachEpisode.name}`}
+											title={eachEpisode?.full_name}
+										>
 											<Card>
 												<div className="card-container">
 													<Card.Img
@@ -49,7 +52,10 @@ function InfoAnimeEpisodeHandle({ anime, info, episodeList, selectedChunk }) {
 											</Card>
 										</Link>
 									) : eachEpisode.name > 0 ? (
-										<Link to={`/watch/${anime}?index=${eachEpisode.name - 1}`}>
+										<Link
+											to={`/watch/${anime}?index=${eachEpisode.name - 1}`}
+											title={eachEpisode?.full_name}
+										>
 											<Card>
 												<div className="card-container">
 													<Card.Img
@@ -84,7 +90,10 @@ function InfoAnimeEpisodeHandle({ anime, info, episodeList, selectedChunk }) {
 											</Card>
 										</Link>
 									) : (
-										<Link to={`/watch/${anime}?index=${eachEpisode.name}`}>
+										<Link
+											to={`/watch/${anime}?index=${eachEpisode.name}`}
+											title={eachEpisode?.full_name}
+										>
 											<Card>
 												<div className="card-container">
 													<Card.Img
