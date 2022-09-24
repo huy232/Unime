@@ -14,6 +14,7 @@ import AnimeGenre from "./Components/Content/AnimeGenre"
 import Search from "./Components/Content/Search"
 import AnimeInfo from "./Components/Content/AnimeInfo"
 import AnimeWatch from "./Components/Content/AnimeWatch"
+import AnimeCollection from "./Components/Content/AnimeCollection"
 
 function App() {
 	const instance = axios.create({
@@ -39,6 +40,10 @@ function App() {
 					<Route
 						path="/anime/:genre"
 						element={<AnimeGenre instance={instance} />}
+					/>
+					<Route
+						path="/collection/:collection"
+						element={<AnimeCollection instance={instance} />}
 					/>
 					<Route
 						path="search/:searchSlug"

@@ -13,6 +13,10 @@ h1, .h5{
     background-color: #ffc107;
     box-shadow: 5px 10px #495057;
     padding-left: 14px;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
 }
 
 .mySwiper {
@@ -130,7 +134,7 @@ h1, .h5{
   text-align:center
 }
 
-.anime-top-day-h1{
+.anime-top-day-h2{
   color: black !important;
   display: inline-block;
   background-color: #ffa781;
@@ -145,7 +149,11 @@ h1, .h5{
 	-webkit-animation-direction: alternate;
 	        animation-direction: alternate;
 	-webkit-animation-timing-function: linear;
-	        animation-timing-function: linear; 
+	        animation-timing-function: linear;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+           -ms-user-select: none;
+               user-select: none; 
 }
 
 .clearfix{
@@ -219,10 +227,9 @@ h1, .h5{
 
 
 .today-h1{
-  padding-top:10px;
-  padding-left: 10px;
   border-top: 5px solid #5a00b3 ;
   border-left: 5px solid #5a00b3 ;
+  border-right: 5px solid #5a00b3;
   font-weight: 900;
   font-size: 3rem;
   background: url(../../../../public/gif/today2.gif);
@@ -235,7 +242,49 @@ h1, .h5{
      -moz-user-select: none !important;
       -ms-user-select: none !important;
           user-select: none !important;
+          margin-right: 0;
+          text-align: center;
+  
 }
+
+.anime-collection-h2 {
+  font-weight: 700;
+	font-size: 46px;
+	background: linear-gradient(
+		-45deg, 
+		#4bc0c8 25%, 
+		#feac5e 25%, 
+		#feac5e 50%, 
+		#4bc0c8 50%, 
+		#4bc0c8 75%, 
+		#feac5e 75%, 
+		#feac5e);
+    animation: stripes 1s linear infinite;
+    background-size: 20px 20px;
+    background-position: 0 0;
+    user-select: none;
+    background-clip: text;
+	  -webkit-text-fill-color: transparent;
+	  -webkit-animation: stripes 1s linear infinite;
+	  -webkit-background-clip: text;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}	
+
+@-webkit-keyframes stripes {
+	100% { 
+		background-position: 20px 0, 20px 0, 20px 0;
+	}
+}	
+
+@keyframes stripes {
+	100% { 
+		background-position: 20px 0, 20px 0, 20px 0;
+	}
+}
+
+
 
 .description-title{
   color: #F05454 !important;
@@ -497,6 +546,14 @@ h1, .h5{
       margin: 10px;
     }
   }
+
+  @media screen and (max-width: 640px){
+    /* .today-h1{
+      margin-right: 0;
+      border-right: 5px solid #5a00b3;
+      text-align: center;
+    } */
+  }
   
   @media screen and (max-width: 500px) {
     .flex-mobile{
@@ -560,8 +617,7 @@ h1, .h5{
     }
     
   }
-
-
+  
   @media screen and (max-width: 930px){
     .mySwiper {
         max-width: 100%;
@@ -576,7 +632,6 @@ h1, .h5{
 	display: -webkit-box;
 	-webkit-line-clamp: 2;
 	-webkit-box-orient: vertical;
-  /* margin: -10px !important; */
   padding: 3px !important;
   line-height: 1.6;
   }
@@ -588,8 +643,6 @@ h1, .h5{
 	display: -webkit-box;
 	-webkit-line-clamp: 2;
 	-webkit-box-orient: vertical;
-  /* margin: -10px !important; */
-  /* padding: 3px !important; */
   min-height: auto;
   max-height: none;
   padding-right: 8px !important;

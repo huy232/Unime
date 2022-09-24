@@ -43,7 +43,6 @@ function RandomAnime({ instance }) {
 						style={{
 							marginBottom: "42px",
 							float: "right",
-							marginRight: "30px",
 						}}
 					>
 						CÓ THỂ BẠN SẼ THÍCH ĐÓ
