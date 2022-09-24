@@ -25,6 +25,10 @@
     position: relative
 }
 
+.info-detail .anime-type-paragraph{
+    margin-top: 20px;
+}
+
 .banner-anime-image{
     height: 100%
 }
@@ -50,11 +54,11 @@
     margin-top: 10px;
 }
 
-.anime-type-category{
+.anime-type-category, .anime-type-collection{
     display: flex;
 }
 
-.anime-type-category .category-genre{
+.anime-type-category .category-genre, .anime-type-collection .category-genre{
     cursor: pointer;
     border-radius: 14px;
     padding: 10px;
@@ -62,7 +66,7 @@
     margin: 0 10px
 }
 
-.anime-type-category .category-genre:hover{
+.anime-type-category .category-genre:hover, .anime-type-collection .category-genre:hover{
     transition: 0.6s;
     opacity: 0.8;
 }
@@ -239,6 +243,20 @@ li.episode-chunk:hover{
     opacity: 0.7
 }
 
+@media screen and (max-width: 1280px) {
+    .bottom-detail{
+        flex-direction: column
+    }
+    .bottom-detail > div:not(:first-child):not(:last-child){
+        margin-left: 0
+    }
+    .bottom-detail .release-date{
+        align-items: center;
+        margin-left: 0;
+        margin-right: 0
+    }
+}
+
 @media screen and (max-width: 1024px){
 
     .info-box{
@@ -269,17 +287,7 @@ li.episode-chunk:hover{
     .info-detail{
         margin-left: 0
     }
-    .bottom-detail{
-        flex-direction: column
-    }
-    .bottom-detail > div:not(:first-child):not(:last-child){
-        margin-left: 0
-    }
-    .bottom-detail .release-date{
-        align-items: center;
-        margin-left: 0;
-        margin-right: 0
-    }
+
     .youtube-link{
         width: 100%
     }
@@ -299,6 +307,19 @@ li.episode-chunk:hover{
     }
     .description{
         margin: 20px;
+    }
+    .anime-type-paragraph{
+        text-align: center;
+    }
+    .anime-type-category, .anime-type-collection{
+        flex-direction: column;
+        align-items: center;
+        justify-content: center
+    }
+    .anime-type-category .category-genre, .anime-type-collection .category-genre{
+        margin: 8px;
+        text-align: center;
+        width: 50%;
     }
     .bottom-detail{
         margin: 20px;

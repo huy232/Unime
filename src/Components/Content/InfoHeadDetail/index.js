@@ -1,8 +1,16 @@
 import { LinkContainer } from "react-router-bootstrap"
 import DescriptionSkeleton from "../DescriptionSkeleton"
-import { GENRES } from "../../../constants"
+import { GENRES, COLLECTIONS } from "../../../constants"
 
 function InfoHeadDetail({ info, loading }) {
+	const resultCollection = COLLECTIONS.filter((collection) => {
+		if (Object.keys(info).length !== 0) {
+			return info.genres.find(
+				(selectedCollection) => selectedCollection.slug === collection.slug
+			)
+		}
+	})
+
 	const resultCategory = GENRES.filter((genre) => {
 		if (Object.keys(info).length !== 0) {
 			return info.genres.find(
@@ -17,17 +25,6 @@ function InfoHeadDetail({ info, loading }) {
 					{loading ? <DescriptionSkeleton /> : info?.name}
 				</h2>
 			</div>
-			<div className="anime-type-category">
-				{loading
-					? ""
-					: resultCategory.map((genre) => (
-							<div className="category-genre" key={genre.slug}>
-								<LinkContainer to={`/anime/${genre.slug}`}>
-									<div className="genre-name">{genre.name}</div>
-								</LinkContainer>
-							</div>
-					  ))}
-			</div>
 			<div className="description">
 				<p className="anime-description-paragraph">
 					{loading ? (
@@ -38,6 +35,32 @@ function InfoHeadDetail({ info, loading }) {
 						`${info?.description}`
 					)}
 				</p>
+			</div>
+			{resultCategory.length > 0 && (
+				<p className="anime-type-paragraph">Thể loại:</p>
+			)}
+			<div className="anime-type-category">
+				{!loading &&
+					resultCategory.map((genre) => (
+						<div className="category-genre" key={genre.slug}>
+							<LinkContainer to={`/anime/${genre.slug}`}>
+								<div className="genre-name">{genre.name}</div>
+							</LinkContainer>
+						</div>
+					))}
+			</div>
+			{resultCollection.length > 0 && (
+				<p className="anime-type-paragraph">Bộ sưu tập:</p>
+			)}
+			<div className="anime-type-collection">
+				{!loading &&
+					resultCollection.map((collection) => (
+						<div className="category-genre" key={collection.slug}>
+							<LinkContainer to={`/collection/${collection.slug}`}>
+								<div className="genre-name">{collection.name}</div>
+							</LinkContainer>
+						</div>
+					))}
 			</div>
 			<div className="bottom-detail" style={{ marginTop: "50px" }}>
 				<div className="country">
