@@ -86,7 +86,9 @@ function NewAnime({ instance }) {
 											}}
 										>
 											<Card.Title>
-												<p className="webclamp">{anime?.name}</p>
+												<p title={anime?.name} className="webclamp">
+													{anime?.name}
+												</p>
 											</Card.Title>
 											<Card.Text
 												variant="bottom"
@@ -97,7 +99,9 @@ function NewAnime({ instance }) {
 												}}
 												className="webclamp__home"
 											>
-												<span>{anime?.newestEpisode.name}</span>
+												<span title={anime?.newestEpisode.name}>
+													{anime?.newestEpisode.name}
+												</span>
 											</Card.Text>
 										</Card.Body>
 									</Card>

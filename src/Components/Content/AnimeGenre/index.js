@@ -99,7 +99,7 @@ function AnimeGenre({ instance }) {
 							<Col key={anime?.slug}>
 								<nav>
 									<Link to={`/info/${anime?.slug}`}>
-										<Card>
+										<Card title={anime?.name}>
 											<div className="card-container">
 												<Card.Img
 													variant="top"

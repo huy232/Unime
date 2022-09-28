@@ -209,6 +209,7 @@ function AnimeWatch({ instance }) {
 											to={`/watch/${anime}?index=${item.name - 1}`}
 											style={{ color: "white" }}
 											key={item.name}
+											title={item.full_name}
 										>
 											<div
 												className={
@@ -227,6 +228,7 @@ function AnimeWatch({ instance }) {
 											to={`/watch/${anime}?index=${item.name}`}
 											style={{ color: "white" }}
 											key={item.name}
+											title={item.full_name}
 										>
 											<div
 												className={
