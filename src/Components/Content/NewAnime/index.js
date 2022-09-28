@@ -66,7 +66,7 @@ function NewAnime({ instance }) {
 					{newAnime.map((anime) => (
 						<SwiperSlide key={anime?.slug}>
 							<nav>
-								<Link to={`info/${anime?.slug}`}>
+								<Link to={`info/${anime?.slug}`} title={anime?.name}>
 									<Card>
 										<div className="card-container">
 											<Card.Img variant="top" src={anime?.thumbnail} />
@@ -86,9 +86,7 @@ function NewAnime({ instance }) {
 											}}
 										>
 											<Card.Title>
-												<p title={anime?.name} className="webclamp">
-													{anime?.name}
-												</p>
+												<p className="webclamp">{anime?.name}</p>
 											</Card.Title>
 											<Card.Text
 												variant="bottom"
@@ -98,10 +96,9 @@ function NewAnime({ instance }) {
 													color: "#b3b300",
 												}}
 												className="webclamp__home"
+												title={anime?.newestEpisode.name}
 											>
-												<span title={anime?.newestEpisode.name}>
-													{anime?.newestEpisode.name}
-												</span>
+												<span>{anime?.newestEpisode.name}</span>
 											</Card.Text>
 										</Card.Body>
 									</Card>

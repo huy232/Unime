@@ -80,7 +80,7 @@ function AnimeCollection({ instance }) {
 						{animeList.map((anime) => (
 							<Col key={anime?.slug}>
 								<nav>
-									<Link to={`/info/${anime?.slug}`}>
+									<Link to={`/info/${anime?.slug}`} title={anime?.name}>
 										<Card>
 											<div className="card-container">
 												<Card.Img

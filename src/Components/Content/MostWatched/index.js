@@ -65,7 +65,7 @@ function MostWatched({ instance }) {
 					{rankToday.map((anime) => (
 						<SwiperSlide key={anime?.slug}>
 							<nav>
-								<Link to={`info/${anime?.slug}`}>
+								<Link to={`info/${anime?.slug}`} title={anime?.name}>
 									<Card>
 										<div className="card-container">
 											<Card.Img variant="top" src={anime?.thumbnail} />
