@@ -80,12 +80,7 @@ function InfoAnimeEpisodeHandle({
 															</div>
 														</div>
 													</div>
-													<Card.Body
-														style={{
-															minHeight: "4.8rem",
-															maxHeight: "4.8rem",
-														}}
-													>
+													<Card.Body>
 														<Card.Title>
 															{eachEpisode?.full_name === "Trailer" ? (
 																"Movie"
