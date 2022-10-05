@@ -36,9 +36,6 @@ function InfoEpisodeHolder({
 					>
 						{episodeList.map((episodeChunk, i) => (
 							<SwiperSlide
-								onClick={() => {
-									setSelectedChunk(i)
-								}}
 								key={i}
 								style={{
 									width: "160px",
@@ -48,6 +45,9 @@ function InfoEpisodeHolder({
 								}}
 							>
 								<li
+									onClick={() => {
+										setSelectedChunk(i)
+									}}
 									className="episode-chunk"
 									style={
 										selectedChunk === i

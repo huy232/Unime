@@ -1,5 +1,6 @@
 import { BsStopwatchFill, BsTv } from "react-icons/bs"
-import DescriptionSkeleton from "../DescriptionSkeleton"
+import loadable from "@loadable/component"
+const DescriptionSkeleton = loadable(() => import("../DescriptionSkeleton"))
 
 function RandomAnimeInfo({ randomAnime }) {
 	return (

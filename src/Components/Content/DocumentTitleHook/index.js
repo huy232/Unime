@@ -1,9 +1,6 @@
-import { useRef, useEffect } from "react"
-import { useParams } from "react-router-dom"
+import { useEffect } from "react"
 
 function useDocumentTitle(title, prevailOnUnmount = false) {
-	const defaultTitle = useRef(document.title)
-	const { searchSlug } = useParams()
 	useEffect(() => {
 		document.title = title
 	}, [title])

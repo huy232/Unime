@@ -11,37 +11,38 @@ videojs.registerPlugin("hlsQualitySelector", videojsHlsQualitySelector)
 // eslint-disable-next-line import/prefer-default-export
 
 const usePlayer = ({ src, controls, autoplay, anime, info, index }) => {
-	const options = {
-		userActions: {
-			hotkeys: {
-				fullscreenKey: function (event) {
-					return event.which === 13
-				},
-				playPauseKey: function (event) {
-					return event.which === 32
-				},
-			},
-		},
-		fill: true,
-		fluid: true,
-		preload: "auto",
-		html5: {
-			hls: {
-				enableLowInitialPlaylist: true,
-				smoothQualityChange: true,
-				overrideNative: true,
-			},
-		},
-		playbackRates: [0.5, 1, 1.5, 2],
-		plugins: {
-			qualityLevel: {},
-			hlsQualitySelector: { displayCurrentQuality: true },
-		},
-	}
 	const videoRef = useRef(null)
 	const [player, setPlayer] = useState(null)
 
 	useEffect(() => {
+		const options = {
+			userActions: {
+				hotkeys: {
+					fullscreenKey: function (event) {
+						return event.which === 13
+					},
+					playPauseKey: function (event) {
+						return event.which === 32
+					},
+				},
+			},
+			fill: true,
+			fluid: true,
+			preload: "auto",
+			html5: {
+				hls: {
+					enableLowInitialPlaylist: true,
+					smoothQualityChange: true,
+					overrideNative: true,
+				},
+			},
+			playbackRates: [0.5, 1, 1.5, 2],
+			plugins: {
+				qualityLevel: {},
+				hlsQualitySelector: { displayCurrentQuality: true },
+			},
+		}
+
 		const vjsPlayer = videojs(videoRef.current, {
 			...options,
 			controls,
@@ -55,7 +56,7 @@ const usePlayer = ({ src, controls, autoplay, anime, info, index }) => {
 				player.dispose()
 			}
 		}
-	}, [index])
+	}, [autoplay, controls, index, player, src])
 	useEffect(() => {
 		if (player !== null) {
 			player.src({ src })

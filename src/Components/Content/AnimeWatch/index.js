@@ -79,7 +79,7 @@ function AnimeWatch({ instance }) {
 		return () => {
 			source.cancel()
 		}
-	}, [Number(index), instance])
+	}, [anime, index, instance, specialid])
 
 	useDocumentTitle(watchDetail)
 	const chooseEpisode = (index) => {

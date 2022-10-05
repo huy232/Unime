@@ -18,6 +18,15 @@ function AnimeCollection({ instance }) {
 	useEffect(() => {
 		const CancelToken = axios.CancelToken
 		const source = CancelToken.source()
+
+		const translateCollection = () => {
+			for (let i = 0; i < COLLECTIONS.length; i++) {
+				if (collectionAnime === COLLECTIONS[i].slug) {
+					setTranslateGenreAnime(COLLECTIONS[i].name)
+				}
+			}
+		}
+
 		if (collection === collectionAnime) {
 			const getList = async () => {
 				await instance
@@ -52,14 +61,6 @@ function AnimeCollection({ instance }) {
 			source.cancel()
 		}
 	}, [collection, collectionAnime, instance])
-
-	const translateCollection = () => {
-		for (let i = 0; i < COLLECTIONS.length; i++) {
-			if (collectionAnime === COLLECTIONS[i].slug) {
-				setTranslateGenreAnime(COLLECTIONS[i].name)
-			}
-		}
-	}
 
 	return (
 		<>

@@ -36,9 +36,6 @@ function InfoSpecialEpisodeList({
 						>
 							{specialEpisodeList.map((episodeChunk, i) => (
 								<SwiperSlide
-									onClick={() => {
-										setSelectedSpecialChunk(i)
-									}}
 									key={i}
 									style={{
 										width: "160px",
@@ -48,6 +45,9 @@ function InfoSpecialEpisodeList({
 									}}
 								>
 									<li
+										onClick={() => {
+											setSelectedSpecialChunk(i)
+										}}
 										className="episode-chunk"
 										style={
 											selectedSpecialChunk === i
@@ -66,7 +66,6 @@ function InfoSpecialEpisodeList({
 							))}
 						</Swiper>
 					</div>
-					<div id="spacer" style={{ width: "100%", height: "165px" }}></div>
 					<div className="episode-list-detail">
 						<Row
 							xs={1}

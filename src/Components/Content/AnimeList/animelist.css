@@ -18,6 +18,8 @@ overflow: none !important
 .box-anime-film-trailer{
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     align-items: center
 }
 

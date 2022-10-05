@@ -31,7 +31,7 @@ function Search({ instance }) {
 		return () => {
 			source.cancel()
 		}
-	}, [searchSlug])
+	}, [instance, searchSlug])
 
 	useDocumentTitle(`Tìm kiếm`)
 

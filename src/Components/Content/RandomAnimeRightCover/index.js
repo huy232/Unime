@@ -1,7 +1,8 @@
 /* eslint-disable jsx-a11y/alt-text */
+import loadable from "@loadable/component"
 import Skeleton from "@mui/material/Skeleton"
 import { Link } from "react-router-dom"
-import DescriptionSkeleton from "../DescriptionSkeleton"
+const DescriptionSkeleton = loadable(() => import("../DescriptionSkeleton"))
 
 function RandomAnimeRightCover({ randomAnime }) {
 	return (

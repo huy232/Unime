@@ -38,7 +38,7 @@ function NewAnime({ instance }) {
 		return () => {
 			source.cancel()
 		}
-	}, [])
+	}, [instance])
 
 	return (
 		<>

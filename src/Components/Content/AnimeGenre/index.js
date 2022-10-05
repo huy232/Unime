@@ -27,6 +27,14 @@ function AnimeGenre({ instance }) {
 	useEffect(() => {
 		const CancelToken = axios.CancelToken
 		const source = CancelToken.source()
+		const translateGenre = () => {
+			for (let i = 0; i < GENRES.length; i++) {
+				if (genreAnime === GENRES[i].slug) {
+					setTranslateGenreAnime(GENRES[i].name)
+				}
+			}
+		}
+
 		if (genre === genreAnime) {
 			const getList = async () => {
 				await instance
@@ -61,15 +69,7 @@ function AnimeGenre({ instance }) {
 		return () => {
 			source.cancel()
 		}
-	}, [genreAnime, genre, page])
-
-	const translateGenre = () => {
-		for (let i = 0; i < GENRES.length; i++) {
-			if (genreAnime === GENRES[i].slug) {
-				setTranslateGenreAnime(GENRES[i].name)
-			}
-		}
-	}
+	}, [genreAnime, genre, page, instance])
 
 	return (
 		<>
