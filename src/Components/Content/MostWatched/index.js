@@ -3,7 +3,7 @@ import axios from "axios"
 import { Card } from "react-bootstrap"
 import { Link } from "react-router-dom"
 import { BsFillPlayFill } from "react-icons/bs"
-import loadable from "@loadable/component"
+import AnimeSkeleton from "../AnimeSkeleton"
 // SWIPER
 import { Swiper, SwiperSlide } from "swiper/react"
 
@@ -12,8 +12,6 @@ import "swiper/css/pagination"
 import "swiper/css/navigation"
 import SwiperCore, { Pagination, Navigation, Mousewheel, Lazy } from "swiper"
 SwiperCore.use([Pagination, Navigation, Mousewheel, Lazy])
-
-const AnimeSkeleton = loadable(() => import("../AnimeSkeleton"))
 
 function MostWatched({ instance }) {
 	const [rankToday, setRankToday] = useState([])

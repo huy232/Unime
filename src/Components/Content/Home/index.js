@@ -1,14 +1,13 @@
-// COMPONENTS
-import loadable from "@loadable/component"
-import { CardGroup } from "react-bootstrap"
-import "./home.css"
-import useDocumentTitle from "../DocumentTitleHook"
 import { useState } from "react"
+import { CardGroup } from "react-bootstrap"
+import useDocumentTitle from "../DocumentTitleHook"
 import LoadingBar from "react-top-loading-bar"
-const NewAnime = loadable(() => import("../NewAnime"))
-const MostWatched = loadable(() => import("../MostWatched"))
-const AnimeCollectionCard = loadable(() => import("../AnimeCollectionCard"))
-const RandomAnime = loadable(() => import("../RandomAnime"))
+// COMPONENTS
+import NewAnime from "../NewAnime"
+import MostWatched from "../MostWatched"
+import AnimeCollectionCard from "../AnimeCollectionCard"
+import RandomAnime from "../RandomAnime"
+import "./home.css"
 
 function Home({ instance }) {
 	const [progress, setProgress] = useState(0)

@@ -1,8 +1,6 @@
-/* eslint-disable jsx-a11y/alt-text */
-import loadable from "@loadable/component"
 import Skeleton from "@mui/material/Skeleton"
 import { Link } from "react-router-dom"
-const DescriptionSkeleton = loadable(() => import("../DescriptionSkeleton"))
+import DescriptionSkeleton from "../DescriptionSkeleton"
 
 function RandomAnimeRightCover({ randomAnime }) {
 	return (
@@ -31,6 +29,7 @@ function RandomAnimeRightCover({ randomAnime }) {
 									objectFit: "fill",
 								}}
 								className="today-cover-image"
+								alt=""
 							/>
 						</Link>
 					</nav>

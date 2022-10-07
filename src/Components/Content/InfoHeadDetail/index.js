@@ -93,10 +93,10 @@ function InfoHeadDetail({ info, loading }) {
 							: `Ngày ${info?.animeInfo?.StartDate?.day} `}
 						{!info?.animeInfo?.StartDate?.month
 							? ""
-							: `Tháng ${info?.animeInfo?.StartDate?.month} `}
+							: `tháng ${info?.animeInfo?.StartDate?.month} `}
 						{!info?.animeInfo?.StartDate?.year
 							? ""
-							: `Năm ${info?.animeInfo?.StartDate?.year}`}
+							: `năm ${info?.animeInfo?.StartDate?.year}`}
 					</div>
 				</div>
 			</div>

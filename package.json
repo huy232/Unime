@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@loadable/component": "^5.15.2",
     "@mui/material": "^5.3.1",
     "axios": "^0.25.0",
     "bootstrap": "^5.1.3",

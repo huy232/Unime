@@ -15,7 +15,7 @@ function AnimeCollectionCard() {
 							</div>
 						</Nav.Link>
 					</div>
-				))}
+				)).reverse()}
 			</div>
 		</>
 	)

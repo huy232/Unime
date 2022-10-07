@@ -6,7 +6,7 @@
 }
 
 .cover-wrapper {
-	min-width: 420px;
+	width: 30vw;
 }
 
 .cover-image {
@@ -19,10 +19,8 @@
 }
 
 .info-detail {
-	width: 100%;
+	width: 70vw;
 	color: white;
-	margin-left: 5%;
-	position: relative;
 }
 
 .info-detail .anime-type-paragraph {
@@ -220,7 +218,7 @@
 
 .detail-cover-info > div {
 	color: white;
-	max-width: 420px;
+	margin: 0 60px;
 }
 
 .detail-cover-info > div > h5 {
@@ -261,12 +259,16 @@ li.episode-chunk:hover {
 }
 
 @media screen and (max-width: 1024px) {
+	.cover-wrapper {
+		width: 100%;
+	}
 	.info-box {
 		flex-direction: column !important;
 	}
 	.detail-cover-info > div {
 		color: white;
-		max-width: none !important;
+		width: 100%;
+		margin: 0;
 	}
 	.detail-cover-info {
 		text-align: center;
@@ -278,15 +280,24 @@ li.episode-chunk:hover {
 		text-align: center;
 	}
 	.info-detail {
+		width: 100%;
 		margin-left: 0;
+	}
+	.anime-type-paragraph {
+		text-align: center;
+	}
+	.anime-type-category,
+	.anime-type-collection {
+		justify-content: center;
 	}
 }
 
 @media screen and (max-width: 768px) {
 	.cover-wrapper {
-		min-width: 0 !important;
+		width: 100%;
 	}
 	.info-detail {
+		width: 100%;
 		margin-left: 0;
 	}
 

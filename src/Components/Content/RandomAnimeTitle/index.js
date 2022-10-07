@@ -1,8 +1,7 @@
 import { Card } from "react-bootstrap"
 import { Link } from "react-router-dom"
 import ShowMoreText from "react-show-more-text"
-import loadable from "@loadable/component"
-const DescriptionSkeleton = loadable(() => import("../DescriptionSkeleton"))
+import DescriptionSkeleton from "../DescriptionSkeleton"
 
 function RandomAnimeTitle({ randomAnime }) {
 	return (

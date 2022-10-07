@@ -1,20 +1,15 @@
-import loadable from "@loadable/component"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import Skeleton from "@mui/material/Skeleton"
 import axios from "axios"
-import "./animeinfo.css"
 // COMPONENTS
-const InfoBox = loadable(() => import("../InfoBox"))
-const InfoTrailer = loadable(() => import("../InfoTrailer"))
-const InfoHeadDetail = loadable(() => import("../InfoHeadDetail"))
-const InfoEpisodeHolder = loadable(() => import("../InfoEpisodeHolder"))
-const InfoSpecialEpisodeList = loadable(() =>
-	import("../InfoSpecialEpisodeList")
-)
-const InfoAnimeEpisodeHandle = loadable(() =>
-	import("../InfoAnimeEpisodeHandle")
-)
+import InfoBox from "../InfoBox"
+import InfoTrailer from "../InfoTrailer"
+import InfoHeadDetail from "../InfoHeadDetail"
+import InfoEpisodeHolder from "../InfoEpisodeHolder"
+import InfoSpecialEpisodeList from "../InfoSpecialEpisodeList"
+import InfoAnimeEpisodeHandle from "../InfoAnimeEpisodeHandle"
+import "./animeinfo.css"
 
 function AnimeInfo({ instance }) {
 	const { anime } = useParams()
@@ -113,7 +108,12 @@ function AnimeInfo({ instance }) {
 			<div className="box-info" style={{ position: "relative" }}>
 				<div
 					className="info-box"
-					style={{ display: "flex", flexDirection: "row", width: "100%" }}
+					style={{
+						display: "flex",
+						flexDirection: "row",
+						width: "100%",
+						justifyContent: "space-between",
+					}}
 				>
 					<InfoBox info={info} loading={loading} />
 					<div className="info-detail ">
