@@ -1,4 +1,3 @@
-import { LinkContainer } from "react-router-bootstrap"
 import DescriptionSkeleton from "../DescriptionSkeleton"
 import { GENRES, COLLECTIONS } from "../../../constants"
 import { Link } from "react-router-dom"
