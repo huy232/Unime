@@ -77,6 +77,16 @@
 	opacity: 0.8;
 }
 
+.anime__slug {
+	transition: 0.3s;
+	color: #fff;
+}
+
+.anime-type-category .category-genre:hover .anime__slug,
+.anime-type-collection .category-genre:hover .anime__slug {
+	color: #f98866;
+}
+
 .description {
 	margin: 20px 30px 0;
 }

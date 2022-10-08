@@ -1,6 +1,7 @@
 import { LinkContainer } from "react-router-bootstrap"
 import DescriptionSkeleton from "../DescriptionSkeleton"
 import { GENRES, COLLECTIONS } from "../../../constants"
+import { Link } from "react-router-dom"
 
 function InfoHeadDetail({ info, loading }) {
 	const resultCollection = COLLECTIONS.filter((collection) => {
@@ -43,9 +44,9 @@ function InfoHeadDetail({ info, loading }) {
 				{!loading &&
 					resultCategory.map((genre) => (
 						<div className="category-genre" key={genre.slug}>
-							<LinkContainer to={`/anime/${genre.slug}`}>
+							<Link to={`/anime/${genre.slug}`} className="anime__slug">
 								<div className="genre-name">{genre.name}</div>
-							</LinkContainer>
+							</Link>
 						</div>
 					))}
 			</div>
@@ -56,9 +57,12 @@ function InfoHeadDetail({ info, loading }) {
 				{!loading &&
 					resultCollection.map((collection) => (
 						<div className="category-genre" key={collection.slug}>
-							<LinkContainer to={`/collection/${collection.slug}`}>
+							<Link
+								to={`/collection/${collection.slug}`}
+								className="anime__slug"
+							>
 								<div className="genre-name">{collection.name}</div>
-							</LinkContainer>
+							</Link>
 						</div>
 					))}
 			</div>
