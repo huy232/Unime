@@ -26,7 +26,7 @@ function InfoAnimeEpisodeHandle({
 							{episodeList[selectedChunk]?.map((eachEpisode, i) => (
 								<Col key={i}>
 									<nav>
-										{info?.name === "Vua Hải Tặc" ? (
+										{
 											<Link
 												to={`/watch/${anime}?index=${eachEpisode.name}`}
 												title={eachEpisode?.full_name}
@@ -59,73 +59,7 @@ function InfoAnimeEpisodeHandle({
 													</Card.Body>
 												</Card>
 											</Link>
-										) : eachEpisode.name > 0 ? (
-											<Link
-												to={`/watch/${anime}?index=${eachEpisode.name - 1}`}
-												title={eachEpisode?.full_name}
-											>
-												<Card>
-													<div className="card-container">
-														<Card.Img
-															variant="top"
-															src={
-																eachEpisode?.thumbnail_medium ||
-																eachEpisode?.thumbnail_small
-															}
-														/>
-														<div className="overlay-card">
-															<div className="icon">
-																{<BsFillPlayFill size={40} />}
-															</div>
-														</div>
-													</div>
-													<Card.Body>
-														<Card.Title>
-															{eachEpisode?.full_name === "Trailer" ? (
-																"Movie"
-															) : (
-																<p className="webclamp">
-																	{eachEpisode?.full_name}
-																</p>
-															)}
-														</Card.Title>
-													</Card.Body>
-												</Card>
-											</Link>
-										) : (
-											<Link
-												to={`/watch/${anime}?index=${eachEpisode.name}`}
-												title={eachEpisode?.full_name}
-											>
-												<Card>
-													<div className="card-container">
-														<Card.Img
-															variant="top"
-															src={
-																eachEpisode?.thumbnail_medium ||
-																eachEpisode?.thumbnail_small
-															}
-														/>
-														<div className="overlay-card">
-															<div className="icon">
-																{<BsFillPlayFill size={40} />}
-															</div>
-														</div>
-													</div>
-													<Card.Body>
-														<Card.Title>
-															{eachEpisode?.full_name === "Trailer" ? (
-																"Movie"
-															) : (
-																<p className="webclamp">
-																	{eachEpisode?.full_name}
-																</p>
-															)}
-														</Card.Title>
-													</Card.Body>
-												</Card>
-											</Link>
-										)}
+										}
 									</nav>
 								</Col>
 							))}

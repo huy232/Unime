@@ -203,45 +203,25 @@ function AnimeWatch({ instance }) {
 							</div>
 						</div>
 						<div className="episode-bracket">
-							{anime !== "vua-hai-tac"
-								? info.map((item) => (
-										<Link
-											to={`/watch/${anime}?index=${item.name - 1}`}
-											style={{ color: "white" }}
-											key={item.name}
-											title={item.full_name}
-										>
-											<div
-												className={
-													parseInt(index) === parseInt(item.name - 1)
-														? "episodes active"
-														: "episodes"
-												}
-												onClick={() => chooseEpisode(item.name - 1)}
-											>
-												<p>{item.full_name}</p>
-											</div>
-										</Link>
-								  ))
-								: info.map((item) => (
-										<Link
-											to={`/watch/${anime}?index=${item.name}`}
-											style={{ color: "white" }}
-											key={item.name}
-											title={item.full_name}
-										>
-											<div
-												className={
-													parseInt(index) === parseInt(item.name)
-														? "episodes active"
-														: "episodes"
-												}
-												onClick={() => chooseEpisode(item.name)}
-											>
-												<p>{item.full_name}</p>
-											</div>
-										</Link>
-								  ))}
+							{info.map((item) => (
+								<Link
+									to={`/watch/${anime}?index=${item.name}`}
+									style={{ color: "white" }}
+									key={item.name}
+									title={item.full_name}
+								>
+									<div
+										className={
+											parseInt(index) === parseInt(item.name)
+												? "episodes active"
+												: "episodes"
+										}
+										onClick={() => chooseEpisode(item.name)}
+									>
+										<p>{item.full_name}</p>
+									</div>
+								</Link>
+							))}
 						</div>
 					</div>
 				</div>
