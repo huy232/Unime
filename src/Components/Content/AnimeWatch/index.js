@@ -67,8 +67,6 @@ function AnimeWatch({ instance }) {
 					document
 						.getElementsByClassName("active")[0]
 						.scrollIntoView({ behavior: "smooth" })
-
-					window.scrollTo(0, 0)
 				})
 				.catch((thrown) => {
 					if (axios.isCancel(thrown)) return

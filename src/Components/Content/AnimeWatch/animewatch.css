@@ -140,6 +140,6 @@ video {
 	}
 
 	.episodes {
-		height: 55px;
+		height: auto;
 	}
 }
