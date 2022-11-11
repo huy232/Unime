@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { useParams, Link, useNavigate } from "react-router-dom"
+import { useParams, Link } from "react-router-dom"
 import axios from "axios"
 import VideoPlayer from "../VideoJsHook/index"
 import useDocumentTitle from "../DocumentTitleHook"
@@ -8,7 +8,6 @@ import LoadingRequest from "../LoadingRequest"
 import "./animewatch.css"
 
 function AnimeWatch({ instance }) {
-	const navigate = useNavigate()
 	const { anime } = useParams()
 	const queryParams = new URLSearchParams(window.location.search)
 	const index = queryParams.get("index")
@@ -84,10 +83,6 @@ function AnimeWatch({ instance }) {
 	useDocumentTitle(watchDetail)
 	const chooseEpisode = (index) => {
 		window.location.href = `https://unime.vercel.app/watch/${anime}?index=${index}`
-	}
-
-	const goBackButton = () => {
-		navigate(`/info/${anime}`)
 	}
 
 	const skip = (time) => {
@@ -179,18 +174,19 @@ function AnimeWatch({ instance }) {
 					<div className="episode-content">
 						<div className="episode-section">
 							<div className="episode-section-fixed">
-								<button
-									onClick={() => goBackButton()}
-									style={{
-										backgroundColor: "black",
-										border: "none",
-										display: "flex",
-										alignItems: "center",
-										justifyContent: "center",
-									}}
-								>
-									<BsFillArrowLeftSquareFill style={{ color: "white" }} />
-								</button>
+								<Link to={`/info/${anime}`}>
+									<button
+										style={{
+											backgroundColor: "black",
+											border: "none",
+											display: "flex",
+											alignItems: "center",
+											justifyContent: "center",
+										}}
+									>
+										<BsFillArrowLeftSquareFill style={{ color: "white" }} />
+									</button>
+								</Link>
 								<h5
 									className="episode-section-title"
 									style={{

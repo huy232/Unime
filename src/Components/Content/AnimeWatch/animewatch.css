@@ -1,131 +1,145 @@
-.MuiSlider-valueLabel{
-  background-color: rgba(255,0,0,0.6)!important
+.MuiSlider-valueLabel {
+	background-color: rgba(255, 0, 0, 0.6) !important;
 }
-.MuiContainer-root{
-  padding-left: 0 !important;
-  padding-right: 0 !important
+.MuiContainer-root {
+	padding-left: 0 !important;
+	padding-right: 0 !important;
 }
 
 .go-back-button .MuiButton-label {
-  color: white!important
+	color: white !important;
 }
 
 .go-back-button:hover {
-  transition: all 0.5s linear;
-  background-color: rgba(255,0,0,1) !important
+	transition: all 0.5s linear;
+	background-color: rgba(255, 0, 0, 1) !important;
 }
 
-.back-arrow{
-  top: 0;
-  left: 0;
-  position: fixed;
+.back-arrow {
+	top: 0;
+	left: 0;
+	position: fixed;
 }
 
-.back-arrow:hover{
-
-  transition: 0.3s;
-  color: white
+.back-arrow:hover {
+	transition: 0.3s;
+	color: white;
 }
 
-.video-js.vjs-fluid{
-  width: 100% !important
+.video-js.vjs-fluid {
+	width: 100% !important;
 }
 
 video {
-  min-height: 100vh;
-  max-height: 100vh
+	min-height: 100vh;
+	max-height: 100vh;
 }
 
-.video-js-wrapper{
-  width: 100%
+.video-js-wrapper {
+	width: 100%;
 }
 
 .video-active {
-  width: 100% !important;
+	width: 100% !important;
 }
 
-.episode-content{
-  box-shadow: rgb(38 57 77) 0px 20px 30px -10px;
-  width: 40vh;
-  position: relative
+.episode-content {
+	box-shadow: rgb(38 57 77) 0px 20px 30px -10px;
+	width: 40vh;
+	position: relative;
 }
 
-.episode-section{
-  width: 100%;
-  z-index: 1000;
-  height: 70px;
+.episode-section {
+	width: 100%;
+	z-index: 1000;
+	height: 70px;
 }
 
-.episode-section-fixed{
-  display:flex;
-  height: 100%;
-  flex-direction: row;
-  background-color: black;
-  justify-content: center;
-  align-items: center
+.episode-section-fixed {
+	display: flex;
+	height: 100%;
+	flex-direction: row;
+	background-color: black;
+	justify-content: center;
+	align-items: center;
 }
 
-.episode-section-title{
-  width: 100%;
-  display: inline-block;
-  margin: 0;
+.episode-section-fixed a {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
 }
 
-.episode-bracket{
-  overflow: scroll;
-  background: rgb(68 75 82 / 40%);
-  height: calc(100vh - 70px);
+.episode-section-title {
+	width: 100%;
+	display: inline-block;
+	margin: 0;
 }
 
-.episodes{
-  padding: 3px;
-  color: rgb(192, 190, 190) !important;
-  background-color: rgb(139, 114, 114);
-  border-radius: 8px;
-  width: 90%;
-  cursor: pointer;
-  text-overflow: clip;
+.episode-bracket {
+	overflow: scroll;
+	background: rgb(68 75 82 / 40%);
+	height: calc(100vh - 70px);
+}
+
+.episodes {
+	padding: 3px;
+	color: rgb(192, 190, 190) !important;
+	background-color: rgb(139, 114, 114);
+	border-radius: 8px;
+	width: 90%;
+	cursor: pointer;
+	text-overflow: clip;
 	display: -webkit-box;
 	-webkit-line-clamp: 2;
 	-webkit-box-orient: vertical;
-  overflow: hidden;
-  word-break: break-word;
-  margin: 16px auto 16px;
-  height: 66px;
-  box-shadow: rgb(0 0 0 / 17%) 0px -23px 25px 0px inset, rgb(0 0 0 / 15%) 0px -36px 30px 0px inset, rgb(0 0 0 / 10%) 0px -79px 40px 0px inset, rgb(0 0 0 / 6%) 0px 2px 1px, rgb(0 0 0 / 9%) 0px 4px 2px, rgb(0 0 0 / 9%) 0px 8px 4px, rgb(0 0 0 / 9%) 0px 16px 8px, rgb(0 0 0 / 9%) 0px 32px 16px;
+	overflow: hidden;
+	word-break: break-word;
+	margin: 16px auto 16px;
+	height: 66px;
+	box-shadow: rgb(0 0 0 / 17%) 0px -23px 25px 0px inset,
+		rgb(0 0 0 / 15%) 0px -36px 30px 0px inset,
+		rgb(0 0 0 / 10%) 0px -79px 40px 0px inset, rgb(0 0 0 / 6%) 0px 2px 1px,
+		rgb(0 0 0 / 9%) 0px 4px 2px, rgb(0 0 0 / 9%) 0px 8px 4px,
+		rgb(0 0 0 / 9%) 0px 16px 8px, rgb(0 0 0 / 9%) 0px 32px 16px;
 }
 
 .episodes a p {
-  margin: 0!important;
+	margin: 0 !important;
 }
 
 .active-hide {
-  width: 0;
+	width: 0;
 }
 
-.episodes:hover{
-  opacity: 0.7;
-  transition: linear 0.25s
+.episodes:hover {
+	opacity: 0.7;
+	transition: linear 0.25s;
 }
 
-.active{
-  background-color: rgb(163 50 50);
+.active {
+	background-color: rgb(163 50 50);
 }
 
 @media screen and (max-width: 640px) {
-  .MuiTypography-root{
-    font-size: 0.7rem !important
-  }
+	.MuiTypography-root {
+		font-size: 0.7rem !important;
+	}
 
-  .video-js-wrapper{
-    display: block !important;
-  }
+	.video-js-wrapper {
+		display: block !important;
+	}
 
-  .episode-content{
-    margin-top: 20px !important;
-    max-width: none !important;
-    min-width: unset !important;
-    width: 90% !important;
-    margin: 0 auto;
-  }
+	.episode-content {
+		margin-top: 20px !important;
+		max-width: none !important;
+		min-width: unset !important;
+		width: 90% !important;
+		margin: 0 auto;
+	}
+
+	.episodes {
+		height: 62px;
+	}
 }
