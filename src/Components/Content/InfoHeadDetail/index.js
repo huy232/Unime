@@ -3,16 +3,16 @@ import { GENRES, COLLECTIONS } from "../../../constants"
 import { Link } from "react-router-dom"
 
 function InfoHeadDetail({ info, loading }) {
-	const resultCollection = COLLECTIONS.filter((collection) => {
-		if (Object.keys(info).length !== 0) {
+	let resultCollection = COLLECTIONS.filter((collection) => {
+		if (info && Object.keys(info).length !== 0) {
 			return info.genres.find(
 				(selectedCollection) => selectedCollection.slug === collection.slug
 			)
 		}
 	})
 
-	const resultCategory = GENRES.filter((genre) => {
-		if (Object.keys(info).length !== 0) {
+	let resultCategory = GENRES.filter((genre) => {
+		if (info && Object.keys(info).length !== 0) {
 			return info.genres.find(
 				(selectedGenre) => selectedGenre.name === genre.name
 			)
@@ -36,7 +36,10 @@ function InfoHeadDetail({ info, loading }) {
 					)}
 				</p>
 			</div>
-			{resultCategory.length > 0 && (
+
+			{/* CATEGORY */}
+
+			{resultCategory?.length > 0 && (
 				<p className="anime-type-paragraph">Thể loại:</p>
 			)}
 			<div className="anime-type-category">
@@ -49,7 +52,9 @@ function InfoHeadDetail({ info, loading }) {
 						</div>
 					))}
 			</div>
-			{resultCollection.length > 0 && (
+			{/* COLLECTIONs */}
+
+			{resultCollection?.length > 0 && (
 				<p className="anime-type-paragraph">Bộ sưu tập:</p>
 			)}
 			<div className="anime-type-collection">
@@ -65,6 +70,7 @@ function InfoHeadDetail({ info, loading }) {
 						</div>
 					))}
 			</div>
+
 			<div className="bottom-detail" style={{ marginTop: "50px" }}>
 				<div className="country">
 					<h6>QUỐC GIA</h6>{" "}
