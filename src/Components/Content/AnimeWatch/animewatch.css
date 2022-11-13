@@ -84,7 +84,7 @@ video {
 }
 
 .episodes {
-	padding: 3px;
+	padding: 0 3px;
 	color: rgb(192, 190, 190) !important;
 	background-color: rgb(139, 114, 114);
 	border-radius: 8px;
@@ -97,7 +97,9 @@ video {
 	overflow: hidden;
 	word-break: break-word;
 	margin: 16px auto 16px;
-	height: 66px;
+	height: -webkit-fit-content;
+	height: -moz-fit-content;
+	height: 60px;
 	box-shadow: rgb(0 0 0 / 17%) 0px -23px 25px 0px inset,
 		rgb(0 0 0 / 15%) 0px -36px 30px 0px inset,
 		rgb(0 0 0 / 10%) 0px -79px 40px 0px inset, rgb(0 0 0 / 6%) 0px 2px 1px,
@@ -105,7 +107,7 @@ video {
 		rgb(0 0 0 / 9%) 0px 16px 8px, rgb(0 0 0 / 9%) 0px 32px 16px;
 }
 
-.episodes a p {
+.episodes p {
 	margin: 0 !important;
 }
 
@@ -137,9 +139,5 @@ video {
 		min-width: unset !important;
 		width: 90% !important;
 		margin: 0 auto;
-	}
-
-	.episodes {
-		height: auto;
 	}
 }
