@@ -96,7 +96,7 @@ video {
 	overflow: hidden;
 	word-break: break-word;
 	margin: 16px auto 16px;
-	padding: 6px;
+	padding: 4px;
 	height: -webkit-fit-content;
 	height: -moz-fit-content;
 	height: fit-content;
