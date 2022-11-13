@@ -83,7 +83,7 @@ video {
 	height: calc(100vh - 70px);
 }
 
-.episodes {
+.episode-bracket a {
 	padding: 0 3px;
 	color: rgb(192, 190, 190) !important;
 	background-color: rgb(139, 114, 114);
@@ -99,7 +99,7 @@ video {
 	margin: 16px auto 16px;
 	height: -webkit-fit-content;
 	height: -moz-fit-content;
-	height: 60px;
+	height: fit-content;
 	box-shadow: rgb(0 0 0 / 17%) 0px -23px 25px 0px inset,
 		rgb(0 0 0 / 15%) 0px -36px 30px 0px inset,
 		rgb(0 0 0 / 10%) 0px -79px 40px 0px inset, rgb(0 0 0 / 6%) 0px 2px 1px,
@@ -107,7 +107,11 @@ video {
 		rgb(0 0 0 / 9%) 0px 16px 8px, rgb(0 0 0 / 9%) 0px 32px 16px;
 }
 
-.episodes p {
+.episode-bracket .episode.active {
+	background-color: rgb(163 50 50);
+}
+
+.episode p {
 	margin: 0 !important;
 }
 
@@ -115,13 +119,9 @@ video {
 	width: 0;
 }
 
-.episodes:hover {
+.episode:hover {
 	opacity: 0.7;
 	transition: linear 0.25s;
-}
-
-.active {
-	background-color: rgb(163 50 50);
 }
 
 @media screen and (max-width: 640px) {

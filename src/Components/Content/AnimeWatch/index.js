@@ -205,15 +205,13 @@ function AnimeWatch({ instance }) {
 									style={{ color: "white" }}
 									key={item.name}
 									title={item.full_name}
+									className={
+										parseInt(index) === parseInt(item.name)
+											? "episode active"
+											: "episode"
+									}
 								>
-									<div
-										className={
-											parseInt(index) === parseInt(item.name)
-												? "episodes active"
-												: "episodes"
-										}
-										onClick={() => chooseEpisode(item.name)}
-									>
+									<div onClick={() => chooseEpisode(item.name)}>
 										<p>{item.full_name}</p>
 									</div>
 								</Link>
