@@ -2,6 +2,8 @@ import { useState } from "react"
 import { CardGroup } from "react-bootstrap"
 import useDocumentTitle from "../DocumentTitleHook"
 import LoadingBar from "react-top-loading-bar"
+import { Helmet } from "react-helmet-async"
+import { MAINSITE } from "../../../constants"
 // COMPONENTS
 import NewAnime from "../NewAnime"
 import MostWatched from "../MostWatched"
@@ -16,6 +18,16 @@ function Home({ instance }) {
 
 	return (
 		<>
+			<Helmet>
+				<title>{`Trang chủ - Unime`}</title>
+				<link rel="canonical" href={`${MAINSITE}`} />
+				<meta property="og:title" content={`Trang chủ - Unime`} />
+				<meta
+					property="og:description"
+					content="Trang chủ của Anime, website xem phim hoàn toàn miễn phí."
+				/>
+			</Helmet>
+
 			<LoadingBar
 				color="#f11946"
 				progress={progress}

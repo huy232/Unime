@@ -1,4 +1,5 @@
 // const url = "https://mirai-reborn.herokuapp.com/api"
+const mainsite = "https://unime.vercel.app"
 const url = "https://mirai-backend.onrender.com/api"
 
 const genres = [
@@ -86,6 +87,7 @@ const collections = [
 	{ slug: "anime-mua-thu-2022", name: "Anime Mùa Thu 2022" },
 ]
 
+export const MAINSITE = mainsite
 export const API = url
 export const GENRES = genres
 export const COLLECTIONS = collections

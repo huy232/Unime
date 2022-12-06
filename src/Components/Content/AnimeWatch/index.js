@@ -5,6 +5,8 @@ import VideoPlayer from "../VideoJsHook/index"
 import useDocumentTitle from "../DocumentTitleHook"
 import { BsFillArrowLeftSquareFill } from "react-icons/bs"
 import LoadingRequest from "../LoadingRequest"
+import { Helmet } from "react-helmet-async"
+import { MAINSITE } from "../../../constants"
 import "./animewatch.css"
 
 function AnimeWatch({ instance }) {
@@ -142,6 +144,16 @@ function AnimeWatch({ instance }) {
 
 	return (
 		<>
+			{console.log(info)}
+			<Helmet>
+				<title>{`Phim - ${info[index]?.film_name}`}</title>
+				<link rel="canonical" href={`${MAINSITE}`} />
+				<meta
+					property="og:title"
+					content={`Phim - ${info[index]?.film_name}`}
+				/>
+				<meta property="og:description" content={`${info[index].full_name}`} />
+			</Helmet>
 			<div style={{ marginTop: "-90px" }}>
 				<div
 					className="video-js-wrapper"

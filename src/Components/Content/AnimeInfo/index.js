@@ -2,6 +2,8 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import Skeleton from "@mui/material/Skeleton"
 import axios from "axios"
+import { Helmet } from "react-helmet-async"
+import { MAINSITE } from "../../../constants"
 // COMPONENTS
 import InfoBox from "../InfoBox"
 import InfoTrailer from "../InfoTrailer"
@@ -76,6 +78,13 @@ function AnimeInfo({ instance }) {
 	}, [anime, instance])
 	return (
 		<>
+			<Helmet>
+				<title>{`Thông tin - ${info?.name}`}</title>
+				<link rel="canonical" href={`${MAINSITE}/info/${anime}`} />
+				<meta property="og:title" content={`Thông tin - ${info?.name}`} />
+				<meta property="og:description" content={`${info?.description}`} />
+			</Helmet>
+
 			<div className="banner-anime-overlay">
 				<div className="banner-anime-image">
 					{loading ? (
