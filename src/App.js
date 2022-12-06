@@ -5,8 +5,6 @@ import axios from "axios"
 import { useEffect } from "react"
 import { Route, Routes, useLocation } from "react-router-dom"
 
-import { HelmetProvider } from "react-helmet-async"
-
 import Header from "./Components/Shared/Header"
 import Footer from "./Components/Shared/Footer"
 
@@ -29,46 +27,44 @@ function App() {
 	const pathname = useLocation()
 	return (
 		<div className="App">
-			<HelmetProvider>
-				{window.location.pathname ===
-				`/watch/${pathname.pathname.split("/")[2]}` ? (
-					""
-				) : (
-					<Header />
-				)}
-				<div className="content" style={{ marginTop: "90px", width: "100%" }}>
-					<Routes>
-						<Route exact path="/" element={<Home instance={instance} />} />
-						<Route path="/anime" element={<AnimeList instance={instance} />} />
-						<Route
-							path="/anime/:genre"
-							element={<AnimeGenre instance={instance} />}
-						/>
-						<Route
-							path="/collection/:collection"
-							element={<AnimeCollection instance={instance} />}
-						/>
-						<Route
-							path="search/:searchSlug"
-							element={<Search instance={instance} />}
-						/>
-						<Route
-							path="info/:anime"
-							element={<AnimeInfo instance={instance} />}
-						/>
-						<Route
-							path="watch/:anime"
-							element={<AnimeWatch instance={instance} />}
-						/>
-					</Routes>
-				</div>
-				{window.location.pathname ===
-				`/watch/${pathname.pathname.split("/")[2]}` ? (
-					""
-				) : (
-					<Footer />
-				)}
-			</HelmetProvider>
+			{window.location.pathname ===
+			`/watch/${pathname.pathname.split("/")[2]}` ? (
+				""
+			) : (
+				<Header />
+			)}
+			<div className="content" style={{ marginTop: "90px", width: "100%" }}>
+				<Routes>
+					<Route exact path="/" element={<Home instance={instance} />} />
+					<Route path="/anime" element={<AnimeList instance={instance} />} />
+					<Route
+						path="/anime/:genre"
+						element={<AnimeGenre instance={instance} />}
+					/>
+					<Route
+						path="/collection/:collection"
+						element={<AnimeCollection instance={instance} />}
+					/>
+					<Route
+						path="search/:searchSlug"
+						element={<Search instance={instance} />}
+					/>
+					<Route
+						path="info/:anime"
+						element={<AnimeInfo instance={instance} />}
+					/>
+					<Route
+						path="watch/:anime"
+						element={<AnimeWatch instance={instance} />}
+					/>
+				</Routes>
+			</div>
+			{window.location.pathname ===
+			`/watch/${pathname.pathname.split("/")[2]}` ? (
+				""
+			) : (
+				<Footer />
+			)}
 		</div>
 	)
 }
