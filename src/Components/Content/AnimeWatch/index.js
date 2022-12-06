@@ -84,7 +84,7 @@ function AnimeWatch({ instance }) {
 
 	useDocumentTitle(watchDetail)
 	const chooseEpisode = (index) => {
-		window.location.href = `https://unime.vercel.app/watch/${anime}?index=${index}`
+		window.location.href = `${MAINSITE}/watch/${anime}?index=${index}`
 	}
 
 	const skip = (time) => {
@@ -144,15 +144,10 @@ function AnimeWatch({ instance }) {
 
 	return (
 		<>
-			{console.log(info)}
 			<Helmet>
 				<title>{`Phim - ${info[index]?.film_name}`}</title>
-				<link rel="canonical" href={`${MAINSITE}`} />
-				<meta
-					property="og:title"
-					content={`Phim - ${info[index]?.film_name}`}
-				/>
-				<meta property="og:description" content={`${info[index].full_name}`} />
+				<meta name="title" content={`Phim - ${info[index]?.film_name}`} />
+				<meta name="description" content={`${info[index].full_name}`} />
 			</Helmet>
 			<div style={{ marginTop: "-90px" }}>
 				<div

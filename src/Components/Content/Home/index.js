@@ -20,10 +20,9 @@ function Home({ instance }) {
 		<>
 			<Helmet>
 				<title>{`Trang chủ - Unime`}</title>
-				<link rel="canonical" href={`${MAINSITE}`} />
-				<meta property="og:title" content={`Trang chủ - Unime`} />
+				<meta name="title" content={`Trang chủ - Unime`} />
 				<meta
-					property="og:description"
+					name="description"
 					content="Trang chủ của Anime, website xem phim hoàn toàn miễn phí."
 				/>
 			</Helmet>

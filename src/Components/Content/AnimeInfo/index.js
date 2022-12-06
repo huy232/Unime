@@ -80,9 +80,8 @@ function AnimeInfo({ instance }) {
 		<>
 			<Helmet>
 				<title>{`Thông tin - ${info?.name}`}</title>
-				<link rel="canonical" href={`${MAINSITE}/info/${anime}`} />
-				<meta property="og:title" content={`Thông tin - ${info?.name}`} />
-				<meta property="og:description" content={`${info?.description}`} />
+				<meta name="title" content={`Thông tin - ${info?.name}`} />
+				<meta name="description" content={`${info?.description}`} />
 			</Helmet>
 
 			<div className="banner-anime-overlay">
