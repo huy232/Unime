@@ -356,4 +356,8 @@ li.episode-chunk:hover {
 		padding-left: 10px;
 		padding-right: 10px;
 	}
+
+	.list-episode-title-main h4 {
+		width: auto;
+	}
 }
