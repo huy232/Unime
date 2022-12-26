@@ -1,3 +1,13 @@
 .search-anime-row > div {
-    margin-top: 20px
+	margin-top: 20px;
+}
+
+.search-result {
+	display: block;
+	width: 100% !important;
+	text-align: center;
+	color: white;
+}
+.search-loading-spin {
+	width: 100% !important;
 }

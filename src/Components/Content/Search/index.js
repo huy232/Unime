@@ -4,23 +4,29 @@ import axios from "axios"
 import { Card, Row, Col } from "react-bootstrap"
 import { BsFillPlayFill } from "react-icons/bs"
 import useDocumentTitle from "../DocumentTitleHook"
+import LoadingSpin from "react-loading-spin"
 import "./search.css"
 
 function Search({ instance }) {
 	const { searchSlug } = useParams()
 
 	const [searchData, setSearchData] = useState([])
+	const [loading, setLoading] = useState(true)
 
 	useEffect(() => {
 		const CancelToken = axios.CancelToken
 		const source = CancelToken.source()
 
 		const getSearch = async () => {
+			setLoading(true)
 			await instance
 				.get(`/search?q=${searchSlug}`, {
 					cancelToken: source.token,
 				})
-				.then((data) => setSearchData(data.data.data))
+				.then((data) => {
+					setSearchData(data.data.data)
+					setLoading(false)
+				})
 				.catch((thrown) => {
 					if (axios.isCancel(thrown)) return
 				})
@@ -44,32 +50,47 @@ function Search({ instance }) {
 				<h1 style={{ display: "inline-block" }}>TÌM KIẾM</h1>
 			</div>
 			<Row xs={1} sm={2} md={3} lg={4} className="search-anime-row">
-				{searchData.map((anime) => (
-					<Col key={anime.slug}>
-						<nav>
-							<Link to={`/info/${anime.slug}`}>
-								<Card>
-									<div className="card-container">
-										<Card.Img
-											variant="top"
-											src={anime.thumbnail}
-											fluid="true"
-										/>
-										<div className="overlay-card">
-											<div className="icon">{<BsFillPlayFill size={40} />}</div>
+				{loading ? (
+					<div
+						className="search-loading-spin"
+						style={{ textAlign: "center", marginTop: "50px" }}
+					>
+						<LoadingSpin primaryColor="red" />
+					</div>
+				) : searchData.length === 0 ? (
+					<div className="search-result">
+						<p>Không có kết quả khớp với tìm kiếm</p>
+					</div>
+				) : (
+					searchData.map((anime) => (
+						<Col key={anime.slug}>
+							<nav>
+								<Link to={`/info/${anime.slug}`}>
+									<Card>
+										<div className="card-container">
+											<Card.Img
+												variant="top"
+												src={anime.thumbnail}
+												fluid="true"
+											/>
+											<div className="overlay-card">
+												<div className="icon">
+													{<BsFillPlayFill size={40} />}
+												</div>
+											</div>
 										</div>
-									</div>
-									<Card.Body>
-										<Card.Title>
-											<p className="webclamp">{anime?.name}</p>
-										</Card.Title>
-									</Card.Body>
-								</Card>
-							</Link>
-						</nav>
-						<div className="w-100"></div>
-					</Col>
-				))}
+										<Card.Body>
+											<Card.Title>
+												<p className="webclamp">{anime?.name}</p>
+											</Card.Title>
+										</Card.Body>
+									</Card>
+								</Link>
+							</nav>
+							<div className="w-100"></div>
+						</Col>
+					))
+				)}
 			</Row>
 		</>
 	)
