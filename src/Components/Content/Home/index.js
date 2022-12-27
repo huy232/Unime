@@ -1,6 +1,7 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { CardGroup } from "react-bootstrap"
 import useDocumentTitle from "../DocumentTitleHook"
+import axios from "axios"
 import LoadingBar from "react-top-loading-bar"
 // COMPONENTS
 import NewAnime from "../NewAnime"
@@ -11,6 +12,63 @@ import "./home.css"
 
 function Home({ instance }) {
 	const [progress, setProgress] = useState(0)
+	const [newAnime, setNewAnime] = useState([])
+	const [rankToday, setRankToday] = useState([])
+	const [randomAnime, setRandomAnime] = useState({})
+	const [done1, setDone1] = useState(false)
+	const [done2, setDone2] = useState(false)
+	const [done3, setDone3] = useState(false)
+	useEffect(() => {
+		const CancelToken = axios.CancelToken
+		const source = CancelToken.source()
+
+		const getNew = () => {
+			instance
+				.get("/newest", {
+					cancelToken: source.token,
+				})
+				.then((data) => {
+					setNewAnime(data.data.data)
+					setDone1(true)
+				})
+				.then(getRankToday())
+				.then(getRandom())
+				.catch((thrown) => {
+					if (axios.isCancel(thrown)) return
+				})
+		}
+
+		const getRankToday = () => {
+			instance
+				.get("/top", {
+					cancelToken: source.token,
+				})
+				.then((data) => {
+					setRankToday(data.data.data)
+					setDone2(true)
+				})
+				.catch((thrown) => {
+					if (axios.isCancel(thrown)) return
+				})
+		}
+		const getRandom = () => {
+			instance
+				.get("/today", {
+					cancelToken: source.token,
+				})
+				.then((data) => {
+					setRandomAnime(data.data.data)
+					setDone3(true)
+				})
+				.catch((thrown) => {
+					if (axios.isCancel(thrown)) return
+				})
+		}
+		getNew()
+		return () => {
+			source.cancel()
+		}
+	}, [instance])
 
 	useDocumentTitle("Trang chủ - Unime")
 
@@ -29,7 +87,7 @@ function Home({ instance }) {
 					MỚI NHẤT
 				</h2>
 				<CardGroup>
-					<NewAnime instance={instance} />
+					<NewAnime newAnime={newAnime} done1={done1} />
 				</CardGroup>
 			</div>
 			<div className="anime-card-today" style={{ marginTop: "42px" }}>
@@ -39,7 +97,7 @@ function Home({ instance }) {
 					</h2>
 				</div>
 				<CardGroup>
-					<MostWatched instance={instance} />
+					<MostWatched rankToday={rankToday} done2={done2} />
 				</CardGroup>
 			</div>
 			<div className="anime-collection" style={{ marginTop: "42px" }}>
@@ -55,7 +113,7 @@ function Home({ instance }) {
 					<AnimeCollectionCard />
 				</div>
 			</div>
-			<RandomAnime instance={instance} />
+			<RandomAnime randomAnime={randomAnime} done3={done3} />
 		</>
 	)
 }

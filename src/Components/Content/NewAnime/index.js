@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react"
-import axios from "axios"
 import { BsFillPlayFill } from "react-icons/bs"
 import { Link } from "react-router-dom"
 import { Card } from "react-bootstrap"
@@ -13,36 +11,10 @@ import "swiper/css/navigation"
 import SwiperCore, { Pagination, Navigation, Mousewheel, Lazy } from "swiper"
 SwiperCore.use([Pagination, Navigation, Mousewheel, Lazy])
 
-function NewAnime({ instance }) {
-	const [newAnime, setNewAnime] = useState([])
-	const [done, setDone] = useState(false)
-
-	useEffect(() => {
-		const CancelToken = axios.CancelToken
-		const source = CancelToken.source()
-
-		const getNew = () => {
-			instance
-				.get("/newest", {
-					cancelToken: source.token,
-				})
-				.then((data) => {
-					setNewAnime(data.data.data)
-					setDone(true)
-				})
-				.catch((thrown) => {
-					if (axios.isCancel(thrown)) return
-				})
-		}
-		getNew()
-		return () => {
-			source.cancel()
-		}
-	}, [instance])
-
+function NewAnime({ done1, newAnime }) {
 	return (
 		<>
-			{!done ? (
+			{!done1 ? (
 				<AnimeSkeleton />
 			) : (
 				<Swiper

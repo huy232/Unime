@@ -1,36 +1,10 @@
-import { useEffect, useState } from "react"
-import axios from "axios"
 // COMPONENTS
 import RandomAnimeTitle from "../RandomAnimeTitle"
 import RandomAnimeInfo from "../RandomAnimeInfo"
 import CharacterDetail from "../CharacterDetail"
 import RandomAnimeRightCover from "../RandomAnimeRightCover"
 
-function RandomAnime({ instance }) {
-	const [randomAnime, setRandomAnime] = useState({})
-	const [done, setDone] = useState(false)
-	useEffect(() => {
-		const CancelToken = axios.CancelToken
-		const source = CancelToken.source()
-		const getRandom = () => {
-			instance
-				.get("/today", {
-					cancelToken: source.token,
-				})
-				.then((data) => {
-					setRandomAnime(data.data.data)
-					setDone(true)
-				})
-				.catch((thrown) => {
-					if (axios.isCancel(thrown)) return
-				})
-		}
-		getRandom()
-		return () => {
-			source.cancel()
-		}
-	}, [instance])
-
+function RandomAnime({ randomAnime, done3 }) {
 	return (
 		<>
 			{Object.keys(randomAnime || {}).length === 0 ? (
@@ -55,7 +29,7 @@ function RandomAnime({ instance }) {
 								style={{ marginTop: "22px" }}
 							>
 								<RandomAnimeInfo randomAnime={randomAnime} />
-								<CharacterDetail randomAnime={randomAnime} done={done} />
+								<CharacterDetail randomAnime={randomAnime} done3={done3} />
 							</div>
 						</div>
 						<div className="col-3">

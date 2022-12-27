@@ -8,11 +8,11 @@ import "swiper/css/navigation"
 import SwiperCore, { Pagination, Navigation, Mousewheel, Lazy } from "swiper"
 SwiperCore.use([Pagination, Navigation, Mousewheel, Lazy])
 
-function CharacterDetail({ randomAnime, done }) {
+function CharacterDetail({ randomAnime, done3 }) {
 	return (
 		<>
 			<div className="character-detail" style={{ marginTop: "20px" }}>
-				{!done ? (
+				{!done3 ? (
 					<Skeleton
 						variant="rectangular"
 						width="100%"
