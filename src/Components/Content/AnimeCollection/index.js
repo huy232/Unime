@@ -6,6 +6,7 @@ import { Card, Row, Col } from "react-bootstrap"
 import { BsFillPlayFill } from "react-icons/bs"
 import useDocumentTitle from "../DocumentTitleHook"
 import LoadingSpin from "react-loading-spin"
+import "./animecollection.css"
 
 function AnimeCollection({ instance }) {
 	const { collection } = useParams()
@@ -29,6 +30,7 @@ function AnimeCollection({ instance }) {
 
 		if (collection === collectionAnime) {
 			const getList = async () => {
+				setLoading(true)
 				await instance
 					.get(`/collection/${collection}`, {
 						cancelToken: source.token,
@@ -43,6 +45,7 @@ function AnimeCollection({ instance }) {
 						setAnimeList((prev) => {
 							return [...new Set([...prev, ...newList])]
 						})
+						setLoading(false)
 					})
 					.catch((thrown) => {
 						if (axios.isCancel(thrown)) return
@@ -51,7 +54,6 @@ function AnimeCollection({ instance }) {
 
 			getList()
 			translateCollection()
-			setLoading(false)
 		} else {
 			setAnimeList([])
 			setCollectionAnime(collection)
@@ -68,15 +70,16 @@ function AnimeCollection({ instance }) {
 				<h1>{translateGenreAnime}</h1>
 				{useDocumentTitle(`${translateGenreAnime} - Unime`)}
 			</div>
-			{loading ? (
-				<div
-					className="loading-spin"
-					style={{ textAlign: "center", marginTop: "50px" }}
-				>
-					<LoadingSpin primaryColor="red" />
-				</div>
-			) : (
-				<div className="anime-list">
+
+			<div className="anime-list">
+				{loading ? (
+					<div
+						className="collection-loading-spin"
+						style={{ textAlign: "center", marginTop: "50px" }}
+					>
+						<LoadingSpin primaryColor="red" />
+					</div>
+				) : (
 					<Row xs={1} sm={2} md={3} lg={4} className="w-100 w-full row-anime">
 						{animeList.map((anime) => (
 							<Col key={anime?.slug}>
@@ -107,8 +110,8 @@ function AnimeCollection({ instance }) {
 							</Col>
 						))}
 					</Row>
-				</div>
-			)}
+				)}
+			</div>
 		</>
 	)
 }
