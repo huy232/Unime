@@ -31,6 +31,7 @@ function Home({ instance }) {
 					setNewAnime(data.data.data)
 					setDone1(true)
 				})
+				.then(getRankToday())
 				.catch((thrown) => {
 					if (axios.isCancel(thrown)) return
 				})
@@ -45,6 +46,7 @@ function Home({ instance }) {
 					setRankToday(data.data.data)
 					setDone2(true)
 				})
+				.then(getRandom())
 				.catch((thrown) => {
 					if (axios.isCancel(thrown)) return
 				})
@@ -62,12 +64,7 @@ function Home({ instance }) {
 					if (axios.isCancel(thrown)) return
 				})
 		}
-		// getNew()
-		Promise.all([getNew(), getRankToday(), getRandom()])
-			.then()
-			.catch((err) => {
-				console.log(err)
-			})
+		getNew()
 		return () => {
 			source.cancel()
 		}
