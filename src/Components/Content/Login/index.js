@@ -36,7 +36,6 @@ export default function Login() {
 
 	return (
 		<>
-			{console.log(user)}
 			<div className="login-container">
 				<div
 					className="col-40"

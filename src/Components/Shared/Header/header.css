@@ -54,7 +54,7 @@
 }
 
 .dropdown-menu {
-	display: flex;
+	/* display: flex; */
 	flex-direction: row;
 	flex-wrap: wrap;
 	max-width: 600px;
@@ -102,18 +102,42 @@
 	text-align: center;
 }
 
+.language-container {
+	margin-left: auto;
+}
+
+.language-container button {
+	margin: 0 6px;
+	border: none;
+	border-radius: 6px;
+	transition: 0.2s linear;
+}
+
+.language-container button:hover {
+	opacity: 0.8;
+}
+
 @media screen and (max-width: 992px) {
+	.navbar-brand {
+		font-size: 1rem;
+	}
+
 	.dropdown-menu {
 		margin: 0 0 8px 0 !important;
 	}
 
 	.nav-item.dropdown {
 		flex-direction: column;
+		margin: 10px 0;
 	}
 	.user-container {
 		text-align: center;
 		flex-direction: column;
 		margin: 0;
+	}
+
+	.language-container {
+		margin: 10px auto 6px auto;
 	}
 }
 

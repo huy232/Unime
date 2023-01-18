@@ -5,6 +5,7 @@ const AuthContext = React.createContext()
 
 export function AuthProvider({ children }) {
 	const [user, setUser] = useState()
+	const [language, setLanguage] = useState("vi")
 	const [loading, setLoading] = useState(true)
 
 	useEffect(() => {
@@ -28,11 +29,13 @@ export function AuthProvider({ children }) {
 		)
 
 		return () => {
-			authListener?.unsubscribe()
+			if (authListener) {
+				authListener.subscription.unsubscribe()
+			}
 		}
 	}, [])
 
-	// Will be passed down to Signup, Login and Dashboard components
+	// Will be passed down to components
 	const value = {
 		signUp: async (data) => await supabase.auth.signUp(data),
 		signIn: async (data) => await supabase.auth.signInWithPassword(data),
@@ -52,6 +55,10 @@ export function AuthProvider({ children }) {
 		},
 		signOut: async () => await supabase.auth.signOut(),
 		user,
+		setLanguage: (data) => {
+			setLanguage(data)
+		},
+		language,
 	}
 
 	return (
