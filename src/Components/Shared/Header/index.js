@@ -9,6 +9,7 @@ import { BsSearch } from "react-icons/bs"
 import { useNavigate } from "react-router-dom"
 
 import "./header.css"
+import User from "../User"
 
 function Header() {
 	let navigate = useNavigate()
@@ -108,6 +109,9 @@ function Header() {
 									<BsSearch className="search-icon" />
 								</button>
 							</form>
+							<div className="user-container">
+								<User handleScrollToTop={handleScrollToTop} />
+							</div>
 						</Nav>
 					</Navbar.Collapse>
 				</Container>

@@ -4,6 +4,7 @@
 
 .me-auto {
 	align-items: center;
+	width: 100%;
 }
 
 .navbar-brand {
@@ -102,8 +103,17 @@
 }
 
 @media screen and (max-width: 992px) {
+	.dropdown-menu {
+		margin: 0 0 8px 0 !important;
+	}
+
 	.nav-item.dropdown {
 		flex-direction: column;
+	}
+	.user-container {
+		text-align: center;
+		flex-direction: column;
+		margin: 0;
 	}
 }
 

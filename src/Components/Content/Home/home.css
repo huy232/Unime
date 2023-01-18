@@ -409,6 +409,12 @@ h1,
 	padding: 0 !important;
 }
 
+@media screen and (min-width: 992px) and (max-width: 1600px) {
+	.swiper-slide {
+		width: 22.5% !important;
+	}
+}
+
 @media screen and (min-width: 992px) {
 	.card-container:hover .overlay-card {
 		opacity: 1;

@@ -15,6 +15,9 @@ import Search from "./Components/Content/Search"
 import AnimeInfo from "./Components/Content/AnimeInfo"
 import AnimeWatch from "./Components/Content/AnimeWatch"
 import AnimeCollection from "./Components/Content/AnimeCollection"
+import Login from "./Components/Content/Login"
+
+import { AuthProvider } from "./Contexts/auth"
 
 function App() {
 	const instance = axios.create({
@@ -27,44 +30,49 @@ function App() {
 	const pathname = useLocation()
 	return (
 		<div className="App">
-			{window.location.pathname ===
-			`/watch/${pathname.pathname.split("/")[2]}` ? (
-				""
-			) : (
-				<Header />
-			)}
-			<div className="content" style={{ marginTop: "90px", width: "100%" }}>
-				<Routes>
-					<Route exact path="/" element={<Home instance={instance} />} />
-					<Route path="/anime" element={<AnimeList instance={instance} />} />
-					<Route
-						path="/anime/:genre"
-						element={<AnimeGenre instance={instance} />}
-					/>
-					<Route
-						path="/collection/:collection"
-						element={<AnimeCollection instance={instance} />}
-					/>
-					<Route
-						path="search/:searchSlug"
-						element={<Search instance={instance} />}
-					/>
-					<Route
-						path="info/:anime"
-						element={<AnimeInfo instance={instance} />}
-					/>
-					<Route
-						path="watch/:anime"
-						element={<AnimeWatch instance={instance} />}
-					/>
-				</Routes>
-			</div>
-			{window.location.pathname ===
-			`/watch/${pathname.pathname.split("/")[2]}` ? (
-				""
-			) : (
-				<Footer />
-			)}
+			<AuthProvider>
+				{window.location.pathname ===
+					`/watch/${pathname.pathname.split("/")[2]}` ||
+				window.location.pathname === `/login` ? (
+					""
+				) : (
+					<Header />
+				)}
+				<div className="content" style={{ marginTop: "90px", width: "100%" }}>
+					<Routes>
+						<Route exact path="/" element={<Home instance={instance} />} />
+						<Route path="/anime" element={<AnimeList instance={instance} />} />
+						<Route
+							path="/anime/:genre"
+							element={<AnimeGenre instance={instance} />}
+						/>
+						<Route
+							path="/collection/:collection"
+							element={<AnimeCollection instance={instance} />}
+						/>
+						<Route
+							path="search/:searchSlug"
+							element={<Search instance={instance} />}
+						/>
+						<Route
+							path="info/:anime"
+							element={<AnimeInfo instance={instance} />}
+						/>
+						<Route
+							path="watch/:anime"
+							element={<AnimeWatch instance={instance} />}
+						/>
+						<Route path="login" element={<Login />} />
+					</Routes>
+				</div>
+				{window.location.pathname ===
+					`/watch/${pathname.pathname.split("/")[2]}` ||
+				window.location.pathname === `/login` ? (
+					""
+				) : (
+					<Footer />
+				)}
+			</AuthProvider>
 		</div>
 	)
 }

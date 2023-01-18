@@ -1,0 +1,102 @@
+.login-container {
+	margin-top: -90px;
+	width: 100%;
+	display: flex;
+	color: #fff;
+}
+
+.col-60 {
+	width: 60%;
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+	justify-content: center;
+}
+
+.col-40 {
+	width: 40%;
+	display: flex;
+	align-items: center;
+}
+
+.quote-heading {
+	font-weight: 900;
+	width: 90%;
+	margin: 0 auto 8px auto;
+}
+
+.quote-container {
+	width: 100%;
+}
+
+.quote {
+	width: 80%;
+	margin: 0 auto 0 auto;
+	font-weight: 500;
+}
+
+.quote-info {
+	text-align: right;
+	margin: auto 5% auto auto;
+}
+
+.quote-character {
+	font-style: italic;
+	font-weight: 600;
+}
+
+.quote-anime {
+	text-decoration: overline;
+	font-weight: 800;
+}
+
+.login-section {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.social-button svg {
+	width: 40px;
+	height: 40px;
+}
+
+.login-heading {
+	font-weight: 700;
+}
+
+.login-heading,
+.social-button {
+	width: 50%;
+}
+.social-button {
+	border-radius: 8px;
+	display: flex;
+	align-items: center;
+	font-weight: 500;
+	margin: 8px 0;
+	padding: 16px;
+	transition: 0.2s linear;
+}
+
+.social-button:hover {
+	opacity: 0.7;
+}
+
+.google-button {
+	color: rgb(24, 24, 24);
+}
+
+.facebook-button {
+	background: rgb(63, 81, 181);
+}
+
+.discord-button {
+	background: rgb(140, 158, 255);
+}
+
+.social-paragraph {
+	margin: 0 auto 0 auto;
+}
