@@ -70,9 +70,7 @@ const VideoPlayer = ({ src, controls, autoplay, anime, info, index }) => {
 	const playerRef = usePlayer({ src, controls, autoplay, anime, info, index })
 	return (
 		<>
-			<div data-vjs-player className="vi-video">
-				<video ref={playerRef} className="video-js" />
-			</div>
+			<video ref={playerRef} className="video-js" />
 		</>
 	)
 }

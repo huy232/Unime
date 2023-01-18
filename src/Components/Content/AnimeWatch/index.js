@@ -20,8 +20,6 @@ function AnimeWatch({ instance }) {
 	const [watchDetail, setWatchDetail] = useState("Đang tải")
 	const [videoUrl, setVideoUrl] = useState("")
 	const [videoEmbed, setVideoEmbed] = useState("")
-	const [altSource, setAltSource] = useState("")
-	const [toggle, setToggle] = useState("vi")
 
 	useEffect(() => {
 		const CancelToken = axios.CancelToken
@@ -145,10 +143,6 @@ function AnimeWatch({ instance }) {
 		})
 	}
 
-	const toggleLanguage = (language) => {
-		setToggle(language)
-	}
-
 	return (
 		<>
 			<div style={{ marginTop: "-90px" }}>
@@ -156,21 +150,17 @@ function AnimeWatch({ instance }) {
 					className="video-js-wrapper"
 					style={{ display: "flex", height: "100vh" }}
 				>
-					{toggle === "vi" ? (
-						videoUrl ? (
-							<VideoPlayerSource
-								videoUrl={videoUrl}
-								anime={anime}
-								info={info}
-								index={index}
-							/>
-						) : videoEmbed ? (
-							<VideoEmbed videoEmbed={videoEmbed} />
-						) : (
-							<LoadingRequest />
-						)
+					{videoUrl ? (
+						<VideoPlayerSource
+							videoUrl={videoUrl}
+							anime={anime}
+							info={info}
+							index={index}
+						/>
+					) : videoEmbed ? (
+						<VideoEmbed videoEmbed={videoEmbed} />
 					) : (
-						<EnglishIframe iFrameSource={altSource} />
+						<LoadingRequest />
 					)}
 
 					<div className="episode-content">
