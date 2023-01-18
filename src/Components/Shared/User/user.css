@@ -5,6 +5,12 @@
 	margin-left: auto;
 }
 
+.anime-nav-paragraph {
+	display: none;
+	padding: 0 !important;
+	margin: 0 8px 0 0 !important;
+}
+
 .anime-nav-login,
 .anime-nav-logout {
 	display: flex !important;
@@ -21,6 +27,7 @@
 .anime-nav-login svg,
 .anime-nav-logout svg {
 	margin-right: 8px;
+	margin-top: 4px;
 	width: 24px;
 	height: 24px;
 	fill: rgba(255, 255, 255, 0.75);
@@ -58,4 +65,15 @@
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
+}
+
+@media screen and (max-width: 992px) {
+	.user-container {
+		margin-top: 18px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	.anime-nav-paragraph {
+		display: block;
+	}
 }

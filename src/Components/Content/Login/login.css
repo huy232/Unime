@@ -79,6 +79,7 @@
 	margin: 8px 0;
 	padding: 16px;
 	transition: 0.2s linear;
+	border: none;
 }
 
 .social-button:hover {
@@ -99,4 +100,44 @@
 
 .social-paragraph {
 	margin: 0 auto 0 auto;
+}
+
+@media screen and (max-width: 640px) {
+	.login-heading {
+		font-size: 1.2rem;
+	}
+	.social-paragraph {
+		display: none;
+	}
+
+	.social-button {
+		justify-content: center;
+	}
+
+	.login-container {
+		flex-direction: column;
+		justify-content: center;
+		height: 100vh;
+	}
+
+	.quote-holder {
+		padding-bottom: 30px;
+	}
+
+	.col-40 {
+		width: 100%;
+	}
+
+	.col-60 {
+		width: 100%;
+		height: auto;
+	}
+
+	.login-section {
+		margin-top: 16px;
+	}
+
+	.login-heading {
+		text-align: center;
+	}
 }

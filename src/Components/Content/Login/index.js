@@ -42,7 +42,7 @@ export default function Login() {
 					className="col-40"
 					style={{
 						background: `linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(${background})`,
-						backgroundSize: `100% auto`,
+						backgroundSize: `cover`,
 						backgroundRepeat: `no-repeat`,
 					}}
 				>
