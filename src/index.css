@@ -1,65 +1,68 @@
 body {
-  margin: 0;
-  font-family: 'Inter', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	margin: 0;
+	font-family: "Inter", sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: 'Inter', sans-serif;
+	font-family: "Inter", sans-serif;
 }
 
-*{
-  box-sizing: border-box;
+* {
+	box-sizing: border-box;
 }
- 
-html, body{
-  width: 100%;
-  background-color:#121212 !important;
-  scroll-behavior: smooth;
-  border: 0 !important;
-  min-height: 100vh
+
+html,
+body {
+	width: 100%;
+	background-color: #121212 !important;
+	scroll-behavior: smooth;
+	border: 0 !important;
+	min-height: 100vh;
 }
 
 a {
-  text-decoration: none !important;
+	text-decoration: none !important;
 }
 
 :root {
-  --code-color: #FF6C5C;
-  --code-bg-color: #aaaaaa;
-  --code-font-size: 14px;
-  --code-line-height: 1.4;
-  --scroll-bar-color: #FF6C5C;
-  --scroll-bar-bg-color: black;
+	--code-color: #ff6c5c;
+	--code-bg-color: #aaaaaa;
+	--code-font-size: 14px;
+	--code-line-height: 1.4;
+	--scroll-bar-color: #ff6c5c;
+	--scroll-bar-bg-color: black;
 }
 
 pre {
-  color: var(--code-color);
-  font-size: var(--code-font-size);
-  line-height: var(--code-line-height);
-  background-color: var(--code-bg-color);
+	color: var(--code-color);
+	font-size: var(--code-font-size);
+	line-height: var(--code-line-height);
+	background-color: var(--code-bg-color);
 }
 
-::-webkit-scrollbar-corner { background: rgba(0,0,0,0.5); }
+::-webkit-scrollbar-corner {
+	background: rgba(0, 0, 0, 0.5);
+}
 
 * {
-  scrollbar-width: thin;
-  scrollbar-color: var(--scroll-bar-color) var(--scroll-bar-bg-color);
+	scrollbar-width: thin;
+	scrollbar-color: var(--scroll-bar-color) var(--scroll-bar-bg-color);
 }
 
 /* Works on Chrome, Edge, and Safari */
 *::-webkit-scrollbar {
-  width: 8px;
-  height: 0;
+	width: 8px;
+	height: 0;
 }
 
 *::-webkit-scrollbar-track {
-  background: var(--scroll-bar-bg-color);
+	background: var(--scroll-bar-bg-color);
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: var(--scroll-bar-color);
-  border-radius: 20px;
-  border: 3px solid var(--scroll-bar-bg-color);
+	background-color: var(--scroll-bar-color);
+	border-radius: 20px;
+	border: 3px solid var(--scroll-bar-bg-color);
 }

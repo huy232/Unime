@@ -1,49 +1,51 @@
-
-.video-js.vjs-fluid{
-    padding-top:0;
-    height: 100vh!important
+.video-js.vjs-fluid {
+	padding-top: 0;
+	height: 100vh !important;
 }
 
-
-.video-js .vjs-play-progress{
-    background-color: #d95656!important
+.video-js .vjs-play-progress {
+	background-color: #d95656 !important;
 }
 
-.video-js .vjs-big-play-button{
-
-    top: 50%;
-    left: 50%;
-    border: none;
-    border-radius: 3rem
+.video-js .vjs-big-play-button {
+	top: 50%;
+	left: 50%;
+	border: none;
+	border-radius: 3rem;
 }
 
-.video-js .vjs-big-play-button:hover{
-    transition: all 0.4s linear;
-    background-color: red
+.video-js .vjs-big-play-button:hover {
+	transition: all 0.4s linear;
+	background-color: red;
 }
 
-.video-js .vjs-big-play-button{
-    color: black
+.video-js .vjs-big-play-button {
+	color: black;
 }
 
-.video-js .vjs-big-play-button:hover{
-    transition: all 0.4 linear;
-    color: white
+.video-js .vjs-big-play-button:hover {
+	transition: all 0.4 linear;
+	color: white;
 }
 
-.vjs-control-bar{
-    background-color: rgba(0,0,0,0.3) !important;
-    color: white
+.vjs-control-bar {
+	background-color: rgba(0, 0, 0, 0.3) !important;
+	color: white;
 }
 
-.top-wrapper{
-    display: flex;
-    flex-direction: row;
-    z-index: 100000000!important
+.top-wrapper {
+	display: flex;
+	flex-direction: row;
+	z-index: 100000000 !important;
 }
 
-.top-left button, .top-right button {
-    font-size: 40px;
-    background-color: red;
-    margin-left: 20px
+.top-left button,
+.top-right button {
+	font-size: 40px;
+	background-color: red;
+	margin-left: 20px;
+}
+
+.video-js-wrapper div:first-child {
+	width: 100%;
 }

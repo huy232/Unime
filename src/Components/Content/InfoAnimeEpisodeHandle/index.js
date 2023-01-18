@@ -2,6 +2,9 @@ import { Card, Row, Col } from "react-bootstrap"
 import { BsFillPlayFill } from "react-icons/bs"
 import { Link } from "react-router-dom"
 
+// STORE
+// &episode=${(selectedChunk + 1) * 12 - (12 - i - 1)}
+
 function InfoAnimeEpisodeHandle({
 	anime,
 	info,

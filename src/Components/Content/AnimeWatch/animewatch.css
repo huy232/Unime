@@ -52,7 +52,7 @@ video {
 .episode-section {
 	width: 100%;
 	z-index: 1000;
-	height: 70px;
+	height: 80px;
 }
 
 .episode-section-fixed {
@@ -60,7 +60,7 @@ video {
 	height: 100%;
 	flex-direction: row;
 	background-color: black;
-	justify-content: center;
+	justify-content: space-around;
 	align-items: center;
 }
 
@@ -75,12 +75,13 @@ video {
 	width: 100%;
 	display: inline-block;
 	margin: 0;
+	font-size: 1rem;
 }
 
 .episode-bracket {
 	overflow: scroll;
 	background: rgb(68 75 82 / 40%);
-	height: calc(100vh - 70px);
+	height: calc(100vh - 80px);
 }
 
 .episode-bracket a {
@@ -122,6 +123,23 @@ video {
 .episode:hover {
 	opacity: 0.7;
 	transition: linear 0.25s;
+}
+
+.multi-lang {
+	text-align: center;
+	margin-top: 10px;
+}
+
+.lang-btn {
+	margin: 0 6px 0 6px;
+	border: none;
+	padding: 0 8px 0 8px;
+	border-radius: 6px;
+	transition: 0.2s linear;
+}
+
+.lang-btn:hover {
+	opacity: 0.7;
 }
 
 @media screen and (max-width: 640px) {

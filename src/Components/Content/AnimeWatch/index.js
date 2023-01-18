@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react"
 import { useParams, Link } from "react-router-dom"
 import axios from "axios"
-import VideoPlayer from "../VideoJsHook/index"
+import VideoPlayerSource from "../VideoPlayer"
+import VideoEmbed from "../VideoEmbed"
+import EnglishIframe from "../EnglishIframe"
 import useDocumentTitle from "../DocumentTitleHook"
 import { BsFillArrowLeftSquareFill } from "react-icons/bs"
 import LoadingRequest from "../LoadingRequest"
@@ -12,11 +14,14 @@ function AnimeWatch({ instance }) {
 	const { anime } = useParams()
 	const queryParams = new URLSearchParams(window.location.search)
 	const index = queryParams.get("index")
+	const episode = queryParams.get("episode")
 	const specialid = queryParams.get("specialid")
 	const [info, setInfo] = useState([])
 	const [watchDetail, setWatchDetail] = useState("Đang tải")
 	const [videoUrl, setVideoUrl] = useState("")
 	const [videoEmbed, setVideoEmbed] = useState("")
+	const [altSource, setAltSource] = useState("")
+	const [toggle, setToggle] = useState("vi")
 
 	useEffect(() => {
 		const CancelToken = axios.CancelToken
@@ -73,16 +78,15 @@ function AnimeWatch({ instance }) {
 					if (axios.isCancel(thrown)) return
 				})
 		}
-
 		getList()
 
 		return () => {
 			source.cancel()
 		}
-	}, [anime, index, instance, specialid])
+	}, [anime, episode, index, instance, specialid])
 
 	useDocumentTitle(watchDetail)
-	const chooseEpisode = (index) => {
+	const chooseEpisode = (index, episode) => {
 		window.location.href = `${MAINSITE}/watch/${anime}?index=${index}`
 	}
 
@@ -141,6 +145,10 @@ function AnimeWatch({ instance }) {
 		})
 	}
 
+	const toggleLanguage = (language) => {
+		setToggle(language)
+	}
+
 	return (
 		<>
 			<div style={{ marginTop: "-90px" }}>
@@ -148,30 +156,23 @@ function AnimeWatch({ instance }) {
 					className="video-js-wrapper"
 					style={{ display: "flex", height: "100vh" }}
 				>
-					{videoUrl !== "" ? (
-						<>
-							<VideoPlayer
-								src={videoUrl}
-								controls={true}
-								autoplay={true}
+					{toggle === "vi" ? (
+						videoUrl ? (
+							<VideoPlayerSource
+								videoUrl={videoUrl}
 								anime={anime}
 								info={info}
 								index={index}
 							/>
-						</>
-					) : videoEmbed !== "" ? (
-						<iframe
-							src={videoEmbed}
-							allow="autoplay; fullscreen"
-							width="100%"
-							height="100%"
-							title="videoFrame"
-							frame-src="self"
-							frame-ancestors="self"
-						/>
+						) : videoEmbed ? (
+							<VideoEmbed videoEmbed={videoEmbed} />
+						) : (
+							<LoadingRequest />
+						)
 					) : (
-						<LoadingRequest />
+						<EnglishIframe iFrameSource={altSource} />
 					)}
+
 					<div className="episode-content">
 						<div className="episode-section">
 							<div className="episode-section-fixed">
@@ -188,23 +189,25 @@ function AnimeWatch({ instance }) {
 										<BsFillArrowLeftSquareFill style={{ color: "white" }} />
 									</button>
 								</Link>
-								<h5
-									className="episode-section-title"
-									style={{
-										textAlign: "center",
-										color: "white",
-									}}
-								>
-									DANH SÁCH TẬP PHIM
-								</h5>
+								<div className="episode-heading-section">
+									<h5
+										className="episode-section-title"
+										style={{
+											textAlign: "center",
+											color: "white",
+										}}
+									>
+										DANH SÁCH TẬP PHIM
+									</h5>
+								</div>
 							</div>
 						</div>
 						<div className="episode-bracket">
-							{info.map((item) => (
+							{info.map((item, i) => (
 								<Link
-									to={`/watch/${anime}?index=${item.name}`}
+									to={`/watch/${anime}?index=${index}`}
 									style={{ color: "white" }}
-									key={item.name}
+									key={i}
 									title={item.full_name}
 									className={
 										parseInt(index) === parseInt(item.name)
@@ -212,7 +215,7 @@ function AnimeWatch({ instance }) {
 											: "episode"
 									}
 								>
-									<div onClick={() => chooseEpisode(item.name)}>
+									<div onClick={() => chooseEpisode(item.name, i)}>
 										<p>{item.full_name}</p>
 									</div>
 								</Link>
