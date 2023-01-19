@@ -1,0 +1,14 @@
+.episode-list .swiper-button-prev,
+.episode-list .swiper-button-next {
+	color: #fff;
+	font-size: 0.2rem;
+	z-index: 100;
+	margin-top: 14px;
+}
+
+@media screen and (max-width: 992px) {
+	.episode-list .swiper-button-prev,
+	.episode-list .swiper-button-next {
+		display: flex !important;
+	}
+}

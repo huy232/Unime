@@ -33,6 +33,7 @@ a {
 	--code-line-height: 1.4;
 	--scroll-bar-color: #ff6c5c;
 	--scroll-bar-bg-color: black;
+	--swiper-navigation-size: 18px !important;
 }
 
 pre {
