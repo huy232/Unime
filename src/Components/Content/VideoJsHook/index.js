@@ -68,49 +68,10 @@ const usePlayer = ({ src, controls, autoplay, anime, info, index }) => {
 
 const VideoPlayer = ({ src, controls, autoplay, anime, info, index }) => {
 	const playerRef = usePlayer({ src, controls, autoplay, anime, info, index })
-	const RPC = require("discord-rpc")
-	const rpc = new RPC.Client({ transport: "ipc" })
-
-	function setActivity() {
-		if (!rpc) return
-		rpc.setActivity({
-			details: `Đang xem phim`,
-			state: `UNIME`,
-			startTimestamp: new Date(),
-			largeImageKey: `discord-large-unime`,
-			largeImageText: ``,
-			smallImageKey: `discord-small-unime`,
-			smallImageText: ``,
-			instance: false,
-			buttons: [
-				{
-					label: ``,
-					url: ``,
-				},
-			],
-		})
-		console.log("RPC is running")
-	}
 
 	return (
 		<>
-			<video
-				ref={playerRef}
-				className="video-js"
-				onLoadedData={() => {
-					rpc.on("ready", async () => {
-						setActivity()
-
-						setInterval(() => {
-							setActivity()
-						}, 3 * 1000)
-					})
-
-					rpc
-						.login({ clientId: "1065036808737542284" })
-						.catch((err) => console.log("RPC Offline"))
-				}}
-			/>
+			<video ref={playerRef} className="video-js" onLoadedData />
 		</>
 	)
 }
