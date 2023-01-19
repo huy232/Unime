@@ -1,4 +1,5 @@
 import ReactPlayer from "react-player"
+import { MAINSITE } from "../../../constants"
 function InfoTrailer({ videoUrl }) {
 	return (
 		<>
@@ -8,7 +9,7 @@ function InfoTrailer({ videoUrl }) {
 						<h3>XEM THỬ NẾU BẠN CHƯA RÕ</h3>
 						<div className="youtube-link">
 							<ReactPlayer
-								url={`${videoUrl}&origin=https://mirai-huy8856.vercel.app/`}
+								url={`${videoUrl}&origin=${MAINSITE}`}
 								controls={true}
 							/>
 						</div>
