@@ -7,18 +7,19 @@ import background from "../../../Utilities/img/background.jpg"
 import "./login.css"
 
 export default function Login() {
-	// Get signUp function from the auth context
-
 	const navigate = useNavigate()
-
 	useEffect(() => {
 		if (user) {
 			navigate("/")
 		}
 	})
-
-	const { signInWithGoogle, signInWithDiscord, signInWithFacebook, user } =
-		useAuth()
+	const {
+		signInWithGoogle,
+		signInWithDiscord,
+		signInWithFacebook,
+		user,
+		language,
+	} = useAuth()
 
 	const handleSignInGoogle = async () => {
 		await signInWithGoogle()
@@ -32,7 +33,11 @@ export default function Login() {
 		await signInWithFacebook()
 	}
 
-	useDocumentTitle("Đăng nhập - Unime")
+	const handleGoBack = () => {
+		navigate("/")
+	}
+
+	useDocumentTitle(language === "vi" ? `Đăng nhập - Unime` : `Login - Unime`)
 
 	return (
 		<>
@@ -49,7 +54,20 @@ export default function Login() {
 				</div>
 				<div className="col-60">
 					<div className="login-section">
-						<h1 className="login-heading">ĐĂNG NHẬP</h1>
+						<h1 className="login-heading">
+							<div
+								className="login-go-back-btn"
+								onClick={() => handleGoBack()}
+								title={
+									language === "vi" ? "Trở về trang chủ" : "Back to homepage"
+								}
+							>
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+									<path d="M272 157.1v197.8c0 10.7-13 16.1-20.5 8.5l-98.3-98.9c-4.7-4.7-4.7-12.2 0-16.9l98.3-98.9c7.5-7.7 20.5-2.3 20.5 8.4zM448 80v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V80c0-26.5 21.5-48 48-48h352c26.5 0 48 21.5 48 48zm-48 346V86c0-3.3-2.7-6-6-6H54c-3.3 0-6 2.7-6 6v340c0 3.3 2.7 6 6 6h340c3.3 0 6-2.7 6-6z" />
+								</svg>
+							</div>
+							{language === "vi" ? "ĐĂNG NHẬP" : "LOGIN"}
+						</h1>
 						<button
 							className="social-button google-button"
 							onClick={() => handleSignInGoogle()}
@@ -77,7 +95,12 @@ export default function Login() {
 									d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"
 								/>
 							</svg>
-							<p className="social-paragraph">Đăng nhập bằng Google</p>
+
+							<p className="social-paragraph">
+								{language === "vi"
+									? "Đăng nhập bằng Google"
+									: "Login through Google"}
+							</p>
 						</button>
 						<button
 							className="social-button facebook-button"
@@ -98,7 +121,12 @@ export default function Login() {
 									d="M29.368,24H26v12h-5V24h-3v-4h3v-2.41c0.002-3.508,1.459-5.59,5.592-5.59H30v4h-2.287 C26.104,16,26,16.6,26,17.723V20h4L29.368,24z"
 								/>
 							</svg>
-							<p className="social-paragraph">Đăng nhập bằng Facebook</p>
+
+							<p className="social-paragraph">
+								{language === "vi"
+									? "Đăng nhập bằng Facebook"
+									: "Login through Facebook"}
+							</p>
 						</button>
 						<button
 							className="social-button discord-button"
@@ -119,7 +147,12 @@ export default function Login() {
 									d="M32.59,16.24c0,0-2.6-2.01-5.68-2.24l-0.27,0.55c2.78,0.67,4.05,1.64,5.38,2.83 C29.73,16.21,27.46,15,23.5,15s-6.23,1.21-8.52,2.38c1.33-1.19,2.85-2.27,5.38-2.83L20.09,14c-3.23,0.31-5.68,2.24-5.68,2.24 S11.5,20.43,11,28.62c2.94,3.36,7.39,3.38,7.39,3.38l0.92-1.23c-1.57-0.54-3.36-1.51-4.9-3.27c1.84,1.38,4.61,2.5,9.09,2.5 s7.25-1.12,9.09-2.5c-1.54,1.76-3.33,2.73-4.9,3.27L28.61,32c0,0,4.45-0.02,7.39-3.38C35.5,20.43,32.59,16.24,32.59,16.24z M20,27 c-1.1,0-2-1.12-2-2.5s0.9-2.5,2-2.5s2,1.12,2,2.5S21.1,27,20,27z M27,27c-1.1,0-2-1.12-2-2.5s0.9-2.5,2-2.5s2,1.12,2,2.5 S28.1,27,27,27z"
 								/>
 							</svg>
-							<p className="social-paragraph">Đăng nhập bằng Discord</p>
+
+							<p className="social-paragraph">
+								{language === "vi"
+									? "Đăng nhập bằng Discord"
+									: "Login through Discord"}
+							</p>
 						</button>
 					</div>
 				</div>

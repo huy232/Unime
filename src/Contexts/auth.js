@@ -1,12 +1,17 @@
 import React, { useContext, useState, useEffect } from "react"
+import { useNavigate } from "react-router-dom"
 import { supabase } from "../supabaseClient"
 
 const AuthContext = React.createContext()
 
 export function AuthProvider({ children }) {
 	const [user, setUser] = useState()
-	const [language, setLanguage] = useState("vi")
+	const [language, setLanguage] = useState(
+		localStorage.getItem("unime-language") || "vi"
+	)
 	const [loading, setLoading] = useState(true)
+
+	const navigate = useNavigate()
 
 	useEffect(() => {
 		// Check active sessions and sets the user
@@ -56,6 +61,12 @@ export function AuthProvider({ children }) {
 		signOut: async () => await supabase.auth.signOut(),
 		user,
 		setLanguage: (data) => {
+			localStorage.setItem("unime-language", data)
+			if (data === "eng") {
+				navigate("/eng")
+			} else {
+				navigate("/")
+			}
 			setLanguage(data)
 		},
 		language,

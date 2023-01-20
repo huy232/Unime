@@ -84,8 +84,8 @@ function AnimeWatch({ instance }) {
 	}, [anime, episode, index, instance, specialid])
 
 	useDocumentTitle(watchDetail)
-	const chooseEpisode = (index, episode) => {
-		window.location.href = `${MAINSITE}/watch/${anime}?index=${index}`
+	const chooseEpisode = (index) => {
+		// window.location.href = `${MAINSITE}/watch/${anime}?index=${index}`
 	}
 
 	const skip = (time) => {
@@ -94,7 +94,7 @@ function AnimeWatch({ instance }) {
 	}
 
 	const seekForward = () => {
-		skip(10)
+		skip(5)
 	}
 
 	const seekBackward = () => {
@@ -195,7 +195,7 @@ function AnimeWatch({ instance }) {
 						<div className="episode-bracket">
 							{info.map((item, i) => (
 								<Link
-									to={`/watch/${anime}?index=${index}`}
+									to={`/watch/${anime}?index=${item.name}`}
 									style={{ color: "white" }}
 									key={i}
 									title={item.full_name}
@@ -205,7 +205,7 @@ function AnimeWatch({ instance }) {
 											: "episode"
 									}
 								>
-									<div onClick={() => chooseEpisode(item.name, i)}>
+									<div>
 										<p>{item.full_name}</p>
 									</div>
 								</Link>

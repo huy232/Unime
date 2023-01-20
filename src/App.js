@@ -3,11 +3,12 @@ import { API } from "./constants"
 import axios from "axios"
 
 import { useEffect } from "react"
+import { AuthProvider } from "./Contexts/auth"
 import { Route, Routes, useLocation } from "react-router-dom"
 
 import Header from "./Components/Shared/Header"
 import Footer from "./Components/Shared/Footer"
-
+// VIET
 import Home from "./Components/Content/Home"
 import AnimeList from "./Components/Content/AnimeList"
 import AnimeGenre from "./Components/Content/AnimeGenre"
@@ -16,18 +17,17 @@ import AnimeInfo from "./Components/Content/AnimeInfo"
 import AnimeWatch from "./Components/Content/AnimeWatch"
 import AnimeCollection from "./Components/Content/AnimeCollection"
 import Login from "./Components/Content/Login"
-
-import { AuthProvider } from "./Contexts/auth"
+// ENG
+import HomeENG from "./Components/Content/HomeENG"
 
 function App() {
 	const instance = axios.create({
 		baseURL: API,
 	})
-
+	const pathname = useLocation()
 	useEffect(() => {
 		window.history.scrollRestoration = "manual"
 	}, [])
-	const pathname = useLocation()
 	return (
 		<div className="App">
 			<AuthProvider>
@@ -38,9 +38,9 @@ function App() {
 				) : (
 					<Header />
 				)}
-
 				<div className="content" style={{ marginTop: "90px", width: "100%" }}>
 					<Routes>
+						{/* VIET ANIME*/}
 						<Route exact path="/" element={<Home instance={instance} />} />
 						<Route path="/anime" element={<AnimeList instance={instance} />} />
 						<Route
@@ -63,6 +63,9 @@ function App() {
 							path="watch/:anime"
 							element={<AnimeWatch instance={instance} />}
 						/>
+						{/* ENG ANIME */}
+						<Route path="/eng/" element={<HomeENG />} />
+						{/* SHARED */}
 						<Route path="login" element={<Login />} />
 					</Routes>
 				</div>

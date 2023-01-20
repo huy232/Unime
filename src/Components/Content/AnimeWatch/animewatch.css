@@ -60,7 +60,7 @@ video {
 	height: 100%;
 	flex-direction: row;
 	background-color: black;
-	justify-content: space-around;
+	justify-content: center;
 	align-items: center;
 }
 
@@ -69,6 +69,13 @@ video {
 	align-items: center;
 	justify-content: center;
 	height: 100%;
+	margin-right: auto;
+	padding-left: 4px;
+	padding-right: 4px;
+}
+
+.episode-heading-section {
+	width: 100%;
 }
 
 .episode-section-title {

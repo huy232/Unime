@@ -3,6 +3,8 @@ const mainsite = "https://unime.vercel.app"
 // const url = "https://mirai-reborn.herokuapp.com/api"
 // const url = "http://localhost:3000/api"
 const url = "https://mirai-backend.onrender.com/api"
+// ENG SECTION
+const recentAnime = "https://api.consumet.org/anime/gogoanime/recent-episodes"
 
 const genres = [
 	{ slug: "hanh-dong", name: "Hành Động" },
@@ -93,3 +95,4 @@ export const MAINSITE = mainsite
 export const API = url
 export const GENRES = genres
 export const COLLECTIONS = collections
+export const RECENT_ANIME = recentAnime

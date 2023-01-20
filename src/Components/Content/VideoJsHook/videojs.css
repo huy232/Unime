@@ -9,21 +9,15 @@
 
 .video-js .vjs-big-play-button {
 	top: 50%;
-	left: 50%;
+	left: 45%;
 	border: none;
 	border-radius: 3rem;
+	color: black;
 }
 
 .video-js .vjs-big-play-button:hover {
 	transition: all 0.4s linear;
 	background-color: red;
-}
-
-.video-js .vjs-big-play-button {
-	color: black;
-}
-
-.video-js .vjs-big-play-button:hover {
 	transition: all 0.4 linear;
 	color: white;
 }
@@ -31,6 +25,10 @@
 .vjs-control-bar {
 	background-color: rgba(0, 0, 0, 0.3) !important;
 	color: white;
+}
+
+.video-js-wrapper .video-js {
+	padding: 0 !important;
 }
 
 .top-wrapper {

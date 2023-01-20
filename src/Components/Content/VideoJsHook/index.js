@@ -53,7 +53,9 @@ const usePlayer = ({ src, controls, autoplay, anime, info, index }) => {
 
 		return () => {
 			if (player !== null) {
-				player.dispose()
+				if (player.isDisposed_ === true) {
+					player.dispose()
+				}
 			}
 		}
 	}, [autoplay, controls, index, player, src])
@@ -71,7 +73,7 @@ const VideoPlayer = ({ src, controls, autoplay, anime, info, index }) => {
 
 	return (
 		<>
-			<video ref={playerRef} className="video-js" onLoadedData />
+			<video ref={playerRef} className="video-js" />
 		</>
 	)
 }

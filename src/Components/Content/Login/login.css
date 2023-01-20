@@ -5,6 +5,30 @@
 	color: #fff;
 }
 
+.login-heading {
+	display: flex;
+	align-items: center;
+}
+
+.login-go-back-btn {
+	fill: #fff;
+	height: 100%;
+	width: calc(1.375rem + 1.5vw);
+	margin-right: 8px;
+}
+
+.login-go-back-btn svg {
+	display: block;
+	width: 100%;
+	height: 100%;
+	transition: 0.2s ease-in-out;
+	cursor: pointer;
+}
+
+.login-go-back-btn:hover svg {
+	fill: rgb(124, 54, 54);
+}
+
 .col-60 {
 	width: 60%;
 	display: flex;
@@ -106,6 +130,11 @@
 	.login-heading {
 		font-size: 1.2rem;
 	}
+
+	.login-go-back-btn {
+		width: 1.2rem;
+	}
+
 	.social-paragraph {
 		display: none;
 	}

@@ -36,7 +36,7 @@ function HeaderENG() {
 
 	const handleSubmit = (e) => {
 		e.preventDefault()
-		navigate(`/search/${encodeURI(input)}`)
+		navigate(`/eng/search/${encodeURI(input)}`)
 		setInput("")
 	}
 	const handleKeypress = (e) => {
@@ -70,7 +70,7 @@ function HeaderENG() {
 				className={visible ? "" : "fixed-top-hide"}
 			>
 				<Container>
-					<Navbar.Brand as={Link} to="/" onClick={handleScrollToTop}>
+					<Navbar.Brand as={Link} to="/eng" onClick={handleScrollToTop}>
 						UNIME
 					</Navbar.Brand>
 					<Navbar.Toggle aria-controls="responsive-navbar-nav" />
