@@ -67,7 +67,7 @@ function AnimeCollection({ instance }) {
 	return (
 		<>
 			<div>
-				<h1>{translateGenreAnime}</h1>
+				<h1 className="font-black">{translateGenreAnime}</h1>
 				{useDocumentTitle(`${translateGenreAnime} - Unime`)}
 			</div>
 

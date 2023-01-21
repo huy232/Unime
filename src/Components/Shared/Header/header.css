@@ -102,19 +102,8 @@
 	text-align: center;
 }
 
-.language-container {
-	margin-left: auto;
-}
-
-.language-container button {
-	margin: 0 6px;
-	border: none;
-	border-radius: 6px;
-	transition: 0.2s linear;
-}
-
-.language-container button:hover {
-	opacity: 0.8;
+.submit-button {
+	color: #fff;
 }
 
 @media screen and (max-width: 992px) {
@@ -135,9 +124,12 @@
 		flex-direction: column;
 		margin: 0;
 	}
+}
 
-	.language-container {
-		margin: 10px auto 6px auto;
+@media screen and (max-width: 992px) {
+	.dropdown-menu.show {
+		overflow-y: scroll;
+		height: 140px;
 	}
 }
 

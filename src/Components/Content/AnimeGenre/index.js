@@ -74,7 +74,7 @@ function AnimeGenre({ instance }) {
 	return (
 		<>
 			<div>
-				<h1>ANIME {translateGenreAnime}</h1>
+				<h1 className="font-black">ANIME {translateGenreAnime}</h1>
 				{useDocumentTitle(`Thể loại ${translateGenreAnime} - Unime`)}
 			</div>
 			<div className="anime-list">

@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom"
 import { useAuth } from "../../../Contexts/auth"
 
 import User from "../User"
+import LanguageButton from "../../Content/LanguageButton"
 
 function HeaderVI() {
 	let navigate = useNavigate()
@@ -114,18 +115,7 @@ function HeaderVI() {
 									<BsSearch className="search-icon" />
 								</button>
 							</form>
-
-							<div className="language-container">
-								<button className="vi-btn" onClick={() => handleLanguage("vi")}>
-									VI
-								</button>
-								<button
-									className="eng-btn"
-									onClick={() => handleLanguage("eng")}
-								>
-									ENG
-								</button>
-							</div>
+							<LanguageButton />
 
 							<div className="user-container">
 								<User handleScrollToTop={handleScrollToTop} />

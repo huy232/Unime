@@ -80,21 +80,24 @@ function Home({ instance }) {
 				onLoaderFinished={() => setProgress(0)}
 			/>
 			<div className="anime-card" style={{ marginTop: "42px" }}>
-				<h2
-					className="anime-h1"
+				<h1
+					className="anime-h1 font-black"
 					style={{ marginBottom: "42px", width: "200px" }}
 				>
 					MỚI NHẤT
-				</h2>
+				</h1>
 				<CardGroup>
 					<NewAnime newAnime={newAnime} done1={done1} />
 				</CardGroup>
 			</div>
 			<div className="anime-card-today" style={{ marginTop: "42px" }}>
 				<div className="center-title">
-					<h2 className="anime-top-day-h2" style={{ marginBottom: "42px" }}>
+					<h1
+						className="anime-top-day-h1 font-black"
+						style={{ marginBottom: "42px" }}
+					>
 						XEM NHIỀU TRONG NGÀY
-					</h2>
+					</h1>
 				</div>
 				<CardGroup>
 					<MostWatched rankToday={rankToday} done2={done2} />
@@ -103,12 +106,12 @@ function Home({ instance }) {
 			<div className="anime-collection" style={{ marginTop: "42px" }}>
 				<div className="center-title">
 					<div className="anime-collection-titleholder">
-						<h2
-							className="anime-collection-h2"
+						<h1
+							className="anime-collection-h1 font-black"
 							style={{ marginBottom: "42px" }}
 						>
 							BỘ SƯU TẬP
-						</h2>
+						</h1>
 					</div>
 					<AnimeCollectionCard />
 				</div>

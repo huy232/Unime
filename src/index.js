@@ -5,6 +5,8 @@ import App from "./App"
 import { BrowserRouter } from "react-router-dom"
 import "swiper/css/bundle"
 import "bootstrap/dist/css/bootstrap.min.css"
+import "@fortawesome/fontawesome-free/css/all.min.css"
+import "react-loading-skeleton/dist/skeleton.css"
 
 ReactDOM.render(
 	<React.StrictMode>

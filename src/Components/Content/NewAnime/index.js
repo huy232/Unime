@@ -30,7 +30,7 @@ function NewAnime({ done1, newAnime }) {
 						},
 					}}
 					spaceBetween={20}
-					className="newSwiper h-100"
+					className="homeSwiper h-100"
 					pagination={{
 						type: "progressbar",
 					}}
@@ -58,7 +58,7 @@ function NewAnime({ done1, newAnime }) {
 											}}
 										>
 											<Card.Title>
-												<p className="webclamp">{anime?.name}</p>
+												<p className="webclamp text-orange-50">{anime?.name}</p>
 											</Card.Title>
 											<Card.Text
 												variant="bottom"

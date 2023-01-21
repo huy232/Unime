@@ -19,6 +19,7 @@ import AnimeCollection from "./Components/Content/AnimeCollection"
 import Login from "./Components/Content/Login"
 // ENG
 import HomeENG from "./Components/Content/HomeENG"
+import AnimeSearchENG from "./Components/Content/AnimeSearchENG"
 
 function App() {
 	const instance = axios.create({
@@ -64,7 +65,8 @@ function App() {
 							element={<AnimeWatch instance={instance} />}
 						/>
 						{/* ENG ANIME */}
-						<Route path="/eng/" element={<HomeENG />} />
+						<Route exact path="/eng/" element={<HomeENG />} />
+						<Route path="/eng/search/:query" element={<AnimeSearchENG />} />
 						{/* SHARED */}
 						<Route path="login" element={<Login />} />
 					</Routes>

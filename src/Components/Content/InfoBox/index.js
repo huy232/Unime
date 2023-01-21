@@ -5,10 +5,8 @@ function InfoBox({ info, loading }) {
 		<>
 			<div className="cover-wrapper ">
 				<div
-					className="info-image"
+					className="info-image flex justify-center"
 					style={{
-						display: "block",
-						textAlign: "center",
 						height: "300px",
 						marginTop: "-5rem",
 					}}

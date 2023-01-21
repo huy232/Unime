@@ -1,6 +1,5 @@
 h1,
 .h5 {
-	color: white !important;
 	-webkit-user-select: none !important;
 	-moz-user-select: none !important;
 	-ms-user-select: none !important;
@@ -42,7 +41,7 @@ h1,
 		rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
 }
 
-.swiper-slide .inner img {
+.homeSwiper .swiper-slide .inner img {
 	width: 100%;
 }
 
@@ -104,12 +103,12 @@ h1,
 	font-size: 1rem !important;
 }
 
-.swiper-slide {
+.homeSwiper .swiper-slide {
 	text-align: start !important;
 	height: inherit !important;
 }
 
-.newSwiper {
+.homeSwiper {
 	width: 95%;
 }
 .card-body-home {
@@ -139,7 +138,7 @@ h1,
 	text-align: center;
 }
 
-.anime-top-day-h2 {
+.anime-top-day-h1 {
 	color: black !important;
 	display: inline-block;
 	background-color: #ffa781;
@@ -255,8 +254,7 @@ h1,
 	text-align: center;
 }
 
-.anime-collection-h2 {
-	font-weight: 700;
+.anime-collection-h1 {
 	background: linear-gradient(
 		-45deg,
 		#4bc0c8 25%,
@@ -311,6 +309,7 @@ h1,
 	background-color: black;
 	color: white;
 	text-decoration: none;
+	cursor: pointer;
 }
 
 .my-anchor-css-class:hover {
@@ -410,7 +409,7 @@ h1,
 }
 
 @media screen and (min-width: 992px) and (max-width: 1600px) {
-	.swiper-slide {
+	.homeSwiper .swiper-slide {
 		width: 22.5% !important;
 	}
 }
@@ -559,14 +558,6 @@ h1,
 	.card {
 		margin: 10px;
 	}
-}
-
-@media screen and (max-width: 640px) {
-	/* .today-h1{
-      margin-right: 0;
-      border-right: 5px solid #5a00b3;
-      text-align: center;
-    } */
 }
 
 @media screen and (max-width: 500px) {

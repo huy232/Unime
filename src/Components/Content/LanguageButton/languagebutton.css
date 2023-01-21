@@ -1,0 +1,22 @@
+.language-container {
+	margin-left: auto;
+}
+
+.language-container button {
+	margin: 0 6px;
+	border: none;
+	border-radius: 6px;
+	transition: 0.2s linear;
+}
+
+.language-container button:hover {
+	opacity: 0.8;
+}
+
+@media screen and (max-width: 992px) {
+	.language-container {
+		margin-right: auto;
+		margin-left: auto;
+		margin-top: 8px;
+	}
+}

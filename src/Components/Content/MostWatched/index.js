@@ -30,7 +30,7 @@ function MostWatched({ rankToday, done2 }) {
 						},
 					}}
 					spaceBetween={20}
-					className="newSwiper h-100"
+					className="homeSwiper h-100"
 					pagination={{
 						type: "progressbar",
 					}}
@@ -51,7 +51,7 @@ function MostWatched({ rankToday, done2 }) {
 
 										<Card.Body style={{ maxHeight: "5rem", minHeight: "5rem" }}>
 											<Card.Title>
-												<p className="webclamp">{anime?.name}</p>
+												<p className="webclamp text-orange-50">{anime?.name}</p>
 											</Card.Title>
 										</Card.Body>
 									</Card>

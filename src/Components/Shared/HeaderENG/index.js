@@ -1,22 +1,21 @@
 import { useEffect, useState } from "react"
 import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap"
 import { Link } from "react-router-dom"
-import { GENRES } from "../../../constants"
+import { ENG_GENRES } from "../../../constants"
 import { LinkContainer } from "react-router-bootstrap"
 import { debounce } from "../../../Utilities/debounce"
 import TextField from "@mui/material/TextField"
 import { BsSearch } from "react-icons/bs"
 import { useNavigate } from "react-router-dom"
-import { useAuth } from "../../../Contexts/auth"
 
 import User from "../User"
+import LanguageButton from "../../Content/LanguageButton"
 
 function HeaderENG() {
 	let navigate = useNavigate()
 	const [input, setInput] = useState("")
 	const [prevScrollPos, setPrevScrollPos] = useState(0)
 	const [visible, setVisible] = useState(true)
-	const { setLanguage } = useAuth()
 
 	const handleScroll = debounce(() => {
 		const currentScrollPos = window.pageYOffset
@@ -50,10 +49,6 @@ function HeaderENG() {
 		window.history.scrollRestoration = "manual"
 	}
 
-	const handleLanguage = (language) => {
-		setLanguage(language)
-	}
-
 	useEffect(() => {
 		window.addEventListener("scroll", handleScroll)
 		return () => window.removeEventListener("scroll", handleScroll)
@@ -80,9 +75,9 @@ function HeaderENG() {
 								<div className="anime-nav">Anime</div>
 							</Nav.Link>
 							<NavDropdown title="Category" id="collasible-nav-dropdown">
-								{GENRES.map((genre) => (
+								{ENG_GENRES.map((genre) => (
 									<LinkContainer
-										to={`/anime/${genre.slug}`}
+										to={`eng/anime/${genre.slug}`}
 										key={genre.slug}
 										onClick={handleScrollToTop}
 									>
@@ -115,17 +110,7 @@ function HeaderENG() {
 								</button>
 							</form>
 
-							<div className="language-container">
-								<button className="vi-btn" onClick={() => handleLanguage("vi")}>
-									VI
-								</button>
-								<button
-									className="eng-btn"
-									onClick={() => handleLanguage("eng")}
-								>
-									ENG
-								</button>
-							</div>
+							<LanguageButton />
 
 							<div className="user-container">
 								<User handleScrollToTop={handleScrollToTop} />

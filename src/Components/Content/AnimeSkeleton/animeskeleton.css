@@ -1,0 +1,7 @@
+.skeleton-image {
+	transform: none !important;
+}
+
+.skeleton-anime-swiper .swiper-wrapper .swiper-slide {
+	width: 240px !important;
+}

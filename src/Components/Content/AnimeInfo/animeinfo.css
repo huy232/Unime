@@ -198,13 +198,13 @@
 	height: 100%;
 }
 
-.swiper-slide {
+.swiper-info .swiper-slide {
 	text-align: center;
 	margin-left: auto;
 	margin-right: auto;
 }
 
-.swiper-slide > li {
+.swiper-info .swiper-slide > li {
 	display: inline-block;
 }
 

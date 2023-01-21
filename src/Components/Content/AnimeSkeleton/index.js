@@ -6,6 +6,7 @@ import { Swiper, SwiperSlide } from "swiper/react"
 import "swiper/css"
 import "swiper/css/pagination"
 import "swiper/css/navigation"
+import "./animeskeleton.css"
 import SwiperCore, { Pagination, Navigation, Mousewheel, Lazy } from "swiper"
 SwiperCore.use([Pagination, Navigation, Mousewheel, Lazy])
 
@@ -25,7 +26,7 @@ function AnimeSkeleton() {
 					},
 				}}
 				spaceBetween={20}
-				className="newSwiper h-100"
+				className="homeSwiper h-100"
 				pagination={{
 					type: "progressbar",
 				}}

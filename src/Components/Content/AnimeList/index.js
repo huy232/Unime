@@ -61,7 +61,9 @@ function AnimeList({ instance }) {
 				className="title-wrapper"
 				style={{ textAlign: "center", margin: "20px 0" }}
 			>
-				<h1 style={{ display: "inline-block" }}>TẤT CẢ ANIME</h1>
+				<h1 className="font-black" style={{ display: "inline-block" }}>
+					TẤT CẢ ANIME
+				</h1>
 			</div>
 
 			<div className="anime-list">

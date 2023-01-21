@@ -1,10 +1,8 @@
 const mainsite = "https://unime.vercel.app"
 // const mainsite = "http://localhost:3000"
 // const url = "https://mirai-reborn.herokuapp.com/api"
-// const url = "http://localhost:3000/api"
-const url = "https://mirai-backend.onrender.com/api"
-// ENG SECTION
-const recentAnime = "https://api.consumet.org/anime/gogoanime/recent-episodes"
+const url = "http://localhost:3000/api"
+// const url = "https://mirai-backend.onrender.com/api"
 
 const genres = [
 	{ slug: "hanh-dong", name: "Hành Động" },
@@ -26,6 +24,54 @@ const genres = [
 	{ slug: "the-thao", name: "Thể Thao" },
 	{ slug: "kich-tinh", name: "Kịch Tính" },
 	{ slug: "phap-thuat", name: "Pháp Thuật" },
+]
+
+const engGenres = [
+	{ slug: "action", name: "Action" },
+	{ slug: "adventure", name: "Adventure" },
+	{ slug: "cars", name: "Cars " },
+	{ slug: "comedy", name: "Comedy" },
+	{ slug: "crime", name: "Crime" },
+	{ slug: "dementia", name: "Dementia" },
+	{ slug: "demons", name: "Demons" },
+	{ slug: "drama", name: "Drama" },
+	{ slug: "dub", name: "Dub" },
+	{ slug: "ecchi", name: "Ecchi" },
+	{ slug: "family", name: "Family" },
+	{ slug: "fantasy", name: "Fantasy" },
+	{ slug: "game", name: "Game" },
+	{ slug: "gourmet", name: "Gourmet" },
+	{ slug: "harem", name: "Harem" },
+	{ slug: "historical", name: "Historical" },
+	{ slug: "horror", name: "Horror" },
+	{ slug: "josei", name: "Josei" },
+	{ slug: "kids", name: "Kids" },
+	{ slug: "magic", name: "Magic" },
+	{ slug: "martial-arts", name: "Martial Arts" },
+	{ slug: "mecha", name: "Mecha" },
+	{ slug: "military", name: "Military" },
+	{ slug: "mystery", name: "Mystery" },
+	{ slug: "parody", name: "Parody" },
+	{ slug: "police", name: "Police" },
+	{ slug: "psychological", name: "Psychological" },
+	{ slug: "romance", name: "Romance" },
+	{ slug: "samurai", name: "Samurai" },
+	{ slug: "school", name: "School" },
+	{ slug: "sci-fi", name: "Sci-fi" },
+	{ slug: "seinen", name: "Seinen" },
+	{ slug: "shoujo", name: "Shoujo" },
+	{ slug: "shoujo-ai", name: "Shoujo-ai" },
+	{ slug: "shounen", name: "Shounen" },
+	{ slug: "shounen-ai", name: "Shounen-ai" },
+	{ slug: "space", name: "Space" },
+	{ slug: "sports", name: "Sports" },
+	{ slug: "super-power", name: "Super Power" },
+	{ slug: "supernatural", name: "Supernatural" },
+	{ slug: "suspense", name: "Suspense" },
+	{ slug: "thriller", name: "Thriller" },
+	{ slug: "vampire", name: "Vampire" },
+	{ slug: "yaoi", name: "Yaoi" },
+	{ slug: "yuri", name: "Yuri" },
 ]
 
 const collections = [
@@ -89,10 +135,11 @@ const collections = [
 	{ slug: "anime-mua-xuan-2022", name: "Anime Mùa Xuân 2022" },
 	{ slug: "anime-mua-he-2022", name: "Anime Mùa Hè 2022" },
 	{ slug: "anime-mua-thu-2022", name: "Anime Mùa Thu 2022" },
+	{ slug: "anime-mua-dong-2023", name: "Anime Mùa Đông 2022" },
 ]
 
 export const MAINSITE = mainsite
 export const API = url
 export const GENRES = genres
+export const ENG_GENRES = engGenres
 export const COLLECTIONS = collections
-export const RECENT_ANIME = recentAnime
