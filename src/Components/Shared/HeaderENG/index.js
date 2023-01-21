@@ -35,6 +35,7 @@ function HeaderENG() {
 
 	const handleSubmit = (e) => {
 		e.preventDefault()
+		handleScrollToTop()
 		navigate(`/eng/search/${encodeURI(input)}`)
 		setInput("")
 	}
@@ -71,7 +72,7 @@ function HeaderENG() {
 					<Navbar.Toggle aria-controls="responsive-navbar-nav" />
 					<Navbar.Collapse id="responsive-navbar-nav">
 						<Nav className="me-auto">
-							<Nav.Link as={Link} to="/anime" onClick={handleScrollToTop}>
+							<Nav.Link as={Link} to="/eng/anime" onClick={handleScrollToTop}>
 								<div className="anime-nav">Anime</div>
 							</Nav.Link>
 							<NavDropdown title="Category" id="collasible-nav-dropdown">

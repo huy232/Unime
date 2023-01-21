@@ -5,6 +5,8 @@ import RecentEpisodeENG from "../RecentEpisodeENG"
 import TopAiringENG from "../TopAiringENG"
 import PopularAnimeENG from "../PopularAnimeENG"
 import MoviesAnimeENG from "../MoviesAnimeENG"
+import useDocumentTitle from "../DocumentTitleHook"
+
 function HomeENG() {
 	const [loadingAiring, setLoadingAiring] = useState(true)
 	const [topAiring, setTopAiring] = useState([])
@@ -81,6 +83,7 @@ function HomeENG() {
 
 	return (
 		<>
+			{useDocumentTitle(`HOME - Unime`)}
 			<TopAiringENG topAiring={topAiring} loadingAiring={loadingAiring} />
 			<RecentEpisodeENG
 				recentAnime={recentAnime}

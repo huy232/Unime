@@ -42,6 +42,7 @@ a {
 	--scroll-bar-bg-color: black;
 	--swiper-navigation-size: 18px !important;
 	--bs-link-color: #fff !important;
+	--bs-link-hover-color: rgba(206, 110, 0, 0.7) !important;
 }
 
 pre {

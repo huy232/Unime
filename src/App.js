@@ -20,6 +20,8 @@ import Login from "./Components/Content/Login"
 // ENG
 import HomeENG from "./Components/Content/HomeENG"
 import AnimeSearchENG from "./Components/Content/AnimeSearchENG"
+import AnimeBrowseENG from "./Components/Content/AnimeBrowseENG"
+import AnimeBrowseCategoryENG from "./Components/Content/AnimeBrowseCategoryENG"
 
 function App() {
 	const instance = axios.create({
@@ -67,6 +69,11 @@ function App() {
 						{/* ENG ANIME */}
 						<Route exact path="/eng/" element={<HomeENG />} />
 						<Route path="/eng/search/:query" element={<AnimeSearchENG />} />
+						<Route exact path="/eng/anime" element={<AnimeBrowseENG />} />
+						<Route
+							path="/eng/anime/:genre"
+							element={<AnimeBrowseCategoryENG />}
+						/>
 						{/* SHARED */}
 						<Route path="login" element={<Login />} />
 					</Routes>

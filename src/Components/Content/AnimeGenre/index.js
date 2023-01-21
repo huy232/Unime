@@ -18,6 +18,7 @@ function AnimeGenre({ instance }) {
 	const [page, setPage] = useState(PAGE_NUMBER)
 	const [totalPage, setTotalPage] = useState(2)
 	const [translateGenreAnime, setTranslateGenreAnime] = useState("")
+	const [loading, setLoading] = useState(true)
 
 	const scrollThreshold = () => {
 		const newPage = page + 1
@@ -37,27 +38,29 @@ function AnimeGenre({ instance }) {
 
 		if (genre === genreAnime) {
 			const getList = async () => {
-				await instance
-					.get(`/anime/${genre}?page=${page}`, {
-						cancelToken: source.token,
-					})
-					.then((response) => {
-						const newList = response.data.data.map((anime) => ({
-							slug: anime.slug,
-							thumbnail: anime.thumbnail,
-							name: anime.name,
-							views: anime.views,
-						}))
-						setTotalPage(response.data.pagination.totalPage)
-						setAnimeList((prev) => {
-							return [...new Set([...prev, ...newList])]
+				setTimeout(async () => {
+					await instance
+						.get(`/anime/${genre}?page=${page}`, {
+							cancelToken: source.token,
 						})
-					})
-					.catch((thrown) => {
-						if (axios.isCancel(thrown)) return
-					})
+						.then((response) => {
+							const newList = response.data.data.map((anime) => ({
+								slug: anime.slug,
+								thumbnail: anime.thumbnail,
+								name: anime.name,
+								views: anime.views,
+							}))
+							setTotalPage(response.data.pagination.totalPage)
+							setAnimeList((prev) => {
+								return [...new Set([...prev, ...newList])]
+							})
+							setLoading(false)
+						})
+						.catch((thrown) => {
+							if (axios.isCancel(thrown)) return
+						})
+				}, 2000)
 			}
-
 			getList()
 			translateGenre()
 		} else {
@@ -67,6 +70,7 @@ function AnimeGenre({ instance }) {
 		}
 
 		return () => {
+			clearTimeout()
 			source.cancel()
 		}
 	}, [genreAnime, genre, page, instance])
@@ -78,53 +82,59 @@ function AnimeGenre({ instance }) {
 				{useDocumentTitle(`Thể loại ${translateGenreAnime} - Unime`)}
 			</div>
 			<div className="anime-list">
-				<InfiniteScroll
-					initialScrollY={0}
-					style={{ overflow: "none" }}
-					dataLength={animeList.length}
-					scrollThreshold={0.95}
-					next={scrollThreshold}
-					hasMore={page === totalPage ? false : true}
-					loader={
-						<div
-							className="loading-spin"
-							style={{ textAlign: "center", marginTop: "50px" }}
-						>
-							<LoadingSpin primaryColor="red" />
-						</div>
-					}
-				>
-					<Row xs={1} sm={2} md={3} lg={4} className="w-100 w-full row-anime">
-						{animeList.map((anime) => (
-							<Col key={anime?.slug}>
-								<nav>
-									<Link to={`/info/${anime?.slug}`}>
-										<Card title={anime?.name}>
-											<div className="card-container">
-												<Card.Img
-													variant="top"
-													src={anime?.thumbnail}
-													fluid="true"
-												/>
-												<div className="overlay-card">
-													<div className="icon">
-														{<BsFillPlayFill size={40} />}
+				{loading ? (
+					<div className="loading-spin w-100 text-center">
+						<LoadingSpin primaryColor="red" />
+					</div>
+				) : (
+					<InfiniteScroll
+						initialScrollY={0}
+						style={{ overflow: "none" }}
+						dataLength={animeList.length}
+						scrollThreshold={0.95}
+						next={scrollThreshold}
+						hasMore={page === totalPage ? false : true}
+						loader={
+							<div
+								className="loading-spin"
+								style={{ textAlign: "center", marginTop: "50px" }}
+							>
+								<LoadingSpin primaryColor="red" />
+							</div>
+						}
+					>
+						<Row xs={1} sm={2} md={3} lg={4} className="w-100 w-full row-anime">
+							{animeList.map((anime) => (
+								<Col key={anime?.slug}>
+									<nav>
+										<Link to={`/info/${anime?.slug}`}>
+											<Card title={anime?.name}>
+												<div className="card-container">
+													<Card.Img
+														variant="top"
+														src={anime?.thumbnail}
+														fluid="true"
+													/>
+													<div className="overlay-card">
+														<div className="icon">
+															{<BsFillPlayFill size={40} />}
+														</div>
 													</div>
 												</div>
-											</div>
-											<Card.Body>
-												<Card.Title>
-													<p className="webclamp">{anime?.name}</p>
-												</Card.Title>
-											</Card.Body>
-										</Card>
-									</Link>
-								</nav>
-								<div className="w-100"></div>
-							</Col>
-						))}
-					</Row>
-				</InfiniteScroll>
+												<Card.Body>
+													<Card.Title>
+														<p className="webclamp">{anime?.name}</p>
+													</Card.Title>
+												</Card.Body>
+											</Card>
+										</Link>
+									</nav>
+									<div className="w-100"></div>
+								</Col>
+							))}
+						</Row>
+					</InfiniteScroll>
+				)}
 			</div>
 		</>
 	)

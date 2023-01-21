@@ -7,6 +7,7 @@ import { Pagination } from "swiper"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faPlayCircle } from "@fortawesome/free-solid-svg-icons"
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton"
+import { Link } from "react-router-dom"
 
 function TopAiringENG({ topAiring, loadingAiring }) {
 	return (
@@ -23,19 +24,19 @@ function TopAiringENG({ topAiring, loadingAiring }) {
 						clickable: true,
 					}}
 					modules={[Pagination]}
-					className="top-airing-swiper h-[500px] w-full"
+					className="top-airing-swiper h-[500px] w-full px-4 md:px-12 lg:px-20 xl:px-28 2xl:px-36 w-full pb-12"
 					slidesPerView={1}
 				>
 					{topAiring.map((item, i) => (
 						<SwiperSlide key={i}>
 							<div
 								style={{ backgroundImage: `url(${item.anilist.cover})` }}
-								className={`bg-cover bg-center h-full w-full bg-no-repeat rounded`}
+								className={`bg-cover bg-center h-full w-full bg-no-repeat rounded overflow-hidden`}
 							>
 								<div className="banner__overlay h-full w-full flex items-center">
-									<div className="w-2/5 max-sm:w-full ml-[40px] max-sm:mx-0 max-sm:px-[30px] flex flex-col justify-center h-100">
+									<div className="w-3/5 max-lg:w-full ml-[40px] max-sm:mx-0 max-sm:px-[30px] flex flex-col justify-center h-100">
 										<h2
-											className="airing-info-main-title line-clamp-3 uppercase font-bold text-3xl"
+											className="airing-info-main-title line-clamp-3 uppercase font-bold text-3xl max-lg:text-base"
 											style={{
 												color: `${
 													item.anilist?.color ? item.anilist.color : `#fff`
@@ -45,10 +46,10 @@ function TopAiringENG({ topAiring, loadingAiring }) {
 										>
 											{item.title}
 										</h2>
-										<div className="airing-info-genres my-[20px]">
+										<div className="airing-info-genres flex flex-wrap my-[20px] max-lg:my-[4px]">
 											{item.anilist.genres.map((genre, i) => (
 												<div
-													className="genre inline p-[4px] m-[4px] first:ml-0 rounded text-gray-50"
+													className="genre inline p-[4px] m-[4px] first:ml-0 rounded text-gray-50 max-lg:text-xs"
 													key={i}
 												>
 													{genre}
@@ -56,8 +57,12 @@ function TopAiringENG({ topAiring, loadingAiring }) {
 											))}
 										</div>
 										<div
-											className="airing-info-description line-clamp-5 font-semibold text-base	"
-											style={{ color: `#fff` }}
+											className="airing-info-description line-clamp-5 font-semibold text-base max-lg:text-xs"
+											style={{
+												color: "#fff",
+												textShadow:
+													"0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black",
+											}}
 											dangerouslySetInnerHTML={{
 												__html: item.anilist.description.replace(
 													/<[br]+>/g,
@@ -65,14 +70,22 @@ function TopAiringENG({ topAiring, loadingAiring }) {
 												),
 											}}
 										></div>
-										<div className="airing-info-status text-gray-50 mt-[20px]">
+										<div className="airing-info-status text-gray-50 mt-[20px] max-lg:text-xs max-lg:mt-[10px]">
 											STATUS:{" "}
 											<span className="rounded p-[4px] mt-[4px]">
 												{item.anilist.status}
 											</span>
 										</div>
+										<div className="airing-button hidden max-lg:inline-block mt-[20px]">
+											<Link
+												className="p-[6px] bg-orange-600 rounded hover:opacity-80 duration-200 hover:bg-neutral-800 ease-linear cursor-pointer"
+												to="/eng/info"
+											>
+												PLAY NOW
+											</Link>
+										</div>
 									</div>
-									<div className="overlay__trigger w-3/5 h-fit flex justify-center items-center">
+									<div className="overlay__trigger max-lg:hidden w-2/5 h-fit flex justify-center items-center">
 										<FontAwesomeIcon
 											icon={faPlayCircle}
 											className="w-16 h-16 rounded-full border-neutral-100 border-2 p-[1%] hover:border-transparent duration-200 ease-linear hover:text-orange-800 cursor-pointer"
@@ -80,7 +93,6 @@ function TopAiringENG({ topAiring, loadingAiring }) {
 									</div>
 								</div>
 							</div>
-							<div className="airing-info"></div>
 						</SwiperSlide>
 					))}
 				</Swiper>

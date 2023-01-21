@@ -3,41 +3,33 @@ import { useParams } from "react-router-dom"
 import axios from "axios"
 import InfiniteScroll from "react-infinite-scroll-component"
 import LoadingSpin from "react-loading-spin"
+import useDocumentTitle from "../DocumentTitleHook"
 
 const PAGE_NUMBER = 1
 
-function AnimeSearchENG() {
+function AnimeBrowseENG() {
 	const [loading, setLoading] = useState(true)
-	const [searchResult, setSearchResult] = useState([])
+	const [allAnime, setAllAnime] = useState([])
 	let [page, setPage] = useState(PAGE_NUMBER)
 	const [hasNextPage, setHasNextPage] = useState(true)
 	const { query } = useParams()
-	const [storedState, setStoredState] = useState(query)
 
 	useEffect(() => {
 		const CancelToken = axios.CancelToken
 		const source = CancelToken.source()
-		if (storedState !== query) {
-			page = PAGE_NUMBER
-		}
-		const getSearchResult = async () => {
+		const getAnimeBrowse = async () => {
 			setTimeout(async () => {
 				axios
 					.get(
-						`https://api.consumet.org/anime/gogoanime/${query}?page=${page}`,
+						`https://api.consumet.org/anime/gogoanime/recent-episodes?page=${page}`,
 						{
 							cancelToken: source.token,
 						}
 					)
 					.then((response) => {
-						if (storedState !== query) {
-							setSearchResult(response.data.results)
-							setStoredState(query)
-						} else {
-							setSearchResult((prev) => {
-								return [...new Set([...prev, ...response.data.results])]
-							})
-						}
+						setAllAnime((prev) => {
+							return [...new Set([...prev, ...response.data.results])]
+						})
 						setHasNextPage(response.data.hasNextPage)
 						setLoading(false)
 					})
@@ -47,9 +39,9 @@ function AnimeSearchENG() {
 			}, 2000)
 		}
 
-		getSearchResult()
+		getAnimeBrowse()
 		return () => {
-			clearTimeout(getSearchResult)
+			clearTimeout(getAnimeBrowse)
 			source.cancel()
 		}
 	}, [page, query])
@@ -61,7 +53,8 @@ function AnimeSearchENG() {
 
 	return (
 		<div>
-			<h1 className="font-black">SEARCH</h1>
+			{useDocumentTitle(`All Anime - Unime`)}
+			<h1 className="font-black">ALL ANIME</h1>
 			{loading ? (
 				<div className="block w-100 mt-[50px] text-center">
 					<LoadingSpin primaryColor="red" />
@@ -70,7 +63,7 @@ function AnimeSearchENG() {
 				<InfiniteScroll
 					initialScrollY={0}
 					style={{ overflow: "none" }}
-					dataLength={searchResult.length}
+					dataLength={allAnime.length}
 					scrollThreshold={0.95}
 					next={scrollThreshold}
 					hasMore={hasNextPage}
@@ -83,21 +76,21 @@ function AnimeSearchENG() {
 						</div>
 					}
 				>
-					<div className="search-container md:px-12 lg:px-20 xl:px-28 2xl:px-36 w-full pb-12 grid gap-2 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7">
-						{searchResult.map((item) => (
+					<div className="anime-container md:px-12 lg:px-20 xl:px-28 2xl:px-36 w-full pb-12 grid gap-2 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7">
+						{allAnime.map((item) => (
 							<div
-								className="group search-item col-span-1 cursor-pointer flex flex-col items-center"
+								className="group anime-item col-span-1 cursor-pointer flex flex-col items-center"
 								key={item.id}
 								title={item.title}
 							>
-								<div className="group-hover:opacity-70 search-item-image relative aspect-w-2 aspect-h-3 duration-300 ease-linear w-[180px]">
+								<div className="group-hover:opacity-70 anime-item-image relative aspect-w-2 aspect-h-3 duration-300 ease-linear w-[180px]">
 									<img
 										className="w-[180px] h-[240px] object-cover"
 										src={item.image}
 										alt=""
 									/>
 								</div>
-								<div className="search-item-title h-[60px] w-[180px]">
+								<div className="anime-item-title h-[60px] w-[180px]">
 									<p className="line-clamp-2">{item.title}</p>
 								</div>
 							</div>
@@ -109,4 +102,4 @@ function AnimeSearchENG() {
 	)
 }
 
-export default AnimeSearchENG
+export default AnimeBrowseENG

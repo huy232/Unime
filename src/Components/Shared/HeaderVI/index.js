@@ -37,6 +37,7 @@ function HeaderVI() {
 
 	const handleSubmit = (e) => {
 		e.preventDefault()
+		handleScrollToTop()
 		navigate(`/search/${encodeURI(input)}`)
 		setInput("")
 	}
