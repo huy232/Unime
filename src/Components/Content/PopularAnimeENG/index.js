@@ -4,6 +4,7 @@ import "swiper/css"
 import "swiper/css/pagination"
 import "./popularanime.css"
 import AnimeSkeletonENG from "../AnimeSkeletonENG"
+import { Link } from "react-router-dom"
 
 function PopularAnimeENG({ popularAnime, loadingPopular }) {
 	return (
@@ -25,23 +26,29 @@ function PopularAnimeENG({ popularAnime, loadingPopular }) {
 					>
 						{popularAnime.map((anime, i) => (
 							<SwiperSlide key={i}>
-								<div
-									className="group popular-anime-holder select-none cursor-pointer"
+								<Link
+									to={`/eng/info/${anime.animeId}`}
 									title={anime.animeTitle}
+									key={anime.animeId}
 								>
-									<div className="popular-anime-image w-[240px] h-[340px] group-hover:opacity-80 duration-200 ease-in-out relative">
-										<img
-											className="object-cover object-center w-100 h-100 group-hover:scale-90 duration-500 linear absolute"
-											src={anime.animeImg}
-											alt=""
-										/>
+									<div
+										className="group popular-anime-holder select-none cursor-pointer"
+										title={anime.animeTitle}
+									>
+										<div className="popular-anime-image w-[240px] h-[340px] group-hover:opacity-80 duration-200 ease-in-out relative">
+											<img
+												className="object-cover object-center w-100 h-100 group-hover:scale-90 duration-500 linear absolute"
+												src={anime.animeImg}
+												alt=""
+											/>
+										</div>
+										<div className="popular-anime-title">
+											<p className="text-amber-300 line-clamp-2 font-medium">
+												{anime.animeTitle}
+											</p>
+										</div>
 									</div>
-									<div className="popular-anime-title">
-										<p className="text-amber-300 line-clamp-2 font-medium">
-											{anime.animeTitle}
-										</p>
-									</div>
-								</div>
+								</Link>
 							</SwiperSlide>
 						))}
 					</Swiper>

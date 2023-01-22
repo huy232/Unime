@@ -107,22 +107,27 @@ function AnimeBrowseCategoryENG() {
 					>
 						<div className="anime-container md:px-12 lg:px-20 xl:px-28 2xl:px-36 w-full pb-12 grid gap-2 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7">
 							{animeList.map((item) => (
-								<div
-									className="group anime-item col-span-1 cursor-pointer flex flex-col items-center"
-									key={item.animeId}
+								<Link
+									to={`/eng/info/${item.animeId}`}
 									title={item.animeTitle}
+									key={item.animeId}
 								>
-									<div className="group-hover:opacity-70 anime-item-image relative aspect-w-2 aspect-h-3 duration-300 ease-linear w-[180px]">
-										<img
-											className="w-[180px] h-[240px] object-cover"
-											src={item.animeImg}
-											alt=""
-										/>
+									<div
+										className="group anime-item col-span-1 cursor-pointer flex flex-col items-center"
+										title={item.animeTitle}
+									>
+										<div className="group-hover:opacity-70 anime-item-image relative aspect-w-2 aspect-h-3 duration-300 ease-linear w-[180px]">
+											<img
+												className="w-[180px] h-[240px] object-cover"
+												src={item.animeImg}
+												alt=""
+											/>
+										</div>
+										<div className="anime-item-title h-[60px] w-[180px]">
+											<p className="line-clamp-2">{item.animeTitle}</p>
+										</div>
 									</div>
-									<div className="anime-item-title h-[60px] w-[180px]">
-										<p className="line-clamp-2">{item.animeTitle}</p>
-									</div>
-								</div>
+								</Link>
 							))}
 						</div>
 					</InfiniteScroll>

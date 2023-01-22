@@ -27,7 +27,7 @@ function InfoBox({ info, loading }) {
 								info?.animeInfo?.CoverImg?.medium ||
 								info?.animeInfo?.CoverImg?.small
 							}
-							className="cover-image"
+							className="cover-image w-[180px] h-[260px]"
 							alt=""
 						/>
 					)}

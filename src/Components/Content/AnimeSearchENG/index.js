@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom"
 import axios from "axios"
 import InfiniteScroll from "react-infinite-scroll-component"
 import LoadingSpin from "react-loading-spin"
+import { Link } from "react-router-dom"
 
 const PAGE_NUMBER = 1
 
@@ -85,22 +86,27 @@ function AnimeSearchENG() {
 				>
 					<div className="search-container md:px-12 lg:px-20 xl:px-28 2xl:px-36 w-full pb-12 grid gap-2 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7">
 						{searchResult.map((item) => (
-							<div
-								className="group search-item col-span-1 cursor-pointer flex flex-col items-center"
-								key={item.id}
+							<Link
+								to={`/eng/info/${item.id}`}
 								title={item.title}
+								key={item.id}
 							>
-								<div className="group-hover:opacity-70 search-item-image relative aspect-w-2 aspect-h-3 duration-300 ease-linear w-[180px]">
-									<img
-										className="w-[180px] h-[240px] object-cover"
-										src={item.image}
-										alt=""
-									/>
+								<div
+									className="group search-item col-span-1 cursor-pointer flex flex-col items-center"
+									title={item.title}
+								>
+									<div className="group-hover:opacity-70 search-item-image relative aspect-w-2 aspect-h-3 duration-300 ease-linear w-[180px]">
+										<img
+											className="w-[180px] h-[240px] object-cover"
+											src={item.image}
+											alt=""
+										/>
+									</div>
+									<div className="search-item-title h-[60px] w-[180px]">
+										<p className="line-clamp-2">{item.title}</p>
+									</div>
 								</div>
-								<div className="search-item-title h-[60px] w-[180px]">
-									<p className="line-clamp-2">{item.title}</p>
-								</div>
-							</div>
+							</Link>
 						))}
 					</div>
 				</InfiniteScroll>

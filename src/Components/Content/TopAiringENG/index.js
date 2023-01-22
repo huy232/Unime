@@ -79,17 +79,19 @@ function TopAiringENG({ topAiring, loadingAiring }) {
 										<div className="airing-button hidden max-lg:inline-block mt-[20px]">
 											<Link
 												className="p-[6px] bg-orange-600 rounded hover:opacity-80 duration-200 hover:bg-neutral-800 ease-linear cursor-pointer"
-												to="/eng/info"
+												to={`/eng/info/${item.id}`}
 											>
 												PLAY NOW
 											</Link>
 										</div>
 									</div>
 									<div className="overlay__trigger max-lg:hidden w-2/5 h-fit flex justify-center items-center">
-										<FontAwesomeIcon
-											icon={faPlayCircle}
-											className="w-16 h-16 rounded-full border-neutral-100 border-2 p-[1%] hover:border-transparent duration-200 ease-linear hover:text-orange-800 cursor-pointer"
-										/>
+										<Link to={`/eng/info/${item.id}`}>
+											<FontAwesomeIcon
+												icon={faPlayCircle}
+												className="w-16 h-16 rounded-full border-neutral-100 border-2 p-[1%] hover:border-transparent duration-200 ease-linear hover:text-orange-800 cursor-pointer"
+											/>
+										</Link>
 									</div>
 								</div>
 							</div>

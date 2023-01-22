@@ -4,6 +4,7 @@ import "swiper/css"
 import "swiper/css/pagination"
 import "./recentepisode.css"
 import AnimeSkeletonENG from "../AnimeSkeletonENG"
+import { Link } from "react-router-dom"
 
 function RecentEpisodeENG({ recentAnime, loadingRecentAnime }) {
 	return (
@@ -25,28 +26,31 @@ function RecentEpisodeENG({ recentAnime, loadingRecentAnime }) {
 					>
 						{recentAnime.map((anime, i) => (
 							<SwiperSlide key={i}>
-								<div
-									className="group recent-anime-holder select-none cursor-pointer"
+								<Link
+									to={`/eng/info/${anime.id}`}
 									title={anime.title}
+									key={anime.id}
 								>
-									<div className="recent-anime-image w-[240px] h-[340px] group-hover:opacity-80 duration-200 ease-in-out relative">
-										<img
-											className="object-cover object-center w-100 h-100 group-hover:scale-90 duration-500 linear absolute"
-											src={anime.image}
-											alt=""
-										/>
-										<div className="absolute group-hover:scale-90 duration-500 linear text-right w-full h-full">
-											<p className="inline-block mt-[4px] mr-[4px] p-[4px] bg-neutral-500/75 text-white rounded">
-												EP. {anime.episodeNumber}
+									<div className="group recent-anime-holder select-none cursor-pointer">
+										<div className="recent-anime-image w-[240px] h-[340px] group-hover:opacity-80 duration-200 ease-in-out relative">
+											<img
+												className="object-cover object-center w-100 h-100 group-hover:scale-90 duration-500 linear absolute"
+												src={anime.image}
+												alt=""
+											/>
+											<div className="absolute group-hover:scale-90 duration-500 linear text-right w-full h-full">
+												<p className="inline-block mt-[4px] mr-[4px] p-[4px] bg-neutral-500/75 text-white rounded">
+													EP. {anime.episodeNumber}
+												</p>
+											</div>
+										</div>
+										<div className="recent-anime-title">
+											<p className="text-amber-300 line-clamp-2 font-medium">
+												{anime.title}
 											</p>
 										</div>
 									</div>
-									<div className="recent-anime-title">
-										<p className="text-amber-300 line-clamp-2 font-medium">
-											{anime.title}
-										</p>
-									</div>
-								</div>
+								</Link>
 							</SwiperSlide>
 						))}
 					</Swiper>

@@ -111,7 +111,8 @@
 }
 
 .google-button {
-	color: rgb(24, 24, 24);
+	background: rgb(255, 255, 255);
+	color: rgb(24, 24, 24)
 }
 
 .facebook-button {
