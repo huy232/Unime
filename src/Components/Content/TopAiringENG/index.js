@@ -12,7 +12,7 @@ import { Link } from "react-router-dom"
 function TopAiringENG({ topAiring, loadingAiring }) {
 	return (
 		<div>
-			<h1 className="font-black ml-6 mr-6 text-amber-200">TOP AIRING</h1>
+			<h1 className="font-black ml-6 mr-6 text-amber-200">POPULAR</h1>
 			{loadingAiring ? (
 				<SkeletonTheme baseColor="#202020" highlightColor="#444">
 					<Skeleton className="h-[500px] w-full " />
@@ -24,30 +24,33 @@ function TopAiringENG({ topAiring, loadingAiring }) {
 						clickable: true,
 					}}
 					modules={[Pagination]}
-					className="top-airing-swiper h-[500px] w-full px-4 md:px-12 lg:px-20 xl:px-28 2xl:px-36 w-full pb-12"
+					className="top-airing-swiper h-[500px] w-full px-4 md:px-12 lg:px-20 xl:px-28 2xl:px-36 w-full"
 					slidesPerView={1}
 				>
 					{topAiring.map((item, i) => (
 						<SwiperSlide key={i}>
 							<div
-								style={{ backgroundImage: `url(${item.anilist.cover})` }}
+								style={{ backgroundImage: `url(${item.cover})` }}
 								className={`bg-cover bg-center h-full w-full bg-no-repeat rounded overflow-hidden`}
 							>
 								<div className="banner__overlay h-full w-full flex items-center">
 									<div className="w-3/5 max-lg:w-full ml-[40px] max-sm:mx-0 max-sm:px-[30px] flex flex-col justify-center h-100">
 										<h2
 											className="airing-info-main-title line-clamp-3 uppercase font-bold text-3xl max-lg:text-base"
-											style={{
-												color: `${
-													item.anilist?.color ? item.anilist.color : `#fff`
-												}`,
-											}}
-											title={item.title}
+											title={
+												item.title.english ||
+												item.title.romaji ||
+												item.title.native ||
+												item.title.userPreferred
+											}
 										>
-											{item.title}
+											{item.title.english ||
+												item.title.romaji ||
+												item.title.native ||
+												item.title.userPreferred}
 										</h2>
 										<div className="airing-info-genres flex flex-wrap my-[20px] max-lg:my-[4px]">
-											{item.anilist.genres.map((genre, i) => (
+											{item.genres.map((genre, i) => (
 												<div
 													className="genre inline p-[4px] m-[4px] first:ml-0 rounded text-gray-50 max-lg:text-xs"
 													key={i}
@@ -64,16 +67,13 @@ function TopAiringENG({ topAiring, loadingAiring }) {
 													"0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black",
 											}}
 											dangerouslySetInnerHTML={{
-												__html: item.anilist.description.replace(
-													/<[br]+>/g,
-													""
-												),
+												__html: item.description?.replace(/<[br]+>/g, ""),
 											}}
 										></div>
 										<div className="airing-info-status text-gray-50 mt-[20px] max-lg:text-xs max-lg:mt-[10px]">
 											STATUS:{" "}
 											<span className="rounded p-[4px] mt-[4px]">
-												{item.anilist.status}
+												{item.status}
 											</span>
 										</div>
 										<div className="airing-button hidden max-lg:inline-block mt-[20px]">

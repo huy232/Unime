@@ -45,8 +45,14 @@ function RecentEpisodeENG({ recentAnime, loadingRecentAnime }) {
 											</div>
 										</div>
 										<div className="recent-anime-title">
-											<p className="text-amber-300 line-clamp-2 font-medium">
-												{anime.title}
+											<p
+												className="line-clamp-2 font-medium"
+												style={{ color: `${anime?.color || "#fff"}` }}
+											>
+												{anime.title.english ||
+													anime.title.romaji ||
+													anime.title.native ||
+													anime.userPreferred}
 											</p>
 										</div>
 									</div>

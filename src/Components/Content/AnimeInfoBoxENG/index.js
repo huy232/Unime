@@ -16,91 +16,78 @@ function AnimeInfoBoxENG({ loading, info }) {
 					/>
 				) : (
 					<img
-						src={
-							info.anilist?.cover?.large ||
-							info.anilist?.cover?.medium ||
-							info.anilist?.cover?.small ||
-							info.image
-						}
+						src={info.image}
 						className="cover-image w-[180px] h-[260px]"
 						alt=""
 					/>
 				)}
 			</div>
 			<div className="text-right [&>*]:mx-[60px] [&>*]:my-[0]">
-				{info.anilist?.format && (
+				{info?.type && (
 					<div>
 						<h5 className="font-black p-[6px] bg-[#282828]/[0.8] inline-block rounded">
 							FORMAT
 						</h5>
-						<p>{info.anilist?.format}</p>
+						<p>{info?.type}</p>
 					</div>
 				)}
-				{info.anilist?.title && (
+				{info?.title && (
 					<div>
 						<h5 className="font-black p-[6px] bg-[#282828]/[0.8] inline-block rounded">
 							TITLE
 						</h5>
-						{info.anilist?.title?.romaji && (
+						{info?.title?.romaji && (
 							<h6>
 								ROMAJI
-								<p>{info.anilist?.title?.romaji}</p>
+								<p>{info?.title?.romaji}</p>
 							</h6>
 						)}
-						{info.anilist?.title?.english && (
+						{info?.title?.english && (
 							<h6>
 								ENGLISH
-								<p>{info.anilist?.title?.english}</p>
+								<p>{info?.title?.english}</p>
 							</h6>
 						)}
-						{info.anilist?.title?.native && (
+						{info?.title?.native && (
 							<h6>
 								NATIVE
-								<p>{info.anilist?.title?.native}</p>
+								<p>{info?.title?.native}</p>
 							</h6>
 						)}
 					</div>
 				)}
-				{info.anilist?.source && (
-					<div>
-						<h5 className="font-black p-[6px] bg-[#282828]/[0.8] inline-block rounded">
-							SOURCE
-						</h5>
-						<p>{info.anilist?.source}</p>
-					</div>
-				)}
-				{info.anilist?.popularity && (
+				{info?.popularity && (
 					<div>
 						<h5 className="font-black p-[6px] bg-[#282828]/[0.8] inline-block rounded">
 							POPULARITY
 						</h5>
-						<p>{info.anilist?.popularity.toLocaleString()}</p>
+						<p>{info?.popularity.toLocaleString()}</p>
 					</div>
 				)}
-				{info.anilist?.favourites && (
+				{info?.rating && (
 					<div>
 						<h5 className="font-black p-[6px] bg-[#282828]/[0.8] inline-block rounded">
-							FAVOURITES
+							RATING
 						</h5>
-						<p>{info.anilist?.favourites.toLocaleString()}</p>
+						<p>{info?.rating}%</p>
 					</div>
 				)}
-				{info.anilist?.trending && (
+				{info?.subOrDub && (
 					<div>
 						<h5 className="font-black p-[6px] bg-[#282828]/[0.8] inline-block rounded">
-							TRENDING
+							VOICE
 						</h5>
-						<p>{info.anilist?.trending.toLocaleString()}</p>
+						<p className="uppercase">{info?.subOrDub}</p>
 					</div>
 				)}
-				{info.anilist?.studio && (
+				{info?.studio && (
 					<>
 						<div>
 							<h5 className="font-black p-[6px] bg-[#282828]/[0.8] inline-block rounded">
 								STUDIO
 							</h5>
 							<p>
-								{info.anilist?.studio.map((studio, i, arr) =>
+								{info?.studio.map((studio, i, arr) =>
 									i !== arr.length - 1
 										? `${studio.name + ", "}`
 										: `${studio.name}`

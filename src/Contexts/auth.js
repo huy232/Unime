@@ -15,7 +15,8 @@ export function AuthProvider({ children }) {
 
 	useEffect(() => {
 		// let unimeLanguage = localStorage.getItem("unime-language")
-		// if (unimeLanguage === "eng") {
+		// console.log(window.location.pathname)
+		// if (unimeLanguage === "eng" ) {
 		// 	navigate("/eng")
 		// } else {
 		// 	navigate("/")

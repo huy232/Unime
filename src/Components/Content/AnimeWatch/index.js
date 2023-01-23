@@ -94,11 +94,11 @@ function AnimeWatch({ instance }) {
 	}
 
 	const seekForward = () => {
-		skip(5)
+		skip(1)
 	}
 
 	const seekBackward = () => {
-		skip(-5)
+		skip(-1)
 	}
 
 	const seekUpVolume = () => {

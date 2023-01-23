@@ -4,6 +4,7 @@ import axios from "axios"
 import InfiniteScroll from "react-infinite-scroll-component"
 import LoadingSpin from "react-loading-spin"
 import { Link } from "react-router-dom"
+import useDocumentTitle from "../DocumentTitleHook"
 
 const PAGE_NUMBER = 1
 
@@ -24,12 +25,9 @@ function AnimeSearchENG() {
 		const getSearchResult = async () => {
 			setTimeout(async () => {
 				axios
-					.get(
-						`https://api.consumet.org/anime/gogoanime/${query}?page=${page}`,
-						{
-							cancelToken: source.token,
-						}
-					)
+					.get(`https://api.consumet.org/meta/anilist/${query}?page=${page}`, {
+						cancelToken: source.token,
+					})
 					.then((response) => {
 						if (storedState !== query) {
 							setSearchResult(response.data.results)
@@ -60,6 +58,8 @@ function AnimeSearchENG() {
 		setPage(newPage)
 	}
 
+	useDocumentTitle("Search - Unime")
+
 	return (
 		<div>
 			<h1 className="font-black">SEARCH</h1>
@@ -88,7 +88,11 @@ function AnimeSearchENG() {
 						{searchResult.map((item) => (
 							<Link
 								to={`/eng/info/${item.id}`}
-								title={item.title}
+								title={
+									item.title?.english ||
+									item.title?.romaji ||
+									item.title?.native
+								}
 								key={item.id}
 							>
 								<div
@@ -103,7 +107,11 @@ function AnimeSearchENG() {
 										/>
 									</div>
 									<div className="search-item-title h-[60px] w-[180px]">
-										<p className="line-clamp-2">{item.title}</p>
+										<p className="line-clamp-2">
+											{item.title?.english ||
+												item.title?.romaji ||
+												item.title?.native}
+										</p>
 									</div>
 								</div>
 							</Link>

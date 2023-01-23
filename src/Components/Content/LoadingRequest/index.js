@@ -1,5 +1,8 @@
 import { ThreeDots } from "react-loading-icons"
+import { useAuth } from "../../../Contexts/auth"
 function LoadingRequest() {
+	const { language } = useAuth()
+
 	return (
 		<div
 			className="loading-request"
@@ -17,7 +20,7 @@ function LoadingRequest() {
 				className="loading-text"
 				style={{ color: "white", textAlign: "center" }}
 			>
-				Đang tải phim
+				{language === "vi" ? "Đang tải phim" : "Loading anime"}
 			</div>
 		</div>
 	)

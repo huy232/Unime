@@ -3,19 +3,19 @@ import { API } from "../../../constants"
 import axios from "axios"
 import RecentEpisodeENG from "../RecentEpisodeENG"
 import TopAiringENG from "../TopAiringENG"
-import PopularAnimeENG from "../PopularAnimeENG"
-import MoviesAnimeENG from "../MoviesAnimeENG"
 import useDocumentTitle from "../DocumentTitleHook"
+import TrendingAnimeENG from "../TrendingAnimeENG"
+import RandomAnimeENG from "../RandomAnimeENG"
 
 function HomeENG() {
 	const [loadingAiring, setLoadingAiring] = useState(true)
 	const [topAiring, setTopAiring] = useState([])
 	const [loadingRecentAnime, setLoadingRecentAnime] = useState(true)
 	const [recentAnime, setRecentAnime] = useState([])
-	const [loadingPopular, setLoadingPopular] = useState(true)
-	const [popularAnime, setPopularAnime] = useState([])
-	const [loadingMovies, setLoadingMovies] = useState(true)
-	const [moviesAnime, setMoviesAnime] = useState([])
+	const [loadingTrending, setLoadingTrending] = useState(true)
+	const [trendingAnime, setTrendingAnime] = useState([])
+	const [loadingRandomAnime, setLoadingRandomAnime] = useState(true)
+	const [randomAnime, setRandomAnime] = useState([])
 
 	useEffect(() => {
 		const CancelToken = axios.CancelToken
@@ -23,9 +23,11 @@ function HomeENG() {
 
 		const getTopAiring = async () => {
 			await axios
-				.get(`${API}/eng/top-airing`, { cancelToken: source.token })
+				.get(`https://api.consumet.org/meta/anilist/popular`, {
+					cancelToken: source.token,
+				})
 				.then((topAiring) => {
-					setTopAiring(topAiring.data.data)
+					setTopAiring(topAiring.data.results)
 					setLoadingAiring(false)
 				})
 				.then(() => {
@@ -38,36 +40,42 @@ function HomeENG() {
 
 		const getRecentAnime = async () => {
 			await axios
-				.get(`${API}/eng/recent-anime`, { cancelToken: source.token })
+				.get(`https://api.consumet.org/meta/anilist/recent-episodes`, {
+					cancelToken: source.token,
+				})
 				.then((getRecentData) => {
-					setRecentAnime(getRecentData.data.data)
+					setRecentAnime(getRecentData.data.results)
 					setLoadingRecentAnime(false)
 				})
-				.then(() => getPopularAnime())
+				.then(() => getTrendingAnime())
 				.catch((thrown) => {
 					if (axios.isCancel(thrown)) return
 				})
 		}
 
-		const getPopularAnime = async () => {
+		const getTrendingAnime = async () => {
 			await axios
-				.get(`${API}/eng/popular`, { cancelToken: source.token })
-				.then((popularAnime) => {
-					setPopularAnime(popularAnime.data.data)
-					setLoadingPopular(false)
+				.get(`https://api.consumet.org/meta/anilist/trending`, {
+					cancelToken: source.token,
 				})
-				.then(getMoviesAnime())
+				.then((trendingAnime) => {
+					setTrendingAnime(trendingAnime.data.results)
+					setLoadingTrending(false)
+				})
+				.then(getRandomAnime())
 				.catch((thrown) => {
 					if (axios.isCancel(thrown)) return
 				})
 		}
 
-		const getMoviesAnime = async () => {
+		const getRandomAnime = async () => {
 			await axios
-				.get(`${API}/eng/movies`, { cancelToken: source.token })
-				.then((popularAnime) => {
-					setMoviesAnime(popularAnime.data.data)
-					setLoadingMovies(false)
+				.get(`https://api.consumet.org/meta/anilist/random-anime`, {
+					cancelToken: source.token,
+				})
+				.then((randomAnime) => {
+					setRandomAnime(randomAnime.data)
+					setLoadingRandomAnime(false)
 				})
 				.catch((thrown) => {
 					if (axios.isCancel(thrown)) return
@@ -80,20 +88,22 @@ function HomeENG() {
 			source.cancel()
 		}
 	}, [])
-
+	useDocumentTitle(`HOME - Unime`)
 	return (
 		<>
-			{useDocumentTitle(`HOME - Unime`)}
 			<TopAiringENG topAiring={topAiring} loadingAiring={loadingAiring} />
 			<RecentEpisodeENG
 				recentAnime={recentAnime}
 				loadingRecentAnime={loadingRecentAnime}
 			/>
-			<PopularAnimeENG
-				popularAnime={popularAnime}
-				loadingPopular={loadingPopular}
+			<TrendingAnimeENG
+				trendingAnime={trendingAnime}
+				loadingTrending={loadingTrending}
 			/>
-			<MoviesAnimeENG loadingMovies={loadingMovies} moviesAnime={moviesAnime} />
+			<RandomAnimeENG
+				loadingRandomAnime={loadingRandomAnime}
+				randomAnime={randomAnime}
+			/>
 		</>
 	)
 }

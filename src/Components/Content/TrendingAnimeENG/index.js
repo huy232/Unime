@@ -6,13 +6,13 @@ import "./popularanime.css"
 import AnimeSkeletonENG from "../AnimeSkeletonENG"
 import { Link } from "react-router-dom"
 
-function PopularAnimeENG({ popularAnime, loadingPopular }) {
+function TrendingAnimeENG({ trendingAnime, loadingTrending }) {
 	return (
 		<div>
 			<h1 className="font-black ml-6 mr-6 mt-2 border-b-4 border-white text-right text-violet-500">
 				POPULAR
 			</h1>
-			{loadingPopular ? (
+			{loadingTrending ? (
 				<AnimeSkeletonENG />
 			) : (
 				<div className="popular-anime-container px-4 md:px-12 lg:px-20 xl:px-28 2xl:px-36 w-full pb-12">
@@ -24,27 +24,32 @@ function PopularAnimeENG({ popularAnime, loadingPopular }) {
 							type: "progressbar",
 						}}
 					>
-						{popularAnime.map((anime, i) => (
+						{trendingAnime.map((anime, i) => (
 							<SwiperSlide key={i}>
 								<Link
-									to={`/eng/info/${anime.animeId}`}
-									title={anime.animeTitle}
-									key={anime.animeId}
+									to={`/eng/info/${anime.id}`}
+									title={
+										anime.title.english ||
+										anime.title.romaji ||
+										anime.title.native ||
+										anime.title.userPreferred
+									}
+									key={anime.id}
 								>
-									<div
-										className="group popular-anime-holder select-none cursor-pointer"
-										title={anime.animeTitle}
-									>
+									<div className="group popular-anime-holder select-none cursor-pointer">
 										<div className="popular-anime-image w-[240px] h-[340px] group-hover:opacity-80 duration-200 ease-in-out relative">
 											<img
 												className="object-cover object-center w-100 h-100 group-hover:scale-90 duration-500 linear absolute"
-												src={anime.animeImg}
+												src={anime.image}
 												alt=""
 											/>
 										</div>
 										<div className="popular-anime-title">
 											<p className="text-amber-300 line-clamp-2 font-medium">
-												{anime.animeTitle}
+												{anime.title.english ||
+													anime.title.romaji ||
+													anime.title.native ||
+													anime.title.userPreferred}
 											</p>
 										</div>
 									</div>
@@ -58,4 +63,4 @@ function PopularAnimeENG({ popularAnime, loadingPopular }) {
 	)
 }
 
-export default PopularAnimeENG
+export default TrendingAnimeENG

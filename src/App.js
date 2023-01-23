@@ -23,25 +23,25 @@ import AnimeSearchENG from "./Components/Content/AnimeSearchENG"
 import AnimeBrowseENG from "./Components/Content/AnimeBrowseENG"
 import AnimeBrowseCategoryENG from "./Components/Content/AnimeBrowseCategoryENG"
 import AnimeInfoENG from "./Components/Content/AnimeInfoENG"
+import AnimeWatchENG from "./Components/Content/AnimeWatchENG"
 
 function App() {
 	const instance = axios.create({
 		baseURL: API,
 	})
 	const pathname = useLocation()
+	const exclusionArray = [
+		`/watch/${pathname.pathname.split("/")[2]}`,
+		`/eng/watch/${pathname.pathname.split("/")[3]}`,
+		`/login`,
+	]
 	useEffect(() => {
 		window.history.scrollRestoration = "manual"
 	}, [])
 	return (
 		<div className="App">
 			<AuthProvider>
-				{window.location.pathname ===
-					`/watch/${pathname.pathname.split("/")[2]}` ||
-				window.location.pathname === `/login` ? (
-					""
-				) : (
-					<Header />
-				)}
+				{exclusionArray.indexOf(window.location.pathname) < 0 && <Header />}
 				<div className="content" style={{ marginTop: "90px", width: "100%" }}>
 					<Routes>
 						{/* VIET ANIME*/}
@@ -76,17 +76,12 @@ function App() {
 							element={<AnimeBrowseCategoryENG />}
 						/>
 						<Route path="/eng/info/:animeId" element={<AnimeInfoENG />} />
+						<Route path="/eng/watch/:animeId" element={<AnimeWatchENG />} />
 						{/* SHARED */}
 						<Route path="login" element={<Login />} />
 					</Routes>
 				</div>
-				{window.location.pathname ===
-					`/watch/${pathname.pathname.split("/")[2]}` ||
-				window.location.pathname === `/login` ? (
-					""
-				) : (
-					<Footer />
-				)}
+				{exclusionArray.indexOf(window.location.pathname) < 0 && <Footer />}
 			</AuthProvider>
 		</div>
 	)

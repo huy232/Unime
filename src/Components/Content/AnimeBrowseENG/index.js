@@ -22,7 +22,7 @@ function AnimeBrowseENG() {
 			setTimeout(async () => {
 				axios
 					.get(
-						`https://api.consumet.org/anime/gogoanime/recent-episodes?page=${page}`,
+						`https://api.consumet.org/meta/anilist/recent-episodes?page=${page}`,
 						{
 							cancelToken: source.token,
 						}
@@ -86,7 +86,12 @@ function AnimeBrowseENG() {
 							>
 								<div
 									className="group anime-item col-span-1 cursor-pointer flex flex-col items-center"
-									title={item.title}
+									title={
+										item.title?.english ||
+										item.title?.romaji ||
+										item.title?.native ||
+										item.title?.userPreferred
+									}
 								>
 									<div className="group-hover:opacity-70 anime-item-image relative aspect-w-2 aspect-h-3 duration-300 ease-linear w-[180px]">
 										<img
@@ -96,7 +101,12 @@ function AnimeBrowseENG() {
 										/>
 									</div>
 									<div className="anime-item-title h-[60px] w-[180px]">
-										<p className="line-clamp-2">{item.title}</p>
+										<p className="line-clamp-2">
+											{item.title?.english ||
+												item.title?.romaji ||
+												item.title?.native ||
+												item.title?.userPreferred}
+										</p>
 									</div>
 								</div>
 							</Link>

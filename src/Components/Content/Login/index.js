@@ -33,8 +33,12 @@ export default function Login() {
 		await signInWithFacebook()
 	}
 
-	const handleGoBack = () => {
-		navigate("/")
+	const handleGoBack = (language) => {
+		if (language === "eng") {
+			navigate("/eng")
+		} else {
+			navigate("/")
+		}
 	}
 
 	useDocumentTitle(language === "vi" ? `Đăng nhập - Unime` : `Login - Unime`)
@@ -57,7 +61,7 @@ export default function Login() {
 						<h1 className="login-heading">
 							<div
 								className="login-go-back-btn"
-								onClick={() => handleGoBack()}
+								onClick={() => handleGoBack(language)}
 								title={
 									language === "vi" ? "Trở về trang chủ" : "Back to homepage"
 								}
