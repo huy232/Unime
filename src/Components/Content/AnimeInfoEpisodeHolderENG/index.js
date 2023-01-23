@@ -20,7 +20,6 @@ function AnimeInfoEpisodeHolderENG({ info, loading }) {
 	useEffect(() => {
 		const episodeStructure = async () => {
 			const episodeListChunk = []
-			console.log(info.episodes)
 			while (info.episodes.length) {
 				episodeListChunk.push(info.episodes.splice(0, 12))
 			}
