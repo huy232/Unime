@@ -68,9 +68,10 @@ function AnimeWatch({ instance }) {
 								setVideoUrl(videoUrlResponse)
 							})
 					}
-					document
-						.getElementsByClassName("active")[0]
-						.scrollIntoView({ behavior: "smooth" })
+					const element = document.getElementsByClassName("active")[0]
+					if (element) {
+						element.scrollIntoView({ behavior: "smooth" })
+					}
 				})
 				.catch((thrown) => {
 					if (axios.isCancel(thrown)) return

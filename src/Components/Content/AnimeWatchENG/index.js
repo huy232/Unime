@@ -18,13 +18,24 @@ function AnimeWatchENG() {
 	const [videoLoading, setVideoLoading] = useState(true)
 
 	useEffect(() => {
+		const CancelToken = axios.CancelToken
+		const source = CancelToken.source()
+
 		const getAnimeEpisodeList = async () => {
-			const listEpisode = await axios.get(
-				`https://api.consumet.org/meta/anilist/info/${animeId}`
-			)
-			const urlData = await axios.get(
-				`https://api.consumet.org/meta/anilist/watch/${current}`
-			)
+			const listEpisode = await axios
+				.get(`https://api.consumet.org/meta/anilist/info/${animeId}`, {
+					cancelToken: source.token,
+				})
+				.catch((thrown) => {
+					if (axios.isCancel(thrown)) return
+				})
+			const urlData = await axios
+				.get(`https://api.consumet.org/meta/anilist/watch/${current}`, {
+					cancelToken: source.token,
+				})
+				.catch((thrown) => {
+					if (axios.isCancel(thrown)) return
+				})
 
 			const episodeTitle = listEpisode.data.episodes.find((obj) => {
 				return obj.id === current
@@ -44,8 +55,17 @@ function AnimeWatchENG() {
 			)
 			setVideoLoading(false)
 			setLoading(false)
+			const element = document.getElementsByClassName("active")[0]
+			if (element) {
+				element.scrollIntoView({ behavior: "smooth" })
+			}
 		}
+
 		getAnimeEpisodeList()
+
+		return () => {
+			source.cancel()
+		}
 	}, [animeId, current])
 
 	const skip = (time) => {
