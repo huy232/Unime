@@ -10,7 +10,15 @@ videojs.registerPlugin("hlsQualitySelector", videojsHlsQualitySelector)
 
 // eslint-disable-next-line import/prefer-default-export
 
-const usePlayer = ({ src, controls, autoplay, anime, info, index }) => {
+const usePlayer = ({
+	src,
+	controls,
+	autoplay,
+	anime,
+	info,
+	index,
+	subtitles,
+}) => {
 	const videoRef = useRef(null)
 	const [player, setPlayer] = useState(null)
 
@@ -68,12 +76,37 @@ const usePlayer = ({ src, controls, autoplay, anime, info, index }) => {
 	return videoRef
 }
 
-const VideoPlayer = ({ src, controls, autoplay, anime, info, index }) => {
-	const playerRef = usePlayer({ src, controls, autoplay, anime, info, index })
+const VideoPlayer = ({
+	src,
+	controls,
+	autoplay,
+	anime,
+	info,
+	index,
+	subtitles,
+}) => {
+	const playerRef = usePlayer({
+		src,
+		controls,
+		autoplay,
+		anime,
+		info,
+		index,
+		subtitles,
+	})
 
 	return (
 		<>
-			<video ref={playerRef} className="video-js" />
+			<video ref={playerRef} className="video-js">
+				{subtitles.map((subtitle, i) => (
+					<track
+						key={i}
+						kind="captions"
+						src={subtitle.url}
+						label={subtitle.lang}
+					></track>
+				))}
+			</video>
 		</>
 	)
 }

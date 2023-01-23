@@ -4,7 +4,14 @@ import { Link } from "react-router-dom"
 import ReactPlayer from "react-player"
 import AnimeInfoEpisodeHolderENG from "../AnimeInfoEpisodeHolderENG"
 
-function AnimeInfoDetailENG({ loading, info }) {
+function AnimeInfoDetailENG({
+	loading,
+	info,
+	setProvider,
+	provider,
+	loadingProvider,
+	setLoadingProvider,
+}) {
 	let resultCategory = ENG_GENRES.filter((genre) => {
 		if (info && Object.keys(info).length !== 0) {
 			return info.genres.find((selectedGenre) => selectedGenre === genre.name)
@@ -52,8 +59,40 @@ function AnimeInfoDetailENG({ loading, info }) {
 							</div>
 						</div>
 					)}
+					<div className="max-lg:text-center mt-[12px]">
+						<div>PROVIDER</div>
+						<div className="max-lg:block flex [&>*]:m-[6px] [&>*]:p-[6px] [&>*]:rounded group">
+							<button
+								className={`${
+									provider !== "zoro"
+										? "bg-[#f48484] text-[#1A120B]"
+										: "bg-[#5f5f5f29] text-[#fff]"
+								} hover:opacity-80 duration-200 ease-in-out`}
+								onClick={() => setProvider("")}
+							>
+								GogoAnime
+							</button>
+							<button
+								className={`${
+									provider === "zoro"
+										? "bg-[#f48484] text-[#1A120B]"
+										: "bg-[#5f5f5f29] text-[#fff]"
+								} hover:opacity-80 duration-200 ease-in-out`}
+								onClick={() => setProvider("zoro")}
+							>
+								Zoro
+							</button>
+						</div>
+					</div>
+					<div className="list-episode-title-main">
+						<h4 style={{ marginTop: "30px" }}>EPISODE LIST</h4>
+					</div>
 					{info.episodes.length > 0 && (
-						<div>{!loading && <AnimeInfoEpisodeHolderENG info={info} />}</div>
+						<div>
+							{!loading && (
+								<AnimeInfoEpisodeHolderENG info={info} provider={provider} />
+							)}
+						</div>
 					)}
 				</>
 			)}

@@ -35,11 +35,13 @@ function HeaderENG() {
 
 	const handleSubmit = (e) => {
 		e.preventDefault()
-		handleScrollToTop()
+		console.log("Run to here")
 		navigate(`/eng/search/${encodeURI(input)}`)
+		handleScrollToTop()
 		setInput("")
 	}
 	const handleKeypress = (e) => {
+		console.log(e)
 		//it triggers by pressing the enter key
 		if (e.keyCode === 13) {
 			handleSubmit()
@@ -93,11 +95,11 @@ function HeaderENG() {
 									className="search-navbar"
 									color="primary"
 									onChange={handleChange}
-									onKeyPress={handleKeypress}
+									onKeyPress={(e) => handleKeypress(e)}
 									value={input}
 								/>
 								<button
-									onClick={() => handleSubmit()}
+									onClick={(e) => handleSubmit(e)}
 									type="submit"
 									style={{
 										backgroundColor: "var(--bs-dark-rgb)",

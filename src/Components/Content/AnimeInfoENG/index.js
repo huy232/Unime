@@ -9,14 +9,20 @@ import useDocumentTitle from "../DocumentTitleHook"
 function AnimeInfoENG() {
 	const [info, setInfo] = useState({})
 	const [loading, setLoading] = useState(true)
+	const [loadingProvider, setLoadingProvider] = useState(true)
+	const [provider, setProvider] = useState("")
 	const [title, setTitle] = useState("Loading")
 
 	const { animeId } = useParams()
+
 	useEffect(() => {
 		window.scrollTo(0, 0)
+	}, [animeId])
+
+	useEffect(() => {
 		const getInfo = async () => {
 			const data = await axios.get(
-				`https://api.consumet.org/meta/anilist/info/${animeId}`
+				`https://api.consumet.org/meta/anilist/info/${animeId}?provider=${provider}`
 			)
 			setTitle(
 				data.data.title?.english ||
@@ -28,7 +34,7 @@ function AnimeInfoENG() {
 		}
 
 		getInfo()
-	}, [animeId])
+	}, [animeId, provider])
 
 	useDocumentTitle(title)
 	return (
@@ -36,7 +42,14 @@ function AnimeInfoENG() {
 			<AnimeInfoBannerENG loading={loading} info={info} />
 			<div className="w-100 flex relative max-lg:flex-col">
 				<AnimeInfoBoxENG loading={loading} info={info} />
-				<AnimeInfoDetailENG loading={loading} info={info} />
+				<AnimeInfoDetailENG
+					loading={loading}
+					info={info}
+					setProvider={setProvider}
+					provider={provider}
+					loadingProvider={loadingProvider}
+					setLoadingProvider={setLoadingProvider}
+				/>
 			</div>
 		</div>
 	)

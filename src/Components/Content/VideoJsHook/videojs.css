@@ -31,6 +31,10 @@
 	padding: 0 !important;
 }
 
+.vjs-modal-dialog-content {
+	color: black;
+}
+
 .top-wrapper {
 	display: flex;
 	flex-direction: row;

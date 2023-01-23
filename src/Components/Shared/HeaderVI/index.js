@@ -99,11 +99,11 @@ function HeaderVI() {
 									className="search-navbar"
 									color="primary"
 									onChange={handleChange}
-									onKeyPress={handleKeypress}
+									onKeyPress={(e) => handleKeypress(e)}
 									value={input}
 								/>
 								<button
-									onClick={() => handleSubmit()}
+									onClick={(e) => handleSubmit(e)}
 									type="submit"
 									style={{
 										backgroundColor: "var(--bs-dark-rgb)",

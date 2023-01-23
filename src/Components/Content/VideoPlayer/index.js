@@ -1,7 +1,7 @@
 import React from "react"
 import VideoPlayer from "../VideoJsHook/index"
 
-function VideoPlayerSource({ videoUrl, anime, info, index }) {
+function VideoPlayerSource({ videoUrl, anime, info, index, subtitles }) {
 	return (
 		<VideoPlayer
 			src={videoUrl}
@@ -10,6 +10,7 @@ function VideoPlayerSource({ videoUrl, anime, info, index }) {
 			anime={anime}
 			info={info}
 			index={index}
+			subtitles={subtitles}
 		/>
 	)
 }

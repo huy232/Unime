@@ -13,7 +13,7 @@ SwiperCore.use([Pagination, Navigation])
 
 // ---------------------------
 
-function AnimeInfoEpisodeHolderENG({ info, loading }) {
+function AnimeInfoEpisodeHolderENG({ info, loading, provider }) {
 	const [episodeList, setEpisodeList] = useState([])
 	const [selectedChunk, setSelectedChunk] = useState(0)
 
@@ -30,9 +30,6 @@ function AnimeInfoEpisodeHolderENG({ info, loading }) {
 	return (
 		<>
 			<div className="episode-list">
-				<div className="list-episode-title-main">
-					<h4 style={{ marginTop: "30px" }}>EPISODE LIST</h4>
-				</div>
 				{!loading && episodeList.length === 0 ? (
 					<p style={{ textAlign: "center" }}>
 						Anime hasn't upload yet, please come back later.
@@ -98,7 +95,7 @@ function AnimeInfoEpisodeHolderENG({ info, loading }) {
 								<nav>
 									{
 										<Link
-											to={`/eng/watch/${info.id}?current=${eachEpisode.id}`}
+											to={`/eng/watch/${info.id}?current=${eachEpisode.id}&provider=${provider}`}
 											title={
 												eachEpisode.title
 													? `EP ${eachEpisode.number} - ${eachEpisode.title}`

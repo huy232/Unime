@@ -11,50 +11,86 @@ function AnimeWatchENG() {
 	const { animeId } = useParams()
 	const queryParams = new URLSearchParams(window.location.search)
 	const current = queryParams.get("current")
+	const provider = queryParams.get("provider")
 	const [info, setInfo] = useState([])
 	const [watchDetail, setWatchDetail] = useState("Loading")
 	const [videoUrl, setVideoUrl] = useState()
-	const [loading, setLoading] = useState(true)
 	const [videoLoading, setVideoLoading] = useState(true)
+	const [subtitles, setSubtitles] = useState([])
 
 	useEffect(() => {
 		const CancelToken = axios.CancelToken
 		const source = CancelToken.source()
 
 		const getAnimeEpisodeList = async () => {
-			const listEpisode = await axios
-				.get(`https://api.consumet.org/meta/anilist/info/${animeId}`, {
-					cancelToken: source.token,
+			await axios
+				.get(
+					`https://api.consumet.org/meta/anilist/info/${animeId}?provider=${provider}`,
+					{
+						cancelToken: source.token,
+					}
+				)
+				.then((response) => {
+					const listEpisode = response.data
+					const episodeTitle = listEpisode.episodes.find((obj) => {
+						return obj.id === current
+					})
+					setInfo(listEpisode.episodes)
+					setWatchDetail(
+						`${
+							listEpisode.title?.english ||
+							listEpisode.title?.romanji ||
+							listEpisode.title?.native
+						} - EP. ${episodeTitle.number} - ${episodeTitle.title}`
+					)
 				})
-				.catch((thrown) => {
-					if (axios.isCancel(thrown)) return
-				})
-			const urlData = await axios
-				.get(`https://api.consumet.org/meta/anilist/watch/${current}`, {
-					cancelToken: source.token,
+				.then(async () => {
+					await axios
+						.get(
+							`https://api.consumet.org/meta/anilist/watch/${current}?provider=${provider}`,
+							{
+								cancelToken: source.token,
+							}
+						)
+						.then((response) => {
+							setVideoLoading(true)
+							if (provider === "zoro") {
+								const urlData = response
+								const zoroUrl = urlData.data.sources.find((obj) => {
+									if (obj.quality === "default") {
+										return obj.quality === "default"
+									}
+									if (obj.quality === "auto") {
+										return obj.quality === "auto"
+									}
+									if (obj.quality === "backup") {
+										return obj.quality === "backup"
+									}
+								})
+								setSubtitles(urlData.data.subtitles)
+								setVideoUrl(`https://cors.proxy.consumet.org/${zoroUrl.url}`)
+							} else {
+								const urlData = response
+								const gogoUrl = urlData.data.sources.find((obj) => {
+									if (obj.quality === "default") {
+										return obj.quality === "default"
+									}
+									if (obj.quality === "auto") {
+										return obj.quality === "auto"
+									}
+									if (obj.quality === "backup") {
+										return obj.quality === "backup"
+									}
+								})
+								setVideoUrl(gogoUrl.url)
+							}
+							setVideoLoading(false)
+						})
 				})
 				.catch((thrown) => {
 					if (axios.isCancel(thrown)) return
 				})
 
-			const episodeTitle = listEpisode.data.episodes.find((obj) => {
-				return obj.id === current
-			})
-			setInfo(listEpisode.data.episodes)
-			setVideoUrl(
-				urlData.data.sources.find((obj) => {
-					return obj.quality === "default"
-				})
-			)
-			setWatchDetail(
-				`${
-					listEpisode.data.title?.english ||
-					listEpisode.data.title?.romanji ||
-					listEpisode.data.title?.native
-				} - EP. ${episodeTitle.number} - ${episodeTitle.title}`
-			)
-			setVideoLoading(false)
-			setLoading(false)
 			const element = document.getElementsByClassName("active")[0]
 			if (element) {
 				element.scrollIntoView({ behavior: "smooth" })
@@ -66,7 +102,7 @@ function AnimeWatchENG() {
 		return () => {
 			source.cancel()
 		}
-	}, [animeId, current])
+	}, [animeId, current, provider])
 
 	const skip = (time) => {
 		document.getElementsByTagName("video")[0].currentTime =
@@ -133,9 +169,14 @@ function AnimeWatchENG() {
 				{videoLoading ? (
 					<LoadingRequest />
 				) : (
-					<VideoPlayerSource videoUrl={videoUrl.url} index={current} />
+					<>
+						<VideoPlayerSource
+							videoUrl={videoUrl}
+							index={current}
+							subtitles={subtitles}
+						/>
+					</>
 				)}
-
 				<div className="episode-content">
 					<div className="episode-section">
 						<div className="episode-section-fixed">
@@ -168,7 +209,7 @@ function AnimeWatchENG() {
 					<div className="episode-bracket">
 						{info.map((item, i) => (
 							<Link
-								to={`/eng/watch/${animeId}?current=${item.id}`}
+								to={`/eng/watch/${animeId}?current=${item.id}&provider=${provider}`}
 								style={{ color: "white" }}
 								key={item.number}
 								title={
