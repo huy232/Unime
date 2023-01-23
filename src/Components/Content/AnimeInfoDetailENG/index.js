@@ -12,10 +12,10 @@ function AnimeInfoDetailENG({ loading, info }) {
 	})
 
 	return (
-		<div className="w-[70vw]">
+		<div className="w-[70vw] max-lg:w-full">
 			<div className="eng-title">
 				<h1
-					className={`font-black`}
+					className={`font-black max-lg:text-center`}
 					style={{ color: `${info?.color || "#fff"}` }}
 				>
 					{info.title?.english || info.title?.romaji || info.title?.native}
@@ -31,11 +31,11 @@ function AnimeInfoDetailENG({ loading, info }) {
 			</div>
 			{!loading && (
 				<>
-					<p>Genres:</p>
-					<div className="genres flex">
+					<p className="max-lg:text-center">Genres:</p>
+					<div className="genres flex flex-wrap max-lg:flex-col max-lg:items-center">
 						{resultCategory.map((genre) => (
 							<Link to={`/eng/anime/${genre.slug}`} key={genre.slug}>
-								<div className="cursor-pointer rounded p-[10px] bg-[#5f5f5f29] mx-[10px] my-0 duration-200 hover:opacity-80 ease-in-out">
+								<div className="cursor-pointer rounded p-[10px] bg-[#5f5f5f29] mx-[10px] my-[6px] duration-200 hover:opacity-80 ease-in-out">
 									{genre.name}
 								</div>
 							</Link>

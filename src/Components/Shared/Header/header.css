@@ -106,7 +106,7 @@
 	color: #fff;
 }
 
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 1024px) {
 	.navbar-brand {
 		font-size: 1rem;
 	}
@@ -126,7 +126,7 @@
 	}
 }
 
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 1024px) {
 	.dropdown-menu.show {
 		overflow-y: scroll;
 		height: 140px;

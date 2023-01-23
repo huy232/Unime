@@ -34,7 +34,7 @@ function AnimeInfoENG() {
 	return (
 		<div>
 			<AnimeInfoBannerENG loading={loading} info={info} />
-			<div className="w-100 flex relative">
+			<div className="w-100 flex relative max-lg:flex-col">
 				<AnimeInfoBoxENG loading={loading} info={info} />
 				<AnimeInfoDetailENG loading={loading} info={info} />
 			</div>

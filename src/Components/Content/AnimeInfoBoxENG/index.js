@@ -3,7 +3,7 @@ import React from "react"
 
 function AnimeInfoBoxENG({ loading, info }) {
 	return (
-		<div className="w-[30vw]">
+		<div className="w-[30vw] max-lg:w-full">
 			<div className="info-image flex justify-center mt-[-5rem] mb-[20px]">
 				{loading ? (
 					<Skeleton
@@ -22,7 +22,7 @@ function AnimeInfoBoxENG({ loading, info }) {
 					/>
 				)}
 			</div>
-			<div className="text-right [&>*]:mx-[60px] [&>*]:my-[0]">
+			<div className="text-right [&>*]:mx-[60px] [&>*]:my-[0] max-lg:text-center">
 				{info?.type && (
 					<div>
 						<h5 className="font-black p-[6px] bg-[#282828]/[0.8] inline-block rounded">

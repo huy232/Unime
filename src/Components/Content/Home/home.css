@@ -408,13 +408,13 @@ h1,
 	padding: 0 !important;
 }
 
-@media screen and (min-width: 992px) and (max-width: 1600px) {
+@media screen and (min-width: 1024px) and (max-width: 1600px) {
 	.homeSwiper .swiper-slide {
 		width: 22.5% !important;
 	}
 }
 
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 1024px) {
 	.card-container:hover .overlay-card {
 		opacity: 1;
 	}
@@ -432,7 +432,7 @@ h1,
 	}
 }
 
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 1024px) {
 	.swiper-button-next,
 	.swiper-button-prev {
 		display: none !important;

@@ -97,7 +97,7 @@ function HeaderENG() {
 									value={input}
 								/>
 								<button
-									onClick={handleSubmit}
+									onClick={() => handleSubmit()}
 									type="submit"
 									style={{
 										backgroundColor: "var(--bs-dark-rgb)",

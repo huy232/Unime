@@ -15,12 +15,10 @@
 .anime-nav-logout {
 	display: flex !important;
 	align-items: center;
-	padding: 0 !important;
-	margin: 0;
+
 	height: 100%;
 	justify-content: center;
-	margin-top: 2px;
-	margin-left: 12px;
+
 	transition: 0.3s !important;
 }
 
@@ -67,7 +65,7 @@
 	user-select: none;
 }
 
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 1024px) {
 	.user-container {
 		margin-top: 18px;
 		margin-left: auto;
