@@ -13,6 +13,11 @@
 	opacity: 0.8;
 }
 
+.btn-active-heading {
+	background: rgb(165, 97, 42) !important;
+	color: rgba(0, 0, 0, 0.877);
+}
+
 @media screen and (max-width: 992px) {
 	.language-container {
 		margin-right: auto;

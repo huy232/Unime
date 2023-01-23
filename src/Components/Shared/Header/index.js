@@ -6,7 +6,7 @@ import "./header.css"
 
 function Header() {
 	const { language } = useAuth()
-	return <>{language === "vi" ? <HeaderVI /> : <HeaderENG />}</>
+	return <>{language === "eng" ? <HeaderENG /> : <HeaderVI />}</>
 }
 
 export default Header
