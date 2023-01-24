@@ -26,8 +26,8 @@ function Home({ instance }) {
 		const CancelToken = axios.CancelToken
 		const source = CancelToken.source()
 
-		const getNew = () => {
-			instance
+		const getNew = async () => {
+			await instance
 				.get("/newest", {
 					cancelToken: source.token,
 				})
@@ -41,8 +41,8 @@ function Home({ instance }) {
 				})
 		}
 
-		const getRankToday = () => {
-			instance
+		const getRankToday = async () => {
+			await instance
 				.get("/top", {
 					cancelToken: source.token,
 				})
@@ -55,8 +55,8 @@ function Home({ instance }) {
 					if (axios.isCancel(thrown)) return
 				})
 		}
-		const getRandom = () => {
-			instance
+		const getRandom = async () => {
+			await instance
 				.get("/today", {
 					cancelToken: source.token,
 				})
