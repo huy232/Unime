@@ -87,13 +87,11 @@ function AnimeInfoDetailENG({
 					<div className="list-episode-title-main">
 						<h4 style={{ marginTop: "30px" }}>EPISODE LIST</h4>
 					</div>
-					{info.episodes.length > 0 && (
-						<div>
-							{!loading && (
-								<AnimeInfoEpisodeHolderENG info={info} provider={provider} />
-							)}
-						</div>
-					)}
+					<div>
+						{!loading && (
+							<AnimeInfoEpisodeHolderENG info={info} provider={provider} />
+						)}
+					</div>
 				</>
 			)}
 		</div>

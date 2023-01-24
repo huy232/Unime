@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react"
-import PropTypes from "prop-types"
+import { useAuth } from "../../../Contexts/auth"
 import videojs from "video.js"
 import "video.js/dist/video-js.min.css"
 import "./videojs.css"
@@ -21,8 +21,15 @@ const usePlayer = ({
 }) => {
 	const videoRef = useRef(null)
 	const [player, setPlayer] = useState(null)
+	const { language } = useAuth()
 
 	useEffect(() => {
+		let trackSubtitles = subtitles.map((sub) => ({
+			src: sub.url,
+			label: sub.lang,
+			kind: "captions",
+			default: sub.lang === "Vietnamese - Tiếng Việt",
+		}))
 		const options = {
 			userActions: {
 				hotkeys: {
@@ -49,29 +56,30 @@ const usePlayer = ({
 				qualityLevel: {},
 				hlsQualitySelector: { displayCurrentQuality: true },
 			},
+			tracks: trackSubtitles,
 		}
 
-		const vjsPlayer = videojs(videoRef.current, {
+		let vjsPlayer = videojs(videoRef.current, {
 			...options,
 			controls,
 			autoplay,
 			sources: [src],
 		})
+
 		setPlayer(vjsPlayer)
 
 		return () => {
-			if (player !== null) {
-				if (player.isDisposed_ === true) {
-					player.dispose()
-				}
+			if (player !== null && player.isDisposed_ === true) {
+				player.dispose()
 			}
 		}
-	}, [autoplay, controls, index, player, src])
+	}, [autoplay, controls, index, language, player, src, subtitles])
+
 	useEffect(() => {
 		if (player !== null) {
 			player.src({ src })
 		}
-	}, [player, src])
+	}, [language, player, src, subtitles])
 
 	return videoRef
 }
@@ -95,31 +103,7 @@ const VideoPlayer = ({
 		subtitles,
 	})
 
-	return (
-		<>
-			<video ref={playerRef} className="video-js">
-				{subtitles.map((subtitle, i) => (
-					<track
-						key={i}
-						kind="captions"
-						src={subtitle.url}
-						label={subtitle.lang}
-					></track>
-				))}
-			</video>
-		</>
-	)
-}
-
-VideoPlayer.propTypes = {
-	src: PropTypes.string.isRequired,
-	controls: PropTypes.bool,
-	autoplay: PropTypes.bool,
-}
-
-VideoPlayer.defaultProps = {
-	controls: true,
-	autoplay: false,
+	return <video ref={playerRef} className="video-js"></video>
 }
 
 export default VideoPlayer
