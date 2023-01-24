@@ -13,6 +13,9 @@ function AnimeInfoENG() {
 	const [provider, setProvider] = useState(
 		localStorage.getItem("unime-provider") || ""
 	)
+	const [prefer, setPrefer] = useState(
+		localStorage.getItem("unime-prefer") || "vi"
+	)
 	const [title, setTitle] = useState("Loading")
 
 	const { animeId } = useParams()
@@ -51,6 +54,8 @@ function AnimeInfoENG() {
 					provider={provider}
 					loadingProvider={loadingProvider}
 					setLoadingProvider={setLoadingProvider}
+					prefer={prefer}
+					setPrefer={setPrefer}
 				/>
 			</div>
 		</div>

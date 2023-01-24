@@ -11,6 +11,8 @@ function AnimeInfoDetailENG({
 	provider,
 	loadingProvider,
 	setLoadingProvider,
+	prefer,
+	setPrefer,
 }) {
 	let resultCategory = ENG_GENRES.filter((genre) => {
 		if (info && Object.keys(info).length !== 0) {
@@ -59,35 +61,68 @@ function AnimeInfoDetailENG({
 							</div>
 						</div>
 					)}
-					<div className="max-lg:text-center mt-[12px]">
-						<div>PROVIDER</div>
-						<div className="max-lg:block flex [&>*]:m-[6px] [&>*]:p-[6px] [&>*]:rounded group">
-							<button
-								className={`${
-									provider !== "zoro"
-										? "bg-[#f48484] text-[#1A120B]"
-										: "bg-[#5f5f5f29] text-[#fff]"
-								} hover:opacity-80 duration-200 ease-in-out`}
-								onClick={() => {
-									localStorage.setItem("unime-provider", "")
-									setProvider("")
-								}}
-							>
-								GogoAnime
-							</button>
-							<button
-								className={`${
-									provider === "zoro"
-										? "bg-[#f48484] text-[#1A120B]"
-										: "bg-[#5f5f5f29] text-[#fff]"
-								} hover:opacity-80 duration-200 ease-in-out`}
-								onClick={() => {
-									localStorage.setItem("unime-provider", "zoro")
-									setProvider("zoro")
-								}}
-							>
-								Zoro
-							</button>
+					<div className="max-lg:text-center mt-[12px] flex max-lg:flex-col justify-between lg:[&>*]:mx-[20px]">
+						<div>
+							<div>PROVIDER</div>
+							<div className="max-lg:block flex [&>*]:m-[6px] [&>*]:p-[6px] [&>*]:rounded group">
+								<button
+									className={`${
+										provider !== "zoro"
+											? "bg-[#f48484] text-[#1A120B]"
+											: "bg-[#5f5f5f29] text-[#fff]"
+									} hover:opacity-80 duration-200 ease-in-out`}
+									onClick={() => {
+										localStorage.setItem("unime-provider", "")
+										setProvider("")
+									}}
+								>
+									GogoAnime
+								</button>
+								<button
+									className={`${
+										provider === "zoro"
+											? "bg-[#f48484] text-[#1A120B]"
+											: "bg-[#5f5f5f29] text-[#fff]"
+									} hover:opacity-80 duration-200 ease-in-out`}
+									onClick={() => {
+										localStorage.setItem("unime-provider", "zoro")
+										setProvider("zoro")
+									}}
+								>
+									Zoro
+								</button>
+							</div>
+						</div>
+						<div>
+							<div className="lg:text-right">PREFER</div>
+							<div className="max-lg:block flex [&>*]:m-[6px] [&>*]:p-[6px] [&>*]:rounded group ">
+								<button
+									className={`${
+										prefer === "vi"
+											? "bg-[#f48484] text-[#1A120B]"
+											: "bg-[#5f5f5f29] text-[#fff]"
+									} hover:opacity-80 duration-200 ease-in-out`}
+									onClick={() => {
+										localStorage.setItem("unime-prefer", "vi")
+										setPrefer("vi")
+									}}
+								>
+									VI
+								</button>
+								<button
+									className={`${
+										prefer === "eng"
+											? "bg-[#f48484] text-[#1A120B]"
+											: "bg-[#5f5f5f29] text-[#fff]"
+									} hover:opacity-80 duration-200 ease-in-out`}
+									onClick={() => {
+										localStorage.setItem("unime-prefer", "eng")
+										setPrefer("eng")
+									}}
+								>
+									ENG
+								</button>
+							</div>
 						</div>
 					</div>
 					<div className="list-episode-title-main">
@@ -95,7 +130,11 @@ function AnimeInfoDetailENG({
 					</div>
 					<div>
 						{!loading && (
-							<AnimeInfoEpisodeHolderENG info={info} provider={provider} />
+							<AnimeInfoEpisodeHolderENG
+								info={info}
+								provider={provider}
+								prefer={prefer}
+							/>
 						)}
 					</div>
 				</>

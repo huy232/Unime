@@ -14,6 +14,7 @@ function AnimeWatchENG() {
 	const queryParams = new URLSearchParams(window.location.search)
 	const current = queryParams.get("current")
 	const provider = queryParams.get("provider")
+	const prefer = queryParams.get("prefer")
 	const [info, setInfo] = useState([])
 	const [watchDetail, setWatchDetail] = useState("Loading")
 	const [videoUrl, setVideoUrl] = useState()
@@ -107,7 +108,7 @@ function AnimeWatchENG() {
 	}, [animeId, current, provider])
 
 	const chooseEpisode = (episodeId) => {
-		window.location.href = `${MAINSITE}/eng/watch/${animeId}?current=${episodeId}&provider=${provider}`
+		window.location.href = `${MAINSITE}/eng/watch/${animeId}?current=${episodeId}&provider=${provider}&prefer=${prefer}`
 	}
 
 	const skip = (time) => {
@@ -214,7 +215,7 @@ function AnimeWatchENG() {
 					<div className="episode-bracket">
 						{info.map((item, i) => (
 							<Link
-								to={`/eng/watch/${animeId}?current=${item.id}&provider=${provider}`}
+								to={`/eng/watch/${animeId}?current=${item.id}&provider=${provider}&prefer=${prefer}`}
 								style={{ color: "white" }}
 								key={item.number}
 								title={

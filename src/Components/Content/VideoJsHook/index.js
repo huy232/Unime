@@ -22,8 +22,24 @@ const usePlayer = ({
 	const videoRef = useRef(null)
 	const [player, setPlayer] = useState(null)
 	const { language } = useAuth()
+	const queryParams = new URLSearchParams(window.location.search)
+	const prefer = queryParams.get("prefer")
+	const backupLanguage = localStorage.getItem("unime-prefer")
+
+	let currentLanguage = prefer
+
+	if (backupLanguage) {
+		currentLanguage = backupLanguage
+	} else {
+		currentLanguage = language
+	}
 
 	useEffect(() => {
+		const preferLanguage = {
+			vi: "Vietnamese - Tiếng Việt",
+			eng: "English",
+		}
+
 		const options = {
 			userActions: {
 				hotkeys: {
@@ -55,7 +71,7 @@ const usePlayer = ({
 						src: sub.url,
 						label: sub.lang,
 						kind: "captions",
-						default: sub.lang === "Vietnamese - Tiếng Việt",
+						default: sub.lang === preferLanguage[currentLanguage],
 				  }))
 				: {},
 		}

@@ -13,7 +13,7 @@ SwiperCore.use([Pagination, Navigation])
 
 // ---------------------------
 
-function AnimeInfoEpisodeHolderENG({ info, loading, provider }) {
+function AnimeInfoEpisodeHolderENG({ info, loading, provider, prefer }) {
 	const [episodeList, setEpisodeList] = useState([])
 	const [selectedChunk, setSelectedChunk] = useState(0)
 
@@ -95,7 +95,7 @@ function AnimeInfoEpisodeHolderENG({ info, loading, provider }) {
 								<nav>
 									{
 										<Link
-											to={`/eng/watch/${info.id}?current=${eachEpisode.id}&provider=${provider}`}
+											to={`/eng/watch/${info.id}?current=${eachEpisode.id}&provider=${provider}&prefer=${prefer}`}
 											title={
 												eachEpisode.title
 													? `EP ${eachEpisode.number} - ${eachEpisode.title}`
