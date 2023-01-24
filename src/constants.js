@@ -1,5 +1,5 @@
-// const mainsite = "https://unime.vercel.app"
-const mainsite = "http://localhost:3000"
+const mainsite = "https://unime.vercel.app"
+// const mainsite = "http://localhost:3000"
 // const url = "https://mirai-reborn.herokuapp.com/api"
 // const url = "http://localhost:3000/api"
 const url = "https://mirai-backend.onrender.com/api"
