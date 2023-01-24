@@ -68,7 +68,10 @@ function AnimeInfoDetailENG({
 										? "bg-[#f48484] text-[#1A120B]"
 										: "bg-[#5f5f5f29] text-[#fff]"
 								} hover:opacity-80 duration-200 ease-in-out`}
-								onClick={() => setProvider("")}
+								onClick={() => {
+									localStorage.setItem("unime-provider", "")
+									setProvider("")
+								}}
 							>
 								GogoAnime
 							</button>
@@ -78,7 +81,10 @@ function AnimeInfoDetailENG({
 										? "bg-[#f48484] text-[#1A120B]"
 										: "bg-[#5f5f5f29] text-[#fff]"
 								} hover:opacity-80 duration-200 ease-in-out`}
-								onClick={() => setProvider("zoro")}
+								onClick={() => {
+									localStorage.setItem("unime-provider", "zoro")
+									setProvider("zoro")
+								}}
 							>
 								Zoro
 							</button>

@@ -24,12 +24,6 @@ const usePlayer = ({
 	const { language } = useAuth()
 
 	useEffect(() => {
-		let trackSubtitles = subtitles.map((sub) => ({
-			src: sub.url,
-			label: sub.lang,
-			kind: "captions",
-			default: sub.lang === "Vietnamese - Tiếng Việt",
-		}))
 		const options = {
 			userActions: {
 				hotkeys: {
@@ -56,7 +50,14 @@ const usePlayer = ({
 				qualityLevel: {},
 				hlsQualitySelector: { displayCurrentQuality: true },
 			},
-			tracks: trackSubtitles,
+			tracks: subtitles
+				? subtitles.map((sub) => ({
+						src: sub.url,
+						label: sub.lang,
+						kind: "captions",
+						default: sub.lang === "Vietnamese - Tiếng Việt",
+				  }))
+				: {},
 		}
 
 		let vjsPlayer = videojs(videoRef.current, {

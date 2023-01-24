@@ -10,7 +10,9 @@ function AnimeInfoENG() {
 	const [info, setInfo] = useState({})
 	const [loading, setLoading] = useState(true)
 	const [loadingProvider, setLoadingProvider] = useState(true)
-	const [provider, setProvider] = useState("")
+	const [provider, setProvider] = useState(
+		localStorage.getItem("unime-provider") || ""
+	)
 	const [title, setTitle] = useState("Loading")
 
 	const { animeId } = useParams()
