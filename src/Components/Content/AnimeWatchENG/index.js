@@ -111,61 +111,6 @@ function AnimeWatchENG() {
 		window.location.href = `${MAINSITE}/eng/watch/${animeId}?current=${episodeId}&provider=${provider}&prefer=${prefer}`
 	}
 
-	const skip = (time) => {
-		document.getElementsByTagName("video")[0].currentTime =
-			document.getElementsByTagName("video")[0].currentTime + time
-	}
-
-	const seekForward = () => {
-		skip(1)
-	}
-
-	const seekBackward = () => {
-		skip(-1)
-	}
-
-	const seekUpVolume = () => {
-		document.getElementsByTagName("video")[0].volume = Math.min(
-			1,
-			document.getElementsByTagName("video")[0].volume + 0.04
-		)
-	}
-
-	const seekDownVolume = () => {
-		document.getElementsByTagName("video")[0].volume = Math.max(
-			0,
-			document.getElementsByTagName("video")[0].volume - 0.04
-		)
-	}
-
-	const toggleMute = () => {
-		if (document.getElementsByTagName("video")[0].volume === 1) {
-			document.getElementsByTagName("video")[0].volume = 0
-		} else {
-			document.getElementsByTagName("video")[0].volume = 1
-		}
-	}
-
-	if (videoUrl) {
-		document.addEventListener("keydown", (e) => {
-			if (e.key === "ArrowRight") {
-				seekForward()
-			}
-			if (e.key === "ArrowLeft") {
-				seekBackward()
-			}
-			if (e.key === "ArrowUp") {
-				seekUpVolume()
-			}
-			if (e.key === "ArrowDown") {
-				seekDownVolume()
-			}
-			if (e.key === "m" || e.key === "M") {
-				toggleMute()
-			}
-		})
-	}
-
 	useDocumentTitle(watchDetail)
 	return (
 		<div style={{ marginTop: "-90px" }}>

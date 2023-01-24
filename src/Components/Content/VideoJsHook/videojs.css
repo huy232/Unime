@@ -8,10 +8,10 @@
 }
 
 .video-js .vjs-big-play-button {
-	top: 50%;
-	left: 45%;
-	border: none;
-	border-radius: 3rem;
+	top: 50% !important;
+	left: calc(50% - 45px) !important;
+	border: none !important;
+	border-radius: 3rem !important;
 	color: black;
 }
 
@@ -33,6 +33,10 @@
 
 .vjs-modal-dialog-content {
 	color: black;
+}
+
+.video-js .vjs-control-bar {
+	bottom: 10px !important;
 }
 
 .top-wrapper {

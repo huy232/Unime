@@ -5,8 +5,12 @@ import "video.js/dist/video-js.min.css"
 import "./videojs.css"
 import videoJsContribQualityLevels from "videojs-contrib-quality-levels"
 import videojsHlsQualitySelector from "videojs-hls-quality-selector"
+import videoSeekButtons from "videojs-seek-buttons"
+import "video.js/dist/video-js.css"
+import "videojs-seek-buttons/dist/videojs-seek-buttons.css"
 videojs.registerPlugin("qualityLevel", videoJsContribQualityLevels)
 videojs.registerPlugin("hlsQualitySelector", videojsHlsQualitySelector)
+videojs.registerPlugin("videoSeekButtons", videoSeekButtons)
 
 // eslint-disable-next-line import/prefer-default-export
 
@@ -49,22 +53,30 @@ const usePlayer = ({
 					playPauseKey: function (event) {
 						return event.which === 32
 					},
+					muteKey: function (event) {
+						return event.which === 77
+					},
 				},
 			},
 			fill: true,
 			fluid: true,
 			preload: "auto",
 			html5: {
-				hls: {
+				vhs: {
 					enableLowInitialPlaylist: true,
 					smoothQualityChange: true,
 					overrideNative: true,
 				},
+				nativeTextTracks: false,
 			},
 			playbackRates: [0.5, 1, 1.5, 2],
 			plugins: {
 				qualityLevel: {},
 				hlsQualitySelector: { displayCurrentQuality: true },
+				videoSeekButtons: {
+					forward: 15,
+					back: 15,
+				},
 			},
 			tracks: subtitles
 				? subtitles.map((sub) => ({
@@ -82,6 +94,18 @@ const usePlayer = ({
 			autoplay,
 			sources: [src],
 		})
+
+		const captionSettings = {
+			text: {
+				color: "white",
+				opacity: "",
+			},
+			background: {},
+			window: {},
+			fontSize: {},
+			textEdgeStyle: {},
+			fontFamily: {},
+		}
 
 		setPlayer(vjsPlayer)
 
@@ -120,7 +144,56 @@ const VideoPlayer = ({
 		subtitles,
 	})
 
-	return <video ref={playerRef} className="video-js"></video>
+	return (
+		<video
+			ref={playerRef}
+			className="video-js"
+			onLoadedData={() => {
+				const skip = (time) => {
+					playerRef.current.currentTime = playerRef.current.currentTime + time
+				}
+
+				const seekForward = () => {
+					skip(15)
+				}
+
+				const seekBackward = () => {
+					skip(-15)
+				}
+
+				const seekUpVolume = () => {
+					try {
+						playerRef.current.volume = playerRef.current.volume + 0.2
+					} catch (err) {
+						playerRef.current.volume = 1
+					}
+				}
+
+				const seekDownVolume = () => {
+					try {
+						playerRef.current.volume = playerRef.current.volume - 0.2
+					} catch (err) {
+						playerRef.current.volume = 0
+					}
+				}
+
+				document.addEventListener("keydown", (e) => {
+					if (e.key === "ArrowRight") {
+						seekForward()
+					}
+					if (e.key === "ArrowLeft") {
+						seekBackward()
+					}
+					if (e.key === "ArrowUp") {
+						seekUpVolume()
+					}
+					if (e.key === "ArrowDown") {
+						seekDownVolume()
+					}
+				})
+			}}
+		></video>
+	)
 }
 
 export default VideoPlayer
