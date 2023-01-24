@@ -22,7 +22,7 @@ function AnimeBrowseENG() {
 			setTimeout(async () => {
 				axios
 					.get(
-						`https://api.consumet.org/meta/anilist/recent-episodes?page=${page}`,
+						`https://api.consumet.org/meta/anilist/advanced-search?page=${page}`,
 						{
 							cancelToken: source.token,
 						}
@@ -69,10 +69,7 @@ function AnimeBrowseENG() {
 					next={scrollThreshold}
 					hasMore={hasNextPage}
 					loader={
-						<div
-							className="loading-spin"
-							style={{ textAlign: "center", marginTop: "50px" }}
-						>
+						<div className="loading-spin" style={{ textAlign: "center" }}>
 							<LoadingSpin primaryColor="red" />
 						</div>
 					}
@@ -101,7 +98,10 @@ function AnimeBrowseENG() {
 										/>
 									</div>
 									<div className="anime-item-title h-[60px] w-[180px]">
-										<p className="line-clamp-2">
+										<p
+											className="line-clamp-2"
+											style={{ color: item?.color || "#fff" }}
+										>
 											{item.title?.english ||
 												item.title?.romaji ||
 												item.title?.native ||

@@ -76,10 +76,7 @@ function AnimeSearchENG() {
 					next={scrollThreshold}
 					hasMore={hasNextPage}
 					loader={
-						<div
-							className="loading-spin"
-							style={{ textAlign: "center", marginTop: "50px" }}
-						>
+						<div className="loading-spin" style={{ textAlign: "center" }}>
 							<LoadingSpin primaryColor="red" />
 						</div>
 					}
@@ -107,7 +104,10 @@ function AnimeSearchENG() {
 										/>
 									</div>
 									<div className="search-item-title h-[60px] w-[180px]">
-										<p className="line-clamp-2">
+										<p
+											className="line-clamp-2"
+											style={{ color: item?.color || "#fff" }}
+										>
 											{item.title?.english ||
 												item.title?.romaji ||
 												item.title?.native}

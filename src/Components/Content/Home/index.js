@@ -40,7 +40,6 @@ function Home({ instance }) {
 					if (axios.isCancel(thrown)) return
 				})
 		}
-
 		const getRankToday = async () => {
 			await instance
 				.get("/top", {

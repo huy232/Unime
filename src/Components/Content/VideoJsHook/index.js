@@ -148,6 +148,8 @@ const VideoPlayer = ({
 		<video
 			ref={playerRef}
 			className="video-js"
+			x-webkit-airplay="deny"
+			crossOrigin="anonymous"
 			onLoadedData={() => {
 				const skip = (time) => {
 					playerRef.current.currentTime = playerRef.current.currentTime + time
