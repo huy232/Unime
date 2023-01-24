@@ -37,7 +37,7 @@ function User({ handleScrollToTop }) {
 						<div className="user-info-name">{user.user_metadata.full_name}</div>
 					</div>
 					<Nav.Link
-						className="anime-nav-logout"
+						className="anime-nav-logout "
 						as={Link}
 						to="/"
 						onClick={() => handleSignOut()}
@@ -53,7 +53,7 @@ function User({ handleScrollToTop }) {
 				</div>
 			) : (
 				<Nav.Link
-					className="anime-nav-login"
+					className="anime-nav-login "
 					as={Link}
 					to="/login"
 					onClick={() => handleScrollToTop()}

@@ -6,6 +6,8 @@ import useDocumentTitle from "../DocumentTitleHook"
 import { BsFillArrowLeftSquareFill } from "react-icons/bs"
 import { Link } from "react-router-dom"
 import LoadingRequest from "../LoadingRequest"
+import { API } from "../../../constants"
+import { MAINSITE } from "../../../constants"
 
 function AnimeWatchENG() {
 	const { animeId } = useParams()
@@ -53,7 +55,6 @@ function AnimeWatchENG() {
 							}
 						)
 						.then((response) => {
-							setVideoLoading(true)
 							if (provider === "zoro") {
 								const urlData = response
 								const zoroUrl = urlData.data.sources.find((obj) => {
@@ -68,7 +69,8 @@ function AnimeWatchENG() {
 									}
 								})
 								setSubtitles(urlData.data.subtitles)
-								setVideoUrl(`https://cors.proxy.consumet.org/${zoroUrl.url}`)
+								const CORS = "https://cors.proxy.consumet.org/"
+								setVideoUrl(`${API}/cors/${zoroUrl.url}`)
 							} else {
 								const urlData = response
 								const gogoUrl = urlData.data.sources.find((obj) => {
@@ -103,6 +105,10 @@ function AnimeWatchENG() {
 			source.cancel()
 		}
 	}, [animeId, current, provider])
+
+	const chooseEpisode = (episodeId) => {
+		window.location.href = `${MAINSITE}/eng/watch/${animeId}?current=${episodeId}&provider=${provider}`
+	}
 
 	const skip = (time) => {
 		document.getElementsByTagName("video")[0].currentTime =
@@ -169,14 +175,13 @@ function AnimeWatchENG() {
 				{videoLoading ? (
 					<LoadingRequest />
 				) : (
-					<>
-						<VideoPlayerSource
-							videoUrl={videoUrl}
-							index={current}
-							subtitles={subtitles}
-						/>
-					</>
+					<VideoPlayerSource
+						videoUrl={videoUrl}
+						index={current}
+						subtitles={subtitles}
+					/>
 				)}
+
 				<div className="episode-content">
 					<div className="episode-section">
 						<div className="episode-section-fixed">
@@ -218,6 +223,7 @@ function AnimeWatchENG() {
 										: `Episode - ${item.number}`
 								}
 								className={current === item.id ? "episode active" : "episode"}
+								onClick={() => chooseEpisode(item.id)}
 							>
 								<div>
 									<p>

@@ -35,13 +35,11 @@ function HeaderENG() {
 
 	const handleSubmit = (e) => {
 		e.preventDefault()
-		console.log("Run to here")
 		navigate(`/eng/search/${encodeURI(input)}`)
 		handleScrollToTop()
 		setInput("")
 	}
 	const handleKeypress = (e) => {
-		console.log(e)
 		//it triggers by pressing the enter key
 		if (e.keyCode === 13) {
 			handleSubmit()
