@@ -38,7 +38,7 @@ function RandomAnimeENG({ randomAnime, loadingRandomAnime }) {
 										randomAnime.title.native}
 								</h2>
 							</div>
-							<div className="flex flex-row flex-wrap">
+							<div className="flex flex-row flex-wrap max-lg:justify-center">
 								{randomAnime.genres.map((genre) => (
 									<div className="" key={genre}>
 										<p className="m-[6px] p-[6px] bg-[#5f5f5f29] rounded">
@@ -48,7 +48,7 @@ function RandomAnimeENG({ randomAnime, loadingRandomAnime }) {
 								))}
 							</div>
 							<div
-								className="mx-[20px]"
+								className="mx-[20px] max-lg:text-center"
 								dangerouslySetInnerHTML={{
 									__html: randomAnime.description?.replace(/<[br]+>/g, ""),
 								}}
@@ -80,7 +80,7 @@ function RandomAnimeENG({ randomAnime, loadingRandomAnime }) {
 									<p className="my-0 uppercase">{randomAnime.subOrDub}</p>
 								</div>
 							</div>
-							<div className="my-[14px] max-lg:text-center">
+							<div className="mx-[12px] my-[14px] max-lg:text-center">
 								<Link
 									className="cursor-pointer hover:opacity-80 duration-200 ease-in-out p-[10px] bg-[#FF6E31] hover:text-[#1A120B] rounded"
 									to={`/eng/info/${randomAnime.id}`}

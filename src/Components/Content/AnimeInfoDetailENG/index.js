@@ -3,16 +3,16 @@ import { ENG_GENRES } from "../../../constants"
 import { Link } from "react-router-dom"
 import ReactPlayer from "react-player"
 import AnimeInfoEpisodeHolderENG from "../AnimeInfoEpisodeHolderENG"
+import DateAiring from "../DateAiring"
 
 function AnimeInfoDetailENG({
 	loading,
 	info,
 	setProvider,
 	provider,
-	loadingProvider,
-	setLoadingProvider,
 	prefer,
 	setPrefer,
+	timeZone,
 }) {
 	let resultCategory = ENG_GENRES.filter((genre) => {
 		if (info && Object.keys(info).length !== 0) {
@@ -30,11 +30,26 @@ function AnimeInfoDetailENG({
 					{info.title?.english || info.title?.romaji || info.title?.native}
 				</h1>
 			</div>
+			{/* new Date(anime.airingAt * 1000) */}
+			{info.nextAiringEpisode && (
+				<div className="flex flex-row max-lg:flex-col text-center">
+					<p className="leading-none mx-[6px] p-[6px]">
+						Next episode estimated:{" "}
+					</p>
+					<p className="leading-none mx-[6px] bg-[#533483] rounded p-[6px]">
+						{new Date(info.nextAiringEpisode.airingTime * 1000)
+							.toLocaleString("en-US", {
+								timeZone: `${timeZone}`,
+							})
+							.toString()}
+					</p>
+				</div>
+			)}
 			<div className="description">
 				<p
 					className="anime-description-paragraph"
 					dangerouslySetInnerHTML={{
-						__html: info.description?.replace(/<[br]+>/g, ""),
+						__html: info.description,
 					}}
 				></p>
 			</div>

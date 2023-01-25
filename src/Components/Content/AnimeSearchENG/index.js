@@ -76,7 +76,7 @@ function AnimeSearchENG() {
 					next={scrollThreshold}
 					hasMore={hasNextPage}
 					loader={
-						<div className="loading-spin" style={{ textAlign: "center" }}>
+						<div className="loading-spin">
 							<LoadingSpin primaryColor="red" />
 						</div>
 					}

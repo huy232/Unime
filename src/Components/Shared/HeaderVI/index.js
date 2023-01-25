@@ -94,7 +94,7 @@ function HeaderVI() {
 							</NavDropdown>
 							<form style={{ display: "flex" }}>
 								<TextField
-									label="Tìm kiếm"
+									label="Tìm kiếm Anime"
 									variant="outlined"
 									className="search-navbar"
 									color="primary"

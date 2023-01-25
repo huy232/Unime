@@ -5,3 +5,14 @@
 .content {
 	min-height: 100vh;
 }
+
+.loading-spin {
+	text-align: center;
+	margin: 40px 0;
+	width: 100% !important;
+}
+
+.swiper-slide {
+	margin-left: auto;
+	margin-right: auto;
+}

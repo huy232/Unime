@@ -26,10 +26,10 @@ function NotFound() {
 	}, [setLocation])
 
 	return (
-		<div className="w-100 h-[100vh] mt-[-140px]">
-			<div className="h-[130px] w-100"></div>
+		<div className="w-100 mt-[-140px]">
+			<div className="h-[120px] w-100"></div>
 			<div
-				className="w-100 h-[90vh]"
+				className="w-100 h-100"
 				style={{
 					background: `linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(${notFound})`,
 					backgroundSize: `cover`,

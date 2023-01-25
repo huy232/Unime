@@ -17,7 +17,7 @@ function InfoAnimeEpisodeHandle({
 			{loading ? (
 				""
 			) : (
-				<div className="episode-wrapper">
+				<div className="episode-wrapper mb-[20px]">
 					<div className="episode-list-detail">
 						<Row
 							xs={1}

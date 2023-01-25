@@ -23,7 +23,7 @@ function InfoSpecialEpisodeList({
 			{loading ? (
 				""
 			) : (
-				<div className="special-episode-wrapper" style={{ marginTop: "46px" }}>
+				<div className="special-episode-wrapper mt-[20px] mb-[20px]">
 					<div className="episode-list" style={{ textAlign: "center" }}>
 						<h4>DANH SÁCH TẬP ĐIỂM TÂM</h4>
 						<Swiper

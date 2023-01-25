@@ -80,17 +80,15 @@ function AnimeInfoBoxENG({ loading, info }) {
 						<p className="uppercase">{info?.subOrDub}</p>
 					</div>
 				)}
-				{info?.studio && (
+				{info?.studios && (
 					<>
 						<div>
 							<h5 className="font-black p-[6px] bg-[#282828]/[0.8] inline-block rounded">
 								STUDIO
 							</h5>
 							<p>
-								{info?.studio.map((studio, i, arr) =>
-									i !== arr.length - 1
-										? `${studio.name + ", "}`
-										: `${studio.name}`
+								{info?.studios.map((studio, i, arr) =>
+									i !== arr.length - 1 ? `${studio + ", "}` : `${studio}`
 								)}
 							</p>
 						</div>

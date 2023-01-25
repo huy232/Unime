@@ -73,10 +73,7 @@ function AnimeCollection({ instance }) {
 
 			<div className="anime-list">
 				{loading ? (
-					<div
-						className="collection-loading-spin"
-						style={{ textAlign: "center", marginTop: "50px" }}
-					>
+					<div className="loading-spin">
 						<LoadingSpin primaryColor="red" />
 					</div>
 				) : (

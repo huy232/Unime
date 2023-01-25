@@ -84,10 +84,7 @@ function AnimeList({ instance }) {
 						next={scrollThreshold}
 						hasMore={page === totalPage ? false : true}
 						loader={
-							<div
-								className="loading-spin"
-								style={{ textAlign: "center", marginTop: "50px" }}
-							>
+							<div className="loading-spin">
 								<LoadingSpin primaryColor="red" />
 							</div>
 						}

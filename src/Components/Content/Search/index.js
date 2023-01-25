@@ -51,10 +51,7 @@ function Search({ instance }) {
 			</div>
 			<Row xs={1} sm={2} md={3} lg={4} className="search-anime-row">
 				{loading ? (
-					<div
-						className="search-loading-spin"
-						style={{ textAlign: "center", marginTop: "50px" }}
-					>
+					<div className="loading-spin">
 						<LoadingSpin primaryColor="red" />
 					</div>
 				) : searchData.length === 0 ? (

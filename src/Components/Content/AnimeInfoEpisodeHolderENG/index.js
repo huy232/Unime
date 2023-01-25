@@ -2,6 +2,11 @@ import { useEffect, useState } from "react"
 import { Card, Row, Col } from "react-bootstrap"
 import { BsFillPlayFill } from "react-icons/bs"
 import { Link } from "react-router-dom"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import {
+	faFastBackward,
+	faFastForward,
+} from "@fortawesome/free-solid-svg-icons"
 // SWIPER
 import { Swiper, SwiperSlide } from "swiper/react"
 
@@ -16,6 +21,8 @@ SwiperCore.use([Pagination, Navigation])
 function AnimeInfoEpisodeHolderENG({ info, loading, provider, prefer }) {
 	const [episodeList, setEpisodeList] = useState([])
 	const [selectedChunk, setSelectedChunk] = useState(0)
+	const [swiper, setSwiper] = useState()
+	const [toggleButton, setToggleButton] = useState(true)
 
 	useEffect(() => {
 		const episodeStructure = async () => {
@@ -27,6 +34,20 @@ function AnimeInfoEpisodeHolderENG({ info, loading, provider, prefer }) {
 		}
 		episodeStructure()
 	}, [info.episodes])
+
+	const jump = (progress, speed) => {
+		if (swiper) {
+			console.log(swiper)
+			if (progress === 0) {
+				setToggleButton(true)
+			} else {
+				setToggleButton(false)
+			}
+
+			swiper.setProgress(progress, speed)
+		}
+	}
+
 	return (
 		<>
 			<div className="episode-list">
@@ -35,53 +56,79 @@ function AnimeInfoEpisodeHolderENG({ info, loading, provider, prefer }) {
 						Anime hasn't upload yet, please come back later.
 					</p>
 				) : (
-					<Swiper
-						slidesPerView="auto"
-						className="swiper-container swiper-info"
-						navigation={true}
-						pagination={{
-							type: "fraction",
-						}}
-					>
-						<div className="swiper-episode-holder">
-							{episodeList.map((episodeChunk, i) => (
-								<SwiperSlide
-									key={i}
-									style={{
-										width: "160px",
-										display: "flex",
-										justifyContent: "center",
-										alignItems: "center",
-									}}
+					<>
+						{swiper?.allowSlideNext && (
+							<div className="flex flex-row mx-auto w-[90%] justify-between">
+								<button
+									onClick={() => jump(0, 500)}
+									className={`mx-[4px] ${
+										toggleButton === true &&
+										"opacity-30 cursor-auto pointer-events-none"
+									}`}
 								>
-									<li
-										onClick={() => {
-											setSelectedChunk(i)
+									<FontAwesomeIcon icon={faFastBackward} />
+								</button>
+								<button
+									onClick={() => jump(1, 500)}
+									className={`mx-[4px] ${
+										toggleButton === false &&
+										"opacity-30 cursor-auto pointer-events-none"
+									}`}
+								>
+									<FontAwesomeIcon icon={faFastForward} />
+								</button>
+							</div>
+						)}
+
+						<Swiper
+							slidesPerView="auto"
+							className="swiper-container swiper-info"
+							navigation={true}
+							pagination={{
+								type: "fraction",
+							}}
+							onSwiper={setSwiper}
+						>
+							<div className="swiper-episode-holder">
+								{episodeList.map((episodeChunk, i) => (
+									<SwiperSlide
+										key={i}
+										style={{
+											width: "160px",
+											display: "flex",
+											justifyContent: "center",
+											alignItems: "center",
 										}}
-										className="episode-chunk"
-										style={
-											selectedChunk === i
-												? {
-														color: "black",
-														backgroundColor: "white",
-														borderRadius: "8px",
-														transition: "all 0.4s linear",
-												  }
-												: {}
-										}
 									>
-										{`${episodeChunk[0].number} - ${
-											episodeChunk[episodeChunk.length - 1].number
-										}`}
-									</li>
-								</SwiperSlide>
-							))}
-						</div>
-					</Swiper>
+										<li
+											onClick={() => {
+												setSelectedChunk(i)
+											}}
+											className="episode-chunk"
+											style={
+												selectedChunk === i
+													? {
+															color: "black",
+															backgroundColor: "white",
+															borderRadius: "8px",
+															transition: "all 0.4s linear",
+													  }
+													: {}
+											}
+										>
+											{`${episodeChunk[0].number} - ${
+												episodeChunk[episodeChunk.length - 1].number
+											}`}
+										</li>
+									</SwiperSlide>
+								))}
+							</div>
+						</Swiper>
+					</>
 				)}
 			</div>
 
-			<div className="episode-wrapper">
+			<div className="episode-wrapper mb-[20px]">
 				<div className="episode-list-detail">
 					<Row
 						xs={1}
