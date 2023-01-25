@@ -35,9 +35,9 @@
 	color: black;
 }
 
-.video-js .vjs-control-bar {
-	bottom: 10px !important;
-}
+/* .video-js .vjs-control-bar {
+	bottom: 0 !important;
+} */
 
 .top-wrapper {
 	display: flex;
@@ -50,4 +50,16 @@
 	font-size: 40px;
 	background-color: red;
 	margin-left: 20px;
+}
+
+.vjs-v7 .vjs-seek-button.skip-back .vjs-icon-placeholder:before {
+	text-align: center;
+	transform: scaleX(1) rotate(360deg) !important;
+	-webkit-transform: scaleX(1) rotate(360deg) !important;
+}
+
+.vjs-seek-button.skip-forward .vjs-icon-placeholder:before {
+	text-align: center;
+	transform: scaleX(-1) rotate(360deg) !important;
+	-webkit-transform: scaleX(-1) rotate(360deg) !important;
 }
