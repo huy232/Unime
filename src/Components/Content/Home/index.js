@@ -11,6 +11,7 @@ import RandomAnime from "../RandomAnime"
 import "./home.css"
 import { useAuth } from "../../../Contexts/auth"
 import HomeENG from "../HomeENG"
+import { MAINSITE } from "../../../constants"
 
 function Home({ instance }) {
 	const [progress, setProgress] = useState(0)
@@ -25,7 +26,6 @@ function Home({ instance }) {
 	useEffect(() => {
 		const CancelToken = axios.CancelToken
 		const source = CancelToken.source()
-
 		const getNew = async () => {
 			await instance
 				.get("/newest", {
@@ -35,40 +35,65 @@ function Home({ instance }) {
 					setNewAnime(data.data.data)
 					setDone1(true)
 				})
-				.then(getRankToday())
-				.catch((thrown) => {
-					if (axios.isCancel(thrown)) return
-				})
-		}
-		const getRankToday = async () => {
-			await instance
-				.get("/top", {
-					cancelToken: source.token,
-				})
-				.then((data) => {
-					setRankToday(data.data.data)
-					setDone2(true)
-				})
-				.then(getRandom())
-				.catch((thrown) => {
-					if (axios.isCancel(thrown)) return
-				})
-		}
-		const getRandom = async () => {
-			await instance
-				.get("/today", {
-					cancelToken: source.token,
-				})
-				.then((data) => {
-					setRandomAnime(data.data.data)
-					setDone3(true)
+				.then(async () => {
+					await instance
+						.get("/top", {
+							cancelToken: source.token,
+						})
+						.then((data) => {
+							setRankToday(data.data.data)
+							setDone2(true)
+						})
+						.then(async () => {
+							await instance
+								.get("/today", {
+									cancelToken: source.token,
+								})
+								.then((data) => {
+									setRandomAnime(data.data.data)
+									setDone3(true)
+								})
+								.catch((thrown) => {
+									if (axios.isCancel(thrown)) return
+								})
+						})
+						.catch((thrown) => {
+							if (axios.isCancel(thrown)) return
+						})
 				})
 				.catch((thrown) => {
 					if (axios.isCancel(thrown)) return
 				})
 		}
+		// const getRankToday = async () => {
+		// 	await instance
+		// 		.get("/top", {
+		// 			cancelToken: source.token,
+		// 		})
+		// 		.then((data) => {
+		// 			setRankToday(data.data.data)
+		// 			setDone2(true)
+		// 		})
+		// 		.then(getRandom())
+		// 		.catch((thrown) => {
+		// 			if (axios.isCancel(thrown)) return
+		// 		})
+		// }
+		// const getRandom = async () => {
+		// 	await instance
+		// 		.get("/today", {
+		// 			cancelToken: source.token,
+		// 		})
+		// 		.then((data) => {
+		// 			setRandomAnime(data.data.data)
+		// 			setDone3(true)
+		// 		})
+		// 		.catch((thrown) => {
+		// 			if (axios.isCancel(thrown)) return
+		// 		})
+		// }
 
-		if (language !== "eng") {
+		if (localStorage.getItem("unime-language") === "vi" || language === "vi") {
 			getNew()
 		}
 

@@ -1,53 +1,51 @@
 .footer {
-    
-    display: flex;
-    flex-direction: row;
-    background: rgb(73, 72, 72);
-    color: white;
-    position: relative;
-    bottom: 0;
-    width: 100%;
-    height: 2.5rem; 
-    margin-top: 100px;
-    align-items: center
-  }
-  .footer > div {
-      padding-left: 30px;
-  }
+	display: flex;
+	flex-direction: row;
+	background: rgb(73, 72, 72);
+	color: white;
+	position: relative;
+	bottom: 0;
+	width: 100%;
+	height: 2.5rem;
+	/* margin-top: 100px; */
+	align-items: center;
+}
+.footer > div {
+	padding-left: 30px;
+}
 
 .facebook-icon svg:hover,
 .discord-icon svg:hover,
 .github-icon svg:hover,
 .go-up-icon svg:hover {
-    transition: all 0.4s ease-in-out;
-    opacity: 1;
-    cursor: pointer;
-    background: black;
-
+	transition: all 0.4s ease-in-out;
+	opacity: 1;
+	cursor: pointer;
+	background: black;
 }
 
 .facebook-icon svg,
 .discord-icon svg,
 .github-icon svg,
 .go-up-icon svg {
-    border-radius: 10px;
-    padding: 3px;
-    text-decoration: none;
+	border-radius: 10px;
+	padding: 3px;
+	text-decoration: none;
 }
 
-.facebook-icon svg{
-    color: #4267B2
+.facebook-icon svg {
+	color: #4267b2;
 }
-.discord-icon svg{
-    color: #7289da
+.discord-icon svg {
+	color: #7289da;
 }
-.github-icon svg{
-    color: whitesmoke
+.github-icon svg {
+	color: whitesmoke;
 }
-.go-up-icon svg{
-    color: #ff7700
+.go-up-icon svg {
+	color: #ff7700;
 }
 
-.last{
-    margin-left: auto
+.last {
+	margin-left: auto;
 }

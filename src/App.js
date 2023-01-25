@@ -24,6 +24,8 @@ import AnimeBrowseENG from "./Components/Content/AnimeBrowseENG"
 import AnimeBrowseCategoryENG from "./Components/Content/AnimeBrowseCategoryENG"
 import AnimeInfoENG from "./Components/Content/AnimeInfoENG"
 import AnimeWatchENG from "./Components/Content/AnimeWatchENG"
+// NOT FOUND
+import NotFound from "./Components/Content/NotFound"
 
 function App() {
 	const instance = axios.create({
@@ -79,6 +81,7 @@ function App() {
 						<Route path="/eng/watch/:animeId" element={<AnimeWatchENG />} />
 						{/* SHARED */}
 						<Route path="login" element={<Login />} />
+						<Route path="*" element={<NotFound />} />
 					</Routes>
 				</div>
 				{exclusionArray.indexOf(window.location.pathname) < 0 && <Footer />}
