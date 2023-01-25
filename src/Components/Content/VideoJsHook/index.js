@@ -44,6 +44,12 @@ const usePlayer = ({
 			eng: "English",
 		}
 
+		let subs = []
+
+		if (subtitles) {
+			subs = subtitles.filter((option) => option.lang !== "Thumbnails")
+		}
+
 		const options = {
 			userActions: {
 				hotkeys: {
@@ -78,14 +84,15 @@ const usePlayer = ({
 					back: 15,
 				},
 			},
-			tracks: subtitles
-				? subtitles.map((sub) => ({
-						src: sub.url,
-						label: sub.lang,
-						kind: "captions",
-						default: sub.lang === preferLanguage[currentLanguage],
-				  }))
-				: {},
+			tracks:
+				subs.length > 0
+					? subs.map((sub) => ({
+							src: sub.url,
+							label: sub.lang,
+							kind: "captions",
+							default: sub.lang === preferLanguage[currentLanguage],
+					  }))
+					: {},
 		}
 
 		let vjsPlayer = videojs(videoRef.current, {
@@ -95,18 +102,6 @@ const usePlayer = ({
 			sources: [src],
 		})
 
-		const captionSettings = {
-			text: {
-				color: "white",
-				opacity: "",
-			},
-			background: {},
-			window: {},
-			fontSize: {},
-			textEdgeStyle: {},
-			fontFamily: {},
-		}
-
 		setPlayer(vjsPlayer)
 
 		return () => {
@@ -114,7 +109,16 @@ const usePlayer = ({
 				player.dispose()
 			}
 		}
-	}, [autoplay, controls, index, language, player, src, subtitles])
+	}, [
+		autoplay,
+		controls,
+		currentLanguage,
+		index,
+		language,
+		player,
+		src,
+		subtitles,
+	])
 
 	useEffect(() => {
 		if (player !== null) {
@@ -192,6 +196,10 @@ const VideoPlayer = ({
 					if (e.key === "ArrowDown") {
 						seekDownVolume()
 					}
+				})
+
+				playerRef.current.thumbnails({
+					src: subtitles.find(({ lang }) => lang === "Thumbnails").url,
 				})
 			}}
 		></video>
