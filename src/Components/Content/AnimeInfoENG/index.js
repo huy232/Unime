@@ -16,7 +16,6 @@ function AnimeInfoENG() {
 	const [prefer, setPrefer] = useState(
 		localStorage.getItem("unime-prefer") || "vi"
 	)
-	const [timeZone, setTimeZone] = useState("")
 	const [title, setTitle] = useState("Loading")
 
 	const { animeId } = useParams()
@@ -29,13 +28,6 @@ function AnimeInfoENG() {
 		const CancelToken = axios.CancelToken
 		const source = CancelToken.source()
 		const getInfo = async () => {
-			const timeZone = await axios
-				.get("http://ip-api.com/json/", {
-					cancelToken: source.token,
-				})
-				.catch((thrown) => {
-					if (axios.isCancel(thrown)) return
-				})
 			const data = await axios
 				.get(
 					`https://api.consumet.org/meta/anilist/info/${animeId}?provider=${provider}`,
@@ -47,7 +39,6 @@ function AnimeInfoENG() {
 					if (axios.isCancel(thrown)) return
 				})
 
-			setTimeZone(timeZone.data.timezone)
 			setTitle(
 				data.data.title?.english ||
 					data.data.title?.romaji ||
@@ -75,7 +66,6 @@ function AnimeInfoENG() {
 					setLoadingProvider={setLoadingProvider}
 					prefer={prefer}
 					setPrefer={setPrefer}
-					timeZone={timeZone}
 				/>
 			</div>
 		</div>
