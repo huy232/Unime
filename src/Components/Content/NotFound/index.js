@@ -6,7 +6,6 @@ import { useAuth } from "../../../Contexts/auth"
 import "./notfound.css"
 
 function NotFound() {
-	const [loading, setLoading] = useState(true)
 	const { language } = useAuth()
 
 	return (
@@ -21,10 +20,8 @@ function NotFound() {
 					backgroundPosition: "center",
 				}}
 			>
-				{loading ? (
-					""
-				) : localStorage.getItem("unime-language") === "vi" ||
-				  language === "vi" ? (
+				{localStorage.getItem("unime-language") === "vi" ||
+				language === "vi" ? (
 					<div className="not-found">
 						<div className="not-found-wrapper">
 							<h2 className="font-black text-[#F55050]">404 Không tìm thấy</h2>
