@@ -1,13 +1,11 @@
 import { useState, useEffect } from "react"
 import { useParams, Link } from "react-router-dom"
 import axios from "axios"
-import VideoPlayerSource from "../VideoPlayer"
-import VideoEmbed from "../VideoEmbed"
-import EnglishIframe from "../EnglishIframe"
-import useDocumentTitle from "../DocumentTitleHook"
+import VideoPlayerSource from "../../../Components/Content/VideoPlayer"
+import VideoEmbed from "../../../Components/Content/VideoEmbed"
+import useDocumentTitle from "../../../Components/Content/DocumentTitleHook"
 import { BsFillArrowLeftSquareFill } from "react-icons/bs"
-import LoadingRequest from "../LoadingRequest"
-import { MAINSITE } from "../../../constants"
+import LoadingRequest from "../../../Components/Content/LoadingRequest"
 import "./animewatch.css"
 
 function AnimeWatch({ instance }) {

@@ -78,18 +78,15 @@ function AnimeBrowseENG() {
 						{allAnime.map((item) => (
 							<Link
 								to={`/eng/info/${item.id}`}
-								title={item.title}
+								title={
+									item.title?.english ||
+									item.title?.romaji ||
+									item.title?.native ||
+									item.title?.userPreferred
+								}
 								key={item.id}
 							>
-								<div
-									className="group anime-item col-span-1 cursor-pointer flex flex-col items-center"
-									title={
-										item.title?.english ||
-										item.title?.romaji ||
-										item.title?.native ||
-										item.title?.userPreferred
-									}
-								>
+								<div className="group anime-item col-span-1 cursor-pointer flex flex-col items-center">
 									<div className="group-hover:opacity-70 anime-item-image relative aspect-w-2 aspect-h-3 duration-300 ease-linear w-[180px]">
 										<img
 											className="w-[180px] h-[240px] object-cover"

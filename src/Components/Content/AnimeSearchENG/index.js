@@ -92,10 +92,7 @@ function AnimeSearchENG() {
 								}
 								key={item.id}
 							>
-								<div
-									className="group search-item col-span-1 cursor-pointer flex flex-col items-center"
-									title={item.title}
-								>
+								<div className="group search-item col-span-1 cursor-pointer flex flex-col items-center">
 									<div className="group-hover:opacity-70 search-item-image relative aspect-w-2 aspect-h-3 duration-300 ease-linear w-[180px]">
 										<img
 											className="w-[180px] h-[240px] object-cover"
