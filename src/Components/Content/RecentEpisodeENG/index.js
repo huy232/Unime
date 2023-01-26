@@ -28,7 +28,12 @@ function RecentEpisodeENG({ recentAnime, loadingRecentAnime }) {
 							<SwiperSlide key={i}>
 								<Link
 									to={`/eng/info/${anime.id}`}
-									title={anime.title}
+									title={
+										anime.title.english ||
+										anime.title.romaji ||
+										anime.title.native ||
+										anime.userPreferred
+									}
 									key={anime.id}
 								>
 									<div className="group recent-anime-holder select-none cursor-pointer">

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom"
 import ReactPlayer from "react-player"
 import AnimeInfoEpisodeHolderENG from "../AnimeInfoEpisodeHolderENG"
 import DateAiring from "../DateAiring"
+import RecommendENG from "../RecommendENG"
 
 function AnimeInfoDetailENG({
 	loading,
@@ -32,17 +33,17 @@ function AnimeInfoDetailENG({
 			</div>
 			{/* new Date(anime.airingAt * 1000) */}
 			{info.nextAiringEpisode && (
-				<div className="flex flex-row max-lg:flex-col text-center">
-					<p className="leading-none mx-[6px] p-[6px]">
-						Next episode estimated:{" "}
-					</p>
-					<p className="leading-none mx-[6px] bg-[#533483] rounded p-[6px]">
+				<div className="flex max-lg:flex-col max-lg:items-center max-lg:justify-center">
+					<div className="leading-none mx-[6px] p-[8px]">
+						Next episode estimated:
+					</div>
+					<div className="leading-none mx-[6px] bg-[#533483] rounded p-[8px]">
 						{new Date(info.nextAiringEpisode.airingTime * 1000)
 							.toLocaleString("en-US", {
 								timeZone: `${timeZone}`,
 							})
 							.toString()}
-					</p>
+					</div>
 				</div>
 			)}
 			<div className="description">
@@ -152,6 +153,9 @@ function AnimeInfoDetailENG({
 							/>
 						)}
 					</div>
+					{!loading && info.recommendations.length > 0 && (
+						<RecommendENG recommend={info.recommendations} />
+					)}
 				</>
 			)}
 		</div>
