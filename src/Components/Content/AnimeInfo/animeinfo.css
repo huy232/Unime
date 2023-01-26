@@ -177,6 +177,11 @@
 	width: 100%;
 }
 
+.episode-list .swiper-wrapper .swiper-slide {
+	margin-right: auto;
+	margin-left: auto;
+}
+
 .list-episode-title-main {
 	display: block;
 	text-align: center;

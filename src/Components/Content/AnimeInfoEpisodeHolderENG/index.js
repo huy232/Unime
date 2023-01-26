@@ -37,7 +37,6 @@ function AnimeInfoEpisodeHolderENG({ info, loading, provider, prefer }) {
 
 	const jump = (progress, speed) => {
 		if (swiper) {
-			console.log(swiper)
 			if (progress === 0) {
 				setToggleButton(true)
 			} else {
