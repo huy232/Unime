@@ -25,7 +25,7 @@ function RecommendENG({ recommend }) {
 					{recommend.map((anime) => (
 						<SwiperSlide key={anime.id}>
 							<Link
-								to={`/info/${anime.id}`}
+								to={`/eng/info/${anime.id}`}
 								title={
 									anime.title.english ||
 									anime.title.romaji ||
