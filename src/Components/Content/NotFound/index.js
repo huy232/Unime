@@ -2,28 +2,12 @@ import React, { useEffect, useState } from "react"
 import axios from "axios"
 import notFound from "../../../Utilities/img/not-found.jpg"
 import { Link } from "react-router-dom"
+import { useAuth } from "../../../Contexts/auth"
 import "./notfound.css"
 
 function NotFound() {
 	const [loading, setLoading] = useState(true)
-	const [location, setLocation] = useState("")
-
-	useEffect(() => {
-		const getLocation = async () => {
-			await axios.get("http://ip-api.com/json/").then((response) => {
-				if (response.data.country === "Vietnam") {
-					setLocation("vi")
-					localStorage.setItem("unime-language", "vi")
-				} else {
-					setLocation("eng")
-					localStorage.setItem("unime-language", "eng")
-				}
-				setLoading(false)
-			})
-		}
-
-		getLocation()
-	}, [setLocation])
+	const { language } = useAuth()
 
 	return (
 		<div className="w-100 mt-[-140px]">
@@ -40,7 +24,7 @@ function NotFound() {
 				{loading ? (
 					""
 				) : localStorage.getItem("unime-language") === "vi" ||
-				  location === "vi" ? (
+				  language === "vi" ? (
 					<div className="not-found">
 						<div className="not-found-wrapper">
 							<h2 className="font-black text-[#F55050]">404 Không tìm thấy</h2>

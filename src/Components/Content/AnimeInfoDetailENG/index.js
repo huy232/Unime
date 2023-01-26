@@ -3,7 +3,6 @@ import { ENG_GENRES } from "../../../constants"
 import { Link } from "react-router-dom"
 import ReactPlayer from "react-player"
 import AnimeInfoEpisodeHolderENG from "../AnimeInfoEpisodeHolderENG"
-import DateAiring from "../DateAiring"
 import RecommendENG from "../RecommendENG"
 
 function AnimeInfoDetailENG({
@@ -13,7 +12,6 @@ function AnimeInfoDetailENG({
 	provider,
 	prefer,
 	setPrefer,
-	timeZone,
 }) {
 	let resultCategory = ENG_GENRES.filter((genre) => {
 		if (info && Object.keys(info).length !== 0) {
@@ -40,7 +38,9 @@ function AnimeInfoDetailENG({
 					<div className="leading-none mx-[6px] bg-[#533483] rounded p-[8px]">
 						{new Date(info.nextAiringEpisode.airingTime * 1000)
 							.toLocaleString("en-US", {
-								timeZone: `${timeZone}`,
+								timeZone: `${
+									prefer === "vi" ? "Asia/Ho_Chi_Minh" : "America/Los_Angeles"
+								}`,
 							})
 							.toString()}
 					</div>
