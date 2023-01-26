@@ -36,13 +36,9 @@ function AnimeInfoDetailENG({
 						Next episode estimated:
 					</div>
 					<div className="leading-none mx-[6px] bg-[#533483] rounded p-[8px]">
-						{new Date(info.nextAiringEpisode.airingTime * 1000)
-							.toLocaleString("en-US", {
-								timeZone: `${
-									prefer === "vi" ? "Asia/Ho_Chi_Minh" : "America/Los_Angeles"
-								}`,
-							})
-							.toString()}
+						{new Date(
+							info.nextAiringEpisode.airingTime * 1000
+						).toLocaleString()}
 					</div>
 				</div>
 			)}
