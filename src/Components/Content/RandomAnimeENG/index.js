@@ -3,6 +3,7 @@ import "swiper/css"
 import "swiper/css/pagination"
 import "./movieanime.css"
 import { Link } from "react-router-dom"
+import { toSlug } from "../../../Utilities/toSlug"
 
 function RandomAnimeENG({ randomAnime, loadingRandomAnime }) {
 	return (
@@ -40,11 +41,15 @@ function RandomAnimeENG({ randomAnime, loadingRandomAnime }) {
 							</div>
 							<div className="flex flex-row flex-wrap max-lg:justify-center">
 								{randomAnime.genres.map((genre) => (
-									<div className="" key={genre}>
+									<Link
+										to={`/eng/genre/${toSlug(genre)}`}
+										className="hover:opacity-80 duration-200 ease-in-out"
+										key={genre}
+									>
 										<p className="m-[6px] p-[6px] bg-[#5f5f5f29] rounded">
 											{genre}
 										</p>
-									</div>
+									</Link>
 								))}
 							</div>
 							<div

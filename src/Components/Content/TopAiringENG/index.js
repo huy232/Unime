@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faPlayCircle } from "@fortawesome/free-solid-svg-icons"
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton"
 import { Link } from "react-router-dom"
+import { toSlug } from "../../../Utilities/toSlug"
 
 function TopAiringENG({ topAiring, loadingAiring }) {
 	return (
@@ -53,12 +54,13 @@ function TopAiringENG({ topAiring, loadingAiring }) {
 										</h2>
 										<div className="airing-info-genres flex flex-wrap my-[20px] max-lg:my-[4px]">
 											{item.genres.map((genre, i) => (
-												<div
-													className="genre inline p-[4px] m-[4px] first:ml-0 rounded text-gray-50 max-lg:text-xs"
+												<Link
+													to={`/eng/anime/${toSlug(genre)}`}
+													className="hover:opacity-80 duration-200 ease-in-out genre inline p-[4px] m-[4px] first:ml-0 rounded text-gray-50 max-lg:text-xs"
 													key={i}
 												>
 													{genre}
-												</div>
+												</Link>
 											))}
 										</div>
 										<div
