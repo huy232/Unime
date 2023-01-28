@@ -17,11 +17,11 @@ function RandomAnimeENG({ randomAnime, loadingRandomAnime }) {
 					<div className="random-anime-container px-4 md:px-12 lg:px-20 xl:px-28 2xl:px-36 w-full pb-12 flex max-lg:flex-col">
 						<div className="w-1/5 flex justify-center max-lg:w-full">
 							<Link
-								className="cursor-pointer hover:opacity-80 duration-200 ease-in-out"
+								className="cursor-pointer hover:opacity-80 duration-200 ease-in-out flex justify-center items-center"
 								to={`/eng/info/${randomAnime.id}`}
 							>
 								<img
-									className="w-[240px] h-100 object-cover"
+									className="w-[240px] h-[340px] object-cover"
 									src={randomAnime.image}
 									alt=""
 								/>

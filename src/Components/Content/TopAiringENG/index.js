@@ -14,9 +14,11 @@ function TopAiringENG({ topAiring, loadingAiring }) {
 		<div>
 			<h1 className="font-black ml-6 mr-6 text-amber-200">POPULAR</h1>
 			{loadingAiring ? (
-				<SkeletonTheme baseColor="#202020" highlightColor="#444">
-					<Skeleton className="h-[500px] w-full " />
-				</SkeletonTheme>
+				<div className="w-full px-4 md:px-12 lg:px-20 xl:px-28 2xl:px-36">
+					<SkeletonTheme baseColor="#202020" highlightColor="#444">
+						<Skeleton className="h-[500px]" />
+					</SkeletonTheme>
+				</div>
 			) : (
 				<Swiper
 					direction={"vertical"}
