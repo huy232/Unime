@@ -38,20 +38,25 @@ function TopAiringENG({ topAiring, loadingAiring }) {
 							>
 								<div className="banner__overlay h-full w-full flex items-center">
 									<div className="w-3/5 max-lg:w-full ml-[40px] max-sm:mx-0 max-sm:px-[30px] flex flex-col justify-center h-100">
-										<h2
-											className="airing-info-main-title line-clamp-3 uppercase font-bold text-3xl max-lg:text-base"
-											title={
-												item.title.english ||
-												item.title.romaji ||
-												item.title.native ||
-												item.title.userPreferred
-											}
+										<Link
+											to={`/eng/info/${item.id}`}
+											className="hover:opacity-80 duration-200 ease-in-out"
 										>
-											{item.title.english ||
-												item.title.romaji ||
-												item.title.native ||
-												item.title.userPreferred}
-										</h2>
+											<h2
+												className="airing-info-main-title line-clamp-3 uppercase font-bold text-3xl max-lg:text-base"
+												title={
+													item.title.english ||
+													item.title.romaji ||
+													item.title.native ||
+													item.title.userPreferred
+												}
+											>
+												{item.title.english ||
+													item.title.romaji ||
+													item.title.native ||
+													item.title.userPreferred}
+											</h2>
+										</Link>
 										<div className="airing-info-genres flex flex-wrap my-[20px] max-lg:my-[4px]">
 											{item.genres.map((genre, i) => (
 												<Link
