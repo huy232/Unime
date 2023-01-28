@@ -10,7 +10,7 @@ h1,
 	color: black !important;
 	background-color: #ffc107;
 	box-shadow: 5px 10px #495057;
-	padding-left: 14px;
+	padding: 0 6px;
 	-webkit-user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;

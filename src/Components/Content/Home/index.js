@@ -113,23 +113,17 @@ function Home({ instance }) {
 						progress={progress}
 						onLoaderFinished={() => setProgress(0)}
 					/>
-					<div className="anime-card" style={{ marginTop: "42px" }}>
-						<h1
-							className="anime-h1 font-black"
-							style={{ marginBottom: "42px", width: "200px" }}
-						>
+					<div className="anime-card mt-[40px]">
+						<h1 className="anime-h1 font-black inline-block mb-[20px]">
 							MỚI NHẤT
 						</h1>
 						<CardGroup>
 							<NewAnime newAnime={newAnime} done1={done1} />
 						</CardGroup>
 					</div>
-					<div className="anime-card-today" style={{ marginTop: "42px" }}>
-						<div className="center-title">
-							<h1
-								className="anime-top-day-h1 font-black"
-								style={{ marginBottom: "42px" }}
-							>
+					<div className="anime-card-today my-[40px]">
+						<div className="center-title mb-[20px]">
+							<h1 className="anime-top-day-h1 font-black">
 								XEM NHIỀU TRONG NGÀY
 							</h1>
 						</div>
@@ -137,7 +131,7 @@ function Home({ instance }) {
 							<MostWatched rankToday={rankToday} done2={done2} />
 						</CardGroup>
 					</div>
-					<div className="anime-collection" style={{ marginTop: "42px" }}>
+					<div className="anime-collection mt-[40px]">
 						<div className="center-title">
 							<div className="anime-collection-titleholder">
 								<h1
