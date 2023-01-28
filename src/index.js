@@ -7,6 +7,7 @@ import "swiper/css/bundle"
 import "bootstrap/dist/css/bootstrap.min.css"
 import "@fortawesome/fontawesome-free/css/all.min.css"
 import "react-loading-skeleton/dist/skeleton.css"
+import "./override.css"
 
 const root = createRoot(document.getElementById("root"))
 root.render(
