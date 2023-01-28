@@ -7,6 +7,7 @@ import useDocumentTitle from "../../../Components/Content/DocumentTitleHook"
 import { BsFillArrowLeftSquareFill } from "react-icons/bs"
 import LoadingRequest from "../../../Components/Content/LoadingRequest"
 import "./animewatch.css"
+import VideoPlayer from "../VideoPlayer"
 
 function AnimeWatch({ instance }) {
 	const { anime } = useParams()
@@ -16,8 +17,9 @@ function AnimeWatch({ instance }) {
 	const specialid = queryParams.get("specialid")
 	const [info, setInfo] = useState([])
 	const [watchDetail, setWatchDetail] = useState("Đang tải")
-	const [videoUrl, setVideoUrl] = useState("")
+	const [videoUrl, setVideoUrl] = useState([])
 	const [videoEmbed, setVideoEmbed] = useState("")
+	const [videoLoading, setVideoLoading] = useState(true)
 
 	useEffect(() => {
 		const CancelToken = axios.CancelToken
@@ -39,11 +41,16 @@ function AnimeWatch({ instance }) {
 								cancelToken: source.token,
 							})
 							.then((res) => {
+								setVideoLoading(true)
 								let videoUrlResponse = ""
 								// VIDEO URL IS HERE
 								if (typeof res.data.data?.videoSource !== "undefined") {
-									videoUrlResponse = res.data.data.videoSource
-									setVideoUrl(videoUrlResponse)
+									setVideoUrl([
+										{
+											file: res.data.data.videoSource,
+											label: "STANDARD",
+										},
+									])
 								} else {
 									videoUrlResponse = res.data.data.embedSource
 									setVideoEmbed(videoUrlResponse)
@@ -51,6 +58,7 @@ function AnimeWatch({ instance }) {
 								const watchFilm = res.data.data.film_name
 								const watchEpisodeName = res.data.data.full_name
 								setWatchDetail(watchFilm + ` (${watchEpisodeName})`)
+								setVideoLoading(false)
 							})
 					}
 					if (specialid !== null) {
@@ -58,12 +66,18 @@ function AnimeWatch({ instance }) {
 						await instance
 							.get(`/specialanime/${mainId}/${numSpecialId}`)
 							.then((res) => {
+								setVideoLoading(true)
 								// VIDEO URL IS HERE
-								const videoUrlResponse = res.data.data.videoSource
 								const watchFilm = res.data.data.film_name
 								const watchEpisodeName = res.data.data.full_name
 								setWatchDetail(watchFilm + ` (${watchEpisodeName})`)
-								setVideoUrl(videoUrlResponse)
+								setVideoUrl([
+									{
+										file: res.data.data.videoSource,
+										label: "STANDARD",
+									},
+								])
+								setVideoLoading(false)
 							})
 					}
 					const element = document.getElementsByClassName("active")[0]
@@ -80,12 +94,9 @@ function AnimeWatch({ instance }) {
 		return () => {
 			source.cancel()
 		}
-	}, [anime, episode, index, instance, specialid])
+	}, [anime, episode, index, instance, specialid, videoLoading])
 
 	useDocumentTitle(watchDetail)
-	const chooseEpisode = (index) => {
-		// window.location.href = `${MAINSITE}/watch/${anime}?index=${index}`
-	}
 
 	return (
 		<>
@@ -94,17 +105,12 @@ function AnimeWatch({ instance }) {
 					className="video-js-wrapper"
 					style={{ display: "flex", height: "100vh" }}
 				>
-					{videoUrl ? (
-						<VideoPlayerSource
-							videoUrl={videoUrl}
-							anime={anime}
-							info={info}
-							index={index}
-						/>
-					) : videoEmbed ? (
-						<VideoEmbed videoEmbed={videoEmbed} />
-					) : (
+					{videoLoading ? (
 						<LoadingRequest />
+					) : videoUrl.length > 0 ? (
+						<VideoPlayer videoUrl={videoUrl} />
+					) : (
+						videoEmbed && <VideoEmbed videoEmbed={videoEmbed} />
 					)}
 
 					<div className="episode-content">

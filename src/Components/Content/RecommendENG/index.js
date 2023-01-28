@@ -7,7 +7,7 @@ import "swiper/css"
 import "swiper/css/pagination"
 import "./recommend.css"
 
-function RecommendENG({ recommend }) {
+function RecommendENG({ recommend, setLoading }) {
 	return (
 		<>
 			<h2 className="font-black text-right max-lg:text-center">
@@ -32,6 +32,7 @@ function RecommendENG({ recommend }) {
 									anime.title.native ||
 									anime.title.userPreferred
 								}
+								onClick={() => setLoading(true)}
 							>
 								<div className="group recommend-anime-holder select-none cursor-pointer">
 									<div className="recommend-anime-image w-[240px] h-[340px] group-hover:opacity-80 duration-200 ease-in-out relative">

@@ -66,10 +66,9 @@ function HeaderVI() {
 			<Navbar
 				collapseOnSelect
 				expand="lg"
-				bg="dark"
 				variant="dark"
 				fixed="top"
-				className={visible ? "" : "fixed-top-hide"}
+				className={`navbar-color ${visible ? "" : "fixed-top-hide"}`}
 			>
 				<Container>
 					<Navbar.Brand as={Link} to="/" onClick={handleScrollToTop}>

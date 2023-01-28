@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap"
 import { Link } from "react-router-dom"
 import { ENG_GENRES } from "../../../constants"
@@ -16,10 +16,10 @@ function HeaderENG() {
 	const [input, setInput] = useState("")
 	const [prevScrollPos, setPrevScrollPos] = useState(0)
 	const [visible, setVisible] = useState(true)
+	const navRef = useRef()
 
 	const handleScroll = debounce(() => {
 		const currentScrollPos = window.pageYOffset
-
 		setVisible(
 			(prevScrollPos > currentScrollPos &&
 				prevScrollPos - currentScrollPos > 100) ||
@@ -60,10 +60,10 @@ function HeaderENG() {
 			<Navbar
 				collapseOnSelect
 				expand="lg"
-				bg="dark"
 				variant="dark"
 				fixed="top"
-				className={visible ? "" : "fixed-top-hide"}
+				className={`navbar-color ${visible ? "" : "fixed-top-hide"} `}
+				ref={navRef}
 			>
 				<Container>
 					<Navbar.Brand as={Link} to="/eng" onClick={handleScrollToTop}>

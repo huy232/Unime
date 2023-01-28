@@ -12,16 +12,16 @@ function LanguageButton() {
 	return (
 		<div className="language-container ml-auto text-neutral-900">
 			<button
-				className={`vi-btn mr-2 bg-neutral-300 rounded p-1 hover:opacity-80 duration-200 ${
-					language === "vi" && "btn-active-heading"
+				className={`vi-btn mr-2 rounded p-1 hover:opacity-80 duration-200 ${
+					language === "vi" && "bg-[#a5612a]"
 				}`}
 				onClick={() => handleLanguage("vi")}
 			>
 				VI
 			</button>
 			<button
-				className={`eng-btn bg-neutral-300 rounded p-1 hover:opacity-80 duration-200 ${
-					language === "eng" && "btn-active-heading"
+				className={`eng-btn rounded p-1 hover:opacity-80 duration-200 ${
+					language === "eng" && "bg-[#a5612a]"
 				}`}
 				onClick={() => handleLanguage("eng")}
 			>

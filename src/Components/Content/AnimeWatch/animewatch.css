@@ -44,8 +44,7 @@ video {
 }
 
 .episode-content {
-	box-shadow: rgb(38 57 77) 0px 20px 30px -10px;
-	width: 40vh;
+	width: 20vw;
 	position: relative;
 }
 

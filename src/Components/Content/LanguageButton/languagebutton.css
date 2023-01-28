@@ -13,15 +13,16 @@
 	opacity: 0.8;
 }
 
-.btn-active-heading {
-	background: rgb(165, 97, 42) !important;
-	color: rgba(0, 0, 0, 0.877);
+.vi-btn,
+.eng-btn {
+	background: #b0b0b0;
 }
 
 @media screen and (max-width: 1024px) {
 	.language-container {
 		margin-right: auto;
 		margin-left: auto;
-		margin-top: 8px;
+		margin-top: 10px;
+		margin-bottom: 10px;
 	}
 }

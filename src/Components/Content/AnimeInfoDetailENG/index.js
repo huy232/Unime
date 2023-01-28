@@ -4,14 +4,14 @@ import { Link } from "react-router-dom"
 import ReactPlayer from "react-player"
 import AnimeInfoEpisodeHolderENG from "../AnimeInfoEpisodeHolderENG"
 import RecommendENG from "../RecommendENG"
+import { Skeleton } from "@mui/material"
 
 function AnimeInfoDetailENG({
 	loading,
 	info,
 	setProvider,
 	provider,
-	prefer,
-	setPrefer,
+	setLoading,
 }) {
 	let resultCategory = ENG_GENRES.filter((genre) => {
 		if (info && Object.keys(info).length !== 0) {
@@ -26,29 +26,55 @@ function AnimeInfoDetailENG({
 					className={`font-black max-lg:text-center`}
 					style={{ color: `${info?.color || "#fff"}` }}
 				>
-					{info.title?.english || info.title?.romaji || info.title?.native}
+					{loading ? (
+						<Skeleton
+							variant="rectangular"
+							width="100%"
+							height="60px"
+							animation="wave"
+							sx={{ bgcolor: "grey.900" }}
+							style={{
+								marginTop: "10px",
+								borderRadius: "6px",
+								marginLeft: "auto",
+								marginRight: "auto",
+							}}
+						/>
+					) : (
+						info.title?.english || info.title?.romaji || info.title?.native
+					)}
 				</h1>
 			</div>
 			{/* new Date(anime.airingAt * 1000) */}
 			{info.nextAiringEpisode && (
 				<div className="flex max-lg:flex-col max-lg:items-center max-lg:justify-center">
-					<div className="leading-none mx-[6px] p-[8px]">
-						Next episode estimated:
-					</div>
-					<div className="leading-none mx-[6px] bg-[#533483] rounded p-[8px]">
-						{new Date(
-							info.nextAiringEpisode.airingTime * 1000
-						).toLocaleString()}
-					</div>
+					{loading ? (
+						""
+					) : (
+						<>
+							<div className="leading-none mx-[6px] p-[8px]">
+								Next episode estimated:
+							</div>
+							<div className="leading-none mx-[6px] bg-[#533483] rounded p-[8px]">
+								{new Date(
+									info.nextAiringEpisode.airingTime * 1000
+								).toLocaleString()}
+							</div>
+						</>
+					)}
 				</div>
 			)}
 			<div className="description">
-				<p
-					className="anime-description-paragraph"
-					dangerouslySetInnerHTML={{
-						__html: info.description,
-					}}
-				></p>
+				{loading ? (
+					<p className="anime-description-paragraph"></p>
+				) : (
+					<p
+						className="anime-description-paragraph"
+						dangerouslySetInnerHTML={{
+							__html: info.description,
+						}}
+					></p>
+				)}
 			</div>
 			{!loading && (
 				<>
@@ -105,52 +131,20 @@ function AnimeInfoDetailENG({
 								</button>
 							</div>
 						</div>
-						<div>
-							<div className="lg:text-right">PREFER</div>
-							<div className="max-lg:block flex [&>*]:m-[6px] [&>*]:p-[6px] [&>*]:rounded group ">
-								<button
-									className={`${
-										prefer === "vi"
-											? "bg-[#f48484] text-[#1A120B]"
-											: "bg-[#5f5f5f29] text-[#fff]"
-									} hover:opacity-80 duration-200 ease-in-out`}
-									onClick={() => {
-										localStorage.setItem("unime-prefer", "vi")
-										setPrefer("vi")
-									}}
-								>
-									VI
-								</button>
-								<button
-									className={`${
-										prefer === "eng"
-											? "bg-[#f48484] text-[#1A120B]"
-											: "bg-[#5f5f5f29] text-[#fff]"
-									} hover:opacity-80 duration-200 ease-in-out`}
-									onClick={() => {
-										localStorage.setItem("unime-prefer", "eng")
-										setPrefer("eng")
-									}}
-								>
-									ENG
-								</button>
-							</div>
-						</div>
 					</div>
 					<div className="list-episode-title-main">
 						<h4 style={{ marginTop: "30px" }}>EPISODE LIST</h4>
 					</div>
 					<div>
 						{!loading && (
-							<AnimeInfoEpisodeHolderENG
-								info={info}
-								provider={provider}
-								prefer={prefer}
-							/>
+							<AnimeInfoEpisodeHolderENG info={info} provider={provider} />
 						)}
 					</div>
 					{!loading && info.recommendations.length > 0 && (
-						<RecommendENG recommend={info.recommendations} />
+						<RecommendENG
+							recommend={info.recommendations}
+							setLoading={setLoading}
+						/>
 					)}
 				</>
 			)}

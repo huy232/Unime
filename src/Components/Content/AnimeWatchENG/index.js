@@ -1,25 +1,24 @@
 import React, { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
 import axios from "axios"
-import VideoPlayerSource from "../VideoPlayer"
 import useDocumentTitle from "../DocumentTitleHook"
 import { BsFillArrowLeftSquareFill } from "react-icons/bs"
 import { Link } from "react-router-dom"
 import LoadingRequest from "../LoadingRequest"
 import { API } from "../../../constants"
-import { MAINSITE } from "../../../constants"
+import VideoPlayer from "../VideoPlayer"
 
 function AnimeWatchENG() {
 	const { animeId } = useParams()
 	const queryParams = new URLSearchParams(window.location.search)
 	const current = queryParams.get("current")
 	const provider = queryParams.get("provider")
-	const prefer = queryParams.get("prefer")
 	const [info, setInfo] = useState([])
 	const [watchDetail, setWatchDetail] = useState("Loading")
-	const [videoUrl, setVideoUrl] = useState()
+	const [videoUrl, setVideoUrl] = useState([])
 	const [videoLoading, setVideoLoading] = useState(true)
 	const [subtitles, setSubtitles] = useState([])
+	const [thumbnail, setThumbnail] = useState()
 
 	useEffect(() => {
 		const CancelToken = axios.CancelToken
@@ -48,6 +47,7 @@ function AnimeWatchENG() {
 					)
 				})
 				.then(async () => {
+					setVideoLoading(true)
 					await axios
 						.get(
 							`https://api.consumet.org/meta/anilist/watch/${current}?provider=${provider}`,
@@ -58,34 +58,47 @@ function AnimeWatchENG() {
 						.then((response) => {
 							if (provider === "zoro") {
 								const urlData = response
-								const zoroUrl = urlData.data.sources.find((obj) => {
-									if (obj.quality === "default") {
-										return obj.quality === "default"
-									}
-									if (obj.quality === "auto") {
-										return obj.quality === "auto"
-									}
-									if (obj.quality === "backup") {
-										return obj.quality === "backup"
-									}
-								})
-								setSubtitles(urlData.data.subtitles)
+								const zoroUrl = urlData.data.sources
+
+								let subs = []
+
+								if (urlData.data.subtitles) {
+									subs = urlData.data.subtitles.filter(
+										(option) => option.lang !== "Thumbnails"
+									)
+								}
+
+								setSubtitles(
+									subs.map((sub, i) => ({
+										lang: `${i}. ${sub.lang}`,
+										language: `${i}. ${sub.lang}`,
+										file: sub.url,
+									}))
+								)
+								setThumbnail(
+									urlData.data.subtitles.find(
+										(sub) => sub.lang === "Thumbnails"
+									)
+								)
 								const CORS = "https://cors.proxy.consumet.org/"
-								setVideoUrl(`${API}/cors/${zoroUrl.url}`)
+								// setVideoUrl(`${API}/cors/${zoroUrl.url}`)
+
+								setVideoUrl(
+									zoroUrl.map((source) => ({
+										file: `${API}/cors/${source.url}`,
+										label: source.quality,
+									}))
+								)
 							} else {
 								const urlData = response
-								const gogoUrl = urlData.data.sources.find((obj) => {
-									if (obj.quality === "default") {
-										return obj.quality === "default"
-									}
-									if (obj.quality === "auto") {
-										return obj.quality === "auto"
-									}
-									if (obj.quality === "backup") {
-										return obj.quality === "backup"
-									}
-								})
-								setVideoUrl(gogoUrl.url)
+								const gogoUrl = urlData.data.sources
+								// setVideoUrl(gogoUrl.url)
+								setVideoUrl(
+									gogoUrl.map((source) => ({
+										file: `${API}/cors/${source.url}`,
+										label: source.quality,
+									}))
+								)
 							}
 							setVideoLoading(false)
 						})
@@ -107,9 +120,9 @@ function AnimeWatchENG() {
 		}
 	}, [animeId, current, provider])
 
-	const chooseEpisode = (episodeId) => {
-		window.location.href = `${MAINSITE}/eng/watch/${animeId}?current=${episodeId}&provider=${provider}&prefer=${prefer}`
-	}
+	// const chooseEpisode = (episodeId) => {
+	// 	window.location.href = `${MAINSITE}/eng/watch/${animeId}?current=${episodeId}&provider=${provider}&prefer=${prefer}`
+	// }
 
 	useDocumentTitle(watchDetail)
 	return (
@@ -121,11 +134,13 @@ function AnimeWatchENG() {
 				{videoLoading ? (
 					<LoadingRequest />
 				) : (
-					<VideoPlayerSource
-						videoUrl={videoUrl}
-						index={current}
-						subtitles={subtitles}
-					/>
+					<>
+						<VideoPlayer
+							videoUrl={videoUrl}
+							subtitles={subtitles}
+							thumbnail={thumbnail?.url ? thumbnail.url : ""}
+						/>
+					</>
 				)}
 
 				<div className="episode-content">
@@ -160,7 +175,7 @@ function AnimeWatchENG() {
 					<div className="episode-bracket">
 						{info.map((item, i) => (
 							<Link
-								to={`/eng/watch/${animeId}?current=${item.id}&provider=${provider}&prefer=${prefer}`}
+								to={`/eng/watch/${animeId}?current=${item.id}&provider=${provider}`}
 								style={{ color: "white" }}
 								key={item.number}
 								title={
@@ -169,7 +184,7 @@ function AnimeWatchENG() {
 										: `Episode - ${item.number}`
 								}
 								className={current === item.id ? "episode active" : "episode"}
-								onClick={() => chooseEpisode(item.id)}
+								// onClick={() => chooseEpisode(item.id)}
 							>
 								<div>
 									<p>

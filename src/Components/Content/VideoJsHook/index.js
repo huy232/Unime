@@ -197,10 +197,6 @@ const VideoPlayer = ({
 						seekDownVolume()
 					}
 				})
-
-				playerRef.current.thumbnails({
-					src: subtitles.find(({ lang }) => lang === "Thumbnails").url,
-				})
 			}}
 		></video>
 	)
