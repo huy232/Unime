@@ -6,7 +6,6 @@ function VideoPlayer({ videoUrl, anime, info, index, subtitles, thumbnail }) {
 	const videoRef = useRef()
 	return (
 		<>
-			{console.log(videoRef)}
 			<NetPlayer
 				ref={videoRef}
 				sources={videoUrl}
