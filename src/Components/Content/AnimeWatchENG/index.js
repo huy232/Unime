@@ -70,53 +70,54 @@ function AnimeWatchENG() {
 
 		const filmEpisodeWatch = async () => {
 			setVideoLoading(true)
-			const { data } = await axios
+			await axios
 				.get(
 					`${CONSUMET_API}/meta/anilist/watch/${current}?provider=${provider}`,
 					{
 						cancelToken: source.token,
 					}
 				)
+				.then((response) => {
+					if (provider === "zoro") {
+						const zoroUrl = response.data.sources
+						let subs = []
+						if (response.data.subtitles) {
+							subs = response.data.subtitles.filter(
+								(option) => option.lang !== "Thumbnails"
+							)
+						}
+						setSubtitles(
+							subs.map((sub, i) => ({
+								lang: `${i}. ${sub.lang}`,
+								language: `${i}. ${sub.lang}`,
+								file: sub.url,
+							}))
+						)
+						setThumbnail(
+							response.data.subtitles.find((sub) => sub.lang === "Thumbnails")
+						)
+						// setVideoUrl(`${API}/cors/${zoroUrl.url}`)
+						setVideoUrl(
+							zoroUrl.map((source) => ({
+								file: `${API}/cors/${source.url}`,
+								label: source.quality,
+							}))
+						)
+					}
+					if (provider === "") {
+						const gogoUrl = response.data.sources
+						setVideoUrl(
+							gogoUrl.map((source) => ({
+								file: `${API}/cors/${source.url}`,
+								label: source.quality,
+							}))
+						)
+					}
+					setVideoLoading(false)
+				})
 				.catch((thrown) => {
 					if (axios.isCancel(thrown)) return
 				})
-
-			if (Object.keys(data).length !== 0) {
-				if (provider === "zoro") {
-					const zoroUrl = data.sources
-					let subs = []
-					if (data.subtitles) {
-						subs = data.subtitles.filter(
-							(option) => option.lang !== "Thumbnails"
-						)
-					}
-					setSubtitles(
-						subs.map((sub, i) => ({
-							lang: `${i}. ${sub.lang}`,
-							language: `${i}. ${sub.lang}`,
-							file: sub.url,
-						}))
-					)
-					setThumbnail(data.subtitles.find((sub) => sub.lang === "Thumbnails"))
-					// setVideoUrl(`${API}/cors/${zoroUrl.url}`)
-					setVideoUrl(
-						zoroUrl.map((source) => ({
-							file: `${API}/cors/${source.url}`,
-							label: source.quality,
-						}))
-					)
-				}
-				if (provider === "") {
-					const gogoUrl = data.sources
-					setVideoUrl(
-						gogoUrl.map((source) => ({
-							file: `${API}/cors/${source.url}`,
-							label: source.quality,
-						}))
-					)
-				}
-			}
-			setVideoLoading(false)
 		}
 
 		const element = document.getElementsByClassName("active")[0]
