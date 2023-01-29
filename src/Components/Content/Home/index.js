@@ -113,7 +113,7 @@ function Home({ instance }) {
 						progress={progress}
 						onLoaderFinished={() => setProgress(0)}
 					/>
-					<div className="anime-card mt-[40px]">
+					<div className="anime-card">
 						<h1 className="anime-h1 font-black inline-block mb-[20px]">
 							MỚI NHẤT
 						</h1>

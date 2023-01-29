@@ -18,25 +18,15 @@ function MostWatched({ rankToday, done2 }) {
 				<AnimeSkeleton />
 			) : (
 				<Swiper
-					breakpoints={{
-						640: {
-							slidesPerView: 1,
-						},
-						768: {
-							slidesPerView: 3,
-						},
-						992: {
-							slidesPerView: 5,
-						},
-					}}
-					spaceBetween={20}
+					spaceBetween={10}
+					slidesPerView="auto"
 					className="homeSwiper h-100"
 					pagination={{
 						type: "progressbar",
 					}}
 				>
 					{rankToday.map((anime) => (
-						<SwiperSlide key={anime?.slug}>
+						<SwiperSlide key={anime?.slug} className="w-[320px]">
 							<nav>
 								<Link to={`info/${anime?.slug}`} title={anime?.name}>
 									<Card>
@@ -49,7 +39,7 @@ function MostWatched({ rankToday, done2 }) {
 											</div>
 										</div>
 
-										<Card.Body style={{ maxHeight: "5rem", minHeight: "5rem" }}>
+										<Card.Body className="h-[100px]">
 											<Card.Title>
 												<p className="webclamp text-orange-50">{anime?.name}</p>
 											</Card.Title>

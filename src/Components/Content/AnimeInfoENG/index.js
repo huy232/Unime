@@ -5,6 +5,7 @@ import AnimeInfoBannerENG from "../AnimeInfoBannerENG"
 import AnimeInfoBoxENG from "../AnimeInfoBoxENG"
 import AnimeInfoDetailENG from "../AnimeInfoDetailENG"
 import useDocumentTitle from "../DocumentTitleHook"
+import { CONSUMET_API } from "../../../constants"
 
 function AnimeInfoENG() {
 	const [info, setInfo] = useState({})
@@ -27,7 +28,7 @@ function AnimeInfoENG() {
 		const getInfo = async () => {
 			const data = await axios
 				.get(
-					`https://api.consumet.org/meta/anilist/info/${animeId}?provider=${provider}`,
+					`${CONSUMET_API}/meta/anilist/info/${animeId}?provider=${provider}`,
 					{
 						cancelToken: source.token,
 					}

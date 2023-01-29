@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { useParams, Link } from "react-router-dom"
-import { ENG_GENRES } from "../../../constants"
+import { CONSUMET_API, ENG_GENRES } from "../../../constants"
 import InfiniteScroll from "react-infinite-scroll-component"
 import axios from "axios"
 import LoadingSpin from "react-loading-spin"
@@ -39,7 +39,7 @@ function AnimeBrowseCategoryENG() {
 				setTimeout(async () => {
 					await axios
 						.get(
-							`https://api.consumet.org/meta/anilist/genre?genres=["${translateGenreAnime}"]&page=${page}`,
+							`${CONSUMET_API}/meta/anilist/genre?genres=["${translateGenreAnime}"]&page=${page}`,
 							{
 								cancelToken: source.token,
 							}

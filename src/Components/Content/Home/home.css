@@ -103,27 +103,15 @@ h1,
 	font-size: 1rem !important;
 }
 
-.homeSwiper .swiper-slide {
-	text-align: start !important;
-	height: inherit !important;
-}
-
 .homeSwiper {
 	width: 95%;
 }
-.card-body-home {
-	min-height: 10rem !important;
-	max-height: 10rem !important;
-	background-color: #343a40;
-}
+
 .anime-card .card-body {
-	min-height: 10rem;
-	max-height: 10rem;
+	height: 180px;
 }
 
 .card-body {
-	min-height: 7rem;
-	max-height: 7rem;
 	background-color: #343a40;
 }
 
@@ -232,6 +220,7 @@ h1,
 
 .anime-card-today .card-body {
 	background-color: #330000 !important;
+	height: 100px;
 }
 
 .today-h1 {
@@ -408,12 +397,6 @@ h1,
 	padding: 0 !important;
 }
 
-@media screen and (min-width: 1024px) and (max-width: 1600px) {
-	.homeSwiper .swiper-slide {
-		width: 22.5% !important;
-	}
-}
-
 @media screen and (min-width: 1024px) {
 	.card-container:hover .overlay-card {
 		opacity: 1;
@@ -449,12 +432,6 @@ h1,
 
 	.bottom-left p {
 		display: none;
-	}
-
-	.card-body {
-		min-height: 6.7rem;
-		max-height: 6.7rem;
-		background-color: #343a40;
 	}
 
 	.overlay-card {

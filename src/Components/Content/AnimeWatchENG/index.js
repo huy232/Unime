@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import { useParams } from "react-router-dom"
 import axios from "axios"
 import useDocumentTitle from "../DocumentTitleHook"
 import { BsFillArrowLeftSquareFill } from "react-icons/bs"
 import { Link } from "react-router-dom"
 import LoadingRequest from "../LoadingRequest"
-import { API } from "../../../constants"
+import { API, CONSUMET_API } from "../../../constants"
 import VideoPlayer from "../VideoPlayer"
 
 function AnimeWatchENG() {
@@ -19,106 +19,118 @@ function AnimeWatchENG() {
 	const [videoLoading, setVideoLoading] = useState(true)
 	const [subtitles, setSubtitles] = useState([])
 	const [thumbnail, setThumbnail] = useState()
+	const [title, setTitle] = useState("")
+	const prevAnilist = useRef()
 
 	useEffect(() => {
 		const CancelToken = axios.CancelToken
 		const source = CancelToken.source()
 
-		const getAnimeEpisodeList = async () => {
-			await axios
+		const filmEpisodeList = async () => {
+			if (prevAnilist.current !== animeId) {
+				const { data } = await axios
+					.get(
+						`${CONSUMET_API}/meta/anilist/info/${animeId}?provider=${provider}`,
+						{
+							cancelToken: source.token,
+						}
+					)
+					.catch((thrown) => {
+						if (axios.isCancel(thrown)) return
+					})
+				const listEpisode = data
+				const episodeTitle = listEpisode.episodes.find((obj) => {
+					return obj.id === current
+				})
+				setWatchDetail(
+					`${
+						listEpisode.title?.english ||
+						listEpisode.title?.romanji ||
+						listEpisode.title?.native
+					} - EP. ${episodeTitle.number} - ${episodeTitle.title}`
+				)
+				setTitle(
+					listEpisode.title?.english ||
+						listEpisode.title?.romanji ||
+						listEpisode.title?.native
+				)
+				setInfo(listEpisode.episodes)
+			}
+			prevAnilist.current = animeId
+		}
+
+		if (info.length > 0) {
+			const episodeTitle = info.find((obj) => {
+				return obj.id === current
+			})
+			setWatchDetail(
+				`${title} - EP. ${episodeTitle.number} - ${episodeTitle.title}`
+			)
+		}
+
+		const filmEpisodeWatch = async () => {
+			setVideoLoading(true)
+			const { data } = await axios
 				.get(
-					`https://api.consumet.org/meta/anilist/info/${animeId}?provider=${provider}`,
+					`${CONSUMET_API}/meta/anilist/watch/${current}?provider=${provider}`,
 					{
 						cancelToken: source.token,
 					}
 				)
-				.then((response) => {
-					const listEpisode = response.data
-					const episodeTitle = listEpisode.episodes.find((obj) => {
-						return obj.id === current
-					})
-					setInfo(listEpisode.episodes)
-					setWatchDetail(
-						`${
-							listEpisode.title?.english ||
-							listEpisode.title?.romanji ||
-							listEpisode.title?.native
-						} - EP. ${episodeTitle.number} - ${episodeTitle.title}`
-					)
-				})
-				.then(async () => {
-					setVideoLoading(true)
-					await axios
-						.get(
-							`https://api.consumet.org/meta/anilist/watch/${current}?provider=${provider}`,
-							{
-								cancelToken: source.token,
-							}
-						)
-						.then((response) => {
-							if (provider === "zoro") {
-								const urlData = response
-								const zoroUrl = urlData.data.sources
-
-								let subs = []
-
-								if (urlData.data.subtitles) {
-									subs = urlData.data.subtitles.filter(
-										(option) => option.lang !== "Thumbnails"
-									)
-								}
-
-								setSubtitles(
-									subs.map((sub, i) => ({
-										lang: `${i}. ${sub.lang}`,
-										language: `${i}. ${sub.lang}`,
-										file: sub.url,
-									}))
-								)
-								setThumbnail(
-									urlData.data.subtitles.find(
-										(sub) => sub.lang === "Thumbnails"
-									)
-								)
-								const CORS = "https://cors.proxy.consumet.org/"
-								// setVideoUrl(`${API}/cors/${zoroUrl.url}`)
-
-								setVideoUrl(
-									zoroUrl.map((source) => ({
-										file: `${API}/cors/${source.url}`,
-										label: source.quality,
-									}))
-								)
-							} else {
-								const urlData = response
-								const gogoUrl = urlData.data.sources
-								// setVideoUrl(gogoUrl.url)
-								setVideoUrl(
-									gogoUrl.map((source) => ({
-										file: `${API}/cors/${source.url}`,
-										label: source.quality,
-									}))
-								)
-							}
-							setVideoLoading(false)
-						})
-				})
 				.catch((thrown) => {
 					if (axios.isCancel(thrown)) return
 				})
 
-			const element = document.getElementsByClassName("active")[0]
-			if (element) {
-				element.scrollIntoView({ behavior: "smooth" })
+			if (Object.keys(data).length !== 0) {
+				if (provider === "zoro") {
+					const zoroUrl = data.sources
+					let subs = []
+					if (data.subtitles) {
+						subs = data.subtitles.filter(
+							(option) => option.lang !== "Thumbnails"
+						)
+					}
+					setSubtitles(
+						subs.map((sub, i) => ({
+							lang: `${i}. ${sub.lang}`,
+							language: `${i}. ${sub.lang}`,
+							file: sub.url,
+						}))
+					)
+					setThumbnail(data.subtitles.find((sub) => sub.lang === "Thumbnails"))
+					// setVideoUrl(`${API}/cors/${zoroUrl.url}`)
+					setVideoUrl(
+						zoroUrl.map((source) => ({
+							file: `${API}/cors/${source.url}`,
+							label: source.quality,
+						}))
+					)
+				}
+				if (provider === "") {
+					const gogoUrl = data.sources
+					setVideoUrl(
+						gogoUrl.map((source) => ({
+							file: `${API}/cors/${source.url}`,
+							label: source.quality,
+						}))
+					)
+				}
 			}
+			setVideoLoading(false)
 		}
 
-		getAnimeEpisodeList()
+		const element = document.getElementsByClassName("active")[0]
+		if (element) {
+			element.scrollIntoView({ behavior: "smooth" })
+		}
+
+		filmEpisodeList()
+		filmEpisodeWatch()
 
 		return () => {
 			source.cancel()
 		}
-	}, [animeId, current, provider])
+	}, [animeId, current, info, provider, title])
 
 	// const chooseEpisode = (episodeId) => {
 	// 	window.location.href = `${MAINSITE}/eng/watch/${animeId}?current=${episodeId}&provider=${provider}&prefer=${prefer}`
@@ -126,7 +138,7 @@ function AnimeWatchENG() {
 
 	useDocumentTitle(watchDetail)
 	return (
-		<div style={{ marginTop: "-90px" }}>
+		<div>
 			<div
 				className="video-js-wrapper"
 				style={{ display: "flex", height: "100vh" }}

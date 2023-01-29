@@ -76,7 +76,11 @@ function AnimeInfo({ instance }) {
 	}, [anime, instance])
 	return (
 		<>
-			<div className="banner-anime-overlay">
+			<div
+				className={`${
+					loading ? "banner-anime-overlay-skeleton" : "banner-anime-overlay"
+				}`}
+			>
 				<div className="banner-anime-image">
 					{loading ? (
 						<Skeleton

@@ -14,6 +14,7 @@ import "swiper/css"
 import "swiper/css/pagination"
 import "swiper/css/navigation"
 import SwiperCore, { Pagination, Navigation } from "swiper"
+import { CONSUMET_CORS } from "../../../constants"
 SwiperCore.use([Pagination, Navigation])
 
 // ---------------------------
@@ -152,7 +153,7 @@ function AnimeInfoEpisodeHolderENG({ info, loading, provider }) {
 												<div className="card-container">
 													<Card.Img
 														variant="top"
-														src={`https://cors.proxy.consumet.org/${eachEpisode?.image}`}
+														src={`${CONSUMET_CORS}/${eachEpisode?.image}`}
 													/>
 													<div className="overlay-card">
 														<div className="icon">

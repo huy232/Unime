@@ -47,7 +47,7 @@ function Search({ instance }) {
 				className="title-wrapper"
 				style={{ textAlign: "left", margin: "20px 0" }}
 			>
-				<h1 style={{ display: "inline-block" }}>TÌM KIẾM</h1>
+				<h1 className="inline-block font-black">TÌM KIẾM</h1>
 			</div>
 			<Row xs={1} sm={2} md={3} lg={4} className="search-anime-row">
 				{loading ? (

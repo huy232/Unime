@@ -27,6 +27,7 @@ import AnimeWatchENG from "./Components/Content/AnimeWatchENG"
 // NOT FOUND
 import NotFound from "./Components/Content/NotFound"
 import Films from "./Components/Content/Films"
+import AnimeImageSearch from "./Components/Content/AnimeImageSearch"
 
 function App() {
 	const instance = axios.create({
@@ -44,8 +45,14 @@ function App() {
 	return (
 		<div className="App">
 			<AuthProvider>
-				{exclusionArray.indexOf(window.location.pathname) < 0 && <Header />}
-				<div className="content" style={{ marginTop: "90px", width: "100%" }}>
+				{exclusionArray.indexOf(window.location.pathname) < 0 && (
+					<>
+						<Header />
+						<div className="heading-hidden h-[80px]"></div>
+					</>
+				)}
+
+				<div className="content">
 					<Routes>
 						{/* VIET ANIME*/}
 						<Route exact path="/" element={<Home instance={instance} />} />
@@ -80,6 +87,7 @@ function App() {
 						/>
 						<Route path="/eng/info/:animeId" element={<AnimeInfoENG />} />
 						<Route path="/eng/watch/:animeId" element={<AnimeWatchENG />} />
+						<Route path="/eng/search-image/" element={<AnimeImageSearch />} />
 						{/* SHARED */}
 						<Route path="login" element={<Login />} />
 						<Route path="*" element={<NotFound />} />

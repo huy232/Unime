@@ -73,7 +73,9 @@ function HeaderENG() {
 					<Navbar.Collapse id="responsive-navbar-nav">
 						<Nav className="me-auto">
 							<Nav.Link as={Link} to="/eng/anime" onClick={handleScrollToTop}>
-								<div className="anime-nav">Anime</div>
+								<div className="anime-nav">
+									<p>Anime</p>
+								</div>
 							</Nav.Link>
 							<NavDropdown title="Category" id="collasible-nav-dropdown">
 								{ENG_GENRES.map((genre) => (
@@ -82,7 +84,9 @@ function HeaderENG() {
 										key={genre.slug}
 										onClick={handleScrollToTop}
 									>
-										<NavDropdown.Item>{genre.name}</NavDropdown.Item>
+										<NavDropdown.Item>
+											<p>{genre.name}</p>
+										</NavDropdown.Item>
 									</LinkContainer>
 								))}
 							</NavDropdown>
@@ -111,8 +115,17 @@ function HeaderENG() {
 								</button>
 							</form>
 
-							<LanguageButton />
+							<div>
+								<Nav.Link
+									className="anime-nav-image-search"
+									as={Link}
+									to="/eng/search-image"
+								>
+									<p>Image Search</p>
+								</Nav.Link>
+							</div>
 
+							<LanguageButton />
 							<div className="user-container">
 								<User handleScrollToTop={handleScrollToTop} />
 							</div>

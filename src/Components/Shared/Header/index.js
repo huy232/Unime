@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React from "react"
 import { useAuth } from "../../../Contexts/auth"
 import HeaderVI from "../HeaderVI"
 import HeaderENG from "../HeaderENG"

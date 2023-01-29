@@ -14,25 +14,15 @@ function AnimeSkeleton() {
 	return (
 		<>
 			<Swiper
-				breakpoints={{
-					640: {
-						slidesPerView: 1,
-					},
-					768: {
-						slidesPerView: 3,
-					},
-					992: {
-						slidesPerView: 5,
-					},
-				}}
-				spaceBetween={20}
+				spaceBetween={10}
+				slidesPerView="auto"
 				className="homeSwiper h-100"
 				pagination={{
 					type: "progressbar",
 				}}
 			>
-				{[0, 1, 2, 3, 4].map((anime, i) => (
-					<SwiperSlide key={i}>
+				{[0, 1, 2, 3, 4, 5, 6].map((anime, i) => (
+					<SwiperSlide key={i} className="w-[320px]">
 						<Card>
 							<div className="card-container">
 								<Card.Img variant="top" src={anime?.thumbnail} />

@@ -1,6 +1,12 @@
 .banner-anime-overlay {
 	position: relative;
-	margin-top: -90px;
+	margin-top: -80px;
+	height: 450px;
+	overflow: hidden;
+}
+
+.banner-anime-overlay-skeleton {
+	position: relative;
 	height: 450px;
 	overflow: hidden;
 }
@@ -22,7 +28,7 @@
 }
 
 .info-detail .anime-type-paragraph {
-	margin-top: 20px;
+	margin: 10px 0;
 }
 
 .banner-anime-image {
@@ -242,6 +248,10 @@
 	color: white;
 }
 
+.episode-list-detail .card-body {
+	height: 120px;
+}
+
 .episode-anime-row {
 	margin: 0 !important;
 }
@@ -353,7 +363,7 @@ li.episode-chunk:hover {
 		margin: 20px;
 		margin-top: 50px;
 	}
-	.card-body {
+	.episode-list-detail .card-body {
 		padding: 0;
 		padding-top: 10px;
 		padding-left: 10px;

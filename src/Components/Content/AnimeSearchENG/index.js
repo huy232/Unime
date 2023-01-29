@@ -5,6 +5,7 @@ import InfiniteScroll from "react-infinite-scroll-component"
 import LoadingSpin from "react-loading-spin"
 import { Link } from "react-router-dom"
 import useDocumentTitle from "../DocumentTitleHook"
+import { CONSUMET_API } from "../../../constants"
 
 const PAGE_NUMBER = 1
 
@@ -25,7 +26,7 @@ function AnimeSearchENG() {
 		const getSearchResult = async () => {
 			setTimeout(async () => {
 				axios
-					.get(`https://api.consumet.org/meta/anilist/${query}?page=${page}`, {
+					.get(`${CONSUMET_API}/meta/anilist/${query}?page=${page}`, {
 						cancelToken: source.token,
 					})
 					.then((response) => {

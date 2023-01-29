@@ -100,7 +100,7 @@ function AnimeWatch({ instance }) {
 
 	return (
 		<>
-			<div style={{ marginTop: "-90px" }}>
+			<div>
 				<div
 					className="video-js-wrapper"
 					style={{ display: "flex", height: "100vh" }}

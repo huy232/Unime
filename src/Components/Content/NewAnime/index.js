@@ -18,25 +18,15 @@ function NewAnime({ done1, newAnime }) {
 				<AnimeSkeleton />
 			) : (
 				<Swiper
-					breakpoints={{
-						640: {
-							slidesPerView: 1,
-						},
-						768: {
-							slidesPerView: 3,
-						},
-						992: {
-							slidesPerView: 5,
-						},
-					}}
-					spaceBetween={20}
+					spaceBetween={10}
+					slidesPerView="auto"
 					className="homeSwiper h-100"
 					pagination={{
 						type: "progressbar",
 					}}
 				>
 					{newAnime.map((anime) => (
-						<SwiperSlide key={anime?.slug}>
+						<SwiperSlide key={anime?.slug} className="w-[320px]">
 							<nav>
 								<Link to={`info/${anime?.slug}`} title={anime?.name}>
 									<Card>

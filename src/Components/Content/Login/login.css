@@ -1,5 +1,5 @@
 .login-container {
-	margin-top: -90px;
+	/* margin-top: -80px; */
 	width: 100%;
 	display: flex;
 	color: #fff;
@@ -112,7 +112,7 @@
 
 .google-button {
 	background: rgb(255, 255, 255);
-	color: rgb(24, 24, 24)
+	color: rgb(24, 24, 24);
 }
 
 .facebook-button {

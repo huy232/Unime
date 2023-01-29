@@ -1,5 +1,6 @@
 .navbar {
 	transition: 0.6s;
+	height: 80px;
 }
 
 .navbar-color {

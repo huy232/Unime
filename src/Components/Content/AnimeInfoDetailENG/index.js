@@ -45,7 +45,6 @@ function AnimeInfoDetailENG({
 					)}
 				</h1>
 			</div>
-			{/* new Date(anime.airingAt * 1000) */}
 			{info.nextAiringEpisode && (
 				<div className="flex max-lg:flex-col max-lg:items-center max-lg:justify-center">
 					{loading ? (

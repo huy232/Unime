@@ -11,6 +11,25 @@ menu {
 	padding: 0;
 }
 
+.navbar .container {
+	max-width: 100%;
+}
+
+.card-body {
+	height: 120px;
+}
+
+.collasible-nav-dropdown {
+	padding: 4px;
+	border-radius: 4px;
+}
+
+@media screen and (max-width: 1024px) {
+	.navbar .container p {
+		font-size: 0.7rem;
+	}
+}
+
 /* h1,
 h2,
 h3,

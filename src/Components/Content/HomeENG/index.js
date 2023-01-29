@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { API } from "../../../constants"
+import { API, CONSUMET_API } from "../../../constants"
 import axios from "axios"
 import RecentEpisodeENG from "../RecentEpisodeENG"
 import TopAiringENG from "../TopAiringENG"
@@ -23,7 +23,7 @@ function HomeENG() {
 
 		const getTopAiring = async () => {
 			await axios
-				.get(`https://api.consumet.org/meta/anilist/popular`, {
+				.get(`${CONSUMET_API}/meta/anilist/popular`, {
 					cancelToken: source.token,
 				})
 				.then((topAiring) => {
@@ -40,7 +40,7 @@ function HomeENG() {
 
 		const getRecentAnime = async () => {
 			await axios
-				.get(`https://api.consumet.org/meta/anilist/recent-episodes`, {
+				.get(`${CONSUMET_API}/meta/anilist/recent-episodes`, {
 					cancelToken: source.token,
 				})
 				.then((getRecentData) => {
@@ -55,7 +55,7 @@ function HomeENG() {
 
 		const getTrendingAnime = async () => {
 			await axios
-				.get(`https://api.consumet.org/meta/anilist/trending`, {
+				.get(`${CONSUMET_API}/meta/anilist/trending`, {
 					cancelToken: source.token,
 				})
 				.then((trendingAnime) => {
@@ -70,7 +70,7 @@ function HomeENG() {
 
 		const getRandomAnime = async () => {
 			await axios
-				.get(`https://api.consumet.org/meta/anilist/random-anime`, {
+				.get(`${CONSUMET_API}/meta/anilist/random-anime`, {
 					cancelToken: source.token,
 				})
 				.then((randomAnime) => {

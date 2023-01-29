@@ -52,10 +52,6 @@ function HeaderVI() {
 		window.history.scrollRestoration = "manual"
 	}
 
-	const handleLanguage = (language) => {
-		setLanguage(language)
-	}
-
 	useEffect(() => {
 		window.addEventListener("scroll", handleScroll)
 		return () => window.removeEventListener("scroll", handleScroll)
@@ -78,7 +74,9 @@ function HeaderVI() {
 					<Navbar.Collapse id="responsive-navbar-nav">
 						<Nav className="me-auto">
 							<Nav.Link as={Link} to="/anime" onClick={handleScrollToTop}>
-								<div className="anime-nav">Anime</div>
+								<div className="anime-nav">
+									<p>Anime</p>
+								</div>
 							</Nav.Link>
 							<NavDropdown title="Thể loại" id="collasible-nav-dropdown">
 								{GENRES.map((genre) => (
@@ -87,7 +85,9 @@ function HeaderVI() {
 										key={genre.slug}
 										onClick={handleScrollToTop}
 									>
-										<NavDropdown.Item>{genre.name}</NavDropdown.Item>
+										<NavDropdown.Item>
+											<p>{genre.name}</p>
+										</NavDropdown.Item>
 									</LinkContainer>
 								))}
 							</NavDropdown>

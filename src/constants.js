@@ -2,6 +2,9 @@ const mainsite = "https://unime.vercel.app"
 // const mainsite = "http://localhost:3000"
 // const url = "https://mirai-reborn.herokuapp.com/api"
 // const url = "http://localhost:3000/api"
+// const consumetApi = "https://api.consumet.org/meta/anilist"
+const consumetApi = "https://cors.consumet.stream/https://api.consumet.org"
+const consumetCors = "https://cors.consumet.stream"
 const url = "https://mirai-backend.onrender.com/api"
 
 const genres = [
@@ -186,3 +189,5 @@ export const API = url
 export const GENRES = genres
 export const ENG_GENRES = engGenres
 export const COLLECTIONS = collections
+export const CONSUMET_API = consumetApi
+export const CONSUMET_CORS = consumetCors
