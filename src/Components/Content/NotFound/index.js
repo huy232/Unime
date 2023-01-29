@@ -9,8 +9,8 @@ function NotFound() {
 	const { language } = useAuth()
 
 	return (
-		<div className="w-100 mt-[-140px]">
-			<div className="h-[120px] w-100"></div>
+		<div className="w-100">
+			<div className="w-100"></div>
 			<div
 				className="w-100 h-100"
 				style={{
