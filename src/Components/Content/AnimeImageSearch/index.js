@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faTrash } from "@fortawesome/free-solid-svg-icons"
 import AnimeImageSearchLayout from "../AnimeImageSearchLayout"
 import LoadingSpin from "react-loading-spin"
+import useDocumentTitle from "../DocumentTitleHook"
 
 const fileTypes = ["JPG", "PNG", "JPEG"]
 
@@ -66,6 +67,8 @@ function AnimeImageSearch() {
 		setFile(null)
 		setPreview(null)
 	}
+
+	useDocumentTitle("Anime image search - UNIME")
 
 	return (
 		<>
