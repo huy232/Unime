@@ -13,7 +13,7 @@ function RecommendENG({ recommend, setLoading }) {
 			<h2 className="font-black text-right max-lg:text-center">
 				RECOMMENDATIONS
 			</h2>
-			<div>
+			<div className="mb-[24px]">
 				<Swiper
 					slidesPerView="auto"
 					spaceBetween={10}

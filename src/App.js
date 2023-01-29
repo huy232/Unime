@@ -28,6 +28,7 @@ import AnimeWatchENG from "./Components/Content/AnimeWatchENG"
 import NotFound from "./Components/Content/NotFound"
 import Films from "./Components/Content/Films"
 import AnimeImageSearch from "./Components/Content/AnimeImageSearch"
+import FilmInfo from "./Components/Content/FilmInfo"
 
 function App() {
 	const instance = axios.create({
@@ -93,6 +94,7 @@ function App() {
 						<Route path="*" element={<NotFound />} />
 						{/* FILMS */}
 						<Route path="/films" element={<Films />} />
+						<Route path="/films/info/:type/:filmSlug" element={<FilmInfo />} />
 					</Routes>
 				</div>
 				{exclusionArray.indexOf(window.location.pathname) < 0 && <Footer />}

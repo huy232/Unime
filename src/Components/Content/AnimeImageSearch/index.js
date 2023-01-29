@@ -59,6 +59,11 @@ function AnimeImageSearch() {
 			setLoading(false)
 			setToggle(false)
 		} catch (error) {
+			setText("")
+			setFile(null)
+			setPreview(null)
+			setLoading(false)
+			setToggle(true)
 			console.log(error)
 		}
 	}
