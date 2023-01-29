@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react"
 import axios from "axios"
 import { parseTime } from "../../../Utilities/parseTime"
 import { CONSUMET_API } from "../../../constants"
+import { Link } from "react-router-dom"
 
 function AnimeImageSearchLayout({ searchResult, setToggle }) {
 	const [loading, setLoading] = useState(true)
@@ -135,9 +136,11 @@ function AnimeImageSearchLayout({ searchResult, setToggle }) {
 											></p>
 										</div>
 										<div className="my-[6px] flex max-md:justify-center">
-											<button className="bg-[#F94A29] hover:opacity-70 duration-500 ease-in-out font-bold p-[8px] m-[8px] rounded">
-												WATCH NOW
-											</button>
+											<Link to={`/eng/info/${view.id}`}>
+												<button className="bg-[#F94A29] hover:opacity-70 duration-500 ease-in-out font-bold p-[8px] m-[8px] rounded">
+													WATCH NOW
+												</button>
+											</Link>
 										</div>
 									</div>
 								</div>
