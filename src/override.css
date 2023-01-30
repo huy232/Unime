@@ -34,6 +34,9 @@ menu {
 	.navbar .container p {
 		font-size: 0.7rem;
 	}
+	#collasible-nav-dropdown {
+		font-size: 0.7rem;
+	}
 }
 
 /* h1,

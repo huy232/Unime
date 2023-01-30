@@ -21,6 +21,7 @@
     "bootstrap": "^5.1.3",
     "hls.js": "^1.1.3",
     "netplayer": "github:huy232/netplayer#main",
+    "randomcolor": "^0.6.2",
     "react": "^18.2.0",
     "react-bootstrap": "^2.1.1",
     "react-dom": "^18.2.0",

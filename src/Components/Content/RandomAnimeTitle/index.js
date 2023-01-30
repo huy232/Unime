@@ -1,6 +1,5 @@
 import { Card } from "react-bootstrap"
 import { Link } from "react-router-dom"
-import ShowMoreText from "react-show-more-text"
 import DescriptionSkeleton from "../DescriptionSkeleton"
 
 function RandomAnimeTitle({ randomAnime }) {
@@ -8,11 +7,7 @@ function RandomAnimeTitle({ randomAnime }) {
 		<>
 			<Card>
 				<Card.Title className="description-title">
-					{!randomAnime?.AnimeName ? (
-						<DescriptionSkeleton />
-					) : (
-						randomAnime?.AnimeName?.todayTitle
-					)}
+					{randomAnime?.AnimeName}
 				</Card.Title>
 				{!randomAnime?.BannerImg ? (
 					""
@@ -32,23 +27,8 @@ function RandomAnimeTitle({ randomAnime }) {
 					</nav>
 				)}
 
-				<Card.Body className="description-card">
-					{!randomAnime?.Description ||
-					randomAnime?.Description.trim() === "" ? (
-						<DescriptionSkeleton />
-					) : (
-						<ShowMoreText
-							lines={2}
-							more="Hiện thêm"
-							less="Rút gọn"
-							className="content-css"
-							anchorClass="my-anchor-css-class"
-							expanded={false}
-							truncatedEndingComponent={"..."}
-						>
-							<Card.Text>{randomAnime?.Description.trim()}</Card.Text>
-						</ShowMoreText>
-					)}
+				<Card.Body className="description-card h-100">
+					<div className="line-clamp-5 h-100">{randomAnime?.Description}</div>
 				</Card.Body>
 
 				<Card.Footer

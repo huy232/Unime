@@ -5,12 +5,12 @@ import DescriptionSkeleton from "../DescriptionSkeleton"
 function RandomAnimeRightCover({ randomAnime }) {
 	return (
 		<>
-			<div className="image-box">
+			<div className="image-box w-[280px] mx-[auto]">
 				{!randomAnime?.CoverImg ? (
 					<Skeleton
 						variant="rectangular"
 						width="100%"
-						style={{ minHeight: "300px", maxHeight: "300px" }}
+						style={{ height: "320px" }}
 						animation="wave"
 						sx={{ bgcolor: "grey.900" }}
 					/>

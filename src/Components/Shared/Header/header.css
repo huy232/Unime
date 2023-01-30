@@ -3,13 +3,22 @@
 	height: 80px;
 }
 
-.navbar-color {
+.navbar-color,
+.me-auto.navbar-nav {
 	background-color: #222 !important;
 }
 
 .me-auto {
 	align-items: center;
 	width: 100%;
+}
+
+.me-auto.navbar-nav {
+	transition: 0;
+}
+
+.navbar-collapse.collapse.show {
+	margin-top: 20px;
 }
 
 .navbar-brand {
