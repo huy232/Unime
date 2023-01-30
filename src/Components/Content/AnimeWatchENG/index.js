@@ -69,7 +69,6 @@ function AnimeWatchENG() {
 		}
 
 		const filmEpisodeWatch = async () => {
-			setVideoLoading(true)
 			await axios
 				.get(
 					`${CONSUMET_API}/meta/anilist/watch/${current}?provider=${provider}`,
@@ -88,9 +87,8 @@ function AnimeWatchENG() {
 						}
 						setSubtitles(
 							subs.map((sub, i) => ({
-								lang: `${i}. ${sub.lang}`,
-								language: `${i}. ${sub.lang}`,
-								file: sub.url,
+								html: `${i}. ${sub.lang}`,
+								url: sub.url,
 							}))
 						)
 						setThumbnail(
@@ -99,8 +97,9 @@ function AnimeWatchENG() {
 						// setVideoUrl(`${API}/cors/${zoroUrl.url}`)
 						setVideoUrl(
 							zoroUrl.map((source) => ({
-								file: `${API}/cors/${source.url}`,
-								label: source.quality,
+								url: `${API}/cors/${source.url}`,
+								html: source.quality,
+								default: source.quality === "auto" ? true : false,
 							}))
 						)
 					}
@@ -108,8 +107,9 @@ function AnimeWatchENG() {
 						const gogoUrl = response.data.sources
 						setVideoUrl(
 							gogoUrl.map((source) => ({
-								file: `${API}/cors/${source.url}`,
-								label: source.quality,
+								url: `${API}/cors/${source.url}`,
+								html: source.quality,
+								default: source.quality === "auto" ? true : false,
 							}))
 						)
 					}
@@ -147,13 +147,11 @@ function AnimeWatchENG() {
 				{videoLoading ? (
 					<LoadingRequest />
 				) : (
-					<>
-						<VideoPlayer
-							videoUrl={videoUrl}
-							subtitles={subtitles}
-							thumbnail={thumbnail?.url ? thumbnail.url : ""}
-						/>
-					</>
+					<VideoPlayer
+						videoUrl={videoUrl}
+						subtitles={subtitles}
+						thumbnail={thumbnail?.url ? thumbnail.url : ""}
+					/>
 				)}
 
 				<div className="episode-content">
@@ -197,7 +195,7 @@ function AnimeWatchENG() {
 										: `Episode - ${item.number}`
 								}
 								className={current === item.id ? "episode active" : "episode"}
-								// onClick={() => chooseEpisode(item.id)}
+								onClick={() => setVideoLoading(true)}
 							>
 								<div>
 									<p>

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { useParams, Link } from "react-router-dom"
 import axios from "axios"
 import VideoPlayerSource from "../../../Components/Content/VideoPlayer"
@@ -20,81 +20,97 @@ function AnimeWatch({ instance }) {
 	const [videoUrl, setVideoUrl] = useState([])
 	const [videoEmbed, setVideoEmbed] = useState("")
 	const [videoLoading, setVideoLoading] = useState(true)
+	const [mainId, setMainId] = useState()
+	const prevAnilist = useRef()
 
 	useEffect(() => {
 		const CancelToken = axios.CancelToken
 		const source = CancelToken.source()
-
-		const getList = async () => {
-			await instance
-				.get(`/watch/${anime}`, {
-					cancelToken: source.token,
-				})
-				.then(async (response) => {
-					const mainId = response.data.data.id
-					setInfo(response.data.data.episodes)
-
-					if (index !== null) {
-						const numIndex = Number(index)
-						await instance
-							.get(`/anime/${mainId}/episodes/${numIndex}`, {
-								cancelToken: source.token,
-							})
-							.then((res) => {
-								setVideoLoading(true)
-								let videoUrlResponse = ""
-								// VIDEO URL IS HERE
-								if (typeof res.data.data?.videoSource !== "undefined") {
-									setVideoUrl([
-										{
-											file: res.data.data.videoSource,
-											label: "STANDARD",
-										},
-									])
-								} else {
-									videoUrlResponse = res.data.data.embedSource
-									setVideoEmbed(videoUrlResponse)
-								}
-								const watchFilm = res.data.data.film_name
-								const watchEpisodeName = res.data.data.full_name
-								setWatchDetail(watchFilm + ` (${watchEpisodeName})`)
-								setVideoLoading(false)
-							})
-					}
-					if (specialid !== null) {
-						const numSpecialId = Number(specialid)
-						await instance
-							.get(`/specialanime/${mainId}/${numSpecialId}`)
-							.then((res) => {
-								setVideoLoading(true)
-								// VIDEO URL IS HERE
-								const watchFilm = res.data.data.film_name
-								const watchEpisodeName = res.data.data.full_name
-								setWatchDetail(watchFilm + ` (${watchEpisodeName})`)
-								setVideoUrl([
-									{
-										file: res.data.data.videoSource,
-										label: "STANDARD",
-									},
-								])
-								setVideoLoading(false)
-							})
-					}
-					const element = document.getElementsByClassName("active")[0]
-					if (element) {
-						element.scrollIntoView({ behavior: "smooth" })
-					}
-				})
-				.catch((thrown) => {
-					if (axios.isCancel(thrown)) return
-				})
+		if (prevAnilist.current !== anime) {
+			const getList = async () => {
+				const { data } = await instance
+					.get(`/watch/${anime}`, {
+						cancelToken: source.token,
+					})
+					.catch((thrown) => {
+						if (axios.isCancel(thrown)) return
+					})
+				setInfo(data.data.episodes)
+				setMainId(data.data.id)
+			}
+			getList()
+			prevAnilist.current = anime
 		}
-		getList()
-
 		return () => {
 			source.cancel()
 		}
-	}, [anime, episode, index, instance, specialid, videoLoading])
+	}, [anime, instance])
+
+	useEffect(() => {
+		const CancelToken = axios.CancelToken
+		const source = CancelToken.source()
+		if (mainId && index !== null) {
+			const getAnime = async () => {
+				const numIndex = Number(index)
+				await instance
+					.get(`/anime/${mainId}/episodes/${numIndex}`, {
+						cancelToken: source.token,
+					})
+					.then((response) => {
+						if (typeof response.data.data?.videoSource !== "undefined") {
+							setVideoUrl([
+								{
+									default: true,
+									url: response.data.data.videoSource,
+									html: "STANDARD",
+								},
+							])
+						} else {
+							setVideoEmbed(response.data.data.embedSource)
+						}
+						const watchFilm = response.data.data.film_name
+						const watchEpisodeName = response.data.data.full_name
+						setWatchDetail(watchFilm + ` (${watchEpisodeName})`)
+						setVideoLoading(false)
+					})
+					.catch((thrown) => {
+						if (axios.isCancel(thrown)) return
+					})
+			}
+			getAnime()
+		}
+
+		if (mainId && specialid !== null) {
+			const getAnimeSpecial = async () => {
+				const numSpecialId = Number(specialid)
+				await instance
+					.get(`/specialanime/${mainId}/${numSpecialId}`)
+					.then((res) => {
+						// VIDEO URL IS HERE
+						const watchFilm = res.data.data.film_name
+						const watchEpisodeName = res.data.data.full_name
+						setWatchDetail(watchFilm + ` (${watchEpisodeName})`)
+						setVideoUrl([
+							{
+								default: true,
+								url: res.data.data.videoSource,
+								html: "STANDARD",
+							},
+						])
+						setVideoLoading(false)
+					})
+					.catch((thrown) => {
+						if (axios.isCancel(thrown)) return
+					})
+			}
+			getAnimeSpecial()
+		}
+
+		const element = document.getElementsByClassName("active")[0]
+		if (element) {
+			element.scrollIntoView({ behavior: "smooth" })
+		}
+	}, [index, instance, mainId, specialid])
 
 	useDocumentTitle(watchDetail)
 
@@ -112,7 +128,6 @@ function AnimeWatch({ instance }) {
 					) : (
 						videoEmbed && <VideoEmbed videoEmbed={videoEmbed} />
 					)}
-
 					<div className="episode-content">
 						<div className="episode-section">
 							<div className="episode-section-fixed">
@@ -154,6 +169,7 @@ function AnimeWatch({ instance }) {
 											? "episode active"
 											: "episode"
 									}
+									onClick={() => setVideoLoading(true)}
 								>
 									<div>
 										<p>{item.full_name}</p>
