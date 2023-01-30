@@ -29,9 +29,9 @@ export default function Player({
 				plugins: [
 					artplayerPluginHlsQuality({
 						// Show quality in control
-						control: true,
+						control: false,
 						// Show quality in setting
-						setting: true,
+						setting: false,
 						title: "Quality",
 						auto: "Auto",
 					}),
