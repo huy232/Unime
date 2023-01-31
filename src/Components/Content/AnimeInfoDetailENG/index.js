@@ -88,7 +88,7 @@ function AnimeInfoDetailENG({
 						))}
 					</div>
 					{info?.trailer?.site === "youtube" && (
-						<div className="w-full flex flex-col items-center mt-[20px]">
+						<div className="w-100 flex flex-col items-center mt-[20px]">
 							<h3>IN CASE YOU INTERESTED</h3>
 							<div className="youtube-link">
 								<ReactPlayer
