@@ -1,6 +1,5 @@
 import { COLLECTIONS } from "../../../constants"
 import randomColor from "randomcolor"
-import { Nav } from "react-bootstrap"
 import { Link } from "react-router-dom"
 import "./animecollectioncard.css"
 import { Swiper, SwiperSlide } from "swiper/react"
@@ -11,13 +10,13 @@ import "swiper/css/grid"
 import "swiper/css/pagination"
 
 // import required modules
-import { Grid, Pagination } from "swiper"
+import { Grid } from "swiper"
 
 function AnimeCollectionCard() {
 	return (
 		<>
 			{/* <div className="anime-collection-card-holder"> */}
-			<div className="w-100 h-[300px]">
+			<div className="w-full h-[300px]">
 				<Swiper
 					slidesPerView="auto"
 					grid={{
@@ -41,7 +40,7 @@ function AnimeCollectionCard() {
 						>
 							<Link
 								to={`/collection/${collection.slug}`}
-								className="flex justify-center items-center h-100 w-100"
+								className="flex justify-center items-center h-100 w-full"
 							>
 								<div className="collection-card__title m-[4px]">
 									<h4 className="text-[#fff] whitespace-pre-wrap font-bold">

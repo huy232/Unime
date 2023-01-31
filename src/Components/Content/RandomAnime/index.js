@@ -21,7 +21,7 @@ function RandomAnime({ randomAnime, done3 }) {
 						CÓ THỂ BẠN SẼ THÍCH ĐÓ
 					</h1>
 					<div className="clearfix"></div>
-					<div className="row w-100 flex-responsive mb-[40px] mx-auto">
+					<div className="row w-full flex-responsive mb-[40px] mx-auto">
 						<div className="col-9 flex-mobile">
 							<RandomAnimeTitle randomAnime={randomAnime} />
 							<div
@@ -32,7 +32,7 @@ function RandomAnime({ randomAnime, done3 }) {
 								<CharacterDetail randomAnime={randomAnime} done3={done3} />
 							</div>
 						</div>
-						<div className="col-3 max-lg:hidden">
+						<div className="col-3">
 							<RandomAnimeRightCover randomAnime={randomAnime} />
 						</div>
 					</div>

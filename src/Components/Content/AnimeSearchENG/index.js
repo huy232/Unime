@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import { useParams } from "react-router-dom"
 import axios from "axios"
 import InfiniteScroll from "react-infinite-scroll-component"
@@ -15,44 +15,42 @@ function AnimeSearchENG() {
 	let [page, setPage] = useState(PAGE_NUMBER)
 	const [hasNextPage, setHasNextPage] = useState(true)
 	const { query } = useParams()
-	const [storedState, setStoredState] = useState(query)
+	const prevQuery = useRef({ query, page: 1 })
 
 	useEffect(() => {
 		const CancelToken = axios.CancelToken
 		const source = CancelToken.source()
-		if (storedState !== query) {
+		if (prevQuery.current.query !== query) {
+			prevQuery.current.query = query
+			// eslint-disable-next-line react-hooks/exhaustive-deps
 			page = PAGE_NUMBER
 		}
 		const getSearchResult = async () => {
-			setTimeout(async () => {
-				axios
-					.get(`${CONSUMET_API}/meta/anilist/${query}?page=${page}`, {
-						cancelToken: source.token,
-					})
-					.then((response) => {
-						if (storedState !== query) {
-							setSearchResult(response.data.results)
-							setStoredState(query)
-						} else {
-							setSearchResult((prev) => {
-								return [...new Set([...prev, ...response.data.results])]
-							})
-						}
-						setHasNextPage(response.data.hasNextPage)
-						setLoading(false)
-					})
-					.catch((thrown) => {
-						if (axios.isCancel(thrown)) return
-					})
-			}, 2000)
+			axios
+				.get(`${CONSUMET_API}/meta/anilist/${query}?page=${page}`, {
+					cancelToken: source.token,
+				})
+				.then((response) => {
+					if (prevQuery.current.query !== query) {
+						setSearchResult(response.data.results)
+					} else {
+						setSearchResult((prev) => {
+							return [...new Set([...prev, ...response.data.results])]
+						})
+					}
+					setHasNextPage(response.data.hasNextPage)
+					setLoading(false)
+				})
+				.catch((thrown) => {
+					if (axios.isCancel(thrown)) return
+				})
 		}
 
 		getSearchResult()
 		return () => {
-			clearTimeout(getSearchResult)
 			source.cancel()
 		}
-	}, [page, query])
+	}, [query, page])
 
 	const scrollThreshold = () => {
 		const newPage = page + 1
@@ -65,7 +63,7 @@ function AnimeSearchENG() {
 		<div>
 			<h1 className="font-black">SEARCH</h1>
 			{loading ? (
-				<div className="block w-100 mt-[50px] text-center">
+				<div className="block w-full mt-[50px] text-center">
 					<LoadingSpin primaryColor="red" />
 				</div>
 			) : (
@@ -77,7 +75,7 @@ function AnimeSearchENG() {
 					next={scrollThreshold}
 					hasMore={hasNextPage}
 					loader={
-						<div className="loading-spin">
+						<div className="loading-spin mt-0">
 							<LoadingSpin primaryColor="red" />
 						</div>
 					}
@@ -94,16 +92,16 @@ function AnimeSearchENG() {
 								key={item.id}
 							>
 								<div className="group search-item col-span-1 cursor-pointer flex flex-col items-center">
-									<div className="group-hover:opacity-70 search-item-image relative aspect-w-2 aspect-h-3 duration-300 ease-linear w-[180px]">
+									<div className="group-hover:opacity-70 search-item-image relative aspect-w-2 aspect-h-3 duration-300 ease-linear">
 										<img
-											className="w-[180px] h-[240px] object-cover"
+											className="w-[160px] h-[240px] object-cover"
 											src={item.image}
 											alt=""
 										/>
 									</div>
-									<div className="search-item-title h-[60px] w-[180px]">
+									<div className="search-item-title h-[60px] w-[160px]">
 										<p
-											className="line-clamp-2"
+											className="line-clamp-2 px-[4px]"
 											style={{ color: item?.color || "#fff" }}
 										>
 											{item.title?.english ||

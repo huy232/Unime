@@ -4,6 +4,6 @@
 
 .loading-spin {
 	text-align: center;
-	margin: 40px 0;
+	margin: 0 auto 3rem auto;
 	width: 100% !important;
 }

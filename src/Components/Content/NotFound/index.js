@@ -9,10 +9,10 @@ function NotFound() {
 	const { language } = useAuth()
 
 	return (
-		<div className="w-100">
-			<div className="w-100"></div>
+		<div className="w-full">
+			<div className="w-full"></div>
 			<div
-				className="w-100 h-100"
+				className="w-full h-100"
 				style={{
 					background: `linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(${notFound})`,
 					backgroundSize: `cover`,

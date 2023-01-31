@@ -77,7 +77,13 @@ function AnimeCollection({ instance }) {
 						<LoadingSpin primaryColor="red" />
 					</div>
 				) : (
-					<Row xs={1} sm={2} md={3} lg={4} className="w-100 w-full row-anime">
+					<Row
+						xs={1}
+						sm={2}
+						md={3}
+						lg={4}
+						className="w-full w-full row-anime pb-12"
+					>
 						{animeList.map((anime) => (
 							<Col key={anime?.slug}>
 								<nav>
@@ -103,7 +109,7 @@ function AnimeCollection({ instance }) {
 										</Card>
 									</Link>
 								</nav>
-								<div className="w-100"></div>
+								<div className="w-full"></div>
 							</Col>
 						))}
 					</Row>

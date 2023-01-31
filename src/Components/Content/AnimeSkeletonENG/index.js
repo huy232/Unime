@@ -15,7 +15,7 @@ function AnimeSkeletonENG() {
 					<Swiper
 						slidesPerView="auto"
 						spaceBetween={10}
-						className="skeleton-anime-swiper w-100"
+						className="skeleton-anime-swiper w-full"
 						pagination={{
 							type: "progressbar",
 						}}

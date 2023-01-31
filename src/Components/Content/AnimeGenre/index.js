@@ -16,7 +16,7 @@ function AnimeGenre({ instance }) {
 	const [animeList, setAnimeList] = useState([])
 	const [genreAnime, setGenreAnime] = useState("")
 	const [page, setPage] = useState(PAGE_NUMBER)
-	const [totalPage, setTotalPage] = useState(2)
+	const [totalPage, setTotalPage] = useState(true)
 	const [translateGenreAnime, setTranslateGenreAnime] = useState("")
 	const [loading, setLoading] = useState(true)
 
@@ -38,28 +38,26 @@ function AnimeGenre({ instance }) {
 
 		if (genre === genreAnime) {
 			const getList = async () => {
-				setTimeout(async () => {
-					await instance
-						.get(`/anime/${genre}?page=${page}`, {
-							cancelToken: source.token,
+				await instance
+					.get(`/anime/${genre}?page=${page}`, {
+						cancelToken: source.token,
+					})
+					.then((response) => {
+						const newList = response.data.data.map((anime) => ({
+							slug: anime.slug,
+							thumbnail: anime.thumbnail,
+							name: anime.name,
+							views: anime.views,
+						}))
+						setTotalPage(response.data.pagination.totalPage)
+						setAnimeList((prev) => {
+							return [...new Set([...prev, ...newList])]
 						})
-						.then((response) => {
-							const newList = response.data.data.map((anime) => ({
-								slug: anime.slug,
-								thumbnail: anime.thumbnail,
-								name: anime.name,
-								views: anime.views,
-							}))
-							setTotalPage(response.data.pagination.totalPage)
-							setAnimeList((prev) => {
-								return [...new Set([...prev, ...newList])]
-							})
-							setLoading(false)
-						})
-						.catch((thrown) => {
-							if (axios.isCancel(thrown)) return
-						})
-				}, 2000)
+						setLoading(false)
+					})
+					.catch((thrown) => {
+						if (axios.isCancel(thrown)) return
+					})
 			}
 			getList()
 			translateGenre()
@@ -70,7 +68,6 @@ function AnimeGenre({ instance }) {
 		}
 
 		return () => {
-			clearTimeout()
 			source.cancel()
 		}
 	}, [genreAnime, genre, page, instance])
@@ -83,7 +80,7 @@ function AnimeGenre({ instance }) {
 			</div>
 			<div className="anime-list">
 				{loading ? (
-					<div className="loading-spin w-100 text-center">
+					<div className="loading-spin w-full text-center">
 						<LoadingSpin primaryColor="red" />
 					</div>
 				) : (
@@ -100,7 +97,13 @@ function AnimeGenre({ instance }) {
 							</div>
 						}
 					>
-						<Row xs={1} sm={2} md={3} lg={4} className="w-100 w-full row-anime">
+						<Row
+							xs={1}
+							sm={2}
+							md={3}
+							lg={4}
+							className="w-full w-full row-anime pb-12"
+						>
 							{animeList.map((anime) => (
 								<Col key={anime?.slug}>
 									<nav>
@@ -126,7 +129,7 @@ function AnimeGenre({ instance }) {
 											</Card>
 										</Link>
 									</nav>
-									<div className="w-100"></div>
+									<div className="w-full"></div>
 								</Col>
 							))}
 						</Row>

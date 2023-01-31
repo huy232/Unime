@@ -17,7 +17,6 @@ function VideoPlayer({ videoUrl, anime, info, index, subtitles, thumbnail }) {
 					autoSize: true,
 					autoMini: true,
 					screenshot: true,
-					setting: true,
 					loop: true,
 					flip: true,
 					playbackRate: true,
@@ -56,7 +55,7 @@ function VideoPlayer({ videoUrl, anime, info, index, subtitles, thumbnail }) {
 				}}
 				subtitles={subtitles}
 				videoUrl={videoUrl}
-				className="w-[80vw] max-lg:w-100 h-[100vh]"
+				className="w-[80vw] max-lg:w-full h-[100vh]"
 			/>
 		</>
 	)

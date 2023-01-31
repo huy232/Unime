@@ -15,7 +15,7 @@ function Footer() {
 	}
 
 	return (
-		<div className="relative footer h-[50px] w-100 bg-[#494848]">
+		<div className="relative footer h-[50px] w-full bg-[#494848]">
 			<div className="flex items-center h-100 mx-[40px]">
 				<div className="facebook-icon">
 					<a href="https://www.facebook.com/giahuythai/">

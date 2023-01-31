@@ -19,7 +19,7 @@ function TrendingAnimeENG({ trendingAnime, loadingTrending }) {
 					<Swiper
 						slidesPerView="auto"
 						spaceBetween={10}
-						className="popular-anime-swiper w-100"
+						className="popular-anime-swiper w-full"
 						pagination={{
 							type: "progressbar",
 						}}
@@ -39,7 +39,7 @@ function TrendingAnimeENG({ trendingAnime, loadingTrending }) {
 									<div className="group popular-anime-holder select-none cursor-pointer">
 										<div className="popular-anime-image w-[240px] h-[340px] group-hover:opacity-80 duration-200 ease-in-out relative">
 											<img
-												className="object-cover object-center w-100 h-100 group-hover:scale-90 duration-500 linear absolute"
+												className="object-cover object-center w-full h-100 group-hover:scale-90 duration-500 linear absolute"
 												src={anime.image}
 												alt=""
 											/>

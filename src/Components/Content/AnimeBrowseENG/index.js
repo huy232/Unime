@@ -20,27 +20,24 @@ function AnimeBrowseENG() {
 		const CancelToken = axios.CancelToken
 		const source = CancelToken.source()
 		const getAnimeBrowse = async () => {
-			setTimeout(async () => {
-				axios
-					.get(`${CONSUMET_API}/meta/anilist/advanced-search?page=${page}`, {
-						cancelToken: source.token,
+			axios
+				.get(`${CONSUMET_API}/meta/anilist/advanced-search?page=${page}`, {
+					cancelToken: source.token,
+				})
+				.then((response) => {
+					setAllAnime((prev) => {
+						return [...new Set([...prev, ...response.data.results])]
 					})
-					.then((response) => {
-						setAllAnime((prev) => {
-							return [...new Set([...prev, ...response.data.results])]
-						})
-						setHasNextPage(response.data.hasNextPage)
-						setLoading(false)
-					})
-					.catch((thrown) => {
-						if (axios.isCancel(thrown)) return
-					})
-			}, 2000)
+					setHasNextPage(response.data.hasNextPage)
+					setLoading(false)
+				})
+				.catch((thrown) => {
+					if (axios.isCancel(thrown)) return
+				})
 		}
 
 		getAnimeBrowse()
 		return () => {
-			clearTimeout(getAnimeBrowse)
 			source.cancel()
 		}
 	}, [page, query])
@@ -55,7 +52,7 @@ function AnimeBrowseENG() {
 			{useDocumentTitle(`All Anime - Unime`)}
 			<h1 className="font-black">ALL ANIME</h1>
 			{loading ? (
-				<div className="block w-100 mt-[50px] text-center">
+				<div className="block w-full mt-[50px] text-center">
 					<LoadingSpin primaryColor="red" />
 				</div>
 			) : (
@@ -67,7 +64,7 @@ function AnimeBrowseENG() {
 					next={scrollThreshold}
 					hasMore={hasNextPage}
 					loader={
-						<div className="loading-spin">
+						<div className="loading-spin mt-0">
 							<LoadingSpin primaryColor="red" />
 						</div>
 					}
@@ -85,16 +82,16 @@ function AnimeBrowseENG() {
 								key={item.id}
 							>
 								<div className="group anime-item col-span-1 cursor-pointer flex flex-col items-center">
-									<div className="group-hover:opacity-70 anime-item-image relative aspect-w-2 aspect-h-3 duration-300 ease-linear w-[180px]">
+									<div className="group-hover:opacity-70 anime-item-image relative aspect-w-2 aspect-h-3 duration-300 ease-linear">
 										<img
-											className="w-[180px] h-[240px] object-cover"
+											className="w-[160px] h-[240px] object-cover"
 											src={item.image}
 											alt=""
 										/>
 									</div>
-									<div className="anime-item-title h-[60px] w-[180px]">
+									<div className="anime-item-title h-[60px] w-[160px]">
 										<p
-											className="line-clamp-2"
+											className="line-clamp-2 px-[4px]"
 											style={{ color: item?.color || "#fff" }}
 										>
 											{item.title?.english ||

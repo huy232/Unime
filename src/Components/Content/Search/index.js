@@ -84,7 +84,7 @@ function Search({ instance }) {
 									</Card>
 								</Link>
 							</nav>
-							<div className="w-100"></div>
+							<div className="w-full"></div>
 						</Col>
 					))
 				)}

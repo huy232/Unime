@@ -36,33 +36,31 @@ function AnimeBrowseCategoryENG() {
 
 		if (genre === genreAnime) {
 			const getList = async () => {
-				setTimeout(async () => {
-					await axios
-						.get(
-							`${CONSUMET_API}/meta/anilist/genre?genres=["${translateGenreAnime}"]&page=${page}`,
-							{
-								cancelToken: source.token,
-							}
-						)
-						.then((response) => {
-							if (response.data.results === []) {
-								setAnimeList((prev) => {
-									return [...new Set([...prev])]
-								})
-								setNextPage(false)
-							} else {
-								setNextPage(true)
-								setAnimeList((prev) => {
-									return [...new Set([...prev, ...response.data.results])]
-								})
-							}
+				await axios
+					.get(
+						`${CONSUMET_API}/meta/anilist/genre?genres=["${translateGenreAnime}"]&page=${page}`,
+						{
+							cancelToken: source.token,
+						}
+					)
+					.then((response) => {
+						if (response.data.results === []) {
+							setAnimeList((prev) => {
+								return [...new Set([...prev])]
+							})
+							setNextPage(false)
+						} else {
+							setNextPage(true)
+							setAnimeList((prev) => {
+								return [...new Set([...prev, ...response.data.results])]
+							})
+						}
 
-							setLoading(false)
-						})
-						.catch((thrown) => {
-							if (axios.isCancel(thrown)) return
-						})
-				}, 2000)
+						setLoading(false)
+					})
+					.catch((thrown) => {
+						if (axios.isCancel(thrown)) return
+					})
 			}
 
 			getList()
@@ -74,7 +72,6 @@ function AnimeBrowseCategoryENG() {
 		}
 
 		return () => {
-			clearTimeout()
 			source.cancel()
 		}
 	}, [genreAnime, genre, page, translateGenreAnime])
@@ -87,7 +84,7 @@ function AnimeBrowseCategoryENG() {
 			</div>
 			<div className="anime-list">
 				{loading ? (
-					<div className="block w-100 mt-[50px] text-center">
+					<div className="block w-full mt-[50px] text-center">
 						<LoadingSpin primaryColor="red" />
 					</div>
 				) : (
@@ -99,7 +96,7 @@ function AnimeBrowseCategoryENG() {
 						next={scrollThreshold}
 						hasMore={nextPage}
 						loader={
-							<div className="loading-spin">
+							<div className="loading-spin mt-0">
 								<LoadingSpin primaryColor="red" />
 							</div>
 						}
@@ -117,16 +114,16 @@ function AnimeBrowseCategoryENG() {
 									key={item.id}
 								>
 									<div className="group anime-item col-span-1 cursor-pointer flex flex-col items-center">
-										<div className="group-hover:opacity-70 anime-item-image relative aspect-w-2 aspect-h-3 duration-300 ease-linear w-[180px]">
+										<div className="group-hover:opacity-70 anime-item-image relative aspect-w-2 aspect-h-3 duration-300 ease-linear">
 											<img
-												className="w-[180px] h-[240px] object-cover"
+												className="w-[160px] h-[240px] object-cover"
 												src={item.image}
 												alt=""
 											/>
 										</div>
-										<div className="anime-item-title h-[60px] w-[180px]">
+										<div className="anime-item-title h-[60px] w-[160px]">
 											<p
-												className="line-clamp-2"
+												className="line-clamp-2 px-[4px]"
 												style={{ color: item?.color || "#fff" }}
 											>
 												{item.title.english ||

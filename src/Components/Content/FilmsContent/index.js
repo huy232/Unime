@@ -18,9 +18,9 @@ function FilmsContent({ loading, films }) {
 								key={item.name}
 								className="mx-[4px] mb-[12px] relative float-left group"
 							>
-								<div className="pb-[148%] mb-0 w-100 relative overflow-hidden rounded-[4px] group-hover:opacity-70 duration-500 ease-in-out">
+								<div className="pb-[148%] mb-0 w-full relative overflow-hidden rounded-[4px] group-hover:opacity-70 duration-500 ease-in-out">
 									<img
-										className="top-0 left-0 right-0 bottom-0 absolute w-100 min-h-full"
+										className="top-0 left-0 right-0 bottom-0 absolute w-full min-h-full"
 										src={item.thumbnail}
 										alt=""
 									/>
@@ -28,7 +28,7 @@ function FilmsContent({ loading, films }) {
 										{item.quality}
 									</div>
 								</div>
-								<div className="h-[60px] w-100 mt-[4px]">
+								<div className="h-[60px] w-full mt-[4px]">
 									<p className="line-clamp-1 font-bold text-xs leading-none p-0 m-0 duration-500 ease-in-out">
 										{item.name}
 									</p>
@@ -59,8 +59,3 @@ function FilmsContent({ loading, films }) {
 }
 
 export default FilmsContent
-
-{
-	/* <div className="group-hover:opacity-70 relative aspect-w-2 aspect-h-3 duration-300 ease-linear w-100">
-</div> */
-}

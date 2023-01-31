@@ -92,12 +92,12 @@ function AnimeImageSearchLayout({ searchResult, setToggle }) {
 					<div className="my-[16px]">
 						{!loading && (
 							<div className="flex md:flex-row flex-col text-center">
-								<div className="max-md:mx-auto w-[180px]">
+								<div className="max-md:mx-auto w-[160px]">
 									<div className="relative aspect-w-2 aspect-h-3">
 										<img src={view.image} alt="" />
 									</div>
 								</div>
-								<div className="w-100 mx-[6px]">
+								<div className="w-full mx-[6px]">
 									<h3
 										className="font-black md:text-left"
 										style={{

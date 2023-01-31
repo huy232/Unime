@@ -17,7 +17,7 @@ function RecommendENG({ recommend, setLoading }) {
 				<Swiper
 					slidesPerView="auto"
 					spaceBetween={10}
-					className="recommend-anime-swiper w-100"
+					className="recommend-anime-swiper w-full"
 					pagination={{
 						type: "progressbar",
 					}}
@@ -37,7 +37,7 @@ function RecommendENG({ recommend, setLoading }) {
 								<div className="group recommend-anime-holder select-none cursor-pointer">
 									<div className="recommend-anime-image w-[240px] h-[340px] group-hover:opacity-80 duration-200 ease-in-out relative">
 										<img
-											className="object-cover object-center w-100 h-100 group-hover:scale-90 duration-500 linear absolute"
+											className="object-cover object-center w-full h-100 group-hover:scale-90 duration-500 linear absolute"
 											src={anime.image}
 											alt=""
 										/>
