@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react"
-import axios from "axios"
+import React from "react"
 import notFound from "../../../Utilities/img/not-found.jpg"
 import { Link } from "react-router-dom"
 import { useAuth } from "../../../Contexts/auth"

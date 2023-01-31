@@ -49,7 +49,7 @@ function Search({ instance }) {
 			>
 				<h1 className="inline-block font-black">TÌM KIẾM</h1>
 			</div>
-			<Row xs={1} sm={2} md={3} lg={4} className="search-anime-row">
+			<Row xs={1} sm={2} md={3} lg={4} className="search-anime-row pb-12">
 				{loading ? (
 					<div className="loading-spin">
 						<LoadingSpin primaryColor="red" />

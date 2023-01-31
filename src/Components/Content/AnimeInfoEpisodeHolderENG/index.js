@@ -128,7 +128,7 @@ function AnimeInfoEpisodeHolderENG({ info, loading, provider }) {
 				)}
 			</div>
 
-			<div className="episode-wrapper mb-[20px]">
+			<div className="episode-wrapper mb-[20px] mx-[4px]">
 				<div className="episode-list-detail">
 					<Row
 						xs={1}

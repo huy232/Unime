@@ -1,7 +1,7 @@
 <p align="center">
 <h1>UNIME</h1>
 </p>
-UNIME (previously named MIRAI) is an anime website that provides you with anime completely free without ads.
+<b>UNIME</b> (previously named <b>MIRAI</b>) is an anime website that provides you with anime completely free without ads.
 
 The site: [UNIME](https://unime.vercel.app/)
 
@@ -30,32 +30,53 @@ Before I learned HTML/CSS/Javascript to become a web developer, I'd always dream
 - React Icons
 - etc.
 
+*RECENTLY ADDED*:
+- TailwindCSS
+
 ## Showcase
 <p align="center">
-<h3>HOME PAGE</h3>
+<h3>VIETNAMESE HOME PAGE</h3>
 </p>
 
-![HomePage](./public/gif/HomePage.gif)
+![HomePageVI](https://i.imgur.com/fTHG5b5.png)
+
 <p align="center">
-<h3>Anime/Category Page with Infinite Load</h3>
+<h3>ENGLISH HOME PAGE</h3>
 </p>
 
-![Anime](./public/gif/AnimeCategory.gif)
+![HomePageENG](https://i.imgur.com/bibGW0C.png)
+
 <p align="center">
-<h3>Search Page</h3>
+<h3>VIETNAMESE ANIME PAGE</h3>
 </p>
 
-![Search](./public/gif/Search.gif)
+![AnimeVI](https://i.imgur.com/MaZJf4E.png)
 <p align="center">
-<h3>Info Page with Youtube, Anilist, and anime Data</h3>
+<h3>ENGLISH ANIME PAGE</h3>
 </p>
 
-![InfoPage](./public/gif/InfoPage.gif)
+![AnimeENG](https://i.imgur.com/z1IB4Wa.jpg)
 <p align="center">
-<h3>Watch page</h3>
+<h3>VIETNAMESE INFO PAGE</h3>
 </p>
 
-![WatchPage](./public/gif/Watch.gif)
+![InfoPageVI](https://i.imgur.com/cKRnK0y.png)
+<p align="center">
+<h3>ENGLISH INFO PAGE</h3>
+</p>
+
+![InfoPageENG](https://i.imgur.com/EbssVaK.png)
+<p align="center">
+<h3>WATCH PAGE</h3>
+</p>
+
+![WatchPage](https://i.imgur.com/fUf2fOe.png)
+<p align="center">
+<h3>LOGIN PAGE</h3>
+</p>
+
+![LoginPage](https://i.imgur.com/zmcCmNt.png)
+
 
 
 Everything is responsive, shrink down the web page or using it on device for further more detail.
@@ -69,13 +90,13 @@ Everything is responsive, shrink down the web page or using it on device for fur
 # SOURCES
 - This is a free project, the data is from [Vuighe](https://vuighe.net/), please support them.
 - Combine with [Anilist](https://anilist.co/) data and [Youtube](https://www.youtube.com/) for trailer provider and further information for anime.
-
+*Recently added:*
+- [ZoroAnime](https://zoro.to/)
+- [GogoAnime](https://ww4.gogoanimes.org/)
 # Installation
 - Simply use `git clone https://github.com/huy232/mirai.git` to clone my project to your local.
 - Use `git i` to install all needed dependencies in this project.
 - Use `npm start` to run the project.
 - Feel free to modify, fork and make it better.
-
-This page will only work until 28 November, since it's the day Heroku shut down Free Plan, which will affect my Back-end, that's the data that I'm using for MIRAI/UNIME. If it's still working, then it's due to the migration that I'm trying and it has succeeded.
 
 Feel free to contact or bug report to me, if you see any better solutions, more optimized ways of coding, or just want to share it with me, I'll gladly and kindly listen to it, have a nice day!
