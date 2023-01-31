@@ -62,7 +62,7 @@ function AnimeWatch({ instance }) {
 								{
 									default: true,
 									url: response.data.data.videoSource,
-									html: "STANDARD",
+									html: response.data.data.quality,
 								},
 							])
 						} else {
@@ -94,7 +94,7 @@ function AnimeWatch({ instance }) {
 							{
 								default: true,
 								url: res.data.data.videoSource,
-								html: "STANDARD",
+								html: res.data.data.quality,
 							},
 						])
 						setVideoLoading(false)
@@ -117,10 +117,7 @@ function AnimeWatch({ instance }) {
 	return (
 		<>
 			<div>
-				<div
-					className="video-js-wrapper"
-					style={{ display: "flex", height: "100vh" }}
-				>
+				<div className="flex">
 					{videoLoading ? (
 						<LoadingRequest />
 					) : videoUrl.length > 0 ? (

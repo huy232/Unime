@@ -140,10 +140,7 @@ function AnimeWatchENG() {
 	useDocumentTitle(watchDetail)
 	return (
 		<div>
-			<div
-				className="video-js-wrapper"
-				style={{ display: "flex", height: "100vh" }}
-			>
+			<div className="flex">
 				{videoLoading ? (
 					<LoadingRequest />
 				) : (

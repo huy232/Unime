@@ -39,9 +39,22 @@ export default function Player({
 				customType: {
 					m3u8: function (video, url) {
 						// Attach the Hls instance to the Artplayer instance
-						art.hls = new Hls()
-						art.hls.loadSource(url)
-						art.hls.attachMedia(video)
+						if (Hls.isSupported()) {
+							const hls = new Hls({
+								xhrSetup: (xhr, url) => {},
+							})
+							hls.loadSource(url)
+							hls.attachMedia(video)
+
+							// optional
+							art.hls = hls
+							art.once("url", () => hls.destroy())
+							art.once("destroy", () => hls.destroy())
+						} else if (video.canPlayType("application/vnd.apple.mpegurl")) {
+							video.src = url
+						} else {
+							art.notice.show = "Unsupported playback format: m3u8"
+						}
 					},
 				},
 				settings: [
