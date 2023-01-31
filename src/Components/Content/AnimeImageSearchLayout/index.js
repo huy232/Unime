@@ -50,7 +50,7 @@ function AnimeImageSearchLayout({ searchResult, setToggle }) {
 						</p>
 						<div className="grid grid-cols-10">
 							<div className="col-span-5 flex flex-col justify-between">
-								<p>{item.anilist.episode}</p>
+								<p>Episode - {item.episode}</p>
 								<p>
 									{parseTime(Math.floor(item.from))} -{" "}
 									{parseTime(Math.floor(item.to))}
