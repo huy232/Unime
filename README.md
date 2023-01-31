@@ -67,7 +67,7 @@ Before I learned HTML/CSS/Javascript to become a web developer, I'd always dream
 
 ![InfoPageENG](https://i.imgur.com/EbssVaK.png)
 <p align="center">
-<h3>IMAGE SEARCH PAGE PAGE</h3>
+<h3>IMAGE SEARCH PAGE</h3>
 </p>
 
 ![ImageSearch-1](https://i.imgur.com/F0yju1q.png)
