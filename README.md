@@ -90,6 +90,7 @@ Everything is responsive, shrink down the web page or using it on device for fur
 # SOURCES
 - This is a free project, the data is from [Vuighe](https://vuighe.net/), please support them.
 - Combine with [Anilist](https://anilist.co/) data and [Youtube](https://www.youtube.com/) for trailer provider and further information for anime.
+
 *Recently added:*
 - [ZoroAnime](https://zoro.to/)
 - [GogoAnime](https://ww4.gogoanimes.org/)
