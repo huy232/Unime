@@ -140,7 +140,7 @@ function AnimeWatchENG() {
 	useDocumentTitle(watchDetail)
 	return (
 		<div>
-			<div className="flex">
+			<div className="flex max-lg:flex-col">
 				{videoLoading ? (
 					<LoadingRequest />
 				) : (

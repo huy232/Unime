@@ -13,7 +13,7 @@ function VideoPlayer({ videoUrl, anime, info, index, subtitles, thumbnail }) {
 					setting: true,
 					muted: false,
 					autoplay: true,
-					pip: true,
+					pip: false,
 					autoSize: true,
 					autoMini: true,
 					screenshot: true,
@@ -30,7 +30,7 @@ function VideoPlayer({ videoUrl, anime, info, index, subtitles, thumbnail }) {
 					backdrop: true,
 					playsInline: true,
 					volume: 1,
-					airplay: true,
+					airplay: false,
 					lang: navigator.language.toLowerCase(),
 					whitelist: ["*"],
 					moreVideoAttr: {
@@ -41,7 +41,7 @@ function VideoPlayer({ videoUrl, anime, info, index, subtitles, thumbnail }) {
 							"font-weight": "400",
 							"font-size": "2rem",
 							"background-color": "rgba(0, 0, 0, 0.75)",
-							"border-radius": "0.125rem",
+							"border-radius": "0.25rem",
 							position: "relative",
 							height: "fit-content",
 							width: "auto",
@@ -56,7 +56,7 @@ function VideoPlayer({ videoUrl, anime, info, index, subtitles, thumbnail }) {
 				}}
 				subtitles={subtitles}
 				videoUrl={videoUrl}
-				className="w-100 h-[100vh]"
+				className="w-[80vw] max-lg:w-100 h-[100vh]"
 			/>
 		</>
 	)
