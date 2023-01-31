@@ -65,6 +65,16 @@ Before I learned HTML/CSS/Javascript to become a web developer, I'd always dream
 <h3>ENGLISH INFO PAGE</h3>
 </p>
 
+![ImageSearch-1](https://i.imgur.com/F0yju1q.png)
+<p align="center">
+<h3>ANIME IMAGE SEARCH</h3>
+</p>
+
+![ImageSearch-2](https://i.imgur.com/GD7gswF.png)
+<p align="center">
+<h3>ANIME IMAGE SEARCH RESULT</h3>
+</p>
+
 ![InfoPageENG](https://i.imgur.com/EbssVaK.png)
 <p align="center">
 <h3>WATCH PAGE</h3>
