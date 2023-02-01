@@ -25,7 +25,7 @@ function HeaderENG() {
 	const handleSubmit = (e) => {
 		e.preventDefault()
 		handleScrollToTop()
-		navigate(`/search/${encodeURI(input)}`)
+		navigate(`/eng/search/${encodeURI(input)}`)
 		setInput("")
 	}
 	const handleKeypress = (e) => {

@@ -38,44 +38,44 @@ Before I learned HTML/CSS/Javascript to become a web developer, I'd always dream
 <h3>VIETNAMESE HOME PAGE</h3>
 </p>
 
-![HomePageVI](https://i.imgur.com/fTHG5b5.png)
+![HomePageVI](https://i.imgur.com/h3pdwAw.png)
 
 <p align="center">
 <h3>ENGLISH HOME PAGE</h3>
 </p>
 
-![HomePageENG](https://i.imgur.com/bibGW0C.png)
+![HomePageENG](https://i.imgur.com/PyiGejo.png)
 
 <p align="center">
 <h3>VIETNAMESE ANIME PAGE</h3>
 </p>
 
-![AnimeVI](https://i.imgur.com/MaZJf4E.png)
+![AnimeVI](https://i.imgur.com/WX5Lq2R.png)
 <p align="center">
 <h3>ENGLISH ANIME PAGE</h3>
 </p>
 
-![AnimeENG](https://i.imgur.com/z1IB4Wa.jpg)
+![AnimeENG](https://i.imgur.com/cFTdJAi.png)
 <p align="center">
 <h3>VIETNAMESE INFO PAGE</h3>
 </p>
 
-![InfoPageVI](https://i.imgur.com/cKRnK0y.png)
+![InfoPageVI](https://i.imgur.com/QAC8d9M.png)
 <p align="center">
 <h3>ENGLISH INFO PAGE</h3>
 </p>
 
-![InfoPageENG](https://i.imgur.com/EbssVaK.png)
+![InfoPageENG](https://i.imgur.com/ROJz71V.png)
 <p align="center">
 <h3>IMAGE SEARCH PAGE</h3>
 </p>
 
-![ImageSearch-1](https://i.imgur.com/F0yju1q.png)
+![ImageSearch-1](https://i.imgur.com/p2AXhJk.png)
 <p align="center">
 <h3>IMAGE SEARCH RESULT PAGE</h3>
 </p>
 
-![ImageSearch-2](https://i.imgur.com/GD7gswF.png)
+![ImageSearch-2](https://i.imgur.com/tBOdOlG.png)
 <p align="center">
 <h3>WATCH PAGE</h3>
 </p>
