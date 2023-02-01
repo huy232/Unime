@@ -28,19 +28,19 @@ function AnimeCollectionCard() {
 				>
 					{COLLECTIONS.map((collection) => (
 						<SwiperSlide
-							className="collection-card w-[240px] h-[120px] rounded hover:opacity-80 duration-200 ease-in-out"
+							className="collection-card mx-[20px] my-[10px] w-[240px] h-[120px] bg-[#222] rounded"
 							key={collection.slug}
-							style={{
-								background: `${randomColor({
-									luminosity: "dark",
-									format: "rgba",
-									alpha: 0.8,
-								})}`,
-							}}
 						>
 							<Link
 								to={`/collection/${collection.slug}`}
-								className="flex justify-center items-center h-100 w-full"
+								className="flex justify-center items-center h-100 w-full hover:opacity-40 duration-200 ease-in-out rounded p-[4px]"
+								style={{
+									background: `${randomColor({
+										luminosity: "dark",
+										format: "rgb",
+										alpha: 0.8,
+									})}`,
+								}}
 							>
 								<div className="collection-card__title m-[4px]">
 									<h4 className="text-[#fff] whitespace-pre-wrap font-bold">

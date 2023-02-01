@@ -47,16 +47,17 @@ export default function Login() {
 		<>
 			<div className="login-container">
 				<div
-					className="col-40"
+					className="col-40 max-sm:h-[100vh] relative"
 					style={{
 						background: `linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(${background})`,
-						backgroundSize: `cover`,
-						backgroundRepeat: `no-repeat`,
+						backgroundSize: "cover",
+						backgroundRepeat: "no-repeat",
+						backgroundPosition: "center",
 					}}
 				>
 					<AnimeRandomQuote />
 				</div>
-				<div className="col-60">
+				<div className="col-60 max-sm:absolute">
 					<div className="login-section">
 						<h1 className="login-heading">
 							<div

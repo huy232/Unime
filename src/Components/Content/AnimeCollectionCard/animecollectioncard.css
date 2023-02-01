@@ -1,61 +1,19 @@
-.anime-collection-card-holder {
-	display: flex;
-	flex-wrap: wrap;
-	height: 300px;
-	overflow-y: scroll;
-	border: 1px solid #8d7676;
-	margin: 30px;
-	background: rgb(33 22 21);
-}
-
-.anime-collection-card-holder::-webkit-scrollbar {
-	display: none;
-}
-
-.collection-card {
-	width: calc(25% - 20px);
-	margin: 10px;
-	height: 120px;
-}
-
-.collection-card .nav-link {
-	box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
-		rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-	display: flex;
-	border-radius: 20px;
-	background: rgba(223, 222, 222, 0.6);
-	height: 100%;
-	align-items: center;
-	justify-content: center;
-	transition: all 0.4s;
-}
-
-.collection-card .nav-link:hover {
-	opacity: 0.5;
-}
-
-.collection-card__title {
-	margin: 0;
-}
-
-.collection-card__title h4 {
-	color: rgba(26, 14, 14, 0.8);
-}
-
-@media screen and (max-width: 1024px) {
-	.collection-card {
-		width: calc(33.33% - 20px);
+@media screen and (min-width: 640px) {
+	.collection-card a:before {
+		content: "";
+		position: absolute;
+		height: 100%;
+		width: 100%;
+		top: 0;
+		left: 0;
 	}
-}
 
-@media screen and (max-width: 640px) {
-	.collection-card {
-		width: calc(50% - 20px);
+	.collection-card a {
+		transform: translate(-5%, -5%);
+		transition: transform 0.2s;
 	}
-}
 
-@media screen and (max-width: 480px) {
-	.collection-card {
-		width: calc(100% - 20px);
+	.collection-card a:hover {
+		transform: translate(0, 0);
 	}
 }

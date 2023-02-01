@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react"
 import axios from "axios"
+import quotes from "../../../Utilities/quotes.json"
 
 function AnimeRandomQuote() {
 	const [quoteData, setQuoteData] = useState({})
@@ -19,6 +20,9 @@ function AnimeRandomQuote() {
 				setLoading(false)
 			})
 			.catch((thrown) => {
+				const randomQuote = quotes[Math.floor(Math.random() * quotes.length)]
+				setQuoteData(randomQuote)
+				setLoading(false)
 				if (axios.isCancel(thrown)) return
 			})
 		getRandomQuote()
@@ -28,7 +32,7 @@ function AnimeRandomQuote() {
 	}, [])
 
 	return (
-		<div className="quote-container">
+		<div className="quote-container max-sm:hidden">
 			{loading ? (
 				""
 			) : (
@@ -36,7 +40,7 @@ function AnimeRandomQuote() {
 					<h2 className="quote-heading">QUOTE:</h2>
 					<div className="quote-holder">
 						<div className="quote">
-							<p className="quote-paragraph">{quoteData.quote}</p>
+							<p className="quote-paragraph">&quot;{quoteData.quote}&quot;</p>
 						</div>
 						<div className="quote-info">
 							<div className="quote-character">{quoteData.character}</div>

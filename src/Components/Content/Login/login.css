@@ -125,6 +125,7 @@
 
 .social-paragraph {
 	margin: 0 auto 0 auto;
+	padding: 4px;
 }
 
 @media screen and (max-width: 640px) {
