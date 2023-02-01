@@ -1,25 +1,11 @@
-import React, { useEffect, useState } from "react"
-import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap"
-import { Link, useNavigate } from "react-router-dom"
-import { supabase } from "../../../supabaseClient"
+import React from "react"
+import { Nav } from "react-bootstrap"
+import { Link } from "react-router-dom"
 import { useAuth } from "../../../Contexts/auth"
 import "./user.css"
 
 function User({ handleScrollToTop }) {
 	const { language, user, signOut } = useAuth()
-	// const [user, setUser] = useState({})
-
-	// useEffect(() => {
-	// 	const getUserData = async () => {
-	// 		await supabase.auth.getUser().then((value) => {
-	// 			if (value.data?.user) {
-	// 				setUser(value.data.user)
-	// 			}
-	// 		})
-	// 	}
-
-	// 	getUserData()
-	// }, [])
 
 	async function handleSignOut() {
 		// Ends user session

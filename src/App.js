@@ -49,7 +49,7 @@ function App() {
 				{exclusionArray.indexOf(window.location.pathname) < 0 && (
 					<>
 						<Header />
-						<div className="heading-hidden h-[80px]"></div>
+						<div className="heading-hidden h-[40px]"></div>
 					</>
 				)}
 

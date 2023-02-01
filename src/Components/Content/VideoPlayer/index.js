@@ -1,5 +1,4 @@
 import React from "react"
-// import VideoPlayer from "../VideoJsHook/index"
 import Artplayer from "../ArtPlayer"
 import "./videoplayer.css"
 

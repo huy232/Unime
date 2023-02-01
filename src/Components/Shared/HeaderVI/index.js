@@ -1,35 +1,22 @@
-import { useEffect, useState } from "react"
-import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap"
+import { useEffect, useRef, useState } from "react"
 import { Link } from "react-router-dom"
 import { GENRES } from "../../../constants"
-import { LinkContainer } from "react-router-bootstrap"
-import { debounce } from "../../../Utilities/debounce"
-import TextField from "@mui/material/TextField"
 import { BsSearch } from "react-icons/bs"
 import { useNavigate } from "react-router-dom"
-import { useAuth } from "../../../Contexts/auth"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faBars, faSortUp, faSortDown } from "@fortawesome/free-solid-svg-icons"
+import randomColor from "randomcolor"
 
 import User from "../User"
 import LanguageButton from "../../Content/LanguageButton"
+import unimeLogo from "../../../Utilities/img/unime.png"
 
 function HeaderVI() {
 	let navigate = useNavigate()
 	const [input, setInput] = useState("")
-	const [prevScrollPos, setPrevScrollPos] = useState(0)
-	const [visible, setVisible] = useState(true)
-	const { setLanguage } = useAuth()
-
-	const handleScroll = debounce(() => {
-		const currentScrollPos = window.pageYOffset
-
-		setVisible(
-			(prevScrollPos > currentScrollPos &&
-				prevScrollPos - currentScrollPos > 100) ||
-				currentScrollPos < 100
-		)
-
-		setPrevScrollPos(currentScrollPos)
-	}, 100)
+	const [sideBar, setSidebar] = useState(false)
+	const [genreToggle, setGenreToggle] = useState(false)
+	const sidebarRef = useRef()
 
 	const handleChange = (e) => {
 		setInput(e.target.value)
@@ -44,6 +31,7 @@ function HeaderVI() {
 	const handleKeypress = (e) => {
 		//it triggers by pressing the enter key
 		if (e.keyCode === 13) {
+			setSidebar(false)
 			handleSubmit()
 		}
 	}
@@ -52,79 +40,142 @@ function HeaderVI() {
 		window.history.scrollRestoration = "manual"
 	}
 
+	const handleClickOutside = (event) => {
+		if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
+			setSidebar(false)
+		}
+	}
+
 	useEffect(() => {
-		window.addEventListener("scroll", handleScroll)
-		return () => window.removeEventListener("scroll", handleScroll)
-	}, [prevScrollPos, visible, handleScroll])
+		document.addEventListener("click", handleClickOutside, true)
+		return () => {
+			document.removeEventListener("click", handleClickOutside, true)
+		}
+	}, [])
 
 	return (
-		<>
-			<Navbar
-				collapseOnSelect
-				expand="lg"
-				variant="dark"
-				fixed="top"
-				className={`navbar-color ${visible ? "" : "fixed-top-hide"}`}
+		<header ref={sidebarRef}>
+			<div className="h-[40px] w-100 bg-[#222] fixed z-50 flex flex-col md:px-12 lg:px-20 xl:px-28 2xl:px-36">
+				<div className="flex flex-row h-100 items-center">
+					<div className="h-100">
+						<Link
+							to="/"
+							className="group hover:opacity-80 duration-200 ease-in-out h-100 inline-block flex"
+							onClick={() => setSidebar(false)}
+						>
+							<img
+								className="group-hover:opacity-80 duration-200 ease-in-out h-[40px] w-[40px]"
+								src={unimeLogo}
+								alt=""
+							/>
+							<h1 className="font-black text-[1.5rem] p-0 my-0 h-100 max-sm:hidden mx-[6px]">
+								UNIME
+							</h1>
+						</Link>
+					</div>
+					<div className="mx-[10px]">
+						<form className="flex">
+							<input
+								type="text"
+								placeholder="Tìm kiếm Anime..."
+								className="search-navbar text-white max-sm:w-[140px] bg-[#00000099] px-[4px]"
+								onChange={handleChange}
+								onKeyPress={(e) => {
+									handleKeypress(e)
+								}}
+								value={input}
+							/>
+							<button
+								onClick={(e) => {
+									setSidebar(false)
+									handleSubmit(e)
+								}}
+								type="submit"
+								className="submit-button ml-[4px] hover:opacity-80 duration-200 ease-in-out"
+							>
+								<BsSearch className="search-icon" />
+							</button>
+						</form>
+					</div>
+					<div
+						className="ml-auto cursor-pointer flex h-[40px] w-[40px] items-center justify-center"
+						onClick={() => setSidebar(!sideBar)}
+					>
+						<FontAwesomeIcon icon={faBars} />
+					</div>
+				</div>
+			</div>
+			<section
+				className={`right-0 mt-[40px] fixed duration-200 ease-in-out bg-[#222] h-100 z-50 ${
+					sideBar ? "opacity-100 w-[320px]" : "opacity-0 w-0"
+				}`}
 			>
-				<Container>
-					<Navbar.Brand as={Link} to="/" onClick={handleScrollToTop}>
-						UNIME
-					</Navbar.Brand>
-					<Navbar.Toggle aria-controls="responsive-navbar-nav" />
-					<Navbar.Collapse id="responsive-navbar-nav">
-						<Nav className="me-auto">
-							<Nav.Link as={Link} to="/anime" onClick={handleScrollToTop}>
-								<div className="anime-nav">
-									<p>Anime</p>
-								</div>
-							</Nav.Link>
-							<NavDropdown title="Thể loại" id="collasible-nav-dropdown">
-								{GENRES.map((genre) => (
-									<LinkContainer
-										to={`/anime/${genre.slug}`}
-										key={genre.slug}
-										onClick={handleScrollToTop}
-									>
-										<NavDropdown.Item>
-											<p>{genre.name}</p>
-										</NavDropdown.Item>
-									</LinkContainer>
-								))}
-							</NavDropdown>
-							<form style={{ display: "flex" }}>
-								<TextField
-									label="Tìm kiếm Anime"
-									variant="outlined"
-									className="search-navbar"
-									color="primary"
-									onChange={handleChange}
-									onKeyPress={(e) => handleKeypress(e)}
-									value={input}
-								/>
-								<button
-									onClick={(e) => handleSubmit(e)}
-									type="submit"
-									style={{
-										backgroundColor: "var(--bs-dark-rgb)",
-										border: "0",
-										margin: "0",
-										marginLeft: "10px",
+				<div className="flex flex-col text-right [&>div]:my-[8px] mx-[6px]">
+					<div>
+						<Link
+							to="/anime"
+							className="hover:opacity-80 duration-200 ease-in-out"
+							onClick={() => setSidebar(false)}
+						>
+							<h2 className=" font-semibold text-[1.5rem]">Tất cả Anime</h2>
+						</Link>
+					</div>
+					<div>
+						<div
+							className="cursor-pointer hover:opacity-80 duration-200 ease-in-out flex flex-row items-center justify-end"
+							onClick={() => setGenreToggle(!genreToggle)}
+						>
+							<h2 className="font-semibold text-[1.5rem] mr-[6px]">Thể loại</h2>
+							{genreToggle ? (
+								<FontAwesomeIcon icon={faSortUp} />
+							) : (
+								<FontAwesomeIcon icon={faSortDown} />
+							)}
+						</div>
+						<div
+							className={`${
+								genreToggle
+									? "opacity-100 h-[200px] overflow-y-scroll"
+									: "opacity-0 h-0 overflow-y-hidden"
+							} duration-200 ease-in-out w-100`}
+						>
+							{GENRES.map((genre) => (
+								<Link
+									to={`/anime/${genre.slug}`}
+									key={genre.slug}
+									onClick={() => {
+										setSidebar(false)
+										handleScrollToTop()
 									}}
-									className="submit-button"
+									className="hover:text-white hover:opacity-80 duration-200 ease-in-out"
 								>
-									<BsSearch className="search-icon" />
-								</button>
-							</form>
-							<LanguageButton />
-
-							<div className="user-container">
-								<User handleScrollToTop={handleScrollToTop} />
-							</div>
-						</Nav>
-					</Navbar.Collapse>
-				</Container>
-			</Navbar>
-		</>
+									<div className="">
+										<p
+											style={{
+												background: `${randomColor({
+													luminosity: "dark",
+													format: "rgba",
+													alpha: 0.8,
+												})}`,
+											}}
+											className="inline-block p-[4px] m-[4px] rounded"
+										>
+											{genre.name}
+										</p>
+									</div>
+								</Link>
+							))}
+						</div>
+					</div>
+					<div className="flex">
+						<LanguageButton />
+					</div>
+					<div className="user-container">
+						<User handleScrollToTop={handleScrollToTop} />
+					</div>
+				</div>
+			</section>
+		</header>
 	)
 }
 

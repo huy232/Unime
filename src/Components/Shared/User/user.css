@@ -6,7 +6,6 @@
 }
 
 .anime-nav-paragraph {
-	display: none;
 	padding: 0 !important;
 	margin: 0 8px 0 0 !important;
 }
@@ -71,8 +70,5 @@
 		margin-top: 18px;
 		margin-left: auto;
 		margin-right: auto;
-	}
-	.anime-nav-paragraph {
-		display: block;
 	}
 }

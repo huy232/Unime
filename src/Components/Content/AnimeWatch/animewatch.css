@@ -50,8 +50,8 @@
 
 .episode-section {
 	width: 100%;
-	z-index: 1000;
-	height: 80px;
+	z-index: 10;
+	height: 40px;
 }
 
 .episode-section-fixed {
@@ -87,7 +87,7 @@
 .episode-bracket {
 	overflow: scroll;
 	background: rgb(68 75 82 / 40%);
-	height: calc(100vh - 80px);
+	height: calc(100vh - 40px);
 }
 
 .episode-bracket a {

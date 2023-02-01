@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { API, CONSUMET_API } from "../../../constants"
+import { CONSUMET_API } from "../../../constants"
 import axios from "axios"
 import RecentEpisodeENG from "../RecentEpisodeENG"
 import TopAiringENG from "../TopAiringENG"

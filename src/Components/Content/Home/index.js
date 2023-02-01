@@ -11,7 +11,6 @@ import RandomAnime from "../RandomAnime"
 import "./home.css"
 import { useAuth } from "../../../Contexts/auth"
 import HomeENG from "../HomeENG"
-import { MAINSITE } from "../../../constants"
 
 function Home({ instance }) {
 	const [progress, setProgress] = useState(0)
@@ -65,33 +64,6 @@ function Home({ instance }) {
 					if (axios.isCancel(thrown)) return
 				})
 		}
-		// const getRankToday = async () => {
-		// 	await instance
-		// 		.get("/top", {
-		// 			cancelToken: source.token,
-		// 		})
-		// 		.then((data) => {
-		// 			setRankToday(data.data.data)
-		// 			setDone2(true)
-		// 		})
-		// 		.then(getRandom())
-		// 		.catch((thrown) => {
-		// 			if (axios.isCancel(thrown)) return
-		// 		})
-		// }
-		// const getRandom = async () => {
-		// 	await instance
-		// 		.get("/today", {
-		// 			cancelToken: source.token,
-		// 		})
-		// 		.then((data) => {
-		// 			setRandomAnime(data.data.data)
-		// 			setDone3(true)
-		// 		})
-		// 		.catch((thrown) => {
-		// 			if (axios.isCancel(thrown)) return
-		// 		})
-		// }
 
 		if (localStorage.getItem("unime-language") === "vi" || language === "vi") {
 			getNew()

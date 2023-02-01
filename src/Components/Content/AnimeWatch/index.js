@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from "react"
 import { useParams, Link } from "react-router-dom"
 import axios from "axios"
-import VideoPlayerSource from "../../../Components/Content/VideoPlayer"
 import VideoEmbed from "../../../Components/Content/VideoEmbed"
 import useDocumentTitle from "../../../Components/Content/DocumentTitleHook"
 import { BsFillArrowLeftSquareFill } from "react-icons/bs"
@@ -13,7 +12,6 @@ function AnimeWatch({ instance }) {
 	const { anime } = useParams()
 	const queryParams = new URLSearchParams(window.location.search)
 	const index = queryParams.get("index")
-	const episode = queryParams.get("episode")
 	const specialid = queryParams.get("specialid")
 	const [info, setInfo] = useState([])
 	const [watchDetail, setWatchDetail] = useState("Đang tải")
