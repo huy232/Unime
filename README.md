@@ -4,6 +4,7 @@
 <b>UNIME</b> (previously named <b>MIRAI</b>) is an anime website that provides you with anime completely free without ads.
 
 The site: [UNIME](https://unime.vercel.app/)
+![Banner](https://i.imgur.com/pHrKSHE.png)
 
 <h2>Motivation</h2>
 Before I learned HTML/CSS/Javascript to become a web developer, I'd always dreamt of creating an anime page for myself to watch without ads, which drove me to learn the necessary technology and tools required for this first "from scratch" project.
@@ -55,7 +56,7 @@ Before I learned HTML/CSS/Javascript to become a web developer, I'd always dream
 <h3>ENGLISH ANIME PAGE</h3>
 </p>
 
-![AnimeENG](https://i.imgur.com/cFTdJAi.png)
+![AnimeENG](https://i.imgur.com/hO3GpYT.jpg)
 <p align="center">
 <h3>VIETNAMESE INFO PAGE</h3>
 </p>
