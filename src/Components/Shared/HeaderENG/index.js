@@ -132,9 +132,9 @@ function HeaderENG() {
 							>
 								<h2 className="font-semibold text-[1.5rem] mr-[6px]">GENRES</h2>
 								{genreToggle ? (
-									<FontAwesomeIcon icon={faSortUp} />
+									<FontAwesomeIcon icon={faSortUp} className="mt-[10px]" />
 								) : (
-									<FontAwesomeIcon icon={faSortDown} />
+									<FontAwesomeIcon icon={faSortDown} className="mb-[10px]" />
 								)}
 							</div>
 							<div

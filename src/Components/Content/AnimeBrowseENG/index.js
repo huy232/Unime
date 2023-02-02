@@ -80,26 +80,25 @@ function AnimeBrowseENG() {
 									item.title?.userPreferred
 								}
 								key={item.id}
+								className="group col-span-1 cursor-pointer flex flex-col items-center col-span-1 mb-[12px] relative float-left"
 							>
-								<div className="group anime-item col-span-1 cursor-pointer flex flex-col items-center">
-									<div className="group-hover:opacity-70 anime-item-image relative aspect-w-2 aspect-h-3 duration-300 ease-linear">
-										<img
-											className="w-[160px] h-[240px] object-cover"
-											src={item.image}
-											alt=""
-										/>
-									</div>
-									<div className="anime-item-title h-[60px] w-[160px]">
-										<p
-											className="line-clamp-2 px-[4px]"
-											style={{ color: item?.color || "#fff" }}
-										>
-											{item.title?.english ||
-												item.title?.romaji ||
-												item.title?.native ||
-												item.title?.userPreferred}
-										</p>
-									</div>
+								<div className="group-hover:opacity-70 anime-item-image relative aspect-w-2 aspect-h-3 duration-300 ease-linear pb-[148%] mb-0 w-full overflow-hidden">
+									<img
+										className="object-cover absolute w-100 min-h-full"
+										src={item.image}
+										alt=""
+									/>
+								</div>
+								<div className="anime-item-title h-[60px] w-full mt-[4px]">
+									<p
+										className="line-clamp-2 px-[4px] text-base font-semibold"
+										style={{ color: item?.color || "#fff" }}
+									>
+										{item.title?.english ||
+											item.title?.romaji ||
+											item.title?.native ||
+											item.title?.userPreferred}
+									</p>
 								</div>
 							</Link>
 						))}
