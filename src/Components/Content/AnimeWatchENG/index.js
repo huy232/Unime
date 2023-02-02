@@ -85,16 +85,18 @@ function AnimeWatchENG() {
 								(option) => option.lang !== "Thumbnails"
 							)
 						}
+						const selectedSub = localStorage.getItem("artplayer-language")
 						setSubtitles(
 							subs.map((sub, i) => ({
 								html: `${i}. ${sub.lang}`,
 								url: sub.url,
+								default: selectedSub === sub.lang ? true : false,
 							}))
 						)
+
 						setThumbnail(
 							response.data.subtitles.find((sub) => sub.lang === "Thumbnails")
 						)
-						// setVideoUrl(`${API}/cors/${zoroUrl.url}`)
 						setVideoUrl(
 							zoroUrl.map((source) => ({
 								url: `${API}/cors/${source.url}`,
