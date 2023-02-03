@@ -149,7 +149,7 @@ function AnimeWatch({ instance }) {
 									title={item.full_name}
 									className={`w-100 h-[70px] px-[12px] leading-normal py-1 hover:text-white hover:opacity-80 hover:bg-white/20 duration-200 ease-in-out line-clamp-2 ${
 										parseInt(index) === parseInt(item.name)
-											? "bg-white/50"
+											? "bg-white/50 active"
 											: "odd:bg-[#111111] even:bg-[#272727]"
 									}`}
 									onClick={() => setVideoLoading(true)}

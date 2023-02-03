@@ -5,7 +5,7 @@ import useDocumentTitle from "../DocumentTitleHook"
 import { BsFillArrowLeftSquareFill } from "react-icons/bs"
 import { Link } from "react-router-dom"
 import LoadingRequest from "../LoadingRequest"
-import { API, CONSUMET_API } from "../../../constants"
+import { API } from "../../../constants"
 import VideoPlayer from "../VideoPlayer"
 
 function AnimeWatchENG() {
@@ -157,7 +157,7 @@ function AnimeWatchENG() {
 								}
 								className={`w-100 h-[70px] px-[12px] leading-normal py-1 hover:text-white hover:opacity-80 hover:bg-white/20 duration-200 ease-in-out line-clamp-2 ${
 									current === item.id
-										? "bg-white/50"
+										? "bg-white/50 active"
 										: "odd:bg-[#111111] even:bg-[#272727]"
 								}`}
 								onClick={() => setVideoLoading(true)}
