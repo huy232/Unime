@@ -29,6 +29,15 @@ const genres = [
 	{ slug: "phap-thuat", name: "Pháp Thuật" },
 ]
 
+const provider = [
+	"zoro",
+	"gogoanime",
+	"enime",
+	"nineanime",
+	"animepahe",
+	"animefox",
+]
+
 // const engGenres = [
 // 	{ slug: "action", name: "Action" },
 // 	{ slug: "adventure", name: "Adventure" },
@@ -191,3 +200,4 @@ export const ENG_GENRES = engGenres
 export const COLLECTIONS = collections
 export const CONSUMET_API = consumetApi
 export const CONSUMET_CORS = consumetCors
+export const PROVIDER = provider

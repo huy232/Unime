@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react"
 import axios from "axios"
 import { parseTime } from "../../../Utilities/parseTime"
-import { CONSUMET_API } from "../../../constants"
+import { API, CONSUMET_API } from "../../../constants"
 import { Link } from "react-router-dom"
 
 function AnimeImageSearchLayout({ searchResult, setToggle }) {
@@ -15,9 +15,9 @@ function AnimeImageSearchLayout({ searchResult, setToggle }) {
 			setLoading(true)
 			if (prevAnilist.current !== searchResult.result[number].anilist.id) {
 				const { data } = await axios.get(
-					`${CONSUMET_API}/meta/anilist/info/${searchResult.result[number].anilist.id}`
+					`${API}/eng/info/${searchResult.result[number].anilist.id}&gogoanime`
 				)
-				setView(data)
+				setView(data.data)
 			}
 			prevAnilist.current = searchResult.result[number].anilist.id
 			setLoading(false)

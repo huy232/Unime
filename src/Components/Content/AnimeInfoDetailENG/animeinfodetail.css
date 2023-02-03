@@ -1,0 +1,8 @@
+.provider::after {
+	content: "";
+	display: inline-block;
+}
+
+.provider:focus {
+	outline: none;
+}

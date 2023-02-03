@@ -184,7 +184,7 @@ function HeaderENG() {
 								<h2 className=" font-semibold text-[1.5rem]">IMAGE Search</h2>
 							</Link>
 						</div>
-						<div className="flex">
+						<div className="flex ">
 							<LanguageButton />
 						</div>
 						<div className="user-container">

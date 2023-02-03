@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { useParams, Link } from "react-router-dom"
-import { CONSUMET_API, ENG_GENRES } from "../../../constants"
+import { API, CONSUMET_API, ENG_GENRES } from "../../../constants"
 import InfiniteScroll from "react-infinite-scroll-component"
 import axios from "axios"
 import LoadingSpin from "react-loading-spin"
@@ -37,14 +37,11 @@ function AnimeBrowseCategoryENG() {
 		if (genre === genreAnime) {
 			const getList = async () => {
 				await axios
-					.get(
-						`${CONSUMET_API}/meta/anilist/genre?genres=["${translateGenreAnime}"]&page=${page}`,
-						{
-							cancelToken: source.token,
-						}
-					)
+					.get(`${API}/eng/genre/${translateGenreAnime}?page=${page}`, {
+						cancelToken: source.token,
+					})
 					.then((response) => {
-						if (response.data.results === []) {
+						if (response.data.data.results === []) {
 							setAnimeList((prev) => {
 								return [...new Set([...prev])]
 							})
@@ -52,7 +49,7 @@ function AnimeBrowseCategoryENG() {
 						} else {
 							setNextPage(true)
 							setAnimeList((prev) => {
-								return [...new Set([...prev, ...response.data.results])]
+								return [...new Set([...prev, ...response.data.data.results])]
 							})
 						}
 

@@ -20,8 +20,6 @@
 
 @media screen and (max-width: 1024px) {
 	.language-container {
-		margin-right: auto;
-		margin-left: auto;
 		margin-top: 10px;
 		margin-bottom: 10px;
 	}

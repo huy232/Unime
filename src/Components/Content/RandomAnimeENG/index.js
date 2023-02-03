@@ -30,14 +30,16 @@ function RandomAnimeENG({ randomAnime, loadingRandomAnime }) {
 						</div>
 						<div className="w-4/5 max-lg:w-full">
 							<div>
-								<h2
-									className="font-bold max-lg:text-center max-lg:mt-[6px]"
-									style={{ color: `${randomAnime?.color || "#fff"}` }}
-								>
-									{randomAnime.title.english ||
-										randomAnime.title.romaji ||
-										randomAnime.title.native}
-								</h2>
+								<Link to={`/eng/info/${randomAnime.id}`}>
+									<h2
+										className="font-bold max-lg:text-center max-lg:mt-[6px]"
+										style={{ color: `${randomAnime?.color || "#fff"}` }}
+									>
+										{randomAnime.title.english ||
+											randomAnime.title.romaji ||
+											randomAnime.title.native}
+									</h2>
+								</Link>
 							</div>
 							<div className="flex flex-row flex-wrap max-lg:justify-center">
 								{randomAnime.genres.map((genre) => (

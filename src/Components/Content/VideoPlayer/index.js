@@ -3,6 +3,7 @@ import Artplayer from "../ArtPlayer"
 import "./videoplayer.css"
 
 function VideoPlayer({ videoUrl, anime, info, index, subtitles, thumbnail }) {
+	const selectedSub = localStorage.getItem("artplayer-language")
 	return (
 		<>
 			<Artplayer
@@ -35,6 +36,11 @@ function VideoPlayer({ videoUrl, anime, info, index, subtitles, thumbnail }) {
 						crossOrigin: "anonymous",
 					},
 					subtitle: {
+						url: `${
+							subtitles &&
+							subtitles.find((sub) => selectedSub === sub.html.split(" ")[1])
+								?.url
+						}`,
 						style: {
 							"font-weight": "400",
 							"font-size": "2rem",

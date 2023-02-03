@@ -5,7 +5,7 @@ import InfiniteScroll from "react-infinite-scroll-component"
 import LoadingSpin from "react-loading-spin"
 import useDocumentTitle from "../DocumentTitleHook"
 import { Link } from "react-router-dom"
-import { CONSUMET_API } from "../../../constants"
+import { API } from "../../../constants"
 
 const PAGE_NUMBER = 1
 
@@ -21,14 +21,14 @@ function AnimeBrowseENG() {
 		const source = CancelToken.source()
 		const getAnimeBrowse = async () => {
 			axios
-				.get(`${CONSUMET_API}/meta/anilist/advanced-search?page=${page}`, {
+				.get(`${API}/eng/all-anime?page=${page}`, {
 					cancelToken: source.token,
 				})
 				.then((response) => {
 					setAllAnime((prev) => {
-						return [...new Set([...prev, ...response.data.results])]
+						return [...new Set([...prev, ...response.data.data.results])]
 					})
-					setHasNextPage(response.data.hasNextPage)
+					setHasNextPage(response.data.data.hasNextPage)
 					setLoading(false)
 				})
 				.catch((thrown) => {

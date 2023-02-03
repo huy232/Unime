@@ -1,53 +1,53 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import { useParams } from "react-router-dom"
 import axios from "axios"
 import AnimeInfoBannerENG from "../AnimeInfoBannerENG"
 import AnimeInfoBoxENG from "../AnimeInfoBoxENG"
 import AnimeInfoDetailENG from "../AnimeInfoDetailENG"
 import useDocumentTitle from "../DocumentTitleHook"
-import { CONSUMET_API } from "../../../constants"
+import { API } from "../../../constants"
 
 function AnimeInfoENG() {
 	const [info, setInfo] = useState({})
 	const [loading, setLoading] = useState(true)
 	const [loadingProvider, setLoadingProvider] = useState(true)
 	const [provider, setProvider] = useState(
-		localStorage.getItem("unime-provider") || ""
+		localStorage.getItem("unime-provider") || "gogoanime"
 	)
 	const [title, setTitle] = useState("Loading")
-
 	const { animeId } = useParams()
+	const [loadingEpisodeList, setLoadingEpisodeList] = useState(true)
 
 	useEffect(() => {
 		window.scrollTo(0, 0)
-	}, [animeId])
-
-	useEffect(() => {
 		const CancelToken = axios.CancelToken
 		const source = CancelToken.source()
 		const getInfo = async () => {
-			const data = await axios
-				.get(
-					`${CONSUMET_API}/meta/anilist/info/${animeId}?provider=${provider}`,
-					{
-						cancelToken: source.token,
-					}
-				)
+			await axios
+				.get(`${API}/eng/info/${animeId}&${provider}`, {
+					cancelToken: source.token,
+				})
+				.then((data) => {
+					setTitle(
+						data.data.data.title?.english ||
+							data.data.data.title?.romaji ||
+							data.data.data.title?.native
+					)
+					setInfo(data.data.data)
+					setLoading(false)
+					setLoadingEpisodeList(false)
+				})
 				.catch((thrown) => {
 					if (axios.isCancel(thrown)) return
 				})
-
-			setTitle(
-				data.data.title?.english ||
-					data.data.title?.romaji ||
-					data.data.title?.native
-			)
-			setInfo(data.data)
-			setLoading(false)
 		}
 
 		getInfo()
-	}, [animeId, provider])
+
+		return () => {
+			source.cancel()
+		}
+	}, [animeId])
 
 	useDocumentTitle(title)
 	return (
@@ -63,6 +63,10 @@ function AnimeInfoENG() {
 					loadingProvider={loadingProvider}
 					setLoadingProvider={setLoadingProvider}
 					setLoading={setLoading}
+					animeId={animeId}
+					setInfo={setInfo}
+					loadingEpisodeList={loadingEpisodeList}
+					setLoadingEpisodeList={setLoadingEpisodeList}
 				/>
 			</div>
 		</div>

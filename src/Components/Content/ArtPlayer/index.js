@@ -75,6 +75,10 @@ export default function Player({
 							...subtitles,
 						],
 						onSelect: function (item) {
+							localStorage.setItem(
+								"artplayer-language",
+								item.html.split(" ")[1]
+							)
 							art.subtitle.switch(item.url, {
 								name: item.html,
 							})

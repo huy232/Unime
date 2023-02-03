@@ -13,7 +13,7 @@ function AnimeWatchENG() {
 	const queryParams = new URLSearchParams(window.location.search)
 	const current = queryParams.get("current")
 	const provider = queryParams.get("provider")
-	const [info, setInfo] = useState([])
+	const [listEpisode, setListEpisode] = useState([])
 	const [watchDetail, setWatchDetail] = useState("Loading")
 	const [videoUrl, setVideoUrl] = useState([])
 	const [videoLoading, setVideoLoading] = useState(true)
@@ -28,39 +28,32 @@ function AnimeWatchENG() {
 
 		const filmEpisodeList = async () => {
 			if (prevAnilist.current !== animeId) {
-				const { data } = await axios
-					.get(
-						`${CONSUMET_API}/meta/anilist/info/${animeId}?provider=${provider}`,
-						{
-							cancelToken: source.token,
-						}
-					)
-					.catch((thrown) => {
-						if (axios.isCancel(thrown)) return
-					})
-				const listEpisode = data
-				const episodeTitle = listEpisode.episodes.find((obj) => {
+				const { data } = await axios.get(
+					`${API}/eng/info/${animeId}&${provider}`
+				)
+				const listData = data.data
+				const episodeTitle = listData.episodes.find((obj) => {
 					return obj.id === current
 				})
 				setWatchDetail(
 					`${
-						listEpisode.title?.english ||
-						listEpisode.title?.romanji ||
-						listEpisode.title?.native
+						listData.title?.english ||
+						listData.title?.romanji ||
+						listData.title?.native
 					} - EP. ${episodeTitle.number} - ${episodeTitle.title}`
 				)
 				setTitle(
-					listEpisode.title?.english ||
-						listEpisode.title?.romanji ||
-						listEpisode.title?.native
+					listData.title?.english ||
+						listData.title?.romanji ||
+						listData.title?.native
 				)
-				setInfo(listEpisode.episodes)
+				setListEpisode(listData.episodes)
 			}
 			prevAnilist.current = animeId
 		}
 
-		if (info.length > 0) {
-			const episodeTitle = info.find((obj) => {
+		if (listEpisode.length > 0) {
+			const episodeTitle = listEpisode.find((obj) => {
 				return obj.id === current
 			})
 			setWatchDetail(
@@ -70,51 +63,36 @@ function AnimeWatchENG() {
 
 		const filmEpisodeWatch = async () => {
 			await axios
-				.get(
-					`${CONSUMET_API}/meta/anilist/watch/${current}?provider=${provider}`,
-					{
-						cancelToken: source.token,
-					}
-				)
+				.get(`${API}/eng/provider/${current}&${provider}`, {
+					cancelToken: source.token,
+				})
 				.then((response) => {
-					if (provider === "zoro") {
-						const zoroUrl = response.data.sources
-						let subs = []
-						if (response.data.subtitles) {
-							subs = response.data.subtitles.filter(
-								(option) => option.lang !== "Thumbnails"
-							)
-						}
-						const selectedSub = localStorage.getItem("artplayer-language")
+					setVideoUrl(
+						response.data.data.sources.map((source) => ({
+							url: `${API}/cors/${source.url}`,
+							html: source.quality,
+							default: source.quality === "auto" ? true : false,
+							isM3U8: source.isM3U8,
+						}))
+					)
+					if (response.data.data.subtitles) {
+						let subs = response.data.data.subtitles.filter(
+							(option) => option.lang !== "Thumbnails"
+						)
+
 						setSubtitles(
 							subs.map((sub, i) => ({
 								html: `${i}. ${sub.lang}`,
 								url: sub.url,
-								default: selectedSub === sub.lang ? true : false,
 							}))
 						)
-
 						setThumbnail(
-							response.data.subtitles.find((sub) => sub.lang === "Thumbnails")
-						)
-						setVideoUrl(
-							zoroUrl.map((source) => ({
-								url: `${API}/cors/${source.url}`,
-								html: source.quality,
-								default: source.quality === "auto" ? true : false,
-							}))
+							response.data.data.subtitles.find(
+								(sub) => sub.lang === "Thumbnails"
+							)
 						)
 					}
-					if (provider === "") {
-						const gogoUrl = response.data.sources
-						setVideoUrl(
-							gogoUrl.map((source) => ({
-								url: `${API}/cors/${source.url}`,
-								html: source.quality,
-								default: source.quality === "auto" ? true : false,
-							}))
-						)
-					}
+
 					setVideoLoading(false)
 				})
 				.catch((thrown) => {
@@ -133,11 +111,7 @@ function AnimeWatchENG() {
 		return () => {
 			source.cancel()
 		}
-	}, [animeId, current, info, provider, title])
-
-	// const chooseEpisode = (episodeId) => {
-	// 	window.location.href = `${MAINSITE}/eng/watch/${animeId}?current=${episodeId}&provider=${provider}&prefer=${prefer}`
-	// }
+	}, [animeId, current, listEpisode, provider, title])
 
 	useDocumentTitle(watchDetail)
 	return (
@@ -183,7 +157,7 @@ function AnimeWatchENG() {
 						</div>
 					</div>
 					<div className="episode-bracket">
-						{info.map((item, i) => (
+						{listEpisode.map((item, i) => (
 							<Link
 								to={`/eng/watch/${animeId}?current=${item.id}&provider=${provider}`}
 								style={{ color: "white" }}

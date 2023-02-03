@@ -36,7 +36,7 @@ function AnimeInfoBoxENG({ loading, info }) {
 					<>
 						{info?.type && (
 							<div>
-								<h5 className="font-black p-[6px] bg-[#282828]/[0.8] inline-block rounded">
+								<h5 className="font-black my-[2px] p-[6px] bg-[#282828]/[0.8] inline-block rounded">
 									FORMAT
 								</h5>
 								<p>{info?.type}</p>
@@ -44,7 +44,7 @@ function AnimeInfoBoxENG({ loading, info }) {
 						)}
 						{info?.title && (
 							<div>
-								<h5 className="font-black p-[6px] bg-[#282828]/[0.8] inline-block rounded">
+								<h5 className="font-black my-[2px] p-[6px] bg-[#282828]/[0.8] inline-block rounded">
 									TITLE
 								</h5>
 								{info?.title?.romaji && (
@@ -67,9 +67,17 @@ function AnimeInfoBoxENG({ loading, info }) {
 								)}
 							</div>
 						)}
+						{info?.status && (
+							<div>
+								<h5 className="font-black my-[2px] p-[6px] bg-[#282828]/[0.8] inline-block rounded">
+									STATUS
+								</h5>
+								<p>{info?.status}</p>
+							</div>
+						)}
 						{info?.popularity && (
 							<div>
-								<h5 className="font-black p-[6px] bg-[#282828]/[0.8] inline-block rounded">
+								<h5 className="font-black my-[2px] p-[6px] bg-[#282828]/[0.8] inline-block rounded">
 									POPULARITY
 								</h5>
 								<p>{info?.popularity.toLocaleString()}</p>
@@ -77,7 +85,7 @@ function AnimeInfoBoxENG({ loading, info }) {
 						)}
 						{info?.rating && (
 							<div>
-								<h5 className="font-black p-[6px] bg-[#282828]/[0.8] inline-block rounded">
+								<h5 className="font-black my-[2px] p-[6px] bg-[#282828]/[0.8] inline-block rounded">
 									RATING
 								</h5>
 								<p>{info?.rating}%</p>
@@ -85,16 +93,24 @@ function AnimeInfoBoxENG({ loading, info }) {
 						)}
 						{info?.subOrDub && (
 							<div>
-								<h5 className="font-black p-[6px] bg-[#282828]/[0.8] inline-block rounded">
+								<h5 className="font-black my-[2px] p-[6px] bg-[#282828]/[0.8] inline-block rounded">
 									VOICE
 								</h5>
 								<p className="uppercase">{info?.subOrDub}</p>
 							</div>
 						)}
+						{info?.season && (
+							<div>
+								<h5 className="font-black my-[2px] p-[6px] bg-[#282828]/[0.8] inline-block rounded">
+									SEASON
+								</h5>
+								<p className="uppercase">{info?.season}</p>
+							</div>
+						)}
 						{info?.studios && (
 							<>
 								<div>
-									<h5 className="font-black p-[6px] bg-[#282828]/[0.8] inline-block rounded">
+									<h5 className="font-black my-[2px] p-[6px] bg-[#282828]/[0.8] inline-block rounded">
 										STUDIO
 									</h5>
 									<p>

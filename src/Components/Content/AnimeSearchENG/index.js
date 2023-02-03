@@ -5,7 +5,7 @@ import InfiniteScroll from "react-infinite-scroll-component"
 import LoadingSpin from "react-loading-spin"
 import { Link } from "react-router-dom"
 import useDocumentTitle from "../DocumentTitleHook"
-import { CONSUMET_API } from "../../../constants"
+import { API } from "../../../constants"
 
 const PAGE_NUMBER = 1
 
@@ -21,24 +21,24 @@ function AnimeSearchENG() {
 		const CancelToken = axios.CancelToken
 		const source = CancelToken.source()
 		if (prevQuery.current.query !== query) {
-			prevQuery.current.query = query
 			// eslint-disable-next-line react-hooks/exhaustive-deps
 			page = PAGE_NUMBER
 		}
 		const getSearchResult = async () => {
 			axios
-				.get(`${CONSUMET_API}/meta/anilist/${query}?page=${page}`, {
+				.get(`${API}/eng/search/${query}?page=${page}`, {
 					cancelToken: source.token,
 				})
 				.then((response) => {
 					if (prevQuery.current.query !== query) {
-						setSearchResult(response.data.results)
+						prevQuery.current.query = query
+						setSearchResult(response.data.data.results)
 					} else {
 						setSearchResult((prev) => {
-							return [...new Set([...prev, ...response.data.results])]
+							return [...new Set([...prev, ...response.data.data.results])]
 						})
 					}
-					setHasNextPage(response.data.hasNextPage)
+					setHasNextPage(response.data.data.hasNextPage)
 					setLoading(false)
 				})
 				.catch((thrown) => {

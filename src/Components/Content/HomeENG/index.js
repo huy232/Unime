@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react"
-import { CONSUMET_API } from "../../../constants"
+import { API, CONSUMET_API, CONSUMET_CORS } from "../../../constants"
 import axios from "axios"
 import RecentEpisodeENG from "../RecentEpisodeENG"
 import TopAiringENG from "../TopAiringENG"
 import useDocumentTitle from "../DocumentTitleHook"
 import TrendingAnimeENG from "../TrendingAnimeENG"
 import RandomAnimeENG from "../RandomAnimeENG"
+import { META } from "@consumet/extensions"
 
 function HomeENG() {
 	const [loadingAiring, setLoadingAiring] = useState(true)
@@ -23,11 +24,11 @@ function HomeENG() {
 
 		const getTopAiring = async () => {
 			await axios
-				.get(`${CONSUMET_API}/meta/anilist/popular`, {
+				.get(`${API}/eng/top-airing`, {
 					cancelToken: source.token,
 				})
 				.then((topAiring) => {
-					setTopAiring(topAiring.data.results)
+					setTopAiring(topAiring.data.data.results)
 					setLoadingAiring(false)
 				})
 				.then(() => {
@@ -40,11 +41,11 @@ function HomeENG() {
 
 		const getRecentAnime = async () => {
 			await axios
-				.get(`${CONSUMET_API}/meta/anilist/recent-episodes`, {
+				.get(`${API}/eng/recent-anime`, {
 					cancelToken: source.token,
 				})
 				.then((getRecentData) => {
-					setRecentAnime(getRecentData.data.results)
+					setRecentAnime(getRecentData.data.data.results)
 					setLoadingRecentAnime(false)
 				})
 				.then(() => getTrendingAnime())
@@ -55,11 +56,11 @@ function HomeENG() {
 
 		const getTrendingAnime = async () => {
 			await axios
-				.get(`${CONSUMET_API}/meta/anilist/trending`, {
+				.get(`${API}/eng/popular`, {
 					cancelToken: source.token,
 				})
 				.then((trendingAnime) => {
-					setTrendingAnime(trendingAnime.data.results)
+					setTrendingAnime(trendingAnime.data.data.results)
 					setLoadingTrending(false)
 				})
 				.then(getRandomAnime())
@@ -70,12 +71,17 @@ function HomeENG() {
 
 		const getRandomAnime = async () => {
 			await axios
-				.get(`${CONSUMET_API}/meta/anilist/random-anime`, {
+				.get(`${API}/eng/random-anime`, {
 					cancelToken: source.token,
 				})
 				.then((randomAnime) => {
-					setRandomAnime(randomAnime.data)
-					setLoadingRandomAnime(false)
+					if (randomAnime.data.success === false) {
+						setRandomAnime()
+						setLoadingRandomAnime(true)
+					} else {
+						setRandomAnime(randomAnime.data.data)
+						setLoadingRandomAnime(false)
+					}
 				})
 				.catch((thrown) => {
 					if (axios.isCancel(thrown)) return

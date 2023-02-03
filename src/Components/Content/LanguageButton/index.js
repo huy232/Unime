@@ -10,7 +10,7 @@ function LanguageButton() {
 	}
 
 	return (
-		<div className="language-container ml-auto text-neutral-900 flex">
+		<div className="language-container ml-auto text-neutral-900 flex ">
 			<button
 				className={`vi-btn mr-2 rounded p-1 hover:opacity-80 duration-200 ${
 					language === "vi" && "bg-[#a5612a]"
