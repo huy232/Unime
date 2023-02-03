@@ -62,12 +62,12 @@ Before I learned HTML/CSS/Javascript to become a web developer, I'd always dream
 <h3>VIETNAMESE INFO PAGE</h3>
 </p>
 
-![InfoPageVI](https://i.imgur.com/ITeecW2.png)
+![InfoPageVI](https://i.imgur.com/ZDa2qUL.png)
 <p align="center">
 <h3>ENGLISH INFO PAGE</h3>
 </p>
 
-![InfoPageENG](https://i.imgur.com/8pvr3nX.png)
+![InfoPageENG](https://i.imgur.com/suSnIQy.png)
 <p align="center">
 <h3>IMAGE SEARCH PAGE</h3>
 </p>
