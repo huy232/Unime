@@ -56,7 +56,7 @@ function HeaderENG() {
 	return (
 		<>
 			<header ref={sidebarRef}>
-				<div className="h-[40px] w-100 bg-[#222] fixed z-50 flex flex-col md:px-12 lg:px-20 xl:px-28 2xl:px-36">
+				<div className="h-[40px] w-100 bg-[#222] fixed z-50 flex flex-col">
 					<div className="flex flex-row h-100 items-center">
 						<div className="h-100">
 							<Link
