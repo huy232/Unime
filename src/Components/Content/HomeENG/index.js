@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react"
-import { API, CONSUMET_API, CONSUMET_CORS } from "../../../constants"
+import { API } from "../../../constants"
 import axios from "axios"
 import RecentEpisodeENG from "../RecentEpisodeENG"
 import TopAiringENG from "../TopAiringENG"
 import useDocumentTitle from "../DocumentTitleHook"
 import TrendingAnimeENG from "../TrendingAnimeENG"
 import RandomAnimeENG from "../RandomAnimeENG"
-import { META } from "@consumet/extensions"
 
 function HomeENG() {
 	const [loadingAiring, setLoadingAiring] = useState(true)

@@ -130,53 +130,41 @@ function AnimeWatchENG() {
 				<div className="episode-content">
 					<div className="episode-section">
 						<div className="episode-section-fixed">
-							<Link to={`/eng/info/${animeId}`}>
-								<button
-									style={{
-										backgroundColor: "black",
-										border: "none",
-										display: "flex",
-										alignItems: "center",
-										justifyContent: "center",
-									}}
-								>
+							<Link
+								to={`/eng/info/${animeId}`}
+								className="group hover:opacity-80 duration-200 ease-in-out"
+							>
+								<button className="bg-[#000] border-none flex items-center justify-center">
 									<BsFillArrowLeftSquareFill style={{ color: "white" }} />
 								</button>
 							</Link>
 							<div className="episode-heading-section">
-								<h5
-									className="episode-section-title"
-									style={{
-										textAlign: "center",
-										color: "white",
-									}}
-								>
+								<h5 className="episode-section-title text-center text-white font-bold">
 									EPISODE LIST
 								</h5>
 							</div>
 						</div>
 					</div>
-					<div className="episode-bracket">
+					<div className="lg:h-[calc(100vh-60px)] overflow-y-scroll bg-[#222] h-[20vh]">
 						{listEpisode.map((item, i) => (
 							<Link
 								to={`/eng/watch/${animeId}?current=${item.id}&provider=${provider}`}
-								style={{ color: "white" }}
-								key={item.number}
+								key={i}
 								title={
 									item.title
 										? `EP. ${item.number} - ${item.title}`
 										: `Episode - ${item.number}`
 								}
-								className={current === item.id ? "episode active" : "episode"}
+								className={`w-100 h-[70px] px-[12px] leading-normal py-1 hover:text-white hover:opacity-80 hover:bg-white/20 duration-200 ease-in-out line-clamp-2 ${
+									current === item.id
+										? "bg-white/50"
+										: "odd:bg-[#111111] even:bg-[#272727]"
+								}`}
 								onClick={() => setVideoLoading(true)}
 							>
-								<div>
-									<p>
-										{item.title
-											? `EP. ${item.number} - ${item.title}`
-											: `Episode - ${item.number}`}
-									</p>
-								</div>
+								{item.title
+									? `EP. ${item.number} - ${item.title}`
+									: `Episode - ${item.number}`}
 							</Link>
 						))}
 					</div>

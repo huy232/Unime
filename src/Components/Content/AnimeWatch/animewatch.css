@@ -51,7 +51,7 @@
 .episode-section {
 	width: 100%;
 	z-index: 10;
-	height: 40px;
+	height: 60px;
 }
 
 .episode-section-fixed {
@@ -87,35 +87,7 @@
 .episode-bracket {
 	overflow: scroll;
 	background: rgb(68 75 82 / 40%);
-	height: calc(100vh - 40px);
-}
-
-.episode-bracket a {
-	color: rgb(192, 190, 190) !important;
-	background-color: rgb(139, 114, 114);
-	border-radius: 8px;
-	width: 90%;
-	cursor: pointer;
-	text-overflow: clip;
-	display: -webkit-box;
-	-webkit-line-clamp: 2;
-	-webkit-box-orient: vertical;
-	overflow: hidden;
-	word-break: break-word;
-	margin: 16px auto 16px;
-	padding: 4px;
-	height: -webkit-fit-content;
-	height: -moz-fit-content;
-	height: fit-content;
-	box-shadow: rgb(0 0 0 / 17%) 0px -23px 25px 0px inset,
-		rgb(0 0 0 / 15%) 0px -36px 30px 0px inset,
-		rgb(0 0 0 / 10%) 0px -79px 40px 0px inset, rgb(0 0 0 / 6%) 0px 2px 1px,
-		rgb(0 0 0 / 9%) 0px 4px 2px, rgb(0 0 0 / 9%) 0px 8px 4px,
-		rgb(0 0 0 / 9%) 0px 16px 8px, rgb(0 0 0 / 9%) 0px 32px 16px;
-}
-
-.episode-bracket .episode.active {
-	background-color: rgb(163 50 50);
+	height: calc(100vh - 60px);
 }
 
 .episode p {
@@ -161,12 +133,7 @@
 		margin-top: 20px !important;
 		max-width: none !important;
 		min-width: unset !important;
-		width: 90% !important;
+		width: 80% !important;
 		margin: 0 auto;
-	}
-
-	.episode-bracket {
-		width: 100%;
-		height: 20vh;
 	}
 }
