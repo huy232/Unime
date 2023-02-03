@@ -155,16 +155,18 @@ function AnimeWatchENG() {
 										? `EP. ${item.number} - ${item.title}`
 										: `Episode - ${item.number}`
 								}
-								className={`w-100 h-[70px] px-[12px] leading-normal py-1 hover:text-white hover:opacity-80 hover:bg-white/20 duration-200 ease-in-out line-clamp-2 ${
+								className={`w-100 h-[70px] px-[12px] leading-normal py-1 hover:text-white hover:opacity-80 hover:bg-white/20 duration-200 ease-in-out line-clamp-2 overflow-hidden ${
 									current === item.id
 										? "bg-white/50 active"
 										: "odd:bg-[#111111] even:bg-[#272727]"
 								}`}
 								onClick={() => setVideoLoading(true)}
 							>
-								{item.title
-									? `EP. ${item.number} - ${item.title}`
-									: `Episode - ${item.number}`}
+								<p className="inline after:whitespace-pre h-100 w-100">
+									{item.title
+										? `EP. ${item.number} - ${item.title}`
+										: `Episode - ${item.number}`}
+								</p>
 							</Link>
 						))}
 					</div>
