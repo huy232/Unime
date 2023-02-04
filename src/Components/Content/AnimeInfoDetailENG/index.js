@@ -131,7 +131,14 @@ function AnimeInfoDetailENG({
 							</div>
 						</div>
 					)}
-					<div className="max-lg:text-center mt-[12px] flex max-lg:flex-col justify-between lg:[&>*]:mx-[20px]">
+					<div className="mt-[18px] mb-[8px]">
+						<p className="inline-block text-white/50 border-l-[6px] border-white/70 pl-[6px]">
+							<i>*Recommend</i>: <strong>Zoro</strong> and{" "}
+							<strong>Gogoanime</strong> providers for best and most stable
+							quality...
+						</p>
+					</div>
+					<div className="max-lg:text-center flex max-lg:flex-col justify-between lg:[&>*]:mx-[20px]">
 						<div className="flex flex-col">
 							<label htmlFor="provider">PROVIDER:</label>
 							<select
@@ -141,9 +148,7 @@ function AnimeInfoDetailENG({
 									setProvider(e.target.value)
 									setLoadingEpisodeList(true)
 								}}
-								defaultValue={
-									localStorage.getItem("unime-provider") || provider
-								}
+								defaultValue={provider}
 							>
 								{PROVIDER.map((providerSource) => (
 									<option

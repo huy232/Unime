@@ -11,9 +11,7 @@ function AnimeInfoENG() {
 	const [info, setInfo] = useState({})
 	const [loading, setLoading] = useState(true)
 	const [loadingProvider, setLoadingProvider] = useState(true)
-	const [provider, setProvider] = useState(
-		localStorage.getItem("unime-provider") || "gogoanime"
-	)
+	const [provider, setProvider] = useState("gogoanime")
 	const [title, setTitle] = useState("Loading")
 	const { animeId } = useParams()
 	const [loadingEpisodeList, setLoadingEpisodeList] = useState(true)
