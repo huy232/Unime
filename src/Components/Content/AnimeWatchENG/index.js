@@ -5,7 +5,7 @@ import useDocumentTitle from "../DocumentTitleHook"
 import { BsFillArrowLeftSquareFill } from "react-icons/bs"
 import { Link } from "react-router-dom"
 import LoadingRequest from "../LoadingRequest"
-import { API } from "../../../constants"
+import { API, CONSUMET_CORS } from "../../../constants"
 import VideoPlayer from "../VideoPlayer"
 
 function AnimeWatchENG() {
@@ -82,7 +82,7 @@ function AnimeWatchENG() {
 					} else {
 						setVideoUrl(
 							response.data.data.sources.map((source) => ({
-								url: `${API}/cors/${source.url}`,
+								url: `${CONSUMET_CORS}/${source.url}`,
 								html: source.quality.toUpperCase(),
 								default: source.quality === "auto" ? true : false,
 								isM3U8: source.isM3U8,
