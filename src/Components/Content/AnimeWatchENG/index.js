@@ -70,7 +70,7 @@ function AnimeWatchENG() {
 					setVideoUrl(
 						response.data.data.sources.map((source) => ({
 							url: `${API}/cors/${source.url}`,
-							html: source.quality,
+							html: source.quality.toUpperCase(),
 							default: source.quality === "auto" ? true : false,
 							isM3U8: source.isM3U8,
 						}))
@@ -145,7 +145,7 @@ function AnimeWatchENG() {
 							</div>
 						</div>
 					</div>
-					<div className="lg:h-[calc(100vh-60px)] overflow-y-scroll bg-[#222] h-[20vh]">
+					<div className="lg:h-[calc(100vh-60px)] overflow-y-scroll bg-[#222] h-[30vh] max-lg:mb-[20px]">
 						{listEpisode.map((item, i) => (
 							<Link
 								to={`/eng/watch/${animeId}?current=${item.id}&provider=${provider}`}
@@ -155,18 +155,23 @@ function AnimeWatchENG() {
 										? `EP. ${item.number} - ${item.title}`
 										: `Episode - ${item.number}`
 								}
-								className={`w-100 h-[70px] px-[12px] leading-normal py-1 hover:text-white hover:opacity-80 hover:bg-white/20 duration-200 ease-in-out line-clamp-2 overflow-hidden ${
+								className={`flex items-center h-[80px] px-[12px] py-[8px] w-full hover:text-white hover:opacity-80 hover:bg-white/20 duration-200 ease-in-out ${
 									current === item.id
 										? "bg-white/50 active"
 										: "odd:bg-[#111111] even:bg-[#272727]"
 								}`}
 								onClick={() => setVideoLoading(true)}
 							>
-								<p className="inline after:whitespace-pre h-100 w-100">
-									{item.title
-										? `EP. ${item.number} - ${item.title}`
-										: `Episode - ${item.number}`}
-								</p>
+								<div className="mr-[6px] h-full flex items-center justify-center text-amber-400 ">
+									<p className="font-extrabold px-[4px] border-r-[2px] opacity-80">
+										{item.number}
+									</p>
+								</div>
+								<div className="mx-[6px] w-full flex">
+									<p className="line-clamp-2 w-full text-[#E2DFD2]">
+										{item.title}
+									</p>
+								</div>
 							</Link>
 						))}
 					</div>
