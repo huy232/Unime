@@ -16,6 +16,8 @@ export default function Player({
 		if (videoUrl[0].url.includes(".mp4")) {
 			const art = new Artplayer({
 				...option,
+				url: videoUrl[0].url,
+				quality: videoUrl,
 				container: artRef.current,
 			})
 			return () => {
@@ -24,38 +26,46 @@ export default function Player({
 				}
 			}
 		} else {
+			function playM3u8(video, url, art) {
+				if (Hls.isSupported()) {
+					const hls = new Hls()
+					hls.loadSource(url)
+					hls.attachMedia(video)
+
+					// optional
+					art.hls = hls
+					art.once("url", () => hls.destroy())
+					art.once("destroy", () => hls.destroy())
+				} else if (video.canPlayType("application/vnd.apple.mpegurl")) {
+					video.src = url
+				} else {
+					art.notice.show = "Unsupported playback format: m3u8"
+				}
+			}
+
+			let videoSource = videoUrl.find(
+				(source) =>
+					source.html === "AUTO" ||
+					source.html === "DEFAULT" ||
+					source.html === "BACKUP"
+			)?.url
 			const art = new Artplayer({
 				...option,
+				url: videoSource || videoUrl[0].url,
+				quality: !videoSource ? videoUrl : [],
 				plugins: [
 					artplayerPluginHlsQuality({
 						// Show quality in control
 						control: false,
 						// Show quality in setting
-						setting: false,
+						setting: videoSource ? true : false,
 						title: "Quality",
 						auto: "Auto",
 					}),
 				],
+				type: "m3u8",
 				customType: {
-					m3u8: function (video, url) {
-						// Attach the Hls instance to the Artplayer instance
-						if (Hls.isSupported()) {
-							const hls = new Hls({
-								xhrSetup: (xhr, url) => {},
-							})
-							hls.loadSource(url)
-							hls.attachMedia(video)
-
-							// optional
-							art.hls = hls
-							art.once("url", () => hls.destroy())
-							art.once("destroy", () => hls.destroy())
-						} else if (video.canPlayType("application/vnd.apple.mpegurl")) {
-							video.src = url
-						} else {
-							art.notice.show = "Unsupported playback format: m3u8"
-						}
-					},
+					m3u8: playM3u8,
 				},
 				settings: [
 					subtitles && {

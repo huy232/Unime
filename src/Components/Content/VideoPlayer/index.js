@@ -8,8 +8,6 @@ function VideoPlayer({ videoUrl, anime, info, index, subtitles, thumbnail }) {
 		<>
 			<Artplayer
 				option={{
-					url: videoUrl[0].url,
-					quality: videoUrl,
 					setting: true,
 					muted: false,
 					autoplay: true,

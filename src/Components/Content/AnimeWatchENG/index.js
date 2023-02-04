@@ -67,14 +67,29 @@ function AnimeWatchENG() {
 					cancelToken: source.token,
 				})
 				.then((response) => {
-					setVideoUrl(
-						response.data.data.sources.map((source) => ({
-							url: `${API}/cors/${source.url}`,
-							html: source.quality.toUpperCase(),
-							default: source.quality === "auto" ? true : false,
-							isM3U8: source.isM3U8,
-						}))
-					)
+					if (provider === "animepahe") {
+						console.log("Run this")
+						setVideoUrl(
+							response.data.data.sources.map((source) => ({
+								url: `https://proxy.vnxservers.com/proxy/m3u8/${encodeURIComponent(
+									source.url
+								)}/${encodeURIComponent(`{"referer":"https://kwik.cx/"}`)}`,
+								html: source.quality.toUpperCase(),
+								default: source.quality === "auto" ? true : false,
+								isM3U8: source.isM3U8,
+							}))
+						)
+					} else {
+						setVideoUrl(
+							response.data.data.sources.map((source) => ({
+								url: `${API}/cors/${source.url}`,
+								html: source.quality.toUpperCase(),
+								default: source.quality === "auto" ? true : false,
+								isM3U8: source.isM3U8,
+							}))
+						)
+					}
+
 					if (response.data.data.subtitles) {
 						let subs = response.data.data.subtitles.filter(
 							(option) => option.lang !== "Thumbnails"
@@ -169,7 +184,7 @@ function AnimeWatchENG() {
 								</div>
 								<div className="mx-[6px] w-full flex">
 									<p className="line-clamp-2 w-full text-[#E2DFD2]">
-										{item.title}
+										{item.title ? item.title : `Episode. ${item.number}`}
 									</p>
 								</div>
 							</Link>
