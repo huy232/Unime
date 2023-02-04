@@ -4,9 +4,9 @@ import axios from "axios"
 import useDocumentTitle from "../DocumentTitleHook"
 import { BsFillArrowLeftSquareFill } from "react-icons/bs"
 import { Link } from "react-router-dom"
-import LoadingRequest from "../LoadingRequest"
 import { API, CONSUMET_CORS } from "../../../constants"
 import VideoPlayer from "../VideoPlayer"
+import FilmLoadingRequest from "../LoadingRequest/FilmLoadingRequest"
 
 function AnimeWatchENG() {
 	const { animeId } = useParams()
@@ -129,70 +129,68 @@ function AnimeWatchENG() {
 
 	useDocumentTitle(watchDetail)
 	return (
-		<div>
-			<div className="flex max-lg:flex-col">
-				{videoLoading ? (
-					<LoadingRequest />
-				) : (
-					<VideoPlayer
-						videoUrl={videoUrl}
-						subtitles={subtitles}
-						thumbnail={thumbnail?.url ? thumbnail.url : ""}
-						listEpisode={listEpisode}
-						setVideoLoading={setVideoLoading}
-					/>
-				)}
+		<div className="flex max-lg:flex-col">
+			{videoLoading ? (
+				<FilmLoadingRequest />
+			) : (
+				<VideoPlayer
+					videoUrl={videoUrl}
+					subtitles={subtitles}
+					thumbnail={thumbnail?.url ? thumbnail.url : ""}
+					listEpisode={listEpisode}
+					setVideoLoading={setVideoLoading}
+				/>
+			)}
 
-				<div className="episode-content">
-					<div className="episode-section">
-						<div className="episode-section-fixed">
-							<Link
-								to={`/eng/info/${animeId}`}
-								className="group hover:opacity-80 duration-200 ease-in-out"
-							>
-								<button className="bg-[#000] border-none flex items-center justify-center">
-									<BsFillArrowLeftSquareFill style={{ color: "white" }} />
-								</button>
-							</Link>
-							<div className="episode-heading-section">
-								<h5 className="episode-section-title text-center text-white font-bold">
-									EPISODE LIST
-								</h5>
-							</div>
+			<div className="episode-content">
+				<div className="episode-section">
+					<div className="episode-section-fixed">
+						<Link
+							to={`/eng/info/${animeId}`}
+							className="group hover:opacity-80 duration-200 ease-in-out"
+						>
+							<button className="bg-[#000] border-none flex items-center justify-center">
+								<BsFillArrowLeftSquareFill style={{ color: "white" }} />
+							</button>
+						</Link>
+						<div className="episode-heading-section">
+							<h5 className="episode-section-title text-center text-white font-bold">
+								EPISODE LIST
+							</h5>
 						</div>
 					</div>
-					<div className="lg:h-[calc(100vh-60px)] overflow-y-scroll bg-[#222] h-[30vh] max-lg:mb-[20px]">
-						{listEpisode.map((item, i) => (
-							<Link
-								to={`/eng/watch/${animeId}?current=${item.id}&provider=${provider}`}
-								key={i}
-								title={
-									item.title
-										? `EP. ${item.number} - ${item.title}`
-										: `Episode - ${item.number}`
-								}
-								className={`flex items-center h-[80px] px-[12px] py-[8px] w-full hover:text-white hover:opacity-80 hover:bg-white/20 duration-200 ease-in-out ${
-									current === item.id
-										? "bg-white/50 active"
-										: "odd:bg-[#111111] even:bg-[#272727]"
-								}`}
-								onClick={() => {
-									setVideoLoading(true)
-								}}
-							>
-								<div className="mr-[6px] h-full flex items-center justify-center text-amber-400 ">
-									<p className="font-extrabold px-[4px] border-r-[2px] opacity-80">
-										{item.number}
-									</p>
-								</div>
-								<div className="mx-[6px] w-full flex">
-									<p className="line-clamp-2 w-full text-[#E2DFD2]">
-										{item.title ? item.title : `Episode. ${item.number}`}
-									</p>
-								</div>
-							</Link>
-						))}
-					</div>
+				</div>
+				<div className="lg:h-[calc(100vh-60px)] overflow-y-scroll bg-[#222] h-[calc(50vh-100px)] max-lg:mb-[20px]">
+					{listEpisode.map((item, i) => (
+						<Link
+							to={`/eng/watch/${animeId}?current=${item.id}&provider=${provider}`}
+							key={i}
+							title={
+								item.title
+									? `EP. ${item.number} - ${item.title}`
+									: `Episode - ${item.number}`
+							}
+							className={`flex items-center h-[80px] px-[12px] py-[8px] w-full hover:text-white hover:opacity-80 hover:bg-white/20 duration-200 ease-in-out ${
+								current === item.id
+									? "bg-white/50 active"
+									: "odd:bg-[#111111] even:bg-[#272727]"
+							}`}
+							onClick={() => {
+								setVideoLoading(true)
+							}}
+						>
+							<div className="mr-[6px] h-full flex items-center justify-center text-amber-400 ">
+								<p className="font-extrabold px-[4px] border-r-[2px] opacity-80">
+									{item.number}
+								</p>
+							</div>
+							<div className="mx-[6px] w-full flex">
+								<p className="line-clamp-2 w-full text-[#E2DFD2]">
+									{item.title ? item.title : `Episode. ${item.number}`}
+								</p>
+							</div>
+						</Link>
+					))}
 				</div>
 			</div>
 		</div>

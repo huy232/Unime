@@ -4,10 +4,10 @@ import axios from "axios"
 import VideoEmbed from "../../../Components/Content/VideoEmbed"
 import useDocumentTitle from "../../../Components/Content/DocumentTitleHook"
 import { BsFillArrowLeftSquareFill } from "react-icons/bs"
-import LoadingRequest from "../../../Components/Content/LoadingRequest"
 import "./animewatch.css"
 import VideoPlayer from "../VideoPlayer"
 import { CONSUMET_CORS } from "../../../constants"
+import FilmLoadingRequest from "../LoadingRequest/FilmLoadingRequest"
 
 function AnimeWatch({ instance }) {
 	const { anime } = useParams()
@@ -118,7 +118,7 @@ function AnimeWatch({ instance }) {
 			<div>
 				<div className="flex max-lg:flex-col">
 					{videoLoading ? (
-						<LoadingRequest />
+						<FilmLoadingRequest />
 					) : videoUrl.length > 0 ? (
 						<VideoPlayer
 							videoUrl={videoUrl}
@@ -146,7 +146,7 @@ function AnimeWatch({ instance }) {
 								</div>
 							</div>
 						</div>
-						<div className="lg:h-[calc(100vh-60px)] overflow-y-scroll bg-[#222] h-[20vh]">
+						<div className="lg:h-[calc(100vh-60px)] overflow-y-scroll bg-[#222] h-[calc(50vh-100px)] max-lg:mb-[20px]">
 							{info.map((item, i) => (
 								<Link
 									to={`/watch/${anime}?index=${item.name}`}

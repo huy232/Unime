@@ -6,3 +6,9 @@
 [class*="hint--"]:after {
 	padding: 8px 0;
 }
+
+@media screen and (max-width: 1024px) {
+	.art-video-player {
+		height: 50vh !important;
+	}
+}
