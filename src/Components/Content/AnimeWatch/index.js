@@ -7,6 +7,7 @@ import { BsFillArrowLeftSquareFill } from "react-icons/bs"
 import LoadingRequest from "../../../Components/Content/LoadingRequest"
 import "./animewatch.css"
 import VideoPlayer from "../VideoPlayer"
+import { CONSUMET_CORS } from "../../../constants"
 
 function AnimeWatch({ instance }) {
 	const { anime } = useParams()
@@ -59,7 +60,7 @@ function AnimeWatch({ instance }) {
 							setVideoUrl([
 								{
 									default: true,
-									url: response.data.data.videoSource,
+									url: `${CONSUMET_CORS}/${response.data.data.videoSource}`,
 									html: response.data.data.quality,
 								},
 							])
@@ -91,7 +92,7 @@ function AnimeWatch({ instance }) {
 						setVideoUrl([
 							{
 								default: true,
-								url: res.data.data.videoSource,
+								url: `${CONSUMET_CORS}/${res.data.data.videoSource}`,
 								html: res.data.data.quality,
 							},
 						])
@@ -119,7 +120,11 @@ function AnimeWatch({ instance }) {
 					{videoLoading ? (
 						<LoadingRequest />
 					) : videoUrl.length > 0 ? (
-						<VideoPlayer videoUrl={videoUrl} />
+						<VideoPlayer
+							videoUrl={videoUrl}
+							listEpisode={info}
+							setVideoLoading={setVideoLoading}
+						/>
 					) : (
 						videoEmbed && <VideoEmbed videoEmbed={videoEmbed} />
 					)}

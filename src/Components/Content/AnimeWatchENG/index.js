@@ -68,7 +68,6 @@ function AnimeWatchENG() {
 				})
 				.then((response) => {
 					if (provider === "animepahe") {
-						console.log("Run this")
 						setVideoUrl(
 							response.data.data.sources.map((source) => ({
 								url: `https://proxy.vnxservers.com/proxy/m3u8/${encodeURIComponent(
@@ -139,6 +138,8 @@ function AnimeWatchENG() {
 						videoUrl={videoUrl}
 						subtitles={subtitles}
 						thumbnail={thumbnail?.url ? thumbnail.url : ""}
+						listEpisode={listEpisode}
+						setVideoLoading={setVideoLoading}
 					/>
 				)}
 
@@ -175,7 +176,9 @@ function AnimeWatchENG() {
 										? "bg-white/50 active"
 										: "odd:bg-[#111111] even:bg-[#272727]"
 								}`}
-								onClick={() => setVideoLoading(true)}
+								onClick={() => {
+									setVideoLoading(true)
+								}}
 							>
 								<div className="mr-[6px] h-full flex items-center justify-center text-amber-400 ">
 									<p className="font-extrabold px-[4px] border-r-[2px] opacity-80">
