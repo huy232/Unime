@@ -4,17 +4,7 @@ function LoadingRequest() {
 	const { language } = useAuth()
 
 	return (
-		<div
-			className="loading-request"
-			style={{
-				display: "flex",
-				margin: "0 auto",
-				height: "100vh",
-				flexDirection: "column",
-				justifyContent: "center",
-				alignItems: "center",
-			}}
-		>
+		<div className="loading-request flex my-0 mx-auto h-[100vh] flex-col justify-center items-center">
 			<ThreeDots fill="#a30f0f" />
 			<div
 				className="loading-text"
