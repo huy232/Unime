@@ -106,5 +106,11 @@ export default function Player({
 		}
 	}, [option, subtitles, videoUrl])
 
-	return <div className="h-[100vh] w-full" ref={artRef} {...rest}></div>
+	return (
+		<div
+			className="h-[calc(var(--vh,1vh)*100)] w-full"
+			ref={artRef}
+			{...rest}
+		></div>
+	)
 }

@@ -87,7 +87,7 @@
 .episode-bracket {
 	overflow: scroll;
 	background: rgb(68 75 82 / 40%);
-	height: calc(100vh - 60px);
+	height: calc(var(--vh, 1vh) * 100 - 60px);
 }
 
 .episode p {
