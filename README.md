@@ -109,6 +109,19 @@ Everything is responsive, shrink down the web page or using it on device for fur
 # Installation
 - Simply use `git clone https://github.com/huy232/mirai.git` to clone my project to your local.
 - Use `git i` to install all needed dependencies in this project.
+- Place your own .env - environment file here:
+
+![EnviromentSetup](https://i.imgur.com/SmyQZOr.png)
+
+- Inside the .env file, set up like this:
+
+> REACT_APP_SUPABASE_ANON_KEY  = YOUR ANON SUPBASE KEY
+> REACT_APP_SUPABASE_URL = YOUR SUPBASE URL
+
+- Go to [Supabase](https://supabase.com/) and create your own database, in there, get the SUPABASE URL and SUPABASE ANON KEY.
+
+![EnviromentSetup-2](https://i.imgur.com/NACl9L4.png)
+
 - Use `npm start` to run the project.
 - Feel free to modify, fork and make it better.
 
