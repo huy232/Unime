@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react"
 import Artplayer from "artplayer"
 import artplayerPluginHlsQuality from "artplayer-plugin-hls-quality"
+import artplayerPluginControl from "artplayer-plugin-control"
 import Hls from "hls.js"
 
 export default function Player({
@@ -8,6 +9,7 @@ export default function Player({
 	getInstance,
 	subtitles,
 	videoUrl,
+	intro,
 	...rest
 }) {
 	const artRef = useRef()
@@ -19,6 +21,7 @@ export default function Player({
 				url: videoUrl[0].url,
 				quality: videoUrl,
 				container: artRef.current,
+				plugins: [artplayerPluginControl()],
 			})
 			return () => {
 				if (art && art.destroy) {
@@ -62,6 +65,7 @@ export default function Player({
 						title: "Quality",
 						auto: "Auto",
 					}),
+					artplayerPluginControl(),
 				],
 				type: "m3u8",
 				customType: {
@@ -98,6 +102,7 @@ export default function Player({
 				],
 				container: artRef.current,
 			})
+
 			return () => {
 				if (art && art.destroy) {
 					art.destroy(false)

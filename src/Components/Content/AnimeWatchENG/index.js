@@ -18,7 +18,8 @@ function AnimeWatchENG() {
 	const [videoUrl, setVideoUrl] = useState([])
 	const [videoLoading, setVideoLoading] = useState(true)
 	const [subtitles, setSubtitles] = useState([])
-	const [thumbnail, setThumbnail] = useState()
+	const [thumbnail, setThumbnail] = useState(null)
+	const [intro, setIntro] = useState(null)
 	const [title, setTitle] = useState("")
 	const prevAnilist = useRef()
 
@@ -109,6 +110,10 @@ function AnimeWatchENG() {
 						)
 					}
 
+					if (response.data.data?.intro) {
+						setIntro(response.data.data.intro)
+					}
+
 					setVideoLoading(false)
 				})
 				.catch((thrown) => {
@@ -142,6 +147,7 @@ function AnimeWatchENG() {
 					thumbnail={thumbnail?.url ? thumbnail.url : ""}
 					listEpisode={listEpisode}
 					setVideoLoading={setVideoLoading}
+					intro={intro}
 				/>
 			)}
 

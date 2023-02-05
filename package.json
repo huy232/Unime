@@ -17,6 +17,7 @@
     "@supabase/supabase-js": "^2.4.0",
     "@tailwindcss/line-clamp": "^0.4.2",
     "artplayer": "^4.6.2",
+    "artplayer-plugin-control": "^1.0.0",
     "artplayer-plugin-hls-quality": "^1.0.0",
     "axios": "^0.25.0",
     "bootstrap": "^5.1.3",

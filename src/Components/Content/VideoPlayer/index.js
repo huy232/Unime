@@ -10,6 +10,7 @@ function VideoPlayer({
 	thumbnail,
 	listEpisode,
 	setVideoLoading,
+	intro,
 }) {
 	const navigate = useNavigate()
 	const selectedSub = localStorage.getItem("artplayer-language")
@@ -23,6 +24,7 @@ function VideoPlayer({
 	let nextEpisode = null
 	let tooltipPrevious = null
 	let tooltipNext = null
+	let highlightInfo = []
 	if (listEpisode?.length > 0) {
 		if (provider) {
 			let currentIndex = listEpisode.findIndex(
@@ -53,6 +55,19 @@ function VideoPlayer({
 		}
 	}
 
+	if (intro) {
+		highlightInfo = [
+			{
+				time: Number(intro.start),
+				text: "Start intro",
+			},
+			{
+				time: Number(intro.end),
+				text: "End intro",
+			},
+		]
+	}
+
 	return (
 		<>
 			<Artplayer
@@ -60,7 +75,7 @@ function VideoPlayer({
 					setting: true,
 					muted: false,
 					autoplay: true,
-					pip: false,
+					pip: true,
 					autoSize: true,
 					autoMini: true,
 					screenshot: true,
@@ -71,11 +86,11 @@ function VideoPlayer({
 					fullscreenWeb: true,
 					subtitleOffset: true,
 					miniProgressBar: true,
-					mutex: true,
+					mutex: false,
 					backdrop: true,
 					playsInline: true,
 					volume: 1,
-					airplay: false,
+					airplay: true,
 					lang: navigator.language.toLowerCase(),
 					whitelist: ["*"],
 					moreVideoAttr: {
@@ -159,10 +174,12 @@ function VideoPlayer({
 						},
 						escape: false,
 					},
+					highlight: highlightInfo,
 				}}
 				subtitles={subtitles}
 				videoUrl={videoUrl}
 				className="w-[80vw] max-lg:w-full h-[calc(var(--vh,1vh)*50)] lg:h-[calc(var(--vh,1vh)*100)]"
+				intro={highlightInfo}
 			/>
 		</>
 	)
