@@ -25,6 +25,9 @@ function AnimeWatch({ instance }) {
 	useEffect(() => {
 		const CancelToken = axios.CancelToken
 		const source = CancelToken.source()
+		// FIX RUBBER SCROLL FOR SAFARI
+		document.body.style.overflow = "hidden"
+
 		if (prevAnilist.current !== anime) {
 			const getList = async () => {
 				const { data } = await instance
@@ -42,6 +45,7 @@ function AnimeWatch({ instance }) {
 		}
 		return () => {
 			source.cancel()
+			document.body.style.overflow = "auto"
 		}
 	}, [anime, instance])
 
@@ -146,7 +150,7 @@ function AnimeWatch({ instance }) {
 								</div>
 							</div>
 						</div>
-						<div className="lg:h-[calc(100vh-60px)] overflow-y-scroll bg-[#222] h-[calc(50vh-80px)]">
+						<div className="lg:h-[calc(var(--vh,1vh)*100-60px)] overflow-y-scroll bg-[#222] h-[calc(var(--vh,1vh)*50-80px);]">
 							{info.map((item, i) => (
 								<Link
 									to={`/watch/${anime}?index=${item.name}`}

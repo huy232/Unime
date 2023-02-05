@@ -33,7 +33,7 @@
 	width: 60%;
 	display: flex;
 	flex-direction: column;
-	height: 100vh;
+	height: calc(var(--vh, 1vh) * 100);
 	justify-content: center;
 }
 
@@ -148,7 +148,7 @@
 	.login-container {
 		flex-direction: column;
 		justify-content: center;
-		height: 100vh;
+		height: calc(var(--vh, 1vh) * 100);
 	}
 
 	.quote-holder {

@@ -133,9 +133,8 @@ function AnimeInfoDetailENG({
 					)}
 					<div className="mt-[18px] mb-[8px]">
 						<p className="inline-block text-white/50 border-l-[6px] border-white/70 px-[6px] bg-white/10 rounded-r">
-							<i>*Recommend</i>: <strong>Zoro</strong> and{" "}
-							<strong>Gogoanime</strong> providers for best and most stable
-							quality...
+							<i>*Recommend</i>: <strong>Gogoanime</strong> provider for best
+							and most stable quality...
 						</p>
 					</div>
 					<div className="max-lg:text-center flex max-lg:flex-col justify-between lg:[&>*]:mx-[20px]">

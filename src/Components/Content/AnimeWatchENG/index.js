@@ -25,6 +25,8 @@ function AnimeWatchENG() {
 	useEffect(() => {
 		const CancelToken = axios.CancelToken
 		const source = CancelToken.source()
+		// FIX RUBBER SCROLL FOR SAFARI
+		document.body.style.overflow = "hidden"
 
 		const filmEpisodeList = async () => {
 			if (prevAnilist.current !== animeId) {
@@ -124,12 +126,13 @@ function AnimeWatchENG() {
 
 		return () => {
 			source.cancel()
+			document.body.style.overflow = "auto"
 		}
 	}, [animeId, current, listEpisode, provider, title])
 
 	useDocumentTitle(watchDetail)
 	return (
-		<div className="flex max-lg:flex-col">
+		<div className="flex max-lg:flex-col ">
 			{videoLoading ? (
 				<FilmLoadingRequest />
 			) : (
@@ -160,7 +163,7 @@ function AnimeWatchENG() {
 						</div>
 					</div>
 				</div>
-				<div className="lg:h-[calc(100vh-60px)] overflow-y-scroll bg-[#222] h-[calc(50vh-80px)]">
+				<div className="lg:h-[calc(var(--vh,1vh)*100-60px)] overflow-y-scroll bg-[#222] h-[calc(var(--vh,1vh)*50-80px)]">
 					{listEpisode.map((item, i) => (
 						<Link
 							to={`/eng/watch/${animeId}?current=${item.id}&provider=${provider}`}

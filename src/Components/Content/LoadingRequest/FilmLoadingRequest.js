@@ -4,7 +4,7 @@ function FilmLoadingRequest() {
 	const { language } = useAuth()
 
 	return (
-		<div className="loading-request flex my-0 mx-auto lg:h-[100vh] h-[50vh] flex-col justify-center items-center">
+		<div className="loading-request flex my-0 mx-auto lg:h-[calc(var(--vh,1vh)*100)] h-[calc(var(--vh,1vh)*50)] flex-col justify-center items-center">
 			<ThreeDots fill="#a30f0f" />
 			<div
 				className="loading-text"

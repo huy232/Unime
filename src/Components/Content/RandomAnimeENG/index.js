@@ -4,6 +4,7 @@ import "swiper/css/pagination"
 import "./movieanime.css"
 import { Link } from "react-router-dom"
 import { toSlug } from "../../../Utilities/toSlug"
+import { duration } from "../../../Utilities/duration"
 
 function RandomAnimeENG({ randomAnime, loadingRandomAnime }) {
 	return (
@@ -78,7 +79,9 @@ function RandomAnimeENG({ randomAnime, loadingRandomAnime }) {
 									<h6 className="m-0 font-semi-bold bg-[#80bd9e] text-[#282828] p-[6px] rounded">
 										DURATION
 									</h6>
-									<p className="my-0">{randomAnime.duration}</p>
+									<p className="my-0">
+										{duration(Number(randomAnime.duration))}
+									</p>
 								</div>
 								<div className="flex flex-col items-center">
 									<h6 className="m-0 font-semi-bold bg-[#89da59] text-[#282828] p-[6px] rounded">

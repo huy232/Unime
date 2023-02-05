@@ -27,7 +27,7 @@ function AnimeImageSearchLayout({ searchResult, setToggle }) {
 
 	return (
 		<div className="flex w-full flex-col gap-8 md:flex-row px-4 md:px-12 lg:px-20 xl:px-28 2xl:px-36">
-			<div className="w-full space-y-4 md:w-[30%] overflow-y-scroll h-[calc(100vh-90px)]">
+			<div className="w-full space-y-4 md:w-[30%] overflow-y-scroll h-[calc(var(--vh,1vh)*100-90px)]">
 				{searchResult.result.map((item, i) => (
 					<div
 						key={i}
