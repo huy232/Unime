@@ -5,6 +5,7 @@ import "swiper/css/pagination"
 import "./popularanime.css"
 import AnimeSkeletonENG from "../AnimeSkeletonENG"
 import { Link } from "react-router-dom"
+import randomColor from "randomcolor"
 
 function TrendingAnimeENG({ trendingAnime, loadingTrending }) {
 	return (
@@ -45,7 +46,16 @@ function TrendingAnimeENG({ trendingAnime, loadingTrending }) {
 											/>
 										</div>
 										<div className="popular-anime-title">
-											<p className="text-amber-300 line-clamp-2 font-medium">
+											<p
+												className="line-clamp-2 font-medium"
+												style={{
+													color: randomColor({
+														luminosity: "dark",
+														format: "rgb",
+														alpha: 1,
+													}),
+												}}
+											>
 												{anime.title.english ||
 													anime.title.romaji ||
 													anime.title.native ||
@@ -57,6 +67,15 @@ function TrendingAnimeENG({ trendingAnime, loadingTrending }) {
 							</SwiperSlide>
 						))}
 					</Swiper>
+					<div className="text-right mt-[24px]">
+						<Link
+							to="/eng/trending"
+							className="browse-button hover:text-[#fff] font-semibold"
+							style={{ "--c": "#F94A29" }}
+						>
+							MORE...
+						</Link>
+					</div>
 				</div>
 			)}
 		</div>

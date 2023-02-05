@@ -65,6 +65,15 @@ function RecentEpisodeENG({ recentAnime, loadingRecentAnime }) {
 							</SwiperSlide>
 						))}
 					</Swiper>
+					<div className="text-right mt-[24px]">
+						<Link
+							to="/eng/recent-anime"
+							className="browse-button hover:text-[#fff] font-semibold"
+							style={{ "--c": "#301E67" }}
+						>
+							MORE...
+						</Link>
+					</div>
 				</div>
 			)}
 		</div>

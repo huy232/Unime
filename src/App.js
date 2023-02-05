@@ -29,6 +29,7 @@ import NotFound from "./Components/Content/NotFound"
 import Films from "./Components/Content/Films"
 import AnimeImageSearch from "./Components/Content/AnimeImageSearch"
 import FilmInfo from "./Components/Content/FilmInfo"
+import AnimeBrowseMoreENG from "./Components/Content/AnimeBrowseMoreENG"
 
 function App() {
 	const instance = axios.create({
@@ -95,6 +96,24 @@ function App() {
 						/>
 						<Route path="/eng/info/:animeId" element={<AnimeInfoENG />} />
 						<Route path="/eng/watch/:animeId" element={<AnimeWatchENG />} />
+						<Route
+							path="/eng/recent-anime"
+							element={
+								<AnimeBrowseMoreENG
+									urlString={"recent-anime"}
+									urlTitle={"RECENT ANIME"}
+								/>
+							}
+						/>
+						<Route
+							path="/eng/trending"
+							element={
+								<AnimeBrowseMoreENG
+									urlString={"popular"}
+									urlTitle={"TRENDING"}
+								/>
+							}
+						/>
 						<Route path="/eng/search-image/" element={<AnimeImageSearch />} />
 						{/* SHARED */}
 						<Route path="login" element={<Login />} />

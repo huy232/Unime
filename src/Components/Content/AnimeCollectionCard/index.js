@@ -15,7 +15,6 @@ import { Grid } from "swiper"
 function AnimeCollectionCard() {
 	return (
 		<>
-			{/* <div className="anime-collection-card-holder"> */}
 			<div className="w-full h-[300px]">
 				<Swiper
 					slidesPerView="auto"
@@ -52,7 +51,6 @@ function AnimeCollectionCard() {
 					)).reverse()}
 				</Swiper>
 			</div>
-			{/* </div> */}
 		</>
 	)
 }
