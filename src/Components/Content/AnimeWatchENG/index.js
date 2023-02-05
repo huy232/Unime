@@ -163,7 +163,7 @@ function AnimeWatchENG() {
 						</div>
 					</div>
 				</div>
-				<div className="lg:h-[calc(var(--vh,1vh)*100-60px)] overflow-y-scroll bg-[#222] h-[calc(var(--vh,1vh)*50-80px)]">
+				<div className="lg:h-[calc(100vh-60px)] overflow-y-scroll bg-[#222] h-[calc(50vh-80px)]">
 					{listEpisode.map((item, i) => (
 						<Link
 							to={`/eng/watch/${animeId}?current=${item.id}&provider=${provider}`}

@@ -18,14 +18,14 @@ code {
 
 html,
 body {
-	/* width: 100%; */
+	width: 100%;
 	background-color: #121212 !important;
 	scroll-behavior: smooth;
 	border: 0 !important;
 }
 body {
 	color: #fff !important;
-	height: calc(var(--vh, 1vh) * 100);
+	height: 100vh;
 }
 
 a {
