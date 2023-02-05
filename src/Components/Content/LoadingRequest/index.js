@@ -4,7 +4,7 @@ function LoadingRequest() {
 	const { language } = useAuth()
 
 	return (
-		<div className="loading-request flex my-0 mx-auto h-[calc(var(--vh,1vh)*100)] flex-col justify-center items-center">
+		<div className="loading-request flex my-0 mx-auto h-[100vh] flex-col justify-center items-center">
 			<ThreeDots fill="#a30f0f" />
 			<div
 				className="loading-text"

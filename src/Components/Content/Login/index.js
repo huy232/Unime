@@ -47,7 +47,7 @@ export default function Login() {
 		<>
 			<div className="login-container">
 				<div
-					className="col-40 max-sm:h-[calc(var(--vh,1vh)*100)] relative"
+					className="col-40 max-sm:h-[100vh] relative"
 					style={{
 						background: `linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(${background})`,
 						backgroundSize: "cover",

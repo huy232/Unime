@@ -148,7 +148,7 @@ function VideoPlayer({
 				}}
 				subtitles={subtitles}
 				videoUrl={videoUrl}
-				className="w-[80vw] max-lg:w-full h-[calc(var(--vh,1vh)*50)] lg:h-[calc(var(--vh,1vh)*100)]"
+				className="w-[80vw] max-lg:w-full h-[50vh] lg:h-[100vh]"
 			/>
 		</>
 	)
