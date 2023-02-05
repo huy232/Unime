@@ -150,7 +150,7 @@ function AnimeWatch({ instance }) {
 								</div>
 							</div>
 						</div>
-						<div className="lg:h-[calc(var(--vh,1vh)*100-60px)] overflow-y-scroll bg-[#222] h-[calc(var(--vh,1vh)*50-80px);]">
+						<div className="lg:h-[calc(var(--vh,1vh)*100-60px)] overflow-y-scroll bg-[#222] h-[calc(var(--vh,1vh)*50-80px)]">
 							{info.map((item, i) => (
 								<Link
 									to={`/watch/${anime}?index=${item.name}`}
