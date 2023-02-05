@@ -27,7 +27,7 @@ function AnimeInfoBoxENG({ loading, info }) {
 					<Skeleton
 						variant="rectangular"
 						width="auto"
-						height="calc(var(--vh, 1vh) * 40);"
+						height="calc(var(--vh, 1vh) * 40)"
 						animation="wave"
 						sx={{ bgcolor: "grey.900" }}
 						style={{ marginLeft: "auto", marginRight: "auto" }}

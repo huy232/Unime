@@ -21,6 +21,8 @@ function VideoPlayer({
 
 	let previousEpisode = null
 	let nextEpisode = null
+	let tooltipPrevious = null
+	let tooltipNext = null
 	if (listEpisode?.length > 0) {
 		if (provider) {
 			let currentIndex = listEpisode.findIndex(
@@ -28,9 +30,11 @@ function VideoPlayer({
 			)
 			if (listEpisode[currentIndex - 1]) {
 				previousEpisode = listEpisode[currentIndex - 1]
+				tooltipPrevious = previousEpisode.number
 			}
 			if (listEpisode[currentIndex + 1]) {
 				nextEpisode = listEpisode[currentIndex + 1]
+				tooltipNext = nextEpisode.number
 			}
 		}
 
@@ -40,9 +44,11 @@ function VideoPlayer({
 			)
 			if (listEpisode[currentIndex - 1]) {
 				previousEpisode = listEpisode[currentIndex - 1]
+				tooltipPrevious = previousEpisode.name
 			}
 			if (listEpisode[currentIndex + 1]) {
 				nextEpisode = listEpisode[currentIndex + 1]
+				tooltipNext = nextEpisode.name
 			}
 		}
 	}
@@ -86,6 +92,9 @@ function VideoPlayer({
 								fill: "#fff",
 								marginRight: "2px",
 							},
+							tooltip: `${
+								tooltipNext ? `EP. ${tooltipNext}` : "No next episode"
+							}`,
 							click: function () {
 								if (nextEpisode?.full_name) {
 									setVideoLoading(true)
@@ -109,6 +118,11 @@ function VideoPlayer({
 								fill: "#fff",
 								marginRight: "2px",
 							},
+							tooltip: `${
+								tooltipPrevious
+									? `EP. ${tooltipPrevious}`
+									: "No previous episode"
+							}`,
 							click: function () {
 								if (previousEpisode?.full_name) {
 									setVideoLoading(true)
