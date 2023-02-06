@@ -7,6 +7,7 @@ import {
 	faFastBackward,
 	faFastForward,
 } from "@fortawesome/free-solid-svg-icons"
+import blackImage from "../../../Utilities/img/black.jpg"
 import axios from "axios"
 // SWIPER
 import { Swiper, SwiperSlide } from "swiper/react"
@@ -33,7 +34,7 @@ function AnimeInfoEpisodeHolderENG({
 	const [swiper, setSwiper] = useState()
 	const [toggleButton, setToggleButton] = useState(true)
 	const prevProvider = useRef({
-		provider: localStorage.getItem("unime-provider") || "gogoanime",
+		provider: "gogoanime",
 	})
 
 	useEffect(() => {
@@ -231,6 +232,9 @@ function AnimeInfoEpisodeHolderENG({
 																		? eachEpisode?.image
 																		: `${CONSUMET_CORS}/${eachEpisode?.image}`
 																}
+																onLoad={() => {
+																	return blackImage
+																}}
 															/>
 															<div className="overlay-card">
 																<div className="icon">
