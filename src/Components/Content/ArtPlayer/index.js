@@ -59,7 +59,7 @@ export default function Player({
 				plugins: [
 					artplayerPluginHlsQuality({
 						// Show quality in control
-						control: false,
+						control: videoSource ? true : false,
 						// Show quality in setting
 						setting: videoSource ? true : false,
 						title: "Quality",
