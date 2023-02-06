@@ -85,9 +85,13 @@ function AnimeInfoDetailENG({
 			{!loading && (
 				<>
 					<p className="max-lg:text-center">Genres:</p>
-					<div className="genres flex flex-wrap max-lg:flex-col max-lg:items-center">
+					<div className="genres flex flex-wrap max-lg:flex-col max-lg:items-center pb-8">
 						{resultCategory.map((genre) => (
-							<Link to={`/eng/anime/${genre.slug}`} key={genre.slug}>
+							<Link
+								to={`/eng/anime/${genre.slug}`}
+								key={genre.slug}
+								className="first:ml-[6px] last:mr-[6px]"
+							>
 								<div className="cursor-pointer rounded p-[10px] bg-[#5f5f5f29] mx-[10px] my-[6px] duration-200 hover:opacity-80 ease-in-out">
 									{genre.name}
 								</div>

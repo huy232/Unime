@@ -6,6 +6,7 @@ import TopAiringENG from "../TopAiringENG"
 import useDocumentTitle from "../DocumentTitleHook"
 import TrendingAnimeENG from "../TrendingAnimeENG"
 import RandomAnimeENG from "../RandomAnimeENG"
+import AiringScheduleENG from "../AiringScheduleENG"
 
 function HomeENG() {
 	const [loadingAiring, setLoadingAiring] = useState(true)
@@ -14,9 +15,10 @@ function HomeENG() {
 	const [recentAnime, setRecentAnime] = useState([])
 	const [loadingTrending, setLoadingTrending] = useState(true)
 	const [trendingAnime, setTrendingAnime] = useState([])
+	const [loadingAiringSchedule, setLoadingAiringSchedule] = useState(true)
+	const [airingSchedule, setAiringSchedule] = useState([])
 	const [loadingRandomAnime, setLoadingRandomAnime] = useState(true)
 	const [randomAnime, setRandomAnime] = useState([])
-
 	useEffect(() => {
 		const CancelToken = axios.CancelToken
 		const source = CancelToken.source()
@@ -30,8 +32,8 @@ function HomeENG() {
 					setTopAiring(topAiring.data.data.results)
 					setLoadingAiring(false)
 				})
-				.then(() => {
-					getRecentAnime()
+				.then(async () => {
+					await getRecentAnime()
 				})
 				.catch((thrown) => {
 					if (axios.isCancel(thrown)) return
@@ -47,7 +49,7 @@ function HomeENG() {
 					setRecentAnime(getRecentData.data.data.results)
 					setLoadingRecentAnime(false)
 				})
-				.then(() => getTrendingAnime())
+				.then(async () => await getTrendingAnime())
 				.catch((thrown) => {
 					if (axios.isCancel(thrown)) return
 				})
@@ -62,7 +64,22 @@ function HomeENG() {
 					setTrendingAnime(trendingAnime.data.data.results)
 					setLoadingTrending(false)
 				})
-				.then(getRandomAnime())
+				.then(async () => await getAiringSchedule())
+				.catch((thrown) => {
+					if (axios.isCancel(thrown)) return
+				})
+		}
+
+		const getAiringSchedule = async () => {
+			await axios
+				.get(`${API}/eng/schedule`, {
+					cancelToken: source.token,
+				})
+				.then((scheduleAnime) => {
+					setAiringSchedule(scheduleAnime.data.data.results)
+					setLoadingAiringSchedule(false)
+				})
+				.then(async () => await getRandomAnime())
 				.catch((thrown) => {
 					if (axios.isCancel(thrown)) return
 				})
@@ -75,7 +92,7 @@ function HomeENG() {
 				})
 				.then((randomAnime) => {
 					if (randomAnime.data.success === false) {
-						setRandomAnime()
+						setRandomAnime([])
 						setLoadingRandomAnime(true)
 					} else {
 						setRandomAnime(randomAnime.data.data)
@@ -96,14 +113,18 @@ function HomeENG() {
 	useDocumentTitle(`HOME - Unime`)
 	return (
 		<>
-			<TopAiringENG topAiring={topAiring} loadingAiring={loadingAiring} />
+			<TopAiringENG loadingAiring={loadingAiring} topAiring={topAiring} />
 			<RecentEpisodeENG
-				recentAnime={recentAnime}
 				loadingRecentAnime={loadingRecentAnime}
+				recentAnime={recentAnime}
 			/>
 			<TrendingAnimeENG
-				trendingAnime={trendingAnime}
 				loadingTrending={loadingTrending}
+				trendingAnime={trendingAnime}
+			/>
+			<AiringScheduleENG
+				loadingAiringSchedule={loadingAiringSchedule}
+				airingSchedule={airingSchedule}
 			/>
 			<RandomAnimeENG
 				loadingRandomAnime={loadingRandomAnime}

@@ -49,7 +49,7 @@ function AnimeInfoENG() {
 
 	useDocumentTitle(title)
 	return (
-		<div>
+		<div className="mb-8">
 			<AnimeInfoBannerENG loading={loading} info={info} />
 			<div className="w-full flex relative max-lg:flex-col">
 				<AnimeInfoBoxENG loading={loading} info={info} />
