@@ -15,8 +15,8 @@ function AiringScheduleENG({ loadingAiringSchedule, airingSchedule }) {
 						</span>
 					</div>
 					<div className="h-[400px] overflow-y-scroll my-12">
-						{airingSchedule.map((anime) => (
-							<div className="p4 odd:bg-white/5 even:bg-black/5">
+						{airingSchedule.map((anime, i) => (
+							<div className="p4 odd:bg-white/5 even:bg-black/5" key={i}>
 								<div className="flex justify-between w-full text-white p-4 max-md:flex-col">
 									<div className="flex w-full items-center max-md:flex-col max-md:justify-center">
 										<div className="flex max-md:flex-col">

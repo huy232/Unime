@@ -59,12 +59,12 @@ function AnimeWatch({ instance }) {
 					.get(`/anime/${mainId}/episodes/${numIndex}`, {
 						cancelToken: source.token,
 					})
-					.then((response) => {
+					.then(async (response) => {
 						if (typeof response.data.data?.videoSource !== "undefined") {
 							setVideoUrl([
 								{
 									default: true,
-									url: `${CONSUMET_CORS}/${response.data.data.videoSource}`,
+									url: response.data.data.videoSource,
 									html: response.data.data.quality,
 								},
 							])
@@ -93,10 +93,11 @@ function AnimeWatch({ instance }) {
 						const watchFilm = res.data.data.film_name
 						const watchEpisodeName = res.data.data.full_name
 						setWatchDetail(watchFilm + ` (${watchEpisodeName})`)
+						// url: `${CONSUMET_CORS}/${res.data.data.videoSource}`,
 						setVideoUrl([
 							{
 								default: true,
-								url: `${CONSUMET_CORS}/${res.data.data.videoSource}`,
+								url: res.data.data.videoSource,
 								html: res.data.data.quality,
 							},
 						])
