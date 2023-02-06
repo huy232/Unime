@@ -6,7 +6,7 @@ function AiringScheduleENG({ loadingAiringSchedule, airingSchedule }) {
 		<>
 			{!loadingAiringSchedule && (
 				<div className="w-full px-4 md:px-12 lg:px-20 xl:px-28 2xl:px-36">
-					<div className="flex md:space-x-3 items-start md:items-center flex-col">
+					<div className="flex md:space-x-3 items-center flex-col">
 						<h1 className="mb-2 uppercase font-black text-[#B99B6B]">
 							Estimated Schedule
 						</h1>
@@ -19,7 +19,7 @@ function AiringScheduleENG({ loadingAiringSchedule, airingSchedule }) {
 							<div className="p4 odd:bg-white/5 even:bg-black/5" key={i}>
 								<div className="flex justify-between w-full text-white p-4 max-md:flex-col">
 									<div className="flex w-full items-center max-md:flex-col max-md:justify-center">
-										<div className="flex max-md:flex-col">
+										<div className="flex max-md:flex-col items-center">
 											<p className="text-slate-300 text-xs">
 												{new Date(anime.airingAt * 1000).toLocaleString(
 													navigator.language,

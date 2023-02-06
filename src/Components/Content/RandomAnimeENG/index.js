@@ -13,7 +13,7 @@ function RandomAnimeENG({ randomAnime, loadingRandomAnime }) {
 				""
 			) : (
 				<>
-					<h1 className="font-black ml-6 mr-6 mt-2 border-b-4 border-white text-rose-500">
+					<h1 className="font-black ml-6 mr-6 mt-2 border-b-4 border-white text-rose-500 max-sm:text-center">
 						YOU MIGHT LIKE?
 					</h1>
 					<div className="random-anime-container px-4 md:px-12 lg:px-20 xl:px-28 2xl:px-36 w-full pb-12 flex max-lg:flex-col">

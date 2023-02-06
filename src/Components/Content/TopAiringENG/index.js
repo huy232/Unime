@@ -3,12 +3,13 @@ import { Swiper, SwiperSlide } from "swiper/react"
 import "swiper/css"
 import "swiper/css/pagination"
 import "./topairing.css"
-import { Pagination } from "swiper"
+import { Pagination, Autoplay } from "swiper"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faPlayCircle } from "@fortawesome/free-solid-svg-icons"
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton"
 import { Link } from "react-router-dom"
 import { toSlug } from "../../../Utilities/toSlug"
+import { COLORSET } from "../../../constants"
 
 function TopAiringENG({ topAiring, loadingAiring }) {
 	return (
@@ -22,12 +23,19 @@ function TopAiringENG({ topAiring, loadingAiring }) {
 				</div>
 			) : (
 				<Swiper
-					direction={"vertical"}
 					pagination={{
 						clickable: true,
 					}}
-					modules={[Pagination]}
-					className="top-airing-swiper h-[500px] w-full px-4 md:px-12 lg:px-20 xl:px-28 2xl:px-36 w-full"
+					modules={[Pagination, Autoplay]}
+					autoplay={{
+						delay: 2000,
+						disableOnInteraction: false,
+						pauseOnMouseEnter: true,
+					}}
+					centeredSlides={true}
+					spaceBetween={10}
+					loop={true}
+					className="top-airing-swiper h-[500px] w-full px-4 md:px-12 lg:px-20 xl:px-28 2xl:px-36"
 					slidesPerView={1}
 				>
 					{topAiring.map((item, i) => (
@@ -41,6 +49,7 @@ function TopAiringENG({ topAiring, loadingAiring }) {
 										<Link
 											to={`/eng/info/${item.id}`}
 											className="hover:opacity-80 duration-200 ease-in-out"
+											style={{ color: COLORSET[i] }}
 										>
 											<h2
 												className="airing-info-main-title line-clamp-3 uppercase font-bold text-3xl max-lg:text-base"
@@ -57,11 +66,11 @@ function TopAiringENG({ topAiring, loadingAiring }) {
 													item.title.userPreferred}
 											</h2>
 										</Link>
-										<div className="airing-info-genres flex flex-wrap my-[20px] max-lg:my-[4px]">
+										<div className="flex flex-wrap my-[20px] max-lg:my-[4px]">
 											{item.genres.map((genre, i) => (
 												<Link
 													to={`/eng/anime/${toSlug(genre)}`}
-													className="hover:opacity-80 duration-200 ease-in-out genre inline p-[4px] m-[4px] first:ml-0 rounded text-gray-50 max-lg:text-xs"
+													className="hover:opacity-80 duration-200 ease-in-out genre inline p-[4px] m-[4px] first:ml-0 rounded text-gray-50 max-lg:text-xs bg-white/20"
 													key={i}
 												>
 													{genre}
@@ -69,9 +78,8 @@ function TopAiringENG({ topAiring, loadingAiring }) {
 											))}
 										</div>
 										<div
-											className="airing-info-description line-clamp-5 font-semibold text-base max-lg:text-xs"
+											className="airing-info-description line-clamp-5 font-semibold text-base max-lg:text-xs text-slate-300"
 											style={{
-												color: "#fff",
 												textShadow:
 													"0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black",
 											}}
@@ -81,7 +89,7 @@ function TopAiringENG({ topAiring, loadingAiring }) {
 										></div>
 										<div className="airing-info-status text-gray-50 mt-[20px] max-lg:text-xs max-lg:mt-[10px]">
 											STATUS:{" "}
-											<span className="rounded p-[4px] mt-[4px]">
+											<span className="rounded p-[4px] mt-[4px] bg-white/20">
 												{item.status}
 											</span>
 										</div>

@@ -9,7 +9,7 @@ import { Link } from "react-router-dom"
 function RecentEpisodeENG({ recentAnime, loadingRecentAnime }) {
 	return (
 		<div>
-			<h1 className="font-black ml-6 mr-6 mt-2 border-b-4 border-white text-lime-300	">
+			<h1 className="font-black ml-6 mr-6 mt-2 border-b-4 border-white text-lime-300 max-sm:text-center">
 				NEWLY UPDATED
 			</h1>
 			{loadingRecentAnime ? (

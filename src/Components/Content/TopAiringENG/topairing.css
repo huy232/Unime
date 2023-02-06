@@ -6,15 +6,14 @@
 	);
 }
 
-.top-airing-swiper .swiper-pagination {
-	background: white;
-	border-radius: 10px;
-	padding: 6px;
+.top-airing-swiper .swiper-pagination > .swiper-pagination-bullet {
+	width: 10px;
+	height: 10px;
+	background: rgb(216, 216, 216);
 }
 
-.airing-info-genres .genre,
-.airing-info-status span {
-	background: rgba(95, 95, 95, 0.5);
+.top-airing-swiper .swiper-pagination .swiper-pagination-bullet-active {
+	background: rgb(253 230 138);
 }
 
 .banner__overlay .overlay__trigger svg {
