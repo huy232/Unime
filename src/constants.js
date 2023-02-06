@@ -1,11 +1,11 @@
 const mainsite = "https://unime.vercel.app"
 // const mainsite = "http://localhost:3000"
 // const url = "https://mirai-reborn.herokuapp.com/api"
-const url = "http://localhost:3000/api"
+// const url = "http://localhost:3000/api"
 // const consumetApi = "https://api.consumet.org/meta/anilist"
 const consumetApi = "https://cors.consumet.stream/https://api.consumet.org"
 const consumetCors = "https://cors.consumet.stream"
-// const url = "https://mirai-backend.onrender.com/api"
+const url = "https://mirai-backend.onrender.com/api"
 
 const genres = [
 	{ slug: "hanh-dong", name: "Hành Động" },
