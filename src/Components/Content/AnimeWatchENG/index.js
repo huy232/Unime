@@ -77,19 +77,26 @@ function AnimeWatchENG() {
 									source.url
 								)}/${encodeURIComponent(`{"referer":"https://kwik.cx/"}`)}`,
 								html: source.quality.toUpperCase(),
-								default: source.quality === "auto" ? true : false,
 								isM3U8: source.isM3U8,
 							}))
 						)
 					} else {
-						setVideoUrl(
+						let sourceList = []
+						sourceList.push(
 							response.data.data.sources.map((source) => ({
-								url: `${API_CORS}/${source.url}`,
-								html: source.quality.toUpperCase(),
-								default: source.quality === "auto" ? true : false,
+								url: `${CONSUMET_CORS}/${source.url}`,
+								html: `SV1: ${source.quality.toUpperCase()}`,
 								isM3U8: source.isM3U8,
 							}))
 						)
+						sourceList.push(
+							response.data.data.sources.map((source) => ({
+								url: `${API_CORS}/${source.url}`,
+								html: `SV2: ${source.quality.toUpperCase()}`,
+								isM3U8: source.isM3U8,
+							}))
+						)
+						setVideoUrl(sourceList.flat())
 					}
 
 					if (response.data.data.subtitles) {

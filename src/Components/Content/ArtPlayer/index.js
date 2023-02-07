@@ -49,9 +49,12 @@ export default function Player({
 
 			let videoSource = videoUrl.find(
 				(source) =>
-					source.html === "AUTO" ||
-					source.html === "DEFAULT" ||
-					source.html === "BACKUP"
+					source.html === "SV:1 AUTO" ||
+					source.html === "SV:1 DEFAULT" ||
+					source.html === "SV:1 BACKUP" ||
+					source.html === "SV:2 AUTO" ||
+					source.html === "SV:2 DEFAULT" ||
+					source.html === "SV:2 BACKUP"
 			)?.url
 			const art = new Artplayer({
 				...option,

@@ -7,8 +7,24 @@
 	padding: 8px 0;
 }
 
+.art-selector-list.art-backdrop-filter {
+	left: -6px !important;
+}
+
+.art-selector-list.art-backdrop-filter .art-selector-item {
+	text-align: left;
+}
+
 @media screen and (max-width: 1024px) {
 	.art-video-player {
 		height: calc(var(--vh, 1vh) * 50) !important;
+	}
+
+	.artplayer-plugin-control .art-bottom {
+		width: 100% !important;
+	}
+
+	.art-control.art-control-time {
+		display: none !important;
 	}
 }
