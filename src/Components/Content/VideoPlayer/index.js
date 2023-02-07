@@ -180,6 +180,7 @@ function VideoPlayer({
 				videoUrl={videoUrl}
 				className="w-[80vw] max-lg:w-full h-[calc(var(--vh,1vh)*50)] lg:h-[calc(var(--vh,1vh)*100)]"
 				intro={highlightInfo}
+				selectedSub={selectedSub}
 			/>
 		</>
 	)

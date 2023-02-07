@@ -27,7 +27,6 @@ function AnimeWatchENG() {
 		const CancelToken = axios.CancelToken
 		const source = CancelToken.source()
 		let storedQuality = localStorage.getItem("artplayer_quality")
-		let storedSubtitle = localStorage.getItem("artplayer-language")
 		// FIX RUBBER SCROLL FOR SAFARI
 		document.body.style.overflow = "hidden"
 
@@ -80,37 +79,19 @@ function AnimeWatchENG() {
 								)}/${encodeURIComponent(`{"referer":"https://kwik.cx/"}`)}`,
 								html: source.quality.toUpperCase(),
 								isM3U8: source.isM3U8,
-								default:
-									storedQuality === source.quality.toUpperCase() ? true : false,
+								default: source.quality === "auto" ? true : false,
 							}))
 						)
 					} else {
-						let sourceList = []
-						sourceList.push(
+						setVideoUrl(
 							response.data.data.sources.map((source) => ({
 								url: `${CONSUMET_CORS}/${source.url}`,
-								html: `SV1: ${source.quality.toUpperCase()}`,
-								default:
-									storedQuality === `SV1: ${source.quality.toUpperCase()}`
-										? true
-										: false,
+								// url: `${API_CORS}/${source.url}`,
+								html: source.quality.toUpperCase(),
+								default: source.quality === "auto" ? true : false,
 								isM3U8: source.isM3U8,
 							}))
 						)
-						sourceList.push(
-							response.data.data.sources.map((source) => ({
-								url: `${API_CORS}/${source.url}`,
-								html: `SV2: ${source.quality.toUpperCase()}`,
-								default:
-									storedQuality === `SV2: ${source.quality.toUpperCase()}`
-										? true
-										: false,
-								isM3U8: source.isM3U8,
-							}))
-						)
-
-						let flatSource = sourceList.flat()
-						setVideoUrl(flatSource)
 					}
 
 					if (response.data.data.subtitles) {
@@ -122,7 +103,6 @@ function AnimeWatchENG() {
 							subs.map((sub, i) => ({
 								html: `${i}. ${sub.lang}`,
 								url: sub.url,
-								default: storedSubtitle === sub.lang ? true : false,
 							}))
 						)
 						setThumbnail(
