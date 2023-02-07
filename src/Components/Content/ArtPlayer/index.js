@@ -3,6 +3,7 @@ import Artplayer from "artplayer"
 import artplayerPluginHlsQuality from "artplayer-plugin-hls-quality"
 import artplayerPluginControl from "artplayer-plugin-control"
 import Hls from "hls.js"
+import { isMobile } from "../../../Utilities/isMobile"
 
 export default function Player({
 	option,
@@ -55,7 +56,7 @@ export default function Player({
 			const art = new Artplayer({
 				...option,
 				url: videoSource || videoUrl[0].url,
-				quality: !videoSource ? videoUrl : [],
+				quality: isMobile.any() || !videoSource ? videoUrl : [],
 				plugins: [
 					artplayerPluginHlsQuality({
 						// Show quality in control
