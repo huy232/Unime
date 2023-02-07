@@ -27,6 +27,7 @@ function AnimeWatchENG() {
 		const CancelToken = axios.CancelToken
 		const source = CancelToken.source()
 		let storedQuality = localStorage.getItem("artplayer_quality")
+		let storedSubtitle = localStorage.getItem("artplayer-language")
 		// FIX RUBBER SCROLL FOR SAFARI
 		document.body.style.overflow = "hidden"
 
@@ -121,6 +122,7 @@ function AnimeWatchENG() {
 							subs.map((sub, i) => ({
 								html: `${i}. ${sub.lang}`,
 								url: sub.url,
+								default: storedSubtitle === sub.lang ? true : false,
 							}))
 						)
 						setThumbnail(
