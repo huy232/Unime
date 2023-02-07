@@ -26,6 +26,7 @@ function AnimeWatchENG() {
 	useEffect(() => {
 		const CancelToken = axios.CancelToken
 		const source = CancelToken.source()
+		let storedQuality = localStorage.getItem("artplayer_quality")
 		// FIX RUBBER SCROLL FOR SAFARI
 		document.body.style.overflow = "hidden"
 
@@ -78,6 +79,8 @@ function AnimeWatchENG() {
 								)}/${encodeURIComponent(`{"referer":"https://kwik.cx/"}`)}`,
 								html: source.quality.toUpperCase(),
 								isM3U8: source.isM3U8,
+								default:
+									storedQuality === source.quality.toUpperCase() ? true : false,
 							}))
 						)
 					} else {
@@ -86,6 +89,10 @@ function AnimeWatchENG() {
 							response.data.data.sources.map((source) => ({
 								url: `${CONSUMET_CORS}/${source.url}`,
 								html: `SV1: ${source.quality.toUpperCase()}`,
+								default:
+									storedQuality === `SV1: ${source.quality.toUpperCase()}`
+										? true
+										: false,
 								isM3U8: source.isM3U8,
 							}))
 						)
@@ -93,10 +100,16 @@ function AnimeWatchENG() {
 							response.data.data.sources.map((source) => ({
 								url: `${API_CORS}/${source.url}`,
 								html: `SV2: ${source.quality.toUpperCase()}`,
+								default:
+									storedQuality === `SV2: ${source.quality.toUpperCase()}`
+										? true
+										: false,
 								isM3U8: source.isM3U8,
 							}))
 						)
-						setVideoUrl(sourceList.flat())
+
+						let flatSource = sourceList.flat()
+						setVideoUrl(flatSource)
 					}
 
 					if (response.data.data.subtitles) {

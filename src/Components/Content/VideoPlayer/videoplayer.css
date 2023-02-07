@@ -15,6 +15,10 @@
 	text-align: left;
 }
 
+.art-selector-list.art-backdrop-filter {
+	padding: 5px 5px !important;
+}
+
 @media screen and (max-width: 1024px) {
 	.art-video-player {
 		height: calc(var(--vh, 1vh) * 50) !important;

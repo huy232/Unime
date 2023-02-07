@@ -20,9 +20,19 @@ export default function Player({
 			const art = new Artplayer({
 				...option,
 				url: videoUrl[0].url,
-				quality: videoUrl,
 				container: artRef.current,
 				plugins: [artplayerPluginControl()],
+				settings: [
+					{
+						html: "Quality",
+						tooltip: videoUrl[0].html,
+						selector: videoUrl,
+						onSelect: function (item) {
+							art.switchQuality(item.url, item.html)
+							return item.html
+						},
+					},
+				],
 			})
 			return () => {
 				if (art && art.destroy) {
@@ -49,26 +59,28 @@ export default function Player({
 
 			let videoSource = videoUrl.find(
 				(source) =>
-					source.html === "SV:1 AUTO" ||
-					source.html === "SV:1 DEFAULT" ||
-					source.html === "SV:1 BACKUP" ||
-					source.html === "SV:2 AUTO" ||
-					source.html === "SV:2 DEFAULT" ||
-					source.html === "SV:2 BACKUP"
+					localStorage.getItem("artplayer_quality") === source.html ||
+					source.html === "SV1: AUTO" ||
+					source.html === "SV1: DEFAULT" ||
+					source.html === "SV1: BACKUP" ||
+					source.html === "SV2: AUTO" ||
+					source.html === "SV2: DEFAULT" ||
+					source.html === "SV2: BACKUP"
 			)?.url
+
 			const art = new Artplayer({
 				...option,
 				url: videoSource || videoUrl[0].url,
-				quality: isMobile.any() || !videoSource ? videoUrl : [],
+				// quality: videoUrl || [],
 				plugins: [
-					artplayerPluginHlsQuality({
-						// Show quality in control
-						control: videoSource ? true : false,
-						// Show quality in setting
-						setting: videoSource ? true : false,
-						title: "Quality",
-						auto: "Auto",
-					}),
+					// artplayerPluginHlsQuality({
+					// 	// Show quality in control
+					// 	control: videoSource ? true : false,
+					// 	// Show quality in setting
+					// 	setting: videoSource ? true : false,
+					// 	title: "Quality",
+					// 	auto: "Auto",
+					// }),
 					artplayerPluginControl(),
 				],
 				type: "m3u8",
@@ -78,6 +90,12 @@ export default function Player({
 				settings: [
 					subtitles && {
 						html: "Subtitle",
+						tooltip:
+							subtitles.find(
+								(sub) =>
+									sub.html.split(" ")[1] ===
+									localStorage.getItem("artplayer-language")
+							)?.html || "",
 						icon: `<svg width="24" height="24" style="fill: #fffc" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M0 96C0 60.7 28.7 32 64 32H512c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V96zM200 208c14.2 0 27 6.1 35.8 16c8.8 9.9 24 10.7 33.9 1.9s10.7-24 1.9-33.9c-17.5-19.6-43.1-32-71.5-32c-53 0-96 43-96 96s43 96 96 96c28.4 0 54-12.4 71.5-32c8.8-9.9 8-25-1.9-33.9s-25-8-33.9 1.9c-8.8 9.9-21.6 16-35.8 16c-26.5 0-48-21.5-48-48s21.5-48 48-48zm144 48c0-26.5 21.5-48 48-48c14.2 0 27 6.1 35.8 16c8.8 9.9 24 10.7 33.9 1.9s10.7-24 1.9-33.9c-17.5-19.6-43.1-32-71.5-32c-53 0-96 43-96 96s43 96 96 96c28.4 0 54-12.4 71.5-32c8.8-9.9 8-25-1.9-33.9s-25-8-33.9 1.9c-8.8 9.9-21.6 16-35.8 16c-26.5 0-48-21.5-48-48z"/></svg>`,
 						selector: [
 							{
@@ -100,6 +118,18 @@ export default function Player({
 							art.subtitle.switch(item.url, {
 								name: item.html,
 							})
+							return item.html
+						},
+					},
+
+					{
+						html: "Quality",
+						tooltip:
+							videoUrl.find((source) => source.default === true)?.html || "",
+						selector: videoUrl,
+						onSelect: function (item) {
+							localStorage.setItem("artplayer_quality", item.html)
+							art.switchQuality(item.url, item.html)
 							return item.html
 						},
 					},

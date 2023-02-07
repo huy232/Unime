@@ -90,7 +90,7 @@ function AnimeBrowseMoreENG({ urlString, urlTitle }) {
 										alt=""
 									/>
 									{item.episodeNumber && (
-										<div className="z-10 absolute right-0 rounded bg-black/80 p-[4px]">
+										<div className="z-10 absolute right-0 rounded-l-lg bg-black/80 p-[4px]">
 											EP. {item.episodeNumber}
 										</div>
 									)}
