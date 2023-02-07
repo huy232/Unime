@@ -16,7 +16,7 @@ import "swiper/css"
 import "swiper/css/pagination"
 import "swiper/css/navigation"
 import SwiperCore, { Pagination, Navigation } from "swiper"
-import { API, CONSUMET_CORS } from "../../../constants"
+import { API, CONSUMET_CORS, IO_CORS } from "../../../constants"
 import EpisodeHolderSkeleton from "../EpisodeHolderSkeleton"
 SwiperCore.use([Pagination, Navigation])
 
@@ -230,7 +230,8 @@ function AnimeInfoEpisodeHolderENG({
 																src={
 																	provider === "animepahe"
 																		? eachEpisode?.image
-																		: `${CONSUMET_CORS}/${eachEpisode?.image}`
+																		: `${IO_CORS}${eachEpisode?.image}`
+																	// `${CONSUMET_CORS}/${eachEpisode?.image}`
 																}
 																onLoad={() => {
 																	return blackImage

@@ -4,7 +4,7 @@ import axios from "axios"
 import useDocumentTitle from "../DocumentTitleHook"
 import { BsFillArrowLeftSquareFill } from "react-icons/bs"
 import { Link } from "react-router-dom"
-import { API, API_CORS, CONSUMET_CORS } from "../../../constants"
+import { API, API_CORS, CHAYCE_CORS, CONSUMET_CORS } from "../../../constants"
 import VideoPlayer from "../VideoPlayer"
 import FilmLoadingRequest from "../LoadingRequest/FilmLoadingRequest"
 
@@ -86,7 +86,9 @@ function AnimeWatchENG() {
 						setVideoUrl(
 							response.data.data.sources.map((source) => ({
 								url: `${CONSUMET_CORS}/${source.url}`,
+								// url: `${CONSUMET_CORS}${source.url}`,
 								// url: `${API_CORS}/${source.url}`,
+								// url: `${CHAYCE_CORS}/${encodeURIComponent(source.url)}`,
 								html: source.quality.toUpperCase(),
 								default: source.quality === "auto" ? true : false,
 								isM3U8: source.isM3U8,

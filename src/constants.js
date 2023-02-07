@@ -5,8 +5,10 @@ const mainsite = "https://unime.vercel.app"
 // const consumetApi = "https://api.consumet.org/meta/anilist"
 const consumetApi = "https://cors.consumet.stream/https://api.consumet.org"
 const consumetCors = "https://cors.consumet.stream"
+const ioCors = "https://corsproxy.io/?"
 const url = "https://mirai-backend.onrender.com/api"
 const apiCors = "https://mirai-backend.onrender.com/api/cors"
+const chayceCors = "https://proxy.vnxservers.com/proxy/m3u8"
 
 const genres = [
 	{ slug: "hanh-dong", name: "Hành Động" },
@@ -217,3 +219,5 @@ export const CONSUMET_CORS = consumetCors
 export const PROVIDER = provider
 export const COLORSET = colorSet
 export const API_CORS = apiCors
+export const CHAYCE_CORS = chayceCors
+export const IO_CORS = ioCors
