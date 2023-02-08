@@ -5,8 +5,9 @@ import { Swiper, SwiperSlide } from "swiper/react"
 import "swiper/css"
 import "swiper/css/pagination"
 import "swiper/css/navigation"
-import SwiperCore, { Pagination, Navigation, Mousewheel, Lazy } from "swiper"
-SwiperCore.use([Pagination, Navigation, Mousewheel, Lazy])
+import "swiper/css/lazy"
+import SwiperCore, { Lazy } from "swiper"
+SwiperCore.use([Lazy])
 
 function CharacterDetail({ randomAnime, done3 }) {
 	return (
@@ -32,11 +33,12 @@ function CharacterDetail({ randomAnime, done3 }) {
 							<Swiper
 								slidesPerView="auto"
 								spaceBetween={40}
-								navigation={false}
 								loop={true}
 								grabCursor={true}
 								className="character-slider"
 								style={{ marginLeft: "30px" }}
+								preloadImages={false}
+								lazy={true}
 							>
 								{randomAnime.CharacterDetail.map((character, i) => (
 									<SwiperSlide

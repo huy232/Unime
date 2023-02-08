@@ -42,6 +42,7 @@ function InfoAnimeEpisodeHandle({
 																eachEpisode?.thumbnail_medium ||
 																eachEpisode?.thumbnail_small
 															}
+															loading="lazy"
 														/>
 														<div className="overlay-card">
 															<div className="icon">

@@ -2,8 +2,10 @@ import React from "react"
 import { Swiper, SwiperSlide } from "swiper/react"
 import "swiper/css"
 import "swiper/css/pagination"
+import "swiper/css/lazy"
 import "./recentepisode.css"
 import AnimeSkeletonENG from "../AnimeSkeletonENG"
+import { Lazy } from "swiper"
 import { Link } from "react-router-dom"
 
 function RecentEpisodeENG({ recentAnime, loadingRecentAnime }) {
@@ -17,6 +19,9 @@ function RecentEpisodeENG({ recentAnime, loadingRecentAnime }) {
 			) : (
 				<div className="recent-anime-container px-4 md:px-12 lg:px-20 xl:px-28 2xl:px-36 w-full pb-12">
 					<Swiper
+						modules={[Lazy]}
+						lazy={true}
+						preloadImages={false}
 						slidesPerView="auto"
 						spaceBetween={10}
 						className="recent-anime-swiper w-full"
@@ -42,6 +47,7 @@ function RecentEpisodeENG({ recentAnime, loadingRecentAnime }) {
 												className="object-cover object-center w-full h-100 group-hover:scale-90 duration-500 linear absolute"
 												src={anime.image}
 												alt=""
+												loading="lazy"
 											/>
 											<div className="absolute group-hover:scale-90 duration-500 linear text-right w-full h-full">
 												<p className="inline-block mt-[4px] mr-[4px] p-[4px] bg-neutral-500/75 text-white rounded">

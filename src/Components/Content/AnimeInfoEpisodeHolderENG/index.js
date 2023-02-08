@@ -14,10 +14,11 @@ import { Swiper, SwiperSlide } from "swiper/react"
 import "swiper/css"
 import "swiper/css/pagination"
 import "swiper/css/navigation"
-import SwiperCore, { Pagination, Navigation } from "swiper"
+import "swiper/css/lazy"
+import SwiperCore, { Pagination, Navigation, Lazy } from "swiper"
 import { API, CONSUMET_CORS, IO_CORS } from "../../../constants"
 import EpisodeHolderSkeleton from "../EpisodeHolderSkeleton"
-SwiperCore.use([Pagination, Navigation])
+SwiperCore.use([Pagination, Navigation, Lazy])
 
 // ---------------------------
 
@@ -160,6 +161,8 @@ function AnimeInfoEpisodeHolderENG({
 									pagination={{
 										type: "fraction",
 									}}
+									preloadImages={false}
+									lazy={true}
 									onSwiper={setSwiper}
 								>
 									<div className="swiper-episode-holder">
@@ -232,6 +235,7 @@ function AnimeInfoEpisodeHolderENG({
 																		: `${IO_CORS}${eachEpisode?.image}`
 																	// `${CONSUMET_CORS}/${eachEpisode?.image}`
 																}
+																loading="lazy"
 															/>
 															<div className="overlay-card">
 																<div className="icon">

@@ -2,10 +2,12 @@ import React from "react"
 import { Swiper, SwiperSlide } from "swiper/react"
 import "swiper/css"
 import "swiper/css/pagination"
+import "swiper/css/lazy"
 import "./popularanime.css"
 import AnimeSkeletonENG from "../AnimeSkeletonENG"
 import { Link } from "react-router-dom"
 import randomColor from "randomcolor"
+import { Lazy } from "swiper"
 
 function TrendingAnimeENG({ trendingAnime, loadingTrending }) {
 	return (
@@ -24,6 +26,9 @@ function TrendingAnimeENG({ trendingAnime, loadingTrending }) {
 						pagination={{
 							type: "progressbar",
 						}}
+						modules={[Lazy]}
+						lazy={true}
+						preloadImages={false}
 					>
 						{trendingAnime.map((anime, i) => (
 							<SwiperSlide key={i}>
@@ -43,11 +48,12 @@ function TrendingAnimeENG({ trendingAnime, loadingTrending }) {
 												className="object-cover object-center w-full h-100 group-hover:scale-90 duration-500 linear absolute"
 												src={anime.image}
 												alt=""
+												loading="lazy"
 											/>
 										</div>
 										<div className="popular-anime-title">
 											<p
-												className="line-clamp-2 font-medium"
+												className="line-clamp-2 font-medium transition-all duration-500 ease-in-out"
 												style={{
 													color: randomColor({
 														luminosity: "dark",

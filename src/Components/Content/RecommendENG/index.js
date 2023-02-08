@@ -5,7 +5,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faHeart } from "@fortawesome/free-solid-svg-icons"
 import "swiper/css"
 import "swiper/css/pagination"
+import "swiper/css/lazy"
 import "./recommend.css"
+import { Lazy } from "swiper"
 
 function RecommendENG({ recommend, setLoading }) {
 	return (
@@ -15,12 +17,15 @@ function RecommendENG({ recommend, setLoading }) {
 			</h2>
 			<div className="mb-[24px]">
 				<Swiper
+					modules={[Lazy]}
 					slidesPerView="auto"
 					spaceBetween={10}
 					className="recommend-anime-swiper w-full"
 					pagination={{
 						type: "progressbar",
 					}}
+					lazy={true}
+					preloadImages={false}
 				>
 					{recommend.map((anime) => (
 						<SwiperSlide key={anime.id}>
@@ -40,6 +45,7 @@ function RecommendENG({ recommend, setLoading }) {
 											className="object-cover object-center w-full h-100 group-hover:scale-90 duration-500 linear absolute"
 											src={anime.image}
 											alt=""
+											loading="lazy"
 										/>
 										<div className="text-white absolute right-0 bg-[#282828cc] p-[6px]">
 											{anime.rating}%{" "}

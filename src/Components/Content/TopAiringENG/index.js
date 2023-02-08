@@ -2,8 +2,9 @@ import React from "react"
 import { Swiper, SwiperSlide } from "swiper/react"
 import "swiper/css"
 import "swiper/css/pagination"
+import "swiper/css/lazy"
 import "./topairing.css"
-import { Pagination, Autoplay } from "swiper"
+import { Pagination, Autoplay, Lazy } from "swiper"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faPlayCircle } from "@fortawesome/free-solid-svg-icons"
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton"
@@ -26,7 +27,7 @@ function TopAiringENG({ topAiring, loadingAiring }) {
 					pagination={{
 						clickable: true,
 					}}
-					modules={[Pagination, Autoplay]}
+					modules={[Pagination, Autoplay, Lazy]}
 					autoplay={{
 						delay: 2000,
 						disableOnInteraction: false,
@@ -37,12 +38,15 @@ function TopAiringENG({ topAiring, loadingAiring }) {
 					loop={true}
 					className="top-airing-swiper h-[500px] w-full px-4 md:px-12 lg:px-20 xl:px-28 2xl:px-36"
 					slidesPerView={1}
+					preloadImages={false}
+					lazy={true}
 				>
 					{topAiring.map((item, i) => (
 						<SwiperSlide key={i}>
 							<div
 								style={{ backgroundImage: `url(${item.cover})` }}
 								className={`bg-cover bg-center h-full w-full bg-no-repeat rounded overflow-hidden`}
+								loading="lazy"
 							>
 								<div className="banner__overlay h-full w-full flex items-center">
 									<div className="w-3/5 max-lg:w-full ml-[40px] max-sm:mx-0 max-sm:px-[30px] flex flex-col justify-center h-100">

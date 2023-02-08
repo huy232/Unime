@@ -7,9 +7,9 @@ import { Swiper, SwiperSlide } from "swiper/react"
 
 import "swiper/css"
 import "swiper/css/pagination"
-import "swiper/css/navigation"
-import SwiperCore, { Pagination, Navigation, Mousewheel, Lazy } from "swiper"
-SwiperCore.use([Pagination, Navigation, Mousewheel, Lazy])
+import "swiper/css/lazy"
+import SwiperCore, { Pagination, Lazy } from "swiper"
+SwiperCore.use([Pagination, Lazy])
 
 function NewAnime({ done1, newAnime }) {
 	return (
@@ -24,6 +24,8 @@ function NewAnime({ done1, newAnime }) {
 					pagination={{
 						type: "progressbar",
 					}}
+					preloadImages={false}
+					lazy={true}
 				>
 					{newAnime.map((anime) => (
 						<SwiperSlide key={anime?.slug} className="w-[320px]">
@@ -31,7 +33,11 @@ function NewAnime({ done1, newAnime }) {
 								<Link to={`info/${anime?.slug}`} title={anime?.name}>
 									<Card>
 										<div className="card-container">
-											<Card.Img variant="top" src={anime?.thumbnail} />
+											<Card.Img
+												variant="top"
+												src={anime?.thumbnail}
+												loading="lazy"
+											/>
 											<div className="overlay-card">
 												<div className="icon">
 													{<BsFillPlayFill size={40} />}

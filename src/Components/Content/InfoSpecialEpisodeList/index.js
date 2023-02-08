@@ -7,8 +7,9 @@ import { Swiper, SwiperSlide } from "swiper/react"
 import "swiper/css"
 import "swiper/css/pagination"
 import "swiper/css/navigation"
-import SwiperCore, { Pagination, Navigation } from "swiper"
-SwiperCore.use([Pagination, Navigation])
+import "swiper/css/lazy"
+import SwiperCore, { Pagination, Navigation, Lazy } from "swiper"
+SwiperCore.use([Pagination, Navigation, Lazy])
 
 // ---------------------------
 function InfoSpecialEpisodeList({
@@ -33,6 +34,8 @@ function InfoSpecialEpisodeList({
 							pagination={{
 								type: "fraction",
 							}}
+							preloadImages={false}
+							lazy={true}
 						>
 							{specialEpisodeList.map((episodeChunk, i) => (
 								<SwiperSlide
@@ -90,6 +93,7 @@ function InfoSpecialEpisodeList({
 																eachEpisode?.thumbnail_medium ||
 																eachEpisode?.thumbnail_small
 															}
+															loading="lazy"
 														/>
 														<div className="overlay-card">
 															<div className="icon">

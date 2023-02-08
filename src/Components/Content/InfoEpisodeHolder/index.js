@@ -10,9 +10,10 @@ import { Swiper, SwiperSlide } from "swiper/react"
 import "swiper/css"
 import "swiper/css/pagination"
 import "swiper/css/navigation"
+import "swiper/css/lazy"
 import "./infoepisodeholder.css"
-import SwiperCore, { Pagination, Navigation } from "swiper"
-SwiperCore.use([Pagination, Navigation])
+import SwiperCore, { Pagination, Navigation, Lazy } from "swiper"
+SwiperCore.use([Pagination, Navigation, Lazy])
 
 // ---------------------------
 
@@ -110,6 +111,8 @@ function InfoEpisodeHolder({
 								type: "fraction",
 							}}
 							onSwiper={setSwiper}
+							lazy={true}
+							preloadImages={false}
 						>
 							<div className="swiper-episode-holder">
 								{episodeList.map((episodeChunk, i) => (
