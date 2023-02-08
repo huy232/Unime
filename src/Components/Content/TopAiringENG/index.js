@@ -49,7 +49,10 @@ function TopAiringENG({ topAiring, loadingAiring }) {
 										<Link
 											to={`/eng/info/${item.id}`}
 											className="hover:opacity-80 duration-200 ease-in-out"
-											style={{ color: COLORSET[i] }}
+											style={{
+												color: COLORSET[i],
+												textShadow: `3px 3px 3px rgba(0,0,0,0.7)`,
+											}}
 										>
 											<h2
 												className="airing-info-main-title line-clamp-3 uppercase font-bold text-3xl max-lg:text-base"

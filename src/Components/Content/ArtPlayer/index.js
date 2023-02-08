@@ -59,8 +59,6 @@ export default function Player({
 				}
 			}
 
-			console.log(videoUrl)
-
 			let videoSource = videoUrl.find(
 				(source) =>
 					source.html === "AUTO" ||
@@ -71,13 +69,12 @@ export default function Player({
 			const art = new Artplayer({
 				...option,
 				url: videoSource || videoUrl[0].url,
-				quality: isMobile.any() || !videoSource ? videoUrl : [],
 				plugins: [
 					artplayerPluginHlsQuality({
 						// Show quality in control
-						control: videoSource ? true : false,
+						control: true,
 						// Show quality in setting
-						setting: videoSource ? true : false,
+						setting: true,
 						title: "Quality",
 						auto: "Auto",
 					}),
@@ -121,7 +118,6 @@ export default function Player({
 				],
 				container: artRef.current,
 			})
-
 			return () => {
 				if (art && art.destroy) {
 					art.destroy(false)

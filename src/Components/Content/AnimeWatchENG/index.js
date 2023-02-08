@@ -85,10 +85,10 @@ function AnimeWatchENG() {
 					} else {
 						setVideoUrl(
 							response.data.data.sources.map((source) => ({
-								url: `${CONSUMET_CORS}/${source.url}`,
+								// url: `${CONSUMET_CORS}/${source.url}`,
 								// url: `${CONSUMET_CORS}${source.url}`,
 								// url: `${API_CORS}/${source.url}`,
-								// url: `${CHAYCE_CORS}/${encodeURIComponent(source.url)}`,
+								url: `${CHAYCE_CORS}/${encodeURIComponent(source.url)}`,
 								html: source.quality.toUpperCase(),
 								default: source.quality === "auto" ? true : false,
 								isM3U8: source.isM3U8,
