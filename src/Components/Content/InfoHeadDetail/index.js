@@ -21,7 +21,10 @@ function InfoHeadDetail({ info, loading }) {
 	return (
 		<>
 			<div className="anime-title">
-				<h2 style={{ color: `${info?.animeInfo?.CoverImg?.color}` }}>
+				<h2
+					className="font-black"
+					style={{ color: `${info?.animeInfo?.CoverImg?.color}` }}
+				>
 					{loading ? <DescriptionSkeleton /> : info?.name}
 				</h2>
 			</div>

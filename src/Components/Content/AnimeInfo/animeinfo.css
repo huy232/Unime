@@ -127,18 +127,23 @@
 /* SECTION OF TITLE */
 .country h6 {
 	background-color: #f98866;
+	font-weight: 700;
 }
 .score h6 {
 	background-color: #ff420e;
+	font-weight: 700;
 }
 .duration h6 {
 	background-color: #80bd9e;
+	font-weight: 700;
 }
 .views h6 {
 	background-color: #89da59;
+	font-weight: 700;
 }
 .release-date h6 {
 	background-color: #ba5536;
+	font-weight: 700;
 }
 
 .bottom-detail > div:not(:first-child):not(:last-child) {
@@ -246,6 +251,7 @@
 	background-color: #282828;
 	border-radius: 15px;
 	color: white;
+	font-weight: 900;
 }
 
 .episode-list-detail .card-body {
