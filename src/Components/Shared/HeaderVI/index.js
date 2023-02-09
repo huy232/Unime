@@ -60,7 +60,7 @@ function HeaderVI() {
 					<div className="h-100">
 						<Link
 							to="/"
-							className="group hover:opacity-80 duration-200 ease-in-out h-100 inline-block flex"
+							className="group hover:opacity-80 duration-200 ease-in-out h-100 inline-block flex items-center"
 							onClick={() => setSidebar(false)}
 						>
 							<img
@@ -68,7 +68,7 @@ function HeaderVI() {
 								src={unimeLogo}
 								alt=""
 							/>
-							<h1 className="font-black text-[1.5rem] p-0 my-0 h-100 max-sm:hidden mx-[6px]">
+							<h1 className="font-black text-[1.5rem] p-0 my-0 h-auto max-sm:hidden mx-[6px]">
 								UNIME
 							</h1>
 						</Link>

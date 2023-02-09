@@ -4,7 +4,7 @@ import axios from "axios"
 import useDocumentTitle from "../DocumentTitleHook"
 import { BsFillArrowLeftSquareFill } from "react-icons/bs"
 import { Link } from "react-router-dom"
-import { API, API_CORS, CHAYCE_CORS, CONSUMET_CORS } from "../../../constants"
+import { API, API_CORS, M3U8_PROXY, CONSUMET_CORS } from "../../../constants"
 import VideoPlayer from "../VideoPlayer"
 import FilmLoadingRequest from "../LoadingRequest/FilmLoadingRequest"
 
@@ -74,7 +74,7 @@ function AnimeWatchENG() {
 					if (provider === "animepahe") {
 						setVideoUrl(
 							response.data.data.sources.map((source) => ({
-								url: `https://proxy.vnxservers.com/proxy/m3u8/${encodeURIComponent(
+								url: `${M3U8_PROXY}/${encodeURIComponent(
 									source.url
 								)}/${encodeURIComponent(`{"referer":"https://kwik.cx/"}`)}`,
 								html: source.quality.toUpperCase(),
@@ -88,7 +88,7 @@ function AnimeWatchENG() {
 								// url: `${CONSUMET_CORS}/${source.url}`,
 								// url: `${CONSUMET_CORS}${source.url}`,
 								// url: `${API_CORS}/${source.url}`,
-								url: `${CHAYCE_CORS}/${encodeURIComponent(source.url)}`,
+								url: `${M3U8_PROXY}/${encodeURIComponent(source.url)}`,
 								html: source.quality.toUpperCase(),
 								default: source.quality === "auto" ? true : false,
 								isM3U8: source.isM3U8,
