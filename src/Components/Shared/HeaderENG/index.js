@@ -122,7 +122,7 @@ function HeaderENG() {
 									handleScrollToTop()
 								}}
 							>
-								<h2 className=" font-semibold text-[1.5rem]">ALL Anime</h2>
+								<h2 className=" font-semibold text-[1.5rem] my-0">ALL Anime</h2>
 							</Link>
 						</div>
 						<div>
@@ -130,7 +130,9 @@ function HeaderENG() {
 								className="cursor-pointer hover:opacity-80 duration-200 ease-in-out flex flex-row items-center justify-end"
 								onClick={() => setGenreToggle(!genreToggle)}
 							>
-								<h2 className="font-semibold text-[1.5rem] mr-[6px]">GENRES</h2>
+								<h2 className="font-semibold text-[1.5rem] mr-[6px] my-0">
+									GENRES
+								</h2>
 								{genreToggle ? (
 									<FontAwesomeIcon icon={faSortUp} className="pt-2" />
 								) : (
@@ -181,7 +183,9 @@ function HeaderENG() {
 									handleScrollToTop()
 								}}
 							>
-								<h2 className=" font-semibold text-[1.5rem]">IMAGE Search</h2>
+								<h2 className=" font-semibold text-[1.5rem] my-0">
+									IMAGE Search
+								</h2>
 							</Link>
 						</div>
 						<div className="flex ">
