@@ -25,6 +25,7 @@ function VideoPlayer({
 	let tooltipPrevious = null
 	let tooltipNext = null
 	let highlightInfo = []
+
 	if (listEpisode?.length > 0) {
 		if (provider) {
 			let currentIndex = listEpisode.findIndex(
