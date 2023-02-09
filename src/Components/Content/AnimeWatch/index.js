@@ -88,11 +88,9 @@ function AnimeWatch({ instance }) {
 				await instance
 					.get(`/specialanime/${mainId}/${numSpecialId}`)
 					.then((res) => {
-						// VIDEO URL IS HERE
 						const watchFilm = res.data.data.film_name
 						const watchEpisodeName = res.data.data.full_name
 						setWatchDetail(watchFilm + ` (${watchEpisodeName})`)
-						// url: `${CONSUMET_CORS}/${res.data.data.videoSource}`,
 						setVideoUrl([
 							{
 								default: true,
