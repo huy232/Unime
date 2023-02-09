@@ -61,11 +61,6 @@ function AnimeWatch({ instance }) {
 					})
 					.then(async (response) => {
 						if (typeof response.data.data?.videoSource !== "undefined") {
-							console.log(
-								`${MP4_PROXY}/${encodeURIComponent(
-									response.data.data.videoSource
-								)}/${encodeURIComponent(`{"referer":"https://vuighe.net/"}`)}`
-							)
 							setVideoUrl([
 								{
 									default: true,
