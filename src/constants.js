@@ -7,7 +7,6 @@ const consumetApi = "https://cors.consumet.stream/https://api.consumet.org"
 const consumetCors = "https://cors.consumet.stream"
 const ioCors = "https://corsproxy.io/?"
 const url = "https://mirai-backend.onrender.com/api"
-const apiCors = "https://mirai-backend.onrender.com/api/cors"
 
 const genres = [
 	{ slug: "hanh-dong", name: "Hành Động" },
@@ -217,5 +216,4 @@ export const CONSUMET_API = consumetApi
 export const CONSUMET_CORS = consumetCors
 export const PROVIDER = provider
 export const COLORSET = colorSet
-export const API_CORS = apiCors
 export const IO_CORS = ioCors
