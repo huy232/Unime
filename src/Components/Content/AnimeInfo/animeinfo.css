@@ -251,7 +251,12 @@
 	background-color: #282828;
 	border-radius: 15px;
 	color: white;
+	margin: 0;
 	font-weight: 900;
+}
+
+.detail-cover-info > div > p {
+	margin-bottom: 6px;
 }
 
 .episode-list-detail .card-body {

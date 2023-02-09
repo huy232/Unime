@@ -39,7 +39,7 @@ function AnimeInfoBoxENG({ loading, info }) {
 								<h5 className="font-black my-[2px] p-[6px] bg-[#282828]/[0.8] inline-block rounded">
 									FORMAT
 								</h5>
-								<p>{info?.type}</p>
+								<p className="mb-[6px]">{info?.type}</p>
 							</div>
 						)}
 						{info?.title && (
@@ -50,19 +50,19 @@ function AnimeInfoBoxENG({ loading, info }) {
 								{info?.title?.romaji && (
 									<h6>
 										ROMAJI
-										<p>{info?.title?.romaji}</p>
+										<p className="mb-[6px]">{info?.title?.romaji}</p>
 									</h6>
 								)}
 								{info?.title?.english && (
 									<h6>
 										ENGLISH
-										<p>{info?.title?.english}</p>
+										<p className="mb-[6px]">{info?.title?.english}</p>
 									</h6>
 								)}
 								{info?.title?.native && (
 									<h6>
 										NATIVE
-										<p>{info?.title?.native}</p>
+										<p className="mb-[6px]">{info?.title?.native}</p>
 									</h6>
 								)}
 							</div>
@@ -72,7 +72,7 @@ function AnimeInfoBoxENG({ loading, info }) {
 								<h5 className="font-black my-[2px] p-[6px] bg-[#282828]/[0.8] inline-block rounded">
 									STATUS
 								</h5>
-								<p>{info?.status}</p>
+								<p className="mb-[6px]">{info?.status}</p>
 							</div>
 						)}
 						{info?.popularity && (
@@ -80,7 +80,7 @@ function AnimeInfoBoxENG({ loading, info }) {
 								<h5 className="font-black my-[2px] p-[6px] bg-[#282828]/[0.8] inline-block rounded">
 									POPULARITY
 								</h5>
-								<p>{info?.popularity.toLocaleString()}</p>
+								<p className="mb-[6px]">{info?.popularity.toLocaleString()}</p>
 							</div>
 						)}
 						{info?.rating && (
@@ -88,7 +88,7 @@ function AnimeInfoBoxENG({ loading, info }) {
 								<h5 className="font-black my-[2px] p-[6px] bg-[#282828]/[0.8] inline-block rounded">
 									RATING
 								</h5>
-								<p>{info?.rating}%</p>
+								<p className="mb-[6px]">{info?.rating}%</p>
 							</div>
 						)}
 						{info?.subOrDub && (
@@ -96,7 +96,7 @@ function AnimeInfoBoxENG({ loading, info }) {
 								<h5 className="font-black my-[2px] p-[6px] bg-[#282828]/[0.8] inline-block rounded">
 									VOICE
 								</h5>
-								<p className="uppercase">{info?.subOrDub}</p>
+								<p className="uppercase mb-[6px]">{info?.subOrDub}</p>
 							</div>
 						)}
 						{info?.season && (
@@ -104,7 +104,7 @@ function AnimeInfoBoxENG({ loading, info }) {
 								<h5 className="font-black my-[2px] p-[6px] bg-[#282828]/[0.8] inline-block rounded">
 									SEASON
 								</h5>
-								<p className="uppercase">{info?.season}</p>
+								<p className="uppercase mb-[6px]">{info?.season}</p>
 							</div>
 						)}
 						{info?.studios && (
@@ -113,7 +113,7 @@ function AnimeInfoBoxENG({ loading, info }) {
 									<h5 className="font-black my-[2px] p-[6px] bg-[#282828]/[0.8] inline-block rounded">
 										STUDIO
 									</h5>
-									<p>
+									<p className="mb-[6px]">
 										{info?.studios.map((studio, i, arr) =>
 											i !== arr.length - 1 ? `${studio + ", "}` : `${studio}`
 										)}
