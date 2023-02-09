@@ -1,15 +1,13 @@
 const mainsite = "https://unime.vercel.app"
 // const mainsite = "http://localhost:3000"
 // const url = "https://mirai-reborn.herokuapp.com/api"
-const url = "http://localhost:3000/api"
+// const url = "http://localhost:3000/api"
 // const consumetApi = "https://api.consumet.org/meta/anilist"
 const consumetApi = "https://cors.consumet.stream/https://api.consumet.org"
 const consumetCors = "https://cors.consumet.stream"
 const ioCors = "https://corsproxy.io/?"
-// const url = "https://mirai-backend.onrender.com/api"
+const url = "https://mirai-backend.onrender.com/api"
 const apiCors = "https://mirai-backend.onrender.com/api/cors"
-const m3u8Proxy = "https://proxy.vnxservers.com/proxy/m3u8"
-const mp4Proxy = "https://proxy.vnxservers.com/proxy"
 
 const genres = [
 	{ slug: "hanh-dong", name: "Hành Động" },
@@ -220,6 +218,4 @@ export const CONSUMET_CORS = consumetCors
 export const PROVIDER = provider
 export const COLORSET = colorSet
 export const API_CORS = apiCors
-export const M3U8_PROXY = m3u8Proxy
 export const IO_CORS = ioCors
-export const MP4_PROXY = mp4Proxy
