@@ -16,7 +16,7 @@ import "swiper/css/pagination"
 import "swiper/css/navigation"
 import "swiper/css/lazy"
 import SwiperCore, { Pagination, Navigation, Lazy } from "swiper"
-import { API, CONSUMET_CORS, IO_CORS } from "../../../constants"
+import { API, IO_CORS } from "../../../constants"
 import EpisodeHolderSkeleton from "../EpisodeHolderSkeleton"
 SwiperCore.use([Pagination, Navigation, Lazy])
 

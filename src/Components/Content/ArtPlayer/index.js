@@ -17,6 +17,8 @@ export default function Player({
 	const artRef = useRef()
 
 	useEffect(() => {
+		console.log(videoUrl)
+
 		if (videoUrl[0].url.includes(".mp4")) {
 			const art = new Artplayer({
 				...option,

@@ -44,6 +44,9 @@ function VideoPlayer({
 			let currentIndex = listEpisode.findIndex(
 				(episode) => episode.name === Number(index)
 			)
+
+			console.log(listEpisode)
+
 			if (listEpisode[currentIndex - 1]) {
 				previousEpisode = listEpisode[currentIndex - 1]
 				tooltipPrevious = previousEpisode.name

@@ -6,7 +6,6 @@ import useDocumentTitle from "../../../Components/Content/DocumentTitleHook"
 import { BsFillArrowLeftSquareFill } from "react-icons/bs"
 import "./animewatch.css"
 import VideoPlayer from "../VideoPlayer"
-import { CONSUMET_CORS, MP4_PROXY } from "../../../constants"
 import FilmLoadingRequest from "../LoadingRequest/FilmLoadingRequest"
 
 function AnimeWatch({ instance }) {
@@ -64,10 +63,7 @@ function AnimeWatch({ instance }) {
 							setVideoUrl([
 								{
 									default: true,
-									url: `${MP4_PROXY}/${encodeURIComponent(
-										response.data.data.videoSource
-									)}/
-										${encodeURIComponent(`{"referer":"https://vuighe.net/"}`)}`,
+									url: response.data.data.videoSource,
 									html: response.data.data.quality,
 								},
 							])

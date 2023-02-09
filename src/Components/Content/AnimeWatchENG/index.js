@@ -4,7 +4,7 @@ import axios from "axios"
 import useDocumentTitle from "../DocumentTitleHook"
 import { BsFillArrowLeftSquareFill } from "react-icons/bs"
 import { Link } from "react-router-dom"
-import { API, API_CORS, M3U8_PROXY, CONSUMET_CORS } from "../../../constants"
+import { API } from "../../../constants"
 import VideoPlayer from "../VideoPlayer"
 import FilmLoadingRequest from "../LoadingRequest/FilmLoadingRequest"
 
@@ -26,7 +26,6 @@ function AnimeWatchENG() {
 	useEffect(() => {
 		const CancelToken = axios.CancelToken
 		const source = CancelToken.source()
-		let storedQuality = localStorage.getItem("artplayer_quality")
 		// FIX RUBBER SCROLL FOR SAFARI
 		document.body.style.overflow = "hidden"
 
@@ -71,36 +70,11 @@ function AnimeWatchENG() {
 					cancelToken: source.token,
 				})
 				.then((response) => {
-					if (provider === "animepahe") {
-						setVideoUrl(
-							response.data.data.sources.map((source) => ({
-								url: `${M3U8_PROXY}/${encodeURIComponent(
-									source.url
-								)}/${encodeURIComponent(`{"referer":"https://kwik.cx/"}`)}`,
-								html: source.quality.toUpperCase(),
-								isM3U8: source.isM3U8,
-								default: source.quality === "auto" ? true : false,
-							}))
-						)
-					} else {
-						setVideoUrl(
-							response.data.data.sources.map((source) => ({
-								// url: `${CONSUMET_CORS}/${source.url}`,
-								// url: `${CONSUMET_CORS}${source.url}`,
-								// url: `${API_CORS}/${source.url}`,
-								url: `${M3U8_PROXY}/${encodeURIComponent(source.url)}`,
-								html: source.quality.toUpperCase(),
-								default: source.quality === "auto" ? true : false,
-								isM3U8: source.isM3U8,
-							}))
-						)
-					}
-
+					setVideoUrl(response.data.data.sources)
 					if (response.data.data.subtitles) {
 						let subs = response.data.data.subtitles.filter(
 							(option) => option.lang !== "Thumbnails"
 						)
-
 						setSubtitles(
 							subs.map((sub, i) => ({
 								html: `${i}. ${sub.lang}`,
@@ -113,11 +87,9 @@ function AnimeWatchENG() {
 							)
 						)
 					}
-
 					if (response.data.data?.intro) {
 						setIntro(response.data.data.intro)
 					}
-
 					setVideoLoading(false)
 				})
 				.catch((thrown) => {
