@@ -1,7 +1,7 @@
 const mainsite = "https://unime.vercel.app"
 // const mainsite = "http://localhost:3000"
-// const url = "http://localhost:3000/api"
-const url = "https://mirai-backend.onrender.com/api"
+const url = "http://localhost:3000/api"
+// const url = "https://mirai-backend.onrender.com/api"
 // const consumetApi = "https://api.consumet.org/meta/anilist"
 const consumetApi = "https://cors.consumet.stream/https://api.consumet.org"
 const consumetCors = "https://cors.consumet.stream"
@@ -107,27 +107,27 @@ const engGenres = [
 	{ slug: "thriller", name: "Thriller" },
 ]
 
-const filmGenres = [
-	{ slug: "action", name: "Action" },
-	{ slug: "animation", name: "Animation" },
-	{ slug: "crime", name: "Crime" },
-	{ slug: "family", name: "Family" },
-	{ slug: "horror", name: "Horror" },
-	{ slug: "mystery", name: "Mystery" },
-	{ slug: "romance", name: "Romance" },
-	{ slug: "soap", name: "Soap" },
-	{ slug: "tv-movie", name: "TV Movie" },
-	{ slug: "western", name: "Western" },
-	{ slug: "action-adventure", name: "Action & Adventure" },
-	{ slug: "biography", name: "Biography" },
-	{ slug: "documentary", name: "Documentary" },
-	{ slug: "fantasy", name: "Fantasy" },
-	{ slug: "kids", name: "Kids" },
-	{ slug: "news", name: "News" },
-	{ slug: "sci-fi-fantasy", name: "Sci-Fi & Fantasy" },
-	{ slug: "talk", name: "Talk" },
-	{ slug: "war", name: "War" },
-]
+// const filmGenres = [
+// 	{ slug: "action", name: "Action" },
+// 	{ slug: "animation", name: "Animation" },
+// 	{ slug: "crime", name: "Crime" },
+// 	{ slug: "family", name: "Family" },
+// 	{ slug: "horror", name: "Horror" },
+// 	{ slug: "mystery", name: "Mystery" },
+// 	{ slug: "romance", name: "Romance" },
+// 	{ slug: "soap", name: "Soap" },
+// 	{ slug: "tv-movie", name: "TV Movie" },
+// 	{ slug: "western", name: "Western" },
+// 	{ slug: "action-adventure", name: "Action & Adventure" },
+// 	{ slug: "biography", name: "Biography" },
+// 	{ slug: "documentary", name: "Documentary" },
+// 	{ slug: "fantasy", name: "Fantasy" },
+// 	{ slug: "kids", name: "Kids" },
+// 	{ slug: "news", name: "News" },
+// 	{ slug: "sci-fi-fantasy", name: "Sci-Fi & Fantasy" },
+// 	{ slug: "talk", name: "Talk" },
+// 	{ slug: "war", name: "War" },
+// ]
 
 const collections = [
 	{ slug: "anime-mua-thu-2015", name: "Anime Mùa Thu 2015" },

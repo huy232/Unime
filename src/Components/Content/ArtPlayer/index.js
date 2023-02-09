@@ -3,7 +3,6 @@ import Artplayer from "artplayer"
 import artplayerPluginHlsQuality from "artplayer-plugin-hls-quality"
 import artplayerPluginControl from "artplayer-plugin-control"
 import Hls from "hls.js"
-import { isMobile } from "../../../Utilities/isMobile"
 
 export default function Player({
 	option,

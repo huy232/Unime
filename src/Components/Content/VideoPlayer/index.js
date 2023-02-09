@@ -69,6 +69,10 @@ function VideoPlayer({
 		]
 	}
 
+	if (!subtitles) {
+		subtitles = []
+	}
+
 	return (
 		<>
 			<Artplayer

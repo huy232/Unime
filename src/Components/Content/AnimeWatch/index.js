@@ -93,9 +93,8 @@ function AnimeWatch({ instance }) {
 						setWatchDetail(watchFilm + ` (${watchEpisodeName})`)
 						setVideoUrl([
 							{
-								default: true,
 								url: res.data.data.videoSource,
-								html: res.data.data.quality,
+								html: res.data.data?.quality ? res.data.data.quality : "",
 							},
 						])
 						setVideoLoading(false)
