@@ -4,9 +4,13 @@ import { GENRES } from "../../../constants"
 import { BsSearch } from "react-icons/bs"
 import { useNavigate } from "react-router-dom"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faBars, faSortUp, faSortDown } from "@fortawesome/free-solid-svg-icons"
+import {
+	faBars,
+	faSortUp,
+	faSortDown,
+	faThList,
+} from "@fortawesome/free-solid-svg-icons"
 import randomColor from "randomcolor"
-
 import User from "../User"
 import LanguageButton from "../../Content/LanguageButton"
 import unimeLogo from "../../../Utilities/img/unime.png"
@@ -111,13 +115,13 @@ function HeaderVI() {
 				}`}
 			>
 				<div className="flex flex-col text-right [&>div]:my-[8px] mx-[6px]">
-					<div>
+					<div className="">
 						<Link
 							to="/anime"
-							className="hover:opacity-80 duration-200 ease-in-out"
+							className="hover:opacity-80 duration-200 ease-in-out flex flex-row items-center justify-end"
 							onClick={() => setSidebar(false)}
 						>
-							<h2 className=" font-semibold text-[1.5rem]">Tất cả Anime</h2>
+							<h2 className=" font-semibold text-[1.5rem] m-0">Tất cả Anime</h2>
 						</Link>
 					</div>
 					<div>
@@ -125,11 +129,13 @@ function HeaderVI() {
 							className="cursor-pointer hover:opacity-80 duration-200 ease-in-out flex flex-row items-center justify-end"
 							onClick={() => setGenreToggle(!genreToggle)}
 						>
-							<h2 className="font-semibold text-[1.5rem] mr-[6px]">Thể loại</h2>
+							<h2 className="font-semibold text-[1.5rem] my-0 mr-[6px]">
+								Thể loại
+							</h2>
 							{genreToggle ? (
-								<FontAwesomeIcon icon={faSortUp} />
+								<FontAwesomeIcon icon={faSortUp} className="pt-2" />
 							) : (
-								<FontAwesomeIcon icon={faSortDown} />
+								<FontAwesomeIcon icon={faSortDown} className="pb-1" />
 							)}
 						</div>
 						<div
