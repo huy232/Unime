@@ -94,6 +94,7 @@ function AnimeCollection({ instance }) {
 													variant="top"
 													src={anime?.thumbnail}
 													fluid="true"
+													loading="lazy"
 												/>
 												<div className="overlay-card">
 													<div className="icon">

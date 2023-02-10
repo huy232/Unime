@@ -19,6 +19,7 @@ function AnimeInfoBoxENG({ loading, info }) {
 						src={info.image}
 						className="cover-image w-[160px] h-[260px]"
 						alt=""
+						loading="lazy"
 					/>
 				)}
 			</div>

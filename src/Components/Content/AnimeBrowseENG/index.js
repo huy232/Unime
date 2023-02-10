@@ -87,6 +87,7 @@ function AnimeBrowseENG() {
 										className="object-cover absolute w-100 min-h-full"
 										src={item.image}
 										alt=""
+										loading="lazy"
 									/>
 								</div>
 								<div className="anime-item-title h-[60px] w-full mt-[4px]">

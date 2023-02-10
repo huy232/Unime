@@ -23,6 +23,7 @@ function FilmsContent({ loading, films }) {
 										className="top-0 left-0 right-0 bottom-0 absolute w-full min-h-full"
 										src={item.thumbnail}
 										alt=""
+										loading="lazy"
 									/>
 									<div className="absolute right-[10px] top-[10px] bg-[#fff] text-[#000] rounded-[4px] px-[5px] py-[3px] font-medium text-xs inline-block leading-none">
 										{item.quality}

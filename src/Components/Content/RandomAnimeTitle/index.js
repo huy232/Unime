@@ -22,6 +22,7 @@ function RandomAnimeTitle({ randomAnime }) {
 									height: "400px",
 									objectFit: "cover",
 								}}
+								loading="lazy"
 							/>
 						</Link>
 					</nav>

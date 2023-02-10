@@ -22,7 +22,7 @@ function EpisodeHolderSkeleton() {
 								<div>
 									<Card>
 										<div className="card-container">
-											<Card.Img variant="top" />
+											<Card.Img variant="top" loading="lazy" />
 										</div>
 										<Card.Body>
 											<Card.Title>

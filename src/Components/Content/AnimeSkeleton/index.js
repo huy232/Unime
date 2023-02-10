@@ -25,7 +25,7 @@ function AnimeSkeleton() {
 					<SwiperSlide key={i} className="w-[320px]">
 						<Card>
 							<div className="card-container">
-								<Card.Img variant="top" src={anime?.thumbnail} />
+								<Card.Img variant="top" src={anime?.thumbnail} loading="lazy" />
 							</div>
 
 							<Card.Body>

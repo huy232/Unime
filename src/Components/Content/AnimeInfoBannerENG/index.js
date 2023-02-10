@@ -28,6 +28,7 @@ function AnimeInfoBannerENG({ loading, info }) {
 									? { minHeight: "auto" }
 									: {}
 							}
+							loading="lazy"
 						/>
 						<div className="banner-overlay"></div>
 					</>

@@ -65,6 +65,7 @@ function CharacterDetail({ randomAnime, done3 }) {
 												width: "120px",
 												height: "160px",
 											}}
+											loading="lazy"
 										/>
 										<p className="character-detail-word">
 											{!character?.name?.english

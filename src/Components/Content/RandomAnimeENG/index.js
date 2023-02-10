@@ -26,6 +26,7 @@ function RandomAnimeENG({ randomAnime, loadingRandomAnime }) {
 									className="w-[240px] h-[340px] object-cover"
 									src={randomAnime.image}
 									alt=""
+									loading="lazy"
 								/>
 							</Link>
 						</div>

@@ -30,6 +30,7 @@ function RandomAnimeRightCover({ randomAnime }) {
 								}}
 								className="today-cover-image"
 								alt=""
+								loading="lazy"
 							/>
 						</Link>
 					</nav>

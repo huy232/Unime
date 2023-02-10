@@ -67,6 +67,7 @@ function HeaderENG() {
 									className="group-hover:opacity-80 duration-200 ease-in-out h-[40px] w-[40px]"
 									src={unimeLogo}
 									alt=""
+									loading="lazy"
 								/>
 								<h1 className="font-black text-[1.5rem] p-0 my-0 h-auto max-sm:hidden mx-[6px]">
 									UNIME

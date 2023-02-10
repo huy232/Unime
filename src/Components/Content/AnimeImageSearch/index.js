@@ -114,6 +114,7 @@ function AnimeImageSearch() {
 												className="relative"
 												src={preview}
 												alt="object-scale-down"
+												loading="lazy"
 											/>
 											<FontAwesomeIcon
 												icon={faTrash}

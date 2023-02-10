@@ -62,6 +62,7 @@ function AnimeImageSearchLayout({ searchResult, setToggle }) {
 									className="w-full object-contain"
 									src={item.image}
 									alt=""
+									loading="lazy"
 								/>
 							</div>
 						</div>
@@ -94,7 +95,7 @@ function AnimeImageSearchLayout({ searchResult, setToggle }) {
 							<div className="flex md:flex-row flex-col text-center">
 								<div className="max-md:mx-auto w-[160px]">
 									<div className="relative aspect-w-2 aspect-h-3">
-										<img src={view.image} alt="" />
+										<img src={view.image} alt="" loading="lazy" />
 									</div>
 								</div>
 								<div className="w-full mx-[6px]">

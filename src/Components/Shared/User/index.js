@@ -18,7 +18,7 @@ function User({ handleScrollToTop }) {
 				<div className="user-info-container">
 					<div className="user-info-holder">
 						<div className="user-info-image">
-							<img src={user.user_metadata.avatar_url} alt="" />
+							<img src={user.user_metadata.avatar_url} alt="" loading="lazy" />
 						</div>
 						<div className="user-info-name">{user.user_metadata.full_name}</div>
 					</div>

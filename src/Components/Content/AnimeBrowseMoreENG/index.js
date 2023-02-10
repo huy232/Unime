@@ -87,6 +87,7 @@ function AnimeBrowseMoreENG({ urlString, urlTitle }) {
 										className="object-cover absolute w-100 min-h-full"
 										src={item.image}
 										alt=""
+										loading="lazy"
 									/>
 									{item.episodeNumber && (
 										<div className="z-10 absolute right-0 rounded-l-lg bg-black/80 p-[4px]">
