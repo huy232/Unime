@@ -1,6 +1,7 @@
 import React from "react"
 import { Card, Row, Col } from "react-bootstrap"
 import { Skeleton } from "@mui/material"
+import blackBackground from "../../../Utilities/img/black.jpg"
 
 function EpisodeHolderSkeleton() {
 	return (
@@ -22,7 +23,12 @@ function EpisodeHolderSkeleton() {
 								<div>
 									<Card>
 										<div className="card-container">
-											<Card.Img variant="top" loading="lazy" />
+											<Card.Img
+												src={blackBackground}
+												variant="top"
+												loading="lazy"
+												alt="anime-skeleton-image"
+											/>
 										</div>
 										<Card.Body>
 											<Card.Title>

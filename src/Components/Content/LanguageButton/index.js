@@ -2,7 +2,7 @@ import React from "react"
 import { useAuth } from "../../../Contexts/auth"
 import "./languagebutton.css"
 
-function LanguageButton() {
+function LanguageButton({ handleScrollToTop }) {
 	const { setLanguage, language } = useAuth()
 
 	const handleLanguage = (language) => {
@@ -15,7 +15,12 @@ function LanguageButton() {
 				className={`vi-btn mr-2 rounded p-1 hover:opacity-80 duration-200 ${
 					language === "vi" && "bg-[#a5612a]"
 				}`}
-				onClick={() => handleLanguage("vi")}
+				onClick={() => {
+					handleScrollToTop()
+					handleLanguage("vi")
+				}}
+				id="vi-btn-language"
+				aria-label="Viet button language"
 			>
 				VI
 			</button>
@@ -23,7 +28,12 @@ function LanguageButton() {
 				className={`eng-btn rounded p-1 hover:opacity-80 duration-200 ${
 					language === "eng" && "bg-[#a5612a]"
 				}`}
-				onClick={() => handleLanguage("eng")}
+				onClick={() => {
+					handleScrollToTop()
+					handleLanguage("eng")
+				}}
+				id="eng-btn-language"
+				aria-label="English button language"
 			>
 				ENG
 			</button>

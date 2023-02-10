@@ -94,7 +94,7 @@ function AnimeList({ instance }) {
 							{animeList.map((anime) => (
 								<Col key={anime.slug}>
 									<nav>
-										<Link to={`/info/${anime.slug}`}>
+										<Link to={`/info/${anime.slug}`} aria-label={anime?.name}>
 											<Card title={anime?.name}>
 												<div className="card-container">
 													<Card.Img
@@ -102,6 +102,7 @@ function AnimeList({ instance }) {
 														src={anime.thumbnail}
 														fluid="true"
 														loading="lazy"
+														alt={anime?.name}
 													/>
 													<div className="overlay-card">
 														<div className="icon">

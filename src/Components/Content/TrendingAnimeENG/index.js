@@ -41,13 +41,19 @@ function TrendingAnimeENG({ trendingAnime, loadingTrending }) {
 										anime.title.userPreferred
 									}
 									key={anime.id}
+									aria-label={anime.id}
 								>
 									<div className="group popular-anime-holder select-none cursor-pointer">
 										<div className="popular-anime-image w-[240px] h-[340px] group-hover:opacity-80 duration-200 ease-in-out relative">
 											<img
 												className="object-cover object-center w-full h-100 group-hover:scale-90 duration-500 linear absolute"
 												src={anime.image}
-												alt=""
+												alt={
+													anime.title.english ||
+													anime.title.romaji ||
+													anime.title.native ||
+													anime.title.userPreferred
+												}
 												loading="lazy"
 											/>
 										</div>
@@ -74,6 +80,7 @@ function TrendingAnimeENG({ trendingAnime, loadingTrending }) {
 							to="/eng/trending"
 							className="browse-button hover:text-[#fff] font-semibold"
 							style={{ "--c": "#F94A29" }}
+							aria-label="MORE"
 						>
 							MORE...
 						</Link>

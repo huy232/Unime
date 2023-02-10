@@ -47,5 +47,9 @@ menu {
 	color: #fff;
 }
 
+.card-title.h5 {
+	font-size: 1rem;
+}
+
 @media screen and (max-width: 1024px) {
 }

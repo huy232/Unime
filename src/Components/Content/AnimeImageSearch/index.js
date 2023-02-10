@@ -138,6 +138,8 @@ function AnimeImageSearch() {
 										<button
 											className="cursor-pointer hover:opacity-80 duration-200 ease-in-out bg-[#8f4747] p-[6px] rounded m-[6px]"
 											onClick={() => handleSubmit(file)}
+											id="image-search-btn"
+											aria-label="Image search button"
 										>
 											SEARCH
 										</button>
@@ -174,6 +176,8 @@ function AnimeImageSearch() {
 										<button
 											className="cursor-pointer hover:opacity-80 duration-200 ease-in-out p-[6px] rounded my-[6px] ml-auto mr-[6px] bg-[#8f4747]"
 											onClick={() => handleSubmit(text)}
+											id="url-search-btn"
+											aria-label="URL search button"
 										>
 											URL search
 										</button>

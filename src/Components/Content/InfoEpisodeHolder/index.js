@@ -89,6 +89,8 @@ function InfoEpisodeHolder({
 										toggleButton === true &&
 										"opacity-30 cursor-auto pointer-events-none"
 									}`}
+									id="fast-forward-btn"
+									aria-label="Fast forward button"
 								>
 									<FontAwesomeIcon icon={faFastBackward} />
 								</button>
@@ -98,6 +100,8 @@ function InfoEpisodeHolder({
 										toggleButton === false &&
 										"opacity-30 cursor-auto pointer-events-none"
 									}`}
+									id="fast-backward-btn"
+									aria-label="Fast backward button"
 								>
 									<FontAwesomeIcon icon={faFastForward} />
 								</button>

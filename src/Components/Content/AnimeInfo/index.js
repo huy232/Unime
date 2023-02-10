@@ -95,7 +95,7 @@ function AnimeInfo({ instance }) {
 							<img
 								src={info?.animeInfo?.BannerImg}
 								className="banner-info-image"
-								alt=""
+								alt={info?.name}
 								style={
 									info?.animeInfo?.BannerImg === null ||
 									typeof info?.animeInfo?.BannerImg === "undefined"

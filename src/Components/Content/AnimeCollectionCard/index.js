@@ -35,6 +35,7 @@ function AnimeCollectionCard() {
 								style={{
 									background: `${COLLECTION_COLOR[i]}`,
 								}}
+								aria-label={collection.name}
 							>
 								<div className="collection-card__title m-[4px]">
 									<h4 className="text-[#191919] whitespace-pre-wrap font-bold uppercase">

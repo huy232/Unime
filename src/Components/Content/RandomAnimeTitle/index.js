@@ -9,11 +9,12 @@ function RandomAnimeTitle({ randomAnime }) {
 				<Card.Title className="description-title">
 					{randomAnime?.AnimeName}
 				</Card.Title>
-				{!randomAnime?.BannerImg ? (
-					""
-				) : (
+				{randomAnime?.BannerImg && (
 					<nav>
-						<Link to={`/info/${randomAnime?.Slug}`}>
+						<Link
+							to={`/info/${randomAnime?.Slug}`}
+							aria-label={randomAnime?.Slug}
+						>
 							<Card.Img
 								className="today-banner-card-image"
 								variant="bottom"
@@ -22,6 +23,7 @@ function RandomAnimeTitle({ randomAnime }) {
 									height: "400px",
 									objectFit: "cover",
 								}}
+								alt={randomAnime.AnimeName}
 								loading="lazy"
 							/>
 						</Link>
@@ -45,7 +47,7 @@ function RandomAnimeTitle({ randomAnime }) {
 							<DescriptionSkeleton />
 						) : (
 							<>
-								<span style={{ fontWeight: "700" }}>Studio:</span>{" "}
+								<span style={{ fontWeight: "700" }}>Studio:</span>
 								{randomAnime?.Studio}
 							</>
 						)}

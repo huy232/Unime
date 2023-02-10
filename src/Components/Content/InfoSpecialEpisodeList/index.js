@@ -84,6 +84,7 @@ function InfoSpecialEpisodeList({
 											<Link
 												to={`/watch/${anime}?specialid=${eachEpisode.id}`}
 												title={eachEpisode?.full_name}
+												aria-label={eachEpisode?.full_name}
 											>
 												<Card>
 													<div className="card-container">
@@ -94,6 +95,7 @@ function InfoSpecialEpisodeList({
 																eachEpisode?.thumbnail_small
 															}
 															loading="lazy"
+															alt={eachEpisode?.full_name}
 														/>
 														<div className="overlay-card">
 															<div className="icon">

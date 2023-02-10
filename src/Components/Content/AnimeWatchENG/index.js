@@ -133,8 +133,13 @@ function AnimeWatchENG() {
 						<Link
 							to={`/eng/info/${animeId}`}
 							className="group hover:opacity-80 duration-200 ease-in-out"
+							aria-label={animeId}
 						>
-							<button className="bg-[#000] border-none flex items-center justify-center">
+							<button
+								className="bg-[#000] border-none flex items-center justify-center"
+								id="back-to-info-eng-btn"
+								aria-label="Back to info english button"
+							>
 								<BsFillArrowLeftSquareFill style={{ color: "white" }} />
 							</button>
 						</Link>

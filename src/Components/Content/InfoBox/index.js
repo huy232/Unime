@@ -28,107 +28,81 @@ function InfoBox({ info, loading }) {
 								info?.animeInfo?.CoverImg?.small
 							}
 							className="cover-image w-[160px] h-[260px]"
-							alt=""
+							alt={info?.name}
 							loading="lazy"
 						/>
 					)}
 				</div>
 				<div className="detail-cover-info">
 					<div className="format">
-						{info?.animeInfo?.Format ? (
+						{info?.animeInfo?.Format && (
 							<>
-								{" "}
-								<h5>ĐỊNH DẠNG</h5> <p>{info?.animeInfo?.Format}</p>
+								<h5>ĐỊNH DẠNG</h5>
+								<p>{info?.animeInfo?.Format}</p>
 							</>
-						) : (
-							""
 						)}
 					</div>
 					<div className="title">
-						{info?.animeInfo?.Format ? (
+						{info?.animeInfo?.Format && (
 							<>
-								{" "}
 								<h5>TÊN PHIM</h5>
-								{info?.animeInfo?.Title?.romaji ? (
-									<>
-										<h6>
-											ROMAJI <p>{info?.animeInfo?.Title?.romaji}</p>
-										</h6>
-									</>
-								) : (
-									""
+								{info?.animeInfo?.Title?.romaji && (
+									<h6>
+										ROMAJI
+										<p>{info?.animeInfo?.Title?.romaji}</p>
+									</h6>
 								)}
-								{info?.animeInfo?.Title?.english ? (
-									<>
-										<h6>
-											TIẾNG ANH <p>{info?.animeInfo?.Title?.english}</p>
-										</h6>
-									</>
-								) : (
-									""
+								{info?.animeInfo?.Title?.english && (
+									<h6>
+										TIẾNG ANH
+										<p>{info?.animeInfo?.Title?.english}</p>
+									</h6>
 								)}
-								{info?.animeInfo?.Title?.native ? (
-									<>
-										<h6>
-											TIẾNG NHẬT <p>{info?.animeInfo?.Title?.native}</p>
-										</h6>
-									</>
-								) : (
-									""
+								{info?.animeInfo?.Title?.native && (
+									<h6>
+										TIẾNG NHẬT
+										<p>{info?.animeInfo?.Title?.native}</p>
+									</h6>
 								)}
 							</>
-						) : (
-							""
 						)}
 					</div>
 					<div className="source">
-						{info?.animeInfo?.Source ? (
+						{info?.animeInfo?.Source && (
 							<>
-								{" "}
-								<h5>CHUYỂN THỂ TỪ</h5> <p>{info?.animeInfo?.Source}</p>
+								<h5>CHUYỂN THỂ TỪ</h5>
+								<p>{info?.animeInfo?.Source}</p>
 							</>
-						) : (
-							""
 						)}
 					</div>
 					<div className="popularity">
-						{info?.animeInfo?.Popularity ? (
+						{info?.animeInfo?.Popularity && (
 							<>
-								{" "}
-								<h5>ĐỘ NỔI BẬT</h5>{" "}
+								<h5>ĐỘ NỔI BẬT</h5>
 								<p>{info?.animeInfo?.Popularity.toLocaleString()}</p>
 							</>
-						) : (
-							""
 						)}
 					</div>
 					<div className="favourite">
-						{info?.animeInfo?.Favourite ? (
+						{info?.animeInfo?.Favourite && (
 							<>
-								{" "}
-								<h5>YÊU THÍCH</h5>{" "}
+								<h5>YÊU THÍCH</h5>
 								<p>{info?.animeInfo?.Favourite.toLocaleString()}</p>
 							</>
-						) : (
-							""
 						)}
 					</div>
 					<div className="popularity">
-						{info?.animeInfo?.Trending ? (
+						{info?.animeInfo?.Trending && (
 							<>
-								{" "}
-								<h5>THỜI THƯỢNG</h5>{" "}
+								<h5>THỜI THƯỢNG</h5>
 								<p>{info?.animeInfo?.Trending.toLocaleString()}</p>
 							</>
-						) : (
-							""
 						)}
 					</div>
 					<div className="studios">
-						{info?.animeInfo?.Studio ? (
+						{info?.animeInfo?.Studio && (
 							<>
-								{" "}
-								<h5>STUDIO</h5>{" "}
+								<h5>STUDIO</h5>
 								<p>
 									{info?.animeInfo?.Studio.map((studio, i, arr) =>
 										i !== arr.length - 1
@@ -137,8 +111,6 @@ function InfoBox({ info, loading }) {
 									)}
 								</p>
 							</>
-						) : (
-							""
 						)}
 					</div>
 				</div>

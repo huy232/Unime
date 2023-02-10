@@ -49,7 +49,11 @@ function InfoHeadDetail({ info, loading }) {
 				{!loading &&
 					resultCategory.map((genre) => (
 						<div className="category-genre" key={genre.slug}>
-							<Link to={`/anime/${genre.slug}`} className="anime__slug">
+							<Link
+								to={`/anime/${genre.slug}`}
+								className="anime__slug"
+								aria-label={genre.name}
+							>
 								<div className="genre-name">{genre.name}</div>
 							</Link>
 						</div>
@@ -78,7 +82,7 @@ function InfoHeadDetail({ info, loading }) {
 				<div className="country">
 					<h6>QUỐC GIA</h6>{" "}
 					<div className="country-element">
-						{!info?.animeInfo?.Country ? "" : `${info?.animeInfo?.Country}`}
+						{info?.animeInfo?.Country && `${info?.animeInfo?.Country}`}
 					</div>
 				</div>
 				<div className="score">
@@ -88,9 +92,7 @@ function InfoHeadDetail({ info, loading }) {
 				<div className="duration">
 					<h6>THỜI LƯỢNG</h6>
 					<div className="duration-element">
-						{!info?.animeInfo?.Duration
-							? ""
-							: `${info?.animeInfo?.Duration} phút`}
+						{info?.animeInfo?.Duration && `${info?.animeInfo?.Duration} phút`}
 					</div>
 				</div>
 				<div className="views">
@@ -100,15 +102,12 @@ function InfoHeadDetail({ info, loading }) {
 				<div className="release-date">
 					<h6>KHỞI CHIẾU</h6>
 					<div className="release-date-element">
-						{!info?.animeInfo?.StartDate?.day
-							? ""
-							: `Ngày ${info?.animeInfo?.StartDate?.day} `}
-						{!info?.animeInfo?.StartDate?.month
-							? ""
-							: `tháng ${info?.animeInfo?.StartDate?.month} `}
-						{!info?.animeInfo?.StartDate?.year
-							? ""
-							: `năm ${info?.animeInfo?.StartDate?.year}`}
+						{info?.animeInfo?.StartDate?.day &&
+							`Ngày ${info?.animeInfo?.StartDate?.day} `}
+						{info?.animeInfo?.StartDate?.month &&
+							`tháng ${info?.animeInfo?.StartDate?.month} `}
+						{info?.animeInfo?.StartDate?.year &&
+							`năm ${info?.animeInfo?.StartDate?.year}`}
 					</div>
 				</div>
 			</div>

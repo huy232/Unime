@@ -33,6 +33,7 @@ function InfoAnimeEpisodeHandle({
 											<Link
 												to={`/watch/${anime}?index=${eachEpisode.name}`}
 												title={eachEpisode?.full_name}
+												aria-label={eachEpisode?.full_name}
 											>
 												<Card>
 													<div className="card-container">
@@ -43,6 +44,7 @@ function InfoAnimeEpisodeHandle({
 																eachEpisode?.thumbnail_small
 															}
 															loading="lazy"
+															alt={eachEpisode?.full_name}
 														/>
 														<div className="overlay-card">
 															<div className="icon">

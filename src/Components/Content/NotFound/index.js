@@ -27,8 +27,11 @@ function NotFound() {
 							<Link
 								to="/"
 								className="bg-[#000000] text-[#EEEEEE] p-[12px] hover:opacity-80 duration-200 ease-in-out rounded"
+								aria-label="GO BACK - VI"
 							>
-								<button>QUAY LẠI TRANG CHỦ</button>
+								<button id="go-back-vi-btn" aria-label="Go back button - VIET">
+									QUAY LẠI TRANG CHỦ
+								</button>
 							</Link>
 						</div>
 					</div>
@@ -39,8 +42,11 @@ function NotFound() {
 							<Link
 								to="/eng"
 								className="bg-[#000000] text-[#EEEEEE] p-[12px] hover:opacity-80 duration-200 ease-in-out rounded"
+								aria-label="GO BACK - ENG"
 							>
-								<button>GO BACK TO HOME PAGE</button>
+								<button id="go-back-eng-btn" aria-label="Go back button - ENG">
+									GO BACK TO HOME PAGE
+								</button>
 							</Link>
 						</div>
 					</div>

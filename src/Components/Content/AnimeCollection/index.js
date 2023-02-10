@@ -6,7 +6,6 @@ import { Card, Row, Col } from "react-bootstrap"
 import { BsFillPlayFill } from "react-icons/bs"
 import useDocumentTitle from "../DocumentTitleHook"
 import LoadingSpin from "react-loading-spin"
-import "./animecollection.css"
 
 function AnimeCollection({ instance }) {
 	const { collection } = useParams()
@@ -87,7 +86,11 @@ function AnimeCollection({ instance }) {
 						{animeList.map((anime) => (
 							<Col key={anime?.slug}>
 								<nav>
-									<Link to={`/info/${anime?.slug}`} title={anime?.name}>
+									<Link
+										to={`/info/${anime?.slug}`}
+										title={anime?.name}
+										aria-label={anime?.name}
+									>
 										<Card>
 											<div className="card-container">
 												<Card.Img
@@ -95,6 +98,7 @@ function AnimeCollection({ instance }) {
 													src={anime?.thumbnail}
 													fluid="true"
 													loading="lazy"
+													alt={anime?.name}
 												/>
 												<div className="overlay-card">
 													<div className="icon">

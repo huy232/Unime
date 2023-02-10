@@ -231,11 +231,6 @@
 	width: 100%;
 }
 
-.clearfix {
-	content: "";
-	clear: both;
-}
-
 .detail-cover-info {
 	text-align: right;
 }

@@ -79,6 +79,12 @@ function AnimeBrowseENG() {
 									item.title?.native ||
 									item.title?.userPreferred
 								}
+								arial-label={
+									item.title?.english ||
+									item.title?.romaji ||
+									item.title?.native ||
+									item.title?.userPreferred
+								}
 								key={item.id}
 								className="group col-span-1 cursor-pointer flex flex-col items-center col-span-1 mb-[12px] relative float-left"
 							>
@@ -86,7 +92,12 @@ function AnimeBrowseENG() {
 									<img
 										className="object-cover absolute w-100 min-h-full"
 										src={item.image}
-										alt=""
+										alt={
+											item.title?.english ||
+											item.title?.romaji ||
+											item.title?.native ||
+											item.title?.userPreferred
+										}
 										loading="lazy"
 									/>
 								</div>

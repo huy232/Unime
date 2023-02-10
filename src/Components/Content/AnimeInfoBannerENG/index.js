@@ -22,7 +22,7 @@ function AnimeInfoBannerENG({ loading, info }) {
 						<img
 							src={info?.cover || ""}
 							className="banner-info-image"
-							alt=""
+							alt={info?.name}
 							style={
 								info?.cover === null || typeof info?.cover === "undefined"
 									? { minHeight: "auto" }

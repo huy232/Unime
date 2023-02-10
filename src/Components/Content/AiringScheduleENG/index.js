@@ -36,6 +36,12 @@ function AiringScheduleENG({ loadingAiringSchedule, airingSchedule }) {
 										<Link
 											to={`/eng/info/${anime.id}`}
 											className="p-2 max-md:text-center"
+											aria-label={
+												anime.title?.english ||
+												anime.title?.romaji ||
+												anime.title?.native ||
+												anime.title?.userPreferred
+											}
 										>
 											{anime.title?.english ||
 												anime.title?.romaji ||

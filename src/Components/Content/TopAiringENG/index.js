@@ -57,6 +57,7 @@ function TopAiringENG({ topAiring, loadingAiring }) {
 												color: COLORSET[i],
 												textShadow: `3px 3px 3px rgba(0,0,0,0.7)`,
 											}}
+											aria-label={item.id}
 										>
 											<h2
 												className="airing-info-main-title line-clamp-3 uppercase font-bold text-3xl max-lg:text-base"
@@ -79,6 +80,7 @@ function TopAiringENG({ topAiring, loadingAiring }) {
 													to={`/eng/anime/${toSlug(genre)}`}
 													className="hover:opacity-80 duration-200 ease-in-out genre inline p-[4px] m-[4px] first:ml-0 rounded text-gray-50 max-lg:text-xs bg-white/20"
 													key={i}
+													aria-label={toSlug(genre)}
 												>
 													{genre}
 												</Link>
@@ -104,13 +106,14 @@ function TopAiringENG({ topAiring, loadingAiring }) {
 											<Link
 												className="p-[6px] bg-orange-600 rounded hover:opacity-80 duration-200 hover:bg-neutral-800 ease-linear cursor-pointer"
 												to={`/eng/info/${item.id}`}
+												aria-label={item.id}
 											>
 												PLAY NOW
 											</Link>
 										</div>
 									</div>
 									<div className="overlay__trigger max-lg:hidden w-2/5 h-fit flex justify-center items-center">
-										<Link to={`/eng/info/${item.id}`}>
+										<Link to={`/eng/info/${item.id}`} aria-label={item.id}>
 											<FontAwesomeIcon
 												icon={faPlayCircle}
 												className="w-16 h-16 rounded-full border-neutral-100 border-2 p-[1%] hover:border-transparent duration-200 ease-linear hover:text-orange-800 cursor-pointer"

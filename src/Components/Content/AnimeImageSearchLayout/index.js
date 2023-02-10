@@ -61,7 +61,11 @@ function AnimeImageSearchLayout({ searchResult, setToggle }) {
 								<img
 									className="w-full object-contain"
 									src={item.image}
-									alt=""
+									alt={
+										item.anilist.title.english ||
+										item.anilist.title.romaji ||
+										item.anilist.title.native
+									}
 									loading="lazy"
 								/>
 							</div>
@@ -74,6 +78,8 @@ function AnimeImageSearchLayout({ searchResult, setToggle }) {
 					<button
 						className="bg-white/10 hover:opacity-80 duration-200 ease-in-out rounded p-[6px] m-[6px]"
 						onClick={() => setToggle(true)}
+						id="search-another-btn"
+						aria-label="Search another button"
 					>
 						SEARCH ANOTHER IMAGE
 					</button>
@@ -95,7 +101,15 @@ function AnimeImageSearchLayout({ searchResult, setToggle }) {
 							<div className="flex md:flex-row flex-col text-center">
 								<div className="max-md:mx-auto w-[160px]">
 									<div className="relative aspect-w-2 aspect-h-3">
-										<img src={view.image} alt="" loading="lazy" />
+										<img
+											src={view.image}
+											alt={
+												view.title?.english ||
+												view.title?.romaji ||
+												view.title?.native
+											}
+											loading="lazy"
+										/>
 									</div>
 								</div>
 								<div className="w-full mx-[6px]">
@@ -137,8 +151,12 @@ function AnimeImageSearchLayout({ searchResult, setToggle }) {
 											></p>
 										</div>
 										<div className="my-[6px] flex max-md:justify-center">
-											<Link to={`/eng/info/${view.id}`}>
-												<button className="bg-[#F94A29] hover:opacity-70 duration-500 ease-in-out font-bold p-[8px] m-[8px] rounded">
+											<Link to={`/eng/info/${view.id}`} aria-label="WATCH NOW">
+												<button
+													className="bg-[#F94A29] hover:opacity-70 duration-500 ease-in-out font-bold p-[8px] m-[8px] rounded"
+													id="watch-now-btn"
+													aria-label="Watch now button"
+												>
 													WATCH NOW
 												</button>
 											</Link>

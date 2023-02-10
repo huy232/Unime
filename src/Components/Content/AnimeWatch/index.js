@@ -135,8 +135,13 @@ function AnimeWatch({ instance }) {
 								<Link
 									to={`/info/${anime}`}
 									className="group hover:opacity-80 duration-200 ease-in-out"
+									aria-label={anime}
 								>
-									<button className="bg-[#000] border-none flex items-center justify-center">
+									<button
+										className="bg-[#000] border-none flex items-center justify-center"
+										id="back-to-info-btn"
+										aria-label="Back to info button"
+									>
 										<BsFillArrowLeftSquareFill style={{ color: "white" }} />
 									</button>
 								</Link>
@@ -159,6 +164,7 @@ function AnimeWatch({ instance }) {
 											: "odd:bg-[#111111] even:bg-[#272727]"
 									}`}
 									onClick={() => setVideoLoading(true)}
+									aria-label={item.full_name}
 								>
 									<div className="mr-[6px] h-full flex items-center justify-center text-amber-400 ">
 										<p className="font-extrabold px-[4px] border-r-[2px] opacity-80">

@@ -1,12 +1,4 @@
-h1,
-.h5 {
-	-webkit-user-select: none !important;
-	-moz-user-select: none !important;
-	-ms-user-select: none !important;
-	user-select: none !important;
-}
-
-.anime-h1 {
+.anime-newest {
 	color: black !important;
 	background-color: #ffc107;
 	box-shadow: 5px 10px #495057;
@@ -17,48 +9,8 @@ h1,
 	user-select: none;
 }
 
-.mySwiper {
-	position: relative;
-	text-align: center;
-	max-width: 100%;
-	max-height: 500px;
-	box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
-	border-radius: 10px;
-	margin-top: 5px;
-}
-
-.bottom-left {
-	position: absolute;
-	top: 8px;
-	left: 16px;
-	text-align: left;
-	color: white;
-	background-color: rgba(0, 0, 0, 0.6);
-	box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset,
-		rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset,
-		rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px,
-		rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px,
-		rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
-}
-
 .homeSwiper .swiper-slide .inner img {
 	width: 100%;
-}
-
-.inner:hover {
-	transition: all 0.5s ease-in-out;
-	opacity: 0.8;
-}
-
-.inner:after {
-	box-shadow: inset 100px 0 100px -5px #000, inset 0 5px 5px -5px #000;
-	position: absolute;
-	top: 0;
-	left: 0;
-	bottom: 0;
-	right: 0;
-	content: "";
-	cursor: pointer;
 }
 
 .swiper-pagination-progressbar-fill {
@@ -84,10 +36,6 @@ h1,
 	cursor: pointer;
 }
 
-.inner:hover .overlay {
-	opacity: 1;
-}
-
 .card-container:hover {
 	cursor: pointer;
 	transition: all 0.3s ease-in-out;
@@ -97,10 +45,6 @@ h1,
 .card {
 	height: auto;
 	background-color: rgba(0, 0, 0, 0.5) !important;
-}
-
-.h5 {
-	font-size: 1rem !important;
 }
 
 .homeSwiper {
@@ -126,7 +70,7 @@ h1,
 	text-align: center;
 }
 
-.anime-top-day-h1 {
+.anime-top-day {
 	color: black !important;
 	display: inline-block;
 	background-color: #ffa781;
@@ -162,13 +106,6 @@ h1,
 		rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px,
 		rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px,
 		rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
-}
-
-.description-cover-img {
-	min-height: 450px;
-	max-height: 450px;
-	-o-object-fit: cover;
-	object-fit: cover;
 }
 
 .today-banner-card-image,
@@ -223,7 +160,7 @@ h1,
 	height: 100px;
 }
 
-.today-h1 {
+.today {
 	border-top: 5px solid #5a00b3;
 	border-left: 5px solid #5a00b3;
 	border-right: 5px solid #5a00b3;
@@ -242,7 +179,7 @@ h1,
 	text-align: center;
 }
 
-.anime-collection-h1 {
+.anime-collection-heading {
 	background: linear-gradient(
 		-45deg,
 		#4bc0c8 25%,
@@ -287,27 +224,6 @@ h1,
 	margin-bottom: 0 !important;
 	line-height: none !important;
 	background-color: #121212;
-}
-.my-anchor-css-class {
-	float: right;
-	margin-top: 20px;
-	margin-left: 20px;
-	padding: 2px 10px;
-	border-radius: 5px;
-	background-color: black;
-	color: white;
-	text-decoration: none;
-	cursor: pointer;
-}
-
-.my-anchor-css-class:hover {
-	color: yellow;
-	transition: all 0.3s linear;
-	opacity: 0.6;
-}
-
-.content-css {
-	line-height: 1.5;
 }
 
 .studio {
@@ -420,24 +336,11 @@ h1,
 		display: none !important;
 	}
 
-	.bottom-left {
-		background-color: transparent;
-	}
-
-	.bottom-left h3,
-	.bottom-left > p {
-		font-size: 1em;
-	}
-
-	.bottom-left p {
-		display: none;
-	}
-
 	.overlay-card {
 		display: none;
 	}
 
-	.anime-h1 {
+	.anime-newest {
 		padding-left: 0;
 	}
 	.card-img-top {
@@ -476,27 +379,9 @@ h1,
 	}
 }
 
-@media screen and (min-width: 1000px) {
-	.skeleton-thumbnail {
-		max-height: 330px;
-	}
-}
-
-@media screen and (min-width: 1400px) {
-	.skeleton-thumbnail {
-		max-height: 343px;
-	}
-}
-
 @media screen and (max-width: 1024px) {
 	.skeleton-thumbnail {
 		max-height: 250px;
-	}
-}
-
-@media screen and (max-width: 840px) {
-	.skeleton-thumbnail {
-		max-height: 244px;
 	}
 }
 
@@ -600,13 +485,6 @@ h1,
 	}
 }
 
-@media screen and (max-width: 930px) {
-	.mySwiper {
-		max-width: 100%;
-		max-height: auto;
-	}
-}
-
 .webclamp {
 	word-break: break-word;
 	overflow: hidden;
@@ -629,8 +507,4 @@ h1,
 	max-height: none;
 	padding-right: 8px !important;
 	padding-left: 8px !important;
-}
-
-.content-css:after {
-	transition: linear 1s;
 }

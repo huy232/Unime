@@ -17,12 +17,13 @@ function FilmsContent({ loading, films }) {
 								title={item.name}
 								key={item.name}
 								className="mx-[4px] mb-[12px] relative float-left group"
+								aria-label={item.name}
 							>
 								<div className="pb-[148%] mb-0 w-full relative overflow-hidden rounded-[4px] group-hover:opacity-70 duration-500 ease-in-out">
 									<img
 										className="top-0 left-0 right-0 bottom-0 absolute w-full min-h-full"
 										src={item.thumbnail}
-										alt=""
+										alt={item.name}
 										loading="lazy"
 									/>
 									<div className="absolute right-[10px] top-[10px] bg-[#fff] text-[#000] rounded-[4px] px-[5px] py-[3px] font-medium text-xs inline-block leading-none">

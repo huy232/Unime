@@ -18,7 +18,9 @@ function AnimeInfoBoxENG({ loading, info }) {
 					<img
 						src={info.image}
 						className="cover-image w-[160px] h-[260px]"
-						alt=""
+						alt={
+							info.title?.english || info.title?.romaji || info.title?.native
+						}
 						loading="lazy"
 					/>
 				)}

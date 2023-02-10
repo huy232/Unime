@@ -12,11 +12,12 @@ function RandomAnime({ randomAnime, done3 }) {
 			) : (
 				<div className="today-section" style={{ marginTop: "42px" }}>
 					<h1
-						className="today-h1 "
+						className="today"
 						style={{
 							marginBottom: "42px",
 							float: "right",
 						}}
+						loading="lazy"
 					>
 						CÓ THỂ BẠN SẼ THÍCH ĐÓ
 					</h1>

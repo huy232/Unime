@@ -62,11 +62,12 @@ function HeaderENG() {
 								to="/eng"
 								className="group hover:opacity-80 duration-200 ease-in-out h-100 inline-block flex items-center"
 								onClick={() => setSidebar(false)}
+								aria-label="Home - English"
 							>
 								<img
 									className="group-hover:opacity-80 duration-200 ease-in-out h-[40px] w-[40px]"
 									src={unimeLogo}
-									alt=""
+									alt="UNIME-LOGO"
 									loading="lazy"
 								/>
 								<h1 className="font-black text-[1.5rem] p-0 my-0 h-auto max-sm:hidden mx-[6px]">
@@ -93,6 +94,8 @@ function HeaderENG() {
 									}}
 									type="submit"
 									className="submit-button ml-[4px] hover:opacity-80 duration-200 ease-in-out"
+									id="search-eng-btn"
+									aria-label="Search button - ENG"
 								>
 									<BsSearch className="search-icon" />
 								</button>
@@ -118,9 +121,10 @@ function HeaderENG() {
 								to="/eng/anime"
 								className="hover:opacity-80 duration-200 ease-in-out"
 								onClick={() => {
-									setSidebar(false)
 									handleScrollToTop()
+									setSidebar(false)
 								}}
+								aria-label="All anime - English"
 							>
 								<h2 className=" font-semibold text-[1.5rem] my-0">ALL Anime</h2>
 							</Link>
@@ -151,10 +155,11 @@ function HeaderENG() {
 										to={`/eng/anime/${genre.slug}`}
 										key={genre.slug}
 										onClick={() => {
-											setSidebar(false)
 											handleScrollToTop()
+											setSidebar(false)
 										}}
 										className="hover:text-white hover:opacity-80 duration-200 ease-in-out"
+										aria-label={genre.slug}
 									>
 										<div className="">
 											<p
@@ -175,9 +180,10 @@ function HeaderENG() {
 								to="/eng/search-image"
 								className="hover:opacity-80 duration-200 ease-in-out"
 								onClick={() => {
-									setSidebar(false)
 									handleScrollToTop()
+									setSidebar(false)
 								}}
+								aria-label="Search image"
 							>
 								<h2 className=" font-semibold text-[1.5rem] my-0">
 									IMAGE Search
@@ -185,7 +191,7 @@ function HeaderENG() {
 							</Link>
 						</div>
 						<div className="flex ">
-							<LanguageButton />
+							<LanguageButton handleScrollToTop={handleScrollToTop} />
 						</div>
 						<div className="user-container">
 							<User handleScrollToTop={handleScrollToTop} />

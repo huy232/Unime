@@ -76,6 +76,8 @@ export default function Login() {
 						<button
 							className="social-button google-button"
 							onClick={() => handleSignInGoogle()}
+							id="google-btn-sign-in"
+							aria-label="Google button sign in"
 						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
@@ -110,6 +112,8 @@ export default function Login() {
 						<button
 							className="social-button facebook-button"
 							onClick={() => handleSignInFacebook()}
+							id="facebook-btn-sign-in"
+							aria-label="Facebook button sign in"
 						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
@@ -136,6 +140,8 @@ export default function Login() {
 						<button
 							className="social-button discord-button"
 							onClick={() => handleSignInDiscord()}
+							id="discord-btn-sign-in"
+							aria-label="Discord button sign in"
 						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"

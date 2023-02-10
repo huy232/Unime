@@ -62,7 +62,7 @@ function Search({ instance }) {
 					searchData.map((anime) => (
 						<Col key={anime.slug}>
 							<nav>
-								<Link to={`/info/${anime.slug}`}>
+								<Link to={`/info/${anime.slug}`} aria-label={anime.slug}>
 									<Card>
 										<div className="card-container">
 											<Card.Img
@@ -70,6 +70,7 @@ function Search({ instance }) {
 												src={anime.thumbnail}
 												fluid="true"
 												loading="lazy"
+												alt={anime?.name}
 											/>
 											<div className="overlay-card">
 												<div className="icon">

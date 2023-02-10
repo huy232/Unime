@@ -16,7 +16,10 @@ function RandomAnimeRightCover({ randomAnime }) {
 					/>
 				) : (
 					<nav>
-						<Link to={`/info/${randomAnime?.Slug}`}>
+						<Link
+							to={`/info/${randomAnime?.Slug}`}
+							aria-label={randomAnime?.Slug}
+						>
 							<img
 								src={
 									randomAnime?.CoverImg?.large ||
@@ -29,7 +32,7 @@ function RandomAnimeRightCover({ randomAnime }) {
 									objectFit: "fill",
 								}}
 								className="today-cover-image"
-								alt=""
+								alt={randomAnime.AnimeName}
 								loading="lazy"
 							/>
 						</Link>
@@ -45,7 +48,7 @@ function RandomAnimeRightCover({ randomAnime }) {
 							<DescriptionSkeleton />
 						) : (
 							<>
-								<span style={{ fontWeight: "700" }}>ANH:</span>{" "}
+								<span style={{ fontWeight: "700" }}>ANH: </span>
 								{randomAnime?.AnimeAllTitle?.english}
 							</>
 						)}
@@ -55,7 +58,7 @@ function RandomAnimeRightCover({ randomAnime }) {
 							<DescriptionSkeleton />
 						) : (
 							<>
-								<span style={{ fontWeight: "700" }}>NHẬT:</span>{" "}
+								<span style={{ fontWeight: "700" }}>NHẬT: </span>
 								{randomAnime?.AnimeAllTitle?.native}
 							</>
 						)}
@@ -65,7 +68,7 @@ function RandomAnimeRightCover({ randomAnime }) {
 							<DescriptionSkeleton />
 						) : (
 							<>
-								<span style={{ fontWeight: "700" }}>ROMAJI:</span>{" "}
+								<span style={{ fontWeight: "700" }}>ROMAJI: </span>
 								{randomAnime?.AnimeAllTitle?.romaji}
 							</>
 						)}

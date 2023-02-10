@@ -1,48 +1,3 @@
-.MuiSlider-valueLabel {
-	background-color: rgba(255, 0, 0, 0.6) !important;
-}
-.MuiContainer-root {
-	padding-left: 0 !important;
-	padding-right: 0 !important;
-}
-
-.go-back-button .MuiButton-label {
-	color: white !important;
-}
-
-.go-back-button:hover {
-	transition: all 0.5s linear;
-	background-color: rgba(255, 0, 0, 1) !important;
-}
-
-.back-arrow {
-	top: 0;
-	left: 0;
-	position: fixed;
-}
-
-.back-arrow:hover {
-	transition: 0.3s;
-	color: white;
-}
-
-.video-js.vjs-fluid {
-	width: 100% !important;
-}
-
-/* video {
-	min-height: 100vh;
-	max-height: 100vh;
-} */
-
-.video-js-wrapper {
-	width: 100%;
-}
-
-.video-active {
-	width: 100% !important;
-}
-
 .episode-content {
 	width: 20vw;
 	position: relative;
@@ -94,41 +49,12 @@
 	margin: 0 !important;
 }
 
-.active-hide {
-	width: 0;
-}
-
 .episode:hover {
 	opacity: 0.7;
 	transition: linear 0.25s;
 }
 
-.multi-lang {
-	text-align: center;
-	margin-top: 10px;
-}
-
-.lang-btn {
-	margin: 0 6px 0 6px;
-	border: none;
-	padding: 0 8px 0 8px;
-	border-radius: 6px;
-	transition: 0.2s linear;
-}
-
-.lang-btn:hover {
-	opacity: 0.7;
-}
-
 @media screen and (max-width: 1024px) {
-	.MuiTypography-root {
-		font-size: 0.7rem !important;
-	}
-
-	.video-js-wrapper {
-		display: block !important;
-	}
-
 	.episode-content {
 		margin-top: 20px !important;
 		max-width: none !important;

@@ -31,12 +31,6 @@
 	margin-top: 20px;
 }
 
-/* @media screen and (max-width: 1024px){
-    .card-body{
-        min-height: 4.7rem
-    }
-} */
-
 @media screen and (max-width: 768px) {
 	.row-anime > .col {
 		padding: 0 !important;

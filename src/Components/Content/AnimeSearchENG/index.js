@@ -92,12 +92,23 @@ function AnimeSearchENG() {
 								}
 								key={item.id}
 								className="group col-span-1 cursor-pointer flex flex-col items-center col-span-1 mb-[12px] relative float-left"
+								aria-label={
+									item.title?.english ||
+									item.title?.romaji ||
+									item.title?.native ||
+									item.title?.userPreferred
+								}
 							>
 								<div className="group-hover:opacity-70 anime-item-image relative aspect-w-2 aspect-h-3 duration-300 ease-linear pb-[148%] mb-0 w-full overflow-hidden">
 									<img
 										className="object-cover absolute w-100 min-h-full"
 										src={item.image}
-										alt=""
+										alt={
+											item.title?.english ||
+											item.title?.romaji ||
+											item.title?.native ||
+											item.title?.userPreferred
+										}
 										loading="lazy"
 									/>
 								</div>

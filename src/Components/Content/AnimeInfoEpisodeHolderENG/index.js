@@ -65,7 +65,7 @@ function AnimeInfoEpisodeHolderENG({
 				source.cancel()
 			}
 		}
-	}, [provider])
+	}, [animeId, provider, setLoadingEpisodeList])
 
 	useEffect(() => {
 		const episodeStructure = async () => {
@@ -76,7 +76,7 @@ function AnimeInfoEpisodeHolderENG({
 			setEpisodeList(episodeListChunk)
 		}
 		episodeStructure()
-	}, [animeId])
+	}, [animeId, info.episodes])
 
 	const jump = (progress, speed) => {
 		if (swiper) {
@@ -140,6 +140,8 @@ function AnimeInfoEpisodeHolderENG({
 												toggleButton === true &&
 												"opacity-30 cursor-auto pointer-events-none"
 											}`}
+											id="fast-backward-btn"
+											aria-label="Fast backward button"
 										>
 											<FontAwesomeIcon icon={faFastBackward} />
 										</button>
@@ -149,6 +151,8 @@ function AnimeInfoEpisodeHolderENG({
 												toggleButton === false &&
 												"opacity-30 cursor-auto pointer-events-none"
 											}`}
+											id="fast-forward-btn"
+											aria-label="Fast forward button"
 										>
 											<FontAwesomeIcon icon={faFastForward} />
 										</button>
@@ -216,45 +220,53 @@ function AnimeInfoEpisodeHolderENG({
 								{episodeList[selectedChunk]?.map((eachEpisode, i) => (
 									<Col key={i}>
 										<nav>
-											{
-												<Link
-													to={`/eng/watch/${info.id}?current=${eachEpisode.id}&provider=${provider}`}
-													title={
-														eachEpisode.title
-															? `EP ${eachEpisode.number} - ${eachEpisode.title}`
-															: `Episode - ${eachEpisode.number}`
-													}
-												>
-													<Card>
-														<div className="card-container">
-															<Card.Img
-																variant="top"
-																src={
-																	provider === "animepahe"
-																		? eachEpisode?.image
-																		: `${IO_CORS}${eachEpisode?.image}`
-																	// `${CONSUMET_CORS}/${eachEpisode?.image}`
-																}
-																loading="lazy"
-															/>
-															<div className="overlay-card">
-																<div className="icon">
-																	{<BsFillPlayFill size={40} />}
-																</div>
+											<Link
+												to={`/eng/watch/${info.id}?current=${eachEpisode.id}&provider=${provider}`}
+												title={
+													eachEpisode.title
+														? `EP ${eachEpisode.number} - ${eachEpisode.title}`
+														: `Episode - ${eachEpisode.number}`
+												}
+												aria-label={
+													eachEpisode.title
+														? `EP ${eachEpisode.number} - ${eachEpisode.title}`
+														: `Episode - ${eachEpisode.number}`
+												}
+											>
+												<Card>
+													<div className="card-container">
+														<Card.Img
+															variant="top"
+															src={
+																provider === "animepahe"
+																	? eachEpisode?.image
+																	: `${IO_CORS}${eachEpisode?.image}`
+																// `${CONSUMET_CORS}/${eachEpisode?.image}`
+															}
+															loading="lazy"
+															alt={
+																eachEpisode.title
+																	? `EP ${eachEpisode.number} - ${eachEpisode.title}`
+																	: `Episode - ${eachEpisode.number}`
+															}
+														/>
+														<div className="overlay-card">
+															<div className="icon">
+																{<BsFillPlayFill size={40} />}
 															</div>
 														</div>
-														<Card.Body>
-															<Card.Title>
-																<p className="webclamp">
-																	{eachEpisode.title
-																		? `EP ${eachEpisode.number} - ${eachEpisode.title}`
-																		: `Episode - ${eachEpisode.number}`}
-																</p>
-															</Card.Title>
-														</Card.Body>
-													</Card>
-												</Link>
-											}
+													</div>
+													<Card.Body>
+														<Card.Title>
+															<p className="webclamp">
+																{eachEpisode.title
+																	? `EP ${eachEpisode.number} - ${eachEpisode.title}`
+																	: `Episode - ${eachEpisode.number}`}
+															</p>
+														</Card.Title>
+													</Card.Body>
+												</Card>
+											</Link>
 										</nav>
 									</Col>
 								))}

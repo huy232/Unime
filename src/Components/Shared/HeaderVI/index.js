@@ -59,12 +59,16 @@ function HeaderVI() {
 						<Link
 							to="/"
 							className="group hover:opacity-80 duration-200 ease-in-out h-100 inline-block flex items-center"
-							onClick={() => setSidebar(false)}
+							onClick={() => {
+								handleScrollToTop()
+								setSidebar(false)
+							}}
+							aria-label="Home - Viet"
 						>
 							<img
 								className="group-hover:opacity-80 duration-200 ease-in-out h-[40px] w-[40px]"
 								src={unimeLogo}
-								alt=""
+								alt="UNIME-LOGO"
 								loading="lazy"
 							/>
 							<h1 className="font-black text-[1.5rem] p-0 my-0 h-auto max-sm:hidden mx-[6px]">
@@ -91,6 +95,8 @@ function HeaderVI() {
 								}}
 								type="submit"
 								className="submit-button ml-[4px] hover:opacity-80 duration-200 ease-in-out"
+								id="search-vi-btn"
+								aria-label="Search button - VIET"
 							>
 								<BsSearch className="search-icon" />
 							</button>
@@ -114,7 +120,11 @@ function HeaderVI() {
 						<Link
 							to="/anime"
 							className="hover:opacity-80 duration-200 ease-in-out flex flex-row items-center justify-end"
-							onClick={() => setSidebar(false)}
+							onClick={() => {
+								handleScrollToTop()
+								setSidebar(false)
+							}}
+							aria-label="All anime - Viet"
 						>
 							<h2 className=" font-semibold text-[1.5rem] m-0">Tất cả Anime</h2>
 						</Link>
@@ -145,10 +155,11 @@ function HeaderVI() {
 									to={`/anime/${genre.slug}`}
 									key={genre.slug}
 									onClick={() => {
-										setSidebar(false)
 										handleScrollToTop()
+										setSidebar(false)
 									}}
 									className="hover:text-white hover:opacity-80 duration-200 ease-in-out"
+									aria-label={genre.slug}
 								>
 									<div className="">
 										<p
@@ -165,7 +176,7 @@ function HeaderVI() {
 						</div>
 					</div>
 					<div className="flex">
-						<LanguageButton />
+						<LanguageButton handleScrollToTop={handleScrollToTop} />
 					</div>
 					<div className="user-container">
 						<User handleScrollToTop={handleScrollToTop} />

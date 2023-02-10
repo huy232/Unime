@@ -21,11 +21,16 @@ function RandomAnimeENG({ randomAnime, loadingRandomAnime }) {
 							<Link
 								className="cursor-pointer hover:opacity-80 duration-200 ease-in-out flex justify-center items-center"
 								to={`/eng/info/${randomAnime.id}`}
+								aria-label={randomAnime.id}
 							>
 								<img
 									className="w-[240px] h-[340px] object-cover"
 									src={randomAnime.image}
-									alt=""
+									alt={
+										randomAnime.title.english ||
+										randomAnime.title.romaji ||
+										randomAnime.title.native
+									}
 									loading="lazy"
 								/>
 							</Link>
@@ -49,6 +54,7 @@ function RandomAnimeENG({ randomAnime, loadingRandomAnime }) {
 										to={`/eng/genre/${toSlug(genre)}`}
 										className="hover:opacity-80 duration-200 ease-in-out"
 										key={genre}
+										aria-label={toSlug(genre)}
 									>
 										<p className="m-[6px] p-[6px] bg-[#5f5f5f29] rounded">
 											{genre}
@@ -96,7 +102,12 @@ function RandomAnimeENG({ randomAnime, loadingRandomAnime }) {
 									className="cursor-pointer hover:opacity-80 duration-200 ease-in-out p-[10px] bg-[#FF6E31] hover:text-[#1A120B] rounded"
 									to={`/eng/info/${randomAnime.id}`}
 								>
-									<button>PLAY NOW</button>
+									<button
+										id="play-now-random-anime-btn"
+										aria-label="Play now random anime button"
+									>
+										PLAY NOW
+									</button>
 								</Link>
 							</div>
 						</div>

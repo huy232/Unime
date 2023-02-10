@@ -79,7 +79,7 @@ function Home({ instance }) {
 			{language !== "eng" ? (
 				<>
 					<div className="anime-card mt-[6px]">
-						<h1 className="anime-h1 font-black inline-block mb-[20px]">
+						<h1 className="anime-newest font-black inline-block mb-[20px]">
 							MỚI NHẤT
 						</h1>
 						<CardGroup>
@@ -88,9 +88,7 @@ function Home({ instance }) {
 					</div>
 					<div className="anime-card-today my-[40px]">
 						<div className="center-title mb-[20px]">
-							<h1 className="anime-top-day-h1 font-black">
-								XEM NHIỀU TRONG NGÀY
-							</h1>
+							<h1 className="anime-top-day font-black">XEM NHIỀU TRONG NGÀY</h1>
 						</div>
 						<CardGroup>
 							<MostWatched rankToday={rankToday} done2={done2} />
@@ -100,7 +98,7 @@ function Home({ instance }) {
 						<div className="center-title">
 							<div className="anime-collection-titleholder">
 								<h1
-									className="anime-collection-h1 font-black"
+									className="anime-collection-heading font-black"
 									style={{ marginBottom: "42px" }}
 								>
 									BỘ SƯU TẬP

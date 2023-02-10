@@ -68,6 +68,8 @@ function Films() {
 								type === "movies" && "bg-[#a5612a]"
 							}`}
 							onClick={() => setType("movies")}
+							id="movie-btn"
+							aria-label="Movie Button"
 						>
 							Movies
 						</button>
@@ -76,6 +78,8 @@ function Films() {
 								type === "tvshows" && "bg-[#a5612a]"
 							}`}
 							onClick={() => setType("tvshows")}
+							id="series-btn"
+							aria-label="Series button"
 						>
 							TV Shows
 						</button>
