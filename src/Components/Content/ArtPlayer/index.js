@@ -84,7 +84,7 @@ export default function Player({
 					m3u8: playM3u8,
 				},
 				settings: [
-					subtitles && {
+					{
 						html: "Subtitle",
 						tooltip:
 							subtitles.find((sub) => sub.html.split(" ")[1] === selectedSub)
