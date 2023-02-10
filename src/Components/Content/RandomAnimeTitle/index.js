@@ -47,7 +47,7 @@ function RandomAnimeTitle({ randomAnime }) {
 							<DescriptionSkeleton />
 						) : (
 							<>
-								<span style={{ fontWeight: "700" }}>Studio:</span>
+								<span style={{ fontWeight: "700" }}>Studio: </span>
 								{randomAnime?.Studio}
 							</>
 						)}
