@@ -6,8 +6,8 @@ import "swiper/css/lazy"
 import "./popularanime.css"
 import AnimeSkeletonENG from "../AnimeSkeletonENG"
 import { Link } from "react-router-dom"
-import randomColor from "randomcolor"
 import { Lazy } from "swiper"
+import { COLORLIST } from "../../../constants"
 
 function TrendingAnimeENG({ trendingAnime, loadingTrending }) {
 	return (
@@ -55,11 +55,7 @@ function TrendingAnimeENG({ trendingAnime, loadingTrending }) {
 											<p
 												className="line-clamp-2 font-medium transition-all duration-500 ease-in-out"
 												style={{
-													color: randomColor({
-														luminosity: "dark",
-														format: "rgb",
-														alpha: 1,
-													}),
+													color: COLORLIST[i],
 												}}
 											>
 												{anime.title.english ||

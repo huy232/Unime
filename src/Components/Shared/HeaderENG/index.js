@@ -1,11 +1,10 @@
 import { useEffect, useRef, useState } from "react"
 import { Link } from "react-router-dom"
-import { ENG_GENRES } from "../../../constants"
+import { COLORLIST, ENG_GENRES } from "../../../constants"
 import { BsSearch } from "react-icons/bs"
 import { useNavigate } from "react-router-dom"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faBars, faSortUp, faSortDown } from "@fortawesome/free-solid-svg-icons"
-import randomColor from "randomcolor"
 
 import User from "../User"
 import LanguageButton from "../../Content/LanguageButton"
@@ -146,7 +145,7 @@ function HeaderENG() {
 										: "opacity-0 h-0 overflow-y-hidden"
 								} duration-200 ease-in-out w-100`}
 							>
-								{ENG_GENRES.map((genre) => (
+								{ENG_GENRES.map((genre, i) => (
 									<Link
 										to={`/eng/anime/${genre.slug}`}
 										key={genre.slug}
@@ -159,11 +158,7 @@ function HeaderENG() {
 										<div className="">
 											<p
 												style={{
-													background: `${randomColor({
-														luminosity: "dark",
-														format: "rgba",
-														alpha: 0.8,
-													})}`,
+													background: `${COLORLIST[i]}`,
 												}}
 												className="inline-block p-[4px] m-[4px] rounded"
 											>

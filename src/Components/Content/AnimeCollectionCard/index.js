@@ -1,5 +1,4 @@
-import { COLLECTIONS } from "../../../constants"
-import randomColor from "randomcolor"
+import { COLLECTIONS, COLLECTION_COLOR } from "../../../constants"
 import { Link } from "react-router-dom"
 import "./animecollectioncard.css"
 import { Swiper, SwiperSlide } from "swiper/react"
@@ -15,7 +14,7 @@ import { Grid } from "swiper"
 function AnimeCollectionCard() {
 	return (
 		<>
-			<div className="w-full h-[300px]">
+			<div className="w-full h-[340px]">
 				<Swiper
 					slidesPerView="auto"
 					grid={{
@@ -25,24 +24,20 @@ function AnimeCollectionCard() {
 					modules={[Grid]}
 					className="collectionSwiper h-100 w-[95%]"
 				>
-					{COLLECTIONS.map((collection) => (
+					{COLLECTIONS.map((collection, i) => (
 						<SwiperSlide
-							className="collection-card mx-[20px] my-[10px] w-[240px] h-[120px] bg-[#222] rounded"
+							className="collection-card mx-[20px] my-[10px] w-[260px] h-[140px] bg-[#222] rounded"
 							key={collection.slug}
 						>
 							<Link
 								to={`/collection/${collection.slug}`}
 								className="flex justify-center items-center h-100 w-full hover:opacity-40 duration-200 ease-in-out rounded p-[4px]"
 								style={{
-									background: `${randomColor({
-										luminosity: "dark",
-										format: "rgb",
-										alpha: 0.8,
-									})}`,
+									background: `${COLLECTION_COLOR[i]}`,
 								}}
 							>
 								<div className="collection-card__title m-[4px]">
-									<h4 className="text-[#fff] whitespace-pre-wrap font-bold">
+									<h4 className="text-[#191919] whitespace-pre-wrap font-bold uppercase">
 										{collection.name}
 									</h4>
 								</div>

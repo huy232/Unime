@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { useParams, Link } from "react-router-dom"
-import { API, CONSUMET_API, ENG_GENRES } from "../../../constants"
+import { API, ENG_GENRES } from "../../../constants"
 import InfiniteScroll from "react-infinite-scroll-component"
 import axios from "axios"
 import LoadingSpin from "react-loading-spin"

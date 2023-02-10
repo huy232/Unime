@@ -5,8 +5,7 @@ import InfiniteScroll from "react-infinite-scroll-component"
 import LoadingSpin from "react-loading-spin"
 import useDocumentTitle from "../DocumentTitleHook"
 import { Link } from "react-router-dom"
-import { API } from "../../../constants"
-import randomColor from "randomcolor"
+import { API, COLORLIST } from "../../../constants"
 
 const PAGE_NUMBER = 1
 
@@ -99,13 +98,7 @@ function AnimeBrowseMoreENG({ urlString, urlTitle }) {
 									<p
 										className="line-clamp-2 px-[4px] text-base font-semibold transition-all duration-500 ease-in-out"
 										style={{
-											color:
-												item?.color ||
-												randomColor({
-													luminosity: "dark",
-													format: "rgb",
-													alpha: 1,
-												}),
+											color: item?.color || COLORLIST[i],
 										}}
 									>
 										{item.title?.english ||

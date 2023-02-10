@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
 import axios from "axios"
-import { CONSUMET_API } from "../../../constants"
 
 function FilmInfo() {
 	const [info, setInfo] = useState({})
@@ -10,7 +9,7 @@ function FilmInfo() {
 	useEffect(() => {
 		const getFilm = async () => {
 			const { data } = await axios.get(
-				`${CONSUMET_API}/movies/flixhq/info?id=${type}/${filmSlug}`
+				`/movies/flixhq/info?id=${type}/${filmSlug}`
 			)
 			setInfo(data)
 		}

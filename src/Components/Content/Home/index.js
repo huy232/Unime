@@ -2,7 +2,6 @@ import { useState, useEffect } from "react"
 import { CardGroup } from "react-bootstrap"
 import useDocumentTitle from "../DocumentTitleHook"
 import axios from "axios"
-import LoadingBar from "react-top-loading-bar"
 // COMPONENTS
 import NewAnime from "../NewAnime"
 import MostWatched from "../MostWatched"
@@ -13,7 +12,6 @@ import { useAuth } from "../../../Contexts/auth"
 import HomeENG from "../HomeENG"
 
 function Home({ instance }) {
-	const [progress, setProgress] = useState(0)
 	const [newAnime, setNewAnime] = useState([])
 	const [rankToday, setRankToday] = useState([])
 	const [randomAnime, setRandomAnime] = useState({})
@@ -80,11 +78,6 @@ function Home({ instance }) {
 		<>
 			{language !== "eng" ? (
 				<>
-					<LoadingBar
-						color="#f11946"
-						progress={progress}
-						onLoaderFinished={() => setProgress(0)}
-					/>
 					<div className="anime-card mt-[6px]">
 						<h1 className="anime-h1 font-black inline-block mb-[20px]">
 							MỚI NHẤT

@@ -1,16 +1,10 @@
 import { useEffect, useRef, useState } from "react"
 import { Link } from "react-router-dom"
-import { GENRES } from "../../../constants"
+import { COLORLIST, GENRES } from "../../../constants"
 import { BsSearch } from "react-icons/bs"
 import { useNavigate } from "react-router-dom"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import {
-	faBars,
-	faSortUp,
-	faSortDown,
-	faThList,
-} from "@fortawesome/free-solid-svg-icons"
-import randomColor from "randomcolor"
+import { faBars, faSortUp, faSortDown } from "@fortawesome/free-solid-svg-icons"
 import User from "../User"
 import LanguageButton from "../../Content/LanguageButton"
 import unimeLogo from "../../../Utilities/img/unime.png"
@@ -145,7 +139,7 @@ function HeaderVI() {
 									: "opacity-0 h-0 overflow-y-hidden"
 							} duration-200 ease-in-out w-100`}
 						>
-							{GENRES.map((genre) => (
+							{GENRES.map((genre, i) => (
 								<Link
 									to={`/anime/${genre.slug}`}
 									key={genre.slug}
@@ -158,11 +152,7 @@ function HeaderVI() {
 									<div className="">
 										<p
 											style={{
-												background: `${randomColor({
-													luminosity: "dark",
-													format: "rgba",
-													alpha: 0.8,
-												})}`,
+												background: `${COLORLIST[i]}`,
 											}}
 											className="inline-block p-[4px] m-[4px] rounded"
 										>
