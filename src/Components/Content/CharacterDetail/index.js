@@ -12,7 +12,7 @@ SwiperCore.use([Lazy])
 function CharacterDetail({ randomAnime, done3 }) {
 	return (
 		<>
-			<div className="character-detail" style={{ marginTop: "20px" }}>
+			<div className="character-detail mt-[42px]">
 				{!done3 ? (
 					<Skeleton
 						variant="rectangular"
@@ -69,20 +69,12 @@ function CharacterDetail({ randomAnime, done3 }) {
 										</p>
 									</SwiperSlide>
 								))}
+								{randomAnime?.CharacterDetail?.length && (
+									<h3 className="block text-left max-md:text-center character-title color-[#fffc] font-bold select-none my-[6px]">
+										DÀN NHÂN VẬT
+									</h3>
+								)}
 							</Swiper>
-						)}
-						{randomAnime?.CharacterDetail?.length && (
-							<h4
-								className="character-title"
-								style={{
-									color: "white",
-									fontWeight: "700",
-									paddingLeft: "34px",
-									userSelect: "none",
-								}}
-							>
-								DÀN NHÂN VẬT
-							</h4>
 						)}
 					</>
 				)}

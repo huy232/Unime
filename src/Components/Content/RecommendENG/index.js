@@ -48,7 +48,7 @@ function RecommendENG({ recommend, setLoading }) {
 								<div className="group recommend-anime-holder select-none cursor-pointer">
 									<div className="recommend-anime-image w-[240px] h-[340px] group-hover:opacity-80 duration-200 ease-in-out relative">
 										<img
-											className="object-cover object-center w-full h-100 group-hover:scale-90 duration-500 linear absolute"
+											className="object-fill object-center w-full h-100 group-hover:scale-90 duration-500 linear absolute"
 											src={anime.image}
 											alt={
 												anime.title.english ||

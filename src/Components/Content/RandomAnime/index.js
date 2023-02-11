@@ -10,13 +10,9 @@ function RandomAnime({ randomAnime, done3 }) {
 			{Object.keys(randomAnime || {}).length === 0 ? (
 				""
 			) : (
-				<div className="today-section" style={{ marginTop: "42px" }}>
+				<div className="today-section max-md:text-center text-right my-[42px] w-full">
 					<h1
-						className="today"
-						style={{
-							marginBottom: "42px",
-							float: "right",
-						}}
+						className="today inline-block border-[#5a00b3] border-t-[5px] border-r-[5px] border-l-[5px] font-black select-none	"
 						loading="lazy"
 					>
 						CÓ THỂ BẠN SẼ THÍCH ĐÓ

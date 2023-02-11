@@ -30,7 +30,7 @@ function RandomAnimeTitle({ randomAnime }) {
 					</nav>
 				)}
 
-				<Card.Body className="description-card h-100">
+				<Card.Body className="description-card h-100 text-left">
 					<div className="line-clamp-5 h-100">{randomAnime?.Description}</div>
 				</Card.Body>
 

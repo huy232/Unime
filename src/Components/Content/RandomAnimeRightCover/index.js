@@ -5,7 +5,7 @@ import DescriptionSkeleton from "../DescriptionSkeleton"
 function RandomAnimeRightCover({ randomAnime }) {
 	return (
 		<>
-			<div className="image-box w-[280px] mx-[auto]">
+			<div className="image-box w-[320px] mx-[auto]">
 				{!randomAnime?.CoverImg ? (
 					<Skeleton
 						variant="rectangular"
