@@ -13,7 +13,7 @@
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@mui/material": "^5.3.1",
     "@supabase/auth-ui-react": "^0.2.6",
-    "@supabase/supabase-js": "^2.4.0",
+    "@supabase/supabase-js": "^2.7.1",
     "@tailwindcss/line-clamp": "^0.4.2",
     "artplayer": "^4.6.2",
     "artplayer-plugin-control": "^1.0.0",
