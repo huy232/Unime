@@ -24,7 +24,7 @@ function RandomAnimeENG({ randomAnime, loadingRandomAnime }) {
 								aria-label={randomAnime.id}
 							>
 								<img
-									className="w-[240px] h-[340px] object-cover"
+									className="w-[240px] h-[340px] object-fit"
 									src={randomAnime.image}
 									alt={
 										randomAnime.title.english ||
