@@ -24,12 +24,13 @@ import AnimeBrowseENG from "./Components/Content/AnimeBrowseENG"
 import AnimeBrowseCategoryENG from "./Components/Content/AnimeBrowseCategoryENG"
 import AnimeInfoENG from "./Components/Content/AnimeInfoENG"
 import AnimeWatchENG from "./Components/Content/AnimeWatchENG"
+import AnimeImageSearch from "./Components/Content/AnimeImageSearch"
+import AnimeBrowseMoreENG from "./Components/Content/AnimeBrowseMoreENG"
 // NOT FOUND
 import NotFound from "./Components/Content/NotFound"
+// FILMS
 import Films from "./Components/Content/Films"
-import AnimeImageSearch from "./Components/Content/AnimeImageSearch"
 import FilmInfo from "./Components/Content/FilmInfo"
-import AnimeBrowseMoreENG from "./Components/Content/AnimeBrowseMoreENG"
 
 function App() {
 	const instance = axios.create({

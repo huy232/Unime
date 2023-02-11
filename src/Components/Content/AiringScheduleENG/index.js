@@ -7,7 +7,7 @@ function AiringScheduleENG({ loadingAiringSchedule, airingSchedule }) {
 			{!loadingAiringSchedule && (
 				<div className="w-full px-4 md:px-12 lg:px-20 xl:px-28 2xl:px-36">
 					<div className="flex md:space-x-3 items-center flex-col">
-						<h1 className="mb-2 uppercase font-black text-[#B99B6B]">
+						<h1 className="mb-2 uppercase font-black text-[#B99B6B] max-md:text-center">
 							Estimated Schedule
 						</h1>
 						<span className="bg-[#AA5656] rounded p-1">

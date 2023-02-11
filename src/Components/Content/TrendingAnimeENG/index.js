@@ -44,7 +44,7 @@ function TrendingAnimeENG({ trendingAnime, loadingTrending }) {
 									aria-label={anime.id}
 								>
 									<div className="group popular-anime-holder select-none cursor-pointer">
-										<div className="popular-anime-image w-[240px] h-[340px] group-hover:opacity-80 duration-200 ease-in-out relative">
+										<div className="popular-anime-image aspect-[0.7] group-hover:opacity-80 duration-200 ease-in-out relative">
 											<img
 												className="object-fill object-center w-full h-100 group-hover:scale-90 duration-500 linear absolute"
 												src={anime.image}

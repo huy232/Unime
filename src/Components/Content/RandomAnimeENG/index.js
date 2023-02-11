@@ -19,12 +19,12 @@ function RandomAnimeENG({ randomAnime, loadingRandomAnime }) {
 					<div className="random-anime-container px-4 md:px-12 lg:px-20 xl:px-28 2xl:px-36 w-full pb-12 flex max-lg:flex-col">
 						<div className="w-1/5 flex justify-center max-lg:w-full">
 							<Link
-								className="cursor-pointer hover:opacity-80 duration-200 ease-in-out flex justify-center items-center"
+								className="cursor-pointer hover:opacity-80 aspect-[0.75] duration-200 ease-in-out flex justify-center items-center"
 								to={`/eng/info/${randomAnime.id}`}
 								aria-label={randomAnime.id}
 							>
 								<img
-									className="w-[240px] h-[340px] object-fit"
+									className="object-fit"
 									src={randomAnime.image}
 									alt={
 										randomAnime.title.english ||
@@ -35,7 +35,7 @@ function RandomAnimeENG({ randomAnime, loadingRandomAnime }) {
 								/>
 							</Link>
 						</div>
-						<div className="w-4/5 max-lg:w-full">
+						<div className="w-4/5 max-lg:w-full mx-2">
 							<div>
 								<Link to={`/eng/info/${randomAnime.id}`}>
 									<h2
