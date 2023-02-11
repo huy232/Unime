@@ -87,7 +87,7 @@ Before I learned HTML/CSS/Javascript to become a web developer, I'd always dream
 <h3>LOGIN PAGE</h3>
 </p>
 
-![LoginPage](https://i.imgur.com/zmcCmNt.png)
+![LoginPage](https://i.imgur.com/NOwsSmG.png)
 
 
 
@@ -115,11 +115,11 @@ Everything is responsive, shrink down the web page or using it on device for fur
 
 - Inside the .env file, set up like this:
 
-> REACT_APP_SUPABASE_ANON_KEY  = YOUR ANON SUPBASE KEY
+> REACT_APP_SUPABASE_ANON_KEY  = YOUR ANON SUPABASE KEY
 
-> REACT_APP_SUPABASE_URL = YOUR SUPBASE URL
+> REACT_APP_SUPABASE_URL = YOUR SUPABASE URL
 
-- Go to [Supabase](https://supabase.com/) and create your own database, in there, get the SUPABASE URL and SUPABASE ANON KEY.
+- Go to [Supabase](https://supabase.com/) and create your own database, in there, get the `SUPABASE URL` and `SUPABASE ANON KEY`.
 
 ![EnviromentSetup-2](https://i.imgur.com/NACl9L4.png)
 
