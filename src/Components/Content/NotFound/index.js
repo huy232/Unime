@@ -1,5 +1,5 @@
 import React from "react"
-import notFound from "../../../Utilities/img/not-found.jpg"
+import notFound from "../../../Utilities/img/not-found.webp"
 import { Link } from "react-router-dom"
 import { useAuth } from "../../../Contexts/auth"
 import "./notfound.css"

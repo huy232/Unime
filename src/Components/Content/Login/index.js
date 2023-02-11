@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom"
 import { useAuth } from "../../../Contexts/auth"
 import useDocumentTitle from "../DocumentTitleHook"
 import AnimeRandomQuote from "../AnimeRandomQuote"
-import background from "../../../Utilities/img/background.jpg"
+import background from "../../../Utilities/img/background.webp"
 import "./login.css"
 
 export default function Login() {

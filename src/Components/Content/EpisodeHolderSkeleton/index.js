@@ -1,7 +1,7 @@
 import React from "react"
 import { Card, Row, Col } from "react-bootstrap"
 import { Skeleton } from "@mui/material"
-import blackBackground from "../../../Utilities/img/black.jpg"
+import blackBackground from "../../../Utilities/img/black.webp"
 
 function EpisodeHolderSkeleton() {
 	return (

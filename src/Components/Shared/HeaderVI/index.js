@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faBars, faSortUp, faSortDown } from "@fortawesome/free-solid-svg-icons"
 import User from "../User"
 import LanguageButton from "../../Content/LanguageButton"
-import unimeLogo from "../../../Utilities/img/unime.png"
+import unimeLogo from "../../../Utilities/img/unime.webp"
 
 function HeaderVI() {
 	let navigate = useNavigate()

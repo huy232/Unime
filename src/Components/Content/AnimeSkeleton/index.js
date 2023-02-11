@@ -7,7 +7,7 @@ import "swiper/css"
 import "swiper/css/pagination"
 import "swiper/css/navigation"
 import "./animeskeleton.css"
-import blackBackground from "../../../Utilities/img/black.jpg"
+import blackBackground from "../../../Utilities/img/black.webp"
 import SwiperCore, { Pagination, Navigation, Mousewheel, Lazy } from "swiper"
 SwiperCore.use([Pagination, Navigation, Mousewheel, Lazy])
 
