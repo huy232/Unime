@@ -90,7 +90,7 @@ function AnimeInfoDetailENG({
 							<Link
 								to={`/eng/anime/${genre.slug}`}
 								key={genre.slug}
-								className="first:ml-[6px] last:mr-[6px]"
+								className="lg:first:ml-[6px] lg:last:mr-[6px]"
 								aria-label={genre.name}
 							>
 								<div className="cursor-pointer rounded p-[10px] bg-[#5f5f5f29] mx-[10px] my-[6px] duration-200 hover:opacity-80 ease-in-out">
