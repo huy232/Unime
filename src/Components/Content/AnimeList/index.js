@@ -102,7 +102,7 @@ function AnimeList({ instance }) {
 														src={anime.thumbnail}
 														fluid="true"
 														loading="lazy"
-														alt={anime?.name}
+														alt={anime.name}
 													/>
 													<div className="overlay-card">
 														<div className="icon">

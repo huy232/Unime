@@ -71,19 +71,19 @@ function RandomAnimeENG({ randomAnime, loadingRandomAnime }) {
 							<div></div>
 							<div className="flex lg:flex-row [&>*]:p-[6px] [&>*]:m-[4px] max-lg:flex-col">
 								<div className="flex flex-col items-center">
-									<h6 className="m-0 font-semi-bold bg-[#ff420e] text-[#282828] p-[6px] rounded">
+									<h6 className="m-0 font-semi-bold bg-[#ff420e] text-[#000000] text-base p-[6px] rounded">
 										TYPE
 									</h6>
 									<p className="my-0">{randomAnime.type}</p>
 								</div>
 								<div className="flex flex-col items-center">
-									<h6 className="m-0 font-semi-bold bg-[#f98866] text-[#282828] p-[6px] rounded">
+									<h6 className="m-0 font-semi-bold bg-[#f98866] text-[#000000] text-base p-[6px] rounded">
 										COUNTRY
 									</h6>
 									<p className="my-0">{randomAnime.countryOfOrigin}</p>
 								</div>
 								<div className="flex flex-col items-center">
-									<h6 className="m-0 font-semi-bold bg-[#80bd9e] text-[#282828] p-[6px] rounded">
+									<h6 className="m-0 font-semi-bold bg-[#80bd9e] text-[#000000] text-base p-[6px] rounded">
 										DURATION
 									</h6>
 									<p className="my-0">
@@ -91,7 +91,7 @@ function RandomAnimeENG({ randomAnime, loadingRandomAnime }) {
 									</p>
 								</div>
 								<div className="flex flex-col items-center">
-									<h6 className="m-0 font-semi-bold bg-[#89da59] text-[#282828] p-[6px] rounded">
+									<h6 className="m-0 font-semi-bold bg-[#89da59] text-[#000000] text-base p-[6px] rounded">
 										VOICE
 									</h6>
 									<p className="my-0 uppercase">{randomAnime.subOrDub}</p>
@@ -99,7 +99,7 @@ function RandomAnimeENG({ randomAnime, loadingRandomAnime }) {
 							</div>
 							<div className="mx-[12px] my-[14px] max-lg:text-center">
 								<Link
-									className="cursor-pointer hover:opacity-80 duration-200 ease-in-out p-[10px] bg-[#FF6E31] hover:text-[#1A120B] rounded"
+									className="cursor-pointer hover:opacity-80 duration-200 ease-in-out p-[10px] bg-[#FF6E31] hover:text-[#1A120B] rounded text-lg"
 									to={`/eng/info/${randomAnime.id}`}
 								>
 									<button

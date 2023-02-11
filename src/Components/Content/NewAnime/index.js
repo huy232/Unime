@@ -39,9 +39,9 @@ function NewAnime({ done1, newAnime }) {
 										<div className="card-container">
 											<Card.Img
 												variant="top"
-												src={anime?.thumbnail}
+												src={anime.thumbnail}
 												loading="lazy"
-												alt={anime?.name}
+												alt={anime.name}
 											/>
 											<div className="overlay-card">
 												<div className="icon">
