@@ -1,3 +1,5 @@
+const purgeCSS = require("@fullhuman/postcss-purgecss")
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
 	important: true,
@@ -20,5 +22,12 @@ module.exports = {
 			},
 		},
 	},
-	plugins: [require("@tailwindcss/line-clamp")],
+	plugins: [
+		require("@tailwindcss/line-clamp"),
+		purgeCSS({
+			content: ["./src/**/*.js"],
+			css: ["./src/**/*.css"],
+			bootstrap: ["./node_modules/react-bootstrap/**/*.js"],
+		}),
+	],
 }
