@@ -1,18 +1,37 @@
-import React from "react"
-import { Swiper, SwiperSlide } from "swiper/react"
-import "swiper/css"
-import "swiper/css/pagination"
-import "swiper/css/lazy"
+import { useState, useEffect } from "react"
+import axios from "axios"
 import "./topairing.css"
-import { Pagination, Autoplay, Lazy } from "swiper"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faPlayCircle } from "@fortawesome/free-solid-svg-icons"
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton"
-import { Link } from "react-router-dom"
-import { toSlug } from "../../../Utilities/toSlug"
-import { COLORSET } from "../../../constants"
+import TopAiringENGComp from "../TopAiringENGComp"
+import { API } from "../../../constants"
 
-function TopAiringENG({ topAiring, loadingAiring }) {
+function TopAiringENG() {
+	const [loadingAiring, setLoadingAiring] = useState(true)
+	const [topAiring, setTopAiring] = useState([])
+
+	useEffect(() => {
+		const CancelToken = axios.CancelToken
+		const source = CancelToken.source()
+
+		const getTopAiring = async () => {
+			await axios
+				.get(`${API}/eng/top-airing`, {
+					cancelToken: source.token,
+				})
+				.then((topAiring) => {
+					setTopAiring(topAiring.data.data.results)
+					setLoadingAiring(false)
+				})
+				.catch((thrown) => {
+					if (axios.isCancel(thrown)) return
+				})
+		}
+		getTopAiring()
+		return () => {
+			source.cancel()
+		}
+	}, [])
+
 	return (
 		<div>
 			<h1 className="font-black ml-6 mr-6 text-amber-200">POPULAR</h1>
@@ -23,108 +42,7 @@ function TopAiringENG({ topAiring, loadingAiring }) {
 					</SkeletonTheme>
 				</div>
 			) : (
-				<Swiper
-					pagination={{
-						clickable: true,
-					}}
-					modules={[Pagination, Autoplay, Lazy]}
-					autoplay={{
-						delay: 2000,
-						disableOnInteraction: false,
-						pauseOnMouseEnter: true,
-					}}
-					centeredSlides={true}
-					spaceBetween={10}
-					loop={true}
-					className="top-airing-swiper h-[500px] w-full px-4 md:px-12 lg:px-20 xl:px-28 2xl:px-36"
-					slidesPerView={1}
-					preloadImages={false}
-					lazy={true}
-				>
-					{topAiring.map((item, i) => (
-						<SwiperSlide key={i}>
-							<div
-								style={{ backgroundImage: `url(${item.cover})` }}
-								className={`bg-cover bg-center h-full w-full bg-no-repeat rounded overflow-hidden`}
-								loading="lazy"
-							>
-								<div className="banner__overlay h-full w-full flex items-center">
-									<div className="w-3/5 max-lg:w-full ml-[40px] max-sm:mx-0 max-sm:px-[30px] flex flex-col justify-center h-100">
-										<Link
-											to={`/eng/info/${item.id}`}
-											className="hover:opacity-80 duration-200 ease-in-out"
-											style={{
-												color: COLORSET[i],
-												textShadow: `3px 3px 3px rgba(0,0,0,0.7)`,
-											}}
-											aria-label={item.id}
-										>
-											<h2
-												className="airing-info-main-title line-clamp-3 uppercase font-bold text-3xl max-lg:text-base"
-												title={
-													item.title.english ||
-													item.title.romaji ||
-													item.title.native ||
-													item.title.userPreferred
-												}
-											>
-												{item.title.english ||
-													item.title.romaji ||
-													item.title.native ||
-													item.title.userPreferred}
-											</h2>
-										</Link>
-										<div className="flex flex-wrap my-[20px] max-lg:my-[4px]">
-											{item.genres.map((genre, i) => (
-												<Link
-													to={`/eng/anime/${toSlug(genre)}`}
-													className="hover:opacity-80 duration-200 ease-in-out genre inline p-[4px] m-[4px] first:ml-0 rounded text-gray-50 max-lg:text-xs bg-white/20"
-													key={i}
-													aria-label={toSlug(genre)}
-												>
-													{genre}
-												</Link>
-											))}
-										</div>
-										<div
-											className="airing-info-description line-clamp-5 font-semibold text-base max-lg:text-xs text-slate-300"
-											style={{
-												textShadow:
-													"0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black",
-											}}
-											dangerouslySetInnerHTML={{
-												__html: item.description?.replace(/<[br]+>/g, ""),
-											}}
-										></div>
-										<div className="airing-info-status text-gray-50 mt-[20px] max-lg:text-xs max-lg:mt-[10px]">
-											STATUS:{" "}
-											<span className="rounded p-[4px] mt-[4px] bg-white/20">
-												{item.status}
-											</span>
-										</div>
-										<div className="airing-button hidden max-lg:inline-block mt-[20px]">
-											<Link
-												className="p-[6px] bg-orange-600 rounded hover:opacity-80 duration-200 hover:bg-neutral-800 ease-linear cursor-pointer"
-												to={`/eng/info/${item.id}`}
-												aria-label={item.id}
-											>
-												PLAY NOW
-											</Link>
-										</div>
-									</div>
-									<div className="overlay__trigger max-lg:hidden w-2/5 h-fit flex justify-center items-center">
-										<Link to={`/eng/info/${item.id}`} aria-label={item.id}>
-											<FontAwesomeIcon
-												icon={faPlayCircle}
-												className="w-16 h-16 rounded-full border-neutral-100 border-2 p-[1%] hover:border-transparent duration-200 ease-linear hover:text-orange-800 cursor-pointer"
-											/>
-										</Link>
-									</div>
-								</div>
-							</div>
-						</SwiperSlide>
-					))}
-				</Swiper>
+				<TopAiringENGComp topAiring={topAiring} />
 			)}
 		</div>
 	)
