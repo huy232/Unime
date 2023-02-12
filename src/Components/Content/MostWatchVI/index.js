@@ -1,34 +1,8 @@
-import React, { useState, useEffect } from "react"
-import axios from "axios"
+import React from "react"
 import { CardGroup } from "react-bootstrap"
 import MostWatched from "../MostWatched"
 
-function MostWatchVI({ instance }) {
-	const [rankToday, setRankToday] = useState([])
-	const [done2, setDone2] = useState(false)
-
-	useEffect(() => {
-		const CancelToken = axios.CancelToken
-		const source = CancelToken.source()
-
-		const getMostWatch = async () => {
-			await instance
-				.get("/top", {
-					cancelToken: source.token,
-				})
-				.then((data) => {
-					setRankToday(data.data.data)
-					setDone2(true)
-				})
-		}
-
-		getMostWatch()
-
-		return () => {
-			source.cancel()
-		}
-	}, [instance])
-
+function MostWatchVI({ rankToday, done2 }) {
 	return (
 		<>
 			<div className="anime-card-today my-[40px]">

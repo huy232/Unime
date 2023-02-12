@@ -39,10 +39,7 @@ function RandomAnimeRightCover({ randomAnime }) {
 					</nav>
 				)}
 
-				<div
-					className="title-box"
-					style={{ display: "flex", flexDirection: "column" }}
-				>
+				<div className="title-box text-left flex flex-col">
 					<span className="english" style={{ color: "#f6d365" }}>
 						{!randomAnime?.AnimeAllTitle ? (
 							<DescriptionSkeleton />
