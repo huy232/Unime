@@ -42,7 +42,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "build:tailwind": "tailwindcss build src/tailwind/tailwind.css -o src/tailwind/tailwind.output.css",
+    "build:tailwind": "tailwindcss -i build src/tailwind/tailwind.css -o src/tailwind/tailwind.output.css",
     "prebuild": "NODE_ENV=production npm run build:tailwind"
   },
   "eslintConfig": {
