@@ -39,11 +39,10 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "NODE_ENV=production npm run build:css && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "build:tailwind": "tailwindcss -i build src/tailwind/tailwind.css -o src/tailwind/tailwind.output.css",
-    "prebuild": "NODE_ENV=production npm run build:tailwind"
+    "build:css": "tailwind.css -o src/index.css"
   },
   "eslintConfig": {
     "extends": [
