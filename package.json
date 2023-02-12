@@ -42,7 +42,7 @@
     "build": "NODE_ENV=production npm run build:css && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "build:css": "index.css -o src/index.css"
+    "build:css": "-i src/index.css -o src/index.css"
   },
   "eslintConfig": {
     "extends": [
