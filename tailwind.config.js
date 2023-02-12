@@ -1,11 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
 	important: true,
-	content: [
-		"./src/**/*.{js,jsx,ts,tsx}",
-		"./node_modules/react-bootstrap/**/*.js",
-		"./node_modules/react-bootstrap/**/*.css",
-	],
+	content: ["./src/**/*.{html,js}"],
 	theme: {
 		extend: {
 			keyframes: {
