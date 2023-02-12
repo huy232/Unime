@@ -1,5 +1,3 @@
-const purgeCSS = require("@fullhuman/postcss-purgecss")
-
 /** @type {import('tailwindcss').Config} */
 module.exports = {
 	important: true,
