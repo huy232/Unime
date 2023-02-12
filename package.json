@@ -42,7 +42,7 @@
     "build": "NODE_ENV=production npm run build:css && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "build:css": "postcss build -i src/index.css -o src/index.css --minify"
+    "build:css": "tailwindcss build -i src/index.css -o src/index.css --minify"
   },
   "eslintConfig": {
     "extends": [
