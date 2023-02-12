@@ -1,7 +1,11 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
 	important: true,
-	content: ["./src/**/*.{js,jsx,ts,tsx}"],
+	content: [
+		"./src/**/*.{js,jsx,ts,tsx}",
+		"./node_modules/react-bootstrap/**/*.js",
+		"./node_modules/react-bootstrap/**/*.css",
+	],
 	theme: {
 		extend: {
 			keyframes: {
@@ -21,11 +25,4 @@ module.exports = {
 		},
 	},
 	plugins: [require("@tailwindcss/line-clamp")],
-	purge: {
-		content: [
-			"./src/**/*.js",
-			"./src/**/*.css",
-			"./node_modules/react-bootstrap/**/*.js",
-		],
-	},
 }
