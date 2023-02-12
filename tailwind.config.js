@@ -22,12 +22,12 @@ module.exports = {
 			},
 		},
 	},
-	plugins: [
-		require("@tailwindcss/line-clamp"),
-		purgeCSS({
-			content: ["./src/**/*.js"],
-			css: ["./src/**/*.css"],
-			bootstrap: ["./node_modules/react-bootstrap/**/*.js"],
-		}),
-	],
+	plugins: [require("@tailwindcss/line-clamp")],
+	purge: {
+		content: [
+			"./src/**/*.js",
+			"./src/**/*.css",
+			"./node_modules/react-bootstrap/**/*.js",
+		],
+	},
 }
