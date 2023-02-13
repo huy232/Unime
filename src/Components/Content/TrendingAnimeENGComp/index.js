@@ -5,7 +5,6 @@ import "swiper/css/pagination"
 import "swiper/css/lazy"
 import { Link } from "react-router-dom"
 import { Lazy } from "swiper"
-import { COLORLIST } from "../../../constants"
 
 function TrendingAnimeENGComp({ trendingAnime }) {
 	return (
@@ -52,7 +51,7 @@ function TrendingAnimeENGComp({ trendingAnime }) {
 									<p
 										className="line-clamp-2 font-medium transition-all duration-500 ease-in-out"
 										style={{
-											color: COLORLIST[i],
+											color: anime?.color || "#fffc",
 										}}
 									>
 										{anime.title.english ||
