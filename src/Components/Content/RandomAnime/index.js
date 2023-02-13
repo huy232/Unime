@@ -6,6 +6,7 @@ import RandomAnimeRightCover from "../RandomAnimeRightCover"
 function RandomAnime({ randomAnime, done3 }) {
 	return (
 		<>
+			{console.log(randomAnime)}
 			{Object.keys(randomAnime || {}).length === 0 ? (
 				""
 			) : (

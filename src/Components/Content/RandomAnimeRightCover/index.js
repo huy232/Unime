@@ -7,28 +7,22 @@ function RandomAnimeRightCover({ randomAnime }) {
 			<div className="image-box w-[320px] mx-[auto]">
 				{!randomAnime?.cover ? (
 					<Skeleton
+						className="aspect-[0.7] h-[420px]"
 						variant="rectangular"
 						width="100%"
-						style={{ height: "320px" }}
 						animation="wave"
 						sx={{ bgcolor: "grey.900" }}
 					/>
 				) : (
-					<nav>
-						<Link
-							to={`/info/${randomAnime.slug}`}
-							aria-label={randomAnime.slug}
-						>
-							<img
-								src={randomAnime.cover}
-								className="today-cover-image w-full h-auto object-fill"
-								alt={randomAnime.name}
-								loading="lazy"
-							/>
-						</Link>
-					</nav>
+					<Link to={`/info/${randomAnime.slug}`} aria-label={randomAnime.slug}>
+						<img
+							src={randomAnime.cover}
+							className="today-cover-image w-full h-auto object-fill"
+							alt={randomAnime.name}
+							loading="lazy"
+						/>
+					</Link>
 				)}
-
 				<div className="title-box text-left flex flex-col">
 					<span className="english" style={{ color: "#f6d365" }}>
 						{randomAnime.title?.english && (

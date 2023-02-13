@@ -27,7 +27,7 @@ function CharacterDetail({ randomAnime, done3 }) {
 					/>
 				) : (
 					<>
-						{!randomAnime?.characters.length ? (
+						{!randomAnime?.characters?.length ? (
 							""
 						) : (
 							<Swiper
