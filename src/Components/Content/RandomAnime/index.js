@@ -6,10 +6,7 @@ import RandomAnimeRightCover from "../RandomAnimeRightCover"
 function RandomAnime({ randomAnime, done3 }) {
 	return (
 		<>
-			{console.log(randomAnime)}
-			{Object.keys(randomAnime || {}).length === 0 ? (
-				""
-			) : (
+			{Object.keys(randomAnime).length > 0 && (
 				<div className="today-section max-md:text-center text-right my-[42px] w-full">
 					<h1
 						className="today inline-block border-[#5a00b3] border-t-[5px] border-r-[5px] border-l-[5px] font-black select-none	"
