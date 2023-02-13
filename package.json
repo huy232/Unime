@@ -11,7 +11,7 @@
     "@fortawesome/free-regular-svg-icons": "^6.3.0",
     "@fortawesome/free-solid-svg-icons": "^6.2.1",
     "@fortawesome/react-fontawesome": "^0.2.0",
-    "@mui/material": "^5.3.1",
+    "@mui/material": "^5.11.8",
     "@supabase/auth-ui-react": "^0.2.7",
     "@supabase/supabase-js": "^2.7.1",
     "@tailwindcss/line-clamp": "^0.4.2",
