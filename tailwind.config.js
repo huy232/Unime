@@ -2,9 +2,10 @@
 module.exports = {
 	important: true,
 	content: [
-		"./src/**/*.{js,jsx,ts,tsx}",
-		"./src/Components/**/*.{js,jsx,ts,tsx}",
-		"./src/Components/Content/**/*.{js,jsx,ts,tsx}",
+		"./src/Components/**/*.{js,ts,jsx,tsx}",
+		"./src/Components/**/**/*.{js,ts,jsx,tsx}",
+		// Or if using `src` directory:
+		"./src/**/*.{js,ts,jsx,tsx}",
 	],
 	theme: {
 		extend: {
