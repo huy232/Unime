@@ -27,7 +27,7 @@ function CharacterDetail({ randomAnime, done3 }) {
 					/>
 				) : (
 					<>
-						{!randomAnime?.CharacterDetail?.length ? (
+						{!randomAnime?.characters.length ? (
 							""
 						) : (
 							<Swiper
@@ -39,41 +39,27 @@ function CharacterDetail({ randomAnime, done3 }) {
 								preloadImages={false}
 								lazy={true}
 							>
-								{randomAnime.CharacterDetail.map((character, i) => (
+								{randomAnime.characters.map((character, i) => (
 									<SwiperSlide
-										className="w-[140px] flex flex-col justify-center items-center"
+										className="w-[140px] flex flex-col justify-center items-center flex flex-col text-[#42EADDFF]"
 										key={i}
-										style={{
-											width: "auto",
-											display: "flex",
-											flexDirection: "column",
-											color: "#42EADDFF",
-											alignItems: "center",
-											justifyContent: "center",
-										}}
 									>
 										<div className="h-[120px] w-[80px]">
 											<img
 												className="w-full h-full object-fill"
-												src={
-													character?.image?.large || character?.image?.medium
-												}
+												src={character.image}
 												loading="lazy"
-												alt={
-													character?.image?.large || character?.image?.medium
-												}
+												alt={character.name.full}
 											/>
 										</div>
 										<p className="line-clamp-2 block w-full text-center">
-											{character?.name?.english || character?.name?.native}
+											{character.name.full}
 										</p>
 									</SwiperSlide>
 								))}
-								{randomAnime?.CharacterDetail?.length && (
-									<h3 className="block text-left max-md:text-center character-title color-[#fffc] font-bold select-none my-[6px]">
-										DÀN NHÂN VẬT
-									</h3>
-								)}
+								<h3 className="block text-left max-md:text-center character-title color-[#fffc] font-bold select-none my-[6px]">
+									DÀN NHÂN VẬT
+								</h3>
 							</Swiper>
 						)}
 					</>

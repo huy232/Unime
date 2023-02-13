@@ -7,23 +7,19 @@ function RandomAnimeTitle({ randomAnime }) {
 		<>
 			<Card>
 				<Card.Title className="description-title">
-					{randomAnime?.AnimeName}
+					{randomAnime.name}
 				</Card.Title>
-				{randomAnime?.BannerImg && (
+				{randomAnime?.banner && (
 					<nav>
 						<Link
-							to={`/info/${randomAnime?.Slug}`}
-							aria-label={randomAnime?.Slug}
+							to={`/info/${randomAnime.slug}`}
+							aria-label={randomAnime.slug}
 						>
 							<Card.Img
-								className="today-banner-card-image"
+								className="today-banner-card-image h-[400px] object-cover"
 								variant="bottom"
-								src={randomAnime?.BannerImg}
-								style={{
-									height: "400px",
-									objectFit: "cover",
-								}}
-								alt={randomAnime.AnimeName}
+								src={randomAnime.banner}
+								alt={randomAnime.name}
 								loading="lazy"
 							/>
 						</Link>
@@ -31,24 +27,17 @@ function RandomAnimeTitle({ randomAnime }) {
 				)}
 
 				<Card.Body className="description-card h-100 text-left">
-					<div className="line-clamp-5 h-100">{randomAnime?.Description}</div>
+					<div className="line-clamp-5 h-100">{randomAnime?.description}</div>
 				</Card.Body>
 
-				<Card.Footer
-					style={{
-						display: "flex",
-						alignItems: "center",
-						width: "100%",
-						maxWidth: "100%",
-					}}
-				>
+				<Card.Footer className="flex items-center w-full">
 					<span className="studio-text">
-						{!randomAnime?.Studio ? (
+						{!randomAnime?.studio ? (
 							<DescriptionSkeleton />
 						) : (
 							<>
 								<span style={{ fontWeight: "700" }}>Studio: </span>
-								{randomAnime?.Studio}
+								{randomAnime.studio}
 							</>
 						)}
 					</span>

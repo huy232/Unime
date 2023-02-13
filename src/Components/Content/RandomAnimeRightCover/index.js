@@ -1,12 +1,11 @@
 import Skeleton from "@mui/material/Skeleton"
 import { Link } from "react-router-dom"
-import DescriptionSkeleton from "../DescriptionSkeleton"
 
 function RandomAnimeRightCover({ randomAnime }) {
 	return (
 		<>
 			<div className="image-box w-[320px] mx-[auto]">
-				{!randomAnime?.CoverImg ? (
+				{!randomAnime?.cover ? (
 					<Skeleton
 						variant="rectangular"
 						width="100%"
@@ -17,22 +16,13 @@ function RandomAnimeRightCover({ randomAnime }) {
 				) : (
 					<nav>
 						<Link
-							to={`/info/${randomAnime?.Slug}`}
-							aria-label={randomAnime?.Slug}
+							to={`/info/${randomAnime.slug}`}
+							aria-label={randomAnime.slug}
 						>
 							<img
-								src={
-									randomAnime?.CoverImg?.large ||
-									randomAnime?.CoverImg?.medium ||
-									randomAnime?.CoverImg?.small
-								}
-								style={{
-									width: "100%",
-									height: "auto",
-									objectFit: "fill",
-								}}
-								className="today-cover-image"
-								alt={randomAnime.AnimeName}
+								src={randomAnime.cover}
+								className="today-cover-image w-full h-auto object-fill"
+								alt={randomAnime.name}
 								loading="lazy"
 							/>
 						</Link>
@@ -41,32 +31,26 @@ function RandomAnimeRightCover({ randomAnime }) {
 
 				<div className="title-box text-left flex flex-col">
 					<span className="english" style={{ color: "#f6d365" }}>
-						{!randomAnime?.AnimeAllTitle ? (
-							<DescriptionSkeleton />
-						) : (
+						{randomAnime.title?.english && (
 							<>
 								<span style={{ fontWeight: "700" }}>ANH: </span>
-								{randomAnime?.AnimeAllTitle?.english}
+								{randomAnime.title?.english}
 							</>
 						)}
 					</span>
 					<span className="native" style={{ color: "#d4fc79" }}>
-						{!randomAnime?.AnimeAllTitle ? (
-							<DescriptionSkeleton />
-						) : (
+						{randomAnime.title?.native && (
 							<>
 								<span style={{ fontWeight: "700" }}>NHẬT: </span>
-								{randomAnime?.AnimeAllTitle?.native}
+								{randomAnime.title?.native}
 							</>
 						)}
 					</span>
 					<span className="romaji" style={{ color: "#fa709a" }}>
-						{!randomAnime?.AnimeAllTitle ? (
-							<DescriptionSkeleton />
-						) : (
+						{randomAnime.title?.romaji && (
 							<>
 								<span style={{ fontWeight: "700" }}>ROMAJI: </span>
-								{randomAnime?.AnimeAllTitle?.romaji}
+								{randomAnime.title?.romaji}
 							</>
 						)}
 					</span>

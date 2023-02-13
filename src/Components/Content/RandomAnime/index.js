@@ -20,10 +20,7 @@ function RandomAnime({ randomAnime, done3 }) {
 					<div className="row w-full flex-responsive mb-[40px] mx-auto">
 						<div className="col-9 flex-mobile">
 							<RandomAnimeTitle randomAnime={randomAnime} />
-							<div
-								className="info-character-wrapper"
-								style={{ marginTop: "22px" }}
-							>
+							<div className="info-character-wrapper mt-[22px]">
 								<RandomAnimeInfo randomAnime={randomAnime} />
 								<CharacterDetail randomAnime={randomAnime} done3={done3} />
 							</div>

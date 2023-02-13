@@ -6,123 +6,60 @@ function RandomAnimeInfo({ randomAnime }) {
 		<>
 			<div className="wrapper">
 				<div
-					className="info-today"
+					className="info-today float-right flex flex-col items-end"
 					style={{
-						float: "right",
-						display: "flex",
-						flexDirection: "column",
-						alignItems: "flex-end",
 						boxShadow: "-5px 5px 0px 2px #761515",
 					}}
 				>
-					<div
-						className="episode-time"
-						style={{
-							display: "inline-flex",
-							flexDirection: "row",
-							alignItems: "center",
-						}}
-					>
-						{!randomAnime?.Duration ? (
+					<div className="episode-time inline-flex flex-row items-center">
+						{!randomAnime?.duration ? (
 							<>
 								<BsStopwatchFill />: ??? phút/ tập
 							</>
 						) : (
 							<>
-								<BsStopwatchFill />: ~{randomAnime?.Duration} phút/ tập
+								<BsStopwatchFill />: ~{randomAnime.duration} phút/ tập
 							</>
 						)}
 					</div>
-					<div
-						className="episodes-today"
-						style={{
-							display: "inline-flex",
-							flexDirection: "row",
-							alignItems: "center",
-						}}
-					>
-						{!randomAnime?.EpisodeTotal ? (
+					<div className="episodes-today inline-flex flex-row items-center">
+						{!randomAnime?.total ? (
 							<>
 								<BsTv />: ??? tập
 							</>
 						) : (
 							<>
-								<BsTv />: {randomAnime?.EpisodeTotal} tập
+								<BsTv />: {randomAnime.total} tập
 							</>
 						)}
 					</div>
 				</div>
 
 				<div
-					className="release-date"
+					className="release-date inline-block float-right clear-right color-[#000] text-right w-[150px] mt-[20px] bg-[#290149] p-[10px]"
 					style={{
-						display: "inline-block",
-						float: "right",
-						clear: "right",
-						color: "black",
-						textAlign: "right",
-						width: "150px",
-						marginTop: "20px",
-						backgroundColor: "#290149",
 						boxShadow: "-5px 5px 0px 2px #A9333A",
-						padding: "10px",
 					}}
 				>
-					{!randomAnime?.EndDate ? (
+					{!randomAnime?.end ? (
 						<DescriptionSkeleton />
 					) : (
 						<>
-							<span
-								style={{
-									width: "100%",
-									textAlign: "left",
-									backgroundColor: "#FFF8F3",
-									paddingLeft: "4.5px",
-									fontWeight: "900",
-								}}
-							>
+							<span className="w-full text-left text-[#000] bg-[#FFF8F3] pl-[4.5px] font-black">
 								KẾT THÚC
 							</span>
 							<br />
 							<span style={{ fontWeight: "700", color: "#FFE227" }}>NGÀY</span>
-							<div
-								className="day"
-								style={{
-									backgroundColor: "#3FA796",
-									color: "black",
-									marginLeft: "65%",
-									paddingRight: "4.5px",
-								}}
-							>
-								{!randomAnime?.EndDate?.day ? "??" : randomAnime?.EndDate?.day}
+							<div className="day bg-[#3FA796] text-[#000] ml-[65%] pr-[4.5px]">
+								{!randomAnime.end?.day ? "??" : randomAnime.end.day}
 							</div>
 							<span style={{ fontWeight: "700", color: "#FFE227" }}>THÁNG</span>
-							<div
-								className="month"
-								style={{
-									backgroundColor: "#8267BE",
-									color: "black",
-									marginLeft: "45%",
-									paddingRight: "4.5px",
-								}}
-							>
-								{!randomAnime?.EndDate?.month
-									? "??"
-									: randomAnime?.EndDate?.month}
+							<div className="month bg-[#8267BE] text-[#000] ml-[55%] pr-[4.5px]">
+								{!randomAnime.end?.month ? "??" : randomAnime.end.month}
 							</div>
 							<span style={{ fontWeight: "700", color: "#FFE227" }}>NĂM</span>
-							<div
-								className="year"
-								style={{
-									backgroundColor: "#781D42",
-									color: "black",
-									marginLeft: "25%",
-									paddingRight: "4.5px",
-								}}
-							>
-								{!randomAnime?.EndDate?.year
-									? "????"
-									: randomAnime?.EndDate?.year}
+							<div className="year bg-[#781D42] text-[#000] ml-[45%] pr-[4.5px]">
+								{!randomAnime.end?.year ? "????" : randomAnime.end.year}
 							</div>
 						</>
 					)}
