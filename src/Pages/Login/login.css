@@ -2,7 +2,7 @@
 	/* margin-top: -80px; */
 	width: 100%;
 	display: flex;
-	color: #fff;
+	color: #fffc;
 }
 
 .login-heading {
@@ -11,7 +11,7 @@
 }
 
 .login-go-back-btn {
-	fill: #fff;
+	fill: #fffc;
 	height: 100%;
 	width: calc(1.375rem + 1.5vw);
 	margin-right: 8px;

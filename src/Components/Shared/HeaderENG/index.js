@@ -161,7 +161,7 @@ function HeaderENG() {
 										className="hover:text-white hover:opacity-80 duration-200 ease-in-out"
 										aria-label={genre.slug}
 									>
-										<div className="">
+										<div>
 											<p
 												style={{
 													background: `${COLORLIST[i]}`,

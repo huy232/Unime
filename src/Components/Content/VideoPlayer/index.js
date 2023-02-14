@@ -110,7 +110,7 @@ function VideoPlayer({
 							style: {
 								cursor: nextEpisode ? "pointer" : "not-allowed",
 								opacity: nextEpisode ? "1" : "0.2",
-								fill: "#fff",
+								fill: "#fffc",
 								marginRight: "2px",
 							},
 							tooltip: `${
@@ -136,7 +136,7 @@ function VideoPlayer({
 							style: {
 								cursor: previousEpisode ? "pointer" : "not-allowed",
 								opacity: previousEpisode ? "1" : "0.2",
-								fill: "#fff",
+								fill: "#fffc",
 								marginRight: "2px",
 							},
 							tooltip: `${

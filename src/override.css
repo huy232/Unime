@@ -44,7 +44,7 @@ menu {
 .browse-button:active {
 	box-shadow: 0 0 9e9Q inset #0009;
 	background-color: var(--c);
-	color: #fff;
+	color: #fffc;
 }
 
 .card-title.h5 {

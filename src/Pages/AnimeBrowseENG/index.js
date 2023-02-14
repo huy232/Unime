@@ -104,7 +104,7 @@ function AnimeBrowseENG() {
 								<div className="anime-item-title h-[60px] w-full mt-[4px]">
 									<p
 										className="line-clamp-2 px-[4px] text-base font-semibold"
-										style={{ color: item?.color || "#fff" }}
+										style={{ color: item?.color || "#fffc" }}
 									>
 										{item.title?.english ||
 											item.title?.romaji ||

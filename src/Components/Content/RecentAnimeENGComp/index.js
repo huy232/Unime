@@ -59,8 +59,8 @@ function RecentAnimeENGComp({ recentAnime }) {
 								</div>
 								<div className="recent-anime-title">
 									<p
-										className="line-clamp-2 font-medium"
-										style={{ color: `${anime?.color || "#fff"}` }}
+										className="line-clamp-2 font-semibold"
+										style={{ color: `${anime?.color || "#fffc"}` }}
 									>
 										{anime.title.english ||
 											anime.title.romaji ||
@@ -76,7 +76,7 @@ function RecentAnimeENGComp({ recentAnime }) {
 			<div className="text-right mt-[24px]">
 				<Link
 					to="/eng/recent-anime"
-					className="browse-button hover:text-[#fff] font-semibold"
+					className="browse-button hover:text-[#fffc] font-semibold"
 					style={{ "--c": "#301E67" }}
 				>
 					MORE...

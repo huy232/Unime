@@ -1,9 +1,7 @@
 import React from "react"
 import { Swiper, SwiperSlide } from "swiper/react"
-import { COLORLIST } from "../../../constants"
 import "swiper/css"
 import "swiper/css/pagination"
-
 import { Link } from "react-router-dom"
 import { Lazy } from "swiper"
 
@@ -50,11 +48,9 @@ function TrendingAnimeENGComp({ trendingAnime }) {
 								</div>
 								<div className="popular-anime-title">
 									<p
-										className="line-clamp-2 font-medium transition-all duration-500 ease-in-out"
+										className="line-clamp-2 font-semibold"
 										style={{
-											color:
-												anime?.color ||
-												COLORLIST[Math.floor(Math.random() * COLORLIST.length)],
+											color: anime?.color || "#fffc",
 										}}
 									>
 										{anime.title.english ||
@@ -71,7 +67,7 @@ function TrendingAnimeENGComp({ trendingAnime }) {
 			<div className="text-right mt-[24px]">
 				<Link
 					to="/eng/trending"
-					className="browse-button hover:text-[#fff] font-semibold"
+					className="browse-button hover:text-[#fffc] font-semibold"
 					style={{ "--c": "#F94A29" }}
 					aria-label="MORE"
 				>

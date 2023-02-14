@@ -36,7 +36,7 @@ function RandomAnimeENGComp({ randomAnime }) {
 						<Link to={`/eng/info/${randomAnime.id}`}>
 							<h2
 								className="font-bold max-lg:text-center max-lg:mt-[6px]"
-								style={{ color: `${randomAnime?.color || "#fff"}` }}
+								style={{ color: `${randomAnime?.color || "#fffc"}` }}
 							>
 								{randomAnime.title.english ||
 									randomAnime.title.romaji ||

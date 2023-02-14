@@ -108,7 +108,7 @@ function AnimeBrowseMoreENG({ urlString, urlTitle }) {
 								</div>
 								<div className="anime-item-title h-[60px] w-full mt-[4px]">
 									<p
-										className="line-clamp-2 px-[4px] text-base font-semibold transition-all duration-500 ease-in-out"
+										className="line-clamp-2 px-[4px] text-base font-semibold"
 										style={{
 											color: item?.color || "#fffc",
 										}}

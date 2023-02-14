@@ -190,19 +190,6 @@ const collections = [
 	{ slug: "anime-mua-dong-2023", name: "Anime Mùa Đông 2023" },
 ]
 
-const colorSet = [
-	"#a50042",
-	"#5849e8",
-	"#f98a59",
-	"#1b92c0",
-	"#f4b89a",
-	"#b6bb47",
-	"#73fa16",
-	"#b2243d",
-	"#976155",
-	"#bda34c",
-]
-
 var colorArray = [
 	"#FF6633",
 	"#FFB399",
@@ -330,7 +317,6 @@ export const GENRES = genres
 export const ENG_GENRES = engGenres
 export const COLLECTIONS = collections
 export const PROVIDER = provider
-export const COLORSET = colorSet
 export const COLLECTION_COLOR = colorArray
 export const COLORLIST = colorList
 export const IO_CORS = ioCors

@@ -8,7 +8,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faPlayCircle } from "@fortawesome/free-solid-svg-icons"
 import { Link } from "react-router-dom"
 import { toSlug } from "../../../Utilities/toSlug"
-import { COLORSET } from "../../../constants"
 
 function TopAiringENGComp({ topAiring }) {
 	return (
@@ -43,9 +42,7 @@ function TopAiringENGComp({ topAiring }) {
 									to={`/eng/info/${item.id}`}
 									className="hover:opacity-80 duration-200 ease-in-out"
 									style={{
-										color:
-											item.color ||
-											COLORSET[Math.floor(Math.random() * COLORSET.length)],
+										color: item?.color || "font-semibold",
 										textShadow: `3px 3px 3px rgba(0,0,0,0.7)`,
 									}}
 									aria-label={item.id}

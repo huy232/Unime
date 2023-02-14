@@ -116,7 +116,7 @@ function AnimeImageSearchLayout({ searchResult, setToggle }) {
 									<h3
 										className="font-black md:text-left"
 										style={{
-											color: `${view?.color || "#fff"}`,
+											color: `${view?.color || "#fffc"}`,
 										}}
 									>
 										{view.title?.english ||
