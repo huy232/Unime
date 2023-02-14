@@ -2,7 +2,7 @@ import React from "react"
 import { Swiper, SwiperSlide } from "swiper/react"
 import "swiper/css"
 import "swiper/css/pagination"
-import "swiper/css/lazy"
+
 import { Pagination, Autoplay, Lazy } from "swiper"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faPlayCircle } from "@fortawesome/free-solid-svg-icons"

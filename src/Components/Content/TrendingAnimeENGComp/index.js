@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react"
 import { COLORLIST } from "../../../constants"
 import "swiper/css"
 import "swiper/css/pagination"
-import "swiper/css/lazy"
+
 import { Link } from "react-router-dom"
 import { Lazy } from "swiper"
 

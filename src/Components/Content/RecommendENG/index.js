@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faHeart } from "@fortawesome/free-solid-svg-icons"
 import "swiper/css"
 import "swiper/css/pagination"
-import "swiper/css/lazy"
+
 import "./recommend.css"
 import { Lazy } from "swiper"
 

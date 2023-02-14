@@ -2,7 +2,7 @@ import React from "react"
 import { Swiper, SwiperSlide } from "swiper/react"
 import "swiper/css"
 import "swiper/css/pagination"
-import "swiper/css/lazy"
+
 import { Lazy } from "swiper"
 import { Link } from "react-router-dom"
 

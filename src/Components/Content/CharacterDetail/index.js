@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react"
 import "swiper/css"
 import "swiper/css/pagination"
 import "swiper/css/navigation"
-import "swiper/css/lazy"
+
 import SwiperCore, { Lazy } from "swiper"
 SwiperCore.use([Lazy])
 
