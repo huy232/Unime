@@ -115,9 +115,7 @@ function AnimeImageSearchLayout({ searchResult, setToggle }) {
 								<div className="w-full mx-[6px]">
 									<h3
 										className="font-black md:text-left"
-										style={{
-											color: `${view?.color || "#fffc"}`,
-										}}
+										style={{ color: `${view?.color || "#fffc"}` }}
 									>
 										{view.title?.english ||
 											view.title?.romaji ||
