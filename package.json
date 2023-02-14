@@ -6,12 +6,12 @@
     "@babel/preset-env": "^7.20.2",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
-    "@fortawesome/fontawesome-svg-core": "^6.2.1",
+    "@fortawesome/fontawesome-svg-core": "^6.3.0",
     "@fortawesome/free-brands-svg-icons": "^6.2.1",
     "@fortawesome/free-regular-svg-icons": "^6.3.0",
     "@fortawesome/free-solid-svg-icons": "^6.2.1",
     "@fortawesome/react-fontawesome": "^0.2.0",
-    "@mui/material": "^5.3.1",
+    "@mui/material": "^5.11.8",
     "@supabase/auth-ui-react": "^0.2.7",
     "@supabase/supabase-js": "^2.7.1",
     "@tailwindcss/line-clamp": "^0.4.2",
@@ -31,7 +31,7 @@
     "react-loading-icons": "^1.0.8",
     "react-loading-skeleton": "^3.0.2",
     "react-loading-spin": "^2.1.9",
-    "react-player": "^2.9.0",
+    "react-player": "^2.11.2",
     "react-router-bootstrap": "^0.26.0",
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.1",
@@ -64,7 +64,7 @@
   "devDependencies": {
     "@babel/plugin-syntax-jsx": "^7.18.6",
     "@fortawesome/fontawesome-free": "^6.3.0",
-    "tailwindcss": "^3.2.4"
+    "tailwindcss": "^3.2.6"
   },
   "overrides": {
     "react-lazyload": {
