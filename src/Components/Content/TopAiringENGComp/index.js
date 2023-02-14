@@ -43,7 +43,9 @@ function TopAiringENGComp({ topAiring }) {
 									to={`/eng/info/${item.id}`}
 									className="hover:opacity-80 duration-200 ease-in-out"
 									style={{
-										color: COLORSET[i],
+										color:
+											item.color ||
+											COLORSET[Math.floor(Math.random() * COLORSET.length)],
 										textShadow: `3px 3px 3px rgba(0,0,0,0.7)`,
 									}}
 									aria-label={item.id}

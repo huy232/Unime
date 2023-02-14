@@ -1,5 +1,6 @@
 import React from "react"
 import { Swiper, SwiperSlide } from "swiper/react"
+import { COLORLIST } from "../../../constants"
 import "swiper/css"
 import "swiper/css/pagination"
 import "swiper/css/lazy"
@@ -51,7 +52,9 @@ function TrendingAnimeENGComp({ trendingAnime }) {
 									<p
 										className="line-clamp-2 font-medium transition-all duration-500 ease-in-out"
 										style={{
-											color: anime?.color || "#fffc",
+											color:
+												anime?.color ||
+												COLORLIST[Math.floor(Math.random() * COLORLIST.length)],
 										}}
 									>
 										{anime.title.english ||

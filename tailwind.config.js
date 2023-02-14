@@ -2,9 +2,6 @@
 module.exports = {
 	important: true,
 	content: [
-		"./src/Components/**/*.{js,ts,jsx,tsx}",
-		"./src/Components/**/**/*.{js,ts,jsx,tsx}",
-		// Or if using `src` directory:
 		"./src/**/*.{js,ts,jsx,tsx}",
 	],
 	theme: {
