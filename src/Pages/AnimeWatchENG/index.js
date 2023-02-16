@@ -72,27 +72,29 @@ function AnimeWatchENG() {
 					cancelToken: source.token,
 				})
 				.then((response) => {
-					setVideoUrl(response.data.data.sources)
-					if (response.data.data.subtitles) {
-						let subs = response.data.data.subtitles.filter(
-							(option) => option.lang !== "Thumbnails"
-						)
-						setSubtitles(
-							subs.map((sub, i) => ({
-								html: `${i}. ${sub.lang}`,
-								url: sub.url,
-							}))
-						)
-						setThumbnail(
-							response.data.data.subtitles.find(
-								(sub) => sub.lang === "Thumbnails"
+					if (response.data.success !== false) {
+						setVideoUrl(response.data.data.sources)
+						if (response.data.data.subtitles) {
+							let subs = response.data.data.subtitles.filter(
+								(option) => option.lang !== "Thumbnails"
 							)
-						)
+							setSubtitles(
+								subs.map((sub, i) => ({
+									html: `${i}. ${sub.lang}`,
+									url: sub.url,
+								}))
+							)
+							setThumbnail(
+								response.data.data.subtitles.find(
+									(sub) => sub.lang === "Thumbnails"
+								)
+							)
+						}
+						if (response.data.data?.intro) {
+							setIntro(response.data.data.intro)
+						}
+						setVideoLoading(false)
 					}
-					if (response.data.data?.intro) {
-						setIntro(response.data.data.intro)
-					}
-					setVideoLoading(false)
 				})
 				.catch((thrown) => {
 					if (axios.isCancel(thrown)) return

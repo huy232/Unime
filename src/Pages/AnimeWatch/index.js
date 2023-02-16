@@ -61,21 +61,23 @@ function AnimeWatch({ instance }) {
 						cancelToken: source.token,
 					})
 					.then(async (response) => {
-						if (typeof response.data.data?.videoSource !== "undefined") {
-							setVideoUrl([
-								{
-									default: true,
-									url: response.data.data.videoSource,
-									html: response.data.data.quality,
-								},
-							])
-						} else {
-							setVideoEmbed(response.data.data.embedSource)
+						if (response.data.success !== false) {
+							if (typeof response.data.data?.videoSource !== "undefined") {
+								setVideoUrl([
+									{
+										default: true,
+										url: response.data.data.videoSource,
+										html: response.data.data.quality,
+									},
+								])
+							} else {
+								setVideoEmbed(response.data.data.embedSource)
+							}
+							const watchFilm = response.data.data.film_name
+							const watchEpisodeName = response.data.data.full_name
+							setWatchDetail(watchFilm + ` (${watchEpisodeName})`)
+							setVideoLoading(false)
 						}
-						const watchFilm = response.data.data.film_name
-						const watchEpisodeName = response.data.data.full_name
-						setWatchDetail(watchFilm + ` (${watchEpisodeName})`)
-						setVideoLoading(false)
 					})
 					.catch((thrown) => {
 						if (axios.isCancel(thrown)) return
@@ -90,16 +92,18 @@ function AnimeWatch({ instance }) {
 				await instance
 					.get(`/specialanime/${mainId}/${numSpecialId}`)
 					.then((res) => {
-						const watchFilm = res.data.data.film_name
-						const watchEpisodeName = res.data.data.full_name
-						setWatchDetail(watchFilm + ` (${watchEpisodeName})`)
-						setVideoUrl([
-							{
-								url: res.data.data.videoSource,
-								html: res.data.data?.quality ? res.data.data.quality : "",
-							},
-						])
-						setVideoLoading(false)
+						if (res.data.success !== false) {
+							const watchFilm = res.data.data.film_name
+							const watchEpisodeName = res.data.data.full_name
+							setWatchDetail(watchFilm + ` (${watchEpisodeName})`)
+							setVideoUrl([
+								{
+									url: res.data.data.videoSource,
+									html: res.data.data?.quality ? res.data.data.quality : "",
+								},
+							])
+							setVideoLoading(false)
+						}
 					})
 					.catch((thrown) => {
 						if (axios.isCancel(thrown)) return
