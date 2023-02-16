@@ -115,6 +115,33 @@ export default function Player({
 						},
 					},
 				],
+				layers: [
+					{
+						name: "skip",
+						html: '<button class="rounded-[30px] hover:opacity-80 hover:text-[#000] duration-500 ease-in-out bg-[#FF0000] p-[8px] font-black text-lg text-[#fffc] border-[2px] border-solid border-[#422800]" style="box-shadow: #422800 4px 4px 0 0; transform: translate(2px, 2px);" type="button">SKIP INTRO</button>',
+						style: {
+							display: "none",
+							position: "absolute",
+							right: "1rem",
+							top: "1rem",
+						},
+						click() {
+							this.currentTime = intro[1]?.time
+						},
+						mounted(button) {
+							this.on("video:timeupdate", () => {
+								if (
+									this.currentTime >= intro[0]?.time &&
+									this.currentTime <= intro[1]?.time
+								) {
+									button.style.display = "block"
+								} else {
+									button.style.display = "none"
+								}
+							})
+						},
+					},
+				],
 				container: artRef.current,
 			})
 			return () => {
@@ -123,7 +150,7 @@ export default function Player({
 				}
 			}
 		}
-	}, [option, selectedSub, subtitles, videoUrl])
+	}, [option, selectedSub, subtitles, videoUrl, intro])
 
 	return (
 		<div

@@ -7,6 +7,8 @@ import { BsFillArrowLeftSquareFill } from "react-icons/bs"
 import "./animewatch.css"
 import VideoPlayer from "../../Components/Content/VideoPlayer"
 import FilmLoadingRequest from "../../Components/Content/LoadingRequest/FilmLoadingRequest"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faHouse } from "@fortawesome/free-solid-svg-icons"
 
 function AnimeWatch({ instance }) {
 	const { anime } = useParams()
@@ -150,6 +152,22 @@ function AnimeWatch({ instance }) {
 										DANH SÁCH TẬP PHIM
 									</h5>
 								</div>
+								<Link
+									to={`/`}
+									className="group hover:opacity-80 duration-200 ease-in-out"
+									aria-label="TRANG CHỦ"
+								>
+									<button
+										className="bg-[#000] border-none flex items-center justify-center"
+										id="back-to-home-vi-btn"
+										aria-label="TRANG CHỦ"
+									>
+										<FontAwesomeIcon
+											icon={faHouse}
+											style={{ color: "white" }}
+										/>
+									</button>
+								</Link>
 							</div>
 						</div>
 						<div className="lg:h-[calc(var(--vh,1vh)*100-60px)] overflow-y-scroll bg-[#222] h-[calc(var(--vh,1vh)*50-80px)]">

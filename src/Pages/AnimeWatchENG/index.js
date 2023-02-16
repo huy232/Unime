@@ -5,6 +5,8 @@ import useDocumentTitle from "../../Hooks/useDocumentTitle"
 import { BsFillArrowLeftSquareFill } from "react-icons/bs"
 import { Link } from "react-router-dom"
 import { API } from "../../constants"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faHouse } from "@fortawesome/free-solid-svg-icons"
 import VideoPlayer from "../../Components/Content/VideoPlayer"
 import FilmLoadingRequest from "../../Components/Content/LoadingRequest/FilmLoadingRequest"
 
@@ -148,6 +150,19 @@ function AnimeWatchENG() {
 								EPISODE LIST
 							</h5>
 						</div>
+						<Link
+							to={`/eng`}
+							className="group hover:opacity-80 duration-200 ease-in-out"
+							aria-label="HOME"
+						>
+							<button
+								className="bg-[#000] border-none flex items-center justify-center"
+								id="back-to-home-eng-btn"
+								aria-label="HOME"
+							>
+								<FontAwesomeIcon icon={faHouse} style={{ color: "white" }} />
+							</button>
+						</Link>
 					</div>
 				</div>
 				<div className="lg:h-[calc(var(--vh,1vh)*100-60px)] overflow-y-scroll bg-[#222] h-[calc(var(--vh,1vh)*50-80px)]">
