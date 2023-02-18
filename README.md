@@ -15,27 +15,26 @@ Before I learned HTML/CSS/Javascript to become a web developer, I'd always dream
 - [SHOWCASE](#showcase)
 - [WHAT NEED TO IMPROVE](#improve)
 - [SOURCES](#sources)
+- [TODO](#todo)
 - [INSTALLATION](#installation)
 
-## Technologies
+## TECHNOLOGIES AND SOME DEPENDENCIES I USE
 - ReactJS
 - HTML
 - CSS
 - Javascript
 - Bootstrap
-- Heroku
 - Vercel
 - React Router DOM
 - Swiper
 - AXIOS
 - MUI
-- React Icons
 - etc.
 
 *RECENTLY ADDED*:
 - TailwindCSS
 
-## Showcase
+## SHOWCASE
 <p align="center">
 <h3>VIETNAMESE HOME PAGE</h3>
 </p>
@@ -93,7 +92,7 @@ Before I learned HTML/CSS/Javascript to become a web developer, I'd always dream
 
 Everything is responsive, shrink down the web page or using it on device for further more detail.
 
-## Improve
+## IMPROVE
 - A better way for writing these kinds of projects in the future.
 - Write a better CSS, since it's my first-hand project, I did mess up the global CSS which lead me to override a lot of CSS.
 - Apply more ways and technologies needed (like Redux, useMemo, useRef, etc. for more flexibility in handling data)
@@ -106,7 +105,21 @@ Everything is responsive, shrink down the web page or using it on device for fur
 *Recently added:*
 - [ZoroAnime](https://zoro.to/)
 - [GogoAnime](https://ww4.gogoanimes.org/)
-# Installation
+
+# TODO:
+- :white_check_mark: ~~VI and ENG section~~
+- :white_check_mark: ~~Search anime by image~~
+- :white_check_mark: ~~Watch anime~~
+- :white_check_mark: ~~Anilist mapping~~
+- :white_check_mark: ~~Skip intro, change episode~~
+- :white_check_mark: ~~Responsive~~
+- :white_check_mark: ~~Social login~~
+- :black_square_button: Comments
+- :black_square_button: Watched history
+- :black_square_button: User profile
+- Maybe more features if I have time...
+
+# INSTALLATION
 - Simply use `git clone https://github.com/huy232/mirai.git` to clone my project to your local.
 - Use `git i` to install all needed dependencies in this project.
 - Place your own .env - environment file here:
