@@ -11,12 +11,12 @@ The site: [UNIME](https://unime.vercel.app/)
 Before I learned HTML/CSS/Javascript to become a web developer, I'd always dreamt of creating an anime page for myself to watch without ads, which drove me to learn the necessary technology and tools required for this first "from scratch" project.
 
 ## Table of contents
-- [TECHNOLOGIES](#technologies)
-- [SHOWCASE](#showcase)
-- [WHAT NEED TO IMPROVE](#improve)
-- [SOURCES](#sources)
-- [TODO](#todo)
-- [INSTALLATION](#installation)
+- [TECHNOLOGIES](#TECHNOLOGIES-AND-SOME-DEPENDENCIES-I-USE)
+- [SHOWCASE](#SHOWCASE)
+- [WHAT NEED TO IMPROVE](#IMPROVE)
+- [SOURCES](#SOURCES)
+- [TODO](#TODO)
+- [INSTALLATION](#INSTALLATION)
 
 ## TECHNOLOGIES AND SOME DEPENDENCIES I USE
 - ReactJS
