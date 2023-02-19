@@ -32,7 +32,7 @@ function CharacterDetail({ randomAnime, done3 }) {
 						) : (
 							<Swiper
 								slidesPerView="auto"
-								spaceBetween={10}
+								spaceBetween={30}
 								loop={true}
 								grabCursor={true}
 								className="character-slider"
@@ -44,9 +44,9 @@ function CharacterDetail({ randomAnime, done3 }) {
 										className="w-[140px] flex flex-col justify-center items-center flex flex-col text-[#42EADDFF]"
 										key={i}
 									>
-										<div className="h-[120px] w-[80px]">
+										<div className="">
 											<img
-												className="w-full h-full object-fill"
+												className="aspect-[1/1] object-fill"
 												src={character.image}
 												loading="lazy"
 												alt={character.name.full}

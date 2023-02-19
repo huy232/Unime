@@ -244,7 +244,9 @@
 .card-img-bottom.today-banner-card-image {
 	border-top-left-radius: 18px;
 	border-top-right-radius: 18px;
-	aspect-ratio: auto;
+	aspect-ratio: 3/1;
+	-o-object-position: center;
+	object-position: center;
 }
 
 .col-3 {

@@ -4,10 +4,10 @@ import { Link } from "react-router-dom"
 function RandomAnimeRightCover({ randomAnime }) {
 	return (
 		<>
-			<div className="image-box w-[320px] mx-[auto]">
+			<div className="image-box mx-4">
 				{!randomAnime?.cover ? (
 					<Skeleton
-						className="aspect-[0.7] h-[420px]"
+						className="aspect-[0.7]"
 						variant="rectangular"
 						width="100%"
 						animation="wave"
@@ -17,7 +17,7 @@ function RandomAnimeRightCover({ randomAnime }) {
 					<Link to={`/info/${randomAnime.slug}`} aria-label={randomAnime.slug}>
 						<img
 							src={randomAnime.cover}
-							className="today-cover-image w-full h-auto object-fill"
+							className="today-cover-image w-full h-auto object-fill aspect-[0.7]"
 							alt={randomAnime.name}
 							loading="lazy"
 						/>

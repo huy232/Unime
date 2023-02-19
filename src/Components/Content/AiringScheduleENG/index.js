@@ -3,7 +3,7 @@ import AiringScheduleENGComp from "../AiringScheduleENGComp"
 function AiringScheduleENG({ loadingAiringSchedule, airingSchedule }) {
 	return (
 		<>
-			{!loadingAiringSchedule && (
+			{!loadingAiringSchedule && airingSchedule.length > 0 && (
 				<AiringScheduleENGComp airingSchedule={airingSchedule} />
 			)}
 		</>
