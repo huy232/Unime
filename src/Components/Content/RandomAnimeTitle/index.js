@@ -16,7 +16,7 @@ function RandomAnimeTitle({ randomAnime }) {
 							aria-label={randomAnime.slug}
 						>
 							<Card.Img
-								className="today-banner-card-image h-[400px] object-cover"
+								className="today-banner-card-image object-cover"
 								variant="bottom"
 								src={randomAnime.banner}
 								alt={randomAnime.name}

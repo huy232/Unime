@@ -51,5 +51,9 @@ menu {
 	font-size: 1rem;
 }
 
+.card-img-top {
+	aspect-ratio: 16/9;
+}
+
 @media screen and (max-width: 1024px) {
 }

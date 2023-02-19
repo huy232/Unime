@@ -11,6 +11,10 @@ function AnimeRandomQuote() {
 		const source = CancelToken.source()
 
 		const getRandomQuote = () => setLoading(true)
+		// axios
+		// .get(`${API}/quote`, {
+		// 	cancelToken: source.token,
+		// })
 		axios
 			.get("https://animechan.vercel.app/api/random", {
 				cancelToken: source.token,
