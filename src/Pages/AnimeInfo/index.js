@@ -10,6 +10,7 @@ import InfoEpisodeHolder from "../../Components/Content/InfoEpisodeHolder"
 import InfoSpecialEpisodeList from "../../Components/Content/InfoSpecialEpisodeList"
 import InfoAnimeEpisodeHandle from "../../Components/Content/InfoAnimeEpisodeHandle"
 import "./animeinfo.css"
+import { MAINSITE } from "../../constants"
 
 function AnimeInfo({ instance }) {
 	const { anime } = useParams()
@@ -39,7 +40,7 @@ function AnimeInfo({ instance }) {
 							"https://www.youtube.com/watch?v=",
 							"https://www.youtube-nocookie.com/embed/"
 						)
-						const myDomain = "&origin=https://unime.vercel.app/"
+						const myDomain = `&origin=${MAINSITE}`
 
 						const joinUrl = newUrl + myDomain
 						setVideoUrl(joinUrl)

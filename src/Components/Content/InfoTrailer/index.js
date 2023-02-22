@@ -4,7 +4,7 @@ function InfoTrailer({ videoUrl }) {
 	return (
 		<>
 			<div className="box-anime-film-trailer" style={{ marginTop: "40px" }}>
-				{videoUrl ? (
+				{videoUrl && (
 					<>
 						<h3>XEM THỬ NẾU BẠN CHƯA RÕ</h3>
 						<div className="youtube-link">
@@ -14,8 +14,6 @@ function InfoTrailer({ videoUrl }) {
 							/>
 						</div>
 					</>
-				) : (
-					""
 				)}
 			</div>
 		</>

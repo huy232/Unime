@@ -1,5 +1,5 @@
 import React from "react"
-import { ENG_GENRES, PROVIDER } from "../../../constants"
+import { ENG_GENRES, MAINSITE, PROVIDER } from "../../../constants"
 import { Link } from "react-router-dom"
 import ReactPlayer from "react-player"
 import AnimeInfoEpisodeHolderENG from "../AnimeInfoEpisodeHolderENG"
@@ -131,7 +131,7 @@ function AnimeInfoDetailENG({
 							<h3 className="max-lg:text-center">IN CASE YOU INTERESTED</h3>
 							<div className="youtube-link">
 								<ReactPlayer
-									url={`https://www.youtube.com/watch?v=${info.trailer.id}`}
+									url={`https://www.youtube-nocookie.com/embed/${info.trailer.id}&origin=${MAINSITE}`}
 									controls={true}
 								/>
 							</div>
