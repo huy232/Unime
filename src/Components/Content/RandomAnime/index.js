@@ -15,7 +15,7 @@ function RandomAnime({ randomAnime, done3 }) {
 						CÓ THỂ BẠN SẼ THÍCH ĐÓ
 					</h1>
 					<div className="clearfix"></div>
-					<div className="row w-full flex-responsive mb-[40px] mx-auto">
+					<div className="row w-full flex-responsive mb-[40px] mx-auto px-4 md:px-12 lg:px-20 xl:px-28 2xl:px-36">
 						<div className="col-9 flex-mobile">
 							<RandomAnimeTitle randomAnime={randomAnime} />
 							<div className="info-character-wrapper mt-[22px]">

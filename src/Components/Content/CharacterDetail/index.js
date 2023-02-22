@@ -41,18 +41,18 @@ function CharacterDetail({ randomAnime, done3 }) {
 							>
 								{randomAnime.characters.map((character, i) => (
 									<SwiperSlide
-										className="w-[140px] flex flex-col justify-center items-center flex flex-col text-[#42EADDFF]"
+										className="w-[100px] flex flex-col justify-center items-center flex flex-col text-[#42EADDFF]"
 										key={i}
 									>
-										<div className="">
+										<div className="h-full">
 											<img
-												className="aspect-[1/1] object-fill"
+												className="aspect-[2/3] object-fill"
 												src={character.image}
 												loading="lazy"
 												alt={character.name.full}
 											/>
 										</div>
-										<p className="line-clamp-2 block w-full text-center">
+										<p className="line-clamp-2 block w-full text-left">
 											{character.name.full}
 										</p>
 									</SwiperSlide>

@@ -22,7 +22,7 @@ function AnimeCollectionCard() {
 					}}
 					spaceBetween={10}
 					modules={[Grid]}
-					className="collectionSwiper h-100 w-[95%]"
+					className="collectionSwiper h-100 px-4 md:px-12 lg:px-20 xl:px-28 2xl:px-36"
 				>
 					{COLLECTIONS.map((collection, i) => (
 						<SwiperSlide
