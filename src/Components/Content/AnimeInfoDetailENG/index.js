@@ -7,6 +7,7 @@ import RecommendENG from "../RecommendENG"
 import { Skeleton } from "@mui/material"
 import "./animeinfodetail.css"
 import { duration } from "../../../Utilities/duration"
+import CharacterList from "../CharacterList"
 
 function AnimeInfoDetailENG({
 	loading,
@@ -135,6 +136,9 @@ function AnimeInfoDetailENG({
 								/>
 							</div>
 						</div>
+					)}
+					{info.characters.length > 0 && (
+						<CharacterList characters={info.characters} />
 					)}
 					<div className="mt-[18px] mb-[8px]">
 						<p className="inline-block text-white/50 border-l-[6px] border-white/70 px-[6px] bg-white/10 rounded-r">
