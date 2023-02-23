@@ -26,18 +26,9 @@ function AnimeInfoBoxENG({ loading, info }) {
 				)}
 			</div>
 			<div className="text-right [&>*]:mx-[60px] [&>*]:my-[0] max-lg:text-center">
-				{loading ? (
-					<Skeleton
-						variant="rectangular"
-						width="auto"
-						height="calc(var(--vh, 1vh) * 40)"
-						animation="wave"
-						sx={{ bgcolor: "grey.900" }}
-						style={{ marginLeft: "auto", marginRight: "auto" }}
-					/>
-				) : (
+				{!loading && (
 					<>
-						{info?.type && (
+						{info.type && (
 							<div>
 								<h5 className="font-black my-[2px] p-[6px] bg-[#282828]/[0.8] inline-block rounded">
 									FORMAT
@@ -45,7 +36,7 @@ function AnimeInfoBoxENG({ loading, info }) {
 								<p className="mb-[6px]">{info?.type}</p>
 							</div>
 						)}
-						{info?.title && (
+						{info.title && (
 							<div>
 								<h5 className="font-black my-[2px] p-[6px] bg-[#282828]/[0.8] inline-block rounded">
 									TITLE
@@ -70,7 +61,7 @@ function AnimeInfoBoxENG({ loading, info }) {
 								)}
 							</div>
 						)}
-						{info?.status && (
+						{info.status && (
 							<div>
 								<h5 className="font-black my-[2px] p-[6px] bg-[#282828]/[0.8] inline-block rounded">
 									STATUS
@@ -78,7 +69,7 @@ function AnimeInfoBoxENG({ loading, info }) {
 								<p className="mb-[6px]">{info?.status}</p>
 							</div>
 						)}
-						{info?.popularity && (
+						{!!info.popularity && (
 							<div>
 								<h5 className="font-black my-[2px] p-[6px] bg-[#282828]/[0.8] inline-block rounded">
 									POPULARITY
@@ -86,7 +77,7 @@ function AnimeInfoBoxENG({ loading, info }) {
 								<p className="mb-[6px]">{info?.popularity.toLocaleString()}</p>
 							</div>
 						)}
-						{info?.rating && (
+						{info.rating && (
 							<div>
 								<h5 className="font-black my-[2px] p-[6px] bg-[#282828]/[0.8] inline-block rounded">
 									RATING
@@ -94,7 +85,7 @@ function AnimeInfoBoxENG({ loading, info }) {
 								<p className="mb-[6px]">{info?.rating}%</p>
 							</div>
 						)}
-						{info?.subOrDub && (
+						{info.subOrDub && (
 							<div>
 								<h5 className="font-black my-[2px] p-[6px] bg-[#282828]/[0.8] inline-block rounded">
 									VOICE
@@ -102,7 +93,7 @@ function AnimeInfoBoxENG({ loading, info }) {
 								<p className="uppercase mb-[6px]">{info?.subOrDub}</p>
 							</div>
 						)}
-						{info?.season && (
+						{info.season && (
 							<div>
 								<h5 className="font-black my-[2px] p-[6px] bg-[#282828]/[0.8] inline-block rounded">
 									SEASON
@@ -110,7 +101,7 @@ function AnimeInfoBoxENG({ loading, info }) {
 								<p className="uppercase mb-[6px]">{info?.season}</p>
 							</div>
 						)}
-						{info?.studios && (
+						{info.studios && (
 							<>
 								<div>
 									<h5 className="font-black my-[2px] p-[6px] bg-[#282828]/[0.8] inline-block rounded">
