@@ -46,7 +46,9 @@ export default function Player({
 					const hls = new Hls()
 					hls.loadSource(url)
 					hls.attachMedia(video)
-
+					hls.once(Hls.Events.MANIFEST_PARSED, function (event, data) {
+						hls.startLevel = -1
+					})
 					// optional
 					art.hls = hls
 					art.once("url", () => hls.destroy())
@@ -70,9 +72,6 @@ export default function Player({
 				url: videoSource || videoUrl[0].url,
 				plugins: [
 					artplayerPluginHlsQuality({
-						// Show quality in control
-						// control: true,
-						// Show quality in setting
 						setting: true,
 						title: "Quality",
 						auto: "Auto",
