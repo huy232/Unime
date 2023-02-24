@@ -47,7 +47,6 @@ export default function Player({
 					hls.loadSource(url)
 					hls.attachMedia(video)
 					hls.once(Hls.Events.MANIFEST_PARSED, function (event, data) {
-						let quality = hls.bandwidthEstimate
 						hls.startLevel = -1
 					})
 					// optional
