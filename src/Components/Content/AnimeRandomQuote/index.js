@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import axios from "axios"
 import quotes from "../../../Utilities/quotes.json"
+import { API } from "../../../constants"
 
 function AnimeRandomQuote() {
 	const [quoteData, setQuoteData] = useState({})
@@ -11,16 +12,17 @@ function AnimeRandomQuote() {
 		const source = CancelToken.source()
 
 		const getRandomQuote = () => setLoading(true)
-		// axios
-		// .get(`${API}/quote`, {
-		// 	cancelToken: source.token,
-		// })
 		axios
-			.get("https://animechan.vercel.app/api/random", {
+			.get(`${API}/quote`, {
 				cancelToken: source.token,
 			})
 			.then((data) => {
-				setQuoteData(data.data)
+				if (data.data.success === true) {
+					setQuoteData(data.data.data)
+				} else {
+					const randomQuote = quotes[Math.floor(Math.random() * quotes.length)]
+					setQuoteData(randomQuote)
+				}
 				setLoading(false)
 			})
 			.catch((thrown) => {
@@ -37,9 +39,7 @@ function AnimeRandomQuote() {
 
 	return (
 		<div className="quote-container max-sm:hidden">
-			{loading ? (
-				""
-			) : (
+			{!loading && (
 				<>
 					<h2 className="quote-heading">QUOTE:</h2>
 					<div className="quote-holder">
