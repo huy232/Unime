@@ -46,19 +46,21 @@ function AnimeInfoEpisodeHolderENG({
 					.get(`${API}/eng/episode-list/${animeId}&${provider}`)
 					.then((data) => {
 						const episodeListChunk = []
-						while (data.data.data.length) {
-							episodeListChunk.push(data.data.data.splice(0, 12))
+						if (data.data.success) {
+							while (data.data.data.length) {
+								episodeListChunk.push(data.data.data.splice(0, 12))
+							}
 						}
-
 						setEpisodeList(episodeListChunk)
 						setSelectedChunk(0)
 						setLoadingEpisodeList(false)
 					})
 					.catch((thrown) => {
+						setEpisodeList([])
+						setSelectedChunk(0)
 						if (axios.isCancel(thrown)) return
 					})
 			}
-
 			getEpisode()
 			return () => {
 				source.cancel()
