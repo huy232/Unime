@@ -86,7 +86,6 @@ function AnimeInfoEpisodeHolderENG({
 			} else {
 				setToggleButton(false)
 			}
-
 			swiper.setProgress(progress, speed)
 		}
 	}
