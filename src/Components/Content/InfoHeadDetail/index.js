@@ -23,32 +23,25 @@ function InfoHeadDetail({ info, loading }) {
 			<div className="anime-title">
 				<h2
 					className="font-black"
-					style={{ color: `${info?.animeInfo?.CoverImg?.color}` }}
+					style={{ color: `${info.coverImage?.color}` }}
 				>
 					{loading ? <DescriptionSkeleton /> : info?.name}
 				</h2>
 			</div>
 			<div className="description">
-				<p className="anime-description-paragraph">
-					{loading ? (
-						<DescriptionSkeleton />
-					) : !info?.description ? (
-						""
-					) : (
-						`${info?.description}`
-					)}
-				</p>
+				{loading ? (
+					<DescriptionSkeleton />
+				) : (
+					<p className="anime-description-paragraph">{info?.description}</p>
+				)}
 			</div>
-
-			{/* CATEGORY */}
-
 			{resultCategory?.length > 0 && (
 				<p className="anime-type-paragraph">Thể loại:</p>
 			)}
-			<div className="anime-type-category">
+			<div className="anime-type-category flex-wrap">
 				{!loading &&
 					resultCategory.map((genre) => (
-						<div className="category-genre" key={genre.slug}>
+						<div className="category-genre m-[8px]" key={genre.slug}>
 							<Link
 								to={`/anime/${genre.slug}`}
 								className="anime__slug"
@@ -59,15 +52,13 @@ function InfoHeadDetail({ info, loading }) {
 						</div>
 					))}
 			</div>
-			{/* COLLECTIONs */}
-
 			{resultCollection?.length > 0 && (
 				<p className="anime-type-paragraph">Bộ sưu tập:</p>
 			)}
-			<div className="anime-type-collection">
+			<div className="anime-type-collection flex-wrap">
 				{!loading &&
 					resultCollection.map((collection) => (
-						<div className="category-genre" key={collection.slug}>
+						<div className="category-genre m-[8px]" key={collection.slug}>
 							<Link
 								to={`/collection/${collection.slug}`}
 								className="anime__slug"
@@ -80,19 +71,19 @@ function InfoHeadDetail({ info, loading }) {
 
 			<div className="bottom-detail" style={{ marginTop: "50px" }}>
 				<div className="country">
-					<h6>QUỐC GIA</h6>{" "}
+					<h6>QUỐC GIA</h6>
 					<div className="country-element">
-						{info?.animeInfo?.Country && `${info?.animeInfo?.Country}`}
+						{info?.countryOfOrigin && `${info.countryOfOrigin}`}
 					</div>
 				</div>
 				<div className="score">
-					<h6>ĐIỂM SỐ</h6>{" "}
-					<div className="score-element">{info?.animeInfo?.Score}</div>
+					<h6>ĐIỂM SỐ</h6>
+					<div className="score-element">{info?.averageScore}</div>
 				</div>
 				<div className="duration">
 					<h6>THỜI LƯỢNG</h6>
 					<div className="duration-element">
-						{info?.animeInfo?.Duration && `${info?.animeInfo?.Duration} phút`}
+						{info?.duration && `${info.duration} phút`}
 					</div>
 				</div>
 				<div className="views">
@@ -102,12 +93,7 @@ function InfoHeadDetail({ info, loading }) {
 				<div className="release-date">
 					<h6>KHỞI CHIẾU</h6>
 					<div className="release-date-element">
-						{info?.animeInfo?.StartDate?.day &&
-							`Ngày ${info?.animeInfo?.StartDate?.day} `}
-						{info?.animeInfo?.StartDate?.month &&
-							`tháng ${info?.animeInfo?.StartDate?.month} `}
-						{info?.animeInfo?.StartDate?.year &&
-							`năm ${info?.animeInfo?.StartDate?.year}`}
+						{info?.startDate?.year && info.startDate.year}
 					</div>
 				</div>
 			</div>

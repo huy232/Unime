@@ -10,13 +10,11 @@ import InfoEpisodeHolder from "../../Components/Content/InfoEpisodeHolder"
 import InfoSpecialEpisodeList from "../../Components/Content/InfoSpecialEpisodeList"
 import InfoAnimeEpisodeHandle from "../../Components/Content/InfoAnimeEpisodeHandle"
 import "./animeinfo.css"
-import { MAINSITE } from "../../constants"
 
 function AnimeInfo({ instance }) {
 	const { anime } = useParams()
 
 	const [info, setInfo] = useState({})
-	const [videoUrl, setVideoUrl] = useState("")
 	const [loading, setLoading] = useState(true)
 	const [episodeList, setEpisodeList] = useState([])
 	const [specialEpisodeList, setSpecialEpisodeList] = useState([])
@@ -33,32 +31,19 @@ function AnimeInfo({ instance }) {
 					cancelToken: source.token,
 				})
 				.then((response) => {
-					setInfo(response.data.data)
-					if (response.data.data?.animeInfo?.Trailer) {
-						const url = response.data.data?.animeInfo?.Trailer
-						const newUrl = url.replace(
-							"https://www.youtube.com/watch?v=",
-							"https://www.youtube-nocookie.com/embed/"
-						)
-						const myDomain = `&origin=${MAINSITE}`
-
-						const joinUrl = newUrl + myDomain
-						setVideoUrl(joinUrl)
-					}
-
+					let info = response.data.data
+					setInfo(info)
 					const episodeListChunk = []
 					const specialEpisodeListChunk = []
-					while (response.data.data.episodes.length) {
-						episodeListChunk.push(response.data.data.episodes.splice(0, 12))
+					while (info.episodes.length) {
+						episodeListChunk.push(info.episodes.splice(0, 12))
 					}
-					if (response.data.data?.special_episodes.length > 0) {
-						while (response.data.data.special_episodes.length) {
-							specialEpisodeListChunk.push(
-								response.data.data.special_episodes.splice(0, 12)
-							)
+					if (info.special_episodes.length > 0) {
+						while (info.special_episodes.length) {
+							specialEpisodeListChunk.push(info.special_episodes.splice(0, 12))
 						}
 					}
-					document.title = response.data.data?.name
+					document.title = info?.name
 					setEpisodeList(episodeListChunk)
 					setSpecialEpisodeList(specialEpisodeListChunk)
 					window.scrollTo(0, 0)
@@ -94,15 +79,9 @@ function AnimeInfo({ instance }) {
 					) : (
 						<>
 							<img
-								src={info?.animeInfo?.BannerImg}
+								src={info?.bannerImage}
 								className="banner-info-image"
-								alt={info?.name}
-								style={
-									info?.animeInfo?.BannerImg === null ||
-									typeof info?.animeInfo?.BannerImg === "undefined"
-										? { minHeight: "auto" }
-										: {}
-								}
+								alt={info.name}
 								loading="lazy"
 							/>
 							<div className="banner-overlay"></div>
@@ -110,21 +89,12 @@ function AnimeInfo({ instance }) {
 					)}
 				</div>
 			</div>
-
 			<div className="box-info" style={{ position: "relative" }}>
-				<div
-					className="info-box"
-					style={{
-						display: "flex",
-						flexDirection: "row",
-						width: "100%",
-						justifyContent: "space-between",
-					}}
-				>
+				<div className="info-box flex flex-col lg:flex-row w-full justify-between">
 					<InfoBox info={info} loading={loading} />
 					<div className="info-detail ">
 						<InfoHeadDetail info={info} loading={loading} />
-						<InfoTrailer videoUrl={videoUrl} />
+						<InfoTrailer trailerId={info?.trailer?.id} />
 						<InfoEpisodeHolder
 							episodeList={episodeList}
 							selectedChunk={selectedChunk}
@@ -139,7 +109,7 @@ function AnimeInfo({ instance }) {
 							loading={loading}
 						/>
 
-						{specialEpisodeList.length > 0 ? (
+						{specialEpisodeList.length > 0 && (
 							<InfoSpecialEpisodeList
 								specialEpisodeList={specialEpisodeList}
 								setSelectedSpecialChunk={setSelectedSpecialChunk}
@@ -147,8 +117,6 @@ function AnimeInfo({ instance }) {
 								anime={anime}
 								loading={loading}
 							/>
-						) : (
-							""
 						)}
 					</div>
 				</div>

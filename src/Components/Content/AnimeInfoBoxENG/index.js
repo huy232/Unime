@@ -8,8 +8,8 @@ function AnimeInfoBoxENG({ loading, info }) {
 				{loading ? (
 					<Skeleton
 						variant="rectangular"
-						width="160px"
-						height="226px"
+						width="200px"
+						height="300px"
 						animation="wave"
 						sx={{ bgcolor: "grey.900" }}
 						style={{ marginLeft: "auto", marginRight: "auto" }}
@@ -17,7 +17,7 @@ function AnimeInfoBoxENG({ loading, info }) {
 				) : (
 					<img
 						src={info.image}
-						className="cover-image w-[160px] h-[260px]"
+						className="cover-image aspect-[2/3] h-[300px]"
 						alt={
 							info.title?.english || info.title?.romaji || info.title?.native
 						}

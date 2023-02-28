@@ -9,13 +9,14 @@ function InfoBox({ info, loading }) {
 					style={{
 						height: "300px",
 						marginTop: "-5rem",
+						marginBottom: "20px",
 					}}
 				>
 					{loading ? (
 						<Skeleton
 							variant="rectangular"
-							width="160px"
-							height="226px"
+							width="200px"
+							height="300px"
 							animation="wave"
 							sx={{ bgcolor: "grey.900" }}
 							style={{ marginLeft: "auto", marginRight: "auto" }}
@@ -23,91 +24,91 @@ function InfoBox({ info, loading }) {
 					) : (
 						<img
 							src={
-								info?.animeInfo?.CoverImg?.large ||
-								info?.animeInfo?.CoverImg?.medium ||
-								info?.animeInfo?.CoverImg?.small
+								info.coverImage?.extraLarge ||
+								info.coverImage?.large ||
+								info.coverImage?.medium
 							}
-							className="cover-image w-[160px] h-[260px]"
-							alt={info?.name}
+							className="cover-image"
+							alt={info.name}
 							loading="lazy"
 						/>
 					)}
 				</div>
 				<div className="detail-cover-info">
 					<div className="format">
-						{info?.animeInfo?.Format && (
+						{info?.format && (
 							<>
 								<h5>ĐỊNH DẠNG</h5>
-								<p>{info?.animeInfo?.Format}</p>
+								<p>{info?.format}</p>
 							</>
 						)}
 					</div>
 					<div className="title">
-						{info?.animeInfo?.Format && (
+						{info.title && (
 							<>
 								<h5>TÊN PHIM</h5>
-								{info?.animeInfo?.Title?.romaji && (
+								{info.title?.romaji && (
 									<h6>
 										ROMAJI
-										<p>{info?.animeInfo?.Title?.romaji}</p>
+										<p>{info.title?.romaji}</p>
 									</h6>
 								)}
-								{info?.animeInfo?.Title?.english && (
+								{info.title?.english && (
 									<h6>
 										TIẾNG ANH
-										<p>{info?.animeInfo?.Title?.english}</p>
+										<p>{info.title?.english}</p>
 									</h6>
 								)}
-								{info?.animeInfo?.Title?.native && (
+								{info.title?.native && (
 									<h6>
 										TIẾNG NHẬT
-										<p>{info?.animeInfo?.Title?.native}</p>
+										<p>{info.title?.native}</p>
 									</h6>
 								)}
 							</>
 						)}
 					</div>
 					<div className="source">
-						{info?.animeInfo?.Source && (
+						{info?.source && (
 							<>
 								<h5>CHUYỂN THỂ TỪ</h5>
-								<p>{info?.animeInfo?.Source}</p>
+								<p>{info.source}</p>
 							</>
 						)}
 					</div>
 					<div className="popularity">
-						{info?.animeInfo?.Popularity && (
+						{info?.popularity && info.popularity !== 0 && (
 							<>
 								<h5>ĐỘ NỔI BẬT</h5>
-								<p>{info?.animeInfo?.Popularity.toLocaleString()}</p>
+								<p>{info.popularity.toLocaleString()}</p>
 							</>
 						)}
 					</div>
 					<div className="favourite">
-						{info?.animeInfo?.Favourite && (
+						{info?.favourites && (
 							<>
 								<h5>YÊU THÍCH</h5>
-								<p>{info?.animeInfo?.Favourite.toLocaleString()}</p>
+								<p>{info.favourites.toLocaleString()}</p>
 							</>
 						)}
 					</div>
 					<div className="popularity">
-						{info?.animeInfo?.Trending && (
+						{info?.trending && (
 							<>
 								<h5>THỜI THƯỢNG</h5>
-								<p>{info?.animeInfo?.Trending.toLocaleString()}</p>
+								<p>{info.trending.toLocaleString()}</p>
 							</>
 						)}
 					</div>
 					<div className="studios">
-						{info?.animeInfo?.Studio && (
+						{info.studios?.edges?.length > 0 && (
 							<>
 								<h5>STUDIO</h5>
 								<p>
-									{info?.animeInfo?.Studio.map((studio, i, arr) =>
+									{info.studios.edges.map((studio, i, arr) =>
 										i !== arr.length - 1
-											? `${studio.name + ", "}`
-											: `${studio.name}`
+											? `${studio.node.name + ", "}`
+											: `${studio.node.name}`
 									)}
 								</p>
 							</>

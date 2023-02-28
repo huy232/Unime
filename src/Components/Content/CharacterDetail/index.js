@@ -18,8 +18,7 @@ function CharacterDetail({ randomAnime, done3 }) {
 						variant="rectangular"
 						width="100%"
 						style={{
-							minHeight: "300px",
-							maxHeight: "300px",
+							height: "300px",
 							width: "auto",
 						}}
 						animation="wave"

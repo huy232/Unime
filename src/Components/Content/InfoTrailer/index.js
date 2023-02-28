@@ -1,15 +1,15 @@
 import ReactPlayer from "react-player"
 import { MAINSITE } from "../../../constants"
-function InfoTrailer({ videoUrl }) {
+function InfoTrailer({ trailerId }) {
 	return (
 		<>
 			<div className="box-anime-film-trailer" style={{ marginTop: "40px" }}>
-				{videoUrl && (
+				{trailerId && (
 					<>
 						<h3>XEM THỬ NẾU BẠN CHƯA RÕ</h3>
 						<div className="youtube-link">
 							<ReactPlayer
-								url={`${videoUrl}&origin=${MAINSITE}`}
+								url={`https://www.youtube-nocookie.com/embed/${trailerId}&origin=${MAINSITE}`}
 								controls={true}
 							/>
 						</div>
