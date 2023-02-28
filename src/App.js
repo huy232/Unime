@@ -31,8 +31,10 @@ import NotFound from "./Pages/NotFound"
 // FILMS
 import Films from "./Components/Content/Films"
 import FilmInfo from "./Components/Content/FilmInfo"
+import { DEBUGGER } from "./Utilities/debugger"
 
 function App() {
+	DEBUGGER()
 	const instance = axios.create({
 		baseURL: API,
 	})
