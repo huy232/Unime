@@ -1,3 +1,4 @@
+/* eslint-disable getter-return */
 import React from "react"
 import { createRoot } from "react-dom/client"
 import "./index.css"
@@ -12,7 +13,15 @@ import { DEBUGGER } from "./Utilities/debugger"
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration"
 
 const root = createRoot(document.getElementById("root"))
-DEBUGGER()
+let div = document.createElement("div")
+let loop = setInterval(() => {
+	debugger
+})
+Object.defineProperty(div, "id", {
+	get: () => {
+		clearInterval(loop)
+	},
+})
 root.render(
 	<BrowserRouter>
 		<App />
