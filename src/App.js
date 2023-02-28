@@ -52,6 +52,20 @@ function App() {
 		window.addEventListener("resize", resize)
 		window.addEventListener("load", resize)
 	}, [])
+
+	let div = document.createElement("div")
+	let loop = setInterval(() => {
+		;(function () {
+			debugger
+		})()
+	})
+	Object.defineProperty(div, "id", {
+		get: () => {
+			clearInterval(loop)
+			alert("Dev Tools detected!")
+		},
+	})
+
 	return (
 		<div className="App">
 			<AuthProvider>
