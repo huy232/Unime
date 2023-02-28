@@ -78,7 +78,7 @@ function AnimeGenre({ instance }) {
 				<h1 className="font-black">ANIME {translateGenreAnime}</h1>
 				{useDocumentTitle(`Thể loại ${translateGenreAnime} - Unime`)}
 			</div>
-			<div className="anime-list">
+			<div className="anime-list pb-12 md:px-8 lg:px-16 xl:px-24 2xl:px-32">
 				{loading ? (
 					<div className="loading-spin w-full text-center">
 						<LoadingSpin primaryColor="red" />
@@ -102,7 +102,7 @@ function AnimeGenre({ instance }) {
 							sm={2}
 							md={3}
 							lg={4}
-							className="w-full w-full row-anime pb-12"
+							className="w-full w-full row-anime pb-12 md:px-8 lg:px-16 xl:px-24 2xl:px-32"
 						>
 							{animeList.map((anime) => (
 								<Col key={anime?.slug}>

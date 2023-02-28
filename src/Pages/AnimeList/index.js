@@ -72,7 +72,7 @@ function AnimeList({ instance }) {
 					<LoadingSpin primaryColor="red" />
 				</div>
 			) : (
-				<div className="anime-list">
+				<div className="anime-list pb-12 md:px-8 lg:px-16 xl:px-24 2xl:px-32">
 					<InfiniteScroll
 						style={{ overflow: "none" }}
 						dataLength={animeList.length}
@@ -89,7 +89,7 @@ function AnimeList({ instance }) {
 							sm={2}
 							md={3}
 							lg={4}
-							className="w-full w-full row-anime pb-12"
+							className="w-full w-full row-anime pb-12 md:px-8 lg:px-16 xl:px-24 2xl:px-32"
 						>
 							{animeList.map((anime) => (
 								<Col key={anime.slug}>
