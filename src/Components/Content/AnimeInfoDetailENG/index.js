@@ -55,9 +55,7 @@ function AnimeInfoDetailENG({
 			</div>
 			{info.nextAiringEpisode && (
 				<div className="flex max-lg:flex-col max-lg:items-center max-lg:justify-center">
-					{loading ? (
-						""
-					) : (
+					{!loading && (
 						<>
 							<div className="leading-none mx-[6px] p-[8px]">
 								Next episode estimated:
@@ -72,9 +70,7 @@ function AnimeInfoDetailENG({
 				</div>
 			)}
 			<div className="description">
-				{loading ? (
-					<p className="anime-description-paragraph"></p>
-				) : (
+				{!loading && (
 					<p
 						className="anime-description-paragraph"
 						dangerouslySetInnerHTML={{
