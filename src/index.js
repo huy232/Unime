@@ -8,9 +8,11 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import "@fortawesome/fontawesome-free/css/all.min.css"
 import "react-loading-skeleton/dist/skeleton.css"
 import "./override.css"
+import { DEBUGGER } from "./Utilities/debugger"
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration"
 
 const root = createRoot(document.getElementById("root"))
+DEBUGGER()
 root.render(
 	<BrowserRouter>
 		<App />
