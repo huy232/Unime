@@ -167,7 +167,7 @@ function VideoPlayer({
 						style: {
 							"font-weight": "400",
 							"font-size": "2rem",
-							"background-color": "rgba(0, 0, 0, 0.75)",
+							"background-color": "rgba(0, 0, 0, 0.65)",
 							"border-radius": "0.25rem",
 							position: "relative",
 							height: "fit-content",
