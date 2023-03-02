@@ -7,7 +7,7 @@ function CharacterList({ characters }) {
 			<div className="grid gap-4 xl:grid-cols-3 lg:grid-cols-2 sm:grid-cols-1 px-4 md:px-12 lg:px-20 xl:px-28 2xl:px-36 w-full py-4">
 				{characters.map((character, i) => (
 					<div className="h-28" key={character.id}>
-						<div className="flex bg-[#0D0D0D] h-full">
+						<div className="flex bg-[#0D0D0D] h-full w-full">
 							<div>
 								<img
 									className="h-full aspect-[2/3]"
@@ -16,7 +16,7 @@ function CharacterList({ characters }) {
 									loading="lazy"
 								/>
 							</div>
-							<div className="ml-4 mr-auto flex flex-col [&_p]:py-2">
+							<div className="ml-4 w-full flex flex-col [&_p]:py-2">
 								<p
 									className="text-lg font-bold"
 									style={{ color: COLORLIST[i] }}
