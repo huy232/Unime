@@ -8,15 +8,13 @@ function CharacterList({ characters }) {
 				{characters.map((character, i) => (
 					<div className="h-28" key={character.id}>
 						<div className="flex bg-[#0D0D0D] h-full w-full">
-							<div className="w-fit">
-								<img
-									className="h-full aspect-[2/3]"
-									src={character.image}
-									alt={character.name.full}
-									loading="lazy"
-								/>
-							</div>
-							<div className="ml-4 flex flex-col [&_p]:py-2">
+							<img
+								className="h-full aspect-[2/3]"
+								src={character.image}
+								alt={character.name.full}
+								loading="lazy"
+							/>
+							<div className="w-full mx-2 flex flex-col [&_p]:py-2">
 								<p
 									className="text-lg font-bold"
 									style={{ color: COLORLIST[i] }}
@@ -24,7 +22,7 @@ function CharacterList({ characters }) {
 									{character.name.full}
 								</p>
 								<p
-									className="font-semibold mt-auto text-sm"
+									className="font-semibold mt-2 text-sm"
 									style={{ color: "rgb(188 188 188 / 70%)" }}
 								>
 									{character.role}

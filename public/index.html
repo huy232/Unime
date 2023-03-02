@@ -39,20 +39,6 @@
 	</head>
 	<body>
 		<div id="root"></div>
-		<script type="text/javascript">
-			let div = document.createElement("div")
-			let loop = setInterval(() => {
-				;(function () {
-					debugger
-				})()
-			})
-			Object.defineProperty(div, "id", {
-				get: () => {
-					clearInterval(loop)
-					alert("Dev Tools detected!")
-				},
-			})
-		</script>
 	</body>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
