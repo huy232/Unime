@@ -16,7 +16,7 @@ function CharacterList({ characters }) {
 									loading="lazy"
 								/>
 							</div>
-							<div className="mx-4 flex flex-col [&_p]:py-2">
+							<div className="ml-4 mr-auto flex flex-col [&_p]:py-2">
 								<p
 									className="text-lg font-bold"
 									style={{ color: COLORLIST[i] }}
