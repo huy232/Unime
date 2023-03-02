@@ -31,6 +31,7 @@ import NotFound from "./Pages/NotFound"
 // FILMS
 import Films from "./Components/Content/Films"
 import FilmInfo from "./Components/Content/FilmInfo"
+import useDebug from "./Hooks/useDebug"
 
 function App() {
 	const instance = axios.create({
