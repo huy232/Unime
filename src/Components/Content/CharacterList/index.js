@@ -8,7 +8,7 @@ function CharacterList({ characters }) {
 				{characters.map((character, i) => (
 					<div className="h-28" key={character.id}>
 						<div className="flex bg-[#0D0D0D] h-full w-full">
-							<div>
+							<div className="w-full">
 								<img
 									className="h-full aspect-[2/3]"
 									src={character.image}
