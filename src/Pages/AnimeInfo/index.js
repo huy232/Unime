@@ -10,6 +10,7 @@ import InfoEpisodeHolder from "../../Components/Content/InfoEpisodeHolder"
 import InfoSpecialEpisodeList from "../../Components/Content/InfoSpecialEpisodeList"
 import InfoAnimeEpisodeHandle from "../../Components/Content/InfoAnimeEpisodeHandle"
 import "./animeinfo.css"
+import CharacterListVI from "../../Components/Content/CharacterListVI"
 
 function AnimeInfo({ instance }) {
 	const { anime } = useParams()
@@ -95,6 +96,10 @@ function AnimeInfo({ instance }) {
 					<div className="info-detail ">
 						<InfoHeadDetail info={info} loading={loading} />
 						<InfoTrailer trailerId={info?.trailer?.id} />
+						<CharacterListVI
+							characters={info?.characters?.edges}
+							loading={loading}
+						/>
 						<InfoEpisodeHolder
 							episodeList={episodeList}
 							selectedChunk={selectedChunk}
