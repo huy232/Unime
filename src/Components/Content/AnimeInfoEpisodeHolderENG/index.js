@@ -241,7 +241,6 @@ function AnimeInfoEpisodeHolderENG({
 																provider === "animepahe"
 																	? eachEpisode?.image
 																	: `${IO_CORS}${eachEpisode?.image}`
-																// `${CONSUMET_CORS}/${eachEpisode?.image}`
 															}
 															loading="lazy"
 															alt={

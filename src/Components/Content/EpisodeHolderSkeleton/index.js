@@ -28,6 +28,7 @@ function EpisodeHolderSkeleton() {
 												variant="top"
 												loading="lazy"
 												alt="anime-skeleton-image"
+												className="aspect-video"
 											/>
 										</div>
 										<Card.Body>
