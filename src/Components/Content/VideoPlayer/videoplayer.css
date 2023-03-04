@@ -28,9 +28,9 @@
 		width: 100% !important;
 	}
 
-	.art-control.art-control-time {
+	/* .art-control.art-control-time {
 		display: none !important;
-	}
+	} */
 }
 
 @media screen and (max-width: 768px) {
