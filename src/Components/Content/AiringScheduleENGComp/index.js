@@ -10,7 +10,7 @@ function AiringScheduleENGComp({ airingSchedule }) {
 					{new Date().toLocaleString()}
 				</span>
 			</div>
-			<div className="h-[400px] overflow-y-scroll my-12">
+			<div className="max-h-[400px] overflow-y-scroll my-12">
 				{airingSchedule.map((anime, i) => (
 					<div className="p4 odd:bg-white/5 even:bg-black/5" key={i}>
 						<div className="flex justify-between w-full text-white p-4 max-md:flex-col">

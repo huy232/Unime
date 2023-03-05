@@ -23,9 +23,11 @@ function HeaderENG() {
 
 	const handleSubmit = (e) => {
 		e.preventDefault()
-		handleScrollToTop()
-		navigate(`/eng/search/${encodeURI(input)}`)
-		setInput("")
+		if (input !== "") {
+			handleScrollToTop()
+			navigate(`/eng/search/${encodeURI(input)}`)
+			setInput("")
+		}
 	}
 	const handleKeypress = (e) => {
 		//it triggers by pressing the enter key

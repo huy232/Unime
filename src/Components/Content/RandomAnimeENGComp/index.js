@@ -59,7 +59,7 @@ function RandomAnimeENGComp({ randomAnime }) {
 						))}
 					</div>
 					<div
-						className="mx-[20px] max-lg:text-center"
+						className="mx-[20px]"
 						dangerouslySetInnerHTML={{
 							__html: randomAnime.description?.replace(/<[br]+>/g, ""),
 						}}
