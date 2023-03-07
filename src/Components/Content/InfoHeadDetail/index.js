@@ -32,7 +32,11 @@ function InfoHeadDetail({ info, loading }) {
 				{loading ? (
 					<DescriptionSkeleton />
 				) : (
-					<p className="anime-description-paragraph">{info?.description}</p>
+					<>
+						{info.description.trim() && (
+							<p className="anime-description-paragraph">{info?.description}</p>
+						)}
+					</>
 				)}
 			</div>
 			{resultCategory?.length > 0 && (

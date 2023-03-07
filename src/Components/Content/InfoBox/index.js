@@ -35,85 +35,84 @@ function InfoBox({ info, loading }) {
 					)}
 				</div>
 				<div className="detail-cover-info">
-					<div className="format">
-						{info?.format && (
-							<>
-								<h5>ĐỊNH DẠNG</h5>
-								<p>{info?.format}</p>
-							</>
-						)}
-					</div>
-					<div className="title">
-						{info.title && (
-							<>
-								<h5>TÊN PHIM</h5>
-								{info.title?.romaji && (
-									<h6>
-										ROMAJI
-										<p>{info.title?.romaji}</p>
-									</h6>
+					{info?.format && (
+						<div className="format">
+							<h5>ĐỊNH DẠNG</h5>
+							<p>{info?.format}</p>
+						</div>
+					)}
+
+					{info.title && (
+						<div className="title">
+							<h5>TÊN PHIM</h5>
+							{info.title?.romaji && (
+								<h6>
+									ROMAJI
+									<p>{info.title?.romaji}</p>
+								</h6>
+							)}
+							{info.title?.english && (
+								<h6>
+									TIẾNG ANH
+									<p>{info.title?.english}</p>
+								</h6>
+							)}
+							{info.title?.native && (
+								<h6>
+									TIẾNG NHẬT
+									<p>{info.title?.native}</p>
+								</h6>
+							)}
+						</div>
+					)}
+					{info?.source && (
+						<div className="source">
+							<h5>CHUYỂN THỂ TỪ</h5>
+							<p>{info.source}</p>
+						</div>
+					)}
+					{!!info?.popularity && (
+						<>
+							{Number(info.popularity) !== 0 && (
+								<div className="popularity">
+									<h5>ĐỘ NỔI BẬT</h5>
+									<p>{info.popularity.toLocaleString()}</p>
+								</div>
+							)}
+						</>
+					)}
+					{!!info?.favourites && (
+						<>
+							{Number(info.favourites) !== 0 && (
+								<div className="favourite">
+									<h5>YÊU THÍCH</h5>
+									<p>{info.favourites.toLocaleString()}</p>
+								</div>
+							)}
+						</>
+					)}
+					{!!info?.trending && (
+						<>
+							{Number(info.trending) !== 0 && (
+								<div className="trending">
+									<h5>THỜI THƯỢNG</h5>
+									<p>{info.trending.toLocaleString()}</p>
+								</div>
+							)}
+						</>
+					)}
+					{info.studios?.edges?.length > 0 && (
+						<div className="studios">
+							<h5>STUDIO</h5>
+							<p>
+								{info.studios.edges.map((studio, i, arr) =>
+									i !== arr.length - 1
+										? `${studio.node.name + ", "}`
+										: `${studio.node.name}`
 								)}
-								{info.title?.english && (
-									<h6>
-										TIẾNG ANH
-										<p>{info.title?.english}</p>
-									</h6>
-								)}
-								{info.title?.native && (
-									<h6>
-										TIẾNG NHẬT
-										<p>{info.title?.native}</p>
-									</h6>
-								)}
-							</>
-						)}
-					</div>
-					<div className="source">
-						{info?.source && (
-							<>
-								<h5>CHUYỂN THỂ TỪ</h5>
-								<p>{info.source}</p>
-							</>
-						)}
-					</div>
-					<div className="popularity">
-						{info?.popularity && info.popularity !== 0 && (
-							<>
-								<h5>ĐỘ NỔI BẬT</h5>
-								<p>{info.popularity.toLocaleString()}</p>
-							</>
-						)}
-					</div>
-					<div className="favourite">
-						{info?.favourites && (
-							<>
-								<h5>YÊU THÍCH</h5>
-								<p>{info.favourites.toLocaleString()}</p>
-							</>
-						)}
-					</div>
-					<div className="popularity">
-						{info?.trending && (
-							<>
-								<h5>THỜI THƯỢNG</h5>
-								<p>{info.trending.toLocaleString()}</p>
-							</>
-						)}
-					</div>
-					<div className="studios">
-						{info.studios?.edges?.length > 0 && (
-							<>
-								<h5>STUDIO</h5>
-								<p>
-									{info.studios.edges.map((studio, i, arr) =>
-										i !== arr.length - 1
-											? `${studio.node.name + ", "}`
-											: `${studio.node.name}`
-									)}
-								</p>
-							</>
-						)}
-					</div>
+							</p>
+						</div>
+					)}
 				</div>
 			</div>
 		</>
