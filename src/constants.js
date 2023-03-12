@@ -188,6 +188,7 @@ const collections = [
 	{ slug: "anime-mua-he-2022", name: "Anime Mùa Hè 2022" },
 	{ slug: "anime-mua-thu-2022", name: "Anime Mùa Thu 2022" },
 	{ slug: "anime-mua-dong-2023", name: "Anime Mùa Đông 2023" },
+	{ slug: "anime-mua-xuan-2023", name: "Anime Mùa Xuân 2023" },
 ]
 
 var colorArray = [

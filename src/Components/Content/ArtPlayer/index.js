@@ -149,7 +149,7 @@ export default function Player({
 				}
 			}
 		}
-	}, [option, selectedSub, subtitles, videoUrl, intro])
+	}, [option, selectedSub, subtitles, videoUrl, intro, getInstance])
 
 	return (
 		<div
