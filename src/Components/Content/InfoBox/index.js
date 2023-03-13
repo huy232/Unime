@@ -1,4 +1,5 @@
 import Skeleton from "@mui/material/Skeleton"
+import blackImage from "../../../Utilities/img/black.webp"
 
 function InfoBox({ info, loading }) {
 	return (
@@ -26,7 +27,8 @@ function InfoBox({ info, loading }) {
 							src={
 								info.coverImage?.extraLarge ||
 								info.coverImage?.large ||
-								info.coverImage?.medium
+								info.coverImage?.medium ||
+								blackImage
 							}
 							className="cover-image"
 							alt={info.name}

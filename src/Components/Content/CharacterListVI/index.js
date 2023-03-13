@@ -8,7 +8,7 @@ function CharacterListVI({ characters, loading }) {
 	}
 	return (
 		<>
-			{!loading && (
+			{!loading && characters && (
 				<>
 					<h4 className="font-black pt-4">DÀN NHÂN VẬT</h4>
 					<div className="grid gap-4 xl:grid-cols-3 lg:grid-cols-2 sm:grid-cols-1 px-4 md:px-12 lg:px-20 xl:px-28 2xl:px-36 w-full py-4">
