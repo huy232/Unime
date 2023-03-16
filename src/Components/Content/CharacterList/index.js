@@ -16,7 +16,7 @@ function CharacterList({ characters }) {
 							/>
 							<div className="w-full mx-2 flex flex-col [&_p]:py-2">
 								<p
-									className="text-lg font-bold break-words"
+									className="text-lg font-bold break-all"
 									style={{ color: COLORLIST[i] }}
 								>
 									{character.name.full}
