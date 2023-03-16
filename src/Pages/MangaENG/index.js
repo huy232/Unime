@@ -45,13 +45,25 @@ function MangaENG() {
 				<MangaHeadingENG content={manga.top} loading={loading} />
 			</LazyLoad>
 			<LazyLoad>
-				<MangaLayoutENG content={manga.trending} loading={loading} />
+				<MangaLayoutENG
+					content={manga.trending}
+					loading={loading}
+					headingTitle={"TRENDING"}
+				/>
 			</LazyLoad>
 			<LazyLoad>
-				<MangaLayoutENG content={manga.popular} loading={loading} />
+				<MangaLayoutENG
+					content={manga.popular}
+					loading={loading}
+					headingTitle={"POPULAR"}
+				/>
 			</LazyLoad>
 			<LazyLoad>
-				<MangaLayoutENG content={manga.manhwa} loading={loading} />
+				<MangaLayoutENG
+					content={manga.manhwa}
+					loading={loading}
+					headingTitle={"MANHWA"}
+				/>
 			</LazyLoad>
 		</>
 	)
