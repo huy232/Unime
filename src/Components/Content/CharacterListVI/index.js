@@ -26,7 +26,7 @@ function CharacterListVI({ characters, loading }) {
 									/>
 									<div className="w-full mx-2 flex flex-col">
 										<p
-											className="text-lg font-bold"
+											className="text-lg font-bold break-words"
 											style={{ color: COLORLIST[i] }}
 										>
 											{character.node.name.full}
