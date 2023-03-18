@@ -8,6 +8,7 @@ import LazyLoad from "react-lazyload"
 import axios from "axios"
 import useDocumentTitle from "../../Hooks/useDocumentTitle"
 import { API } from "../../constants"
+import SeasonLayoutENG from "../../Components/Content/SeasonLayoutENG"
 
 function HomeENG() {
 	const [loadingAiring, setLoadingAiring] = useState(true)
@@ -147,6 +148,9 @@ function HomeENG() {
 					loadingTrending={loadingTrending}
 					trendingAnime={trendingAnime}
 				/>
+			</LazyLoad>
+			<LazyLoad>
+				<SeasonLayoutENG data={seasonAnime} loading={loadingSeason} />
 			</LazyLoad>
 			<LazyLoad>
 				<AiringScheduleENG
