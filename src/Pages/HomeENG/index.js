@@ -19,6 +19,9 @@ function HomeENG() {
 	const [loadingTrending, setLoadingTrending] = useState(true)
 	const [trendingAnime, setTrendingAnime] = useState([])
 	// ---------
+	const [loadingSeason, setLoadingSeason] = useState(true)
+	const [seasonAnime, setSeasonAnime] = useState([])
+	// ---------
 	const [loadingAiringSchedule, setLoadingAiringSchedule] = useState(true)
 	const [airingSchedule, setAiringSchedule] = useState([])
 	// ---------
@@ -53,7 +56,7 @@ function HomeENG() {
 					setRecentAnime(getRecentData.data.data.results)
 					setLoadingRecentAnime(false)
 				})
-				.then(async () => getTrendingAnime())
+				.then(async () => await getTrendingAnime())
 				.catch((thrown) => {
 					if (axios.isCancel(thrown)) return
 				})
@@ -67,6 +70,19 @@ function HomeENG() {
 				.then((trendingAnime) => {
 					setTrendingAnime(trendingAnime.data.data.results)
 					setLoadingTrending(false)
+				})
+				.then(async () => await getSeason())
+				.catch((thrown) => {
+					if (axios.isCancel(thrown)) return
+				})
+		}
+
+		const getSeason = async () => {
+			await axios
+				.get(`${API}/eng/upcoming-anime`, { cancelToken: source.token })
+				.then((seasonData) => {
+					setSeasonAnime(seasonData.data.data)
+					setLoadingSeason(false)
 				})
 				.then(async () => await getAiringSchedule())
 				.catch((thrown) => {
