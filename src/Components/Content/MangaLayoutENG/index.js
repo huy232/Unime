@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import "./mangalayout.css"
 
-function MangaLayoutENG({ content, loading, headingTitle }) {
+function MangaLayoutENG({ content, loading, headingTitle, color }) {
 	const preset = {
 		POPULAR: "text-right text-[#FF8B13]",
 		TRENDING: "text-left text-[#865DFF]",
@@ -22,7 +22,7 @@ function MangaLayoutENG({ content, loading, headingTitle }) {
 						<div className="grid gap-2 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7">
 							{content.map((manga, i) => (
 								<Link
-									to={`/eng/info/${manga.id}`}
+									to={`/eng/manga-info/${manga.id}`}
 									title={
 										manga.title.english ||
 										manga.title.romaji ||
@@ -93,7 +93,7 @@ function MangaLayoutENG({ content, loading, headingTitle }) {
 							<Link
 								to="/eng/"
 								className="browse-button hover:text-[#fffc] font-semibold"
-								style={{ "--c": "#301E67" }}
+								style={{ "--c": color }}
 							>
 								MORE...
 							</Link>

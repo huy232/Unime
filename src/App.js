@@ -32,6 +32,7 @@ import NotFound from "./Pages/NotFound"
 import Films from "./Components/Content/Films"
 import FilmInfo from "./Components/Content/FilmInfo"
 import MangaENG from "./Pages/MangaENG"
+import MangaInfoENG from "./Pages/MangaInfoENG"
 
 function App() {
 	const instance = axios.create({
@@ -126,6 +127,7 @@ function App() {
 						<Route path="/films/info/:type/:filmSlug" element={<FilmInfo />} />
 						{/* MANGA */}
 						<Route path="/eng/manga" element={<MangaENG />} />
+						<Route path="/eng/manga-info/:mangaID" element={<MangaInfoENG />} />
 					</Routes>
 				</div>
 				{exclusionArray.indexOf(window.location.pathname) < 0 && <Footer />}
