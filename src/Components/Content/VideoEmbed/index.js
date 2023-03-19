@@ -5,11 +5,10 @@ function VideoEmbed({ videoEmbed }) {
 		<iframe
 			src={videoEmbed}
 			allow="autoplay; fullscreen"
-			width="100%"
-			height="100%"
 			title="videoFrame"
 			frame-src="self"
 			frame-ancestors="self"
+			style={{ height: "100vh", width: "80vw" }}
 		/>
 	)
 }
