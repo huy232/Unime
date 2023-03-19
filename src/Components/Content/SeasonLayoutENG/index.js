@@ -9,7 +9,7 @@ function SeasonLayoutENG({ data, loading }) {
 					<h1 className="font-black ml-6 mr-6 mt-2 border-white text-left text-violet-500 max-sm:text-center pb-2">
 						UPCOMING SEASON
 					</h1>
-					<div className="flex flex-row space-evenly w-full px-4 md:px-12 lg:px-20 xl:px-28 2xl:px-36 pb-12">
+					<div className="grid gap-0 2xl:grid-cols-4 xl:grid-cols-2 lg:grid-cols-2 sm:grid-cols-1 w-full px-4 md:px-12 lg:px-20 xl:px-28 2xl:px-36 pb-12">
 						<SeasonHolderENG
 							anime={data.spring.media}
 							title={"SPRING"}

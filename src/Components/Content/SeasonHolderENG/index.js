@@ -2,14 +2,14 @@ import { Link } from "react-router-dom"
 
 function SeasonHolderENG({ anime, title, color }) {
 	return (
-		<ul className="w-full bg-[#0d0d0d] mx-4 p-2">
+		<ul className="bg-[#0d0d0d] mx-2 p-2 my-2">
 			<h3 className="font-extrabold" style={{ color: color }}>
 				{title}
 			</h3>
 			{anime.map((item) => (
 				<Link
 					to={`/eng/info/${item.id}`}
-					className="flex py-2 odd:bg-[#0D0D0D] even:bg-[#111111]"
+					className="flex py-2 odd:bg-[#0D0D0D] even:bg-[#111111] group"
 					key={item.id}
 					title={
 						item.title?.english ||
@@ -18,7 +18,7 @@ function SeasonHolderENG({ anime, title, color }) {
 						item.title?.userPreferred
 					}
 				>
-					<div className="w-[60px] aspect-[2/3] shrink-0">
+					<div className="w-[60px] aspect-[2/3] shrink-0 group-hover:opacity-50 duration-200 ease-in-out">
 						<img
 							src={
 								item.coverImage?.extraLarge ||
@@ -36,7 +36,7 @@ function SeasonHolderENG({ anime, title, color }) {
 					</div>
 					<div className="mx-2 text-[#fffc]">
 						<p
-							className="line-clamp-1 hover:opacity-50 duration-200 ease-in-out h-[30px]"
+							className="line-clamp-1 h-[30px] group-hover:opacity-50 duration-200 ease-in-out"
 							style={{ color: item.coverImage.color || "#fffc" }}
 						>
 							{item.title?.english ||
