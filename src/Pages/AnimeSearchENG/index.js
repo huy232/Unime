@@ -30,16 +30,18 @@ function AnimeSearchENG() {
 					cancelToken: source.token,
 				})
 				.then((response) => {
-					if (prevQuery.current.query !== query) {
-						prevQuery.current.query = query
-						setSearchResult(response.data.data.results)
-					} else {
-						setSearchResult((prev) => {
-							return [...new Set([...prev, ...response.data.data.results])]
-						})
+					if (response.data.success) {
+						if (prevQuery.current.query !== query) {
+							prevQuery.current.query = query
+							setSearchResult(response.data.data.results)
+						} else {
+							setSearchResult((prev) => {
+								return [...new Set([...prev, ...response.data.data.results])]
+							})
+						}
+						setHasNextPage(response.data.data.hasNextPage)
+						setLoading(false)
 					}
-					setHasNextPage(response.data.data.hasNextPage)
-					setLoading(false)
 				})
 				.catch((thrown) => {
 					if (axios.isCancel(thrown)) return

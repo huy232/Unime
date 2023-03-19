@@ -41,19 +41,21 @@ function AnimeBrowseCategoryENG() {
 						cancelToken: source.token,
 					})
 					.then((response) => {
-						if (response.data.data.results === []) {
-							setAnimeList((prev) => {
-								return [...new Set([...prev])]
-							})
-							setNextPage(false)
-						} else {
-							setNextPage(true)
-							setAnimeList((prev) => {
-								return [...new Set([...prev, ...response.data.data.results])]
-							})
-						}
+						if (response.data.success) {
+							if (response.data.data.results === []) {
+								setAnimeList((prev) => {
+									return [...new Set([...prev])]
+								})
+								setNextPage(false)
+							} else {
+								setNextPage(true)
+								setAnimeList((prev) => {
+									return [...new Set([...prev, ...response.data.data.results])]
+								})
+							}
 
-						setLoading(false)
+							setLoading(false)
+						}
 					})
 					.catch((thrown) => {
 						if (axios.isCancel(thrown)) return

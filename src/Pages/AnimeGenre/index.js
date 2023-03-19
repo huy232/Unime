@@ -43,17 +43,19 @@ function AnimeGenre({ instance }) {
 						cancelToken: source.token,
 					})
 					.then((response) => {
-						const newList = response.data.data.map((anime) => ({
-							slug: anime.slug,
-							thumbnail: anime.thumbnail,
-							name: anime.name,
-							views: anime.views,
-						}))
-						setTotalPage(response.data.pagination.totalPage)
-						setAnimeList((prev) => {
-							return [...new Set([...prev, ...newList])]
-						})
-						setLoading(false)
+						if (response.data.success) {
+							const newList = response.data.data.map((anime) => ({
+								slug: anime.slug,
+								thumbnail: anime.thumbnail,
+								name: anime.name,
+								views: anime.views,
+							}))
+							setTotalPage(response.data.pagination.totalPage)
+							setAnimeList((prev) => {
+								return [...new Set([...prev, ...newList])]
+							})
+							setLoading(false)
+						}
 					})
 					.catch((thrown) => {
 						if (axios.isCancel(thrown)) return
