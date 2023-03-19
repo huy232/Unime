@@ -51,14 +51,14 @@ function SeasonHolderENG({ anime, title, color }) {
 						</div>
 						<div className="line-clamp-1">
 							{item.genres.map((genre, i) => (
-								<div key={i}>
+								<span key={i}>
 									<span>{genre}</span>
-									{item.genres.length !== 1 || i !== item.genres.length - 1 ? (
-										<span className="mx-1 w-1.5 h-1.5 bg-[#DC8449] rounded-full inline-block"></span>
+									{item.genres.length !== 1 && i !== item.genres.length - 1 ? (
+										<span className="mx-1 w-1.5 h-1.5 bg-[#237BB6] rounded-full inline-block"></span>
 									) : (
 										""
 									)}
-								</div>
+								</span>
 							))}
 						</div>
 					</div>
