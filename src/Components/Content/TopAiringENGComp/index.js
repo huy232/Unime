@@ -16,11 +16,11 @@ function TopAiringENGComp({ topAiring }) {
 				clickable: true,
 			}}
 			modules={[Pagination, Autoplay, Lazy]}
-			autoplay={{
-				delay: 2000,
-				disableOnInteraction: false,
-				pauseOnMouseEnter: true,
-			}}
+			// autoplay={{
+			// 	delay: 2000,
+			// 	disableOnInteraction: false,
+			// 	pauseOnMouseEnter: true,
+			// }}
 			centeredSlides={true}
 			spaceBetween={10}
 			loop={true}
@@ -42,7 +42,7 @@ function TopAiringENGComp({ topAiring }) {
 									to={`/eng/info/${item.id}`}
 									className="hover:opacity-80 duration-200 ease-in-out"
 									style={{
-										color: item?.color || "font-semibold",
+										color: item?.color || "#fffc",
 										textShadow: `3px 3px 3px rgba(0,0,0,0.7)`,
 									}}
 									aria-label={item.id}
@@ -62,16 +62,31 @@ function TopAiringENGComp({ topAiring }) {
 											item.title.userPreferred}
 									</h2>
 								</Link>
-								<div className="flex flex-wrap my-[20px] max-lg:my-[4px]">
+								<div className="flex flex-wrap my-[20px] max-lg:my-[4px] items-center">
 									{item.genres.map((genre, i) => (
-										<Link
-											to={`/eng/anime/${toSlug(genre)}`}
-											className="hover:opacity-80 duration-200 ease-in-out genre inline p-[4px] m-[4px] first:ml-0 rounded text-gray-50 max-lg:text-xs bg-white/20"
-											key={i}
-											aria-label={toSlug(genre)}
-										>
-											{genre}
-										</Link>
+										<>
+											<Link
+												to={`/eng/anime/${toSlug(genre)}`}
+												className="hover:opacity-80 duration-200 ease-in-out genre inline p-[4px] m-[4px] first:ml-0 max-lg:text-xs font-medium text-[#fffc] max-md:bg-black/70 max-md:rounded"
+												style={{
+													textShadow:
+														"black 0px 0px 1px, black 0px 0px 1px, black 0px 0px 1px, black 0px 0px 1px",
+												}}
+												key={i}
+												aria-label={toSlug(genre)}
+											>
+												{genre}
+											</Link>
+											{item.genres.length !== 1 &&
+											i !== item.genres.length - 1 ? (
+												<span
+													className={`mx-[2px] w-1.5 h-1.5 rounded-full inline-block mt-[4px] max-md:hidden`}
+													style={{ backgroundColor: item?.color || "#fffc" }}
+												></span>
+											) : (
+												""
+											)}
+										</>
 									))}
 								</div>
 								<div
@@ -85,8 +100,8 @@ function TopAiringENGComp({ topAiring }) {
 									}}
 								></div>
 								<div className="airing-info-status text-gray-50 mt-[20px] max-lg:text-xs max-lg:mt-[10px]">
-									STATUS:{" "}
-									<span className="rounded p-[4px] mt-[4px] bg-white/20">
+									STATUS:
+									<span className="rounded p-[4px] mt-[4px] border-[1px] mx-2">
 										{item.status}
 									</span>
 								</div>

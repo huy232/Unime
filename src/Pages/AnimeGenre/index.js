@@ -88,7 +88,7 @@ function AnimeGenre({ instance }) {
 						initialScrollY={0}
 						style={{ overflow: "none" }}
 						dataLength={animeList.length}
-						scrollThreshold={0.95}
+						scrollThreshold={0.8}
 						next={scrollThreshold}
 						hasMore={page === totalPage ? false : true}
 						loader={

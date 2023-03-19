@@ -60,7 +60,7 @@ function AnimeBrowseMoreENG({ urlString, urlTitle }) {
 					initialScrollY={0}
 					style={{ overflow: "none" }}
 					dataLength={allAnime.length}
-					scrollThreshold={0.95}
+					scrollThreshold={0.8}
 					next={scrollThreshold}
 					hasMore={hasNextPage}
 					loader={
@@ -101,7 +101,7 @@ function AnimeBrowseMoreENG({ urlString, urlTitle }) {
 										loading="lazy"
 									/>
 									{item.episodeNumber && (
-										<div className="z-10 absolute right-0 rounded-l-lg bg-black/80 p-[4px]">
+										<div className="z-10 absolute right-0 bg-black/80 p-[4px] text-[#fffc]">
 											EP. {item.episodeNumber}
 										</div>
 									)}
