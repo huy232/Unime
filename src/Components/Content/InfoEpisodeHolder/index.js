@@ -46,36 +46,36 @@ function InfoEpisodeHolder({
 
 	return (
 		<>
-			{!loading && (
-				<div className="flex items-center my-[8px] max-lg:justify-center">
-					<label
-						htmlFor="chunk-episode-option"
-						className="mb-[2px] mt-0 p-0 mr-[6px]"
-					>
-						LIST
-					</label>
-					<select
-						name="chunk-episode-option"
-						className="font-semibold uppercase rounded group bg-[#222] text-white p-[4px] cursor-pointer outline-none border-none"
-						onChange={(e) => {
-							setSelectedChunk(Number(e.target.value))
-							slideTo(Number(e.target.value))
-						}}
-						value={selectedChunk}
-					>
-						{episodeList.map((episodeChunk, i) => (
-							<option key={i} value={i}>{`${episodeChunk[0].name} - ${
-								episodeChunk[episodeChunk.length - 1].name
-							}`}</option>
-						))}
-					</select>
-				</div>
-			)}
 			<div className="episode-list">
 				{!loading && (
-					<div className="list-episode-title-main">
-						<h4 style={{ marginTop: "30px" }}>DANH SÁCH TẬP PHIM</h4>
-					</div>
+					<>
+						<div className="list-episode-title-main">
+							<h4 style={{ marginTop: "30px" }}>DANH SÁCH TẬP PHIM</h4>
+						</div>
+						<div className="flex items-center my-[8px] max-lg:justify-center">
+							<label
+								htmlFor="chunk-episode-option"
+								className="mb-[2px] mt-0 p-0 mr-[6px]"
+							>
+								LIST
+							</label>
+							<select
+								name="chunk-episode-option"
+								className="font-semibold uppercase rounded group bg-[#222] text-white p-[4px] cursor-pointer outline-none border-none"
+								onChange={(e) => {
+									setSelectedChunk(Number(e.target.value))
+									slideTo(Number(e.target.value))
+								}}
+								value={selectedChunk}
+							>
+								{episodeList.map((episodeChunk, i) => (
+									<option key={i} value={i}>{`${episodeChunk[0].name} - ${
+										episodeChunk[episodeChunk.length - 1].name
+									}`}</option>
+								))}
+							</select>
+						</div>
+					</>
 				)}
 				{!loading && episodeList.length === 0 ? (
 					<p style={{ textAlign: "center" }}>

@@ -91,7 +91,7 @@ function AnimeBrowseCategoryENG() {
 						initialScrollY={0}
 						style={{ overflow: "none" }}
 						dataLength={animeList.length}
-						scrollThreshold={0.8}
+						scrollThreshold={0.9}
 						next={scrollThreshold}
 						hasMore={nextPage}
 						loader={

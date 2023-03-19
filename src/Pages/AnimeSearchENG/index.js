@@ -73,7 +73,7 @@ function AnimeSearchENG() {
 					initialScrollY={0}
 					style={{ overflow: "none" }}
 					dataLength={searchResult.length}
-					scrollThreshold={0.8}
+					scrollThreshold={0.9}
 					next={scrollThreshold}
 					hasMore={hasNextPage}
 					loader={
