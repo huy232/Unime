@@ -46,7 +46,7 @@ function SeasonHolderENG({ anime, title, color }) {
 						</p>
 						<div className="flex items-center">
 							<span>{item.format}</span>
-							<span className="mx-1 mt-[3px] w-1.5 h-1.5 bg-[#DC8449] rounded-full inline-block"></span>
+							<span className="mx-1 mt-[3px] w-1.5 h-1.5 bg-[#DC8449] rounded-full inline-block align-middle"></span>
 							<span>{item.seasonYear}</span>
 						</div>
 						<div className="line-clamp-1">
@@ -54,7 +54,7 @@ function SeasonHolderENG({ anime, title, color }) {
 								<span key={i}>
 									<span>{genre}</span>
 									{item.genres.length !== 1 && i !== item.genres.length - 1 ? (
-										<span className="mx-1 w-1.5 h-1.5 bg-[#237BB6] rounded-full inline-block"></span>
+										<span className="mx-1 w-1.5 h-1.5 bg-[#237BB6] rounded-full inline-block align-middle"></span>
 									) : (
 										""
 									)}
