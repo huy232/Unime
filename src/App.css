@@ -1,5 +1,5 @@
 .content {
-	min-height: calc(var(--vh, 1vh) * 100 - 90px);
+	min-height: calc(var(--vh, 1vh) * 100 - 60px - 300px);
 	max-height: 100%;
 }
 

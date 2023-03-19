@@ -1,5 +1,5 @@
 .not-found {
-	height: calc(var(--vh, 1vh) * 100 - 90px);
+	height: calc(var(--vh, 1vh) * 100 - 60px - 300px);
 	display: flex;
 	align-items: center;
 	justify-content: center;

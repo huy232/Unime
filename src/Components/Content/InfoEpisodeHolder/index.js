@@ -72,9 +72,11 @@ function InfoEpisodeHolder({
 				</div>
 			)}
 			<div className="episode-list">
-				<div className="list-episode-title-main">
-					<h4 style={{ marginTop: "30px" }}>DANH SÁCH TẬP PHIM</h4>
-				</div>
+				{!loading && (
+					<div className="list-episode-title-main">
+						<h4 style={{ marginTop: "30px" }}>DANH SÁCH TẬP PHIM</h4>
+					</div>
+				)}
 				{!loading && episodeList.length === 0 ? (
 					<p style={{ textAlign: "center" }}>
 						Phim chưa được cập nhật, xin hãy quay lại sau.
