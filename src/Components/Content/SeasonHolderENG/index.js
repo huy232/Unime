@@ -32,6 +32,7 @@ function SeasonHolderENG({ anime, title, color }) {
 								item.title?.userPreferred
 							}
 							className="object-fit w-full h-full"
+							loading="lazy"
 						/>
 					</div>
 					<div className="mx-2 text-[#fffc]">
