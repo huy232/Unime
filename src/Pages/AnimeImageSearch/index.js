@@ -95,7 +95,7 @@ function AnimeImageSearch() {
 							</p>
 							<p>
 								<i>
-									Note:{" "}
+									Note:
 									<b>
 										Search results are not 100% accurate. Only works with anime
 										in-scene episode, not with anime wallpaper, etc.
@@ -108,8 +108,8 @@ function AnimeImageSearch() {
 						<div className="flex justify-center items-center">
 							{!loading ? (
 								<div className="flex flex-col justify-center items-center">
-									<div className="w-[320px] h-100 rounded relative">
-										<div>
+									<div className="max-md:w-[320px] h-100 rounded relative">
+										<div className="aspect-[16/9]">
 											<img
 												className="relative"
 												src={preview}
@@ -161,10 +161,10 @@ function AnimeImageSearch() {
 										types={fileTypes}
 										multiple={false}
 										maxSize={25}
-										classes="image-search-comp w-[320px] h-[280px]"
+										classes="image-search-comp aspect-[16/9] max-md:w-[320px] w-full h-full max-w-max mx-2"
 										label="Drag and drop or insert your anime image here"
 									/>
-									<div className="flex items-center">
+									<div className="flex items-center max-md:flex-col">
 										<span>OR</span>
 										<input
 											type="text"
@@ -174,7 +174,7 @@ function AnimeImageSearch() {
 											onChange={(e) => setText(e.target.value)}
 										/>
 										<button
-											className="cursor-pointer hover:opacity-80 duration-200 ease-in-out p-[6px] rounded my-[6px] ml-auto mr-[6px] bg-[#8f4747]"
+											className="cursor-pointer hover:opacity-80 duration-200 ease-in-out p-[6px] rounded my-[6px] ml-auto mr-[6px] bg-[#8f4747] max-md:mx-auto"
 											onClick={() => handleSubmit(text)}
 											id="url-search-btn"
 											aria-label="URL search button"
