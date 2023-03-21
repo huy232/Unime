@@ -44,7 +44,7 @@ function App() {
 		`/eng/watch/${pathname.pathname.split("/")[3]}`,
 		`/login`,
 	]
-	const exclusionArrayFooter = [`eng/search-image`]
+	const exclusionArrayFooter = [`/eng/search-image`]
 	useEffect(() => {
 		window.history.scrollRestoration = "manual"
 		function resize() {
@@ -131,10 +131,10 @@ function App() {
 						<Route path="/eng/manga-info/:mangaID" element={<MangaInfoENG />} />
 					</Routes>
 				</div>
-				{exclusionArray.indexOf(window.location.pathname) < 0 ||
-					(exclusionArrayFooter.indexOf(window.location.pathname) && (
-						<Footer />
-					))}
+				{!!(
+					exclusionArray.indexOf(window.location.pathname) < 0 &&
+					exclusionArrayFooter.indexOf(window.location.pathname)
+				) && <Footer />}
 			</AuthProvider>
 		</div>
 	)
