@@ -16,11 +16,11 @@ function TopAiringENGComp({ topAiring }) {
 				clickable: true,
 			}}
 			modules={[Pagination, Autoplay, Lazy]}
-			// autoplay={{
-			// 	delay: 2000,
-			// 	disableOnInteraction: false,
-			// 	pauseOnMouseEnter: true,
-			// }}
+			autoplay={{
+				delay: 3000,
+				disableOnInteraction: false,
+				pauseOnMouseEnter: true,
+			}}
 			centeredSlides={true}
 			spaceBetween={10}
 			loop={true}
