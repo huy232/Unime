@@ -14,14 +14,6 @@ export function AuthProvider({ children }) {
 	const navigate = useNavigate()
 
 	useEffect(() => {
-		// let unimeLanguage = localStorage.getItem("unime-language")
-		// console.log(window.location.pathname)
-		// if (unimeLanguage === "eng" ) {
-		// 	navigate("/eng")
-		// } else {
-		// 	navigate("/")
-		// }
-
 		// Check active sessions and sets the user
 		const getSession = async () => {
 			const {

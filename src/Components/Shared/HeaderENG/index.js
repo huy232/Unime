@@ -67,12 +67,12 @@ function HeaderENG() {
 								aria-label="Home - English"
 							>
 								<img
-									className="group-hover:opacity-80 duration-200 ease-in-out h-[40px] w-[40px]"
+									className="group-hover:opacity-80 duration-200 ease-in-out h-[34px] w-[34px]"
 									src={unimeLogo}
 									alt="UNIME-LOGO"
 									loading="lazy"
 								/>
-								<h1 className="font-black text-[1.5rem] p-0 my-0 h-auto max-sm:hidden mx-[6px]">
+								<h1 className="font-black text-[1.5rem] p-0 my-0 h-auto max-sm:hidden mx-[6px] text-[#fffc]">
 									UNIME
 								</h1>
 							</Link>

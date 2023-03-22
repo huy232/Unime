@@ -11,6 +11,7 @@ import InfoSpecialEpisodeList from "../../Components/Content/InfoSpecialEpisodeL
 import InfoAnimeEpisodeHandle from "../../Components/Content/InfoAnimeEpisodeHandle"
 import "./animeinfo.css"
 import CharacterListVI from "../../Components/Content/CharacterListVI"
+// import CommentSection from "../../Components/Content/CommentSection"
 
 function AnimeInfo({ instance }) {
 	const { anime } = useParams()
@@ -123,6 +124,7 @@ function AnimeInfo({ instance }) {
 								loading={loading}
 							/>
 						)}
+						{/* <CommentSection animeId={anime} /> */}
 					</div>
 				</div>
 			</div>
