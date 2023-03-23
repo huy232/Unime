@@ -33,6 +33,7 @@ import Films from "./Components/Content/Films"
 import FilmInfo from "./Components/Content/FilmInfo"
 import MangaENG from "./Pages/MangaENG"
 import MangaInfoENG from "./Pages/MangaInfoENG"
+import MangaBrowseENG from "./Components/Content/MangaBrowseENG"
 
 function App() {
 	const instance = axios.create({
@@ -45,6 +46,7 @@ function App() {
 		`/login`,
 	]
 	const exclusionArrayFooter = [`/eng/search-image`]
+	const mangaUrlList = ["top", "trending", "popular", "manhwa"]
 	useEffect(() => {
 		window.history.scrollRestoration = "manual"
 		function resize() {
@@ -129,6 +131,24 @@ function App() {
 						{/* MANGA */}
 						<Route path="/eng/manga" element={<MangaENG />} />
 						<Route path="/eng/manga-info/:mangaID" element={<MangaInfoENG />} />
+						<Route
+							path={`/eng/manga-list/popular`}
+							element={
+								<MangaBrowseENG subUrl={"manga-popular"} title={"POPULAR"} />
+							}
+						/>
+						<Route
+							path={`/eng/manga-list/trending`}
+							element={
+								<MangaBrowseENG subUrl={"manga-trending"} title={"TRENDING"} />
+							}
+						/>
+						<Route
+							path={`/eng/manga-list/manhwa`}
+							element={
+								<MangaBrowseENG subUrl={"manga-manhwa"} title={"MANHWA"} />
+							}
+						/>
 					</Routes>
 				</div>
 				{!!(

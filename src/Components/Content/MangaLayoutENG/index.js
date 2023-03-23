@@ -1,7 +1,13 @@
 import { Link } from "react-router-dom"
 import "./mangalayout.css"
 
-function MangaLayoutENG({ content, loading, headingTitle, color }) {
+function MangaLayoutENG({
+	content,
+	loading,
+	headingTitle,
+	color,
+	navigateUrl,
+}) {
 	const preset = {
 		POPULAR: "text-right text-[#FF8B13]",
 		TRENDING: "text-left text-[#865DFF]",
@@ -91,7 +97,7 @@ function MangaLayoutENG({ content, loading, headingTitle, color }) {
 						</div>
 						<div className="text-right mt-[24px]">
 							<Link
-								to="/eng/"
+								to={`/eng/manga-list/${navigateUrl}`}
 								className="browse-button hover:text-[#fffc] font-semibold"
 								style={{ "--c": color }}
 							>

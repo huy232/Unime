@@ -50,6 +50,7 @@ function MangaENG() {
 					loading={loading}
 					headingTitle={"TRENDING"}
 					color={"#301E67"}
+					navigateUrl={"trending"}
 				/>
 			</LazyLoad>
 			<LazyLoad>
@@ -58,6 +59,7 @@ function MangaENG() {
 					loading={loading}
 					headingTitle={"POPULAR"}
 					color={"#1e6743"}
+					navigateUrl={"popular"}
 				/>
 			</LazyLoad>
 			<LazyLoad>
@@ -66,6 +68,7 @@ function MangaENG() {
 					loading={loading}
 					headingTitle={"MANHWA"}
 					color={"#67661e"}
+					navigateUrl={"manhwa"}
 				/>
 			</LazyLoad>
 		</>
