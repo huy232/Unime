@@ -94,7 +94,7 @@ function AnimeList({ instance }) {
 							sm={2}
 							md={3}
 							lg={4}
-							className="w-full w-full row-anime pb-12 md:px-8 lg:px-16 xl:px-24 2xl:px-32"
+							className="w-full w-full row-anime"
 						>
 							{animeList.map((anime) => (
 								<Col key={anime.slug}>
@@ -126,9 +126,11 @@ function AnimeList({ instance }) {
 												</div>
 												<Card.Body className="h-[150px]">
 													<Card.Title>
-														<p className="webclamp h-[70px] text-[#fffc] hover:opacity-80 duration-200 ease-in-out font-semibold">
-															{anime?.name}
-														</p>
+														<div className="h-[70px]">
+															<p className="webclamp text-orange-50 font-semibold">
+																{anime?.name}
+															</p>
+														</div>
 													</Card.Title>
 													<p className="text-[#fffc] flex items-center rounded-[2px] m-[4px]">
 														{anime.animeFormat}

@@ -32,10 +32,6 @@
 }
 
 @media screen and (max-width: 768px) {
-	.row-anime > .col {
-		padding: 0 !important;
-		margin-top: 20px;
-	}
 	.row-anime {
 		margin: auto !important;
 	}

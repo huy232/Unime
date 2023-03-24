@@ -6,6 +6,8 @@ import { Card, Row, Col } from "react-bootstrap"
 import { BsFillPlayFill } from "react-icons/bs"
 import useDocumentTitle from "../../Hooks/useDocumentTitle"
 import LoadingSpin from "react-loading-spin"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faEye } from "@fortawesome/free-solid-svg-icons"
 
 function AnimeCollection({ instance }) {
 	const { collection } = useParams()
@@ -76,13 +78,7 @@ function AnimeCollection({ instance }) {
 						<LoadingSpin primaryColor="red" />
 					</div>
 				) : (
-					<Row
-						xs={1}
-						sm={2}
-						md={3}
-						lg={4}
-						className="w-full w-full row-anime pb-12 md:px-8 lg:px-16 xl:px-24 2xl:px-32"
-					>
+					<Row xs={1} sm={2} md={3} lg={4} className="w-full w-full row-anime">
 						{animeList.map((anime) => (
 							<Col key={anime?.slug}>
 								<nav>
@@ -100,6 +96,15 @@ function AnimeCollection({ instance }) {
 													loading="lazy"
 													alt={anime?.name}
 												/>
+												{anime?.views && (
+													<p className="text-[#fffc] top-0 right-0 bg-[#0d0d0d]/[0.8] flex items-center rounded-[2px] m-[4px] p-[4px] absolute">
+														<FontAwesomeIcon
+															icon={faEye}
+															className="pr-[2px] h-[14px] w-[14px] mt-[2px]"
+														/>
+														{anime.views.toLocaleString()} lượt xem
+													</p>
+												)}
 												<div className="overlay-card">
 													<div className="icon">
 														{<BsFillPlayFill size={40} />}
@@ -108,8 +113,15 @@ function AnimeCollection({ instance }) {
 											</div>
 											<Card.Body>
 												<Card.Title>
-													<p className="webclamp">{anime?.name}</p>
+													<div className="h-[70px]">
+														<p className="webclamp text-orange-50 font-semibold">
+															{anime?.name}
+														</p>
+													</div>
 												</Card.Title>
+												<p className="text-[#fffc] flex items-center rounded-[2px] m-[4px]">
+													{anime.animeFormat}
+												</p>
 											</Card.Body>
 										</Card>
 									</Link>

@@ -62,9 +62,11 @@ function MostWatched({ rankToday, done2 }) {
 
 										<Card.Body className="h-[150px]">
 											<Card.Title>
-												<p className="webclamp text-orange-50 h-[70px] font-semibold">
-													{anime?.name}
-												</p>
+												<div className="h-[70px]">
+													<p className="webclamp text-orange-50 font-semibold">
+														{anime?.name}
+													</p>
+												</div>
 											</Card.Title>
 											{anime?.views && (
 												<p className="text-[#fffc] flex items-center">

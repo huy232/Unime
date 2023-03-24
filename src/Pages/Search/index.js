@@ -6,6 +6,8 @@ import { BsFillPlayFill } from "react-icons/bs"
 import useDocumentTitle from "../../Hooks/useDocumentTitle"
 import LoadingSpin from "react-loading-spin"
 import "./search.css"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faEye } from "@fortawesome/free-solid-svg-icons"
 
 function Search({ instance }) {
 	const { searchSlug } = useParams()
@@ -78,16 +80,32 @@ function Search({ instance }) {
 												loading="lazy"
 												alt={anime?.name}
 											/>
+											{anime?.views && (
+												<p className="text-[#fffc] top-0 right-0 bg-[#0d0d0d]/[0.8] flex items-center rounded-[2px] m-[4px] p-[4px] absolute">
+													<FontAwesomeIcon
+														icon={faEye}
+														className="pr-[2px] h-[14px] w-[14px] mt-[2px]"
+													/>
+													{anime.views.toLocaleString()} lượt xem
+												</p>
+											)}
 											<div className="overlay-card">
 												<div className="icon">
 													{<BsFillPlayFill size={40} />}
 												</div>
 											</div>
 										</div>
-										<Card.Body>
+										<Card.Body className="h-[150px]">
 											<Card.Title>
-												<p className="webclamp">{anime?.name}</p>
+												<div className="h-[70px]">
+													<p className="webclamp text-orange-50 font-semibold">
+														{anime?.name}
+													</p>
+												</div>
 											</Card.Title>
+											<p className="text-[#fffc] flex items-center rounded-[2px] m-[4px]">
+												{anime.animeFormat}
+											</p>
 										</Card.Body>
 									</Card>
 								</Link>
