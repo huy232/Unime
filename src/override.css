@@ -60,10 +60,10 @@ menu {
 }
 
 img {
-	text-indent: 100%;
-	white-space: nowrap;
-	overflow: hidden;
-	color: transparent;
+	text-indent: 100% !important;
+	white-space: nowrap !important;
+	overflow: hidden !important;
+	color: transparent !important;
 }
 
 @media screen and (max-width: 1024px) {
