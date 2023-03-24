@@ -2,14 +2,16 @@ import React from "react"
 import notFound from "../../Utilities/img/not-found.webp"
 import { Link } from "react-router-dom"
 import { useAuth } from "../../Contexts/auth"
-import "./notfound.css"
+import styles from "./NotFound.module.css"
+import useDocumentTitle from "../../Hooks/useDocumentTitle"
 
 function NotFound() {
 	const { language } = useAuth()
-
+	useDocumentTitle(
+		language === "vi" ? "Không tìm thấy - Unime" : "Not found - Unime"
+	)
 	return (
 		<div className="w-full">
-			<div className="w-full"></div>
 			<div
 				className="w-full h-100"
 				style={{
@@ -21,8 +23,8 @@ function NotFound() {
 			>
 				{localStorage.getItem("unime-language") === "vi" ||
 				language === "vi" ? (
-					<div className="not-found">
-						<div className="not-found-wrapper">
+					<div className={styles["not-found"]}>
+						<div className={styles["not-found-wrapper"]}>
 							<h2 className="font-black text-[#F55050]">404 Không tìm thấy</h2>
 							<Link
 								to="/"
@@ -36,8 +38,8 @@ function NotFound() {
 						</div>
 					</div>
 				) : (
-					<div className="not-found">
-						<div className="not-found-wrapper">
+					<div className={styles["not-found"]}>
+						<div className={styles["not-found-wrapper"]}>
 							<h2 className="font-black text-[#F55050]">404 Not Found</h2>
 							<Link
 								to="/eng"

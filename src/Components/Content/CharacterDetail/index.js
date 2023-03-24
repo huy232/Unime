@@ -51,7 +51,7 @@ function CharacterDetail({ randomAnime, done3 }) {
 												alt={character.name.full}
 											/>
 										</div>
-										<p className="line-clamp-2 block w-full text-left">
+										<p className="line-clamp-2 block w-full text-left break-words">
 											{character.name.full}
 										</p>
 									</SwiperSlide>

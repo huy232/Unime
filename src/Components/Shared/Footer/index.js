@@ -27,7 +27,7 @@ function Footer() {
 					UNIME
 				</Link>
 			</div>
-			<div className="flex items-center h-100 mx-[40px] justify-center py-2">
+			<div className="flex items-center h-[30px] mx-[40px] justify-center py-2">
 				<div className="facebook-icon mx-[6px]">
 					<a
 						aria-label="Facebook link"
@@ -63,12 +63,12 @@ function Footer() {
 					<BsFileArrowUpFill size={30} />
 				</div>
 			</div>
-			<p className="max-w-[640px] text-slate-400 text-sm">
+			<p className="max-w-[640px] text-slate-400 text-sm px-2 line-clamp-5">
 				{language === "vi"
 					? "UNIME không liên kết với hoặc xác nhận bởi bất kỳ hãng phim hoạt hình nào đằng sau việc tạo ra phim hoạt hình được trình bày trên trang web này. Trang web này chỉ là một giao diện người dùng trình bày/liên kết các tệp tự lưu trữ khác nhau trên internet bởi các nhà cung cấp bên thứ ba khác để dễ dàng truy cập."
 					: "UNIME is not affiliated with or endorsed by any of the anime studios behind the creation of the anime presented on this site. This website is only a user interface presenting/linking various self-hosted files across the internet by other third-party providers for easy access."}
 			</p>
-			<p className="py-2 font-bold">
+			<p className="py-2 font-bold max-md:text-center">
 				© UNIME | {language === "vi" ? "Dựng với" : `Built with`} Consumet API
 			</p>
 		</footer>
