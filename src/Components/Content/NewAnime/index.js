@@ -15,7 +15,7 @@ function NewAnime({ done1, newAnime }) {
 	return (
 		<>
 			{!done1 ? (
-				<AnimeSkeleton />
+				<AnimeSkeleton height={"h-[180px]"} />
 			) : (
 				<Swiper
 					spaceBetween={10}
@@ -28,7 +28,10 @@ function NewAnime({ done1, newAnime }) {
 					lazy={true}
 				>
 					{newAnime.map((anime) => (
-						<SwiperSlide key={anime?.slug} className="w-[320px]">
+						<SwiperSlide
+							key={anime?.slug}
+							className="w-[320px] max-md:w-[260px]"
+						>
 							<nav>
 								<Link
 									to={`info/${anime?.slug}`}
@@ -43,6 +46,11 @@ function NewAnime({ done1, newAnime }) {
 												loading="lazy"
 												alt={anime.name}
 											/>
+											{anime?.status && (
+												<div className="absolute top-0 left-0 m-2 p-[4px] text-sm font-medium text-[#fffc] rounded bg-[#469F76]/[0.8]">
+													{anime.status}
+												</div>
+											)}
 											<div className="overlay-card">
 												<div className="icon">
 													{<BsFillPlayFill size={40} />}
@@ -59,7 +67,9 @@ function NewAnime({ done1, newAnime }) {
 											}}
 										>
 											<Card.Title>
-												<p className="webclamp text-orange-50">{anime?.name}</p>
+												<p className="webclamp text-orange-50 font-semibold">
+													{anime?.name}
+												</p>
 											</Card.Title>
 											<Card.Text
 												variant="bottom"

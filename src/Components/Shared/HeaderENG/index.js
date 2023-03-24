@@ -103,8 +103,9 @@ function HeaderENG() {
 								</button>
 							</form>
 						</div>
+						<LanguageButton handleScrollToTop={handleScrollToTop} />
 						<div
-							className="ml-auto cursor-pointer flex h-[40px] w-[40px] items-center justify-center"
+							className="cursor-pointer flex h-[40px] w-[40px] items-center justify-center"
 							onClick={() => setSidebar(!sideBar)}
 						>
 							<FontAwesomeIcon icon={faBars} />
@@ -191,9 +192,6 @@ function HeaderENG() {
 									IMAGE Search
 								</h2>
 							</Link>
-						</div>
-						<div className="flex ">
-							<LanguageButton handleScrollToTop={handleScrollToTop} />
 						</div>
 						<div className="user-container">
 							<User handleScrollToTop={handleScrollToTop} />

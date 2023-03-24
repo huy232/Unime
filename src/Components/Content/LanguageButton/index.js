@@ -10,32 +10,29 @@ function LanguageButton({ handleScrollToTop }) {
 	}
 
 	return (
-		<div className="language-container ml-auto text-neutral-900 flex ">
+		<div className="language-container ml-auto text-neutral-900 flex h-[40px] py-[4px]">
 			<button
-				className={`vi-btn mr-2 rounded p-1 hover:opacity-80 duration-200 ${
-					language === "vi" && "bg-[#a5612a]"
-				}`}
+				className={`rounded-[2px] p-1 hover:opacity-80 duration-200 bg-white/60`}
 				onClick={() => {
 					handleScrollToTop()
-					handleLanguage("vi")
+					handleLanguage(language === "vi" ? "eng" : "vi")
 				}}
-				id="vi-btn-language"
-				aria-label="Viet button language"
+				id={language === "vi" ? "vi-btn-language" : "eng-btn-language"}
+				aria-label={
+					language === "vi" ? "Viet button language" : "English button language"
+				}
 			>
-				VI
-			</button>
-			<button
-				className={`eng-btn rounded p-1 hover:opacity-80 duration-200 ${
-					language === "eng" && "bg-[#a5612a]"
-				}`}
-				onClick={() => {
-					handleScrollToTop()
-					handleLanguage("eng")
-				}}
-				id="eng-btn-language"
-				aria-label="English button language"
-			>
-				ENG
+				{language === "vi" ? (
+					<div className="flex justify-center items-center h-100">
+						<span className="fi fi-vn"></span>
+						<span className="pl-[6px] font-medium max-md:hidden">VI</span>
+					</div>
+				) : (
+					<div className="flex justify-center items-center h-100">
+						<span className="fi fi-us"></span>
+						<span className="pl-[6px] font-medium max-md:hidden">ENG</span>
+					</div>
+				)}
 			</button>
 		</div>
 	)

@@ -13,11 +13,6 @@
 	opacity: 0.8;
 }
 
-.vi-btn,
-.eng-btn {
-	background: #b0b0b0;
-}
-
 @media screen and (max-width: 1024px) {
 	.language-container {
 		margin-top: 10px;

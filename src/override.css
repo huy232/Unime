@@ -55,5 +55,9 @@ menu {
 	aspect-ratio: 16/9;
 }
 
+.card {
+	margin: 0;
+}
+
 @media screen and (max-width: 1024px) {
 }

@@ -26,7 +26,7 @@ function AnimeCollectionCard() {
 				>
 					{COLLECTIONS.map((collection, i) => (
 						<SwiperSlide
-							className="collection-card mx-[20px] my-[10px] w-[260px] h-[140px] bg-[#222] rounded"
+							className="collection-card mx-[20px] my-[10px] w-[260px] max-md:w-[220px] h-[140px] bg-[#222] rounded"
 							key={collection.slug}
 						>
 							<Link

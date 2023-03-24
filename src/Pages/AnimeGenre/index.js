@@ -7,6 +7,8 @@ import { Card, Row, Col } from "react-bootstrap"
 import LoadingSpin from "react-loading-spin"
 import { BsFillPlayFill } from "react-icons/bs"
 import useDocumentTitle from "../../Hooks/useDocumentTitle"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faEye } from "@fortawesome/free-solid-svg-icons"
 
 const PAGE_NUMBER = 1
 
@@ -49,6 +51,7 @@ function AnimeGenre({ instance }) {
 								thumbnail: anime.thumbnail,
 								name: anime.name,
 								views: anime.views,
+								animeFormat: anime.animeFormat,
 							}))
 							setTotalPage(response.data.pagination.totalPage)
 							setAnimeList((prev) => {
@@ -108,32 +111,43 @@ function AnimeGenre({ instance }) {
 						>
 							{animeList.map((anime) => (
 								<Col key={anime?.slug}>
-									<nav>
-										<Link to={`/info/${anime?.slug}`} aria-label={anime?.name}>
-											<Card title={anime?.name}>
-												<div className="card-container">
-													<Card.Img
-														variant="top"
-														src={anime?.thumbnail}
-														fluid="true"
-														loading="lazy"
-														alt={anime?.name}
-													/>
-													<div className="overlay-card">
-														<div className="icon">
-															{<BsFillPlayFill size={40} />}
-														</div>
+									<Link to={`/info/${anime?.slug}`} aria-label={anime?.name}>
+										<Card title={anime?.name}>
+											<div className="card-container">
+												<Card.Img
+													variant="top"
+													src={anime?.thumbnail}
+													fluid="true"
+													loading="lazy"
+													alt={anime?.name}
+												/>
+												{anime?.views && (
+													<p className="text-[#fffc] top-0 right-0 bg-[#0d0d0d]/[0.8] flex items-center rounded-[2px] m-[4px] p-[4px] absolute">
+														<FontAwesomeIcon
+															icon={faEye}
+															className="pr-[2px] h-[14px] w-[14px] mt-[2px]"
+														/>
+														{anime.views.toLocaleString()} lượt xem
+													</p>
+												)}
+												<div className="overlay-card">
+													<div className="icon">
+														{<BsFillPlayFill size={40} />}
 													</div>
 												</div>
-												<Card.Body>
-													<Card.Title>
-														<p className="webclamp">{anime?.name}</p>
-													</Card.Title>
-												</Card.Body>
-											</Card>
-										</Link>
-									</nav>
-									<div className="w-full"></div>
+											</div>
+											<Card.Body className="h-[150px]">
+												<Card.Title>
+													<p className="webclamp h-[70px] text-[#fffc] hover:opacity-80 duration-200 ease-in-out font-semibold">
+														{anime?.name}
+													</p>
+												</Card.Title>
+												<p className="text-[#fffc] flex items-center rounded-[2px] m-[4px]">
+													{anime.animeFormat}
+												</p>
+											</Card.Body>
+										</Card>
+									</Link>
 								</Col>
 							))}
 						</Row>

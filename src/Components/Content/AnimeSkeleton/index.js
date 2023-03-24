@@ -11,7 +11,7 @@ import blackBackground from "../../../Utilities/img/black.webp"
 import SwiperCore, { Pagination, Navigation, Mousewheel, Lazy } from "swiper"
 SwiperCore.use([Pagination, Navigation, Mousewheel, Lazy])
 
-function AnimeSkeleton() {
+function AnimeSkeleton({ height }) {
 	return (
 		<>
 			<Swiper
@@ -23,7 +23,7 @@ function AnimeSkeleton() {
 				}}
 			>
 				{[0, 1, 2, 3, 4, 5, 6].map((anime, i) => (
-					<SwiperSlide key={i} className="w-[320px]">
+					<SwiperSlide key={i} className="w-[320px] max-md:w-[260px]">
 						<Card>
 							<div className="card-container">
 								<Card.Img
@@ -34,7 +34,7 @@ function AnimeSkeleton() {
 								/>
 							</div>
 
-							<Card.Body>
+							<Card.Body className={height}>
 								<Card.Title>
 									<Skeleton variant="text" />
 								</Card.Title>

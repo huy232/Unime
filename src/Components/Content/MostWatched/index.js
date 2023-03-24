@@ -9,13 +9,15 @@ import "swiper/css"
 import "swiper/css/pagination"
 
 import SwiperCore, { Pagination, Lazy } from "swiper"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faEye } from "@fortawesome/free-solid-svg-icons"
 SwiperCore.use([Pagination, Lazy])
 
 function MostWatched({ rankToday, done2 }) {
 	return (
 		<>
 			{!done2 ? (
-				<AnimeSkeleton />
+				<AnimeSkeleton height={"h-[150px]"} />
 			) : (
 				<Swiper
 					spaceBetween={10}
@@ -28,7 +30,10 @@ function MostWatched({ rankToday, done2 }) {
 					lazy={true}
 				>
 					{rankToday.map((anime) => (
-						<SwiperSlide key={anime?.slug} className="w-[320px]">
+						<SwiperSlide
+							key={anime?.slug}
+							className="w-[320px] max-md:w-[260px]"
+						>
 							<nav>
 								<Link
 									to={`info/${anime?.slug}`}
@@ -43,6 +48,11 @@ function MostWatched({ rankToday, done2 }) {
 												loading="lazy"
 												alt={anime.name}
 											/>
+											{anime?.animeFormat && (
+												<div className="absolute top-0 left-0 m-2 p-[4px] text-sm font-medium text-[#fffc] rounded bg-[#9f6746]/[0.8]">
+													{anime.animeFormat}
+												</div>
+											)}
 											<div className="overlay-card">
 												<div className="icon">
 													{<BsFillPlayFill size={40} />}
@@ -50,10 +60,21 @@ function MostWatched({ rankToday, done2 }) {
 											</div>
 										</div>
 
-										<Card.Body className="h-[100px]">
+										<Card.Body className="h-[150px]">
 											<Card.Title>
-												<p className="webclamp text-orange-50">{anime?.name}</p>
+												<p className="webclamp text-orange-50 h-[70px] font-semibold">
+													{anime?.name}
+												</p>
 											</Card.Title>
+											{anime?.views && (
+												<p className="text-[#fffc] flex items-center">
+													<FontAwesomeIcon
+														icon={faEye}
+														className="pr-[4px] h-[14px] w-[14px] mt-[2px]"
+													/>
+													{anime.views.toLocaleString()} lượt xem
+												</p>
+											)}
 										</Card.Body>
 									</Card>
 								</Link>

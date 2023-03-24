@@ -7,6 +7,8 @@ import { BsFillPlayFill } from "react-icons/bs"
 import LoadingSpin from "react-loading-spin"
 import useDocumentTitle from "../../Hooks/useDocumentTitle"
 import "./animelist.css"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faEye } from "@fortawesome/free-solid-svg-icons"
 
 const PAGE_NUMBER = 1
 
@@ -32,6 +34,7 @@ function AnimeList({ instance }) {
 							thumbnail: anime.thumbnail,
 							name: anime.name,
 							views: anime.views,
+							animeFormat: anime.animeFormat,
 						}))
 						setTotalPage(response.data.pagination.totalPage)
 						setAnimeList((prev) => {
@@ -106,16 +109,30 @@ function AnimeList({ instance }) {
 														loading="lazy"
 														alt={anime.name}
 													/>
+													{anime?.views && (
+														<p className="text-[#fffc] top-0 right-0 bg-[#0d0d0d]/[0.8] flex items-center rounded-[2px] m-[4px] p-[4px] absolute">
+															<FontAwesomeIcon
+																icon={faEye}
+																className="pr-[2px] h-[14px] w-[14px] mt-[2px]"
+															/>
+															{anime.views.toLocaleString()} lượt xem
+														</p>
+													)}
 													<div className="overlay-card">
 														<div className="icon">
 															{<BsFillPlayFill size={40} />}
 														</div>
 													</div>
 												</div>
-												<Card.Body>
+												<Card.Body className="h-[150px]">
 													<Card.Title>
-														<p className="webclamp">{anime?.name}</p>
+														<p className="webclamp h-[70px] text-[#fffc] hover:opacity-80 duration-200 ease-in-out font-semibold">
+															{anime?.name}
+														</p>
 													</Card.Title>
+													<p className="text-[#fffc] flex items-center rounded-[2px] m-[4px]">
+														{anime.animeFormat}
+													</p>
 												</Card.Body>
 											</Card>
 										</Link>

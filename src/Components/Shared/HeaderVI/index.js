@@ -104,8 +104,9 @@ function HeaderVI() {
 							</button>
 						</form>
 					</div>
+					<LanguageButton handleScrollToTop={handleScrollToTop} />
 					<div
-						className="ml-auto cursor-pointer flex h-[40px] w-[40px] items-center justify-center"
+						className="cursor-pointer flex h-[40px] w-[40px] items-center justify-center"
 						onClick={() => setSidebar(!sideBar)}
 					>
 						<FontAwesomeIcon icon={faBars} />
@@ -176,9 +177,6 @@ function HeaderVI() {
 								</Link>
 							))}
 						</div>
-					</div>
-					<div className="flex">
-						<LanguageButton handleScrollToTop={handleScrollToTop} />
 					</div>
 					<div className="user-container">
 						<User handleScrollToTop={handleScrollToTop} />
