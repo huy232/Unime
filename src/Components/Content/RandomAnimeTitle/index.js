@@ -1,8 +1,14 @@
 import { Card } from "react-bootstrap"
 import { Link } from "react-router-dom"
 import DescriptionSkeleton from "../DescriptionSkeleton"
+import { useState } from "react"
+import useIsTruncated from "../../../Hooks/useIsTruncated"
+import { useRef } from "react"
 
 function RandomAnimeTitle({ randomAnime }) {
+	const ref = useRef(null)
+	const isTruncated = useIsTruncated(ref)
+	const [showMore, setShowMore] = useState(isTruncated)
 	return (
 		<>
 			<Card>
@@ -27,9 +33,24 @@ function RandomAnimeTitle({ randomAnime }) {
 				)}
 
 				<Card.Body className="description-card h-100 text-left">
-					<div className="line-clamp-5 h-100">{randomAnime?.description}</div>
+					{
+						<div
+							className={`${
+								showMore ? "line-clamp-none h-fit" : "line-clamp-5"
+							}`}
+							dangerouslySetInnerHTML={{ __html: randomAnime?.description }}
+							ref={ref}
+						/>
+					}
+					{isTruncated && (
+						<button
+							className="p-2 bg-black/80 my-2 flex ml-auto hover:opacity-80 duration-200"
+							onClick={() => setShowMore(!showMore)}
+						>
+							{showMore ? "Rút gọn" : "Hiện thêm"}
+						</button>
+					)}
 				</Card.Body>
-
 				<Card.Footer className="flex items-center w-full">
 					<span className="studio-text">
 						{!randomAnime?.studio ? (

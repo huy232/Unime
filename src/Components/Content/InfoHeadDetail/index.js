@@ -34,7 +34,10 @@ function InfoHeadDetail({ info, loading }) {
 				) : (
 					<>
 						{info.description.trim() && (
-							<p className="anime-description-paragraph">{info?.description}</p>
+							<div
+								className="anime-description-paragraph"
+								dangerouslySetInnerHTML={{ __html: info?.description }}
+							/>
 						)}
 					</>
 				)}

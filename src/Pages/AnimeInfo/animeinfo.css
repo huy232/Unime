@@ -107,6 +107,11 @@
 		rgb(0 0 0 / 15%) 8px 32px 32px 0px, rgb(0 0 0 / 15%) 8px 64px 64px 0px;
 }
 
+.anime-description-paragraph a {
+	background: none !important;
+	color: rgba(194, 194, 194, 0.8);
+}
+
 .bottom-detail {
 	display: flex;
 	flex-direction: row;
