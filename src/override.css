@@ -59,5 +59,11 @@ menu {
 	margin: 0;
 }
 
+img {
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
 @media screen and (max-width: 1024px) {
 }
