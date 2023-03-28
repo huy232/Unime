@@ -8,6 +8,7 @@ import { Skeleton } from "@mui/material"
 import "./animeinfodetail.css"
 import { duration } from "../../../Utilities/duration"
 import CharacterList from "../CharacterList"
+import ClampedDivENG from "../DescriptionENG"
 
 function AnimeInfoDetailENG({
 	loading,
@@ -71,12 +72,9 @@ function AnimeInfoDetailENG({
 			)}
 			<div className="description">
 				{!loading && (
-					<p
-						className="anime-description-paragraph"
-						dangerouslySetInnerHTML={{
-							__html: info.description,
-						}}
-					></p>
+					<p className="anime-description-paragraph">
+						<ClampedDivENG>{info.description}</ClampedDivENG>
+					</p>
 				)}
 			</div>
 			{!loading && (

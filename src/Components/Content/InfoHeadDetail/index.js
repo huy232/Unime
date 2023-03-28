@@ -1,6 +1,7 @@
 import DescriptionSkeleton from "../DescriptionSkeleton"
 import { GENRES, COLLECTIONS } from "../../../constants"
 import { Link } from "react-router-dom"
+import ClampedDiv from "../Description"
 
 function InfoHeadDetail({ info, loading }) {
 	let resultCollection = COLLECTIONS.filter((collection) => {
@@ -34,10 +35,9 @@ function InfoHeadDetail({ info, loading }) {
 				) : (
 					<>
 						{info.description.trim() && (
-							<div
-								className="anime-description-paragraph"
-								dangerouslySetInnerHTML={{ __html: info?.description }}
-							/>
+							<div className="anime-description-paragraph">
+								<ClampedDiv>{info.description}</ClampedDiv>
+							</div>
 						)}
 					</>
 				)}
