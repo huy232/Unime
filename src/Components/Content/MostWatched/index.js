@@ -1,7 +1,7 @@
 import { Card } from "react-bootstrap"
 import { Link } from "react-router-dom"
 import { BsFillPlayFill } from "react-icons/bs"
-import AnimeSkeleton from "../AnimeSkeleton"
+import AnimeSkeletonCard from "../AnimeSkeletonCard"
 // SWIPER
 import { Swiper, SwiperSlide } from "swiper/react"
 
@@ -13,11 +13,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faEye } from "@fortawesome/free-solid-svg-icons"
 SwiperCore.use([Pagination, Lazy])
 
-function MostWatched({ rankToday, done2 }) {
+function MostWatched({ rankToday, loadingRankToday }) {
 	return (
 		<>
-			{!done2 ? (
-				<AnimeSkeleton height={"h-[150px]"} />
+			{!loadingRankToday ? (
+				<AnimeSkeletonCard height={"h-[150px]"} />
 			) : (
 				<Swiper
 					spaceBetween={10}

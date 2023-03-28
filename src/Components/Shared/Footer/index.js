@@ -69,7 +69,10 @@ function Footer() {
 					: "UNIME is not affiliated with or endorsed by any of the anime studios behind the creation of the anime presented on this site. This website is only a user interface presenting/linking various self-hosted files across the internet by other third-party providers for easy access."}
 			</p>
 			<p className="py-2 font-bold max-md:text-center">
-				© UNIME | {language === "vi" ? "Dựng với" : `Built with`} Consumet API
+				© UNIME | {language === "vi" ? "Dựng với" : `Built with`}{" "}
+				<a href="https://github.com/consumet">Consumet API</a>{" "}
+				{language === "vi" ? "và nguồn từ" : "and source from"}{" "}
+				<a href="https://github.com/chaycee">Chaycee</a>
 			</p>
 		</footer>
 	)

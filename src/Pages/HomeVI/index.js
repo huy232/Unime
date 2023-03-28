@@ -6,17 +6,21 @@ import RandomAnime from "../../Components/Content/RandomAnime"
 import RecentAnimeVI from "../../Components/Content/RecentAnimeVI"
 import MostWatchVI from "../../Components/Content/MostWatchVI"
 import CollectionsVI from "../../Components/Content/CollectionsVI"
+import MovieList from "../../Components/Content/MovieListLayout"
 import "./home.css"
 
 function HomeVI({ instance }) {
 	const [newAnime, setNewAnime] = useState([])
-	const [done1, setDone1] = useState(false)
+	const [loadingNewAnime, setLoadingNewAnime] = useState(false)
 	// ----------
 	const [rankToday, setRankToday] = useState([])
-	const [done2, setDone2] = useState(false)
+	const [loadingRankToday, setLoadingRankToday] = useState(false)
+	// ----------
+	const [movies, setMovies] = useState([])
+	const [loadingMovies, setLoadingMovies] = useState(false)
 	// ----------
 	const [randomAnime, setRandomAnime] = useState({})
-	const [done3, setDone3] = useState(false)
+	const [loadingRandomAnime, setLoadingRandomAnime] = useState(false)
 
 	useEffect(() => {
 		const CancelToken = axios.CancelToken
@@ -29,7 +33,7 @@ function HomeVI({ instance }) {
 				})
 				.then((data) => {
 					setNewAnime(data.data.data)
-					setDone1(true)
+					setLoadingNewAnime(true)
 				})
 				.then(async () => await getMostWatch())
 				.catch((thrown) => {
@@ -44,7 +48,22 @@ function HomeVI({ instance }) {
 				})
 				.then((data) => {
 					setRankToday(data.data.data)
-					setDone2(true)
+					setLoadingRankToday(true)
+				})
+				.then(async () => await getMovie())
+				.catch((thrown) => {
+					if (axios.isCancel(thrown)) return
+				})
+		}
+
+		const getMovie = async () => {
+			await instance
+				.get("/vi-movies", {
+					cancelToken: source.token,
+				})
+				.then((data) => {
+					setMovies(data.data.data)
+					setLoadingMovies(true)
 				})
 				.then(async () => await getRandom())
 				.catch((thrown) => {
@@ -63,7 +82,7 @@ function HomeVI({ instance }) {
 					} else {
 						setRandomAnime(data.data.data)
 					}
-					setDone3(true)
+					setLoadingRandomAnime(true)
 				})
 				.catch((thrown) => {
 					if (axios.isCancel(thrown)) return
@@ -80,16 +99,25 @@ function HomeVI({ instance }) {
 	return (
 		<>
 			<LazyLoad>
-				<RecentAnimeVI newAnime={newAnime} done1={done1} />
+				<RecentAnimeVI newAnime={newAnime} loadingNewAnime={loadingNewAnime} />
 			</LazyLoad>
 			<LazyLoad>
-				<MostWatchVI rankToday={rankToday} done2={done2} />
+				<MostWatchVI
+					rankToday={rankToday}
+					loadingRankToday={loadingRankToday}
+				/>
+			</LazyLoad>
+			<LazyLoad>
+				<MovieList data={movies} loading={loadingMovies} />
 			</LazyLoad>
 			<LazyLoad>
 				<CollectionsVI />
 			</LazyLoad>
 			<LazyLoad>
-				<RandomAnime randomAnime={randomAnime} done3={done3} />
+				<RandomAnime
+					randomAnime={randomAnime}
+					loadingRandomAnime={loadingRandomAnime}
+				/>
 			</LazyLoad>
 		</>
 	)

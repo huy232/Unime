@@ -1,7 +1,7 @@
 import { BsFillPlayFill } from "react-icons/bs"
 import { Link } from "react-router-dom"
 import { Card } from "react-bootstrap"
-import AnimeSkeleton from "../AnimeSkeleton"
+import AnimeSkeletonCard from "../AnimeSkeletonCard"
 // SWIPER
 import { Swiper, SwiperSlide } from "swiper/react"
 
@@ -11,11 +11,11 @@ import "swiper/css/pagination"
 import SwiperCore, { Pagination, Lazy } from "swiper"
 SwiperCore.use([Pagination, Lazy])
 
-function NewAnime({ done1, newAnime }) {
+function NewAnime({ loadingNewAnime, newAnime }) {
 	return (
 		<>
-			{!done1 ? (
-				<AnimeSkeleton height={"h-[180px]"} />
+			{!loadingNewAnime ? (
+				<AnimeSkeletonCard height={"h-[180px]"} />
 			) : (
 				<Swiper
 					spaceBetween={10}

@@ -9,8 +9,8 @@ import InfoHeadDetail from "../../Components/Content/InfoHeadDetail"
 import InfoEpisodeHolder from "../../Components/Content/InfoEpisodeHolder"
 import InfoSpecialEpisodeList from "../../Components/Content/InfoSpecialEpisodeList"
 import InfoAnimeEpisodeHandle from "../../Components/Content/InfoAnimeEpisodeHandle"
-import "./animeinfo.css"
 import CharacterListVI from "../../Components/Content/CharacterListVI"
+import "./animeinfo.css"
 // import CommentSection from "../../Components/Content/CommentSection"
 
 function AnimeInfo({ instance }) {

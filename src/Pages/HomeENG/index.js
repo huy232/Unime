@@ -39,8 +39,10 @@ function HomeENG() {
 					cancelToken: source.token,
 				})
 				.then((topAiring) => {
-					setTopAiring(topAiring.data.data.results)
-					setLoadingAiring(false)
+					if (topAiring.data.success) {
+						setTopAiring(topAiring.data.data.results)
+						setLoadingAiring(false)
+					}
 				})
 				.then(async () => await getRecentAnime())
 				.catch((thrown) => {
@@ -54,8 +56,10 @@ function HomeENG() {
 					cancelToken: source.token,
 				})
 				.then((getRecentData) => {
-					setRecentAnime(getRecentData.data.data.results)
-					setLoadingRecentAnime(false)
+					if (getRecentData.data.success) {
+						setRecentAnime(getRecentData.data.data.results)
+						setLoadingRecentAnime(false)
+					}
 				})
 				.then(async () => await getTrendingAnime())
 				.catch((thrown) => {
@@ -69,8 +73,10 @@ function HomeENG() {
 					cancelToken: source.token,
 				})
 				.then((trendingAnime) => {
-					setTrendingAnime(trendingAnime.data.data.results)
-					setLoadingTrending(false)
+					if (trendingAnime.data.success) {
+						setTrendingAnime(trendingAnime.data.data.results)
+						setLoadingTrending(false)
+					}
 				})
 				.then(async () => await getSeason())
 				.catch((thrown) => {
@@ -82,8 +88,10 @@ function HomeENG() {
 			await axios
 				.get(`${API}/eng/upcoming-anime`, { cancelToken: source.token })
 				.then((seasonData) => {
-					setSeasonAnime(seasonData.data.data)
-					setLoadingSeason(false)
+					if (seasonData.data.success) {
+						setSeasonAnime(seasonData.data.data)
+						setLoadingSeason(false)
+					}
 				})
 				.then(async () => await getAiringSchedule())
 				.catch((thrown) => {
@@ -97,8 +105,10 @@ function HomeENG() {
 					cancelToken: source.token,
 				})
 				.then((scheduleAnime) => {
-					setAiringSchedule(scheduleAnime.data.data.results)
-					setLoadingAiringSchedule(false)
+					if (scheduleAnime.data.success) {
+						setAiringSchedule(scheduleAnime.data.data.results)
+						setLoadingAiringSchedule(false)
+					}
 				})
 				.then(async () => await getRandomAnime())
 				.catch((thrown) => {

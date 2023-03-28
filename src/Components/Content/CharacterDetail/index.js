@@ -9,11 +9,11 @@ import "swiper/css/navigation"
 import SwiperCore, { Lazy } from "swiper"
 SwiperCore.use([Lazy])
 
-function CharacterDetail({ randomAnime, done3 }) {
+function CharacterDetail({ randomAnime, loadingRandomAnime }) {
 	return (
 		<>
 			<div className="character-detail mt-[42px]">
-				{!done3 ? (
+				{!loadingRandomAnime ? (
 					<Skeleton
 						variant="rectangular"
 						width="100%"

@@ -63,8 +63,8 @@ function TopAiringENGComp({ topAiring }) {
 									</h2>
 								</Link>
 								<div className="flex flex-wrap my-[20px] max-lg:my-[4px] items-center">
-									{item.genres.map((genre, i) => (
-										<>
+									{item.genres.map((genre) => (
+										<React.Fragment key={genre}>
 											<Link
 												to={`/eng/anime/${toSlug(genre)}`}
 												className="hover:opacity-80 duration-200 ease-in-out genre inline p-[4px] m-[4px] first:ml-0 max-lg:text-xs font-medium text-[#fffc] max-md:bg-black/70 max-md:rounded"
@@ -86,7 +86,7 @@ function TopAiringENGComp({ topAiring }) {
 											) : (
 												""
 											)}
-										</>
+										</React.Fragment>
 									))}
 								</div>
 								<div

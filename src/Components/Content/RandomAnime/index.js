@@ -3,7 +3,7 @@ import RandomAnimeInfo from "../RandomAnimeInfo"
 import CharacterDetail from "../CharacterDetail"
 import RandomAnimeRightCover from "../RandomAnimeRightCover"
 
-function RandomAnime({ randomAnime, done3 }) {
+function RandomAnime({ randomAnime, loadingRandomAnime }) {
 	return (
 		<>
 			{Object.keys(randomAnime).length > 0 && (
@@ -20,7 +20,10 @@ function RandomAnime({ randomAnime, done3 }) {
 							<RandomAnimeTitle randomAnime={randomAnime} />
 							<div className="info-character-wrapper mt-[22px]">
 								<RandomAnimeInfo randomAnime={randomAnime} />
-								<CharacterDetail randomAnime={randomAnime} done3={done3} />
+								<CharacterDetail
+									randomAnime={randomAnime}
+									loadingRandomAnime={loadingRandomAnime}
+								/>
 							</div>
 						</div>
 						<div className="col-3">

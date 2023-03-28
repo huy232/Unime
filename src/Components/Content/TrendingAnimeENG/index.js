@@ -1,5 +1,5 @@
 import "./popularanime.css"
-import AnimeSkeletonENG from "../AnimeSkeletonENG"
+import AnimeSkeleton from "../AnimeSkeleton"
 import TrendingAnimeENGComp from "../TrendingAnimeENGComp"
 
 function TrendingAnimeENG({ loadingTrending, trendingAnime }) {
@@ -9,7 +9,7 @@ function TrendingAnimeENG({ loadingTrending, trendingAnime }) {
 				TRENDING
 			</h1>
 			{loadingTrending ? (
-				<AnimeSkeletonENG />
+				<AnimeSkeleton />
 			) : (
 				<TrendingAnimeENGComp trendingAnime={trendingAnime} />
 			)}

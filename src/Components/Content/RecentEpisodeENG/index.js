@@ -1,5 +1,5 @@
 import "./recentepisode.css"
-import AnimeSkeletonENG from "../AnimeSkeletonENG"
+import AnimeSkeleton from "../AnimeSkeleton"
 import RecentAnimeENGComp from "../RecentAnimeENGComp"
 
 function RecentEpisodeENG({ loadingRecentAnime, recentAnime }) {
@@ -9,7 +9,7 @@ function RecentEpisodeENG({ loadingRecentAnime, recentAnime }) {
 				NEWLY UPDATED
 			</h1>
 			{loadingRecentAnime ? (
-				<AnimeSkeletonENG />
+				<AnimeSkeleton />
 			) : (
 				<RecentAnimeENGComp recentAnime={recentAnime} />
 			)}
