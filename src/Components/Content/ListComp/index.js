@@ -30,7 +30,7 @@ function ListComp({ data }) {
 							aria-label={anime.name}
 						>
 							<div className="group recent-anime-holder select-none cursor-pointer">
-								<div className="recent-anime-image aspect-[0.7] group-hover:opacity-80 duration-200 ease-in-out relative">
+								<div className="recent-anime-image aspect-[2/3] group-hover:opacity-80 duration-200 ease-in-out relative">
 									<img
 										className="object-fill object-center w-full h-full group-hover:scale-90 duration-500 linear absolute"
 										src={anime.thumbnail}
@@ -52,14 +52,14 @@ function ListComp({ data }) {
 										</div>
 									)}
 								</div>
-								<div className="recent-anime-title">
+								<div className="recent-anime-title flex flex-col h-[100px]">
 									<p
-										className="line-clamp-2 font-semibold h-[60px]"
+										className="text-lg line-clamp-2 font-semibold"
 										style={{ color: `${COLORLIST[i] || "#fffc"}` }}
 									>
 										{anime.name}
 									</p>
-									<p className="text-[#fffc]">{anime.views}</p>
+									<p className="text-[#fffc] mt-auto">{anime.views}</p>
 								</div>
 							</div>
 						</Link>

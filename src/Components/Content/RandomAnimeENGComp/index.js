@@ -15,7 +15,7 @@ function RandomAnimeENGComp({ randomAnime }) {
 			<div className="random-anime-container px-4 md:px-12 lg:px-20 xl:px-28 2xl:px-36 w-full pb-12 flex max-lg:flex-col">
 				<div className="w-1/5 flex justify-center max-lg:w-full">
 					<Link
-						className="cursor-pointer hover:opacity-80 aspect-[0.75] duration-200 ease-in-out flex justify-center items-center"
+						className="cursor-pointer hover:opacity-80 aspect-[2/3] duration-200 ease-in-out flex justify-center items-center"
 						to={`/eng/info/${randomAnime.id}`}
 						aria-label={randomAnime.id}
 					>

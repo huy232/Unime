@@ -7,7 +7,7 @@ function RandomAnimeRightCover({ randomAnime }) {
 			<div className="image-box mx-4">
 				{!randomAnime?.cover ? (
 					<Skeleton
-						className="aspect-[0.7]"
+						className="aspect-[2/3]"
 						variant="rectangular"
 						width="100%"
 						animation="wave"
@@ -17,7 +17,7 @@ function RandomAnimeRightCover({ randomAnime }) {
 					<Link to={`/info/${randomAnime.slug}`} aria-label={randomAnime.slug}>
 						<img
 							src={randomAnime.cover}
-							className="today-cover-image w-full h-auto object-fill aspect-[0.7]"
+							className="today-cover-image w-full h-auto object-fill aspect-[2/3]"
 							alt={randomAnime.name}
 							loading="lazy"
 						/>
