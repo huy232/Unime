@@ -8,8 +8,12 @@ import MostWatchVI from "../../Components/Content/MostWatchVI"
 import CollectionsVI from "../../Components/Content/CollectionsVI"
 import MovieList from "../../Components/Content/MovieListLayout"
 import "./home.css"
+import TopAiringVI from "../../Components/Content/TopAiringVI"
 
 function HomeVI({ instance }) {
+	const [slider, setSlider] = useState([])
+	const [loadingSlider, setLoadingSlider] = useState(false)
+	// ----------
 	const [newAnime, setNewAnime] = useState([])
 	const [loadingNewAnime, setLoadingNewAnime] = useState(false)
 	// ----------
@@ -25,6 +29,21 @@ function HomeVI({ instance }) {
 	useEffect(() => {
 		const CancelToken = axios.CancelToken
 		const source = CancelToken.source()
+
+		const getSlider = async () => {
+			await instance
+				.get("/slider", {
+					cancelToken: source.token,
+				})
+				.then((data) => {
+					setSlider(data.data.data)
+					setLoadingSlider(true)
+				})
+				.then(async () => await getNew())
+				.catch((thrown) => {
+					if (axios.isCancel(thrown)) return
+				})
+		}
 
 		const getNew = async () => {
 			await instance
@@ -89,7 +108,7 @@ function HomeVI({ instance }) {
 				})
 		}
 
-		getNew()
+		getSlider()
 
 		return () => {
 			source.cancel()
@@ -98,6 +117,9 @@ function HomeVI({ instance }) {
 
 	return (
 		<>
+			<LazyLoad>
+				<TopAiringVI data={slider} loading={loadingSlider} />
+			</LazyLoad>
 			<LazyLoad>
 				<RecentAnimeVI newAnime={newAnime} loadingNewAnime={loadingNewAnime} />
 			</LazyLoad>
