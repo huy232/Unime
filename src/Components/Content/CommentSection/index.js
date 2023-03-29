@@ -17,7 +17,7 @@ function CommentSection({
 	}
 	return (
 		<div className="article-container">
-			<h3>{headingTitle}</h3>
+			<h4 className="font-black">{headingTitle}</h4>
 			<DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
 		</div>
 	)
