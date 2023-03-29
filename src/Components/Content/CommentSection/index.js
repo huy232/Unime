@@ -1,21 +1,26 @@
-import { useEffect, useState } from "react"
-import { supabase } from "../../../supabaseClient"
+import { DiscussionEmbed } from "disqus-react"
+import { MAINSITE } from "../../../constants"
 
-function CommentSection({ animeId }) {
-	const [commentData, setCommentData] = useState([])
-
-	useEffect(() => {
-		const getComment = async () => {
-			const { data, error } = await supabase
-				.from("sce_comments")
-				.select()
-				.eq("topic", `${animeId}`)
-		}
-
-		getComment()
-	}, [animeId])
-
-	return <div></div>
+function CommentSection({
+	animeId,
+	animeTitle,
+	language,
+	headingTitle,
+	route,
+}) {
+	const disqusShortname = "unime-anime-vercel"
+	const disqusConfig = {
+		url: `${MAINSITE}/${route}/${animeId}`,
+		identifier: `${animeId}-comment`,
+		title: animeTitle,
+		language: language,
+	}
+	return (
+		<div className="article-container">
+			<h3>{headingTitle}</h3>
+			<DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
+		</div>
+	)
 }
 
 export default CommentSection

@@ -9,6 +9,7 @@ import "./animeinfodetail.css"
 import { duration } from "../../../Utilities/duration"
 import CharacterList from "../CharacterList"
 import ClampedDivENG from "../DescriptionENG"
+import CommentSection from "../CommentSection"
 
 function AnimeInfoDetailENG({
 	loading,
@@ -183,6 +184,17 @@ function AnimeInfoDetailENG({
 						<RecommendENG
 							recommend={info.recommendations}
 							setLoading={setLoading}
+						/>
+					)}
+					{!loading && (
+						<CommentSection
+							animeId={animeId}
+							animeTitle={
+								info.title?.english || info.title?.romaji || info.title?.native
+							}
+							language={"en_US"}
+							headingTitle={"COMMENTS"}
+							route={"eng/info"}
 						/>
 					)}
 				</>
