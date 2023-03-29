@@ -18,6 +18,20 @@ function CommentSection({
 	return (
 		<div className="article-container">
 			<h4 className="font-black">{headingTitle}</h4>
+			<p className="inline-block text-white/50 border-l-[6px] border-white/70 p-[4px] bg-white/10 text-sm my-[8px]">
+				{language === "vi" && (
+					<>
+						<i>*Lưu ý</i>: Tài khoản để bình luận <strong>khác với</strong> tài
+						khoản đăng nhập
+					</>
+				)}
+				{language === "en_US" && (
+					<>
+						<i>*Note</i>: The account used for comments{" "}
+						<strong>is different from</strong> the account that uses for login
+					</>
+				)}
+			</p>
 			<DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
 		</div>
 	)

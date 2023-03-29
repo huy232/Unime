@@ -95,7 +95,7 @@ function AnimeImageSearch() {
 							</p>
 							<p>
 								<i>
-									Note:
+									Note:{" "}
 									<b>
 										Search results are not 100% accurate. Only works with anime
 										in-scene episode, not with anime wallpaper, etc.

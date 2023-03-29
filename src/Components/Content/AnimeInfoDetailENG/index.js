@@ -73,9 +73,9 @@ function AnimeInfoDetailENG({
 			)}
 			<div className="description">
 				{!loading && (
-					<p className="anime-description-paragraph">
+					<div className="anime-description-paragraph">
 						<ClampedDivENG>{info.description}</ClampedDivENG>
-					</p>
+					</div>
 				)}
 			</div>
 			{!loading && (
