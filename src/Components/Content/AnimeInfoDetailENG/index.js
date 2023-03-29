@@ -195,6 +195,7 @@ function AnimeInfoDetailENG({
 							language={"en_US"}
 							headingTitle={"COMMENTS"}
 							route={"eng/info"}
+							shortname={"unime-eng"}
 						/>
 					)}
 				</>

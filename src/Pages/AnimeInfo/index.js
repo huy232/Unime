@@ -131,6 +131,7 @@ function AnimeInfo({ instance }) {
 								language={"vi"}
 								headingTitle={"BÌNH LUẬN"}
 								route={"info"}
+								shortname={"unime-anime-vercel"}
 							/>
 						)}
 					</div>

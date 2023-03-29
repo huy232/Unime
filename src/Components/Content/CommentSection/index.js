@@ -7,8 +7,9 @@ function CommentSection({
 	language,
 	headingTitle,
 	route,
+	shortname,
 }) {
-	const disqusShortname = "unime-anime-vercel"
+	const disqusShortname = shortname
 	const disqusConfig = {
 		url: `${MAINSITE}/${route}/${animeId}`,
 		identifier: `${animeId}-comment`,

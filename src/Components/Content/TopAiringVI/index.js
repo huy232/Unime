@@ -7,7 +7,7 @@ function TopAiringVI({ loading, data }) {
 		<>
 			{!loading ? (
 				<div className="w-full">
-					<SkeletonTheme baseColor="#202020" highlightColor="#444">
+					<SkeletonTheme baseColor="#0D0D0D" highlightColor="#444">
 						<Skeleton className="h-[500px]" />
 					</SkeletonTheme>
 				</div>
