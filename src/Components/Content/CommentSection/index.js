@@ -17,7 +17,7 @@ function CommentSection({
 		language: language,
 	}
 	return (
-		<div className="article-container">
+		<div className="article-container px-4 md:px-12 lg:px-20 xl:px-28 2xl:px-36">
 			<h4 className="font-black">{headingTitle}</h4>
 			<p className="inline-block text-white/50 border-l-[6px] border-white/70 p-[4px] bg-white/10 text-sm my-[8px]">
 				{language === "vi" && (
