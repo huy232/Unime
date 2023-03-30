@@ -1,14 +1,12 @@
 import { Skeleton } from "@mui/material"
 import React from "react"
 
-function AnimeInfoBannerENG({ loading, info }) {
+function InfoBannerENG({ loading, info }) {
 	return (
 		<div
-			className={`${
-				loading ? "banner-anime-overlay-skeleton" : "banner-anime-overlay"
-			}`}
+			className={`${loading ? "banner-overlay-skeleton" : "banner-overlay"}`}
 		>
-			<div className="banner-anime-image">
+			<div className="banner-image">
 				{loading ? (
 					<Skeleton
 						variant="rectangular"
@@ -38,4 +36,4 @@ function AnimeInfoBannerENG({ loading, info }) {
 	)
 }
 
-export default AnimeInfoBannerENG
+export default InfoBannerENG

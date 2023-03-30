@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import axios from "axios"
-import AnimeInfoBannerENG from "../../Components/Content/AnimeInfoBannerENG"
+import InfoBannerENG from "../../Components/Content/InfoBannerENG"
 import AnimeInfoBoxENG from "../../Components/Content/AnimeInfoBoxENG"
 import AnimeInfoDetailENG from "../../Components/Content/AnimeInfoDetailENG"
 import useDocumentTitle from "../../Hooks/useDocumentTitle"
@@ -50,7 +50,7 @@ function AnimeInfoENG() {
 	useDocumentTitle(title)
 	return (
 		<div className="mb-8">
-			<AnimeInfoBannerENG loading={loading} info={info} />
+			<InfoBannerENG loading={loading} info={info} />
 			<div className="w-full flex relative max-lg:flex-col">
 				<AnimeInfoBoxENG loading={loading} info={info} />
 				<AnimeInfoDetailENG

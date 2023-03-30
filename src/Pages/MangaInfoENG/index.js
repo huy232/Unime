@@ -2,12 +2,13 @@ import { useState, useEffect } from "react"
 import axios from "axios"
 import { useParams } from "react-router-dom"
 import { API } from "../../constants"
+import InfoBannerENG from "../../Components/Content/InfoBannerENG"
 
 function MangaInfoENG() {
 	const { mangaID } = useParams()
 	const [info, setInfo] = useState({})
 	const [loading, setLoading] = useState(true)
-	const [provider, setProvider] = useState("mangakakalot")
+	const [provider, setProvider] = useState("mangadex")
 	useEffect(() => {
 		const CancelToken = axios.CancelToken
 		const source = CancelToken.source()
@@ -28,7 +29,12 @@ function MangaInfoENG() {
 			source.cancel()
 		}
 	}, [mangaID, provider])
-	return <div>{loading ? "Loading" : console.log(info)}</div>
+	return (
+		<div>
+			<InfoBannerENG loading={loading} info={info} />
+			{console.log(info)}
+		</div>
+	)
 }
 
 export default MangaInfoENG
