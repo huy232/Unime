@@ -4,7 +4,9 @@ import React from "react"
 function InfoBannerENG({ loading, info }) {
 	return (
 		<div
-			className={`${loading ? "banner-overlay-skeleton" : "banner-overlay"}`}
+			className={`${
+				loading ? "banner-image-overlay-skeleton" : "banner-image-overlay"
+			}`}
 		>
 			<div className="banner-image">
 				{loading ? (

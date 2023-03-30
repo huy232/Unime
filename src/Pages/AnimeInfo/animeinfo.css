@@ -1,6 +1,5 @@
-.banner-overlay {
+.banner-image-overlay {
 	position: relative;
-	margin-top: -40px;
 	height: 450px;
 	overflow: hidden;
 }
