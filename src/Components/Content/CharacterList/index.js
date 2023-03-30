@@ -9,7 +9,7 @@ function CharacterList({ characters }) {
 					<div className="h-28" key={character.id}>
 						<div className="flex bg-[#0D0D0D] h-full w-full">
 							<img
-								className="h-full aspect-[2/3]"
+								className="h-full aspect-[2/3] w-[120px]"
 								src={character.image}
 								alt={character.name.full}
 								loading="lazy"
