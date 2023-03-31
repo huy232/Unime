@@ -21,7 +21,7 @@ function RecommendENG({ recommend, setLoading }) {
 					modules={[Lazy]}
 					slidesPerView="auto"
 					spaceBetween={10}
-					className="recommend-anime-swiper w-full"
+					className="recommend-item-swiper w-full"
 					pagination={{
 						type: "progressbar",
 					}}
@@ -29,40 +29,40 @@ function RecommendENG({ recommend, setLoading }) {
 					preloadImages={false}
 				>
 					{recommend.map(
-						(anime, i) =>
-							anime.status !== "Unknown" && (
+						(item, i) =>
+							item.status !== "Unknown" && (
 								<SwiperSlide key={i}>
 									<Link
-										to={`/eng/info/${anime.id}`}
+										to={`/eng/info/${item.id}`}
 										title={
-											anime.title.english ||
-											anime.title.romaji ||
-											anime.title.native ||
-											anime.title.userPreferred
+											item.title.english ||
+											item.title.romaji ||
+											item.title.native ||
+											item.title.userPreferred
 										}
 										onClick={() => setLoading(true)}
 										aria-label={
-											anime.title.english ||
-											anime.title.romaji ||
-											anime.title.native ||
-											anime.userPreferred
+											item.title.english ||
+											item.title.romaji ||
+											item.title.native ||
+											item.userPreferred
 										}
 									>
-										<div className="group recommend-anime-holder select-none cursor-pointer">
-											<div className="recommend-anime-image aspect-[2/3] group-hover:opacity-80 duration-200 ease-in-out relative">
+										<div className="group recommend-item-holder select-none cursor-pointer">
+											<div className="recommend-item-image aspect-[2/3] group-hover:opacity-80 duration-200 ease-in-out relative">
 												<img
 													className="object-fill object-center w-full h-full duration-500 linear absolute"
-													src={anime.image}
+													src={item.image}
 													alt={
-														anime.title.english ||
-														anime.title.romaji ||
-														anime.title.native ||
-														anime.title.userPreferred
+														item.title.english ||
+														item.title.romaji ||
+														item.title.native ||
+														item.title.userPreferred
 													}
 													loading="lazy"
 												/>
 												<div className="text-white absolute right-0 bg-[#0d0d0d]/[0.8] p-[6px]">
-													{anime.rating}%{" "}
+													{item.rating}%{" "}
 													<FontAwesomeIcon
 														icon={faHeart}
 														className="text-red-500"
@@ -70,27 +70,30 @@ function RecommendENG({ recommend, setLoading }) {
 												</div>
 												<div className="text-[#fffc] absolute bottom-0 text-sm w-full p-[4px] bg-[#0d0d0d]/[0.8]">
 													<div className="flex">
-														<p>{anime.episodes}. EP</p>
+														<p>
+															{(item.episodes && `${item.episodes}. EP`) ||
+																(item.chapters && `${item.chapters}. Ch`)}
+														</p>
 														<p className="ml-auto border-2 rounded px-[4px]">
-															{anime.type}
+															{item.type}
 														</p>
 													</div>
 												</div>
 											</div>
-											<div className="recommend-anime-title h-[60px]">
+											<div className="recommend-item-title h-[60px]">
 												<p
 													className="line-clamp-2 font-extrabold"
 													style={{ color: COLORLIST[i] || "#fffc" }}
 												>
-													{anime.title.english ||
-														anime.title.romaji ||
-														anime.title.native ||
-														anime.title.userPreferred}
+													{item.title.english ||
+														item.title.romaji ||
+														item.title.native ||
+														item.title.userPreferred}
 												</p>
 											</div>
 											<div className="text-[#fffc] text-sm inline-block p-[4px]">
 												<p className="border-2 rounded px-[4px]">
-													{anime.status}
+													{item.status}
 												</p>
 											</div>
 										</div>

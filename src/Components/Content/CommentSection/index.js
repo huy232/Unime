@@ -2,8 +2,8 @@ import { DiscussionEmbed } from "disqus-react"
 import { MAINSITE } from "../../../constants"
 
 function CommentSection({
-	animeId,
-	animeTitle,
+	itemId,
+	itemTitle,
 	language,
 	headingTitle,
 	route,
@@ -11,9 +11,9 @@ function CommentSection({
 }) {
 	const disqusShortname = shortname
 	const disqusConfig = {
-		url: `${MAINSITE}/${route}/${animeId}`,
-		identifier: `${animeId}-comment`,
-		title: animeTitle,
+		url: `${MAINSITE}/${route}/${itemId}`,
+		identifier: `${itemId}-comment`,
+		title: itemTitle,
 		language: language,
 	}
 	return (

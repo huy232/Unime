@@ -11,14 +11,14 @@ import CharacterList from "../CharacterList"
 import ClampedDivENG from "../DescriptionENG"
 import CommentSection from "../CommentSection"
 
-function AnimeInfoDetailENG({
+function InfoDetailENG({
 	loading,
 	info,
 	setProvider,
 	provider,
 	setLoading,
 	providerRef,
-	animeId,
+	itemId,
 	setInfo,
 	loadingEpisodeList,
 	setLoadingEpisodeList,
@@ -174,7 +174,7 @@ function AnimeInfoDetailENG({
 							info={info}
 							provider={provider}
 							providerRef={providerRef}
-							animeId={animeId}
+							animeId={itemId}
 							setInfo={setInfo}
 							setLoadingEpisodeList={setLoadingEpisodeList}
 							loadingEpisodeList={loadingEpisodeList}
@@ -188,8 +188,8 @@ function AnimeInfoDetailENG({
 					)}
 					{!loading && (
 						<CommentSection
-							animeId={animeId}
-							animeTitle={
+							itemId={itemId}
+							itemTitle={
 								info.title?.english || info.title?.romaji || info.title?.native
 							}
 							language={"en_US"}
@@ -204,4 +204,4 @@ function AnimeInfoDetailENG({
 	)
 }
 
-export default AnimeInfoDetailENG
+export default InfoDetailENG

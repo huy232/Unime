@@ -126,8 +126,8 @@ function AnimeInfo({ instance }) {
 						)}
 						{!loading && (
 							<CommentSection
-								animeId={anime}
-								animeTitle={info.name}
+								itemId={anime}
+								itemTitle={info.name}
 								language={"vi"}
 								headingTitle={"BÌNH LUẬN"}
 								route={"info"}

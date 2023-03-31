@@ -1,7 +1,7 @@
 import { Skeleton } from "@mui/material"
 import React from "react"
 
-function AnimeInfoBoxENG({ loading, info }) {
+function InfoBoxENG({ loading, info }) {
 	return (
 		<div className="w-[30vw] max-lg:w-full">
 			<div className="info-image flex justify-center mt-[-5rem] mb-[20px]">
@@ -122,4 +122,4 @@ function AnimeInfoBoxENG({ loading, info }) {
 	)
 }
 
-export default AnimeInfoBoxENG
+export default InfoBoxENG

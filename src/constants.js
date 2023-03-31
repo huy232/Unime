@@ -35,6 +35,16 @@ const provider = [
 	"animefox",
 ]
 
+const mangaProvider = [
+	"mangadex",
+	"mangahere",
+	"mangakakalot",
+	"mangapill",
+	"mangareader",
+	"mangapark",
+	"mangasee123",
+]
+
 // const engGenres = [
 // 	{ slug: "action", name: "Action" },
 // 	{ slug: "adventure", name: "Adventure" },
@@ -318,6 +328,7 @@ export const GENRES = genres
 export const ENG_GENRES = engGenres
 export const COLLECTIONS = collections
 export const PROVIDER = provider
+export const MANGA_PROVIDER = mangaProvider
 export const COLLECTION_COLOR = colorArray
 export const COLORLIST = colorList
 export const IO_CORS = ioCors

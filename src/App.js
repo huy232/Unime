@@ -34,6 +34,7 @@ import FilmInfo from "./Components/Content/FilmInfo"
 import MangaENG from "./Pages/MangaENG"
 import MangaInfoENG from "./Pages/MangaInfoENG"
 import MangaBrowseENG from "./Components/Content/MangaBrowseENG"
+import MangaViewENG from "./Pages/MangaViewENG"
 
 function App() {
 	const instance = axios.create({
@@ -149,6 +150,7 @@ function App() {
 								<MangaBrowseENG subUrl={"manga-manhwa"} title={"MANHWA"} />
 							}
 						/>
+						<Route path={`/eng/manga-read/`} element={<MangaViewENG />} />
 					</Routes>
 				</div>
 				{!!(
