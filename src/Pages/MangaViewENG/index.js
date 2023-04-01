@@ -14,9 +14,11 @@ function MangaViewENG() {
 	const prevProvider = useRef({
 		provider: "",
 	})
+	const [title, setTitle] = useState()
 	const [chapterList, setChapterList] = useState([])
+	const [info, setInfo] = useState({})
+	const [currentChapterInfo, setCurrentChapterInfo] = useState({})
 	const [loadingChapterList, setLoadingChapterList] = useState(true)
-	const [loadingCurrentChapter, setLoadingCurrentChapter] = useState(true)
 
 	useEffect(() => {
 		if (prevProvider.current.provider !== provider) {
@@ -28,12 +30,19 @@ function MangaViewENG() {
 					.get(`${API}/manga-info/${mangaID}&${provider}`)
 					.then((data) => {
 						if (data.data.success) {
-							setChapterList(data.data.data.chapters)
+							const mangaData = data.data.data
+							setTitle(
+								mangaData.title?.english ||
+									mangaData.title?.romaji ||
+									mangaData?.native
+							)
+							setInfo(mangaData)
+							setChapterList(mangaData.chapters)
+
 							setLoadingChapterList(false)
 						}
 					})
 					.catch((thrown) => {
-						setChapterList([])
 						setLoadingChapterList(true)
 						if (axios.isCancel(thrown)) return
 					})
@@ -50,7 +59,16 @@ function MangaViewENG() {
 			{loadingChapterList ? (
 				""
 			) : (
-				<MangaReadChapter currentChapter={chapterID} provider={provider} />
+				<>
+					<h2 className="font-black" style={{ color: info?.color || "#fffc" }}>
+						{title}
+					</h2>
+					<MangaReadChapter
+						currentChapter={chapterID}
+						provider={provider}
+						info={info}
+					/>
+				</>
 			)}
 		</div>
 	)
