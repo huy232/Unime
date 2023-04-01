@@ -44,9 +44,9 @@ function MangaLayoutENG({
 									}
 									className="group col-span-1 cursor-pointer flex flex-col items-center col-span-1 mb-[12px] relative float-left"
 								>
-									<div className="group-hover:opacity-70 anime-item-image relative aspect-w-2 aspect-h-3 duration-300 ease-linear pb-[148%] mb-0 w-full overflow-hidden">
+									<div className="group-hover:opacity-70 relative aspect-w-2 aspect-h-3 duration-300 ease-linear pb-[156%] mb-0 w-full overflow-hidden">
 										<img
-											className="object-center group-hover:scale-90 duration-500 linear absolute object-fit absolute min-h-full"
+											className="group-hover:scale-90 duration-500 linear absolute min-h-full"
 											src={
 												manga.coverImage.extraLarge ||
 												manga.coverImage.large ||
