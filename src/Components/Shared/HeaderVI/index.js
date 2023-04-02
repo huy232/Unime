@@ -115,7 +115,7 @@ function HeaderVI() {
 			</div>
 			<section
 				className={`right-0 mt-[40px] fixed duration-200 ease-in-out bg-[#222] h-100 z-50 ${
-					sideBar ? "opacity-100 w-[320px]" : "opacity-0 w-0"
+					sideBar ? "opacity-100 w-[320px] right-0" : "opacity-0 right-[-320px]"
 				}`}
 			>
 				<div className="flex flex-col text-right [&>div]:my-[8px] mx-[6px]">

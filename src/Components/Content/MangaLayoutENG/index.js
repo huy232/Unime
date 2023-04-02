@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import "./mangalayout.css"
+import MangaLayoutSkeleton from "../MangaLayoutSkeleton"
 
 function MangaLayoutENG({
 	content,
@@ -16,7 +17,7 @@ function MangaLayoutENG({
 	return (
 		<>
 			{loading ? (
-				"Loading"
+				<MangaLayoutSkeleton />
 			) : (
 				<>
 					<h1
@@ -69,7 +70,7 @@ function MangaLayoutENG({
 									<div className="w-full mx-2">
 										<div className="manga-title flex flex-row items-center mt-[6px] h-[60px]">
 											<p
-												className="line-clamp-2 font-semibold"
+												className="line-clamp-2 font-semibold mx-[2px]"
 												style={{
 													color: `${manga.coverImage.color || "#fffc"}`,
 												}}
@@ -95,7 +96,7 @@ function MangaLayoutENG({
 								</Link>
 							))}
 						</div>
-						<div className="text-right mt-[24px]">
+						{/* <div className="text-right mt-[24px]">
 							<Link
 								to={`/eng/manga-list/${navigateUrl}`}
 								className="browse-button hover:text-[#fffc] font-semibold"
@@ -103,7 +104,7 @@ function MangaLayoutENG({
 							>
 								MORE...
 							</Link>
-						</div>
+						</div> */}
 					</div>
 				</>
 			)}

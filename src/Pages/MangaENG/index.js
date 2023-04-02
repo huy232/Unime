@@ -41,9 +41,9 @@ function MangaENG() {
 	useDocumentTitle("MANGA - Unime")
 	return (
 		<>
-			<LazyLoad>
+			{/* <LazyLoad>
 				<MangaHeadingENG content={manga.top} loading={loading} />
-			</LazyLoad>
+			</LazyLoad> */}
 			<LazyLoad>
 				<MangaLayoutENG
 					content={manga.trending}

@@ -1,10 +1,13 @@
 import axios from "axios"
 import React, { useRef } from "react"
 import { useEffect } from "react"
-import { useSearchParams } from "react-router-dom"
+import { Link, useSearchParams } from "react-router-dom"
 import { API } from "../../constants"
 import { useState } from "react"
+import LoadingSpin from "react-loading-spin"
 import MangaReadChapter from "../../Components/Content/MangaReadChapter"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faHome, faInfoCircle } from "@fortawesome/free-solid-svg-icons"
 
 function MangaViewENG() {
 	const [searchParams] = useSearchParams()
@@ -15,9 +18,7 @@ function MangaViewENG() {
 		provider: "",
 	})
 	const [title, setTitle] = useState()
-	const [chapterList, setChapterList] = useState([])
 	const [info, setInfo] = useState({})
-	const [currentChapterInfo, setCurrentChapterInfo] = useState({})
 	const [loadingChapterList, setLoadingChapterList] = useState(true)
 
 	useEffect(() => {
@@ -37,8 +38,6 @@ function MangaViewENG() {
 									mangaData?.native
 							)
 							setInfo(mangaData)
-							setChapterList(mangaData.chapters)
-
 							setLoadingChapterList(false)
 						}
 					})
@@ -57,16 +56,38 @@ function MangaViewENG() {
 	return (
 		<div>
 			{loadingChapterList ? (
-				""
+				<div className="flex justify-center">
+					<LoadingSpin primaryColor="red" />
+				</div>
 			) : (
 				<>
-					<h2 className="font-black" style={{ color: info?.color || "#fffc" }}>
+					<h2
+						className="font-black text-center"
+						style={{ color: info?.color || "#fffc" }}
+					>
 						{title}
 					</h2>
+					<div className="flex justify-center items-center">
+						<Link
+							to={`/eng/manga-info/${mangaID}`}
+							className="flex items-center mx-2 p-1 bg-white/20 rounded hover:opacity-80 text-[#fffc] duration-200 ease-in-out"
+						>
+							<FontAwesomeIcon icon={faInfoCircle} />
+							<span className="mx-1">INFO</span>
+						</Link>
+						<Link
+							to={`/eng/manga`}
+							className="flex items-center mx-2 p-1 bg-white/20 rounded hover:opacity-80 text-[#fffc] duration-200 ease-in-out"
+						>
+							<FontAwesomeIcon icon={faHome} />
+							<span className="mx-1">HOME</span>
+						</Link>
+					</div>
 					<MangaReadChapter
 						currentChapter={chapterID}
 						provider={provider}
 						info={info}
+						mangaID={mangaID}
 					/>
 				</>
 			)}

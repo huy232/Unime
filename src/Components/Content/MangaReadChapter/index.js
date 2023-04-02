@@ -2,9 +2,18 @@ import axios from "axios"
 import React from "react"
 import { useEffect } from "react"
 import { useState } from "react"
-import { API, IO_CORS } from "../../../constants"
+import { API, CONSUMET_CORS } from "../../../constants"
+import ChapterOption from "../ChapterOption"
+import ChapterSkeleton from "../ChapterSkeleton"
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton"
+import {
+	LazyLoadImage,
+	trackWindowScroll,
+} from "react-lazy-load-image-component"
+import blackBackground from "../../../Utilities/img/black.webp"
+import "react-lazy-load-image-component/src/effects/blur.css"
 
-function MangaReadChapter({ currentChapter, provider, info }) {
+function MangaReadChapter({ currentChapter, provider, info, mangaID }) {
 	const [currentChapterList, setCurrentChapterList] = useState([])
 	const [loadingCurrentChapter, setLoadingCurrentChapter] = useState(true)
 	const [chapterInfo, setChapterInfo] = useState({})
@@ -32,31 +41,70 @@ function MangaReadChapter({ currentChapter, provider, info }) {
 					if (axios.isCancel(thrown)) return
 				})
 		}
+
 		getCurrentChapter()
 		return () => {
 			source.cancel()
 		}
-	}, [currentChapter])
+	}, [currentChapter, info.chapters, provider])
+
+	const handleScrollToTop = () => {
+		window.scrollTo(0, 0)
+		window.history.scrollRestoration = "manual"
+	}
+
 	return (
 		<div>
-			{chapterInfo && (
-				<h3 className="italic">
-					{chapterInfo.title} -{" "}
-					{chapterInfo?.chapterNumber || chapterInfo?.chapter}
-				</h3>
+			{loadingCurrentChapter ? (
+				<div className="w-full text-center">
+					<SkeletonTheme baseColor="#202020" highlightColor="#444">
+						<Skeleton height={30} className="skeleton-title w-[40%]" />
+					</SkeletonTheme>
+				</div>
+			) : (
+				chapterInfo && (
+					<h3 className="italic text-center">
+						{chapterInfo.title}
+						{(chapterInfo?.chapterNumber || chapterInfo?.chapter) &&
+							` | Chapter - ${
+								chapterInfo?.chapterNumber || chapterInfo?.chapter
+							}`}
+					</h3>
+				)
 			)}
-			<ul className="text-center">
-				{currentChapterList.map((page) => (
-					<img
-						className="aspect-[2/3] mx-auto"
-						src={`${IO_CORS}${page.img}`}
-						alt={page.title}
-						key={page.page}
-					/>
-				))}
-			</ul>
+			<ChapterOption
+				mangaID={mangaID}
+				provider={provider}
+				currentChapter={currentChapter}
+				setLoadingCurrentChapter={setLoadingCurrentChapter}
+				info={info}
+				handleScrollToTop={handleScrollToTop}
+			/>
+			{loadingCurrentChapter ? (
+				<ChapterSkeleton />
+			) : (
+				<ul className="flex flex-col justify-center items-center my-2">
+					{currentChapterList.map((page) => (
+						<LazyLoadImage
+							className="mx-auto"
+							src={`${CONSUMET_CORS}url=${page.img}&referer=${page?.headerForImage?.Referer}`}
+							alt={page.title}
+							key={page.page}
+							placeholderSrc={blackBackground}
+						/>
+					))}
+				</ul>
+			)}
+			<ChapterOption
+				mangaID={mangaID}
+				provider={provider}
+				currentChapter={currentChapter}
+				setLoadingCurrentChapter={setLoadingCurrentChapter}
+				info={info}
+				handleScrollToTop={handleScrollToTop}
+			/>
 		</div>
 	)
 }
 
-export default MangaReadChapter
+export default trackWindowScroll(MangaReadChapter)

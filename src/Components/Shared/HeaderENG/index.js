@@ -114,8 +114,10 @@ function HeaderENG() {
 				</div>
 
 				<section
-					className={`right-0 mt-[40px] fixed duration-200 ease-in-out bg-[#222] h-100 z-50 ${
-						sideBar ? "opacity-100 w-[320px]" : "opacity-0 w-0"
+					className={`mt-[40px] fixed duration-200 ease-in-out bg-[#222] h-100 z-50 ${
+						sideBar
+							? "opacity-100 w-[320px] right-0"
+							: "opacity-0 right-[-320px]"
 					}`}
 				>
 					<div className="flex flex-col text-right [&>div]:my-[8px] mx-[6px]">
@@ -188,9 +190,22 @@ function HeaderENG() {
 								}}
 								aria-label="Search image"
 							>
-								<h2 className=" font-semibold text-[1.5rem] my-0">
+								<h2 className="font-semibold text-[1.5rem] my-0">
 									IMAGE Search
 								</h2>
+							</Link>
+						</div>
+						<div>
+							<Link
+								to="/eng/manga"
+								className="hover:opacity-80 duration-200 ease-in-out"
+								onClick={() => {
+									handleScrollToTop()
+									setSidebar(false)
+								}}
+								aria-label="Manga"
+							>
+								<h2 className="font-semibold text-[1.5rem] my-0">Manga</h2>
 							</Link>
 						</div>
 						<div className="user-container">

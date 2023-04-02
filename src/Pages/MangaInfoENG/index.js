@@ -11,7 +11,7 @@ function MangaInfoENG() {
 	const { mangaID } = useParams()
 	const [info, setInfo] = useState({})
 	const [loading, setLoading] = useState(true)
-	const [provider, setProvider] = useState("mangadex")
+	const [provider, setProvider] = useState("mangakakalot")
 	const [loadingProvider, setLoadingProvider] = useState(true)
 	const [title, setTitle] = useState("Loading")
 	const [loadingChapterList, setLoadingChapterList] = useState(true)

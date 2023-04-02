@@ -8,6 +8,7 @@ import CharacterList from "../CharacterList"
 import ClampedDivENG from "../DescriptionENG"
 import CommentSection from "../CommentSection"
 import ChapterHolderENG from "../ChapterHolderENG"
+import LoadingSpin from "react-loading-spin"
 
 function MangaInfoDetailENG({
 	loading,
@@ -129,16 +130,19 @@ function MangaInfoDetailENG({
 					<div className="list-episode-title-main">
 						<h4 style={{ marginTop: "30px" }}>CHAPTER LIST</h4>
 					</div>
-
-					{!loading && !loadingEpisodeList && (
+					{loadingEpisodeList ? (
+						<div className="flex justify-center">
+							<LoadingSpin primaryColor="red" />
+						</div>
+					) : (
 						<ChapterHolderENG
 							mangaLanguageOption={mangaLanguageOption}
-							loadingEpisodeList={loadingEpisodeList}
 							info={info}
 							provider={provider}
 							mangaID={itemId}
 						/>
 					)}
+
 					{info.recommendations.length > 0 && (
 						<RecommendENG
 							recommend={info.recommendations}
