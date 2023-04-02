@@ -6,12 +6,10 @@ import { API, CONSUMET_CORS } from "../../../constants"
 import ChapterOption from "../ChapterOption"
 import ChapterSkeleton from "../ChapterSkeleton"
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton"
-import {
-	LazyLoadImage,
-	trackWindowScroll,
-} from "react-lazy-load-image-component"
-import blackBackground from "../../../Utilities/img/black.webp"
+import { trackWindowScroll } from "react-lazy-load-image-component"
 import "react-lazy-load-image-component/src/effects/blur.css"
+import LazyImage from "../LazyImage"
+import useDocumentTitle from "../../../Hooks/useDocumentTitle"
 
 function MangaReadChapter({ currentChapter, provider, info, mangaID }) {
 	const [currentChapterList, setCurrentChapterList] = useState([])
@@ -52,7 +50,7 @@ function MangaReadChapter({ currentChapter, provider, info, mangaID }) {
 		window.scrollTo(0, 0)
 		window.history.scrollRestoration = "manual"
 	}
-
+	useDocumentTitle(`${chapterInfo.title} - UNIME` || "Loading - UNIME")
 	return (
 		<div>
 			{loadingCurrentChapter ? (
@@ -85,12 +83,10 @@ function MangaReadChapter({ currentChapter, provider, info, mangaID }) {
 			) : (
 				<ul className="flex flex-col justify-center items-center my-2">
 					{currentChapterList.map((page) => (
-						<LazyLoadImage
-							className="mx-auto"
+						<LazyImage
 							src={`${CONSUMET_CORS}url=${page.img}&referer=${page?.headerForImage?.Referer}`}
 							alt={page.title}
 							key={page.page}
-							placeholderSrc={blackBackground}
 						/>
 					))}
 				</ul>
