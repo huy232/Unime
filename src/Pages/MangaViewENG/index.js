@@ -88,6 +88,7 @@ function MangaViewENG() {
 						provider={provider}
 						info={info}
 						mangaID={mangaID}
+						title={title}
 					/>
 				</>
 			)}

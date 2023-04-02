@@ -11,7 +11,7 @@ import "react-lazy-load-image-component/src/effects/blur.css"
 import LazyImage from "../LazyImage"
 import useDocumentTitle from "../../../Hooks/useDocumentTitle"
 
-function MangaReadChapter({ currentChapter, provider, info, mangaID }) {
+function MangaReadChapter({ currentChapter, provider, info, mangaID, title }) {
 	const [currentChapterList, setCurrentChapterList] = useState([])
 	const [loadingCurrentChapter, setLoadingCurrentChapter] = useState(true)
 	const [chapterInfo, setChapterInfo] = useState({})
@@ -50,7 +50,9 @@ function MangaReadChapter({ currentChapter, provider, info, mangaID }) {
 		window.scrollTo(0, 0)
 		window.history.scrollRestoration = "manual"
 	}
-	useDocumentTitle(`${chapterInfo.title} - UNIME` || "Loading - UNIME")
+	useDocumentTitle(
+		`${title} | ${chapterInfo.title} - UNIME` || "Loading - UNIME"
+	)
 	return (
 		<div>
 			{loadingCurrentChapter ? (
