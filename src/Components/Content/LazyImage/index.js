@@ -6,7 +6,6 @@ function LazyImage({ src, title, page }) {
 	const [loading, setLoading] = useState("blur")
 	return (
 		<>
-			{console.log(page, loading)}
 			<LazyLoadImage
 				className="mx-auto object-fit h-[100vh]"
 				src={src}
