@@ -89,6 +89,7 @@ function MangaReadChapter({ currentChapter, provider, info, mangaID, title }) {
 							src={`${CONSUMET_CORS}url=${page.img}&referer=${page?.headerForImage?.Referer}`}
 							alt={page.title}
 							key={page.page}
+							page={page.page}
 						/>
 					))}
 				</ul>
