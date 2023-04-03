@@ -8,6 +8,7 @@ import LoadingSpin from "react-loading-spin"
 import MangaReadChapter from "../../Components/Content/MangaReadChapter"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faHome, faInfoCircle } from "@fortawesome/free-solid-svg-icons"
+import CommentSection from "../../Components/Content/CommentSection"
 
 function MangaViewENG() {
 	const [searchParams] = useSearchParams()
@@ -20,6 +21,7 @@ function MangaViewENG() {
 	const [title, setTitle] = useState()
 	const [info, setInfo] = useState({})
 	const [loadingChapterList, setLoadingChapterList] = useState(true)
+	const [chapterNumber, setChapterNumber] = useState()
 
 	useEffect(() => {
 		if (prevProvider.current.provider !== provider) {
@@ -32,6 +34,14 @@ function MangaViewENG() {
 					.then((data) => {
 						if (data.data.success) {
 							const mangaData = data.data.data
+							const exactChapter = mangaData.chapters.find(
+								(chapter) => chapter.id === chapterID
+							)
+							const currentChapterNumber =
+								exactChapter?.chapter ||
+								exactChapter?.chapterNumber ||
+								exactChapter?.title?.match(/\d+/g)[0]
+							setChapterNumber(currentChapterNumber)
 							setTitle(
 								mangaData.title?.english ||
 									mangaData.title?.romaji ||
@@ -51,7 +61,7 @@ function MangaViewENG() {
 				source.cancel()
 			}
 		}
-	}, [mangaID, provider])
+	}, [chapterID, mangaID, provider])
 
 	return (
 		<div>
@@ -89,6 +99,14 @@ function MangaViewENG() {
 						info={info}
 						mangaID={mangaID}
 						title={title}
+					/>
+					<CommentSection
+						itemId={`${mangaID}-${chapterNumber}`}
+						itemTitle={title}
+						language={"en_US"}
+						headingTitle={"COMMENTS"}
+						route={"eng/manga-read"}
+						shortname={"unime-eng"}
 					/>
 				</>
 			)}
