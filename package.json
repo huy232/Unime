@@ -15,6 +15,7 @@
     "@supabase/auth-ui-react": "^0.2.8",
     "@supabase/supabase-js": "^2.8.0",
     "@tailwindcss/line-clamp": "^0.4.2",
+    "@vercel/analytics": "^0.1.11",
     "artplayer": "^4.6.2",
     "artplayer-plugin-control": "^1.0.0",
     "artplayer-plugin-hls-quality": "^1.0.0",
