@@ -9,6 +9,7 @@ import MangaReadChapter from "../../Components/Content/MangaReadChapter"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faHome, faInfoCircle } from "@fortawesome/free-solid-svg-icons"
 import CommentSection from "../../Components/Content/CommentSection"
+import MangaRedirectSection from "../../Components/Content/MangaRedirectSection"
 
 function MangaViewENG() {
 	const [searchParams] = useSearchParams()
@@ -77,22 +78,7 @@ function MangaViewENG() {
 					>
 						{title}
 					</h2>
-					<div className="flex justify-center items-center">
-						<Link
-							to={`/eng/manga-info/${mangaID}`}
-							className="flex items-center mx-2 p-1 bg-white/20 rounded hover:opacity-80 text-[#fffc] duration-200 ease-in-out"
-						>
-							<FontAwesomeIcon icon={faInfoCircle} />
-							<span className="mx-1">INFO</span>
-						</Link>
-						<Link
-							to={`/eng/manga`}
-							className="flex items-center mx-2 p-1 bg-white/20 rounded hover:opacity-80 text-[#fffc] duration-200 ease-in-out"
-						>
-							<FontAwesomeIcon icon={faHome} />
-							<span className="mx-1">HOME</span>
-						</Link>
-					</div>
+					<MangaRedirectSection mangaID={mangaID} />
 					<MangaReadChapter
 						currentChapter={chapterID}
 						provider={provider}
@@ -100,6 +86,7 @@ function MangaViewENG() {
 						mangaID={mangaID}
 						title={title}
 					/>
+					<MangaRedirectSection mangaID={mangaID} />
 					<CommentSection
 						itemId={`${mangaID}-${chapterNumber}`}
 						itemTitle={title}

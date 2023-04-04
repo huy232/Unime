@@ -7,7 +7,7 @@ import ChapterOption from "../ChapterOption"
 import ChapterSkeleton from "../ChapterSkeleton"
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton"
 import { trackWindowScroll } from "react-lazy-load-image-component"
-import "react-lazy-load-image-component/src/effects/blur.css"
+import "react-lazy-load-image-component/src/effects/opacity.css"
 import LazyImage from "../LazyImage"
 import useDocumentTitle from "../../../Hooks/useDocumentTitle"
 
