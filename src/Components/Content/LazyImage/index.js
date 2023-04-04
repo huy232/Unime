@@ -5,7 +5,7 @@ function LazyImage({ src, title, page }) {
 	return (
 		<>
 			<LazyLoadImage
-				className="h-[100vh]"
+				className="h-full"
 				src={src}
 				alt={title}
 				placeholderSrc={blackBackground}
