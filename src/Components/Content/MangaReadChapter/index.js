@@ -2,7 +2,7 @@ import axios from "axios"
 import React from "react"
 import { useEffect } from "react"
 import { useState } from "react"
-import { API, CONSUMET_CORS } from "../../../constants"
+import { API } from "../../../constants"
 import ChapterOption from "../ChapterOption"
 import ChapterSkeleton from "../ChapterSkeleton"
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton"
@@ -84,23 +84,9 @@ function MangaReadChapter({ currentChapter, provider, info, mangaID, title }) {
 				<ChapterSkeleton />
 			) : (
 				<ul className="flex flex-col justify-center items-center my-2">
-					{provider === "mangareader"
-						? currentChapterList.map((page) => (
-								<LazyImage
-									src={`${page.img}`}
-									alt={page.title}
-									key={page.page}
-									page={page.page}
-								/>
-						  ))
-						: currentChapterList.map((page) => (
-								<LazyImage
-									src={`${CONSUMET_CORS}url=${page.img}&referer=${page?.headerForImage?.Referer}`}
-									alt={page.title}
-									key={page.page}
-									page={page.page}
-								/>
-						  ))}
+					{currentChapterList.map((page) => (
+						<LazyImage provider={provider} page={page} key={page.page} />
+					))}
 				</ul>
 			)}
 			<ChapterOption

@@ -13,8 +13,8 @@ import { COLORLIST } from "../../../constants"
 function RecommendENG({ recommend, setLoading }) {
 	return (
 		<>
-			<h2 className="font-black text-right max-lg:text-center">
-				RECOMMENDATIONS
+			<h2 className="font-black text-right max-lg:text-center py-8">
+				RECOMMENDS
 			</h2>
 			<div className="mb-[24px]">
 				<Swiper
