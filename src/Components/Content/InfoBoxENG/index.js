@@ -25,7 +25,7 @@ function InfoBoxENG({ loading, info }) {
 					/>
 				)}
 			</div>
-			<div className="text-right [&>*]:mx-[60px] [&>*]:my-[0] max-lg:text-center">
+			<div className="flex flex-col max-lg:flex-row text-right max-lg:text-center max-lg:overflow-x-scroll [&>div]:lg:mx-4 [&>div]:max-lg:inline-flex [&>div]:max-lg:shrink-0 [&>div]:max-lg:flex-col [&>div]:max-lg:flex-nowrap [&>div]:max-lg:mx-2 [&>div:nth-child(2)]:max-lg:hidden">
 				{!loading && (
 					<>
 						{info.type && (

@@ -16,7 +16,7 @@ function CharacterListVI({ characters, loading }) {
 							<div className="h-28" key={character.node.id}>
 								<div className="flex bg-[#0D0D0D] h-full w-full">
 									<img
-										className="h-full aspect-[2/3] w-[120px]"
+										className="h-full aspect-[2/3]"
 										src={
 											character.node.image?.large ||
 											character.node.image?.medium
@@ -24,7 +24,7 @@ function CharacterListVI({ characters, loading }) {
 										alt={character.node.name.full}
 										loading="lazy"
 									/>
-									<div className="w-full mx-2 flex flex-col">
+									<div className="mx-2 flex flex-col">
 										<p
 											className="text-lg font-bold break-all"
 											style={{ color: COLORLIST[i] }}

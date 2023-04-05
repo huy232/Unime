@@ -81,12 +81,12 @@ function InfoDetailENG({
 			{!loading && (
 				<>
 					<p className="max-lg:text-center">Genres:</p>
-					<div className="genres flex flex-wrap max-lg:flex-col max-lg:items-center pb-8">
+					<div className="genres flex flex-row max-lg:items-center pb-2 group md:flex-wrap max-md:overflow-x-scroll max-md:flex-nowrap">
 						{resultCategory.map((genre) => (
 							<Link
 								to={`/eng/anime/${genre.slug}`}
 								key={genre.slug}
-								className="lg:first:ml-[6px] lg:last:mr-[6px]"
+								className="lg:first:ml-[6px] lg:last:mr-[6px] hover:opacity-80 duration-200 ease-in-out"
 								aria-label={genre.name}
 							>
 								<div className="cursor-pointer rounded p-[10px] bg-[#5f5f5f29] mx-[10px] my-[6px] duration-200 hover:opacity-80 ease-in-out">
@@ -95,7 +95,7 @@ function InfoDetailENG({
 							</Link>
 						))}
 					</div>
-					<div className="flex w-100 mt-[12px] max-lg:flex-col">
+					<div className="flex w-100 mt-[12px] flex-row max-lg:items-center pb-2 group md:flex-wrap max-md:overflow-x-scroll max-md:flex-nowrap">
 						{info?.countryOfOrigin && (
 							<div className="flex flex-col items-center mx-[10px]">
 								<span className="text-[#282828] font-semibold bg-[#f98866] p-[5px] rounded">
@@ -113,7 +113,7 @@ function InfoDetailENG({
 							</div>
 						)}
 						{info?.releaseDate && (
-							<div className="lg:ml-auto lg:mr-[30px] flex flex-col items-center">
+							<div className="lg:ml-auto lg:mr-[30px] flex flex-col items-center mx-[10px]">
 								<span className="text-[#282828] font-semibold bg-[#ba5536] p-[5px] rounded">
 									RELEASE
 								</span>
