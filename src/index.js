@@ -9,7 +9,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css"
 import "react-loading-skeleton/dist/skeleton.css"
 import "/node_modules/flag-icons/css/flag-icons.min.css"
 import "./override.css"
-import * as serviceWorkerRegistration from "./serviceWorkerRegistration"
+// import * as serviceWorkerRegistration from "./serviceWorkerRegistration"
 
 const root = createRoot(document.getElementById("root"))
 root.render(
@@ -18,4 +18,16 @@ root.render(
 	</BrowserRouter>
 )
 
-serviceWorkerRegistration.register()
+if ("serviceWorker" in navigator) {
+	navigator.serviceWorker.ready.then((registration) => {
+		registration.unregister()
+		if (caches) {
+			// Service worker cache should be cleared with caches.delete()
+			caches.keys().then(async (names) => {
+				await Promise.all(names.map((name) => caches.delete(name)))
+			})
+		}
+	})
+}
+
+// serviceWorkerRegistration.register()
