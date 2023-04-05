@@ -61,35 +61,12 @@
 	margin-top: 10px;
 }
 
-.anime-type-category,
-.anime-type-collection {
-	display: flex;
-}
-
-.anime-type-category .category-genre,
-.anime-type-collection .category-genre {
-	border-radius: 14px;
-	background: rgba(95, 95, 95, 0.16);
-	margin: 0 10px;
-}
-
 .anime__slug .genre-name {
 	padding: 10px;
 }
 
-.anime-type-category .category-genre:hover,
-.anime-type-collection .category-genre:hover {
-	transition: 0.6s;
-	opacity: 0.8;
-}
-
 .anime__slug {
 	transition: 0.3s;
-}
-
-.anime-type-category .category-genre:hover .anime__slug,
-.anime-type-collection .category-genre:hover .anime__slug {
-	color: #f98866;
 }
 
 .description {
@@ -111,55 +88,8 @@
 	color: rgba(194, 194, 194, 0.8);
 }
 
-.bottom-detail {
-	display: flex;
-	flex-direction: row;
-}
-
-.bottom-detail > div {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	margin: 10px 0;
-}
-
-.bottom-detail > div h6 {
-	border-radius: 10px;
-	color: #282828;
-	padding: 5px;
-	display: inline-block;
-}
-
-/* SECTION OF TITLE */
-.country h6 {
-	background-color: #f98866;
-	font-weight: 700;
-}
-.score h6 {
-	background-color: #ff420e;
-	font-weight: 700;
-}
-.duration h6 {
-	background-color: #80bd9e;
-	font-weight: 700;
-}
-.views h6 {
-	background-color: #89da59;
-	font-weight: 700;
-}
-.release-date h6 {
-	background-color: #ba5536;
-	font-weight: 700;
-}
-
 .bottom-detail > div:not(:first-child):not(:last-child) {
 	margin-left: 30px;
-}
-
-.bottom-detail .release-date {
-	margin-left: auto;
-	margin-right: 25px;
-	align-items: flex-end;
 }
 
 .swiper-container {
@@ -237,29 +167,6 @@
 	width: 100%;
 }
 
-.detail-cover-info {
-	text-align: right;
-}
-
-.detail-cover-info > div {
-	color: white;
-	margin: 0 60px;
-}
-
-.detail-cover-info > div > h5 {
-	padding: 2px 10px;
-	display: inline-block;
-	background-color: #282828;
-	border-radius: 15px;
-	color: white;
-	margin: 0;
-	font-weight: 900;
-}
-
-.detail-cover-info > div > p {
-	margin-bottom: 6px;
-}
-
 .episode-list-detail .card-body {
 	height: 120px;
 }
@@ -284,16 +191,8 @@ li.episode-chunk:hover {
 }
 
 @media screen and (max-width: 1280px) {
-	.bottom-detail {
-		flex-direction: column;
-	}
 	.bottom-detail > div:not(:first-child):not(:last-child) {
 		margin-left: 0;
-	}
-	.bottom-detail .release-date {
-		align-items: center;
-		margin-left: 0;
-		margin-right: 0;
 	}
 }
 
@@ -304,18 +203,7 @@ li.episode-chunk:hover {
 	.info-box {
 		flex-direction: column !important;
 	}
-	.detail-cover-info > div {
-		color: white;
-		width: 100%;
-		margin: 0;
-	}
-	.detail-cover-info {
-		text-align: center;
-	}
 	.anime-title {
-		text-align: center;
-	}
-	.bottom-detail {
 		text-align: center;
 	}
 	.info-detail {
@@ -349,10 +237,6 @@ li.episode-chunk:hover {
 		width: 100% !important;
 		height: auto !important;
 	}
-	.detail-cover-info {
-		margin: 20px;
-		margin-top: 0px;
-	}
 	.description {
 		margin: 20px;
 	}
@@ -364,16 +248,6 @@ li.episode-chunk:hover {
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-	}
-	.anime-type-category .category-genre,
-	.anime-type-collection .category-genre {
-		margin: 8px;
-		text-align: center;
-		width: 50%;
-	}
-	.bottom-detail {
-		margin: 20px;
-		margin-top: 50px;
 	}
 	.episode-list-detail .card-body {
 		padding: 0;

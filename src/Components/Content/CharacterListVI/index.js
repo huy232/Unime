@@ -11,7 +11,7 @@ function CharacterListVI({ characters, loading }) {
 			{!loading && characters && (
 				<>
 					<h4 className="font-black pt-4">DÀN NHÂN VẬT</h4>
-					<div className="grid gap-4 xl:grid-cols-3 lg:grid-cols-2 sm:grid-cols-1 px-4 md:px-12 lg:px-20 xl:px-28 2xl:px-36 w-full py-4">
+					<div className="grid gap-4 xl:grid-cols-3 lg:grid-cols-2 sm:grid-cols-1 px-4 md:px-12 lg:px-20 xl:px-28 2xl:px-36 w-full py-4 max-lg:overflow-x-scroll max-lg:flex max-lg:flex-row [&>div]:max-lg:shrink-0 [&>div]:max-lg:flex">
 						{characters.map((character, i) => (
 							<div className="h-28" key={character.node.id}>
 								<div className="flex bg-[#0D0D0D] h-full w-full">

@@ -45,10 +45,13 @@ function InfoHeadDetail({ info, loading }) {
 			{resultCategory?.length > 0 && (
 				<p className="anime-type-paragraph">Thể loại:</p>
 			)}
-			<div className="anime-type-category flex-wrap">
+			<div className="group flex md:flex-wrap hover:opacity-80 duration-200 ease-in-out max-md:overflow-x-scroll max-md:flex-nowrap">
 				{!loading &&
 					resultCategory.map((genre) => (
-						<div className="category-genre m-[8px]" key={genre.slug}>
+						<div
+							className="group-hover:hover:text-[#f98866] m-[8px] rounded-[14px] bg-[#5f5f5f29] mx-[10px] max-md:shrink-0"
+							key={genre.slug}
+						>
 							<Link
 								to={`/anime/${genre.slug}`}
 								className="anime__slug"
@@ -62,10 +65,13 @@ function InfoHeadDetail({ info, loading }) {
 			{resultCollection?.length > 0 && (
 				<p className="anime-type-paragraph">Bộ sưu tập:</p>
 			)}
-			<div className="anime-type-collection flex-wrap">
+			<div className="group flex md:flex-wrap hover:opacity-80 duration-200 ease-in-out max-md:overflow-x-scroll max-md:flex-nowrap">
 				{!loading &&
 					resultCollection.map((collection) => (
-						<div className="category-genre m-[8px]" key={collection.slug}>
+						<div
+							className="group-hover:hover:text-[#f98866] m-[8px] rounded-[14px] bg-[#5f5f5f29] mx-[10px] max-md:shrink-0"
+							key={collection.slug}
+						>
 							<Link
 								to={`/collection/${collection.slug}`}
 								className="anime__slug"
@@ -76,29 +82,39 @@ function InfoHeadDetail({ info, loading }) {
 					))}
 			</div>
 
-			<div className="bottom-detail" style={{ marginTop: "50px" }}>
-				<div className="country">
-					<h6>QUỐC GIA</h6>
+			<div className="flex flex-row my-[10px] max-md:overflow-x-scroll md:justify-center md:items-center mt-1">
+				<div className="flex flex-col my-[10px] items-center px-1 max-md:shrink-0">
+					<h6 className="bg-[#f98866] font-bold rounded-[10px] text-[#282828] p-[4px] inline-block">
+						QUỐC GIA
+					</h6>
 					<div className="country-element">
 						{info?.countryOfOrigin && `${info.countryOfOrigin}`}
 					</div>
 				</div>
-				<div className="score">
-					<h6>ĐIỂM SỐ</h6>
+				<div className="flex flex-col my-[10px] items-center px-1 max-md:shrink-0">
+					<h6 className="bg-[#ff420e] font-bold rounded-[10px] text-[#282828] p-[4px] inline-block">
+						ĐIỂM SỐ
+					</h6>
 					<div className="score-element">{info?.averageScore}</div>
 				</div>
-				<div className="duration">
-					<h6>THỜI LƯỢNG</h6>
+				<div className="flex flex-col my-[10px] items-center px-1 max-md:shrink-0">
+					<h6 className="bg-[#80bd9e] font-bold rounded-[10px] text-[#282828] p-[4px] inline-block">
+						THỜI LƯỢNG
+					</h6>
 					<div className="duration-element">
 						{info?.duration && `${info.duration} phút`}
 					</div>
 				</div>
-				<div className="views">
-					<h6>LƯỢT XEM</h6>
+				<div className="flex flex-col my-[10px] items-center px-1 max-md:shrink-0">
+					<h6 className="bg-[#89da59] font-bold rounded-[10px] text-[#282828] p-[4px] inline-block">
+						LƯỢT XEM
+					</h6>
 					<div className="views-element">{info?.views?.toLocaleString()}</div>
 				</div>
-				<div className="release-date">
-					<h6>KHỞI CHIẾU</h6>
+				<div className="flex flex-col my-[10px] items-center px-1 max-md:shrink-0 ml-auto md:mr-[24px] order-last">
+					<h6 className="bg-[#ba5536] font-bold rounded-[10px] text-[#282828] p-[4px] inline-block">
+						KHỞI CHIẾU
+					</h6>
 					<div className="release-date-element">
 						{info?.startDate?.year && info.startDate.year}
 					</div>
