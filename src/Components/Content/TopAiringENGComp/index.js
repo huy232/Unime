@@ -63,7 +63,7 @@ function TopAiringENGComp({ topAiring }) {
 									</h2>
 								</Link>
 								<div className="flex flex-wrap my-[20px] max-lg:my-[4px] items-center">
-									{item.genres.map((genre) => (
+									{item.genres.map((genre, key) => (
 										<React.Fragment key={genre}>
 											<Link
 												to={`/eng/anime/${toSlug(genre)}`}
@@ -72,13 +72,12 @@ function TopAiringENGComp({ topAiring }) {
 													textShadow:
 														"black 0px 0px 1px, black 0px 0px 1px, black 0px 0px 1px, black 0px 0px 1px",
 												}}
-												key={i}
 												aria-label={toSlug(genre)}
 											>
 												{genre}
 											</Link>
-											{item.genres.length !== 1 &&
-											i !== item.genres.length - 1 ? (
+											{item.genres.length > 1 &&
+											key < item.genres.length - 1 ? (
 												<span
 													className={`mx-[2px] w-1.5 h-1.5 rounded-full inline-block mt-[4px] max-md:hidden`}
 													style={{ backgroundColor: item?.color || "#fffc" }}
