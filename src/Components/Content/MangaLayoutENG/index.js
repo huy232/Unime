@@ -51,7 +51,8 @@ function MangaLayoutENG({
 											src={
 												manga.coverImage.extraLarge ||
 												manga.coverImage.large ||
-												manga.coverImage.medium
+												manga.coverImage.medium ||
+												""
 											}
 											alt={
 												manga.title.english ||

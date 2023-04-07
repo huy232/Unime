@@ -23,7 +23,8 @@ function SeasonHolderENG({ anime, title, color }) {
 							src={
 								item.coverImage?.extraLarge ||
 								item.coverImage?.large ||
-								item.coverImage?.medium
+								item.coverImage?.medium ||
+								""
 							}
 							alt={
 								item.title?.english ||

@@ -21,7 +21,7 @@ function RandomAnimeENGComp({ randomAnime }) {
 					>
 						<img
 							className="object-fit"
-							src={randomAnime.image}
+							src={randomAnime.image || ""}
 							alt={
 								randomAnime.title.english ||
 								randomAnime.title.romaji ||

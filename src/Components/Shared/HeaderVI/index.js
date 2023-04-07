@@ -69,7 +69,7 @@ function HeaderVI() {
 						>
 							<img
 								className="group-hover:opacity-80 duration-200 ease-in-out h-[34px] w-[34px]"
-								src={unimeLogo}
+								src={unimeLogo || ""}
 								alt="UNIME-LOGO"
 								loading="lazy"
 							/>

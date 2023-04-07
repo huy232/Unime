@@ -93,7 +93,7 @@ function AnimeBrowseENG() {
 								<div className="group-hover:opacity-70 anime-item-image relative aspect-w-2 aspect-h-3 duration-300 ease-linear pb-[156%] mb-0 w-full overflow-hidden">
 									<img
 										className="object-fit absolute w-100 min-h-full"
-										src={item.image}
+										src={item.image || ""}
 										alt={
 											item.title?.english ||
 											item.title?.romaji ||

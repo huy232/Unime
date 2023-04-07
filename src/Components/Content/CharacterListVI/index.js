@@ -19,7 +19,8 @@ function CharacterListVI({ characters, loading }) {
 										className="h-full aspect-[2/3]"
 										src={
 											character.node.image?.large ||
-											character.node.image?.medium
+											character.node.image?.medium ||
+											""
 										}
 										alt={character.node.name.full}
 										loading="lazy"

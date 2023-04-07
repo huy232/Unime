@@ -16,7 +16,7 @@ function InfoBoxENG({ loading, info }) {
 					/>
 				) : (
 					<img
-						src={info.image}
+						src={info.image || ""}
 						className="cover-image aspect-[2/3] h-[300px]"
 						alt={
 							info.title?.english || info.title?.romaji || info.title?.native

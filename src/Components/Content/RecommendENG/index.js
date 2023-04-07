@@ -52,7 +52,7 @@ function RecommendENG({ recommend, setLoading }) {
 											<div className="recommend-item-image aspect-[2/3] group-hover:opacity-80 duration-200 ease-in-out relative">
 												<img
 													className="object-fill object-center w-full h-full duration-500 linear absolute"
-													src={item.image}
+													src={item.image || ""}
 													alt={
 														item.title.english ||
 														item.title.romaji ||

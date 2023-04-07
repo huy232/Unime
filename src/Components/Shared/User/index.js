@@ -19,7 +19,7 @@ function User({ handleScrollToTop }) {
 					<div className="user-info-holder">
 						<div className="user-info-image">
 							<img
-								src={user.user_metadata.avatar_url}
+								src={user.user_metadata.avatar_url || ""}
 								alt="user-logo"
 								loading="lazy"
 							/>

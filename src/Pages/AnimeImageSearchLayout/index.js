@@ -60,7 +60,7 @@ function AnimeImageSearchLayout({ searchResult, setToggle }) {
 							<div className="col-span-5">
 								<img
 									className="w-full object-contain"
-									src={item.image}
+									src={item.image || ""}
 									alt={
 										item.anilist.title.english ||
 										item.anilist.title.romaji ||
@@ -102,7 +102,7 @@ function AnimeImageSearchLayout({ searchResult, setToggle }) {
 								<div className="max-md:mx-auto w-[160px]">
 									<div className="relative aspect-w-2 aspect-h-3">
 										<img
-											src={view.image}
+											src={view.image || ""}
 											alt={
 												view.title?.english ||
 												view.title?.romaji ||

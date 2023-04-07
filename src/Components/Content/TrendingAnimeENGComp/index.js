@@ -36,7 +36,7 @@ function TrendingAnimeENGComp({ trendingAnime }) {
 								<div className="popular-anime-image aspect-[2/3] group-hover:opacity-80 duration-200 ease-in-out relative">
 									<img
 										className="object-fill object-center w-full h-full group-hover:scale-90 duration-500 linear absolute"
-										src={anime.image}
+										src={anime.image || ""}
 										alt={
 											anime.title.english ||
 											anime.title.romaji ||
