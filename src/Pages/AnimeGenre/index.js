@@ -102,13 +102,7 @@ function AnimeGenre({ instance }) {
 							</div>
 						}
 					>
-						<Row
-							xs={1}
-							sm={2}
-							md={3}
-							lg={4}
-							className="w-full w-full row-anime"
-						>
+						<Row xs={1} sm={2} md={3} lg={4} className="w-full row-anime mb-4">
 							{animeList.map((anime) => (
 								<Col key={anime?.slug}>
 									<Link to={`/info/${anime?.slug}`} aria-label={anime?.name}>
