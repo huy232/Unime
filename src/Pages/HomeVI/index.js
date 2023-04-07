@@ -36,8 +36,10 @@ function HomeVI({ instance }) {
 					cancelToken: source.token,
 				})
 				.then((data) => {
-					setSlider(data.data.data)
-					setLoadingSlider(true)
+					if (data.data.success) {
+						setSlider(data.data.data)
+						setLoadingSlider(true)
+					}
 				})
 				.then(async () => await getNew())
 				.catch((thrown) => {
@@ -51,8 +53,10 @@ function HomeVI({ instance }) {
 					cancelToken: source.token,
 				})
 				.then((data) => {
-					setNewAnime(data.data.data)
-					setLoadingNewAnime(true)
+					if (data.data.success) {
+						setNewAnime(data.data.data)
+						setLoadingNewAnime(true)
+					}
 				})
 				.then(async () => await getMostWatch())
 				.catch((thrown) => {
@@ -66,8 +70,10 @@ function HomeVI({ instance }) {
 					cancelToken: source.token,
 				})
 				.then((data) => {
-					setRankToday(data.data.data)
-					setLoadingRankToday(true)
+					if (data.data.success) {
+						setRankToday(data.data.data)
+						setLoadingRankToday(true)
+					}
 				})
 				.then(async () => await getMovie())
 				.catch((thrown) => {
@@ -81,8 +87,10 @@ function HomeVI({ instance }) {
 					cancelToken: source.token,
 				})
 				.then((data) => {
-					setMovies(data.data.data)
-					setLoadingMovies(true)
+					if (data.data.success) {
+						setMovies(data.data.data)
+						setLoadingMovies(true)
+					}
 				})
 				.then(async () => await getRandom())
 				.catch((thrown) => {

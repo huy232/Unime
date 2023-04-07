@@ -7,7 +7,6 @@ import { Pagination, Autoplay, Lazy } from "swiper"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faEye, faPlayCircle } from "@fortawesome/free-solid-svg-icons"
 import { Link } from "react-router-dom"
-import { toSlug } from "../../../Utilities/toSlug"
 import { COLORLIST } from "../../../constants"
 
 function TopAiringVIComp({ data }) {
