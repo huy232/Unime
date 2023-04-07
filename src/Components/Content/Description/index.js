@@ -14,11 +14,13 @@ const ClampedDiv = ({ children }) => {
 
 	return (
 		<div className="container">
-			<span
-				className={`${textClass}`}
-				ref={ref}
-				dangerouslySetInnerHTML={{ __html: children }}
-			/>
+			<div className={`${textClass}`}>
+				<p
+					className=""
+					ref={ref}
+					dangerouslySetInnerHTML={{ __html: children }}
+				/>
+			</div>
 			{showLink && (
 				<button
 					onClick={() => {
