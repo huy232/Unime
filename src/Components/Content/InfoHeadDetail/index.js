@@ -83,42 +83,46 @@ function InfoHeadDetail({ info, loading }) {
 			</div>
 
 			<div className="flex flex-row my-[10px] max-md:overflow-x-scroll md:justify-center md:items-center mt-1">
-				<div className="flex flex-col my-[10px] items-center px-1 max-md:shrink-0">
-					<h6 className="bg-[#f98866] font-bold rounded-[10px] text-[#282828] p-[4px] inline-block">
-						QUỐC GIA
-					</h6>
-					<div className="country-element">
-						{info?.countryOfOrigin && `${info.countryOfOrigin}`}
+				{!!info?.countryOfOrigin && (
+					<div className="flex flex-col my-[10px] items-center px-1 max-md:shrink-0">
+						<h6 className="bg-[#f98866] font-bold rounded-[10px] text-[#282828] p-[4px] inline-block">
+							QUỐC GIA
+						</h6>
+						<div className="country-element">{`${info.countryOfOrigin}`}</div>
 					</div>
-				</div>
-				<div className="flex flex-col my-[10px] items-center px-1 max-md:shrink-0">
-					<h6 className="bg-[#ff420e] font-bold rounded-[10px] text-[#282828] p-[4px] inline-block">
-						ĐIỂM SỐ
-					</h6>
-					<div className="score-element">{info?.averageScore}</div>
-				</div>
-				<div className="flex flex-col my-[10px] items-center px-1 max-md:shrink-0">
-					<h6 className="bg-[#80bd9e] font-bold rounded-[10px] text-[#282828] p-[4px] inline-block">
-						THỜI LƯỢNG
-					</h6>
-					<div className="duration-element">
-						{info?.duration && `${info.duration} phút`}
+				)}
+				{!!info?.averageScore && (
+					<div className="flex flex-col my-[10px] items-center px-1 max-md:shrink-0">
+						<h6 className="bg-[#ff420e] font-bold rounded-[10px] text-[#282828] p-[4px] inline-block">
+							ĐIỂM SỐ
+						</h6>
+						<div className="score-element">{info.averageScore}</div>
 					</div>
-				</div>
-				<div className="flex flex-col my-[10px] items-center px-1 max-md:shrink-0">
-					<h6 className="bg-[#89da59] font-bold rounded-[10px] text-[#282828] p-[4px] inline-block">
-						LƯỢT XEM
-					</h6>
-					<div className="views-element">{info?.views?.toLocaleString()}</div>
-				</div>
-				<div className="flex flex-col my-[10px] items-center px-1 max-md:shrink-0 ml-auto md:mr-[24px] order-last">
-					<h6 className="bg-[#ba5536] font-bold rounded-[10px] text-[#282828] p-[4px] inline-block">
-						KHỞI CHIẾU
-					</h6>
-					<div className="release-date-element">
-						{info?.startDate?.year && info.startDate.year}
+				)}
+				{!!info?.duration && (
+					<div className="flex flex-col my-[10px] items-center px-1 max-md:shrink-0">
+						<h6 className="bg-[#80bd9e] font-bold rounded-[10px] text-[#282828] p-[4px] inline-block">
+							THỜI LƯỢNG
+						</h6>
+						<div className="duration-element">{`${info.duration} phút`}</div>
 					</div>
-				</div>
+				)}
+				{!!info?.views && (
+					<div className="flex flex-col my-[10px] items-center px-1 max-md:shrink-0">
+						<h6 className="bg-[#89da59] font-bold rounded-[10px] text-[#282828] p-[4px] inline-block">
+							LƯỢT XEM
+						</h6>
+						<div className="views-element">{info?.views.toLocaleString()}</div>
+					</div>
+				)}
+				{info?.startDate?.year && (
+					<div className="flex flex-col my-[10px] items-center px-1 max-md:shrink-0 ml-auto md:mr-[24px] order-last">
+						<h6 className="bg-[#ba5536] font-bold rounded-[10px] text-[#282828] p-[4px] inline-block">
+							KHỞI CHIẾU
+						</h6>
+						<div className="release-date-element">{info.startDate.year}</div>
+					</div>
+				)}
 			</div>
 		</>
 	)
