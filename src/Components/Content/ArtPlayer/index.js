@@ -1,10 +1,10 @@
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, memo } from "react"
 import Artplayer from "artplayer"
 import artplayerPluginHlsQuality from "artplayer-plugin-hls-quality"
 import artplayerPluginControl from "artplayer-plugin-control"
 import Hls from "hls.js"
 
-export default function Player({
+function ArtPlayer({
 	option,
 	getInstance,
 	subtitles,
@@ -159,3 +159,5 @@ export default function Player({
 		></div>
 	)
 }
+
+export default memo(ArtPlayer)

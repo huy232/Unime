@@ -1,3 +1,4 @@
+import { memo } from "react"
 import Artplayer from "../ArtPlayer"
 import "./videoplayer.css"
 import { useNavigate, useParams } from "react-router-dom"
@@ -189,4 +190,4 @@ function VideoPlayer({
 	)
 }
 
-export default VideoPlayer
+export default memo(VideoPlayer)
