@@ -24,6 +24,7 @@ function AnimeInfo({ instance }) {
 	const [selectedSpecialChunk, setSelectedSpecialChunk] = useState(0)
 
 	useEffect(() => {
+		window.scrollTo(0, 0)
 		const CancelToken = axios.CancelToken
 		const source = CancelToken.source()
 
@@ -48,7 +49,6 @@ function AnimeInfo({ instance }) {
 					document.title = info?.name
 					setEpisodeList(episodeListChunk)
 					setSpecialEpisodeList(specialEpisodeListChunk)
-					window.scrollTo(0, 0)
 					setLoading(false)
 				})
 				.catch((thrown) => {

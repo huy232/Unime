@@ -186,6 +186,9 @@ function InfoDetailENG({
 							setLoading={setLoading}
 						/>
 					)}
+					{info.relations.length > 0 && (
+						<RecommendENG recommend={info.relations} setLoading={setLoading} />
+					)}
 					{!loading && (
 						<CommentSection
 							itemId={itemId}

@@ -30,10 +30,15 @@ function RecommendENG({ recommend, setLoading }) {
 				>
 					{recommend.map(
 						(item, i) =>
-							item.status !== "Unknown" && (
+							item.status !== "Unknown" &&
+							item.type !== "NOVEL" && (
 								<SwiperSlide key={i}>
 									<Link
-										to={`/eng/info/${item.id}`}
+										to={
+											item.type === "MANGA"
+												? `/eng/manga-info/${item.id}`
+												: `/eng/info/${item.id}`
+										}
 										title={
 											item.title.english ||
 											item.title.romaji ||

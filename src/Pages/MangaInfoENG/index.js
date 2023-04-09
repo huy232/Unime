@@ -17,6 +17,7 @@ function MangaInfoENG() {
 	const [loadingChapterList, setLoadingChapterList] = useState(true)
 	const [mangaLanguageOption, setMangaLanguageOption] = useState([])
 	useEffect(() => {
+		window.scrollTo(0, 0)
 		const CancelToken = axios.CancelToken
 		const source = CancelToken.source()
 		axios
