@@ -145,6 +145,14 @@ function MangaInfoDetailENG({
 						<RecommendENG
 							recommend={info.recommendations}
 							setLoading={setLoading}
+							title={"RECOMMENDS"}
+						/>
+					)}
+					{info.relations.length > 0 && (
+						<RecommendENG
+							recommend={info.relations}
+							setLoading={setLoading}
+							title={"RELATIONS"}
 						/>
 					)}
 

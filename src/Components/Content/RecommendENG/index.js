@@ -10,11 +10,11 @@ import "./recommend.css"
 import { Lazy } from "swiper"
 import { COLORLIST } from "../../../constants"
 
-function RecommendENG({ recommend, setLoading }) {
+function RecommendENG({ recommend, setLoading, title = "RELATIONS" }) {
 	return (
 		<>
-			<h2 className="font-black text-right max-lg:text-center py-8">
-				RECOMMENDS
+			<h2 className={`font-black text-right max-lg:text-center py-8`}>
+				{title}
 			</h2>
 			<div className="mb-[24px]">
 				<Swiper

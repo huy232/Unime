@@ -184,10 +184,15 @@ function InfoDetailENG({
 						<RecommendENG
 							recommend={info.recommendations}
 							setLoading={setLoading}
+							title={"RECOMMENDS"}
 						/>
 					)}
 					{info.relations.length > 0 && (
-						<RecommendENG recommend={info.relations} setLoading={setLoading} />
+						<RecommendENG
+							recommend={info.relations}
+							setLoading={setLoading}
+							title={"RELATIONS"}
+						/>
 					)}
 					{!loading && (
 						<CommentSection
