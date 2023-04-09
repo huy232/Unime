@@ -30,7 +30,7 @@ function MangaHeadingENG({ content, loading }) {
 									loading="lazy"
 								>
 									<Link
-										to={`/eng/info/${item.id}`}
+										to={`/eng/manga-info/${item.id}`}
 										className="hover:opacity-80 duration-200 ease-in-out"
 										style={{
 											color: item.coverImage?.color || "#fffc",
