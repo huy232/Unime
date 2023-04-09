@@ -67,6 +67,11 @@ function MangaLayoutENG({
 												❤ {manga.averageScore}%
 											</p>
 										</div>
+										<div className="absolute group-hover:scale-90 duration-500 linear text-left w-full h-full">
+											<p className="inline-block py-[2x] px-[6px] bg-neutral-500/75 text-white rounded border-solid border-2">
+												{manga.countryOfOrigin}
+											</p>
+										</div>
 									</div>
 									<div className="w-full mx-2">
 										<div className="manga-title flex flex-row items-center mt-[6px] h-[60px]">
@@ -80,9 +85,6 @@ function MangaLayoutENG({
 													manga.title.romaji ||
 													manga.title.native ||
 													manga.userPreferred}
-											</p>
-											<p className="inline-block mr-[4px] ml-auto py-[2x] px-[6px] text-white rounded border-solid border-2">
-												{manga.countryOfOrigin}
 											</p>
 										</div>
 										<div className="flex flex-row items-center h-[40px]">

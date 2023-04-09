@@ -1,7 +1,7 @@
 import React from "react"
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton"
 
-function MangaLayoutSkeleton() {
+function MangaLayoutSkeleton({ number = 21 }) {
 	return (
 		<>
 			<SkeletonTheme baseColor="#202020" highlightColor="#444">
@@ -12,7 +12,7 @@ function MangaLayoutSkeleton() {
 				</h1>
 				<div className="manga-container md:px-12 lg:px-20 xl:px-28 2xl:px-36 w-full pb-12">
 					<div className="grid gap-2 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7">
-						{[...Array(21).keys()].map((i) => (
+						{[...Array(number).keys()].map((i) => (
 							<div
 								className="mx-[4px] mb-[12px] relative float-left group"
 								key={i}
