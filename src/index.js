@@ -9,6 +9,8 @@ import "@fortawesome/fontawesome-free/css/all.min.css"
 import "react-loading-skeleton/dist/skeleton.css"
 import "/node_modules/flag-icons/css/flag-icons.min.css"
 import "./override.css"
+import reportWebVitals from "./reportWebVitals"
+import { sendToVercelAnalytics } from "./vitals"
 // import * as serviceWorkerRegistration from "./serviceWorkerRegistration"
 
 const root = createRoot(document.getElementById("root"))
@@ -29,5 +31,6 @@ if ("serviceWorker" in navigator) {
 		}
 	})
 }
+reportWebVitals(sendToVercelAnalytics)
 
 // serviceWorkerRegistration.register()
