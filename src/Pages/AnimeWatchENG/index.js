@@ -61,38 +61,6 @@ function AnimeWatchENG() {
 			prevAnilist.current = animeId
 		}
 
-		if (listEpisode.length > 0) {
-			const episodeTitle = listEpisode.find((obj) => {
-				return obj.id === current
-			})
-			setWatchDetail(
-				`${title} - EP. ${episodeTitle.number} - ${episodeTitle.title}`
-			)
-			if (user && info) {
-				const saveHistory = async () => {
-					await axios
-						.post(`${API}/save-history`, {
-							userId: user.id,
-							animeName: title,
-							animeEpisode: `EP. ${episodeTitle.number} - ${episodeTitle.title}`,
-							animeImage: info?.image,
-							animeCover: info?.cover,
-							animeColor: info?.color,
-							duration: info?.duration,
-							rating: info?.rating,
-							totalEpisodes: info?.totalEpisodes,
-							type: info?.type,
-							animeStatus: info?.status,
-							animeId: info.id,
-						})
-						.catch((thrown) => {
-							if (axios.isCancel(thrown)) return
-						})
-				}
-				saveHistory()
-			}
-		}
-
 		const filmEpisodeWatch = async () => {
 			await axios
 				.get(`${API}/eng/provider/${current}&${provider}`, {
@@ -120,6 +88,39 @@ function AnimeWatchENG() {
 						if (response.data.data?.intro) {
 							setIntro(response.data.data.intro)
 						}
+
+						if (listEpisode.length > 0) {
+							const episodeTitle = listEpisode.find((obj) => {
+								return obj.id === current
+							})
+							setWatchDetail(
+								`${title} - EP. ${episodeTitle.number} - ${episodeTitle.title}`
+							)
+							if (user && info) {
+								const saveHistory = async () => {
+									await axios
+										.post(`${API}/save-history`, {
+											userId: user.id,
+											animeName: title,
+											animeEpisode: `EP. ${episodeTitle.number} - ${episodeTitle.title}`,
+											animeImage: info?.image,
+											animeCover: info?.cover,
+											animeColor: info?.color,
+											duration: info?.duration,
+											rating: info?.rating,
+											totalEpisodes: info?.totalEpisodes,
+											type: info?.type,
+											animeStatus: info?.status,
+											animeId: info.id,
+										})
+										.catch((thrown) => {
+											if (axios.isCancel(thrown)) return
+										})
+								}
+								saveHistory()
+							}
+						}
+
 						setVideoLoading(false)
 					}
 				})
