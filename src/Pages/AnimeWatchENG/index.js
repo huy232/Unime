@@ -68,7 +68,7 @@ function AnimeWatchENG() {
 			setWatchDetail(
 				`${title} - EP. ${episodeTitle.number} - ${episodeTitle.title}`
 			)
-			if (user) {
+			if (user && info) {
 				const saveHistory = async () => {
 					await axios
 						.post(`${API}/save-history`, {
@@ -140,23 +140,7 @@ function AnimeWatchENG() {
 			source.cancel()
 			document.body.style.overflow = "auto"
 		}
-	}, [
-		animeId,
-		current,
-		info.color,
-		info.cover,
-		info.duration,
-		info.id,
-		info.image,
-		info.rating,
-		info.status,
-		info.totalEpisodes,
-		info.type,
-		listEpisode,
-		provider,
-		title,
-		user,
-	])
+	}, [animeId, current, info, listEpisode, provider, title, user])
 
 	useDocumentTitle(watchDetail)
 	return (
