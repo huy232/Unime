@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faHouse } from "@fortawesome/free-solid-svg-icons"
 import VideoPlayer from "../../Components/Content/VideoPlayer"
 import FilmLoadingRequest from "../../Components/Content/LoadingRequest/FilmLoadingRequest"
-
+import { useAuth } from "../../Contexts/auth"
 function AnimeWatchENG() {
 	const { animeId } = useParams()
 	const queryParams = new URLSearchParams(window.location.search)
@@ -24,6 +24,9 @@ function AnimeWatchENG() {
 	const [intro, setIntro] = useState(null)
 	const [title, setTitle] = useState("")
 	const prevAnilist = useRef()
+	const [info, setInfo] = useState()
+
+	const { user } = useAuth()
 
 	useEffect(() => {
 		const CancelToken = axios.CancelToken
@@ -53,6 +56,7 @@ function AnimeWatchENG() {
 						listData.title?.native
 				)
 				setListEpisode(listData.episodes)
+				setInfo(data.data)
 			}
 			prevAnilist.current = animeId
 		}
@@ -64,6 +68,29 @@ function AnimeWatchENG() {
 			setWatchDetail(
 				`${title} - EP. ${episodeTitle.number} - ${episodeTitle.title}`
 			)
+			if (user) {
+				const saveHistory = async () => {
+					await axios
+						.post(`${API}/save-history`, {
+							userId: user.id,
+							animeName: title,
+							animeEpisode: `EP. ${episodeTitle.number} - ${episodeTitle.title}`,
+							animeImage: info.image,
+							animeCover: info.cover,
+							animeColor: info.color,
+							duration: info.duration,
+							rating: info.rating,
+							totalEpisodes: info.totalEpisodes,
+							type: info.type,
+							animeStatus: info.status,
+							animeId: info.id,
+						})
+						.catch((thrown) => {
+							if (axios.isCancel(thrown)) return
+						})
+				}
+				saveHistory()
+			}
 		}
 
 		const filmEpisodeWatch = async () => {
@@ -113,7 +140,23 @@ function AnimeWatchENG() {
 			source.cancel()
 			document.body.style.overflow = "auto"
 		}
-	}, [animeId, current, listEpisode, provider, title])
+	}, [
+		animeId,
+		current,
+		info.color,
+		info.cover,
+		info.duration,
+		info.id,
+		info.image,
+		info.rating,
+		info.status,
+		info.totalEpisodes,
+		info.type,
+		listEpisode,
+		provider,
+		title,
+		user,
+	])
 
 	useDocumentTitle(watchDetail)
 	return (

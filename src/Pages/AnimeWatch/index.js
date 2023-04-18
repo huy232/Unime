@@ -9,6 +9,8 @@ import VideoPlayer from "../../Components/Content/VideoPlayer"
 import FilmLoadingRequest from "../../Components/Content/LoadingRequest/FilmLoadingRequest"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faHouse } from "@fortawesome/free-solid-svg-icons"
+import { useAuth } from "../../Contexts/auth"
+import { API } from "../../constants"
 
 function AnimeWatch({ instance }) {
 	const { anime } = useParams()
@@ -22,6 +24,8 @@ function AnimeWatch({ instance }) {
 	const [videoLoading, setVideoLoading] = useState(true)
 	const [mainId, setMainId] = useState()
 	const prevAnilist = useRef()
+
+	const { user } = useAuth()
 
 	useEffect(() => {
 		const CancelToken = axios.CancelToken
@@ -75,6 +79,27 @@ function AnimeWatch({ instance }) {
 							}
 							const watchFilm = response.data.data.film_name
 							const watchEpisodeName = response.data.data.full_name
+
+							if (user) {
+								const animeImage =
+									response.data.data?.thumbnail_medium ||
+									response.data.data?.thumbnail_small
+								const saveHistory = async () => {
+									await axios
+										.post(`${API}/vi/save-history`, {
+											userId: user.id,
+											animeName: watchFilm,
+											animeEpisode: watchEpisodeName,
+											animeImage: animeImage,
+											animeSlug: `${anime}?index=${index}`,
+										})
+										.catch((thrown) => {
+											if (axios.isCancel(thrown)) return
+										})
+								}
+								saveHistory()
+							}
+
 							setWatchDetail(watchFilm + ` (${watchEpisodeName})`)
 							setVideoLoading(false)
 						}
