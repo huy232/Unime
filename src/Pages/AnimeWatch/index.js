@@ -79,7 +79,6 @@ function AnimeWatch({ instance }) {
 							}
 							const watchFilm = response.data.data.film_name
 							const watchEpisodeName = response.data.data.full_name
-
 							if (user) {
 								const animeImage =
 									response.data.data?.thumbnail_medium ||
@@ -99,7 +98,6 @@ function AnimeWatch({ instance }) {
 								}
 								saveHistory()
 							}
-
 							setWatchDetail(watchFilm + ` (${watchEpisodeName})`)
 							setVideoLoading(false)
 						}
