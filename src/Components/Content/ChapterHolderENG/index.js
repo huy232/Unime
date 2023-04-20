@@ -47,7 +47,7 @@ function ChapterHolderENG({ mangaLanguageOption, info, provider, mangaID }) {
 				</ul>
 			) : (
 				<ul>
-					<p>
+					<p className="italic text-slate-300 text-center text-md font-thin">
 						This provider currently has no chapters, maybe you can try to switch
 						to another provider.
 					</p>
