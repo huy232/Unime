@@ -34,16 +34,25 @@ function ChapterHolderENG({ mangaLanguageOption, info, provider, mangaID }) {
 					</div>
 				</div>
 			)}
-			<ul className="overflow-y-scroll h-[500px] mx-4">
-				{
-					<ChapterListENG
-						chapters={info.chapters}
-						languageManga={languageManga}
-						provider={provider}
-						mangaID={mangaID}
-					/>
-				}
-			</ul>
+			{info.chapters.length ? (
+				<ul className="overflow-y-scroll h-[500px] mx-4">
+					{
+						<ChapterListENG
+							chapters={info.chapters}
+							languageManga={languageManga}
+							provider={provider}
+							mangaID={mangaID}
+						/>
+					}
+				</ul>
+			) : (
+				<ul>
+					<p>
+						This provider currently has no chapters, maybe you can try to switch
+						to another provider.
+					</p>
+				</ul>
+			)}
 		</>
 	)
 }

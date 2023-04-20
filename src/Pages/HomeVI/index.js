@@ -7,8 +7,8 @@ import RecentAnimeVI from "../../Components/Content/RecentAnimeVI"
 import MostWatchVI from "../../Components/Content/MostWatchVI"
 import CollectionsVI from "../../Components/Content/CollectionsVI"
 import MovieList from "../../Components/Content/MovieListLayout"
-import "./home.css"
 import TopAiringVI from "../../Components/Content/TopAiringVI"
+import "./home.css"
 
 function HomeVI({ instance }) {
 	const [slider, setSlider] = useState([])
@@ -115,9 +115,7 @@ function HomeVI({ instance }) {
 					if (axios.isCancel(thrown)) return
 				})
 		}
-
 		getSlider()
-
 		return () => {
 			source.cancel()
 		}
