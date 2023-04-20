@@ -8,8 +8,10 @@ function LazyImage({ page, provider }) {
 			<LazyLoadImage
 				className="h-full"
 				src={
-					provider === "mangareader" || provider === "mangadex"
+					provider === "mangareader"
 						? page.img
+						: provider === "mangadex"
+						? `${CONSUMET_CORS}url=${page.img}&referer=https://mangadex.org`
 						: `${CONSUMET_CORS}url=${page.img}&referer=${page?.headerForImage?.Referer}`
 				}
 				alt={page.title}
