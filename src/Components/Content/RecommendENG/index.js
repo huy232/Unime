@@ -32,84 +32,80 @@ function RecommendENG({ recommend, setLoading, title = "RELATIONS" }) {
 							lazy={true}
 							preloadImages={false}
 						>
-							{recommendFilter.map(
-								(item, i) =>
-									item.status !== "Unknown" &&
-									item.type !== "NOVEL" && (
-										<SwiperSlide key={i}>
-											<Link
-												to={
-													item.type === "MANGA"
-														? `/eng/manga-info/${item.id}`
-														: `/eng/info/${item.id}`
-												}
-												title={
-													item.title.english ||
-													item.title.romaji ||
-													item.title.native ||
-													item.title.userPreferred
-												}
-												onClick={() => setLoading(true)}
-												aria-label={
-													item.title.english ||
-													item.title.romaji ||
-													item.title.native ||
-													item.userPreferred
-												}
-											>
-												<div className="group recommend-item-holder select-none cursor-pointer">
-													<div className="recommend-item-image aspect-[2/3] group-hover:opacity-80 duration-200 ease-in-out relative">
-														<img
-															className="object-fill object-center w-full h-full duration-500 linear absolute"
-															src={item.image || ""}
-															alt={
-																item.title.english ||
-																item.title.romaji ||
-																item.title.native ||
-																item.title.userPreferred
-															}
-															loading="lazy"
-														/>
-														<div className="text-white absolute right-0 bg-[#0d0d0d]/[0.8] p-[6px]">
-															{item.rating}%{" "}
-															<FontAwesomeIcon
-																icon={faHeart}
-																className="text-red-500"
-															/>
-														</div>
-														<div className="text-[#fffc] absolute bottom-0 text-sm w-full p-[4px] bg-[#0d0d0d]/[0.8]">
-															<div className="flex">
-																<p>
-																	{(item.episodes && `${item.episodes}. EP`) ||
-																		(item.chapters && `${item.chapters}. Ch`)}
-																</p>
-																<p className="ml-auto border-2 rounded px-[4px]">
-																	{item.type}
-																</p>
-															</div>
-														</div>
-													</div>
-													<div className="recommend-item-title h-[60px]">
-														<p
-															className="line-clamp-2 font-extrabold"
-															style={{ color: COLORLIST[i] || "#fffc" }}
-														>
-															{item.title.english ||
-																item.title.romaji ||
-																item.title.native ||
-																item.title.userPreferred}
+							{recommendFilter.map((item, i) => (
+								<SwiperSlide key={i}>
+									<Link
+										to={
+											item.type === "MANGA"
+												? `/eng/manga-info/${item.id}`
+												: `/eng/info/${item.id}`
+										}
+										title={
+											item.title.english ||
+											item.title.romaji ||
+											item.title.native ||
+											item.title.userPreferred
+										}
+										onClick={() => setLoading(true)}
+										aria-label={
+											item.title.english ||
+											item.title.romaji ||
+											item.title.native ||
+											item.userPreferred
+										}
+									>
+										<div className="group recommend-item-holder select-none cursor-pointer">
+											<div className="recommend-item-image aspect-[2/3] group-hover:opacity-80 duration-200 ease-in-out relative">
+												<img
+													className="object-fill object-center w-full h-full duration-500 linear absolute"
+													src={item.image || ""}
+													alt={
+														item.title.english ||
+														item.title.romaji ||
+														item.title.native ||
+														item.title.userPreferred
+													}
+													loading="lazy"
+												/>
+												<div className="text-white absolute right-0 bg-[#0d0d0d]/[0.8] p-[6px]">
+													{item.rating}%{" "}
+													<FontAwesomeIcon
+														icon={faHeart}
+														className="text-red-500"
+													/>
+												</div>
+												<div className="text-[#fffc] absolute bottom-0 text-sm w-full p-[4px] bg-[#0d0d0d]/[0.8]">
+													<div className="flex">
+														<p>
+															{(item.episodes && `${item.episodes}. EP`) ||
+																(item.chapters && `${item.chapters}. Ch`)}
 														</p>
-													</div>
-													<div className="text-[#fffc] text-sm inline-block p-[4px]">
-														<p className="border-2 rounded px-[4px]">
-															{item.status}
+														<p className="ml-auto border-2 rounded px-[4px]">
+															{item.type}
 														</p>
 													</div>
 												</div>
-											</Link>
-										</SwiperSlide>
-									)
-							)}
+											</div>
+											<div className="recommend-item-title h-[60px]">
+												<p
+													className="line-clamp-2 font-extrabold"
+													style={{ color: COLORLIST[i] || "#fffc" }}
+												>
+													{item.title.english ||
+														item.title.romaji ||
+														item.title.native ||
+														item.title.userPreferred}
+												</p>
+											</div>
+											<div className="text-[#fffc] text-sm inline-block p-[4px]">
+												<p className="border-2 rounded px-[4px]">
+													{item.status}
+												</p>
+											</div>
+										</div>
+									</Link>
+								</SwiperSlide>
+							))}
 						</Swiper>
 					</div>
 				</>
