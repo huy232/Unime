@@ -1,31 +1,41 @@
 import { useEffect, useRef, useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import { COLORLIST, ENG_GENRES } from "../../../constants"
 import { BsSearch } from "react-icons/bs"
 import { useNavigate } from "react-router-dom"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faBars, faSortUp, faSortDown } from "@fortawesome/free-solid-svg-icons"
-
+import { toSlug } from "../../../Utilities/toSlug"
 import User from "../User"
 import LanguageButton from "../../Content/LanguageButton"
 import unimeLogo from "../../../Utilities/img/unime.webp"
 
 function HeaderENG() {
 	let navigate = useNavigate()
+	const pathname = useLocation()
 	const [input, setInput] = useState("")
 	const [sideBar, setSidebar] = useState(false)
 	const [genreToggle, setGenreToggle] = useState(false)
 	const sidebarRef = useRef()
-
 	const handleChange = (e) => {
 		setInput(e.target.value)
 	}
 
+	const mangaUrlArray = [
+		`/eng/manga`,
+		`/eng/manga-info/${pathname.pathname.split("/")[3]}`,
+		`/eng/manga-search/${pathname.pathname.split("/")[3]}`,
+		`/eng/manga-read`,
+	]
 	const handleSubmit = (e) => {
 		e.preventDefault()
 		if (input !== "") {
 			handleScrollToTop()
-			navigate(`/eng/search/${encodeURI(input)}`)
+			if (mangaUrlArray.indexOf(window.location.pathname) < 0) {
+				navigate(`/eng/search/${encodeURI(toSlug(input))}`)
+			} else {
+				navigate(`/eng/manga-search/${encodeURI(toSlug(input))}`)
+			}
 			setInput("")
 		}
 	}
@@ -61,7 +71,11 @@ function HeaderENG() {
 					<div className="flex flex-row h-100 items-center">
 						<div className="h-100">
 							<Link
-								to="/eng"
+								to={
+									mangaUrlArray.indexOf(window.location.pathname) < 0
+										? `/eng`
+										: `/eng/manga`
+								}
 								className="group hover:opacity-80 duration-200 ease-in-out h-100 inline-block flex items-center"
 								onClick={() => setSidebar(false)}
 								aria-label="Home - English"
@@ -81,7 +95,11 @@ function HeaderENG() {
 							<form className="flex">
 								<input
 									type="text"
-									placeholder="Search Anime..."
+									placeholder={
+										mangaUrlArray.indexOf(window.location.pathname) < 0
+											? `Search anime...`
+											: `Search manga...`
+									}
 									className="search-navbar text-white max-sm:w-[140px] bg-[#00000099] px-[4px]"
 									onChange={handleChange}
 									onKeyPress={(e) => {

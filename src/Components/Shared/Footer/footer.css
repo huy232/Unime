@@ -1,3 +1,7 @@
+.footer-description::-webkit-scrollbar {
+	display: none;
+}
+
 .facebook-icon svg:hover,
 .discord-icon svg:hover,
 .github-icon svg:hover,

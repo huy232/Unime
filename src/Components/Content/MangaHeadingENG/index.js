@@ -6,7 +6,6 @@ import { Lazy } from "swiper"
 import { Link } from "react-router-dom"
 import "./topmanga.css"
 function MangaHeadingENG({ content, loading }) {
-	console.log(content)
 	return (
 		<div className="ml-6 mr-6">
 			{!loading && (

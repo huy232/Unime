@@ -35,6 +35,7 @@ import MangaENG from "./Pages/MangaENG"
 import MangaInfoENG from "./Pages/MangaInfoENG"
 import MangaBrowseENG from "./Components/Content/MangaBrowseENG"
 import MangaViewENG from "./Pages/MangaViewENG"
+import MangaSearchENG from "./Pages/MangaSearchENG"
 
 function App() {
 	const instance = axios.create({
@@ -47,7 +48,7 @@ function App() {
 		`/login`,
 	]
 	const exclusionArrayFooter = [`/eng/search-image`]
-	const mangaUrlList = ["top", "trending", "popular", "manhwa"]
+	// const mangaUrlList = ["top", "trending", "popular", "manhwa"]
 	useEffect(() => {
 		window.history.scrollRestoration = "manual"
 		function resize() {
@@ -151,6 +152,10 @@ function App() {
 							}
 						/>
 						<Route path={`/eng/manga-read/`} element={<MangaViewENG />} />
+						<Route
+							path="/eng/manga-search/:query"
+							element={<MangaSearchENG />}
+						/>
 					</Routes>
 				</div>
 				{!!(

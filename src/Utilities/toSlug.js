@@ -9,7 +9,8 @@ export function toSlug(str, separator) {
 		.replace(/ỳ|ý|ỵ|ỷ|ỹ/g, "y")
 		.replace(/đ/g, "d")
 		.replace(/\s+/g, "-")
-		.replace(/[^A-Za-z0-9_-]/g, "")
+		.replace(/[^A-Za-z0-9_-]/g, "-")
+		.replace(/[\\/_]/g, "-")
 		.replace(/-+/g, "-")
 	if (separator) {
 		return str.replace(/-/g, separator)

@@ -59,6 +59,11 @@ menu {
 	margin: 0;
 }
 
+input {
+	outline: none;
+	border: none;
+}
+
 img {
 	text-indent: 100% !important;
 	white-space: nowrap !important;

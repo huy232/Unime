@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faBars, faSortUp, faSortDown } from "@fortawesome/free-solid-svg-icons"
 import User from "../User"
 import LanguageButton from "../../Content/LanguageButton"
+import { toSlug } from "../../../Utilities/toSlug"
 import unimeLogo from "../../../Utilities/img/unime.webp"
 
 function HeaderVI() {
@@ -24,7 +25,7 @@ function HeaderVI() {
 		e.preventDefault()
 		if (input !== "") {
 			handleScrollToTop()
-			navigate(`/search/${encodeURI(input)}`)
+			navigate(`/search/${encodeURI(toSlug(input, " "))}`)
 			setInput("")
 		}
 	}

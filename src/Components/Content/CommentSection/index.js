@@ -33,6 +33,24 @@ function CommentSection({
 					</>
 				)}
 			</p>
+			<p className="inline-block text-white/50 border-l-[6px] border-white/70 p-[4px] bg-white/10 text-sm my-[8px]">
+				{language === "vi" && (
+					<>
+						<strong>Người dùng ẩn danh</strong> sử dụng để bình luận sẽ cần phê
+						duyệt của quản trị viên để hiển thị bình luận (để ngăn bot spam và
+						các hình ảnh không phù hợp, v.v.). Nếu bạn muốn bình luận tự do, xin
+						vui lòng đăng nhập.
+					</>
+				)}
+				{language === "en_US" && (
+					<>
+						The <strong>anonymous user</strong> that uses to comment will need
+						admin approval to display the comment (to prevent bot spam and
+						inappropriate images, etc.). If you want to comment freely, please
+						login.
+					</>
+				)}
+			</p>
 			<DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
 		</div>
 	)
