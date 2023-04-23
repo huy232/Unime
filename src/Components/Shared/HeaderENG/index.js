@@ -8,6 +8,7 @@ import { faBars, faSortUp, faSortDown } from "@fortawesome/free-solid-svg-icons"
 import { toSlug } from "../../../Utilities/toSlug"
 import User from "../User"
 import LanguageButton from "../../Content/LanguageButton"
+import ContentToggleENG from "../../Content/ContentToggleENG"
 import unimeLogo from "../../../Utilities/img/unime.webp"
 
 function HeaderENG() {
@@ -121,6 +122,7 @@ function HeaderENG() {
 								</button>
 							</form>
 						</div>
+						<ContentToggleENG />
 						<LanguageButton handleScrollToTop={handleScrollToTop} />
 						<div
 							className="cursor-pointer flex h-[40px] w-[40px] items-center justify-center"
