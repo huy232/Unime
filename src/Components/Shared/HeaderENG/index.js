@@ -122,7 +122,9 @@ function HeaderENG() {
 								</button>
 							</form>
 						</div>
-						<ContentToggleENG />
+						<ContentToggleENG
+							routeChecking={mangaUrlArray.indexOf(window.location.pathname)}
+						/>
 						<LanguageButton handleScrollToTop={handleScrollToTop} />
 						<div
 							className="cursor-pointer flex h-[40px] w-[40px] items-center justify-center"
