@@ -45,7 +45,7 @@ function CharacterDetail({ randomAnime, loadingRandomAnime }) {
 									>
 										<div className="h-full">
 											<img
-												className="aspect-[2/3] object-cover"
+												className="aspect-[2/3] object-cover w-[100px]"
 												src={character.image || ""}
 												loading="lazy"
 												alt={character.name.full}
