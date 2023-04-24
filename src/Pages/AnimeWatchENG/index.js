@@ -46,13 +46,13 @@ function AnimeWatchENG() {
 				setWatchDetail(
 					`${
 						listData.title?.english ||
-						listData.title?.romanji ||
+						listData.title?.romaji ||
 						listData.title?.native
 					} - EP. ${episodeTitle.number} - ${episodeTitle.title}`
 				)
 				setTitle(
 					listData.title?.english ||
-						listData.title?.romanji ||
+						listData.title?.romaji ||
 						listData.title?.native
 				)
 				setListEpisode(listData.episodes)
