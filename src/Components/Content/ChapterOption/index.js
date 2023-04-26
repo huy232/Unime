@@ -1,5 +1,7 @@
 import React from "react"
 import { Link, useNavigate } from "react-router-dom"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons"
 function ChapterOption({
 	mangaID,
 	provider,
@@ -53,7 +55,7 @@ function ChapterOption({
 							? `/eng/manga-read?mangaID=${mangaID}&chapterID=${previousChapter.id}&provider=${provider}`
 							: "#"
 					}
-					className={`rounded mx-1 p-2 ${
+					className={`rounded mx-1 p-1 ${
 						previousChapter ? "bg-[#B8621B]" : "bg-white/10"
 					} ${
 						!previousChapter && "pointer-events-none"
@@ -64,7 +66,8 @@ function ChapterOption({
 						setLoadingCurrentChapter(true)
 					}}
 				>
-					Prev
+					<FontAwesomeIcon icon={faArrowLeft} />
+					<span className="mx-[4px]">Prev</span>
 				</Link>
 				<Link
 					to={
@@ -72,7 +75,7 @@ function ChapterOption({
 							? `/eng/manga-read?mangaID=${mangaID}&chapterID=${nextChapter.id}&provider=${provider}`
 							: "#"
 					}
-					className={`rounded mx-1 p-2 ${
+					className={`rounded mx-1 p-1 ${
 						nextChapter ? "bg-[#B8621B]" : "bg-white/10"
 					} ${
 						!nextChapter && "pointer-events-none"
@@ -83,7 +86,8 @@ function ChapterOption({
 						setLoadingCurrentChapter(true)
 					}}
 				>
-					Next
+					<span className="mx-[4px]">Next</span>
+					<FontAwesomeIcon icon={faArrowRight} />
 				</Link>
 			</div>
 		</section>
