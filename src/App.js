@@ -36,6 +36,7 @@ import MangaInfoENG from "./Pages/MangaInfoENG"
 import MangaBrowseENG from "./Components/Content/MangaBrowseENG"
 import MangaViewENG from "./Pages/MangaViewENG"
 import MangaSearchENG from "./Pages/MangaSearchENG"
+import Profile from "./Pages/Profile"
 
 function App() {
 	const instance = axios.create({
@@ -156,6 +157,8 @@ function App() {
 							path="/eng/manga-search/:query"
 							element={<MangaSearchENG />}
 						/>
+
+						<Route path="/profile" element={<Profile />} />
 					</Routes>
 				</div>
 				{!!(
