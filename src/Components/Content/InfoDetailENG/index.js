@@ -10,6 +10,9 @@ import { duration } from "../../../Utilities/duration"
 import CharacterList from "../CharacterList"
 import ClampedDivENG from "../DescriptionENG"
 import CommentSection from "../CommentSection"
+import { useRef } from "react"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faArrowDown } from "@fortawesome/free-solid-svg-icons"
 
 function InfoDetailENG({
 	loading,
@@ -28,6 +31,9 @@ function InfoDetailENG({
 			return info.genres.find((selectedGenre) => selectedGenre === genre.name)
 		}
 	})
+
+	const scrollToRef = useRef(null)
+	const executeScroll = () => scrollToRef.current.scrollIntoView()
 
 	return (
 		<div className="w-[70vw] max-lg:w-full">
@@ -69,6 +75,17 @@ function InfoDetailENG({
 							</div>
 						</>
 					)}
+				</div>
+			)}
+			{!loading && (
+				<div className="flex max-md:justify-center my-2">
+					<button
+						onClick={() => executeScroll()}
+						className="mx-2 p-1 bg-yellow-600 rounded hover:opacity-80 duration-200"
+					>
+						<FontAwesomeIcon icon={faArrowDown} />
+						<span className="mx-[6px]">Episode list</span>
+					</button>
 				</div>
 			)}
 			<div className="description">
@@ -166,7 +183,7 @@ function InfoDetailENG({
 							</select>
 						</div>
 					</div>
-					<div className="list-episode-title-main">
+					<div className="list-episode-title-main" ref={scrollToRef}>
 						<h4 style={{ marginTop: "30px" }}>EPISODE LIST</h4>
 					</div>
 					<div>

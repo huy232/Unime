@@ -22,6 +22,7 @@ function InfoEpisodeHolder({
 	selectedChunk,
 	setSelectedChunk,
 	loading,
+	scrollToRef,
 }) {
 	const [swiper, setSwiper] = useState(null)
 	const [toggleButton, setToggleButton] = useState(true)
@@ -46,7 +47,7 @@ function InfoEpisodeHolder({
 
 	return (
 		<>
-			<div className="episode-list">
+			<div className="episode-list" ref={scrollToRef}>
 				{!loading && (
 					<>
 						<div className="list-episode-title-main">

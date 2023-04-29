@@ -141,7 +141,7 @@ function AnimeWatchENG() {
 			source.cancel()
 			document.body.style.overflow = "auto"
 		}
-	}, [animeId, current, listEpisode, provider, title])
+	}, [animeId, current, info, listEpisode, provider, title, user])
 
 	useDocumentTitle(watchDetail)
 	return (

@@ -2,8 +2,10 @@ import DescriptionSkeleton from "../DescriptionSkeleton"
 import { GENRES, COLLECTIONS } from "../../../constants"
 import { Link } from "react-router-dom"
 import ClampedDiv from "../Description"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faArrowDown } from "@fortawesome/free-solid-svg-icons"
 
-function InfoHeadDetail({ info, loading }) {
+function InfoHeadDetail({ info, loading, executeScroll }) {
 	let resultCollection = COLLECTIONS.filter((collection) => {
 		if (info && Object.keys(info).length !== 0) {
 			return info.genres.find(
@@ -29,6 +31,17 @@ function InfoHeadDetail({ info, loading }) {
 					{loading ? <DescriptionSkeleton /> : info?.name}
 				</h2>
 			</div>
+			{!loading && (
+				<div className="flex max-md:justify-center my-2">
+					<button
+						onClick={() => executeScroll()}
+						className="mx-2 p-1 bg-yellow-600 rounded hover:opacity-80 duration-200"
+					>
+						<FontAwesomeIcon icon={faArrowDown} />
+						<span className="mx-[6px]">Danh sách tập phim</span>
+					</button>
+				</div>
+			)}
 			<div className="description">
 				{loading ? (
 					<DescriptionSkeleton />

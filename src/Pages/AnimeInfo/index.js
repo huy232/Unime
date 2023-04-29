@@ -12,6 +12,7 @@ import InfoAnimeEpisodeHandle from "../../Components/Content/InfoAnimeEpisodeHan
 import CharacterListVI from "../../Components/Content/CharacterListVI"
 import "./animeinfo.css"
 import CommentSection from "../../Components/Content/CommentSection"
+import { useRef } from "react"
 
 function AnimeInfo({ instance }) {
 	const { anime } = useParams()
@@ -62,6 +63,10 @@ function AnimeInfo({ instance }) {
 			source.cancel()
 		}
 	}, [anime, instance])
+
+	const scrollToRef = useRef(null)
+	const executeScroll = () => scrollToRef.current.scrollIntoView()
+
 	return (
 		<>
 			<div
@@ -95,7 +100,11 @@ function AnimeInfo({ instance }) {
 				<div className="info-box flex flex-col lg:flex-row w-full justify-between">
 					<InfoBox info={info} loading={loading} />
 					<div className="info-detail ">
-						<InfoHeadDetail info={info} loading={loading} />
+						<InfoHeadDetail
+							info={info}
+							loading={loading}
+							executeScroll={executeScroll}
+						/>
 						<InfoTrailer trailerId={info?.trailer?.id} />
 						<CharacterListVI
 							characters={info?.characters?.edges}
@@ -106,6 +115,7 @@ function AnimeInfo({ instance }) {
 							selectedChunk={selectedChunk}
 							setSelectedChunk={setSelectedChunk}
 							loading={loading}
+							scrollToRef={scrollToRef}
 						/>
 						<InfoAnimeEpisodeHandle
 							anime={anime}

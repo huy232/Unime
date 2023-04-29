@@ -10,13 +10,19 @@ import ProfileContentENG from "../../Components/Content/ProfileContentENG"
 function Profile() {
 	const navigate = useNavigate()
 	const [profileParams] = useSearchParams()
-	const { user } = useAuth()
 	const lang = profileParams.get("lang")
+	const { user } = useAuth()
+
+	const toggleButton = (lang) => {
+		navigate(`/profile?lang=${lang}`)
+	}
 
 	return (
 		<div>
-			{lang === "vi" && <ProfileContentVI />}
-			{lang === "eng" && <ProfileContentENG />}
+			<button onClick={() => toggleButton("vi")}>VI</button>
+			<button onClick={() => toggleButton("eng")}>ENG</button>
+			{lang === "vi" && <ProfileContentVI userId={user?.id} />}
+			{lang === "eng" && <ProfileContentENG userId={user?.id} />}
 			{lang !== "vi" && lang !== "eng" && navigate("/")}
 		</div>
 	)
