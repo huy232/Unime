@@ -25,9 +25,7 @@ function AnimeWatchENG() {
 	const [title, setTitle] = useState("")
 	const prevAnilist = useRef()
 	const [info, setInfo] = useState()
-
 	const { user } = useAuth()
-
 	useEffect(() => {
 		const CancelToken = axios.CancelToken
 		const source = CancelToken.source()
@@ -88,7 +86,6 @@ function AnimeWatchENG() {
 						if (response.data.data?.intro) {
 							setIntro(response.data.data.intro)
 						}
-
 						if (listEpisode.length > 0) {
 							const episodeTitle = listEpisode.find((obj) => {
 								return obj.id === current
@@ -141,8 +138,7 @@ function AnimeWatchENG() {
 			source.cancel()
 			document.body.style.overflow = "auto"
 		}
-	}, [animeId, current, info, listEpisode, provider, title, user])
-
+	}, [animeId, current, info, listEpisode, provider, title])
 	useDocumentTitle(watchDetail)
 	return (
 		<div className="flex max-lg:flex-col ">
@@ -158,7 +154,6 @@ function AnimeWatchENG() {
 					intro={intro}
 				/>
 			)}
-
 			<div className="episode-content">
 				<div className="episode-section">
 					<div className="episode-section-fixed">
