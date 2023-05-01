@@ -99,15 +99,15 @@ function MangaLayoutENG({
 								</Link>
 							))}
 						</div>
-						{/* <div className="text-right mt-[24px]">
+						<div className="text-right mt-[24px]">
 							<Link
-								to={`/eng/manga-list/${navigateUrl}`}
+								to={`/eng/manga-list/${navigateUrl}?page=1`}
 								className="browse-button hover:text-[#fffc] font-semibold"
 								style={{ "--c": color }}
 							>
 								MORE...
 							</Link>
-						</div> */}
+						</div>
 					</div>
 				</>
 			)}

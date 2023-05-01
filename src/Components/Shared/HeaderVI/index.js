@@ -63,7 +63,6 @@ function HeaderVI() {
 							to="/"
 							className="group hover:opacity-80 duration-200 ease-in-out h-100 inline-block flex items-center"
 							onClick={() => {
-								handleScrollToTop()
 								setSidebar(false)
 							}}
 							aria-label="Home - Viet"

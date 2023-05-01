@@ -7,7 +7,7 @@ const AuthContext = React.createContext()
 export function AuthProvider({ children }) {
 	const [user, setUser] = useState()
 	const [language, setLanguage] = useState(
-		localStorage.getItem("unime-language") || "vi"
+		localStorage.getItem("unime-language") || "eng"
 	)
 	const [loading, setLoading] = useState(true)
 
