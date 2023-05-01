@@ -29,7 +29,6 @@ function HeaderENG() {
 		`/eng/manga-read`,
 		`/eng/manga-list/${pathname.pathname.split("/")[3]}`,
 	]
-	console.log(pathname)
 	const handleSubmit = (e) => {
 		e.preventDefault()
 		if (input !== "") {
