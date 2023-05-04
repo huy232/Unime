@@ -9,13 +9,13 @@ function SideManga({ chapters, provider, mangaID, chapterID }) {
 	return (
 		<div
 			className={`fixed top-[40px] z-50 ${
-				toggleSidebar ? "left-0" : "left-[-320px]"
+				toggleSidebar ? "left-0" : "left-[-288px]"
 			} duration-200 ease-in-out`}
 		>
-			<h2 className="h-[40px]">CHAPTER LIST</h2>
+			<h2 className="h-[40px] bg-black m-0">CHAPTER LIST</h2>
 			<div className="flex">
 				<ul
-					className={`h-[calc(100vh-80px)] overflow-y-scroll relative bg-black w-[320px]`}
+					className={`h-[calc(100vh-80px)] overflow-y-scroll relative bg-black w-[288px]`}
 				>
 					{chapters.reverse().map((item) => (
 						<Link
