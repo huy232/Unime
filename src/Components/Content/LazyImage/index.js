@@ -6,7 +6,7 @@ function LazyImage({ page, provider }) {
 	return (
 		<>
 			<LazyLoadImage
-				className="w-full aspect-[2/3]"
+				className="aspect-[2/3]"
 				src={
 					provider === "mangareader"
 						? page.img
