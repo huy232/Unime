@@ -12,7 +12,7 @@ function SideManga({ chapters, provider, mangaID, chapterID }) {
 				toggleSidebar ? "left-0" : "left-[-288px]"
 			} duration-200 ease-in-out`}
 		>
-			<h2 className="h-[40px] bg-black m-0">CHAPTER LIST</h2>
+			<h2 className="h-[40px] bg-black m-0 w-[288px]">CHAPTER LIST</h2>
 			<div className="flex">
 				<ul
 					className={`h-[calc(100vh-80px)] overflow-y-scroll relative bg-black w-[288px]`}
