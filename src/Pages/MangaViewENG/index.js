@@ -8,6 +8,7 @@ import LoadingSpin from "react-loading-spin"
 import MangaReadChapter from "../../Components/Content/MangaReadChapter"
 import CommentSection from "../../Components/Content/CommentSection"
 import MangaRedirectSection from "../../Components/Content/MangaRedirectSection"
+import SideManga from "../../Components/Content/SideManga"
 
 function MangaViewENG() {
 	const [searchParams] = useSearchParams()
@@ -77,6 +78,12 @@ function MangaViewENG() {
 						{title}
 					</h2>
 					<MangaRedirectSection mangaID={mangaID} />
+					<SideManga
+						chapters={info.chapters}
+						mangaID={mangaID}
+						provider={provider}
+						chapterID={chapterID}
+					/>
 					<MangaReadChapter
 						currentChapter={chapterID}
 						provider={provider}

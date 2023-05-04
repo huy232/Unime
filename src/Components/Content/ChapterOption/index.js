@@ -41,7 +41,7 @@ function ChapterOption({
 					<option value disabled={true}>
 						Select chapter
 					</option>
-					{info.chapters.map((chapter) => (
+					{info.chapters.reverse().map((chapter) => (
 						<option key={chapter.id} value={chapter.id}>
 							{chapter?.chapterNumber || chapter?.chapter || chapter?.title}
 						</option>
