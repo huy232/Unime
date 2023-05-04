@@ -79,7 +79,7 @@ function MangaViewENG() {
 					</h2>
 					<MangaRedirectSection mangaID={mangaID} />
 					<SideManga
-						chapters={info.chapters}
+						chapters={info.chapters.reverse()}
 						mangaID={mangaID}
 						provider={provider}
 						chapterID={chapterID}

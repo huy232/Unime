@@ -17,20 +17,17 @@ function SideManga({ chapters, provider, mangaID, chapterID }) {
 				<ul
 					className={`h-[calc(100vh-80px)] overflow-y-scroll relative bg-black w-[288px]`}
 				>
-					{chapters.reverse().map((item) => (
+					{chapters.map((item) => (
 						<Link
 							to={`/eng/manga-read?mangaID=${mangaID}&chapterID=${item.id}&provider=${provider}`}
-							className={`text-white hover:opacity-80 duration-200`}
+							className={`text-white hover:opacity-80 duration-200 ${
+								item.id === chapterID
+									? "bg-orange-600"
+									: "odd:bg-[#0D0D0D] even:bg-[#272727]"
+							} block w-full`}
 							key={item.id}
 						>
-							<li
-								className={`py-[6px] line-clamp-2 ${
-									item.id === chapterID
-										? "bg-orange-600"
-										: "odd:bg-[#0D0D0D] even:bg-[#272727]"
-								}`}
-								ref={scrollToRef}
-							>
+							<li className={`py-[6px] line-clamp-2`} ref={scrollToRef}>
 								{item.title}
 							</li>
 						</Link>
