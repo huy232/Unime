@@ -160,7 +160,7 @@ function VideoPlayer({
 					}`,
 					style: {
 						"font-weight": "400",
-						"font-size": "1.5rem",
+						"font-size": "1.6rem",
 						"background-color": "rgba(0, 0, 0, 0.65)",
 						"border-radius": "0.25rem",
 						height: "fit-content",
@@ -172,7 +172,7 @@ function VideoPlayer({
 						"white-space": "break-spaces",
 						left: "50%",
 						transform: "translateX(-50%)",
-						"padding": "6px 12px"
+						padding: "0px",
 					},
 					escape: false,
 				},
