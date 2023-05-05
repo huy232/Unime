@@ -172,6 +172,7 @@ function VideoPlayer({
 						"white-space": "break-spaces",
 						left: "50%",
 						transform: "translateX(-50%)",
+						"padding": "6px 12px"
 					},
 					escape: false,
 				},
