@@ -19,8 +19,20 @@ function Profile() {
 
 	return (
 		<div>
-			<button onClick={() => toggleButton("vi")}>VI</button>
-			<button onClick={() => toggleButton("eng")}>ENG</button>
+			<div className="flex justify-center w-full">
+				<button
+					className="rounded bg-orange-600 px-1 mx-1"
+					onClick={() => toggleButton("vi")}
+				>
+					VI
+				</button>
+				<button
+					className="rounded bg-orange-600 px-1 mx-1"
+					onClick={() => toggleButton("eng")}
+				>
+					ENG
+				</button>
+			</div>
 			{lang === "vi" && <ProfileContentVI userId={user?.id} />}
 			{lang === "eng" && <ProfileContentENG userId={user?.id} />}
 			{lang !== "vi" && lang !== "eng" && navigate("/")}

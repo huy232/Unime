@@ -4,19 +4,28 @@ import { useNavigate } from "react-router-dom"
 import axios from "axios"
 import { API } from "../../../constants"
 
-function ProfileContentENG({ data, userId }) {
+function ProfileContentENG({ userId }) {
 	const navigate = useNavigate()
 	const [profileParams] = useSearchParams()
 	const lang = profileParams.get("lang")
+	const [data, setData] = useState([])
+	const [loading, setLoading] = useState(true)
 	const [page, setPage] = useState(1)
 	useEffect(() => {
 		const CancelToken = axios.CancelToken
 		const source = CancelToken.source()
 		const getProfileData = async () => {
 			await axios
-				.get(`${API}/vi/get-history?page=${page}`, { userId: userId })
+				.post(`${API}/get-history?page=${page}`, { userId: userId })
 				.then((response) => {
-					console.log(response.data.data)
+					setData(response.data.data)
+					if (response.data.success) {
+						const { page, data } = response.data.data
+						console.log(page, data)
+						setPage(parseInt(page))
+						setData(data)
+						setLoading(false)
+					}
 				})
 		}
 
@@ -24,9 +33,9 @@ function ProfileContentENG({ data, userId }) {
 		return () => {
 			source.cancel()
 		}
-	}, [lang, navigate, page])
+	}, [lang, navigate, page, userId])
 
-	return <div>{console.log(data)}</div>
+	return <div>{loading ? "Loading" : console.log(data)}</div>
 }
 
 export default ProfileContentENG
