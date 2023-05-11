@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react"
-import { useSearchParams } from "react-router-dom"
+import { useSearchParams, Link } from "react-router-dom"
 import { useNavigate } from "react-router-dom"
 import axios from "axios"
 import { API } from "../../../constants"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faCircleInfo, faPlay } from "@fortawesome/free-solid-svg-icons"
+import useDocumentTitle from "../../../Hooks/useDocumentTitle"
 
 function ProfileContentVI({ userId }) {
 	const navigate = useNavigate()
@@ -21,7 +24,6 @@ function ProfileContentVI({ userId }) {
 					setData(response.data.data)
 					if (response.data.success) {
 						const { page, data } = response.data.data
-						console.log(page, data)
 						setPage(parseInt(page))
 						setData(data)
 						setLoading(false)
@@ -34,26 +36,45 @@ function ProfileContentVI({ userId }) {
 			source.cancel()
 		}
 	}, [lang, navigate, page, userId])
+
+	useDocumentTitle(loading ? "Đang tải" : "Trang cá nhân")
 	return (
 		<div>
 			{loading ? (
 				"Loading"
 			) : (
-				<ul className="pt-4 grid max-md:grid-rows-6 max-lg:grid-rows-4 grid-rows-3 grid-flow-col gap-4">
+				<ul className="pt-4 grid max-md:grid-rows-6 max-lg:grid-rows-4 grid-rows-3 grid-flow-col">
 					{data.map((item) => (
 						<li
 							key={item.id}
-							className="flex justify-center flex-col items-center"
+							className="flex justify-center flex-col max-w-[400px] m-auto"
+							title={item.anime_name}
 						>
-							<div className="">
+							<Link to={`/watch/${item.anime_slug}`} className="relative group">
 								<img
 									className="rounded-t-lg"
 									src={item.anime_image}
 									alt={item.anime_name}
 								/>
-							</div>
-							<div className="h-[48px]">
-								<p className="line-clamp-2 bg-black/40">{item.anime_episode}</p>
+								<FontAwesomeIcon
+									icon={faPlay}
+									className="absolute top-[50%] left-[50%] translate-[-50%] text-[#D21312] w-[20px] h-[20px] opacity-0 group-hover:opacity-100 duration-200 ease-in-out"
+								/>
+							</Link>
+							<Link
+								to={`/info/${item.anime_slug.split("?")[0].toString()}`}
+								className="py-1.5 text-center bg-black/20 hover:bg-orange-600 duration-200 ease-in-out text-white hover:text-black"
+							>
+								<FontAwesomeIcon icon={faCircleInfo} />
+								<span className="ml-[6px]">Thông tin</span>
+							</Link>
+							<div className="h-[96px]">
+								<p className="line-clamp-2 font-bold text-lg">
+									{item.anime_name}
+								</p>
+								<p className="line-clamp-2 text-slate-300">
+									{item.anime_episode}
+								</p>
 							</div>
 						</li>
 					))}

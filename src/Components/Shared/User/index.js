@@ -15,8 +15,13 @@ function User({ handleScrollToTop }) {
 	return (
 		<div>
 			{user ? (
-				<div className="user-info-container">
-					<div className="user-info-holder">
+				<div className="user-info-container flex flex-col">
+					<Link
+						to={`${
+							language === "vi" ? "/profile?lang=vi" : "profile?lang=eng"
+						}`}
+						className="user-info-holder"
+					>
 						<div className="user-info-image">
 							<img
 								src={user.user_metadata.avatar_url || ""}
@@ -25,9 +30,9 @@ function User({ handleScrollToTop }) {
 							/>
 						</div>
 						<div className="user-info-name">{user.user_metadata.full_name}</div>
-					</div>
+					</Link>
 					<Nav.Link
-						className="anime-nav-logout "
+						className="anime-nav-logout"
 						as={Link}
 						to="/"
 						onClick={() => handleSignOut()}

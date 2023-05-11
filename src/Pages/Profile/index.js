@@ -16,7 +16,7 @@ function Profile() {
 	const toggleButton = (lang) => {
 		navigate(`/profile?lang=${lang}`)
 	}
-
+	console.log(!user)
 	return (
 		<div>
 			<div className="flex justify-center w-full">
@@ -33,9 +33,9 @@ function Profile() {
 					ENG
 				</button>
 			</div>
-			{lang === "vi" && <ProfileContentVI userId={user?.id} />}
-			{lang === "eng" && <ProfileContentENG userId={user?.id} />}
-			{lang !== "vi" && lang !== "eng" && navigate("/")}
+			{lang === "vi" && user && <ProfileContentVI userId={user?.id} />}
+			{lang === "eng" && user && <ProfileContentENG userId={user?.id} />}
+			{(!user || (lang !== "vi" && lang !== "eng")) && navigate("/")}
 		</div>
 	)
 }
