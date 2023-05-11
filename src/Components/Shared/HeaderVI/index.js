@@ -83,7 +83,7 @@ function HeaderVI() {
 							<input
 								type="text"
 								placeholder="Tìm kiếm Anime..."
-								className="search-navbar text-white max-sm:w-[100px] bg-[#00000099] px-[4px]"
+								className="search-navbar text-white max-sm:w-full bg-[#00000099] px-[4px]"
 								onChange={handleChange}
 								onKeyPress={(e) => {
 									handleKeypress(e)
@@ -179,7 +179,10 @@ function HeaderVI() {
 						</div>
 					</div>
 					<div className="user-container">
-						<User handleScrollToTop={handleScrollToTop} />
+						<User
+							handleScrollToTop={handleScrollToTop}
+							setSidebar={setSidebar}
+						/>
 					</div>
 				</div>
 			</section>

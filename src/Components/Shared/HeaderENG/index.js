@@ -102,7 +102,7 @@ function HeaderENG() {
 											? `Search anime...`
 											: `Search manga...`
 									}
-									className="search-navbar text-white max-sm:w-[100px] bg-[#00000099] px-[4px]"
+									className="search-navbar text-white max-sm:w-full bg-[#00000099] px-[4px]"
 									onChange={handleChange}
 									onKeyPress={(e) => {
 										handleKeypress(e)

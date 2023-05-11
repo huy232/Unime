@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 import { useAuth } from "../../../Contexts/auth"
 import "./user.css"
 
-function User({ handleScrollToTop }) {
+function User({ handleScrollToTop, setSidebar }) {
 	const { language, user, signOut } = useAuth()
 
 	async function handleSignOut() {
@@ -21,6 +21,7 @@ function User({ handleScrollToTop }) {
 							language === "vi" ? "/profile?lang=vi" : "profile?lang=eng"
 						}`}
 						className="user-info-holder"
+						onClick={() => setSidebar(false)}
 					>
 						<div className="user-info-image">
 							<img
@@ -35,7 +36,10 @@ function User({ handleScrollToTop }) {
 						className="anime-nav-logout"
 						as={Link}
 						to="/"
-						onClick={() => handleSignOut()}
+						onClick={() => {
+							setSidebar(false)
+							handleSignOut()
+						}}
 						title={language === "vi" ? `Đăng xuất` : "Sign Out"}
 					>
 						<p className="anime-nav-paragraph">
@@ -51,7 +55,10 @@ function User({ handleScrollToTop }) {
 					className="anime-nav-login "
 					as={Link}
 					to="/login"
-					onClick={() => handleScrollToTop()}
+					onClick={() => {
+						setSidebar(false)
+						handleScrollToTop()
+					}}
 					title={language === "vi" ? `Đăng nhập` : "Login"}
 				>
 					<p className="anime-nav-paragraph">
