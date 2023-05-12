@@ -21,7 +21,6 @@ function ProfileContentENG({ userId }) {
 					setData(response.data.data)
 					if (response.data.success) {
 						const { page, data } = response.data.data
-						console.log(page, data)
 						setPage(parseInt(page))
 						setData(data)
 						setLoading(false)
@@ -35,7 +34,7 @@ function ProfileContentENG({ userId }) {
 		}
 	}, [lang, navigate, page, userId])
 
-	return <div>{loading ? "Loading" : console.log(data)}</div>
+	return <div>{loading ? "Loading" : console.log("Message")}</div>
 }
 
 export default ProfileContentENG

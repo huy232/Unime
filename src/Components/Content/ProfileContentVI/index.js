@@ -40,19 +40,18 @@ function ProfileContentVI({ userId }) {
 	useDocumentTitle(loading ? "Đang tải" : "Trang cá nhân")
 	return (
 		<div>
-			{loading ? (
-				"Loading"
-			) : (
-				<ul className="pt-4 grid max-md:grid-rows-6 max-lg:grid-rows-4 grid-rows-3 grid-flow-col">
+			<h2 className="font-black mx-1">ĐÃ TỪNG XEM</h2>
+			{!loading && (
+				<ul className="pt-4 grid max-md:grid-cols-1 max-lg:grid-cols-2 max-xl:grid-cols-3 grid-cols-4 gap-4">
 					{data.map((item) => (
 						<li
 							key={item.id}
-							className="flex justify-center flex-col max-w-[400px] m-auto"
+							className="flex justify-center flex-col m-auto w-[320px]"
 							title={item.anime_name}
 						>
 							<Link to={`/watch/${item.anime_slug}`} className="relative group">
 								<img
-									className="rounded-t-lg"
+									className="rounded-t-lg aspect-[16/9] w-[320px]"
 									src={item.anime_image}
 									alt={item.anime_name}
 								/>

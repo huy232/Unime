@@ -13,14 +13,14 @@ function User({ handleScrollToTop, setSidebar }) {
 	}
 
 	return (
-		<div>
+		<>
 			{user ? (
-				<div className="user-info-container flex flex-col">
+				<div className="user-info-container flex flex-col border-t-2 w-full">
 					<Link
 						to={`${
 							language === "vi" ? "/profile?lang=vi" : "profile?lang=eng"
 						}`}
-						className="user-info-holder"
+						className="user-info-holder hover:opacity-80 duration-200 ease-in-out"
 						onClick={() => setSidebar(false)}
 					>
 						<div className="user-info-image">
@@ -52,7 +52,7 @@ function User({ handleScrollToTop, setSidebar }) {
 				</div>
 			) : (
 				<Nav.Link
-					className="anime-nav-login "
+					className="anime-nav-login"
 					as={Link}
 					to="/login"
 					onClick={() => {
@@ -69,7 +69,7 @@ function User({ handleScrollToTop, setSidebar }) {
 					</svg>
 				</Nav.Link>
 			)}
-		</div>
+		</>
 	)
 }
 
