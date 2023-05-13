@@ -67,13 +67,15 @@ function ProfileContentVI({ userId }) {
 								<FontAwesomeIcon icon={faCircleInfo} />
 								<span className="ml-[6px]">Thông tin</span>
 							</Link>
-							<div className="h-[96px]">
-								<p className="line-clamp-2 font-bold text-lg">
+							<div className="bg-neutral-900 p-2 rounded-b-lg">
+								<p className="line-clamp-2 font-bold text-lg leading-6 h-[3rem]">
 									{item.anime_name}
 								</p>
-								<p className="line-clamp-2 text-slate-300">
-									{item.anime_episode}
-								</p>
+								<div className="mt-1 bg-stone-700/40 rounded p-1">
+									<p className="line-clamp-2 text-slate-300 text-sm leading-6 h-[3rem]">
+										{item.anime_episode}
+									</p>
+								</div>
 							</div>
 						</li>
 					))}

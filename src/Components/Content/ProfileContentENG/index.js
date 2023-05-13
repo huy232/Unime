@@ -34,7 +34,7 @@ function ProfileContentENG({ userId }) {
 		}
 	}, [lang, navigate, page, userId])
 
-	return <div>{loading ? "Loading" : console.log("Message")}</div>
+	return <div>{!loading && console.log(data)}</div>
 }
 
 export default ProfileContentENG
