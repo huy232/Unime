@@ -16,7 +16,6 @@ function Profile() {
 	const toggleButton = (lang) => {
 		navigate(`/profile?lang=${lang}`)
 	}
-	console.log(!user)
 	return (
 		<div>
 			<div className="flex justify-center w-full">

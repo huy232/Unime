@@ -34,7 +34,22 @@ function ProfileContentENG({ userId }) {
 		}
 	}, [lang, navigate, page, userId])
 
-	return <div>{!loading && "In progress..."}</div>
+	return (
+		<>
+			{!loading && (
+				<div>
+					<h2>WATCHED</h2>
+					<div>
+						<ul>
+							{data.map((item) => {
+								console.log(item)
+							})}
+						</ul>
+					</div>
+				</div>
+			)}
+		</>
+	)
 }
 
 export default ProfileContentENG
