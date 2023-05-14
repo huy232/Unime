@@ -22,6 +22,7 @@ function MangaViewENG() {
 	const [info, setInfo] = useState({})
 	const [loadingChapterList, setLoadingChapterList] = useState(true)
 	const [chapterNumber, setChapterNumber] = useState()
+	const [toggleLoading, setToggleLoading] = useState(false)
 
 	useEffect(() => {
 		if (prevProvider.current.provider !== provider) {
@@ -79,10 +80,11 @@ function MangaViewENG() {
 					</h2>
 					<MangaRedirectSection mangaID={mangaID} />
 					<SideManga
-						chapters={info.chapters.reverse()}
+						chapters={info.chapters}
 						mangaID={mangaID}
 						provider={provider}
 						chapterID={chapterID}
+						setToggleLoading={setToggleLoading}
 					/>
 					<MangaReadChapter
 						currentChapter={chapterID}
@@ -90,6 +92,7 @@ function MangaViewENG() {
 						info={info}
 						mangaID={mangaID}
 						title={title}
+						toggleLoading={toggleLoading}
 					/>
 					<MangaRedirectSection mangaID={mangaID} />
 					<CommentSection

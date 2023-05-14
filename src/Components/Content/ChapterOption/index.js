@@ -2,14 +2,7 @@ import React from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons"
-function ChapterOption({
-	mangaID,
-	provider,
-	currentChapter,
-	setLoadingCurrentChapter,
-	info,
-	handleScrollToTop,
-}) {
+function ChapterOption({ mangaID, provider, currentChapter, info }) {
 	const navigate = useNavigate()
 	let previousChapter = null
 	let nextChapter = null
@@ -30,8 +23,6 @@ function ChapterOption({
 					name="chapter-option"
 					className="font-semibold bg-[#222] text-white cursor-pointer outline-none border-none w-full"
 					onChange={(e) => {
-						handleScrollToTop()
-						setLoadingCurrentChapter(true)
 						navigate(
 							`/eng/manga-read?mangaID=${mangaID}&chapterID=${e.target.value}&provider=${provider}`
 						)
@@ -41,7 +32,7 @@ function ChapterOption({
 					<option value disabled={true}>
 						Select chapter
 					</option>
-					{info.chapters.reverse().map((chapter) => (
+					{info.chapters.map((chapter) => (
 						<option key={chapter.id} value={chapter.id}>
 							{chapter?.chapterNumber || chapter?.chapter || chapter?.title}
 						</option>
@@ -61,10 +52,6 @@ function ChapterOption({
 						!previousChapter && "pointer-events-none"
 					} hover:opacity-80 duration-200 ease-in-out text-[#fffc]`}
 					disabled={previousChapter ? false : true}
-					onClick={() => {
-						handleScrollToTop()
-						setLoadingCurrentChapter(true)
-					}}
 				>
 					<FontAwesomeIcon icon={faArrowLeft} />
 					<span className="mx-[4px]">Prev</span>
@@ -81,10 +68,6 @@ function ChapterOption({
 						!nextChapter && "pointer-events-none"
 					} hover:opacity-80 duration-200 ease-in-out text-[#fffc]`}
 					disabled={nextChapter ? false : true}
-					onClick={() => {
-						handleScrollToTop()
-						setLoadingCurrentChapter(true)
-					}}
 				>
 					<span className="mx-[4px]">Next</span>
 					<FontAwesomeIcon icon={faArrowRight} />

@@ -41,7 +41,7 @@ const mangaProvider = [
 	"mangahere",
 	"mangakakalot",
 	"mangapill",
-	"mangareader",
+	// "mangareader",
 	"mangapark",
 	"mangasee123",
 ]

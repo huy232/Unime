@@ -11,7 +11,14 @@ import "react-lazy-load-image-component/src/effects/opacity.css"
 import LazyImage from "../LazyImage"
 import useDocumentTitle from "../../../Hooks/useDocumentTitle"
 
-function MangaReadChapter({ currentChapter, provider, info, mangaID, title }) {
+function MangaReadChapter({
+	currentChapter,
+	provider,
+	info,
+	mangaID,
+	title,
+	toggleLoading,
+}) {
 	const [currentChapterList, setCurrentChapterList] = useState([])
 	const [loadingCurrentChapter, setLoadingCurrentChapter] = useState(true)
 	const [chapterInfo, setChapterInfo] = useState({})
@@ -19,6 +26,8 @@ function MangaReadChapter({ currentChapter, provider, info, mangaID, title }) {
 		const CancelToken = axios.CancelToken
 		const source = CancelToken.source()
 		const getCurrentChapter = async () => {
+			handleScrollToTop()
+			setLoadingCurrentChapter(true)
 			await axios
 				.get(
 					`${API}/manga-chapter?chapterId=${currentChapter}&provider=${provider}`
@@ -44,7 +53,7 @@ function MangaReadChapter({ currentChapter, provider, info, mangaID, title }) {
 		return () => {
 			source.cancel()
 		}
-	}, [currentChapter, info.chapters, provider])
+	}, [currentChapter, info.chapters, provider, toggleLoading])
 
 	const handleScrollToTop = () => {
 		window.scrollTo(0, 0)
@@ -53,6 +62,7 @@ function MangaReadChapter({ currentChapter, provider, info, mangaID, title }) {
 	useDocumentTitle(
 		`${title} | ${chapterInfo.title} - UNIME` || "Loading - UNIME"
 	)
+
 	return (
 		<div>
 			{loadingCurrentChapter ? (
@@ -76,9 +86,7 @@ function MangaReadChapter({ currentChapter, provider, info, mangaID, title }) {
 				mangaID={mangaID}
 				provider={provider}
 				currentChapter={currentChapter}
-				setLoadingCurrentChapter={setLoadingCurrentChapter}
 				info={info}
-				handleScrollToTop={handleScrollToTop}
 			/>
 			{loadingCurrentChapter ? (
 				<ChapterSkeleton />
@@ -93,9 +101,7 @@ function MangaReadChapter({ currentChapter, provider, info, mangaID, title }) {
 				mangaID={mangaID}
 				provider={provider}
 				currentChapter={currentChapter}
-				setLoadingCurrentChapter={setLoadingCurrentChapter}
 				info={info}
-				handleScrollToTop={handleScrollToTop}
 			/>
 		</div>
 	)

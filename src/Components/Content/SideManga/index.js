@@ -1,10 +1,16 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons"
-import { useState, useRef, useEffect } from "react"
+import { useState } from "react"
 import { Link } from "react-router-dom"
 
-function SideManga({ chapters, provider, mangaID, chapterID }) {
-	const scrollToRef = useRef(null)
+function SideManga({
+	chapters,
+	provider,
+	mangaID,
+	chapterID,
+	setToggleLoading,
+	toggleLoading,
+}) {
 	const [toggleSidebar, setToggleSidebar] = useState(false)
 	return (
 		<div
@@ -26,10 +32,12 @@ function SideManga({ chapters, provider, mangaID, chapterID }) {
 									: "odd:bg-[#0D0D0D] even:bg-[#272727]"
 							} block w-full`}
 							key={item.id}
+							onClick={() => {
+								setToggleSidebar(false)
+								setToggleLoading(!toggleLoading)
+							}}
 						>
-							<li className={`py-[6px] line-clamp-2`} ref={scrollToRef}>
-								{item.title}
-							</li>
+							<li className={`py-[6px] line-clamp-2`}>{item.title}</li>
 						</Link>
 					))}
 				</ul>
