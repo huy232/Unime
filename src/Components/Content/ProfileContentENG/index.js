@@ -38,7 +38,7 @@ function ProfileContentENG({ userId }) {
 		<>
 			{!loading && (
 				<div>
-					<h2 className="font-black mx-1">WATCHED</h2>
+					<h2 className="font-black mx-1 pt-2 max-md:text-center">WATCHED</h2>
 					<div>
 						<ul></ul>
 					</div>

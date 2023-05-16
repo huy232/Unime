@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCircleInfo, faPlay } from "@fortawesome/free-solid-svg-icons"
 import ReactPaginate from "react-paginate"
 import useDocumentTitle from "../../../Hooks/useDocumentTitle"
+import { useRef } from "react"
 
 function ProfileContentVI({ userId }) {
 	const navigate = useNavigate()
@@ -16,6 +17,7 @@ function ProfileContentVI({ userId }) {
 	const [loading, setLoading] = useState(true)
 	const [page, setPage] = useState(1)
 	const [totalPage, setTotalPage] = useState(1)
+	const scrollToRef = useRef(null)
 	useEffect(() => {
 		const CancelToken = axios.CancelToken
 		const source = CancelToken.source()
@@ -43,11 +45,14 @@ function ProfileContentVI({ userId }) {
 	const handlePageClick = (event) => {
 		setPage(event.selected + 1)
 	}
+	const executeScroll = () => scrollToRef.current.scrollIntoView()
 
 	useDocumentTitle(loading ? "Đang tải" : "Trang cá nhân")
 	return (
 		<div>
-			<h2 className="font-black mx-1">ĐÃ TỪNG XEM</h2>
+			<h2 className="font-black mx-1 pt-2 max-md:text-center" ref={scrollToRef}>
+				ĐÃ TỪNG XEM
+			</h2>
 			{!loading && (
 				<>
 					<ul className="pt-4 grid max-md:grid-cols-1 max-lg:grid-cols-2 max-xl:grid-cols-3 grid-cols-4 gap-4">
@@ -110,6 +115,7 @@ function ProfileContentVI({ userId }) {
 						containerClassName="pagination flex justify-center items-center py-4"
 						activeClassName="active bg-yellow-800"
 						renderOnZeroPageCount={null}
+						onClick={() => executeScroll()}
 					/>
 				</>
 			)}
