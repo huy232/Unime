@@ -1,9 +1,6 @@
-import { useEffect, useState } from "react"
 import { useSearchParams } from "react-router-dom"
 import { useNavigate } from "react-router-dom"
-import axios from "axios"
 import { useAuth } from "../../Contexts/auth"
-import { API } from "../../constants"
 import ProfileContentVI from "../../Components/Content/ProfileContentVI"
 import ProfileContentENG from "../../Components/Content/ProfileContentENG"
 
@@ -18,15 +15,19 @@ function Profile() {
 	}
 	return (
 		<div>
-			<div className="flex justify-center w-full">
+			<div className="flex justify-center w-full pt-4">
 				<button
-					className="rounded bg-orange-600 px-1 mx-1"
+					className={`${
+						lang === "vi" && "bg-orange-600"
+					} rounded-l-lg bg-black/20 px-4 py-2 duration-200 ease-in-out transition-all`}
 					onClick={() => toggleButton("vi")}
 				>
 					VI
 				</button>
 				<button
-					className="rounded bg-orange-600 px-1 mx-1"
+					className={`${
+						lang === "eng" && "bg-orange-600"
+					} rounded-r-lg bg-black/20 px-4 py-2 duration-200 ease-in-out transition-all`}
 					onClick={() => toggleButton("eng")}
 				>
 					ENG

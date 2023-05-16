@@ -32,6 +32,7 @@ function ChapterOption({ mangaID, provider, currentChapter, info }) {
 					<option value disabled={true}>
 						Select chapter
 					</option>
+					{provider === "mangareader"}
 					{info.chapters.map((chapter) => (
 						<option key={chapter.id} value={chapter.id}>
 							{chapter?.chapterNumber || chapter?.chapter || chapter?.title}

@@ -38,13 +38,9 @@ function ProfileContentENG({ userId }) {
 		<>
 			{!loading && (
 				<div>
-					<h2>WATCHED</h2>
+					<h2 className="font-black mx-1">WATCHED</h2>
 					<div>
-						<ul>
-							{data.map((item) => {
-								console.log(item)
-							})}
-						</ul>
+						<ul></ul>
 					</div>
 				</div>
 			)}
