@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from "react"
-import { useParams } from "react-router-dom"
+import { useParams, useLocation } from "react-router-dom"
 import axios from "axios"
 import useDocumentTitle from "../../Hooks/useDocumentTitle"
 import { BsFillArrowLeftSquareFill } from "react-icons/bs"
 import { Link } from "react-router-dom"
-import { API } from "../../constants"
+import { API, MAINSITE } from "../../constants"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faHouse } from "@fortawesome/free-solid-svg-icons"
 import VideoPlayer from "../../Components/Content/VideoPlayer"
@@ -26,6 +26,7 @@ function AnimeWatchENG() {
 	const prevAnilist = useRef()
 	const [info, setInfo] = useState()
 	const { user } = useAuth()
+	const pathname = useLocation()
 	useEffect(() => {
 		const CancelToken = axios.CancelToken
 		const source = CancelToken.source()
@@ -109,6 +110,8 @@ function AnimeWatchENG() {
 											type: info?.type,
 											animeStatus: info?.status,
 											animeId: info.id,
+											currentSlug: `${MAINSITE}${pathname.pathname}${pathname.search}`,
+											animeSlug: `${MAINSITE}/eng/info/${animeId}`,
 										})
 										.catch((thrown) => {
 											if (axios.isCancel(thrown)) return
