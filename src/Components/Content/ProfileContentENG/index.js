@@ -40,14 +40,14 @@ function ProfileContentENG({ userId }) {
 		return () => {
 			source.cancel()
 		}
-	}, [lang, navigate, page, userId])
+	}, [lang, navigate, page, userId, totalPage])
 
 	const handlePageClick = (event) => {
 		setPage(event.selected + 1)
 	}
 	const executeScroll = () => scrollToRef.current.scrollIntoView()
 
-	useDocumentTitle(loading ? "Đang tải" : "Trang cá nhân")
+	useDocumentTitle(loading ? "Loading" : "Profile")
 
 	return (
 		<>
