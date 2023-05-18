@@ -110,8 +110,8 @@ function AnimeWatchENG() {
 											type: info?.type,
 											animeStatus: info?.status,
 											animeId: info.id,
-											currentSlug: `${MAINSITE}${pathname.pathname}${pathname.search}`,
-											animeSlug: `${MAINSITE}/eng/info/${animeId}`,
+											currentSlug: `${pathname.pathname}${pathname.search}`,
+											animeSlug: `/eng/info/${animeId}`,
 										})
 										.catch((thrown) => {
 											if (axios.isCancel(thrown)) return
