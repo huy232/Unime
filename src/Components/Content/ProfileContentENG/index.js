@@ -63,43 +63,53 @@ function ProfileContentENG({ userId }) {
 								<>
 									<ul className="pt-4 grid grid-cols-4 max-xl:grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1 gap-4">
 										{data.map((item) => (
-											<li key={item.id} title={item.anime_name}>
-												<Link to={item.anime_slug} className="flex z-40 group">
-													<div className="group-hover:opacity-80 duration-200 ease-in-out">
+											<li
+												key={item.id}
+												title={item.anime_name}
+												className="flex z-40"
+											>
+												<Link to={item.anime_slug}>
+													<div className="hover:opacity-80 duration-200 ease-in-out w-[160px]">
 														<img
-															className="aspect-[2/3] w-[180px]"
+															className="aspect-[2/3] w-full"
 															src={item.anime_image}
 															alt={item.anime_name}
 														/>
 													</div>
-													<div className="w-full mx-[4px]">
-														<p
-															className="line-clamp-2 font-black mb-[4px] group-hover:opacity-80 duration-200 ease-in-out"
+												</Link>
+												<div className="w-full mx-[6px]">
+													<div className="h-[70px]">
+														<Link
+															to={item.anime_slug}
+															className="line-clamp-2 font-black mb-[4px] hover:opacity-80 duration-200 ease-in-out"
 															style={{ color: item.anime_color || "#FFFC" }}
 														>
 															{item.anime_name}
+														</Link>
+													</div>
+													<div className="flex mx-[8px]">
+														<p className="border rounded text-white px-[2px] text-sm">
+															{item.type}
 														</p>
-														<div className="flex">
-															<p className="border rounded text-white px-[2px] text-sm">
-																{item.type}
-															</p>
-															<p className="border rounded mx-[4px] text-white px-[2px] text-sm">
-																{item.status}
-															</p>
-														</div>
+														<p className="border rounded mx-[4px] text-white px-[2px] text-sm">
+															{item.status}
+														</p>
+													</div>
+													<div className="h-[50px] mx-[10px]">
 														<p className="line-clamp-2 text-white/40 text-sm mt-1">
 															{item.current_watch}
 														</p>
-														<div className="flex items-end h-full">
-															<Link
-																className="rounded bg-orange-600 p-[4px] mt-[6px] inline-block z-50 hover:opacity-80 duration-200 ease-in-out text-white"
-																to={item.current_slug}
-															>
-																Wacth
-															</Link>
-														</div>
 													</div>
-												</Link>
+
+													<div className="flex items-end">
+														<Link
+															className="rounded bg-orange-600 p-[4px] mx-[8px] mt-[6px] inline-block z-50 hover:opacity-80 duration-200 ease-in-out text-white"
+															to={item.current_slug}
+														>
+															Wacth
+														</Link>
+													</div>
+												</div>
 											</li>
 										))}
 									</ul>

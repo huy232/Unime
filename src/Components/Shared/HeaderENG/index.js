@@ -232,7 +232,10 @@ function HeaderENG() {
 							</Link>
 						</div>
 						<div className="user-container">
-							<User handleScrollToTop={handleScrollToTop} />
+							<User
+								handleScrollToTop={handleScrollToTop}
+								setSidebar={setSidebar}
+							/>
 						</div>
 					</div>
 				</section>

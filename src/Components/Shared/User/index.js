@@ -17,11 +17,11 @@ function User({ handleScrollToTop, setSidebar }) {
 			{user ? (
 				<div className="user-info-container flex flex-col border-t-2 w-full">
 					<Link
-						to={`${
-							language === "vi" ? "/profile?lang=vi" : "profile?lang=eng"
-						}`}
+						to={language === "vi" ? "/profile?lang=vi" : "/profile?lang=eng"}
 						className="user-info-holder hover:opacity-80 duration-200 ease-in-out"
-						onClick={() => setSidebar(false)}
+						onClick={(e) => {
+							setSidebar(false)
+						}}
 					>
 						<div className="user-info-image">
 							<img
