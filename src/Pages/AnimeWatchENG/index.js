@@ -10,6 +10,7 @@ import { faHouse } from "@fortawesome/free-solid-svg-icons"
 import VideoPlayer from "../../Components/Content/VideoPlayer"
 import FilmLoadingRequest from "../../Components/Content/LoadingRequest/FilmLoadingRequest"
 import { useAuth } from "../../Contexts/auth"
+import ErrorLoad from "../../Components/Content/ErrorLoad"
 function AnimeWatchENG() {
 	const { animeId } = useParams()
 	const queryParams = new URLSearchParams(window.location.search)
@@ -27,6 +28,7 @@ function AnimeWatchENG() {
 	const [info, setInfo] = useState()
 	const { user } = useAuth()
 	const pathname = useLocation()
+	const [error, setError] = useState(false)
 	useEffect(() => {
 		const CancelToken = axios.CancelToken
 		const source = CancelToken.source()
@@ -120,8 +122,9 @@ function AnimeWatchENG() {
 								saveHistory()
 							}
 						}
-
 						setVideoLoading(false)
+					} else {
+						setError(true)
 					}
 				})
 				.catch((thrown) => {
@@ -145,7 +148,9 @@ function AnimeWatchENG() {
 	useDocumentTitle(watchDetail)
 	return (
 		<div className="flex max-lg:flex-col ">
-			{videoLoading ? (
+			{error ? (
+				<ErrorLoad />
+			) : videoLoading ? (
 				<FilmLoadingRequest />
 			) : (
 				<VideoPlayer
@@ -157,6 +162,7 @@ function AnimeWatchENG() {
 					intro={intro}
 				/>
 			)}
+
 			<div className="episode-content">
 				<div className="episode-section">
 					<div className="episode-section-fixed">
