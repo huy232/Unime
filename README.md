@@ -114,8 +114,8 @@ Everything is responsive, shrink down the web page or using it on device for fur
 - :white_check_mark: ~~Skip intro, change episode~~
 - :white_check_mark: ~~Responsive~~
 - :white_check_mark: ~~Social login~~
-- :black_square_button: Comments
-- :black_square_button: Watched history
+- :white_check_mark: ~~Comments~~
+- :white_check_mark: ~~Watched history~~
 - :black_square_button: User profile
 - Maybe more features if I have time...
 
