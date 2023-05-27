@@ -120,6 +120,8 @@ Everything is responsive, shrink down the web page or using it on device for fur
 - Maybe more features if I have time...
 
 # INSTALLATION
+* This mostly will only work at Localhost, which in your local environment only, it'll not be available for deployment to another domain, etc.
+
 - Simply use `git clone https://github.com/huy232/mirai.git` to clone my project to your local.
 - Use `git i` to install all needed dependencies in this project.
 - Place your own .env - environment file here:
