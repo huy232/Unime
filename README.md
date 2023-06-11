@@ -93,7 +93,7 @@ Before I learned HTML/CSS/Javascript to become a web developer, I'd always dream
 Everything is responsive, shrink down the web page or using it on device for further more detail.
 
 ## IMPROVE
-- A better way for writing these kinds of projects in the future.
+- A better way for writing these kinds of projects in the future (I haven't known React at the point of doing this project, so I really haven't used it at its best, I hope the next project will be better).
 - Write a better CSS, since it's my first-hand project, I did mess up the global CSS which lead me to override a lot of CSS.
 - Apply more ways and technologies needed (like Redux, useMemo, useRef, etc. for more flexibility in handling data)
 - Fix bugs if it's still around, but I'm trying on other projects, so progress on this will be plodding.
@@ -116,29 +116,6 @@ Everything is responsive, shrink down the web page or using it on device for fur
 - :white_check_mark: ~~Social login~~
 - :white_check_mark: ~~Comments~~
 - :white_check_mark: ~~Watched history~~
-- :black_square_button: User profile
 - Maybe more features if I have time...
-
-# INSTALLATION
-* This mostly will only work at Localhost, which in your local environment only, it'll not be available for deployment to another domain, etc.
-
-- Simply use `git clone https://github.com/huy232/mirai.git` to clone my project to your local.
-- Use `git i` to install all needed dependencies in this project.
-- Place your own .env - environment file here:
-
-![EnviromentSetup](https://i.imgur.com/SmyQZOr.png)
-
-- Inside the .env file, set up like this:
-
-> REACT_APP_SUPABASE_ANON_KEY  = YOUR ANON SUPABASE KEY
-
-> REACT_APP_SUPABASE_URL = YOUR SUPABASE URL
-
-- Go to [Supabase](https://supabase.com/) and create your own database, in there, get the `SUPABASE URL` and `SUPABASE ANON KEY`.
-
-![EnviromentSetup-2](https://i.imgur.com/NACl9L4.png)
-
-- Use `npm start` to run the project.
-- Feel free to modify, fork and make it better.
 
 Feel free to contact or bug report to me, if you see any better solutions, more optimized ways of coding, or just want to share it with me, I'll gladly and kindly listen to it, have a nice day!
