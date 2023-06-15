@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom"
 import { useAuth } from "../../Contexts/auth"
 import ProfileContentVI from "../../Components/Content/ProfileContentVI"
 import ProfileContentENG from "../../Components/Content/ProfileContentENG"
-
+import ProfileHeading from "../../Components/Content/ProfileHeading"
 function Profile() {
 	const navigate = useNavigate()
 	const [profileParams] = useSearchParams()
@@ -15,6 +15,8 @@ function Profile() {
 	}
 	return (
 		<div>
+			{<ProfileHeading user={user} lang={lang} />}
+
 			<div className="flex justify-center w-full pt-4">
 				<button
 					className={`${

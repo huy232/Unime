@@ -92,7 +92,7 @@ Before I learned HTML/CSS/Javascript to become a web developer, I'd always dream
 
 Everything is responsive, shrink down the web page or using it on device for further more detail.
 
-## IMPROVE
+# IMPROVE
 - A better way for writing these kinds of projects in the future (I haven't known React at the point of doing this project, so I really haven't used it at its best, I hope the next project will be better).
 - Write a better CSS, since it's my first-hand project, I did mess up the global CSS which lead me to override a lot of CSS.
 - Apply more ways and technologies needed (like Redux, useMemo, useRef, etc. for more flexibility in handling data)
@@ -106,7 +106,7 @@ Everything is responsive, shrink down the web page or using it on device for fur
 - [ZoroAnime](https://zoro.to/)
 - [GogoAnime](https://ww4.gogoanimes.org/)
 
-# TODO:
+# TODO
 - :white_check_mark: ~~VI and ENG section~~
 - :white_check_mark: ~~Search anime by image~~
 - :white_check_mark: ~~Watch anime~~
