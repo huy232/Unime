@@ -74,6 +74,7 @@ function ProfileContentENG({ userId }) {
 															className="aspect-[2/3] w-full"
 															src={item.anime_image}
 															alt={item.anime_name}
+															loading="lazy"
 														/>
 													</div>
 												</Link>

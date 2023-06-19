@@ -1,7 +1,7 @@
 import React from "react"
 import blackBackground from "../../../Utilities/img/black.webp"
 import { LazyLoadImage } from "react-lazy-load-image-component"
-function LazyImage({ page, provider }) {
+function LazyImage({ page }) {
 	return (
 		<>
 			<LazyLoadImage

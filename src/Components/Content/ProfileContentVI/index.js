@@ -72,6 +72,7 @@ function ProfileContentVI({ userId }) {
 												className="rounded-t-lg aspect-[16/9] w-[320px]"
 												src={item.anime_image}
 												alt={item.anime_name}
+												loading="lazy"
 											/>
 											<FontAwesomeIcon
 												icon={faPlay}
