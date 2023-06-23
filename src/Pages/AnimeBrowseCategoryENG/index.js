@@ -37,7 +37,7 @@ function AnimeBrowseCategoryENG() {
 		if (genre === genreAnime) {
 			const getList = async () => {
 				await axios
-					.get(`${API}/eng/genre/${translateGenreAnime}?page=${page}`, {
+					.get(`${API}/eng/anime/${translateGenreAnime}?page=${page}`, {
 						cancelToken: source.token,
 					})
 					.then((response) => {
