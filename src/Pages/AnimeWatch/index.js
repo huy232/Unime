@@ -23,6 +23,7 @@ function AnimeWatch({ instance }) {
 	const [videoEmbed, setVideoEmbed] = useState("")
 	const [videoLoading, setVideoLoading] = useState(true)
 	const [mainId, setMainId] = useState()
+	const [subtitles, setSubtitles] = useState([])
 	const prevAnilist = useRef()
 
 	const { user } = useAuth()
@@ -67,6 +68,9 @@ function AnimeWatch({ instance }) {
 					.then(async (response) => {
 						if (response.data.success !== false) {
 							if (typeof response.data.data?.videoSource !== "undefined") {
+								if (response.data.data.subtitles) {
+									setSubtitles(response.data.data.subtitles)
+								}
 								setVideoUrl([
 									{
 										default: true,
@@ -154,6 +158,7 @@ function AnimeWatch({ instance }) {
 							videoUrl={videoUrl}
 							listEpisode={info}
 							setVideoLoading={setVideoLoading}
+							subtitles={subtitles}
 						/>
 					) : (
 						videoEmbed && <VideoEmbed videoEmbed={videoEmbed} />
