@@ -16,7 +16,6 @@ Before I learned HTML/CSS/Javascript to become a web developer, I'd always dream
 - [WHAT NEED TO IMPROVE](#IMPROVE)
 - [SOURCES](#SOURCES)
 - [TODO](#TODO)
-- [INSTALLATION](#INSTALLATION)
 
 ## TECHNOLOGIES AND SOME DEPENDENCIES I USE
 - ReactJS
