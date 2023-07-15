@@ -3,7 +3,6 @@ const mainsite = "https://unime.vercel.app"
 // const url = "http://localhost:3000/api"
 const url = "https://mirai-backend.onrender.com/api"
 const ioCors = "https://corsproxy.io/?"
-const consumetCors = "https://api.consumet.org/utils/image-proxy?"
 
 const genres = [
 	{ slug: "hanh-dong", name: "Hành Động" },
@@ -200,6 +199,10 @@ const collections = [
 	{ slug: "anime-mua-thu-2022", name: "Anime Mùa Thu 2022" },
 	{ slug: "anime-mua-dong-2023", name: "Anime Mùa Đông 2023" },
 	{ slug: "anime-mua-xuan-2023", name: "Anime Mùa Xuân 2023" },
+	{ slug: "anime-boys-love", name: "Anime Boys Love" },
+	{ slug: "nong-cung-mappa", name: "Nóng cùng MAPPA" },
+	{ slug: "anime-tam-ly-hoc", name: "Anime Tâm Lý Học" },
+	{ slug: "anime-mua-he-2023", name: "Anime Mùa Hè 2023" },
 ]
 
 var colorArray = [
@@ -333,4 +336,3 @@ export const MANGA_PROVIDER = mangaProvider
 export const COLLECTION_COLOR = colorArray
 export const COLORLIST = colorList
 export const IO_CORS = ioCors
-export const CONSUMET_CORS = consumetCors
