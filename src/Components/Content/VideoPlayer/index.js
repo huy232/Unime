@@ -155,8 +155,7 @@ function VideoPlayer({
 				],
 				subtitle: {
 					url: `${
-						subtitles &&
-						subtitles.find((sub) => selectedSub === sub.html.split(" ")[1])?.url
+						subtitles && subtitles.find((sub) => selectedSub === sub.html?.url)
 					}`,
 					style: {
 						"font-weight": "400",
