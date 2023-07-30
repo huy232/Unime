@@ -24,9 +24,9 @@
 		height: calc(var(--vh, 1vh) * 50) !important;
 	}
 
-	.artplayer-plugin-control .art-bottom {
+	/* .artplayer-plugin-control .art-bottom {
 		width: 100% !important;
-	}
+	} */
 
 	/* .art-control.art-control-time {
 		display: none !important;
