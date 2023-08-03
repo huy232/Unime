@@ -72,6 +72,10 @@ function VideoPlayer({
 		subtitles = []
 	}
 
+	console.log("Selected sub: ", selectedSub);
+	console.log("Subtitles: ", subtitles.find((sub) => selectedSub === sub.html.split(". ")[1])?.url)
+	console.log("Subtitles list: ", subtitles)
+
 	return (
 		<Artplayer
 			option={{
@@ -155,7 +159,7 @@ function VideoPlayer({
 				],
 				subtitle: {
 					url: `${
-						subtitles && subtitles.find((sub) => selectedSub === sub.html?.url)
+						subtitles && subtitles.find((sub) => selectedSub === sub.html.split(". ")[1])?.url
 					}`,
 					style: {
 						"font-weight": "400",
