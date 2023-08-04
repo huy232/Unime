@@ -72,10 +72,6 @@ function VideoPlayer({
 		subtitles = []
 	}
 
-	console.log("Selected sub: ", selectedSub);
-	console.log("Subtitles: ", subtitles.find((sub) => selectedSub === sub.html.split(". ")[1])?.url)
-	console.log("Subtitles list: ", subtitles)
-
 	return (
 		<Artplayer
 			option={{

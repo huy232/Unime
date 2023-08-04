@@ -49,7 +49,7 @@ function AnimeWatchENG() {
 						listData.title?.english ||
 						listData.title?.romaji ||
 						listData.title?.native
-					} - EP. ${episodeTitle.number} - ${episodeTitle.title}`
+					} - EP. ${episodeTitle.number} ${episodeTitle.title ? `- ${episodeTitle.title}` : ""}`
 				)
 				setTitle(
 					listData.title?.english ||
@@ -94,7 +94,7 @@ function AnimeWatchENG() {
 								return obj.id === current
 							})
 							setWatchDetail(
-								`${title} - EP. ${episodeTitle.number} - ${episodeTitle.title}`
+								`${title} - EP. ${episodeTitle.number} ${episodeTitle.title ? `- ${episodeTitle.title}` : ""}`
 							)
 							if (user && info) {
 								const saveHistory = async () => {
