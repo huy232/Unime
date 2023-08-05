@@ -114,11 +114,11 @@ function VideoPlayer({
 							tooltipNext ? `EP. ${tooltipNext}` : "No next episode"
 						}`,
 						click: function () {
+							console.log(nextEpisode)
 							if (nextEpisode?.full_name) {
 								setVideoLoading(true)
 								navigate(`/watch/${anime}?index=${nextEpisode.name}`)
-							}
-							if (nextEpisode?.title) {
+							} else {
 								setVideoLoading(true)
 								navigate(
 									`/eng/watch/${animeId}?current=${nextEpisode.id}&provider=${provider}`
@@ -143,8 +143,7 @@ function VideoPlayer({
 							if (previousEpisode?.full_name) {
 								setVideoLoading(true)
 								navigate(`/watch/${anime}?index=${previousEpisode.name}`)
-							}
-							if (previousEpisode?.title) {
+							} else {
 								setVideoLoading(true)
 								navigate(
 									`/eng/watch/${animeId}?current=${previousEpisode.id}&provider=${provider}`
@@ -155,7 +154,9 @@ function VideoPlayer({
 				],
 				subtitle: {
 					url: `${
-						subtitles && subtitles.find((sub) => selectedSub === sub.html.split(". ")[1])?.url
+						subtitles &&
+						subtitles.find((sub) => selectedSub === sub.html.split(". ")[1])
+							?.url
 					}`,
 					style: {
 						"font-weight": "400",
