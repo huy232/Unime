@@ -114,7 +114,6 @@ function VideoPlayer({
 							tooltipNext ? `EP. ${tooltipNext}` : "No next episode"
 						}`,
 						click: function () {
-							console.log(nextEpisode)
 							if (nextEpisode?.full_name) {
 								setVideoLoading(true)
 								navigate(`/watch/${anime}?index=${nextEpisode.name}`)
