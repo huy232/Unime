@@ -25,7 +25,7 @@ function HeaderVI() {
 		e.preventDefault()
 		if (input !== "") {
 			handleScrollToTop()
-			navigate(`/search/${encodeURI(toSlug(input, " "))}`)
+			navigate(`/search/${encodeURI(toSlug(input.trim(), " "))}`)
 			setInput("")
 		}
 	}

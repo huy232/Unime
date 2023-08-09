@@ -34,9 +34,9 @@ function HeaderENG() {
 		if (input !== "") {
 			handleScrollToTop()
 			if (mangaUrlArray.indexOf(window.location.pathname) < 0) {
-				navigate(`/eng/search/${encodeURI(toSlug(input))}`)
+				navigate(`/eng/search/${encodeURI(toSlug(input.trim()))}`)
 			} else {
-				navigate(`/eng/manga-search/${encodeURI(toSlug(input))}`)
+				navigate(`/eng/manga-search/${encodeURI(toSlug(input.trim()))}`)
 			}
 			setInput("")
 		}
