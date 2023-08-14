@@ -49,7 +49,9 @@ function AnimeWatchENG() {
 						listData.title?.english ||
 						listData.title?.romaji ||
 						listData.title?.native
-					} - EP. ${episodeTitle.number} ${episodeTitle.title ? `- ${episodeTitle.title}` : ""}`
+					} - EP. ${episodeTitle.number} ${
+						episodeTitle.title ? `- ${episodeTitle.title}` : ""
+					}`
 				)
 				setTitle(
 					listData.title?.english ||
@@ -94,7 +96,9 @@ function AnimeWatchENG() {
 								return obj.id === current
 							})
 							setWatchDetail(
-								`${title} - EP. ${episodeTitle.number} ${episodeTitle.title ? `- ${episodeTitle.title}` : ""}`
+								`${title} - EP. ${episodeTitle.number} ${
+									episodeTitle.title ? `- ${episodeTitle.title}` : ""
+								}`
 							)
 							if (user && info) {
 								const saveHistory = async () => {
@@ -102,7 +106,9 @@ function AnimeWatchENG() {
 										.post(`${API}/save-history`, {
 											userId: user.id,
 											animeName: title,
-											animeEpisode: `EP. ${episodeTitle.number} - ${episodeTitle.title}`,
+											animeEpisode: `EP. ${episodeTitle.number} ${
+												episodeTitle.title ? `- ${episodeTitle.title}` : ""
+											}`,
 											animeImage: info?.image,
 											animeCover: info?.cover,
 											animeColor: info?.color,
