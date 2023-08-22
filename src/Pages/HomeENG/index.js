@@ -44,7 +44,6 @@ function HomeENG() {
 						setLoadingAiring(false)
 					}
 				})
-				.then(async () => await getRecentAnime())
 				.catch((thrown) => {
 					if (axios.isCancel(thrown)) return
 				})
@@ -61,7 +60,6 @@ function HomeENG() {
 						setLoadingRecentAnime(false)
 					}
 				})
-				.then(async () => await getTrendingAnime())
 				.catch((thrown) => {
 					if (axios.isCancel(thrown)) return
 				})
@@ -78,7 +76,6 @@ function HomeENG() {
 						setLoadingTrending(false)
 					}
 				})
-				.then(async () => await getSeason())
 				.catch((thrown) => {
 					if (axios.isCancel(thrown)) return
 				})
@@ -93,7 +90,6 @@ function HomeENG() {
 						setLoadingSeason(false)
 					}
 				})
-				.then(async () => await getAiringSchedule())
 				.catch((thrown) => {
 					if (axios.isCancel(thrown)) return
 				})
@@ -110,7 +106,6 @@ function HomeENG() {
 						setLoadingAiringSchedule(false)
 					}
 				})
-				.then(async () => await getRandomAnime())
 				.catch((thrown) => {
 					if (axios.isCancel(thrown)) return
 				})
@@ -136,6 +131,11 @@ function HomeENG() {
 		}
 
 		getTopAiring()
+		getRecentAnime()
+		getTrendingAnime()
+		getSeason()
+		getAiringSchedule()
+		getRandomAnime()
 		return () => {
 			source.cancel()
 		}

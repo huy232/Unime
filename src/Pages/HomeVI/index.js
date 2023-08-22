@@ -41,7 +41,6 @@ function HomeVI({ instance }) {
 						setLoadingSlider(true)
 					}
 				})
-				.then(async () => await getNew())
 				.catch((thrown) => {
 					if (axios.isCancel(thrown)) return
 				})
@@ -58,7 +57,6 @@ function HomeVI({ instance }) {
 						setLoadingNewAnime(true)
 					}
 				})
-				.then(async () => await getMostWatch())
 				.catch((thrown) => {
 					if (axios.isCancel(thrown)) return
 				})
@@ -75,7 +73,6 @@ function HomeVI({ instance }) {
 						setLoadingRankToday(true)
 					}
 				})
-				.then(async () => await getMovie())
 				.catch((thrown) => {
 					if (axios.isCancel(thrown)) return
 				})
@@ -92,7 +89,6 @@ function HomeVI({ instance }) {
 						setLoadingMovies(true)
 					}
 				})
-				.then(async () => await getRandom())
 				.catch((thrown) => {
 					if (axios.isCancel(thrown)) return
 				})
@@ -116,6 +112,10 @@ function HomeVI({ instance }) {
 				})
 		}
 		getSlider()
+		getNew()
+		getMostWatch()
+		getMovie()
+		getRandom()
 		return () => {
 			source.cancel()
 		}
