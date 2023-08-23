@@ -238,9 +238,10 @@ function AnimeInfoEpisodeHolderENG({
 														<Card.Img
 															variant="top"
 															src={
-																provider === "animepahe"
-																	? eachEpisode?.image
-																	: `${IO_CORS}${eachEpisode?.image}`
+																// provider === "animepahe"
+																// 	? eachEpisode?.image
+																// 	: `${IO_CORS}${eachEpisode?.image}`
+																eachEpisode?.image
 															}
 															loading="lazy"
 															alt={
