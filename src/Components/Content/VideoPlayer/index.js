@@ -114,14 +114,16 @@ function VideoPlayer({
 							tooltipNext ? `EP. ${tooltipNext}` : "No next episode"
 						}`,
 						click: function () {
-							if (nextEpisode?.full_name) {
-								setVideoLoading(true)
-								navigate(`/watch/${anime}?index=${nextEpisode.name}`)
-							} else {
-								setVideoLoading(true)
-								navigate(
-									`/eng/watch/${animeId}?current=${nextEpisode.id}&provider=${provider}`
-								)
+							if (nextEpisode) {
+								if (nextEpisode?.full_name) {
+									setVideoLoading(true)
+									navigate(`/watch/${anime}?index=${nextEpisode.name}`)
+								} else {
+									setVideoLoading(true)
+									navigate(
+										`/eng/watch/${animeId}?current=${nextEpisode.id}&provider=${provider}`
+									)
+								}
 							}
 						},
 					},
@@ -139,14 +141,16 @@ function VideoPlayer({
 							tooltipPrevious ? `EP. ${tooltipPrevious}` : "No previous episode"
 						}`,
 						click: function () {
-							if (previousEpisode?.full_name) {
-								setVideoLoading(true)
-								navigate(`/watch/${anime}?index=${previousEpisode.name}`)
-							} else {
-								setVideoLoading(true)
-								navigate(
-									`/eng/watch/${animeId}?current=${previousEpisode.id}&provider=${provider}`
-								)
+							if (previousEpisode) {
+								if (previousEpisode?.full_name) {
+									setVideoLoading(true)
+									navigate(`/watch/${anime}?index=${previousEpisode.name}`)
+								} else {
+									setVideoLoading(true)
+									navigate(
+										`/eng/watch/${animeId}?current=${previousEpisode.id}&provider=${provider}`
+									)
+								}
 							}
 						},
 					},
