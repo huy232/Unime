@@ -45,6 +45,13 @@ function InfoAnimeEpisodeHandle({
 															}
 															loading="lazy"
 															alt={eachEpisode?.full_name}
+															style={{
+																opacity: 0,
+																transition: "opacity 0.5s ease-in-out",
+															}}
+															onLoad={(e) => {
+																e.target.style.opacity = 1
+															}}
 														/>
 														<div className="overlay-card">
 															<div className="icon">

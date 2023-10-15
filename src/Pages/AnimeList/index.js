@@ -102,6 +102,13 @@ function AnimeList({ instance }) {
 														fluid="true"
 														loading="lazy"
 														alt={anime.name}
+														style={{
+															opacity: 0,
+															transition: "opacity 0.5s ease-in-out",
+														}}
+														onLoad={(e) => {
+															e.target.style.opacity = 1
+														}}
 													/>
 													{anime?.views && (
 														<p className="text-[#fffc] top-0 right-0 bg-[#0d0d0d]/[0.8] flex items-center rounded-[2px] m-[4px] p-[4px] absolute">

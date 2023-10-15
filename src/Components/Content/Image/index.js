@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import blackImage from "../../../Utilities/img/black.webp"
 
 const Image = (props) => {
 	const [imageLoaded, setImageLoaded] = useState(false)
@@ -9,6 +10,7 @@ const Image = (props) => {
 
 	const imageStyle = {
 		opacity: imageLoaded ? 1 : 0,
+		aspectRatio: "16/9",
 	}
 
 	return (
@@ -17,6 +19,7 @@ const Image = (props) => {
 			alt={props?.alt}
 			onLoad={handleImageLoad}
 			style={imageStyle}
+			placeholder={blackImage}
 			{...props}
 		/>
 	)

@@ -47,6 +47,13 @@ function MostWatched({ rankToday, loadingRankToday }) {
 												src={anime.thumbnail}
 												loading="lazy"
 												alt={anime.name}
+												style={{
+													opacity: 0,
+													transition: "opacity 0.5s ease-in-out",
+												}}
+												onLoad={(e) => {
+													e.target.style.opacity = 1
+												}}
 											/>
 											{anime?.animeFormat && (
 												<div className="absolute top-0 left-0 m-2 p-[4px] text-sm font-medium text-[#fffc] rounded bg-[#9f6746]/[0.8]">

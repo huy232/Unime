@@ -21,6 +21,13 @@ function RandomAnimeTitle({ randomAnime }) {
 								src={randomAnime.banner}
 								alt={randomAnime.name}
 								loading="lazy"
+								style={{
+									opacity: 0,
+									transition: "opacity 0.5s ease-in-out",
+								}}
+								onLoad={(e) => {
+									e.target.style.opacity = 1
+								}}
 							/>
 						</Link>
 					</nav>
