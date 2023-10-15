@@ -11,7 +11,8 @@ import "swiper/css/pagination"
 // import required modules
 import { Grid } from "swiper"
 
-function AnimeCollectionCard() {
+function AnimeCollectionCard(props) {
+	const { collections } = props
 	return (
 		<>
 			<div className="w-full h-[340px]">
@@ -24,7 +25,7 @@ function AnimeCollectionCard() {
 					modules={[Grid]}
 					className="collectionSwiper h-100 px-4 md:px-12 lg:px-20 xl:px-28 2xl:px-36"
 				>
-					{COLLECTIONS.map((collection, i) => (
+					{collections.map((collection, i) => (
 						<SwiperSlide
 							className="collection-card mx-[20px] my-[10px] w-[260px] max-md:w-[220px] h-[140px] bg-[#222] rounded"
 							key={collection.slug}
@@ -35,16 +36,16 @@ function AnimeCollectionCard() {
 								style={{
 									background: `${COLLECTION_COLOR[i]}`,
 								}}
-								aria-label={collection.name}
+								aria-label={collection.alt}
 							>
 								<div className="collection-card__title m-[4px]">
 									<h4 className="text-[#191919] whitespace-pre-wrap font-bold uppercase">
-										{collection.name}
+										{collection.alt}
 									</h4>
 								</div>
 							</Link>
 						</SwiperSlide>
-					)).reverse()}
+					))}
 				</Swiper>
 			</div>
 		</>
