@@ -5,6 +5,7 @@ import "swiper/css"
 import { Lazy } from "swiper"
 import { Link } from "react-router-dom"
 import "./topmanga.css"
+import Image from "../Image"
 function MangaHeadingENG({ content, loading }) {
 	return (
 		<div className="ml-6 mr-6">
@@ -38,7 +39,7 @@ function MangaHeadingENG({ content, loading }) {
 										aria-label={item.id}
 									>
 										<div className="relative">
-											<img
+											<Image
 												src={
 													item.coverImage?.extraLarge ||
 													item.coverImage?.large ||

@@ -9,6 +9,7 @@ import User from "../User"
 import LanguageButton from "../../Content/LanguageButton"
 import { toSlug } from "../../../Utilities/toSlug"
 import unimeLogo from "../../../Utilities/img/unime.webp"
+import Image from "../../Content/Image"
 
 function HeaderVI() {
 	let navigate = useNavigate()
@@ -67,7 +68,7 @@ function HeaderVI() {
 							}}
 							aria-label="Home - Viet"
 						>
-							<img
+							<Image
 								className="group-hover:opacity-80 duration-200 ease-in-out h-[34px] w-[34px]"
 								src={unimeLogo || ""}
 								alt="UNIME-LOGO"

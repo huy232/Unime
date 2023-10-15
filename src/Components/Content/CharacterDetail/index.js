@@ -7,6 +7,7 @@ import "swiper/css/pagination"
 import "swiper/css/navigation"
 
 import SwiperCore, { Lazy } from "swiper"
+import Image from "../Image"
 SwiperCore.use([Lazy])
 
 function CharacterDetail({ randomAnime, loadingRandomAnime }) {
@@ -44,7 +45,7 @@ function CharacterDetail({ randomAnime, loadingRandomAnime }) {
 										key={i}
 									>
 										<div className="h-full">
-											<img
+											<Image
 												className="aspect-[2/3] object-cover w-[100px]"
 												src={character.image || ""}
 												loading="lazy"

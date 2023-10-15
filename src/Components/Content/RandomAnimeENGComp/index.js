@@ -5,6 +5,7 @@ import "./movieanime.css"
 import { Link } from "react-router-dom"
 import { toSlug } from "../../../Utilities/toSlug"
 import { duration } from "../../../Utilities/duration"
+import Image from "../Image"
 
 function RandomAnimeENGComp({ randomAnime }) {
 	return (
@@ -19,7 +20,7 @@ function RandomAnimeENGComp({ randomAnime }) {
 						to={`/eng/info/${randomAnime.id}`}
 						aria-label={randomAnime.id}
 					>
-						<img
+						<Image
 							className="object-fit"
 							src={randomAnime.image || ""}
 							alt={

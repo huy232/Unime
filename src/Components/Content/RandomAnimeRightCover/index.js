@@ -1,5 +1,6 @@
 import Skeleton from "@mui/material/Skeleton"
 import { Link } from "react-router-dom"
+import Image from "../Image"
 
 function RandomAnimeRightCover({ randomAnime }) {
 	return (
@@ -15,7 +16,7 @@ function RandomAnimeRightCover({ randomAnime }) {
 					/>
 				) : (
 					<Link to={`/info/${randomAnime.slug}`} aria-label={randomAnime.slug}>
-						<img
+						<Image
 							src={randomAnime.cover || ""}
 							className="today-cover-image w-full h-auto object-fill aspect-[2/3]"
 							alt={randomAnime.name}

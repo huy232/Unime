@@ -8,6 +8,7 @@ import "swiper/css/pagination"
 import "./recommend.css"
 import { Lazy } from "swiper"
 import { COLORLIST } from "../../../constants"
+import Image from "../Image"
 
 function RecommendENG({ recommend, setLoading, title = "RELATIONS" }) {
 	const recommendFilter = recommend.filter((item) => {
@@ -56,7 +57,7 @@ function RecommendENG({ recommend, setLoading, title = "RELATIONS" }) {
 									>
 										<div className="group recommend-item-holder select-none cursor-pointer">
 											<div className="recommend-item-image aspect-[2/3] group-hover:opacity-80 duration-200 ease-in-out relative">
-												<img
+												<Image
 													className="object-fill object-center w-full h-full duration-500 linear absolute"
 													src={item.image || ""}
 													alt={

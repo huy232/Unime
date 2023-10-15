@@ -10,6 +10,7 @@ import User from "../User"
 import LanguageButton from "../../Content/LanguageButton"
 import ContentToggleENG from "../../Content/ContentToggleENG"
 import unimeLogo from "../../../Utilities/img/unime.webp"
+import Image from "../../Content/Image"
 
 function HeaderENG() {
 	let navigate = useNavigate()
@@ -82,7 +83,7 @@ function HeaderENG() {
 								onClick={() => setSidebar(false)}
 								aria-label="Home - English"
 							>
-								<img
+								<Image
 									className="group-hover:opacity-80 duration-200 ease-in-out h-[34px] w-[34px]"
 									src={unimeLogo || ""}
 									alt="UNIME-LOGO"

@@ -4,6 +4,7 @@ import "swiper/css"
 import "swiper/css/pagination"
 import { Link } from "react-router-dom"
 import { Lazy } from "swiper"
+import Image from "../Image"
 
 function TrendingAnimeENGComp({ trendingAnime }) {
 	return (
@@ -34,7 +35,7 @@ function TrendingAnimeENGComp({ trendingAnime }) {
 						>
 							<div className="group popular-anime-holder select-none cursor-pointer">
 								<div className="popular-anime-image aspect-[2/3] group-hover:opacity-80 duration-200 ease-in-out relative">
-									<img
+									<Image
 										className="object-fill object-center w-full h-full group-hover:scale-90 duration-500 linear absolute"
 										src={anime.image || ""}
 										alt={

@@ -6,6 +6,7 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons"
 import AnimeImageSearchLayout from "../AnimeImageSearchLayout"
 import LoadingSpin from "react-loading-spin"
 import useDocumentTitle from "../../Hooks/useDocumentTitle"
+import Image from "../../Components/Content/Image"
 
 const fileTypes = ["JPG", "PNG", "JPEG"]
 
@@ -110,7 +111,7 @@ function AnimeImageSearch() {
 								<div className="flex flex-col justify-center items-center">
 									<div className="max-md:w-[320px] h-100 rounded relative">
 										<div className="aspect-[16/9]">
-											<img
+											<Image
 												className="relative"
 												src={preview || ""}
 												alt="object-scale-down"

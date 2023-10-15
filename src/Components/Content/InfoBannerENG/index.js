@@ -1,5 +1,6 @@
 import { Skeleton } from "@mui/material"
 import React from "react"
+import Image from "../Image"
 
 function InfoBannerENG({ loading, info }) {
 	return (
@@ -19,7 +20,7 @@ function InfoBannerENG({ loading, info }) {
 					/>
 				) : (
 					<>
-						<img
+						<Image
 							src={info?.cover || ""}
 							className="banner-info-image"
 							alt={info?.name}

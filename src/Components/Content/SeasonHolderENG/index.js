@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom"
+import Image from "../Image"
 
 function SeasonHolderENG({ anime, title, color }) {
 	return (
@@ -19,7 +20,7 @@ function SeasonHolderENG({ anime, title, color }) {
 					}
 				>
 					<div className="w-[60px] aspect-[2/3] shrink-0 group-hover:opacity-50 duration-200 ease-in-out">
-						<img
+						<Image
 							src={
 								item.coverImage?.extraLarge ||
 								item.coverImage?.large ||

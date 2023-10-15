@@ -1,5 +1,6 @@
 import { Skeleton } from "@mui/material"
 import React from "react"
+import Image from "../Image"
 
 function InfoBoxENG({ loading, info }) {
 	return (
@@ -15,7 +16,7 @@ function InfoBoxENG({ loading, info }) {
 						style={{ marginLeft: "auto", marginRight: "auto" }}
 					/>
 				) : (
-					<img
+					<Image
 						src={info.image || ""}
 						className="cover-image aspect-[2/3] h-[300px]"
 						alt={

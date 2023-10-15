@@ -8,6 +8,7 @@ import { faCircleInfo, faPlay } from "@fortawesome/free-solid-svg-icons"
 import ReactPaginate from "react-paginate"
 import useDocumentTitle from "../../../Hooks/useDocumentTitle"
 import { useRef } from "react"
+import Image from "../Image"
 
 function ProfileContentVI({ userId }) {
 	const navigate = useNavigate()
@@ -68,7 +69,7 @@ function ProfileContentVI({ userId }) {
 											to={`/watch/${item.anime_slug}`}
 											className="relative group"
 										>
-											<img
+											<Image
 												className="rounded-t-lg aspect-[16/9] w-[320px]"
 												src={item.anime_image}
 												alt={item.anime_name}

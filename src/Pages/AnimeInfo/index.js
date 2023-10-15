@@ -13,6 +13,7 @@ import CharacterListVI from "../../Components/Content/CharacterListVI"
 import "./animeinfo.css"
 import CommentSection from "../../Components/Content/CommentSection"
 import { useRef } from "react"
+import Image from "../../Components/Content/Image"
 
 function AnimeInfo({ instance }) {
 	const { anime } = useParams()
@@ -85,7 +86,7 @@ function AnimeInfo({ instance }) {
 						/>
 					) : (
 						<>
-							<img
+							<Image
 								src={info?.bannerImage || ""}
 								className="banner-info-image"
 								alt={info.name}

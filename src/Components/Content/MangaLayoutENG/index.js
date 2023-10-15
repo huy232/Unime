@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 import "./mangalayout.css"
 import MangaLayoutSkeleton from "../MangaLayoutSkeleton"
+import Image from "../Image"
 
 function MangaLayoutENG({
 	content,
@@ -46,7 +47,7 @@ function MangaLayoutENG({
 									className="group col-span-1 cursor-pointer flex flex-col items-center col-span-1 mb-[12px] relative float-left"
 								>
 									<div className="group-hover:opacity-70 relative aspect-w-2 aspect-h-3 duration-300 ease-linear pb-[156%] mb-0 w-full overflow-hidden">
-										<img
+										<Image
 											className="group-hover:scale-90 duration-500 linear absolute min-h-full"
 											src={
 												manga.coverImage.extraLarge ||

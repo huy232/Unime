@@ -6,6 +6,7 @@ import { API } from "../../../constants"
 import ReactPaginate from "react-paginate"
 import useDocumentTitle from "../../../Hooks/useDocumentTitle"
 import { useRef } from "react"
+import Image from "../Image"
 
 function ProfileContentENG({ userId }) {
 	const navigate = useNavigate()
@@ -70,7 +71,7 @@ function ProfileContentENG({ userId }) {
 											>
 												<Link to={item.anime_slug}>
 													<div className="hover:opacity-80 duration-200 ease-in-out w-[160px]">
-														<img
+														<Image
 															className="aspect-[2/3] w-full"
 															src={item.anime_image}
 															alt={item.anime_name}

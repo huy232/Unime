@@ -2,6 +2,7 @@ import React from "react"
 import errorStep1 from "../../../Utilities/img/error-step-1.webp"
 import errorStep2 from "../../../Utilities/img/error-step-2.webp"
 import "./errorload.css"
+import Image from "../Image"
 
 function ErrorLoad() {
 	return (
@@ -13,13 +14,13 @@ function ErrorLoad() {
 			<div>
 				<div>
 					<p className="font-black my-1">Step 1: Back to the INFO</p>
-					<img src={errorStep1} alt="Error step 1" />
+					<Image src={errorStep1} alt="Error step 1" />
 				</div>
 				<div>
 					<p className="font-black my-1">
 						Step 2: Choose another provider, <i>suggest:</i> <b>ZORO</b>
 					</p>
-					<img src={errorStep2} alt="Error step 2" />
+					<Image src={errorStep2} alt="Error step 2" />
 				</div>
 			</div>
 		</div>

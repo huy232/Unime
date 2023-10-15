@@ -1,4 +1,5 @@
 import { dateConvert } from "../../../Utilities/dateConvert"
+import Image from "../Image"
 
 function ProfileHeading({ user, lang }) {
 	return (
@@ -8,7 +9,7 @@ function ProfileHeading({ user, lang }) {
 			</h1>
 			<div className="max-w-[600px] flex flex-col w-full bg-gray-700/20 shadow-gray-700/20 p-4 rounded sm:flex-row">
 				<div className="flex flex-col justify-center items-center mx-1">
-					<img
+					<Image
 						className="rounded-full"
 						src={user.user_metadata.avatar_url}
 						alt="User avatar"

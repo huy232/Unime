@@ -1,4 +1,5 @@
 import { COLORLIST } from "../../../constants"
+import Image from "../Image"
 
 function CharacterList({ characters }) {
 	return (
@@ -8,7 +9,7 @@ function CharacterList({ characters }) {
 				{characters.map((character, i) => (
 					<div className="h-28" key={character.id}>
 						<div className="flex bg-[#0D0D0D] h-full w-full">
-							<img
+							<Image
 								className="h-full aspect-[2/3]"
 								src={character.image || ""}
 								alt={character.name.full}

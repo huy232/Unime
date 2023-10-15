@@ -3,6 +3,7 @@ import { Nav } from "react-bootstrap"
 import { Link } from "react-router-dom"
 import { useAuth } from "../../../Contexts/auth"
 import "./user.css"
+import Image from "../../Content/Image"
 
 function User({ handleScrollToTop, setSidebar }) {
 	const { language, user, signOut } = useAuth()
@@ -24,7 +25,7 @@ function User({ handleScrollToTop, setSidebar }) {
 						}}
 					>
 						<div className="user-info-image">
-							<img
+							<Image
 								src={user.user_metadata.avatar_url || ""}
 								alt="user-logo"
 								loading="lazy"

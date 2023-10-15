@@ -1,5 +1,6 @@
 import Skeleton from "@mui/material/Skeleton"
 import blackImage from "../../../Utilities/img/black.webp"
+import Image from "../Image"
 
 function InfoBox({ info, loading }) {
 	return (
@@ -23,7 +24,7 @@ function InfoBox({ info, loading }) {
 							style={{ marginLeft: "auto", marginRight: "auto" }}
 						/>
 					) : (
-						<img
+						<Image
 							src={
 								info.coverImage?.extraLarge ||
 								info.coverImage?.large ||

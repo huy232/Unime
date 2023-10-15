@@ -3,6 +3,7 @@ import axios from "axios"
 import { parseTime } from "../../Utilities/parseTime"
 import { API } from "../../constants"
 import { Link } from "react-router-dom"
+import Image from "../../Components/Content/Image"
 
 function AnimeImageSearchLayout({ searchResult, setToggle }) {
 	const [loading, setLoading] = useState(true)
@@ -58,7 +59,7 @@ function AnimeImageSearchLayout({ searchResult, setToggle }) {
 								<p>~{Math.round(item.similarity * 10000) / 100}% similarity</p>
 							</div>
 							<div className="col-span-5">
-								<img
+								<Image
 									className="w-full object-contain"
 									src={item.image || ""}
 									alt={
@@ -101,7 +102,7 @@ function AnimeImageSearchLayout({ searchResult, setToggle }) {
 							<div className="flex md:flex-row flex-col text-center">
 								<div className="max-md:mx-auto w-[160px]">
 									<div className="relative aspect-w-2 aspect-h-3">
-										<img
+										<Image
 											src={view.image || ""}
 											alt={
 												view.title?.english ||

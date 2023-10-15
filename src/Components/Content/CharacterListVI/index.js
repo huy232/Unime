@@ -1,4 +1,5 @@
 import { COLORLIST } from "../../../constants"
+import Image from "../Image"
 
 function CharacterListVI({ characters, loading }) {
 	const trans = {
@@ -15,7 +16,7 @@ function CharacterListVI({ characters, loading }) {
 						{characters.map((character, i) => (
 							<div className="h-28" key={character.node.id}>
 								<div className="flex bg-[#0D0D0D] h-full w-full">
-									<img
+									<Image
 										className="h-full aspect-[2/3]"
 										src={
 											character.node.image?.large ||

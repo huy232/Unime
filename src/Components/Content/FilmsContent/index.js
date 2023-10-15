@@ -1,6 +1,7 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import FilmSkeleton from "../FilmSkeleton"
+import Image from "../Image"
 
 function FilmsContent({ loading, films }) {
 	return (
@@ -18,7 +19,7 @@ function FilmsContent({ loading, films }) {
 						aria-label={item.name}
 					>
 						<div className="pb-[156%] mb-0 w-full relative overflow-hidden rounded-[4px] group-hover:opacity-70 duration-500 ease-in-out">
-							<img
+							<Image
 								className="top-0 left-0 right-0 bottom-0 absolute w-full min-h-full"
 								src={item.thumbnail || ""}
 								alt={item.name}
