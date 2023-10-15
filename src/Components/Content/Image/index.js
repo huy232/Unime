@@ -10,7 +10,6 @@ const Image = (props) => {
 
 	const imageStyle = {
 		opacity: imageLoaded ? 1 : 0,
-		// aspectRatio: "16/9",
 	}
 
 	return (
