@@ -41,7 +41,7 @@ function CharacterDetail({ randomAnime, loadingRandomAnime }) {
 							>
 								{randomAnime.characters.map((character, i) => (
 									<SwiperSlide
-										className="w-[100px] flex flex-col justify-center items-center flex flex-col text-[#42EADDFF]"
+										className="w-[100px] flex flex-col justify-center items-center text-[#42EADDFF]"
 										key={i}
 									>
 										<div className="h-full">

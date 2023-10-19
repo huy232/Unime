@@ -346,6 +346,8 @@
 		padding-right: 0 !important;
 		-o-border-image: none !important;
 		border-image: none !important;
+		margin-left: 0px;
+		margin-right: 0px;
 	}
 
 	.col-9 {

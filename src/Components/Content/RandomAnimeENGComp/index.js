@@ -1,13 +1,20 @@
-import React from "react"
 import "swiper/css"
 import "swiper/css/pagination"
 import "./movieanime.css"
 import { Link } from "react-router-dom"
 import { toSlug } from "../../../Utilities/toSlug"
 import { duration } from "../../../Utilities/duration"
+import { useState } from "react"
 import Image from "../Image"
 
 function RandomAnimeENGComp({ randomAnime }) {
+	const [showFullText, setShowFullText] = useState(false)
+
+	// Your data
+	const description = randomAnime.description?.replace(/<[br]+>/g, "")
+
+	// Check if the text is longer than 5 lines
+	const isLongText = description.split("\n").length > 5
 	return (
 		<>
 			<h1 className="font-black ml-6 mr-6 mt-2 border-b-4 border-white text-rose-500 max-sm:text-center">
@@ -59,12 +66,22 @@ function RandomAnimeENGComp({ randomAnime }) {
 							</Link>
 						))}
 					</div>
-					<div
-						className="mx-[20px]"
-						dangerouslySetInnerHTML={{
-							__html: randomAnime.description?.replace(/<[br]+>/g, ""),
-						}}
-					></div>
+					<div>
+						<div
+							className={`mx-[20px] ${showFullText ? "" : "line-clamp-5"}`}
+							dangerouslySetInnerHTML={{
+								__html: description,
+							}}
+						></div>
+						{isLongText && (
+							<button
+								className="p-[4px] bg-black/80 my-2 hover:opacity-80 duration-200 rounded"
+								onClick={() => setShowFullText(!showFullText)}
+							>
+								{showFullText ? "Show Less" : "Show More"}
+							</button>
+						)}
+					</div>
 					<div></div>
 					<div className="flex lg:flex-row [&>*]:p-[6px] [&>*]:m-[4px] max-lg:flex-col">
 						<div className="flex flex-col items-center">
