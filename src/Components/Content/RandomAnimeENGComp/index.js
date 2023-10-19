@@ -21,7 +21,7 @@ function RandomAnimeENGComp({ randomAnime }) {
 						aria-label={randomAnime.id}
 					>
 						<Image
-							className="object-fit"
+							className="object-fit duration-500 ease-in-out"
 							src={randomAnime.image || ""}
 							alt={
 								randomAnime.title.english ||

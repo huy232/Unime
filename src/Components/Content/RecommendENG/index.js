@@ -58,7 +58,7 @@ function RecommendENG({ recommend, setLoading, title = "RELATIONS" }) {
 										<div className="group recommend-item-holder select-none cursor-pointer">
 											<div className="recommend-item-image aspect-[2/3] group-hover:opacity-80 duration-200 ease-in-out relative">
 												<Image
-													className="object-fill object-center w-full h-full duration-500 linear absolute"
+													className="object-fill object-center w-full h-full linear absolute duration-500 ease-in-out"
 													src={item.image || ""}
 													alt={
 														item.title.english ||

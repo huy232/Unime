@@ -31,7 +31,7 @@ function InfoBox({ info, loading }) {
 								info.coverImage?.medium ||
 								blackImage
 							}
-							className="cover-image"
+							className="cover-image duration-500 ease-in-out"
 							alt={info.name}
 							loading="lazy"
 						/>

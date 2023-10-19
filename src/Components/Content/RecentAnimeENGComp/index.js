@@ -42,8 +42,8 @@ function RecentAnimeENGComp({ recentAnime }) {
 							<div className="group recent-anime-holder select-none cursor-pointer">
 								<div className="recent-anime-image aspect-[2/3] group-hover:opacity-80 duration-200 ease-in-out relative">
 									<Image
-										className="object-fill object-center w-full h-full group-hover:scale-90 duration-500 linear absolute"
-										src={anime.image || ""}
+										className="object-fill object-center w-full h-full group-hover:scale-90 linear absolute duration-500 ease-in-out"
+										src={anime.image || anime.coverImage || ""}
 										alt={
 											anime.title.english ||
 											anime.title.romaji ||
@@ -54,7 +54,7 @@ function RecentAnimeENGComp({ recentAnime }) {
 									/>
 									<div className="absolute group-hover:scale-90 duration-500 linear text-right w-full h-full">
 										<p className="inline-block mt-[4px] mr-[4px] p-[4px] bg-neutral-500/75 text-white rounded">
-											EP. {anime.episodeNumber}
+											EP. {anime.episodeNumber || anime.currentEpisode}
 										</p>
 									</div>
 								</div>

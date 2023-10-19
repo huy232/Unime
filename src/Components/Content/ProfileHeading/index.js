@@ -10,7 +10,7 @@ function ProfileHeading({ user, lang }) {
 			<div className="max-w-[600px] flex flex-col w-full bg-gray-700/20 shadow-gray-700/20 p-4 rounded sm:flex-row">
 				<div className="flex flex-col justify-center items-center mx-1">
 					<Image
-						className="rounded-full"
+						className="rounded-full duration-500 ease-in-out"
 						src={user.user_metadata.avatar_url}
 						alt="User avatar"
 					/>

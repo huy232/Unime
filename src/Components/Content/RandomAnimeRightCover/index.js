@@ -18,7 +18,7 @@ function RandomAnimeRightCover({ randomAnime }) {
 					<Link to={`/info/${randomAnime.slug}`} aria-label={randomAnime.slug}>
 						<Image
 							src={randomAnime.cover || ""}
-							className="today-cover-image w-full h-auto object-fill aspect-[2/3]"
+							className="today-cover-image w-full h-auto object-fill aspect-[2/3] duration-500 ease-in-out"
 							alt={randomAnime.name}
 							loading="lazy"
 						/>

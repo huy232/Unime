@@ -29,6 +29,7 @@ function User({ handleScrollToTop, setSidebar }) {
 								src={user.user_metadata.avatar_url || ""}
 								alt="user-logo"
 								loading="lazy"
+								className="duration-500 ease-in-out"
 							/>
 						</div>
 						<div className="user-info-name">{user.user_metadata.full_name}</div>

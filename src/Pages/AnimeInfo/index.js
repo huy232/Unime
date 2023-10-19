@@ -88,7 +88,7 @@ function AnimeInfo({ instance }) {
 						<>
 							<Image
 								src={info?.bannerImage || ""}
-								className="banner-info-image"
+								className="banner-info-image duration-500 ease-in-out"
 								alt={info.name}
 								loading="lazy"
 							/>

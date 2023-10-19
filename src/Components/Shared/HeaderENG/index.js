@@ -79,12 +79,12 @@ function HeaderENG() {
 										? `/eng`
 										: `/eng/manga`
 								}
-								className="group hover:opacity-80 duration-200 ease-in-out h-100 inline-block flex items-center"
+								className="group hover:opacity-80 duration-200 ease-in-out h-100 flex items-center"
 								onClick={() => setSidebar(false)}
 								aria-label="Home - English"
 							>
 								<Image
-									className="group-hover:opacity-80 duration-200 ease-in-out h-[34px] w-[34px]"
+									className="group-hover:opacity-80 h-[34px] w-[34px] duration-500 ease-in-out"
 									src={unimeLogo || ""}
 									alt="UNIME-LOGO"
 									loading="lazy"
@@ -103,7 +103,7 @@ function HeaderENG() {
 											? `Search anime...`
 											: `Search manga...`
 									}
-									className="search-navbar text-white max-sm:w-full bg-[#00000099] px-[4px]"
+									className="search-navbar w-[150px] sm:w-full text-white max-sm:w-full bg-[#00000099] px-[2px] text-sm rounded-md"
 									onChange={handleChange}
 									onKeyPress={(e) => {
 										handleKeypress(e)
@@ -124,15 +124,23 @@ function HeaderENG() {
 								</button>
 							</form>
 						</div>
-						<ContentToggleENG
-							routeChecking={mangaUrlArray.indexOf(window.location.pathname)}
-						/>
-						<LanguageButton handleScrollToTop={handleScrollToTop} />
-						<div
-							className="cursor-pointer flex h-[40px] w-[40px] items-center justify-center"
-							onClick={() => setSidebar(!sideBar)}
-						>
-							<FontAwesomeIcon icon={faBars} />
+						<div className="ml-auto flex items-center justify-center">
+							<div className="hidden sm:block">
+								<ContentToggleENG
+									routeChecking={mangaUrlArray.indexOf(
+										window.location.pathname
+									)}
+								/>
+							</div>
+							<div className="hidden sm:block">
+								<LanguageButton handleScrollToTop={handleScrollToTop} />
+							</div>
+							<div
+								className="cursor-pointer flex h-[40px] w-[40px] items-center justify-center"
+								onClick={() => setSidebar(!sideBar)}
+							>
+								<FontAwesomeIcon icon={faBars} />
+							</div>
 						</div>
 					</div>
 				</div>
@@ -145,6 +153,19 @@ function HeaderENG() {
 					}`}
 				>
 					<div className="flex flex-col text-right [&>div]:my-[8px] mx-[6px]">
+						<div>
+							<Link
+								to="/eng"
+								className="hover:opacity-80 duration-200 ease-in-out"
+								onClick={() => {
+									handleScrollToTop()
+									setSidebar(false)
+								}}
+								aria-label="Home - English"
+							>
+								<h2 className=" font-semibold text-[1.5rem] my-0">HOME</h2>
+							</Link>
+						</div>
 						<div>
 							<Link
 								to="/eng/anime"
@@ -231,6 +252,15 @@ function HeaderENG() {
 							>
 								<h2 className="font-semibold text-[1.5rem] my-0">Manga</h2>
 							</Link>
+						</div>
+
+						<div className="block sm:hidden">
+							<ContentToggleENG
+								routeChecking={mangaUrlArray.indexOf(window.location.pathname)}
+							/>
+						</div>
+						<div className="block sm:hidden">
+							<LanguageButton handleScrollToTop={handleScrollToTop} />
 						</div>
 						<div className="user-container">
 							<User

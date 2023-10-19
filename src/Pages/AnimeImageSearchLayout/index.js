@@ -60,7 +60,7 @@ function AnimeImageSearchLayout({ searchResult, setToggle }) {
 							</div>
 							<div className="col-span-5">
 								<Image
-									className="w-full object-contain"
+									className="w-full object-contain duration-500 ease-in-out"
 									src={item.image || ""}
 									alt={
 										item.anilist.title.english ||
@@ -110,6 +110,7 @@ function AnimeImageSearchLayout({ searchResult, setToggle }) {
 												view.title?.native
 											}
 											loading="lazy"
+											className="duration-500 ease-in-out"
 										/>
 									</div>
 								</div>

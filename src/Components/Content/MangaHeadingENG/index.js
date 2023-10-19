@@ -51,7 +51,7 @@ function MangaHeadingENG({ content, loading }) {
 													item.title.native ||
 													item.title.userPreferred
 												}
-												className="w-full aspect-[2/3] relative"
+												className="w-full aspect-[2/3] relative duration-500 ease-in-out"
 											/>
 											{!!item?.chapters && (
 												<div className="absolute top-0 right-0 m-[4px] rounded bg-black/80 text-[#fffc] p-[4px]">

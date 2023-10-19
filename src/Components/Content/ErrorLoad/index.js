@@ -14,13 +14,21 @@ function ErrorLoad() {
 			<div>
 				<div>
 					<p className="font-black my-1">Step 1: Back to the INFO</p>
-					<Image src={errorStep1} alt="Error step 1" />
+					<Image
+						className="duration-500 ease-in-out"
+						src={errorStep1}
+						alt="Error step 1"
+					/>
 				</div>
 				<div>
 					<p className="font-black my-1">
 						Step 2: Choose another provider, <i>suggest:</i> <b>ZORO</b>
 					</p>
-					<Image src={errorStep2} alt="Error step 2" />
+					<Image
+						className="duration-500 ease-in-out"
+						src={errorStep2}
+						alt="Error step 2"
+					/>
 				</div>
 			</div>
 		</div>

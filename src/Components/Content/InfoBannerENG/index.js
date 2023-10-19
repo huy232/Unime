@@ -22,7 +22,7 @@ function InfoBannerENG({ loading, info }) {
 					<>
 						<Image
 							src={info?.cover || ""}
-							className="banner-info-image"
+							className="banner-info-image duration-500 ease-in-out"
 							alt={info?.name}
 							style={
 								info?.cover === null || typeof info?.cover === "undefined"

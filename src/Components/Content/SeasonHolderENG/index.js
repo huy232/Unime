@@ -19,7 +19,7 @@ function SeasonHolderENG({ anime, title, color }) {
 						item.title?.userPreferred
 					}
 				>
-					<div className="w-[60px] aspect-[2/3] shrink-0 group-hover:opacity-50 duration-200 ease-in-out">
+					<div className="w-[60px] aspect-[2/3] shrink-0 group-hover:opacity-50 duration-500 ease-in-out">
 						<Image
 							src={
 								item.coverImage?.extraLarge ||
@@ -39,7 +39,7 @@ function SeasonHolderENG({ anime, title, color }) {
 					</div>
 					<div className="mx-2 text-[#fffc]">
 						<p
-							className="line-clamp-1 h-[30px] group-hover:opacity-50 duration-200 ease-in-out"
+							className="line-clamp-1 h-[30px] group-hover:opacity-50 duration-500 ease-in-out"
 							style={{ color: item.coverImage.color || "#fffc" }}
 						>
 							{item.title?.english ||

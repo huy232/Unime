@@ -69,7 +69,7 @@ function HeaderVI() {
 							aria-label="Home - Viet"
 						>
 							<Image
-								className="group-hover:opacity-80 duration-200 ease-in-out h-[34px] w-[34px]"
+								className="group-hover:opacity-80 h-[34px] w-[34px] duration-500 ease-in-out"
 								src={unimeLogo || ""}
 								alt="UNIME-LOGO"
 								loading="lazy"
@@ -84,7 +84,7 @@ function HeaderVI() {
 							<input
 								type="text"
 								placeholder="Tìm kiếm Anime..."
-								className="search-navbar text-white max-sm:w-full bg-[#00000099] px-[4px]"
+								className="search-navbar w-[150px] text-white max-sm:w-full bg-[#00000099] px-[2px] text-sm rounded-md"
 								onChange={handleChange}
 								onKeyPress={(e) => {
 									handleKeypress(e)
@@ -105,15 +105,20 @@ function HeaderVI() {
 							</button>
 						</form>
 					</div>
-					<LanguageButton handleScrollToTop={handleScrollToTop} />
-					<div
-						className="cursor-pointer flex h-[40px] w-[40px] items-center justify-center"
-						onClick={() => setSidebar(!sideBar)}
-					>
-						<FontAwesomeIcon icon={faBars} />
+					<div className="ml-auto flex items-center justify-center">
+						<div className="hidden sm:block">
+							<LanguageButton handleScrollToTop={handleScrollToTop} />
+						</div>
+						<div
+							className="cursor-pointer flex h-[40px] w-[40px] items-center justify-center"
+							onClick={() => setSidebar(!sideBar)}
+						>
+							<FontAwesomeIcon icon={faBars} />
+						</div>
 					</div>
 				</div>
 			</div>
+
 			<section
 				className={`right-0 mt-[40px] fixed duration-200 ease-in-out bg-[#222] h-100 z-50 ${
 					sideBar ? "opacity-100 w-[320px] right-0" : "opacity-0 right-[-320px]"
@@ -178,6 +183,9 @@ function HeaderVI() {
 								</Link>
 							))}
 						</div>
+					</div>
+					<div className="block sm:hidden">
+						<LanguageButton handleScrollToTop={handleScrollToTop} />
 					</div>
 					<div className="user-container">
 						<User

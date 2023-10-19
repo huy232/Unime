@@ -20,7 +20,7 @@ function FilmsContent({ loading, films }) {
 					>
 						<div className="pb-[156%] mb-0 w-full relative overflow-hidden rounded-[4px] group-hover:opacity-70 duration-500 ease-in-out">
 							<Image
-								className="top-0 left-0 right-0 bottom-0 absolute w-full min-h-full"
+								className="top-0 left-0 right-0 bottom-0 absolute w-full min-h-full duration-500 ease-in-out"
 								src={item.thumbnail || ""}
 								alt={item.name}
 								loading="lazy"

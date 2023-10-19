@@ -112,7 +112,7 @@ function AnimeImageSearch() {
 									<div className="max-md:w-[320px] h-100 rounded relative">
 										<div className="aspect-[16/9]">
 											<Image
-												className="relative"
+												className="relative duration-500 ease-in-out"
 												src={preview || ""}
 												alt="object-scale-down"
 												loading="lazy"

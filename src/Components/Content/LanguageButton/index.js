@@ -10,7 +10,7 @@ function LanguageButton({ handleScrollToTop }) {
 	}
 
 	return (
-		<div className="language-container ml-auto text-neutral-900 flex h-[40px] py-[4px]">
+		<div className="language-container text-neutral-900 flex justify-end h-[40px] py-[4px]">
 			<button
 				className={`rounded-[2px] p-1 hover:opacity-80 duration-200 bg-white/60`}
 				onClick={() => {

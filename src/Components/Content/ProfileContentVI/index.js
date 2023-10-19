@@ -70,7 +70,7 @@ function ProfileContentVI({ userId }) {
 											className="relative group"
 										>
 											<Image
-												className="rounded-t-lg aspect-[16/9] w-[320px]"
+												className="rounded-t-lg aspect-[16/9] w-[320px] duration-500 ease-in-out"
 												src={item.anime_image}
 												alt={item.anime_name}
 												loading="lazy"

@@ -44,11 +44,11 @@ function MangaLayoutENG({
 										manga.title.native ||
 										manga.userPreferred
 									}
-									className="group col-span-1 cursor-pointer flex flex-col items-center col-span-1 mb-[12px] relative float-left"
+									className="group col-span-1 cursor-pointer flex flex-col items-center mb-[12px] relative float-left"
 								>
 									<div className="group-hover:opacity-70 relative aspect-w-2 aspect-h-3 duration-300 ease-linear pb-[156%] mb-0 w-full overflow-hidden">
 										<Image
-											className="group-hover:scale-90 duration-500 linear absolute min-h-full"
+											className="group-hover:scale-90 duration-500 linear absolute min-h-full ease-in-out"
 											src={
 												manga.coverImage.extraLarge ||
 												manga.coverImage.large ||

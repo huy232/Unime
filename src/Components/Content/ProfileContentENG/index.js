@@ -72,7 +72,7 @@ function ProfileContentENG({ userId }) {
 												<Link to={item.anime_slug}>
 													<div className="hover:opacity-80 duration-200 ease-in-out w-[160px]">
 														<Image
-															className="aspect-[2/3] w-full"
+															className="aspect-[2/3] w-full duration-500 ease-in-out"
 															src={item.anime_image}
 															alt={item.anime_name}
 															loading="lazy"
