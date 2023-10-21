@@ -14,7 +14,7 @@ function RandomAnimeENGComp({ randomAnime }) {
 	const description = randomAnime.description?.replace(/<[br]+>/g, "")
 
 	// Check if the text is longer than 5 lines
-	const isLongText = description.split("\n").length > 5
+	const isLongText = description?.split("\n")?.length > 5
 	return (
 		<>
 			<h1 className="font-black ml-6 mr-6 mt-2 border-b-4 border-white text-rose-500 max-sm:text-center">
