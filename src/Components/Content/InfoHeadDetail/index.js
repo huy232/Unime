@@ -58,11 +58,11 @@ function InfoHeadDetail({ info, loading, executeScroll }) {
 			{resultCategory?.length > 0 && (
 				<p className="anime-type-paragraph">Thể loại:</p>
 			)}
-			<div className="group flex md:flex-wrap hover:opacity-80 duration-200 ease-in-out max-md:overflow-x-scroll max-md:flex-nowrap">
+			<div className="group flex md:flex-wrap duration-200 ease-in-out max-md:overflow-x-scroll max-md:flex-nowrap">
 				{!loading &&
 					resultCategory.map((genre) => (
 						<div
-							className="group-hover:hover:text-[#f98866] m-[8px] rounded-[14px] bg-[#5f5f5f29] mx-[10px] max-md:shrink-0"
+							className="group-hover:hover:text-[#f98866] group-hover:hover:opacity-80 m-[8px] rounded-[14px] bg-[#5f5f5f29] mx-[10px] max-md:shrink-0"
 							key={genre.slug}
 						>
 							<Link
@@ -78,11 +78,11 @@ function InfoHeadDetail({ info, loading, executeScroll }) {
 			{resultCollection?.length > 0 && (
 				<p className="anime-type-paragraph">Bộ sưu tập:</p>
 			)}
-			<div className="group flex md:flex-wrap hover:opacity-80 duration-200 ease-in-out max-md:overflow-x-scroll max-md:flex-nowrap">
+			<div className="group flex md:flex-wrap duration-200 ease-in-out max-md:overflow-x-scroll max-md:flex-nowrap">
 				{!loading &&
 					resultCollection.map((collection) => (
 						<div
-							className="group-hover:hover:text-[#f98866] m-[8px] rounded-[14px] bg-[#5f5f5f29] mx-[10px] max-md:shrink-0"
+							className="group-hover:hover:text-[#f98866] group-hover:hover:opacity-80 m-[8px] rounded-[14px] bg-[#5f5f5f29] mx-[10px] max-md:shrink-0"
 							key={collection.slug}
 						>
 							<Link

@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react"
 import { useParams, Link } from "react-router-dom"
-import { COLLECTIONS } from "../../constants"
 import axios from "axios"
 import { Card, Row, Col } from "react-bootstrap"
 import { BsFillPlayFill } from "react-icons/bs"
@@ -11,65 +10,50 @@ import { faEye } from "@fortawesome/free-solid-svg-icons"
 
 function AnimeCollection({ instance }) {
 	const { collection } = useParams()
-
 	const [animeList, setAnimeList] = useState([])
-	const [collectionAnime, setCollectionAnime] = useState("")
 	const [translateGenreAnime, setTranslateGenreAnime] = useState("")
 	const [loading, setLoading] = useState(true)
 
 	useEffect(() => {
 		const CancelToken = axios.CancelToken
 		const source = CancelToken.source()
-
-		const translateCollection = () => {
-			for (let i = 0; i < COLLECTIONS.length; i++) {
-				if (collectionAnime === COLLECTIONS[i].slug) {
-					setTranslateGenreAnime(COLLECTIONS[i].name)
-				}
-			}
+		const getList = async () => {
+			setLoading(true)
+			await instance
+				.get(`/collection/${collection}`, {
+					cancelToken: source.token,
+				})
+				.then((response) => {
+					const newList = response.data.data.list.map((anime) => ({
+						slug: anime.slug,
+						thumbnail: anime.thumbnail,
+						name: anime.name,
+						views: anime.views,
+					}))
+					setTranslateGenreAnime(response.data.data.title || "")
+					setAnimeList((prev) => {
+						return [...new Set([...prev, ...newList])]
+					})
+					setLoading(false)
+				})
+				.catch((thrown) => {
+					if (axios.isCancel(thrown)) return
+				})
 		}
 
-		if (collection === collectionAnime) {
-			const getList = async () => {
-				setLoading(true)
-				await instance
-					.get(`/collection/${collection}`, {
-						cancelToken: source.token,
-					})
-					.then((response) => {
-						const newList = response.data.data.map((anime) => ({
-							slug: anime.slug,
-							thumbnail: anime.thumbnail,
-							name: anime.name,
-							views: anime.views,
-						}))
-						setAnimeList((prev) => {
-							return [...new Set([...prev, ...newList])]
-						})
-						setLoading(false)
-					})
-					.catch((thrown) => {
-						if (axios.isCancel(thrown)) return
-					})
-			}
-
-			getList()
-			translateCollection()
-		} else {
-			setAnimeList([])
-			setCollectionAnime(collection)
-		}
-
+		getList()
 		return () => {
 			source.cancel()
 		}
-	}, [collection, collectionAnime, instance])
+	}, [collection, instance])
 
 	return (
 		<>
 			<div>
 				<h1 className="font-black">{translateGenreAnime}</h1>
-				{useDocumentTitle(`${translateGenreAnime} - Unime`)}
+				{useDocumentTitle(
+					`${translateGenreAnime ? translateGenreAnime : "Đang tải"} - Unime`
+				)}
 			</div>
 
 			<div className="anime-list pb-12 md:px-8 lg:px-16 xl:px-24 2xl:px-32">
