@@ -1,8 +1,7 @@
 const mainsite = "https://unime.vercel.app"
 // const mainsite = "http://localhost:3000"
-// const url = "http://localhost:3000/api"
-const url = "https://mirai-backend.onrender.com/api"
-const ioCors = "https://corsproxy.io/?"
+const url = "http://localhost:3000/api"
+// const url = "https://mirai-backend.onrender.com/api"
 
 const genres = [
 	{ slug: "hanh-dong", name: "Hành Động" },
@@ -335,4 +334,3 @@ export const PROVIDER = provider
 export const MANGA_PROVIDER = mangaProvider
 export const COLLECTION_COLOR = colorArray
 export const COLORLIST = colorList
-export const IO_CORS = ioCors

@@ -19,36 +19,71 @@ function ProfileContentVI({ userId }) {
 	const [page, setPage] = useState(1)
 	const [totalPage, setTotalPage] = useState(1)
 	const scrollToRef = useRef(null)
+
+	const getProfileData = async (newPage) => {
+		await axios
+			.post(`${API}/vi/get-history?page=${newPage}`, { userId: userId })
+			.then((response) => {
+				if (response.data.success) {
+					const { page, data, totalPage } = response.data.data
+					setPage(parseInt(page))
+					setTotalPage(totalPage)
+					setData(data)
+					setLoading(false)
+				}
+			})
+			.catch((error) => {
+				// Handle errors as needed
+			})
+	}
+
+	const handlePageClick = (event) => {
+		const newPage = event.selected + 1
+		setPage(newPage)
+		getProfileData(newPage)
+	}
+
+	const handleDelete = async (id) => {
+		const params = {
+			id,
+			storedLocation: "historyVI",
+			userId: userId,
+		}
+		await axios
+			.delete(`${API}/vi/delete-history`, {
+				params,
+			})
+			.then((response) => {
+				if (response.data.success) {
+					if (data.length === 1) {
+						const newPage = page - 1
+						setPage(newPage)
+						getProfileData(newPage)
+					} else {
+						getProfileData(page)
+					}
+				}
+			})
+			.catch((err) => {
+				// Handle error
+			})
+	}
+
 	useEffect(() => {
 		const CancelToken = axios.CancelToken
 		const source = CancelToken.source()
-		const getProfileData = async () => {
-			await axios
-				.post(`${API}/vi/get-history?page=${page}`, { userId: userId })
-				.then((response) => {
-					setData(response.data.data)
-					if (response.data.success) {
-						const { page, data, totalPage } = response.data.data
-						setPage(parseInt(page))
-						setTotalPage(totalPage)
-						setData(data)
-						setLoading(false)
-					}
-				})
-		}
 
-		getProfileData()
+		getProfileData(page)
+
 		return () => {
 			source.cancel()
 		}
-	}, [lang, navigate, page, userId])
+	}, [lang, navigate, userId, page])
 
-	const handlePageClick = (event) => {
-		setPage(event.selected + 1)
-	}
 	const executeScroll = () => scrollToRef.current.scrollIntoView()
 
 	useDocumentTitle(loading ? "Đang tải" : "Trang cá nhân")
+
 	return (
 		<div>
 			<h2 className="font-black mx-1 pt-2 max-md:text-center" ref={scrollToRef}>
@@ -97,6 +132,12 @@ function ProfileContentVI({ userId }) {
 												</p>
 											</div>
 										</div>
+										<button
+											onClick={() => handleDelete(item.id)}
+											className="bg-red-600 p-2 text-white rounded mt-2 duration-200 ease-in-out hover:opacity-40"
+										>
+											Xóa
+										</button>
 									</li>
 								))}
 							</ul>
@@ -119,6 +160,7 @@ function ProfileContentVI({ userId }) {
 								containerClassName="pagination flex justify-center items-center py-4"
 								activeClassName="active bg-yellow-800"
 								renderOnZeroPageCount={null}
+								forcePage={page - 1}
 								onClick={() => executeScroll()}
 							/>
 						</>

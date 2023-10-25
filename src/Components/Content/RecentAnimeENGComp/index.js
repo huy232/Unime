@@ -74,7 +74,7 @@ function RecentAnimeENGComp({ recentAnime }) {
 					</SwiperSlide>
 				))}
 			</Swiper>
-			{/* <div className="text-right mt-[24px]">
+			<div className="text-right mt-[24px]">
 				<Link
 					to="/eng/recent-anime"
 					className="browse-button hover:text-[#fffc] font-semibold"
@@ -82,7 +82,7 @@ function RecentAnimeENGComp({ recentAnime }) {
 				>
 					MORE...
 				</Link>
-			</div> */}
+			</div>
 		</div>
 	)
 }
