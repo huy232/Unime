@@ -156,7 +156,7 @@ function AnimeWatchENG() {
 		<div className="flex max-lg:flex-col ">
 			{error ? (
 				<ErrorLoad />
-			) : videoLoading ? (
+			) : videoLoading || listEpisode.length === 0 ? (
 				<FilmLoadingRequest />
 			) : (
 				<VideoPlayer

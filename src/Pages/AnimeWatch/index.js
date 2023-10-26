@@ -151,7 +151,7 @@ function AnimeWatch({ instance }) {
 		<>
 			<div>
 				<div className="flex max-lg:flex-col">
-					{videoLoading ? (
+					{videoLoading || info.length === 0 ? (
 						<FilmLoadingRequest />
 					) : videoUrl.length > 0 ? (
 						<VideoPlayer
