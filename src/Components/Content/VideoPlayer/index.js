@@ -176,6 +176,7 @@ function VideoPlayer({
 						left: "50%",
 						transform: "translateX(-50%)",
 						padding: "0px",
+						color: "yellow",
 					},
 					escape: false,
 				},

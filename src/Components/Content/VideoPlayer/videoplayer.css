@@ -19,6 +19,12 @@
 	padding: 5px 5px !important;
 }
 
+/* .art-video-player .art-subtitle::before,
+.art-video-player .art-subtitle::after {
+	content: "";
+	padding: 4px;
+} */
+
 @media screen and (max-width: 1024px) {
 	.art-video-player {
 		height: calc(var(--vh, 1vh) * 50) !important;
