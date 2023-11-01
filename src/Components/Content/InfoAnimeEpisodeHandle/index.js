@@ -31,7 +31,7 @@ function InfoAnimeEpisodeHandle({
 									<nav>
 										{
 											<Link
-												to={`/watch/${anime}?index=${eachEpisode.name}`}
+												to={`/watch/${anime}?index=${eachEpisode.name}&type=normal`}
 												title={eachEpisode?.full_name}
 												aria-label={eachEpisode?.full_name}
 											>

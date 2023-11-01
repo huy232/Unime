@@ -13,11 +13,13 @@ SwiperCore.use([Pagination, Navigation, Lazy])
 
 // ---------------------------
 function InfoSpecialEpisodeList({
+	title,
 	specialEpisodeList,
 	setSelectedSpecialChunk,
 	selectedSpecialChunk,
 	anime,
 	loading,
+	type,
 }) {
 	return (
 		<>
@@ -26,7 +28,7 @@ function InfoSpecialEpisodeList({
 			) : (
 				<div className="special-episode-wrapper mt-[20px] mb-[20px]">
 					<div className="episode-list" style={{ textAlign: "center" }}>
-						<h4>DANH SÁCH TẬP ĐIỂM TÂM</h4>
+						<h4>{title}</h4>
 						<Swiper
 							slidesPerView="auto"
 							className="swiper-container"
@@ -82,7 +84,11 @@ function InfoSpecialEpisodeList({
 									<Col key={i}>
 										<nav>
 											<Link
-												to={`/watch/${anime}?specialid=${eachEpisode.id}`}
+												to={
+													type === "ova"
+														? `/watch/${anime}?index=${eachEpisode.name}&type=ova`
+														: `/watch/${anime}?specialid=${eachEpisode.id}&type=special`
+												}
 												title={eachEpisode?.full_name}
 												aria-label={eachEpisode?.full_name}
 											>

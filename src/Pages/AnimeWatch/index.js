@@ -17,7 +17,10 @@ function AnimeWatch({ instance }) {
 	const queryParams = new URLSearchParams(window.location.search)
 	const index = queryParams.get("index")
 	const specialid = queryParams.get("specialid")
+	const type = queryParams.get("type")
 	const [info, setInfo] = useState([])
+	const [ovaList, setOvaList] = useState([])
+	const [specialList, setSpecialList] = useState([])
 	const [watchDetail, setWatchDetail] = useState("Đang tải")
 	const [videoUrl, setVideoUrl] = useState([])
 	const [videoEmbed, setVideoEmbed] = useState("")
@@ -44,6 +47,8 @@ function AnimeWatch({ instance }) {
 						if (axios.isCancel(thrown)) return
 					})
 				setInfo(data.data.episodes)
+				setOvaList(data.data.ova)
+				setSpecialList(data.data.special_episodes)
 				setMainId(data.data.id)
 			}
 			getList()
@@ -58,85 +63,115 @@ function AnimeWatch({ instance }) {
 	useEffect(() => {
 		const CancelToken = axios.CancelToken
 		const source = CancelToken.source()
-		if (mainId && index !== null) {
-			const getAnime = async () => {
-				const numIndex = Number(index)
-				await instance
-					.get(`/anime/${mainId}/episodes/${numIndex}`, {
-						cancelToken: source.token,
-					})
-					.then(async (response) => {
-						if (response.data.success !== false) {
-							if (typeof response.data.data?.videoSource !== "undefined") {
-								if (response.data.data.subtitles) {
-									setSubtitles(response.data.data.subtitles)
+		if (type === "normal" || type === null) {
+			if (mainId && index !== null) {
+				const getAnime = async () => {
+					const numIndex = Number(index)
+					await instance
+						.get(`/anime/${mainId}/episodes/${numIndex}`, {
+							cancelToken: source.token,
+						})
+						.then(async (response) => {
+							if (response.data.success !== false) {
+								if (typeof response.data.data?.videoSource !== "undefined") {
+									if (response.data.data.subtitles) {
+										setSubtitles(response.data.data.subtitles)
+									}
+									setVideoUrl([
+										{
+											default: true,
+											url: response.data.data.videoSource,
+											html: response.data.data.quality,
+										},
+									])
+								} else {
+									setVideoEmbed(response.data.data.embedSource)
 								}
+								const watchFilm = response.data.data.film_name
+								const watchEpisodeName = response.data.data.full_name
+								if (user) {
+									const animeImage =
+										response.data.data?.thumbnail_medium ||
+										response.data.data?.thumbnail_small
+									const saveHistory = async () => {
+										await axios
+											.post(`${API}/vi/save-history`, {
+												userId: user.id,
+												animeName: watchFilm,
+												animeEpisode: watchEpisodeName,
+												animeImage: animeImage,
+												animeSlug: `${anime}?index=${index}`,
+											})
+											.catch((thrown) => {
+												if (axios.isCancel(thrown)) return
+											})
+									}
+									saveHistory()
+								}
+								setWatchDetail(watchFilm + ` (${watchEpisodeName})`)
+								setVideoLoading(false)
+							}
+						})
+						.catch((thrown) => {
+							if (axios.isCancel(thrown)) return
+						})
+				}
+				getAnime()
+			}
+		}
+		if (type === "special") {
+			if (mainId && specialid !== null) {
+				const getAnimeSpecial = async () => {
+					const numSpecialId = Number(specialid)
+					await instance
+						.get(`/specialanime/${mainId}/${numSpecialId}`)
+						.then((res) => {
+							if (res.data.success !== false) {
+								const watchFilm = res.data.data.film_name
+								const watchEpisodeName = res.data.data.full_name
+								setWatchDetail(watchFilm + ` (${watchEpisodeName})`)
 								setVideoUrl([
 									{
-										default: true,
-										url: response.data.data.videoSource,
-										html: response.data.data.quality,
+										url: res.data.data.videoSource,
+										html: res.data.data?.quality ? res.data.data.quality : "",
 									},
 								])
-							} else {
-								setVideoEmbed(response.data.data.embedSource)
+								setVideoLoading(false)
 							}
-							const watchFilm = response.data.data.film_name
-							const watchEpisodeName = response.data.data.full_name
-							if (user) {
-								const animeImage =
-									response.data.data?.thumbnail_medium ||
-									response.data.data?.thumbnail_small
-								const saveHistory = async () => {
-									await axios
-										.post(`${API}/vi/save-history`, {
-											userId: user.id,
-											animeName: watchFilm,
-											animeEpisode: watchEpisodeName,
-											animeImage: animeImage,
-											animeSlug: `${anime}?index=${index}`,
-										})
-										.catch((thrown) => {
-											if (axios.isCancel(thrown)) return
-										})
-								}
-								saveHistory()
-							}
-							setWatchDetail(watchFilm + ` (${watchEpisodeName})`)
-							setVideoLoading(false)
-						}
-					})
-					.catch((thrown) => {
-						if (axios.isCancel(thrown)) return
-					})
+						})
+						.catch((thrown) => {
+							if (axios.isCancel(thrown)) return
+						})
+				}
+				getAnimeSpecial()
 			}
-			getAnime()
 		}
-
-		if (mainId && specialid !== null) {
-			const getAnimeSpecial = async () => {
-				const numSpecialId = Number(specialid)
-				await instance
-					.get(`/specialanime/${mainId}/${numSpecialId}`)
-					.then((res) => {
-						if (res.data.success !== false) {
-							const watchFilm = res.data.data.film_name
-							const watchEpisodeName = res.data.data.full_name
-							setWatchDetail(watchFilm + ` (${watchEpisodeName})`)
-							setVideoUrl([
-								{
-									url: res.data.data.videoSource,
-									html: res.data.data?.quality ? res.data.data.quality : "",
-								},
-							])
-							setVideoLoading(false)
-						}
-					})
-					.catch((thrown) => {
-						if (axios.isCancel(thrown)) return
-					})
+		if (type === "ova") {
+			if (mainId && index !== null) {
+				const getOvaEpisode = async () => {
+					const ovaIndex = Number(index)
+					await instance
+						.get(`/watch-ova/${mainId}`, { params: { ovaIndex } })
+						.then((res) => {
+							if (res.data.success !== false) {
+								const watchFilm = res.data.data.film_name
+								const watchEpisodeName = res.data.data.full_name
+								setWatchDetail(watchFilm + ` (${watchEpisodeName})`)
+								setVideoUrl([
+									{
+										url: res.data.data.videoSource,
+										html: res.data.data?.quality ? res.data.data.quality : "",
+									},
+								])
+								setVideoLoading(false)
+							}
+						})
+						.catch((thrown) => {
+							if (axios.isCancel(thrown)) return
+						})
+				}
+				getOvaEpisode()
 			}
-			getAnimeSpecial()
 		}
 
 		const element = document.getElementsByClassName("active")[0]
@@ -203,31 +238,102 @@ function AnimeWatch({ instance }) {
 							</div>
 						</div>
 						<div className="lg:h-[calc(var(--vh,1vh)*100-60px)] overflow-y-scroll bg-[#222] h-[calc(var(--vh,1vh)*50-80px)]">
-							{info.map((item, i) => (
-								<Link
-									to={`/watch/${anime}?index=${item.name}`}
-									key={i}
-									title={item.full_name}
-									className={`flex items-center h-[80px] px-[12px] py-[8px] w-full hover:text-white hover:opacity-80 hover:bg-white/20 duration-200 ease-in-out ${
-										parseInt(index) === parseInt(item.name)
-											? "bg-white/50 active"
-											: "odd:bg-[#111111] even:bg-[#272727]"
-									}`}
-									onClick={() => setVideoLoading(true)}
-									aria-label={item.full_name}
-								>
-									<div className="mr-[6px] h-full flex items-center justify-center text-amber-400 ">
-										<p className="font-extrabold px-[4px] border-r-[2px] opacity-80">
-											{i + 1}
-										</p>
-									</div>
-									<div className="mx-[6px] w-full flex">
-										<p className="line-clamp-2 w-full text-[#E2DFD2]">
-											{item.full_name}
-										</p>
-									</div>
-								</Link>
-							))}
+							{info.length > 0 && (
+								<>
+									<p className="text-center text-md font-black uppercase py-2 border-t-2 border-b-2 border-orange-300 border-solid">
+										Thường
+									</p>
+									{info.map((item, i) => (
+										<Link
+											to={`/watch/${anime}?index=${item.name}?type=normal`}
+											key={i}
+											title={item.full_name}
+											className={`flex items-center h-[80px] px-[12px] py-[8px] w-full hover:text-white hover:opacity-80 hover:bg-white/20 duration-200 ease-in-out ${
+												parseInt(index) === parseInt(item.name)
+													? "bg-white/50 active"
+													: "odd:bg-[#111111] even:bg-[#272727]"
+											}`}
+											onClick={() => setVideoLoading(true)}
+											aria-label={item.full_name}
+										>
+											<div className="mr-[6px] h-full flex items-center justify-center text-amber-400 ">
+												<p className="font-extrabold px-[4px] border-r-[2px] opacity-80">
+													{i + 1}
+												</p>
+											</div>
+											<div className="mx-[6px] w-full flex">
+												<p className="line-clamp-2 w-full text-[#E2DFD2]">
+													{item.full_name}
+												</p>
+											</div>
+										</Link>
+									))}
+								</>
+							)}
+							{ovaList.length > 0 && (
+								<>
+									<p className="text-center text-md font-black uppercase py-2 border-t-2 border-b-2 border-orange-300 border-solid">
+										OVA
+									</p>
+									{ovaList.map((item, i) => (
+										<Link
+											to={`/watch/${anime}?index=${item.name}&type=ova`}
+											key={i}
+											title={item.full_name}
+											className={`flex items-center h-[80px] px-[12px] py-[8px] w-full hover:text-white hover:opacity-80 hover:bg-white/20 duration-200 ease-in-out ${
+												parseInt(index) === parseInt(item.name)
+													? "bg-white/50 active"
+													: "odd:bg-[#111111] even:bg-[#272727]"
+											}`}
+											onClick={() => setVideoLoading(true)}
+											aria-label={item.full_name}
+										>
+											<div className="mr-[6px] h-full flex items-center justify-center text-amber-400 ">
+												<p className="font-extrabold px-[4px] border-r-[2px] opacity-80">
+													{i + 1}
+												</p>
+											</div>
+											<div className="mx-[6px] w-full flex">
+												<p className="line-clamp-2 w-full text-[#E2DFD2]">
+													{item.full_name}
+												</p>
+											</div>
+										</Link>
+									))}
+								</>
+							)}
+							{specialList.length > 0 && (
+								<>
+									<p className="text-center text-md font-black uppercase py-2 border-t-2 border-b-2 border-orange-300 border-solid">
+										Đặc biệt
+									</p>
+									{specialList.map((item, i) => (
+										<Link
+											to={`/watch/${anime}?specialid=${item.id}&type=special`}
+											key={i}
+											title={item.full_name}
+											className={`flex items-center h-[80px] px-[12px] py-[8px] w-full hover:text-white hover:opacity-80 hover:bg-white/20 duration-200 ease-in-out ${
+												parseInt(specialid) === parseInt(item.id)
+													? "bg-white/50 active"
+													: "odd:bg-[#111111] even:bg-[#272727]"
+											}`}
+											onClick={() => setVideoLoading(true)}
+											aria-label={item.full_name}
+										>
+											<div className="mr-[6px] h-full flex items-center justify-center text-amber-400 ">
+												<p className="font-extrabold px-[4px] border-r-[2px] opacity-80">
+													{i + 1}
+												</p>
+											</div>
+											<div className="mx-[6px] w-full flex">
+												<p className="line-clamp-2 w-full text-[#E2DFD2]">
+													{item.full_name}
+												</p>
+											</div>
+										</Link>
+									))}
+								</>
+							)}
 						</div>
 					</div>
 				</div>

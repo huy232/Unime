@@ -22,8 +22,10 @@ function AnimeInfo({ instance }) {
 	const [loading, setLoading] = useState(true)
 	const [episodeList, setEpisodeList] = useState([])
 	const [specialEpisodeList, setSpecialEpisodeList] = useState([])
+	const [ovaList, setOvaList] = useState([])
 	const [selectedChunk, setSelectedChunk] = useState(0)
 	const [selectedSpecialChunk, setSelectedSpecialChunk] = useState(0)
+	const [selectedOvaChunk, setSelectedOvaChunk] = useState(0)
 
 	useEffect(() => {
 		window.scrollTo(0, 0)
@@ -40,6 +42,7 @@ function AnimeInfo({ instance }) {
 					setInfo(info)
 					const episodeListChunk = []
 					const specialEpisodeListChunk = []
+					const ovaListChunk = []
 					while (info.episodes.length) {
 						episodeListChunk.push(info.episodes.splice(0, 12))
 					}
@@ -48,9 +51,15 @@ function AnimeInfo({ instance }) {
 							specialEpisodeListChunk.push(info.special_episodes.splice(0, 12))
 						}
 					}
+					if (info.ova.length > 0) {
+						while (info.ova.length) {
+							ovaListChunk.push(info.ova.splice(0, 12))
+						}
+					}
 					document.title = info?.name
 					setEpisodeList(episodeListChunk)
 					setSpecialEpisodeList(specialEpisodeListChunk)
+					setOvaList(ovaListChunk)
 					setLoading(false)
 				})
 				.catch((thrown) => {
@@ -125,14 +134,26 @@ function AnimeInfo({ instance }) {
 							selectedChunk={selectedChunk}
 							loading={loading}
 						/>
-
 						{specialEpisodeList.length > 0 && (
 							<InfoSpecialEpisodeList
+								title={"Danh sách tập điểm tâm"}
 								specialEpisodeList={specialEpisodeList}
 								setSelectedSpecialChunk={setSelectedSpecialChunk}
 								selectedSpecialChunk={selectedSpecialChunk}
 								anime={anime}
 								loading={loading}
+								type="special"
+							/>
+						)}
+						{ovaList.length > 0 && (
+							<InfoSpecialEpisodeList
+								title={"Danh sách OVA"}
+								specialEpisodeList={ovaList}
+								setSelectedSpecialChunk={setSelectedOvaChunk}
+								selectedSpecialChunk={selectedOvaChunk}
+								anime={anime}
+								loading={loading}
+								type="ova"
 							/>
 						)}
 						{!loading && (
