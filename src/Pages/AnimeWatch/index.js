@@ -66,6 +66,7 @@ function AnimeWatch({ instance }) {
 		if (type === "normal" || type === null) {
 			if (mainId && index !== null) {
 				const getAnime = async () => {
+					console.log(index)
 					const numIndex = Number(index)
 					await instance
 						.get(`/anime/${mainId}/episodes/${numIndex}`, {
@@ -245,7 +246,7 @@ function AnimeWatch({ instance }) {
 									</p>
 									{info.map((item, i) => (
 										<Link
-											to={`/watch/${anime}?index=${item.name}?type=normal`}
+											to={`/watch/${anime}?index=${item.name}&type=normal`}
 											key={i}
 											title={item.full_name}
 											className={`flex items-center h-[80px] px-[12px] py-[8px] w-full hover:text-white hover:opacity-80 hover:bg-white/20 duration-200 ease-in-out ${
