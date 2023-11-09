@@ -16,6 +16,7 @@ function AnimeWatchENG() {
 	const queryParams = new URLSearchParams(window.location.search)
 	const current = queryParams.get("current")
 	const provider = queryParams.get("provider")
+	const episodeNumber = queryParams.get("episodeNumber")
 	const [listEpisode, setListEpisode] = useState([])
 	const [watchDetail, setWatchDetail] = useState("Loading")
 	const [videoUrl, setVideoUrl] = useState([])
@@ -66,9 +67,12 @@ function AnimeWatchENG() {
 
 		const filmEpisodeWatch = async () => {
 			await axios
-				.get(`${API}/eng/provider/${current}&${provider}`, {
-					cancelToken: source.token,
-				})
+				.get(
+					`${API}/eng/provider/${animeId}&${current}&${provider}&${episodeNumber}`,
+					{
+						cancelToken: source.token,
+					}
+				)
 				.then((response) => {
 					if (response.data.success !== false) {
 						setVideoUrl(response.data.data.sources)
@@ -208,7 +212,7 @@ function AnimeWatchENG() {
 				<div className="lg:h-[calc(var(--vh,1vh)*100-60px)] overflow-y-scroll bg-[#222] h-[calc(var(--vh,1vh)*50-80px)]">
 					{listEpisode.map((item, i) => (
 						<Link
-							to={`/eng/watch/${animeId}?current=${item.id}&provider=${provider}`}
+							to={`/eng/watch/${animeId}?current=${item.id}&provider=${provider}&episodeNumber=${item.number}`}
 							key={i}
 							title={
 								item.title

@@ -121,7 +121,7 @@ function VideoPlayer({
 								} else {
 									setVideoLoading(true)
 									navigate(
-										`/eng/watch/${animeId}?current=${nextEpisode.id}&provider=${provider}`
+										`/eng/watch/${animeId}?current=${nextEpisode.id}&provider=${provider}&episodeNumber=${nextEpisode.number}`
 									)
 								}
 							}
@@ -148,7 +148,7 @@ function VideoPlayer({
 								} else {
 									setVideoLoading(true)
 									navigate(
-										`/eng/watch/${animeId}?current=${previousEpisode.id}&provider=${provider}`
+										`/eng/watch/${animeId}?current=${previousEpisode.id}&provider=${provider}&episodeNumber=${previousEpisode.number}`
 									)
 								}
 							}

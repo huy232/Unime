@@ -221,7 +221,7 @@ function AnimeInfoEpisodeHolderENG({
 									<Col key={i}>
 										<nav>
 											<Link
-												to={`/eng/watch/${info.id}?current=${eachEpisode.id}&provider=${provider}`}
+												to={`/eng/watch/${info.id}?current=${eachEpisode.id}&provider=${provider}&episodeNumber=${eachEpisode.number}`}
 												title={
 													eachEpisode.title
 														? `EP ${eachEpisode.number} - ${eachEpisode.title}`
