@@ -7,9 +7,8 @@ import ChapterOption from "../ChapterOption"
 import ChapterSkeleton from "../ChapterSkeleton"
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton"
 import { trackWindowScroll } from "react-lazy-load-image-component"
-import "react-lazy-load-image-component/src/effects/opacity.css"
-import LazyImage from "../LazyImage"
 import useDocumentTitle from "../../../Hooks/useDocumentTitle"
+import Image from "../Image"
 
 function MangaReadChapter({
 	currentChapter,
@@ -93,7 +92,15 @@ function MangaReadChapter({
 			) : (
 				<ul className="flex flex-col justify-center items-center my-2">
 					{currentChapterList.map((page) => (
-						<LazyImage provider={provider} page={page} key={page.page} />
+						<Image
+							src={page.img}
+							alt={page.title}
+							provider={provider}
+							page={page}
+							key={page.page}
+							className="duration-500 ease-in-out"
+							loading="lazy"
+						/>
 					))}
 				</ul>
 			)}
