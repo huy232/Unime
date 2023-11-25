@@ -28,10 +28,10 @@ const genres = [
 const provider = [
 	"zoro",
 	"gogoanime",
-	"enime",
-	"nineanime",
-	"animepahe",
-	"animefox",
+	// "enime",
+	// "nineanime",
+	// "animepahe",
+	// "animefox",
 ]
 
 const mangaProvider = [

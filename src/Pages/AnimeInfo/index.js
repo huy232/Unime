@@ -33,38 +33,36 @@ function AnimeInfo({ instance }) {
 		const source = CancelToken.source()
 
 		const getList = async () => {
-			await instance
-				.get(`/info/${anime}`, {
+			try {
+				const response = await instance.get(`/info/${anime}`, {
 					cancelToken: source.token,
 				})
-				.then((response) => {
-					let info = response.data.data
-					setInfo(info)
-					const episodeListChunk = []
-					const specialEpisodeListChunk = []
-					const ovaListChunk = []
-					while (info.episodes.length) {
-						episodeListChunk.push(info.episodes.splice(0, 12))
+				const info = response.data.data
+				const episodeListChunk = []
+				const specialEpisodeListChunk = []
+				const ovaListChunk = []
+				while (info.episodes.length) {
+					episodeListChunk.push(info.episodes.splice(0, 12))
+				}
+				if (info.special_episodes.length > 0) {
+					while (info.special_episodes.length) {
+						specialEpisodeListChunk.push(info.special_episodes.splice(0, 12))
 					}
-					if (info.special_episodes.length > 0) {
-						while (info.special_episodes.length) {
-							specialEpisodeListChunk.push(info.special_episodes.splice(0, 12))
-						}
+				}
+				if (info.ova.length > 0) {
+					while (info.ova.length) {
+						ovaListChunk.push(info.ova.splice(0, 12))
 					}
-					if (info.ova.length > 0) {
-						while (info.ova.length) {
-							ovaListChunk.push(info.ova.splice(0, 12))
-						}
-					}
-					document.title = info?.name
-					setEpisodeList(episodeListChunk)
-					setSpecialEpisodeList(specialEpisodeListChunk)
-					setOvaList(ovaListChunk)
-					setLoading(false)
-				})
-				.catch((thrown) => {
-					if (axios.isCancel(thrown)) return
-				})
+				}
+				document.title = info?.name
+				setInfo(info)
+				setEpisodeList(episodeListChunk)
+				setSpecialEpisodeList(specialEpisodeListChunk)
+				setOvaList(ovaListChunk)
+				setLoading(false)
+			} catch (thrown) {
+				if (axios.isCancel(thrown)) return
+			}
 		}
 
 		getList()
