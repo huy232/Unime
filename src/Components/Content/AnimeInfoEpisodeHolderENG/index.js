@@ -17,6 +17,7 @@ import "swiper/css/navigation"
 import SwiperCore, { Pagination, Navigation, Lazy } from "swiper"
 import { API } from "../../../constants"
 import EpisodeHolderSkeleton from "../EpisodeHolderSkeleton"
+import blackImage from "../../../Utilities/img/black.webp"
 SwiperCore.use([Pagination, Navigation, Lazy])
 
 // ---------------------------
@@ -238,10 +239,7 @@ function AnimeInfoEpisodeHolderENG({
 														<Card.Img
 															variant="top"
 															src={
-																// provider === "animepahe"
-																// 	? eachEpisode?.image
-																// 	: `${IO_CORS}${eachEpisode?.image}`
-																eachEpisode?.image
+																eachEpisode?.image || info?.image || blackImage
 															}
 															loading="lazy"
 															alt={

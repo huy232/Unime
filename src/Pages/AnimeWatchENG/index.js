@@ -43,7 +43,7 @@ function AnimeWatchENG() {
 				)
 				const listData = data.data
 				const episodeTitle = listData.episodes.find((obj) => {
-					return obj.id === current
+					return Number(obj.number) === Number(episodeNumber)
 				})
 				setWatchDetail(
 					`${
