@@ -68,7 +68,15 @@ function AnimeWatchENG() {
 		const filmEpisodeWatch = async () => {
 			await axios
 				.get(
-					`${API}/eng/provider/${animeId}&${current}&${provider}&${episodeNumber}`,
+					`${API}/eng/provider`,
+					{
+						params: {
+							anilistID: animeId,
+							episodeID: current,
+							provider: provider,
+							episodeNumber: episodeNumber,
+						},
+					},
 					{
 						cancelToken: source.token,
 					}
