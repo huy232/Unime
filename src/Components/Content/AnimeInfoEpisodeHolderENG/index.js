@@ -59,6 +59,7 @@ function AnimeInfoEpisodeHolderENG({
 					.catch((thrown) => {
 						setEpisodeList([])
 						setSelectedChunk(0)
+						setLoadingEpisodeList(false)
 						if (axios.isCancel(thrown)) return
 					})
 			}
@@ -129,7 +130,8 @@ function AnimeInfoEpisodeHolderENG({
 					<div className="episode-list">
 						{episodeList.length === 0 ? (
 							<p style={{ textAlign: "center" }}>
-								Anime hasn't upload yet, please come back later.
+								Anime hasn't upload yet for this provider, please change
+								provider or come back later.
 							</p>
 						) : (
 							<>

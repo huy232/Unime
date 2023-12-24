@@ -36,6 +36,8 @@ function AnimeInfoENG() {
 					setLoadingEpisodeList(false)
 				})
 				.catch((thrown) => {
+					setInfo({})
+					setLoading(false)
 					if (axios.isCancel(thrown)) return
 				})
 		}
