@@ -20,6 +20,7 @@ function TrendingAnimeENGComp({ trendingAnime }) {
 				lazy={true}
 				preloadImages={false}
 			>
+				{console.log(trendingAnime)}
 				{trendingAnime.map((anime, i) => (
 					<SwiperSlide key={i}>
 						<Link
@@ -37,7 +38,13 @@ function TrendingAnimeENGComp({ trendingAnime }) {
 								<div className="popular-anime-image aspect-[2/3] group-hover:opacity-80 duration-200 ease-in-out relative">
 									<Image
 										className="object-fill object-center w-full h-full group-hover:scale-90 duration-500 linear absolute"
-										src={anime.image || ""}
+										src={
+											anime.image ||
+											anime.coverImage.extraLarge ||
+											anime.coverImage.large ||
+											anime.coverImage.medium ||
+											""
+										}
 										alt={
 											anime.title.english ||
 											anime.title.romaji ||
@@ -51,7 +58,7 @@ function TrendingAnimeENGComp({ trendingAnime }) {
 									<p
 										className="line-clamp-2 font-semibold"
 										style={{
-											color: anime?.color || "#fffc",
+											color: anime.coverImage?.color || anime?.color || "#fffc",
 										}}
 									>
 										{anime.title.english ||
