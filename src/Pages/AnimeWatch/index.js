@@ -66,7 +66,6 @@ function AnimeWatch({ instance }) {
 		if (type === "normal" || type === null) {
 			if (mainId && index !== null) {
 				const getAnime = async () => {
-					console.log(index)
 					const numIndex = Number(index)
 					await instance
 						.get(`/anime/${mainId}/episodes/${numIndex}`, {

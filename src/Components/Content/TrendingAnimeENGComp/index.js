@@ -20,7 +20,6 @@ function TrendingAnimeENGComp({ trendingAnime }) {
 				lazy={true}
 				preloadImages={false}
 			>
-				{console.log(trendingAnime)}
 				{trendingAnime.map((anime, i) => (
 					<SwiperSlide key={i}>
 						<Link
