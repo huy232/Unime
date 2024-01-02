@@ -8,6 +8,7 @@ import "swiper/css/navigation"
 
 import SwiperCore, { Lazy } from "swiper"
 import Image from "../Image"
+import { COLORLIST } from "../../../constants"
 SwiperCore.use([Lazy])
 
 function CharacterDetail({ randomAnime, loadingRandomAnime }) {
@@ -46,14 +47,25 @@ function CharacterDetail({ randomAnime, loadingRandomAnime }) {
 									>
 										<div className="h-full">
 											<Image
-												className="aspect-[2/3] object-cover w-[100px] duration-500 ease-in-out"
-												src={character.image || ""}
+												className="aspect-[2/3] object-cover w-[100px] duration-500 ease-in-out rounded-t-md"
+												src={
+													character.image.large || character.image.medium || ""
+												}
 												loading="lazy"
-												alt={character.name.full}
+												alt={
+													character.name.english ||
+													character.name.userPreferred ||
+													character.name.native
+												}
 											/>
 										</div>
-										<p className="line-clamp-2 block w-full text-left break-words">
-											{character.name.full}
+										<p
+											className="line-clamp-2 block w-full text-left break-words h-full"
+											style={{ color: COLORLIST[i] }}
+										>
+											{character.name.english ||
+												character.name.userPreferred ||
+												character.name.native}
 										</p>
 									</SwiperSlide>
 								))}

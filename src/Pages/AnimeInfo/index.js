@@ -14,10 +14,12 @@ import "./animeinfo.css"
 import CommentSection from "../../Components/Content/CommentSection"
 import { useRef } from "react"
 import Image from "../../Components/Content/Image"
+import { useCallback } from "react"
+import { useAuth } from "../../Contexts/auth"
 
 function AnimeInfo({ instance }) {
 	const { anime } = useParams()
-
+	const { user } = useAuth()
 	const [info, setInfo] = useState({})
 	const [loading, setLoading] = useState(true)
 	const [episodeList, setEpisodeList] = useState([])
@@ -27,50 +29,63 @@ function AnimeInfo({ instance }) {
 	const [selectedSpecialChunk, setSelectedSpecialChunk] = useState(0)
 	const [selectedOvaChunk, setSelectedOvaChunk] = useState(0)
 
-	useEffect(() => {
+	const getList = useCallback(async () => {
 		window.scrollTo(0, 0)
 		const CancelToken = axios.CancelToken
 		const source = CancelToken.source()
 
-		const getList = async () => {
-			try {
-				const response = await instance.get(`/info/${anime}`, {
-					cancelToken: source.token,
-				})
-				const info = response.data.data
-				const episodeListChunk = []
-				const specialEpisodeListChunk = []
-				const ovaListChunk = []
-				while (info.episodes.length) {
-					episodeListChunk.push(info.episodes.splice(0, 12))
-				}
-				if (info.special_episodes.length > 0) {
-					while (info.special_episodes.length) {
-						specialEpisodeListChunk.push(info.special_episodes.splice(0, 12))
-					}
-				}
-				if (info.ova.length > 0) {
-					while (info.ova.length) {
-						ovaListChunk.push(info.ova.splice(0, 12))
-					}
-				}
-				document.title = info?.name
-				setInfo(info)
-				setEpisodeList(episodeListChunk)
-				setSpecialEpisodeList(specialEpisodeListChunk)
-				setOvaList(ovaListChunk)
-				setLoading(false)
-			} catch (thrown) {
-				if (axios.isCancel(thrown)) return
-			}
-		}
+		try {
+			const response = await instance.get(`/info/${anime}`, {
+				cancelToken: source.token,
+			})
 
-		getList()
+			const infoData = response.data.data
+			const episodesCopy = [...infoData.episodes]
+			const episodeListChunk = []
+			while (episodesCopy.length) {
+				episodeListChunk.push(episodesCopy.splice(0, 12))
+			}
+
+			const specialEpisodesCopy = [...infoData.special_episodes]
+			const specialEpisodeListChunk = []
+			while (specialEpisodesCopy.length) {
+				specialEpisodeListChunk.push(specialEpisodesCopy.splice(0, 12))
+			}
+
+			const ovaCopy = [...infoData.ova]
+			const ovaListChunk = []
+			while (ovaCopy.length) {
+				ovaListChunk.push(ovaCopy.splice(0, 12))
+			}
+
+			document.title = infoData?.name
+
+			if (user) {
+				const findHistory = await instance.post("/find-history", {
+					userId: user.id,
+					storedLocation: "historyVI",
+					animeSlug: anime,
+				})
+				console.log(findHistory)
+			}
+
+			setInfo(infoData)
+			setEpisodeList(episodeListChunk)
+			setSpecialEpisodeList(specialEpisodeListChunk)
+			setOvaList(ovaListChunk)
+			setLoading(false)
+		} catch (thrown) {
+			if (axios.isCancel(thrown)) return
+		}
 
 		return () => {
 			source.cancel()
 		}
-	}, [anime, instance])
+	}, [anime, instance, user])
+
+	useEffect(() => {
+		getList()
+	}, [getList])
 
 	const scrollToRef = useRef(null)
 	const executeScroll = () => scrollToRef.current.scrollIntoView()
@@ -112,6 +127,7 @@ function AnimeInfo({ instance }) {
 							info={info}
 							loading={loading}
 							executeScroll={executeScroll}
+							anime={anime}
 						/>
 						<InfoTrailer trailerId={info?.trailer?.id} />
 						<CharacterListVI

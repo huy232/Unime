@@ -18,6 +18,7 @@ import SwiperCore, { Pagination, Navigation, Lazy } from "swiper"
 import { API } from "../../../constants"
 import EpisodeHolderSkeleton from "../EpisodeHolderSkeleton"
 import blackImage from "../../../Utilities/img/black.webp"
+import { useCallback } from "react"
 SwiperCore.use([Pagination, Navigation, Lazy])
 
 // ---------------------------
@@ -37,41 +38,49 @@ function AnimeInfoEpisodeHolderENG({
 		provider: "gogoanime",
 	})
 
-	useEffect(() => {
-		if (prevProvider.current.provider !== provider) {
-			prevProvider.current.provider = provider
-			const CancelToken = axios.CancelToken
-			const source = CancelToken.source()
-			const getEpisode = async () => {
-				await axios
-					.get(`${API}/eng/episode-list/${animeId}&${provider}`)
-					.then((data) => {
-						const episodeListChunk = []
-						if (data.data.success) {
-							while (data.data.data.length) {
-								episodeListChunk.push(data.data.data.splice(0, 12))
-							}
-						}
-						setEpisodeList(episodeListChunk)
-						setSelectedChunk(0)
-						setLoadingEpisodeList(false)
-					})
-					.catch((thrown) => {
-						setEpisodeList([])
-						setSelectedChunk(0)
-						setLoadingEpisodeList(false)
-						if (axios.isCancel(thrown)) return
-					})
+	const getEpisodeList = useCallback(async () => {
+		const CancelToken = axios.CancelToken
+		const source = CancelToken.source()
+
+		try {
+			const response = await axios.get(
+				`${API}/eng/episode-list/${animeId}&${provider}`,
+				{
+					cancelToken: source.token,
+				}
+			)
+
+			const episodeListData = response.data.data
+			const episodeListChunk = []
+			if (episodeListData.success) {
+				while (episodeListData.data.length) {
+					episodeListChunk.push(episodeListData.data.splice(0, 12))
+				}
 			}
-			getEpisode()
-			return () => {
-				source.cancel()
-			}
+			setEpisodeList(episodeListChunk)
+			setSelectedChunk(0)
+			setLoadingEpisodeList(false)
+		} catch (thrown) {
+			setEpisodeList([])
+			setSelectedChunk(0)
+			setLoadingEpisodeList(false)
+			if (axios.isCancel(thrown)) return
+		}
+
+		return () => {
+			source.cancel()
 		}
 	}, [animeId, provider, setLoadingEpisodeList])
 
 	useEffect(() => {
-		const episodeStructure = async () => {
+		if (prevProvider.current.provider !== provider) {
+			prevProvider.current.provider = provider
+			getEpisodeList()
+		}
+	}, [provider, getEpisodeList])
+
+	useEffect(() => {
+		const episodeStructure = () => {
 			const episodeListChunk = []
 			while (info.episodes.length) {
 				episodeListChunk.push(info.episodes.splice(0, 12))

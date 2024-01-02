@@ -6,7 +6,10 @@ function RandomAnimeTitle({ randomAnime }) {
 	return (
 		<>
 			<Card>
-				<Card.Title className="description-title">
+				<Card.Title
+					className="description-title"
+					style={{ color: `${randomAnime.cover.color || "#ffc"}` }}
+				>
 					{randomAnime.name}
 				</Card.Title>
 				{randomAnime?.banner && (
@@ -16,7 +19,7 @@ function RandomAnimeTitle({ randomAnime }) {
 							aria-label={randomAnime.slug}
 						>
 							<Card.Img
-								className="today-banner-card-image object-cover hover:opacity-80"
+								className="today-banner-card-image object-cover hover:opacity-80 rounded-t-md"
 								variant="bottom"
 								src={randomAnime.banner}
 								alt={randomAnime.name}

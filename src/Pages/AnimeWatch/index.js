@@ -101,6 +101,7 @@ function AnimeWatch({ instance }) {
 												animeEpisode: watchEpisodeName,
 												animeImage: animeImage,
 												animeSlug: `${anime}?index=${index}&type=normal`,
+												animeSlugName: `${anime}`,
 											})
 											.catch((thrown) => {
 												if (axios.isCancel(thrown)) return

@@ -62,7 +62,7 @@ function HeaderVI() {
 					<div className="h-100">
 						<Link
 							to="/"
-							className="group hover:opacity-80 duration-200 ease-in-out h-100 inline-block flex items-center"
+							className="group hover:opacity-80 duration-200 ease-in-out h-100 flex items-center"
 							onClick={() => {
 								setSidebar(false)
 							}}

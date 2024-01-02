@@ -30,6 +30,7 @@ function InfoDetailENG({
 		if (info && Object.keys(info).length !== 0) {
 			return info.genres.find((selectedGenre) => selectedGenre === genre.name)
 		}
+		return false
 	})
 
 	const scrollToRef = useRef(null)
