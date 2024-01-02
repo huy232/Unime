@@ -11,9 +11,9 @@ function RandomAnimeTitle({ randomAnime }) {
 					style={{ color: `${randomAnime.cover.color || "#ffc"}` }}
 				>
 					{randomAnime.title.romaji ||
-						randomAnime.name.english ||
+						randomAnime.title.english ||
 						randomAnime.name ||
-						randomAnime.userPreferred}
+						randomAnime.title.userPreferred}
 				</Card.Title>
 				{randomAnime?.banner && (
 					<nav>

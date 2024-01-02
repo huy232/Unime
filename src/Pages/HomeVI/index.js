@@ -9,6 +9,7 @@ import CollectionsVI from "../../Components/Content/CollectionsVI"
 import MovieList from "../../Components/Content/MovieListLayout"
 import TopAiringVI from "../../Components/Content/TopAiringVI"
 import "./home.css"
+import GenresVI from "../../Components/Content/GenresVI"
 
 function HomeVI({ instance }) {
 	const [slider, setSlider] = useState([])
@@ -146,6 +147,9 @@ function HomeVI({ instance }) {
 					randomAnime={randomAnime}
 					loadingRandomAnime={loadingRandomAnime}
 				/>
+			</LazyLoad>
+			<LazyLoad>
+				<GenresVI />
 			</LazyLoad>
 		</>
 	)
