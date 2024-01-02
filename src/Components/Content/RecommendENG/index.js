@@ -12,7 +12,12 @@ import Image from "../Image"
 
 function RecommendENG({ recommend, setLoading, title = "RELATIONS" }) {
 	const recommendFilter = recommend.filter((item) => {
-		return item.status !== "Unknown" && item.type !== "NOVEL"
+		return (
+			item.status !== "Unknown" &&
+			item.type !== "NOVEL" &&
+			item.relationType !== "ALTERNATIVE" &&
+			item.relationType !== "SOURCE"
+		)
 	})
 	return (
 		<>

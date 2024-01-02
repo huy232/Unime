@@ -39,7 +39,7 @@ function AnimeInfoENG() {
 						(provider) => provider.providerId === defaultProviderId
 					)
 					const selectedProvider =
-						defaultProvider.providerId || providers[0].providerId
+						defaultProvider?.providerId || providers[0]?.providerId || ""
 					setProvider(selectedProvider)
 					setProviderOptions(providers)
 					setInfo(data)

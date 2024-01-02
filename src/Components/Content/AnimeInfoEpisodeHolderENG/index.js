@@ -29,45 +29,23 @@ function AnimeInfoEpisodeHolderENG({ info, provider, animeId, setWatchNow }) {
 	const [swiper, setSwiper] = useState(null)
 	const [toggleButton, setToggleButton] = useState(true)
 
-	// const getEpisodeList = useCallback(async () => {
-	// 	try {
-	// 		const providerInfo = info.episodes.data.find(
-	// 			(providerInfo) => providerInfo.providerId === provider
-	// 		)
-	// 		if (!providerInfo) {
-	// 			throw new Error("Provider information not found")
-	// 		}
-
-	// 		const episodeListData = providerInfo.episodes
-	// 		const episodeListChunk = Array.from(
-	// 			{ length: Math.ceil(episodeListData.length / 12) },
-	// 			(_, i) => episodeListData.slice(i * 12, i * 12 + 12)
-	// 		)
-	// 		setWatchNow(episodeListData[0])
-	// 		setEpisodeList(episodeListChunk)
-	// 		setSelectedChunk(0)
-	// 		setLoadingEpisodeList(false)
-	// 	} catch (error) {
-	// 		setWatchNow({})
-	// 		setEpisodeList([])
-	// 		setSelectedChunk(0)
-	// 		setLoadingEpisodeList(false)
-	// 		if (axios.isCancel(error)) return
-	// 	}
-	// }, [info.episodes, provider, setLoadingEpisodeList, setWatchNow])
-
 	useEffect(() => {
-		const providerInfo = info.episodes.data.find(
-			(providerInfo) => providerInfo.providerId === provider
-		)
-		const episodeListDataCopy = [...providerInfo.episodes]
-		setWatchNow(episodeListDataCopy[0])
-		const episodeListChunk = []
-		while (episodeListDataCopy.length) {
-			episodeListChunk.push(episodeListDataCopy.splice(0, 12))
+		try {
+			const providerInfo = info.episodes.data.find(
+				(providerInfo) => providerInfo.providerId === provider
+			)
+			const episodeListDataCopy = [...providerInfo.episodes]
+			setWatchNow(episodeListDataCopy[0])
+			const episodeListChunk = []
+			while (episodeListDataCopy.length) {
+				episodeListChunk.push(episodeListDataCopy.splice(0, 12))
+			}
+			setEpisodeList(episodeListChunk)
+			setSelectedChunk(0)
+		} catch (err) {
+			setEpisodeList([])
+			setSelectedChunk(0)
 		}
-		setEpisodeList(episodeListChunk)
-		setSelectedChunk(0)
 	}, [info.episodes.data, provider, setWatchNow])
 
 	const jump = (progress, speed) => {
