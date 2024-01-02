@@ -11,6 +11,8 @@ import VideoPlayer from "../../Components/Content/VideoPlayer"
 import FilmLoadingRequest from "../../Components/Content/LoadingRequest/FilmLoadingRequest"
 import { useAuth } from "../../Contexts/auth"
 import ErrorLoad from "../../Components/Content/ErrorLoad"
+import { useCallback } from "react"
+import { useMemo } from "react"
 function AnimeWatchENG() {
 	const { animeId } = useParams()
 	const queryParams = new URLSearchParams(window.location.search)
@@ -30,139 +32,174 @@ function AnimeWatchENG() {
 	const { user } = useAuth()
 	const pathname = useLocation()
 	const [error, setError] = useState(false)
-	useEffect(() => {
+	const memoizedPathname = useMemo(() => pathname.pathname, [pathname.pathname])
+	const memoizedSearch = useMemo(() => pathname.search, [pathname.search])
+	const memoizedUser = useMemo(() => user, [user])
+
+	const filmEpisodeList = useCallback(async () => {
 		const CancelToken = axios.CancelToken
 		const source = CancelToken.source()
+		if (prevAnilist.current !== animeId) {
+			const { data } = await axios.get(`${API}/eng/info/${animeId}&gogoanime`)
+			const { data: episodeData } = await axios.get(
+				`${API}/eng/episode-list/${animeId}&${provider}`
+			)
+			const listData = data.data
+			const episodeDataProvider = episodeData.data
+			const episodeTitle = episodeDataProvider.find((obj) => {
+				return Number(obj.number) === Number(episodeNumber)
+			})
+			setWatchDetail(
+				`${
+					listData.title?.english ||
+					listData.title?.romaji ||
+					listData.title?.native
+				} - EP. ${episodeTitle.number} ${
+					episodeTitle.title ? `- ${episodeTitle.title}` : ""
+				}`
+			)
+			setTitle(
+				listData.title?.english ||
+					listData.title?.romaji ||
+					listData.title?.native
+			)
+			setListEpisode(episodeDataProvider)
+			setInfo(data.data)
+		}
+		prevAnilist.current = animeId
+		return () => {
+			source.cancel()
+		}
+	}, [animeId, episodeNumber, provider])
+
+	const filmEpisodeWatch = useCallback(async () => {
+		const CancelToken = axios.CancelToken
+		const source = CancelToken.source()
+		await axios
+			.get(
+				`${API}/eng/provider`,
+				{
+					params: {
+						anilistID: animeId,
+						episodeID: current,
+						provider: provider,
+						episodeNumber: episodeNumber,
+					},
+				},
+				{
+					cancelToken: source.token,
+				}
+			)
+			.then((response) => {
+				if (response.data.success !== false) {
+					setVideoUrl(response.data.data.sources)
+					if (response.data.data.subtitles) {
+						let subs = response.data.data.subtitles.filter(
+							(option) => option.lang !== "Thumbnails"
+						)
+						setSubtitles(
+							subs.map((sub, i) => ({
+								html: `${i}. ${sub.lang}`,
+								url: sub.url,
+							}))
+						)
+						setThumbnail(
+							response.data.data.subtitles.find(
+								(sub) => sub.lang === "Thumbnails"
+							)
+						)
+					}
+					if (response.data.data?.intro) {
+						setIntro(response.data.data.intro)
+					}
+					if (listEpisode.length > 0) {
+						const episodeTitle = listEpisode.find((obj) => {
+							return obj.id === current
+						})
+						setWatchDetail(
+							`${title} - EP. ${episodeTitle.number} ${
+								episodeTitle.title ? `- ${episodeTitle.title}` : ""
+							}`
+						)
+						if (memoizedUser && info) {
+							const saveHistory = async () => {
+								await axios
+									.post(`${API}/save-history`, {
+										userId: memoizedUser.id,
+										animeName: title,
+										animeEpisode: `EP. ${episodeTitle.number} ${
+											episodeTitle.title ? `- ${episodeTitle.title}` : ""
+										}`,
+										animeImage: info?.image,
+										animeCover: info?.cover,
+										animeColor: info?.color,
+										duration: info?.duration,
+										rating: info?.rating,
+										totalEpisodes: info?.totalEpisodes,
+										type: info?.type,
+										animeStatus: info?.status,
+										animeId: info.id,
+										currentSlug: `${memoizedPathname}${memoizedSearch}`,
+										animeSlug: `/eng/info/${animeId}`,
+									})
+									.catch((thrown) => {
+										if (axios.isCancel(thrown)) return
+									})
+							}
+							saveHistory()
+						}
+					}
+					setVideoLoading(false)
+				} else {
+					setError(true)
+				}
+			})
+			.catch((thrown) => {
+				if (axios.isCancel(thrown)) return
+			})
+	}, [
+		animeId,
+		current,
+		episodeNumber,
+		info,
+		listEpisode,
+		memoizedPathname,
+		memoizedSearch,
+		provider,
+		title,
+	])
+
+	const memoizedFilmEpisodeList = useMemo(
+		() => filmEpisodeList,
+		[filmEpisodeList]
+	)
+	const memoizedFilmEpisodeWatch = useMemo(
+		() => filmEpisodeWatch,
+		[filmEpisodeWatch]
+	)
+
+	useEffect(() => {
 		// FIX RUBBER SCROLL FOR SAFARI
 		document.body.style.overflow = "hidden"
-
-		const filmEpisodeList = async () => {
-			if (prevAnilist.current !== animeId) {
-				const { data } = await axios.get(
-					`${API}/eng/info/${animeId}&${provider}`
-				)
-				const listData = data.data
-				const episodeTitle = listData.episodes.find((obj) => {
-					return Number(obj.number) === Number(episodeNumber)
-				})
-				setWatchDetail(
-					`${
-						listData.title?.english ||
-						listData.title?.romaji ||
-						listData.title?.native
-					} - EP. ${episodeTitle.number} ${
-						episodeTitle.title ? `- ${episodeTitle.title}` : ""
-					}`
-				)
-				setTitle(
-					listData.title?.english ||
-						listData.title?.romaji ||
-						listData.title?.native
-				)
-				setListEpisode(listData.episodes)
-				setInfo(data.data)
-			}
-			prevAnilist.current = animeId
-		}
-
-		const filmEpisodeWatch = async () => {
-			await axios
-				.get(
-					`${API}/eng/provider`,
-					{
-						params: {
-							anilistID: animeId,
-							episodeID: current,
-							provider: provider,
-							episodeNumber: episodeNumber,
-						},
-					},
-					{
-						cancelToken: source.token,
-					}
-				)
-				.then((response) => {
-					if (response.data.success !== false) {
-						setVideoUrl(response.data.data.sources)
-						if (response.data.data.subtitles) {
-							let subs = response.data.data.subtitles.filter(
-								(option) => option.lang !== "Thumbnails"
-							)
-							setSubtitles(
-								subs.map((sub, i) => ({
-									html: `${i}. ${sub.lang}`,
-									url: sub.url,
-								}))
-							)
-							setThumbnail(
-								response.data.data.subtitles.find(
-									(sub) => sub.lang === "Thumbnails"
-								)
-							)
-						}
-						if (response.data.data?.intro) {
-							setIntro(response.data.data.intro)
-						}
-						if (listEpisode.length > 0) {
-							const episodeTitle = listEpisode.find((obj) => {
-								return obj.id === current
-							})
-							setWatchDetail(
-								`${title} - EP. ${episodeTitle.number} ${
-									episodeTitle.title ? `- ${episodeTitle.title}` : ""
-								}`
-							)
-							if (user && info) {
-								const saveHistory = async () => {
-									await axios
-										.post(`${API}/save-history`, {
-											userId: user.id,
-											animeName: title,
-											animeEpisode: `EP. ${episodeTitle.number} ${
-												episodeTitle.title ? `- ${episodeTitle.title}` : ""
-											}`,
-											animeImage: info?.image,
-											animeCover: info?.cover,
-											animeColor: info?.color,
-											duration: info?.duration,
-											rating: info?.rating,
-											totalEpisodes: info?.totalEpisodes,
-											type: info?.type,
-											animeStatus: info?.status,
-											animeId: info.id,
-											currentSlug: `${pathname.pathname}${pathname.search}`,
-											animeSlug: `/eng/info/${animeId}`,
-										})
-										.catch((thrown) => {
-											if (axios.isCancel(thrown)) return
-										})
-								}
-								saveHistory()
-							}
-						}
-						setVideoLoading(false)
-					} else {
-						setError(true)
-					}
-				})
-				.catch((thrown) => {
-					if (axios.isCancel(thrown)) return
-				})
-		}
 
 		const element = document.getElementsByClassName("active")[0]
 		if (element) {
 			element.scrollIntoView({ behavior: "smooth" })
 		}
 
-		filmEpisodeList()
-		filmEpisodeWatch()
-
+		memoizedFilmEpisodeList()
+		memoizedFilmEpisodeWatch()
 		return () => {
-			source.cancel()
 			document.body.style.overflow = "auto"
 		}
-	}, [animeId, current, info, listEpisode, provider, title])
+	}, [
+		animeId,
+		current,
+		provider,
+		listEpisode,
+		memoizedFilmEpisodeList,
+		memoizedFilmEpisodeWatch,
+	])
 	useDocumentTitle(watchDetail)
 	return (
 		<div className="flex max-lg:flex-col ">

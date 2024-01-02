@@ -7,7 +7,13 @@ import { faArrowDown } from "@fortawesome/free-solid-svg-icons"
 import { FaPlay } from "react-icons/fa"
 import { GiReturnArrow } from "react-icons/gi"
 
-function InfoHeadDetail({ info, loading, executeScroll, anime }) {
+function InfoHeadDetail({
+	info,
+	loading,
+	executeScroll,
+	anime,
+	continueToWatch,
+}) {
 	let resultCollection = COLLECTIONS.filter((collection) => {
 		if (info && Object.keys(info).length !== 0) {
 			return info.genres.find(
@@ -39,29 +45,31 @@ function InfoHeadDetail({ info, loading, executeScroll, anime }) {
 				<div className="flex max-md:justify-center my-2">
 					<button
 						onClick={() => executeScroll()}
-						className="mx-2 p-1 bg-yellow-600 rounded hover:opacity-80 duration-200"
+						className="flex justify-center items-center gap-1 mx-2 p-2 bg-yellow-600 border-transparent rounded hover:opacity-80 duration-200 hover:bg-transparent hover:border-yellow-600 border-2 text-white"
 					>
 						<FontAwesomeIcon icon={faArrowDown} />
 						<span className="mx-[6px]">Danh sách tập phim</span>
 					</button>
 					<Link
 						to={`/watch/${anime}?index=${info.episodes[0].name}&type=normal`}
-						className="flex justify-center items-center gap-1 mx-2 p-2 bg-red-600 border-transparent rounded hover:opacity-80 duration-200 hover:bg-transparent hover:border-red-600 border-2"
+						className="flex justify-center items-center gap-1 mx-2 p-2 bg-red-600 border-transparent rounded hover:opacity-80 duration-200 hover:bg-transparent hover:border-red-600 border-2 text-white"
 					>
 						<span>Xem ngay tập đầu</span>
 						<span>
 							<FaPlay className="mt-[2px]" />
 						</span>
 					</Link>
-					{/* <Link
-						to={`/watch/${anime}?index=${info.episodes[0].name}&type=normal`}
-						className="flex justify-center items-center gap-1 mx-2 p-2 bg-red-600 border-transparent rounded hover:opacity-80 duration-200 hover:bg-transparent hover:border-red-600 border-2"
-					>
-						<span>Tiếp tục</span>
-						<span>
-							<GiReturnArrow className="mt-[2px]" />
-						</span>
-					</Link> */}
+					{continueToWatch && (
+						<Link
+							to={`/watch/${continueToWatch.anime_slug}`}
+							className="flex justify-center items-center gap-1 mx-2 p-2 bg-cyan-800 border-transparent rounded hover:opacity-80 duration-200 hover:bg-transparent hover:border-cyan-800 border-2 text-white"
+						>
+							<span>Tiếp tục xem</span>
+							<span>
+								<GiReturnArrow className="mt-[2px]" />
+							</span>
+						</Link>
+					)}
 				</div>
 			)}
 			<div className="description">

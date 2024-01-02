@@ -28,6 +28,7 @@ function AnimeInfo({ instance }) {
 	const [selectedChunk, setSelectedChunk] = useState(0)
 	const [selectedSpecialChunk, setSelectedSpecialChunk] = useState(0)
 	const [selectedOvaChunk, setSelectedOvaChunk] = useState(0)
+	const [continueToWatch, setContinueToWatch] = useState("")
 
 	const getList = useCallback(async () => {
 		window.scrollTo(0, 0)
@@ -66,7 +67,9 @@ function AnimeInfo({ instance }) {
 					storedLocation: "historyVI",
 					animeSlug: anime,
 				})
-				console.log(findHistory)
+				if (findHistory.data.success) {
+					setContinueToWatch(findHistory.data.data)
+				}
 			}
 
 			setInfo(infoData)
@@ -81,7 +84,7 @@ function AnimeInfo({ instance }) {
 		return () => {
 			source.cancel()
 		}
-	}, [anime, instance, user])
+	}, [anime, instance])
 
 	useEffect(() => {
 		getList()
@@ -128,6 +131,7 @@ function AnimeInfo({ instance }) {
 							loading={loading}
 							executeScroll={executeScroll}
 							anime={anime}
+							continueToWatch={continueToWatch}
 						/>
 						<InfoTrailer trailerId={info?.trailer?.id} />
 						<CharacterListVI

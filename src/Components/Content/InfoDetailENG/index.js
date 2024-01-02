@@ -13,8 +13,10 @@ import CommentSection from "../CommentSection"
 import { useRef } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faArrowDown } from "@fortawesome/free-solid-svg-icons"
+import { FaPlay } from "react-icons/fa"
 
 function InfoDetailENG({
+	watchNow,
 	loading,
 	info,
 	setProvider,
@@ -25,6 +27,7 @@ function InfoDetailENG({
 	setInfo,
 	loadingEpisodeList,
 	setLoadingEpisodeList,
+	setWatchNow,
 }) {
 	let resultCategory = ENG_GENRES.filter((genre) => {
 		if (info && Object.keys(info).length !== 0) {
@@ -82,11 +85,22 @@ function InfoDetailENG({
 				<div className="flex max-md:justify-center my-2">
 					<button
 						onClick={() => executeScroll()}
-						className="mx-2 p-1 bg-yellow-600 rounded hover:opacity-80 duration-200"
+						className="flex justify-center items-center gap-1 mx-2 p-2 bg-yellow-600 border-transparent rounded hover:opacity-80 duration-200 hover:bg-transparent hover:border-yellow-600 border-2 text-white"
 					>
 						<FontAwesomeIcon icon={faArrowDown} />
 						<span className="mx-[6px]">Episode list</span>
 					</button>
+					{watchNow && (
+						<Link
+							className="flex justify-center items-center gap-1 mx-2 p-2 bg-red-600 border-transparent rounded hover:opacity-80 duration-200 hover:bg-transparent hover:border-red-600 border-2 text-white"
+							to={`/eng/watch/${itemId}?current=${watchNow.id}&provider=${provider}&episodeNumber=${watchNow.number}`}
+						>
+							<span>Watch now</span>
+							<span>
+								<FaPlay className="mt-[2px]" />
+							</span>
+						</Link>
+					)}
 				</div>
 			)}
 			<div className="description">
@@ -167,6 +181,7 @@ function InfoDetailENG({
 								className="provider flex font-semibold uppercase rounded group bg-[#222] text-white p-[4px] cursor-pointer outline-none border-none"
 								onChange={(e) => {
 									localStorage.setItem("unime-provider", e.target.value)
+									setWatchNow({})
 									setProvider(e.target.value)
 									setLoadingEpisodeList(true)
 								}}
@@ -196,6 +211,7 @@ function InfoDetailENG({
 							setInfo={setInfo}
 							setLoadingEpisodeList={setLoadingEpisodeList}
 							loadingEpisodeList={loadingEpisodeList}
+							setWatchNow={setWatchNow}
 						/>
 					</div>
 					{info.recommendations.length > 0 && (

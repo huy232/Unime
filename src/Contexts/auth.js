@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react"
+import React, { useContext, useState, useEffect, useMemo } from "react"
 import { useNavigate } from "react-router-dom"
 import { supabase } from "../supabaseClient"
 
@@ -40,44 +40,83 @@ export function AuthProvider({ children }) {
 	}, [])
 
 	// Will be passed down to components
-	const value = {
-		signUp: async (data) => await supabase.auth.signUp(data),
-		signIn: async (data) => await supabase.auth.signInWithPassword(data),
-		signInWithGoogle: async (data) =>
-			await supabase.auth.signInWithOAuth({
-				provider: "google",
-			}),
-		signInWithFacebook: async (data) => {
-			await supabase.auth.signInWithOAuth({
-				provider: "facebook",
-			})
-		},
-		signInWithDiscord: async (data) => {
-			await supabase.auth.signInWithOAuth({
-				provider: "discord",
-			})
-		},
-		signOut: async () => await supabase.auth.signOut(),
-		user,
-		setLanguage: (data) => {
-			localStorage.setItem("unime-language", data)
-			if (data === "eng") {
-				navigate("/eng")
-			} else {
-				navigate("/")
-			}
-			setLanguage(data)
-		},
-		language,
-	}
+	const contextValue = useMemo(
+		() => ({
+			signUp: async (data) => await supabase.auth.signUp(data),
+			signIn: async (data) => await supabase.auth.signInWithPassword(data),
+			signInWithGoogle: async (data) =>
+				await supabase.auth.signInWithOAuth({
+					provider: "google",
+				}),
+			signInWithFacebook: async (data) => {
+				await supabase.auth.signInWithOAuth({
+					provider: "facebook",
+				})
+			},
+			signInWithDiscord: async (data) => {
+				await supabase.auth.signInWithOAuth({
+					provider: "discord",
+				})
+			},
+			signOut: async () => await supabase.auth.signOut(),
+			user,
+			setLanguage: (data) => {
+				localStorage.setItem("unime-language", data)
+				if (data === "eng") {
+					navigate("/eng")
+				} else {
+					navigate("/")
+				}
+				setLanguage(data)
+			},
+			language,
+		}),
+		[user, language, navigate]
+	)
 
 	return (
-		<AuthContext.Provider value={value}>
+		<AuthContext.Provider value={contextValue}>
 			{!loading && children}
 		</AuthContext.Provider>
 	)
 }
 
 export function useAuth() {
-	return useContext(AuthContext)
+	const context = useContext(AuthContext)
+	const {
+		signUp,
+		signIn,
+		signInWithGoogle,
+		signInWithFacebook,
+		signInWithDiscord,
+		signOut,
+		user,
+		setLanguage,
+		language,
+	} = context
+	const memoizedContext = useMemo(
+		() => ({
+			signUp,
+			signIn,
+			signInWithGoogle,
+			signInWithFacebook,
+			signInWithDiscord,
+			signOut,
+			user,
+			setLanguage,
+			language,
+		}),
+		[
+			language,
+			setLanguage,
+			signIn,
+			signInWithDiscord,
+			signInWithFacebook,
+			signInWithGoogle,
+			signOut,
+			signUp,
+			user,
+		]
+	)
+	return memoizedContext
 }

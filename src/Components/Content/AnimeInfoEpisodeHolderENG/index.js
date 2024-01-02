@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useState } from "react"
 import { Card, Row, Col } from "react-bootstrap"
 import { BsFillPlayFill } from "react-icons/bs"
 import { Link } from "react-router-dom"
@@ -29,18 +29,16 @@ function AnimeInfoEpisodeHolderENG({
 	animeId,
 	loadingEpisodeList,
 	setLoadingEpisodeList,
+	setWatchNow,
 }) {
-	const [episodeList, setEpisodeList] = useState()
+	const [episodeList, setEpisodeList] = useState([])
 	const [selectedChunk, setSelectedChunk] = useState(0)
-	const [swiper, setSwiper] = useState()
+	const [swiper, setSwiper] = useState(null)
 	const [toggleButton, setToggleButton] = useState(true)
-	const prevProvider = useRef({
-		provider: "gogoanime",
-	})
+	const [prevProvider, setPrevProvider] = useState("gogoanime")
 
 	const getEpisodeList = useCallback(async () => {
-		const CancelToken = axios.CancelToken
-		const source = CancelToken.source()
+		const source = axios.CancelToken.source()
 
 		try {
 			const response = await axios.get(
@@ -50,53 +48,48 @@ function AnimeInfoEpisodeHolderENG({
 				}
 			)
 
-			const episodeListData = response.data.data
-			const episodeListChunk = []
-			if (episodeListData.success) {
-				while (episodeListData.data.length) {
-					episodeListChunk.push(episodeListData.data.splice(0, 12))
-				}
-			}
+			const episodeListData = response.data
+			const episodeListChunk = episodeListData.success
+				? Array.from(
+						{ length: Math.ceil(episodeListData.data.length / 12) },
+						(_, i) => episodeListData.data.slice(i * 12, i * 12 + 12)
+				  )
+				: []
+			setWatchNow(episodeListData.data[0])
 			setEpisodeList(episodeListChunk)
 			setSelectedChunk(0)
 			setLoadingEpisodeList(false)
-		} catch (thrown) {
+		} catch (error) {
+			setWatchNow({})
 			setEpisodeList([])
 			setSelectedChunk(0)
 			setLoadingEpisodeList(false)
-			if (axios.isCancel(thrown)) return
+			if (axios.isCancel(error)) return
 		}
 
 		return () => {
 			source.cancel()
 		}
-	}, [animeId, provider, setLoadingEpisodeList])
+	}, [animeId, provider, setLoadingEpisodeList, setWatchNow])
 
 	useEffect(() => {
-		if (prevProvider.current.provider !== provider) {
-			prevProvider.current.provider = provider
+		if (prevProvider !== provider) {
+			setPrevProvider(provider)
 			getEpisodeList()
 		}
-	}, [provider, getEpisodeList])
+	}, [provider, getEpisodeList, prevProvider])
 
 	useEffect(() => {
-		const episodeStructure = () => {
-			const episodeListChunk = []
-			while (info.episodes.length) {
-				episodeListChunk.push(info.episodes.splice(0, 12))
-			}
-			setEpisodeList(episodeListChunk)
-		}
-		episodeStructure()
+		const episodeListChunk = Array.from(
+			{ length: Math.ceil(info.episodes.length / 12) },
+			(_, i) => info.episodes.slice(i * 12, i * 12 + 12)
+		)
+		setEpisodeList(episodeListChunk)
 	}, [animeId, info.episodes])
 
 	const jump = (progress, speed) => {
 		if (swiper) {
-			if (progress === 0) {
-				setToggleButton(true)
-			} else {
-				setToggleButton(false)
-			}
+			setToggleButton(progress === 0)
 			swiper.setProgress(progress, speed)
 		}
 	}

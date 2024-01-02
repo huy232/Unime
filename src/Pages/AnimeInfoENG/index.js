@@ -15,6 +15,7 @@ function AnimeInfoENG() {
 	const [loadingProvider, setLoadingProvider] = useState(true)
 	const [title, setTitle] = useState("Loading")
 	const [loadingEpisodeList, setLoadingEpisodeList] = useState(true)
+	const [watchNow, setWatchNow] = useState(null)
 
 	useEffect(() => {
 		window.scrollTo(0, 0)
@@ -32,6 +33,7 @@ function AnimeInfoENG() {
 							data.data.data.title?.native
 					)
 					setInfo(data.data.data)
+					setWatchNow(data.data.data.episodes[0] || null)
 					setLoading(false)
 					setLoadingEpisodeList(false)
 				})
@@ -45,7 +47,7 @@ function AnimeInfoENG() {
 		return () => {
 			source.cancel()
 		}
-	}, [animeId])
+	}, [animeId, provider])
 
 	useDocumentTitle(title)
 	return (
@@ -54,6 +56,7 @@ function AnimeInfoENG() {
 			<div className="w-full flex relative max-lg:flex-col">
 				<InfoBoxENG loading={loading} info={info} />
 				<InfoDetailENG
+					watchNow={watchNow}
 					loading={loading}
 					info={info}
 					setProvider={setProvider}
@@ -65,6 +68,7 @@ function AnimeInfoENG() {
 					setInfo={setInfo}
 					loadingEpisodeList={loadingEpisodeList}
 					setLoadingEpisodeList={setLoadingEpisodeList}
+					setWatchNow={setWatchNow}
 				/>
 			</div>
 		</div>
