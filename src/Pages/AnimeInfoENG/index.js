@@ -18,12 +18,12 @@ function AnimeInfoENG() {
 	const [watchNow, setWatchNow] = useState(null)
 
 	useEffect(() => {
-		window.scrollTo(0, 0)
+		// window.scrollTo(0, 0)
 		const CancelToken = axios.CancelToken
 		const source = CancelToken.source()
 		const getInfo = async () => {
 			await axios
-				.get(`${API}/eng/info/${animeId}&${provider}`, {
+				.get(`${API}/eng/info/${animeId}&gogoanime`, {
 					cancelToken: source.token,
 				})
 				.then((data) => {
@@ -47,7 +47,7 @@ function AnimeInfoENG() {
 		return () => {
 			source.cancel()
 		}
-	}, [animeId, provider])
+	}, [animeId])
 
 	useDocumentTitle(title)
 	return (
