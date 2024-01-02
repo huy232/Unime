@@ -59,7 +59,14 @@ function RecommendENG({ recommend, setLoading, title = "RELATIONS" }) {
 											<div className="recommend-item-image aspect-[2/3] group-hover:opacity-80 duration-200 ease-in-out relative">
 												<Image
 													className="object-fill object-center w-full h-full linear absolute duration-500 ease-in-out"
-													src={item.image || ""}
+													src={
+														item.image ||
+														item.coverImage.extraLarge ||
+														item.coverImage.large ||
+														item.coverImage.medium ||
+														item.coverImage ||
+														""
+													}
 													alt={
 														item.title.english ||
 														item.title.romaji ||
@@ -68,21 +75,26 @@ function RecommendENG({ recommend, setLoading, title = "RELATIONS" }) {
 													}
 													loading="lazy"
 												/>
-												<div className="text-white absolute right-0 bg-[#0d0d0d]/[0.8] p-[6px]">
-													{item.rating}%{" "}
-													<FontAwesomeIcon
-														icon={faHeart}
-														className="text-red-500"
-													/>
-												</div>
+												{(item.rating || item.averageScore) && (
+													<div className="text-white absolute right-0 bg-[#0d0d0d]/[0.8] p-[6px]">
+														{item.rating || item.averageScore}%{" "}
+														<FontAwesomeIcon
+															icon={faHeart}
+															className="text-red-500"
+														/>
+													</div>
+												)}
+
 												<div className="text-[#fffc] absolute bottom-0 text-sm w-full p-[4px] bg-[#0d0d0d]/[0.8]">
 													<div className="flex">
 														<p>
 															{(item.episodes && `${item.episodes}. EP`) ||
-																(item.chapters && `${item.chapters}. Ch`)}
+																(item.chapters && `${item.chapters}. Ch`) ||
+																(item.totalEpisodes &&
+																	`${item.totalEpisodes}. EP`)}
 														</p>
 														<p className="ml-auto border-2 rounded px-[4px]">
-															{item.type}
+															{item.type || item.relationType}
 														</p>
 													</div>
 												</div>
@@ -90,7 +102,10 @@ function RecommendENG({ recommend, setLoading, title = "RELATIONS" }) {
 											<div className="recommend-item-title h-[60px]">
 												<p
 													className="line-clamp-2 font-extrabold"
-													style={{ color: COLORLIST[i] || "#fffc" }}
+													style={{
+														color:
+															item.coverImage.color || COLORLIST[i] || "#fffc",
+													}}
 												>
 													{item.title.english ||
 														item.title.romaji ||

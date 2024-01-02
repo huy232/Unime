@@ -40,7 +40,7 @@ function AnimeWatchENG() {
 		const CancelToken = axios.CancelToken
 		const source = CancelToken.source()
 		if (prevAnilist.current !== animeId) {
-			const { data } = await axios.get(`${API}/eng/info/${animeId}&gogoanime`)
+			const { data } = await axios.get(`${API}/eng/info/${animeId}`)
 			const { data: episodeData } = await axios.get(
 				`${API}/eng/episode-list/${animeId}&${provider}`
 			)

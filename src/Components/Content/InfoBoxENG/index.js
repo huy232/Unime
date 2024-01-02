@@ -17,7 +17,7 @@ function InfoBoxENG({ loading, info }) {
 					/>
 				) : (
 					<Image
-						src={info.image || ""}
+						src={info?.image || info?.coverImage || ""}
 						className="cover-image aspect-[2/3] h-[300px] duration-500 ease-in-out"
 						alt={
 							info.title?.english || info.title?.romaji || info.title?.native
@@ -70,20 +70,22 @@ function InfoBoxENG({ loading, info }) {
 								<p className="mb-[6px]">{info?.status}</p>
 							</div>
 						)}
-						{!!info.popularity && (
+						{!!info.popularity.anilist && (
 							<div>
 								<h5 className="font-black my-[2px] p-[6px] bg-[#282828]/[0.8] inline-block rounded">
 									POPULARITY
 								</h5>
-								<p className="mb-[6px]">{info?.popularity.toLocaleString()}</p>
+								<p className="mb-[6px]">
+									{info?.popularity.anilist.toLocaleString()}
+								</p>
 							</div>
 						)}
-						{info.rating && (
+						{info.rating?.anilist && (
 							<div>
 								<h5 className="font-black my-[2px] p-[6px] bg-[#282828]/[0.8] inline-block rounded">
 									RATING
 								</h5>
-								<p className="mb-[6px]">{info?.rating}%</p>
+								<p className="mb-[6px]">{info.rating?.anilist}/10</p>
 							</div>
 						)}
 						{info.subOrDub && (

@@ -25,9 +25,8 @@ function InfoDetailENG({
 	providerRef,
 	itemId,
 	setInfo,
-	loadingEpisodeList,
-	setLoadingEpisodeList,
 	setWatchNow,
+	providerOptions,
 }) {
 	let resultCategory = ENG_GENRES.filter((genre) => {
 		if (info && Object.keys(info).length !== 0) {
@@ -65,22 +64,6 @@ function InfoDetailENG({
 					)}
 				</h1>
 			</div>
-			{info.nextAiringEpisode && (
-				<div className="flex max-lg:flex-col max-lg:items-center max-lg:justify-center">
-					{!loading && (
-						<>
-							<div className="leading-none mx-[6px] p-[8px]">
-								Next episode estimated:
-							</div>
-							<div className="leading-none mx-[6px] bg-[#533483] rounded p-[8px]">
-								{new Date(
-									info.nextAiringEpisode.airingTime * 1000
-								).toLocaleString()}
-							</div>
-						</>
-					)}
-				</div>
-			)}
 			{!loading && (
 				<div className="flex max-md:justify-center my-2">
 					<button
@@ -153,13 +136,18 @@ function InfoDetailENG({
 							</div>
 						)}
 					</div>
-					{info?.trailer?.site === "youtube" && (
+					{info?.trailer && (
 						<div className="w-100 flex flex-col items-center mt-[20px]">
 							<h3 className="max-lg:text-center">IN CASE YOU INTERESTED</h3>
-							<div className="youtube-link">
-								<ReactPlayer
-									url={`https://www.youtube-nocookie.com/embed/${info.trailer.id}&origin=${MAINSITE}`}
-									controls={true}
+							<div className="w-full max-w-[560px] mx-auto aspect-video">
+								<iframe
+									className="w-full h-full"
+									src={`https://www.youtube.com/embed/${
+										info.trailer.split("watch?v=")[1]
+									}`}
+									title="YouTube video player"
+									allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+									allowFullScreen
 								/>
 							</div>
 						</div>
@@ -180,20 +168,18 @@ function InfoDetailENG({
 							<select
 								className="provider flex font-semibold uppercase rounded group bg-[#222] text-white p-[4px] cursor-pointer outline-none border-none"
 								onChange={(e) => {
-									localStorage.setItem("unime-provider", e.target.value)
 									setWatchNow({})
 									setProvider(e.target.value)
-									setLoadingEpisodeList(true)
 								}}
 								defaultValue={provider}
 							>
-								{PROVIDER.map((providerSource) => (
+								{providerOptions.map((providerSource) => (
 									<option
-										value={providerSource}
-										key={providerSource}
+										value={providerSource.providerId}
+										key={providerSource.providerId}
 										className="uppercase text-white bg-[#222] font-semibold"
 									>
-										{providerSource}
+										{providerSource.providerId}
 									</option>
 								))}
 							</select>
@@ -209,14 +195,12 @@ function InfoDetailENG({
 							providerRef={providerRef}
 							animeId={itemId}
 							setInfo={setInfo}
-							setLoadingEpisodeList={setLoadingEpisodeList}
-							loadingEpisodeList={loadingEpisodeList}
 							setWatchNow={setWatchNow}
 						/>
 					</div>
-					{info.recommendations.length > 0 && (
+					{info.recommendation.length > 0 && (
 						<RecommendENG
-							recommend={info.recommendations}
+							recommend={info.recommendation}
 							setLoading={setLoading}
 							title={"RECOMMENDS"}
 						/>

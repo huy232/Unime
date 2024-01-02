@@ -23,69 +23,52 @@ SwiperCore.use([Pagination, Navigation, Lazy])
 
 // ---------------------------
 
-function AnimeInfoEpisodeHolderENG({
-	info,
-	provider,
-	animeId,
-	loadingEpisodeList,
-	setLoadingEpisodeList,
-	setWatchNow,
-}) {
-	const [episodeList, setEpisodeList] = useState([])
+function AnimeInfoEpisodeHolderENG({ info, provider, animeId, setWatchNow }) {
+	const [episodeList, setEpisodeList] = useState()
 	const [selectedChunk, setSelectedChunk] = useState(0)
 	const [swiper, setSwiper] = useState(null)
 	const [toggleButton, setToggleButton] = useState(true)
-	const [prevProvider, setPrevProvider] = useState("gogoanime")
 
-	const getEpisodeList = useCallback(async () => {
-		const source = axios.CancelToken.source()
+	// const getEpisodeList = useCallback(async () => {
+	// 	try {
+	// 		const providerInfo = info.episodes.data.find(
+	// 			(providerInfo) => providerInfo.providerId === provider
+	// 		)
+	// 		if (!providerInfo) {
+	// 			throw new Error("Provider information not found")
+	// 		}
 
-		try {
-			const response = await axios.get(
-				`${API}/eng/episode-list/${animeId}&${provider}`,
-				{
-					cancelToken: source.token,
-				}
-			)
-
-			const episodeListData = response.data
-			const episodeListChunk = episodeListData.success
-				? Array.from(
-						{ length: Math.ceil(episodeListData.data.length / 12) },
-						(_, i) => episodeListData.data.slice(i * 12, i * 12 + 12)
-				  )
-				: []
-			setWatchNow(episodeListData.data[0])
-			setEpisodeList(episodeListChunk)
-			setSelectedChunk(0)
-			setLoadingEpisodeList(false)
-		} catch (error) {
-			setWatchNow({})
-			setEpisodeList([])
-			setSelectedChunk(0)
-			setLoadingEpisodeList(false)
-			if (axios.isCancel(error)) return
-		}
-
-		return () => {
-			source.cancel()
-		}
-	}, [animeId, provider, setLoadingEpisodeList, setWatchNow])
+	// 		const episodeListData = providerInfo.episodes
+	// 		const episodeListChunk = Array.from(
+	// 			{ length: Math.ceil(episodeListData.length / 12) },
+	// 			(_, i) => episodeListData.slice(i * 12, i * 12 + 12)
+	// 		)
+	// 		setWatchNow(episodeListData[0])
+	// 		setEpisodeList(episodeListChunk)
+	// 		setSelectedChunk(0)
+	// 		setLoadingEpisodeList(false)
+	// 	} catch (error) {
+	// 		setWatchNow({})
+	// 		setEpisodeList([])
+	// 		setSelectedChunk(0)
+	// 		setLoadingEpisodeList(false)
+	// 		if (axios.isCancel(error)) return
+	// 	}
+	// }, [info.episodes, provider, setLoadingEpisodeList, setWatchNow])
 
 	useEffect(() => {
-		if (prevProvider !== provider) {
-			setPrevProvider(provider)
-			getEpisodeList()
-		}
-	}, [provider, getEpisodeList, prevProvider])
-
-	useEffect(() => {
-		const episodeListChunk = Array.from(
-			{ length: Math.ceil(info.episodes.length / 12) },
-			(_, i) => info.episodes.slice(i * 12, i * 12 + 12)
+		const providerInfo = info.episodes.data.find(
+			(providerInfo) => providerInfo.providerId === provider
 		)
+		const episodeListDataCopy = [...providerInfo.episodes]
+		setWatchNow(episodeListDataCopy[0])
+		const episodeListChunk = []
+		while (episodeListDataCopy.length) {
+			episodeListChunk.push(episodeListDataCopy.splice(0, 12))
+		}
 		setEpisodeList(episodeListChunk)
-	}, [animeId, info.episodes])
+		setSelectedChunk(0)
+	}, [info.episodes.data, provider, setWatchNow])
 
 	const jump = (progress, speed) => {
 		if (swiper) {
@@ -102,7 +85,7 @@ function AnimeInfoEpisodeHolderENG({
 
 	return (
 		<>
-			{loadingEpisodeList || episodeList === undefined ? (
+			{!episodeList ? (
 				<EpisodeHolderSkeleton />
 			) : (
 				<>
@@ -243,7 +226,10 @@ function AnimeInfoEpisodeHolderENG({
 														<Card.Img
 															variant="top"
 															src={
-																eachEpisode?.image || info?.image || blackImage
+																eachEpisode?.image ||
+																info?.image ||
+																info?.coverImage ||
+																blackImage
 															}
 															loading="lazy"
 															alt={

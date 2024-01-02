@@ -21,12 +21,17 @@ function InfoBannerENG({ loading, info }) {
 				) : (
 					<>
 						<Image
-							src={info?.cover || ""}
+							src={info?.cover || info?.bannerImage || ""}
 							className="banner-info-image duration-500 ease-in-out"
-							alt={info?.name}
+							alt={
+								info?.name ||
+								info?.title?.english ||
+								info?.title?.romaji ||
+								info?.title?.native
+							}
 							style={
 								info?.cover === null || typeof info?.cover === "undefined"
-									? { minHeight: "auto" }
+									? { minHeight: "-webkit-fill-available" }
 									: {}
 							}
 							loading="lazy"
