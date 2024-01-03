@@ -9,6 +9,7 @@ import axios from "axios"
 import useDocumentTitle from "../../Hooks/useDocumentTitle"
 import { API } from "../../constants"
 import SeasonLayoutENG from "../../Components/Content/SeasonLayoutENG"
+import CurrentSeason from "../../Components/CurrentSeason"
 
 function HomeENG() {
 	const [loadingAiring, setLoadingAiring] = useState(true)
@@ -19,6 +20,9 @@ function HomeENG() {
 	// ---------
 	const [loadingTrending, setLoadingTrending] = useState(true)
 	const [trendingAnime, setTrendingAnime] = useState([])
+	// ---------
+	const [loadingCurrentSeason, setLoadingCurrentSeason] = useState(true)
+	const [currentSeasonAnime, setCurrentSeasonAnime] = useState([])
 	// ---------
 	const [loadingSeason, setLoadingSeason] = useState(true)
 	const [seasonAnime, setSeasonAnime] = useState([])
@@ -81,6 +85,20 @@ function HomeENG() {
 				})
 		}
 
+		const getCurrentSeason = async () => {
+			await axios
+				.get(`${API}/eng/season`, { cancelToken: source.token })
+				.then((seasonData) => {
+					if (seasonData.data.success) {
+						setCurrentSeasonAnime(seasonData.data.data.results)
+						setLoadingCurrentSeason(false)
+					}
+				})
+				.catch((thrown) => {
+					if (axios.isCancel(thrown)) return
+				})
+		}
+
 		const getSeason = async () => {
 			await axios
 				.get(`${API}/eng/upcoming-anime`, { cancelToken: source.token })
@@ -102,7 +120,7 @@ function HomeENG() {
 				})
 				.then((scheduleAnime) => {
 					if (scheduleAnime.data.success) {
-						setAiringSchedule(scheduleAnime.data.data.results)
+						setAiringSchedule(scheduleAnime.data.data)
 						setLoadingAiringSchedule(false)
 					}
 				})
@@ -133,6 +151,7 @@ function HomeENG() {
 		getTopAiring()
 		getRecentAnime()
 		getTrendingAnime()
+		getCurrentSeason()
 		getSeason()
 		getAiringSchedule()
 		getRandomAnime()
@@ -160,14 +179,20 @@ function HomeENG() {
 				/>
 			</LazyLoad>
 			<LazyLoad>
+				<CurrentSeason
+					currentSeason={currentSeasonAnime}
+					loadingCurrentSeason={loadingCurrentSeason}
+				/>
+			</LazyLoad>
+			<LazyLoad>
 				<SeasonLayoutENG data={seasonAnime} loading={loadingSeason} />
 			</LazyLoad>
-			{/* <LazyLoad>
+			<LazyLoad>
 				<AiringScheduleENG
 					loadingAiringSchedule={loadingAiringSchedule}
 					airingSchedule={airingSchedule}
 				/>
-			</LazyLoad> */}
+			</LazyLoad>
 			<LazyLoad>
 				<RandomAnimeENG
 					loadingRandomAnime={loadingRandomAnime}

@@ -2,14 +2,36 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+	.scrollbar-hide::-webkit-scrollbar {
+		display: none; /* Hide scrollbar for Chrome and Safari */
+	}
+}
+
+/* Optional: Customize scrollbar for WebKit browsers */
+@layer components {
+	.scrollbar-hide::-webkit-scrollbar-track {
+		background: transparent;
+	}
+
+	.scrollbar-hide::-webkit-scrollbar-thumb {
+		background-color: #888;
+		border-radius: 0.25rem;
+	}
+}
+
+@layer utilities {
+	.neon-text {
+		text-shadow: 0 0 10px rgba(255, 255, 255, 0.8),
+			0 0 20px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 255, 255, 0.8),
+			0 0 40px rgba(255, 255, 255, 0.8);
+	}
+}
+
 body {
 	margin: 0;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-}
-
-code {
-	font-family: "Inter", sans-serif;
 }
 
 * {

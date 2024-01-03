@@ -23,7 +23,9 @@ function RecommendENG({ recommend, setLoading, title = "RELATIONS" }) {
 		<>
 			{recommendFilter.length > 0 && (
 				<>
-					<h2 className={`font-black text-right max-lg:text-center py-8`}>
+					<h2
+						className={`font-black text-right max-lg:text-center py-4 font-bebas-neue mx-2 text-5xl`}
+					>
 						{title}
 					</h2>
 					<div className="mb-[24px]">

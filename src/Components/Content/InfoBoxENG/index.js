@@ -26,20 +26,20 @@ function InfoBoxENG({ loading, info }) {
 					/>
 				)}
 			</div>
-			<div className="flex flex-col max-lg:flex-row text-right max-lg:text-center max-lg:overflow-x-scroll [&>div]:lg:mx-4 [&>div]:max-lg:inline-flex [&>div]:max-lg:shrink-0 [&>div]:max-lg:flex-col [&>div]:max-lg:flex-nowrap [&>div]:max-lg:mx-2 [&>div:nth-child(2)]:max-lg:hidden">
+			<div className="flex flex-col justify-center max-lg:flex-row text-right max-lg:text-center max-lg:overflow-x-scroll [&>div]:lg:mx-4 [&>div]:max-lg:shrink-0 [&>div]:max-lg:flex-col [&>div]:max-lg:flex-nowrap [&>div]:max-lg:mx-2">
 				{!loading && (
 					<>
 						{info.type && (
 							<div>
-								<h5 className="font-black my-[2px] p-[6px] bg-[#282828]/[0.8] inline-block rounded">
+								<h5 className="font-black my-[2px] p-[6px] bg-[#282828]/[0.8] inline-block rounded font-bebas-neue text-xl">
 									FORMAT
 								</h5>
 								<p className="mb-[6px]">{info?.type}</p>
 							</div>
 						)}
 						{info.title && (
-							<div>
-								<h5 className="font-black my-[2px] p-[6px] bg-[#282828]/[0.8] inline-block rounded">
+							<div className="hidden lg:block">
+								<h5 className="font-black my-[2px] p-[6px] bg-[#282828]/[0.8] inline-block rounded font-bebas-neue text-xl">
 									TITLE
 								</h5>
 								{info?.title?.romaji && (
@@ -64,7 +64,7 @@ function InfoBoxENG({ loading, info }) {
 						)}
 						{info.status && (
 							<div>
-								<h5 className="font-black my-[2px] p-[6px] bg-[#282828]/[0.8] inline-block rounded">
+								<h5 className="font-black my-[2px] p-[6px] bg-[#282828]/[0.8] inline-block rounded font-bebas-neue text-xl">
 									STATUS
 								</h5>
 								<p className="mb-[6px]">{info?.status}</p>
@@ -72,7 +72,7 @@ function InfoBoxENG({ loading, info }) {
 						)}
 						{!!info.popularity.anilist && (
 							<div>
-								<h5 className="font-black my-[2px] p-[6px] bg-[#282828]/[0.8] inline-block rounded">
+								<h5 className="font-black my-[2px] p-[6px] bg-[#282828]/[0.8] inline-block rounded font-bebas-neue text-xl">
 									POPULARITY
 								</h5>
 								<p className="mb-[6px]">
@@ -82,7 +82,7 @@ function InfoBoxENG({ loading, info }) {
 						)}
 						{info.rating?.anilist && (
 							<div>
-								<h5 className="font-black my-[2px] p-[6px] bg-[#282828]/[0.8] inline-block rounded">
+								<h5 className="font-black my-[2px] p-[6px] bg-[#282828]/[0.8] inline-block rounded font-bebas-neue text-xl">
 									RATING
 								</h5>
 								<p className="mb-[6px]">{info.rating?.anilist}/10</p>
@@ -90,7 +90,7 @@ function InfoBoxENG({ loading, info }) {
 						)}
 						{info.subOrDub && (
 							<div>
-								<h5 className="font-black my-[2px] p-[6px] bg-[#282828]/[0.8] inline-block rounded">
+								<h5 className="font-black my-[2px] p-[6px] bg-[#282828]/[0.8] inline-block rounded font-bebas-neue text-xl">
 									VOICE
 								</h5>
 								<p className="uppercase mb-[6px]">{info?.subOrDub}</p>
@@ -98,25 +98,47 @@ function InfoBoxENG({ loading, info }) {
 						)}
 						{info.season && (
 							<div>
-								<h5 className="font-black my-[2px] p-[6px] bg-[#282828]/[0.8] inline-block rounded">
+								<h5 className="font-black my-[2px] p-[6px] bg-[#282828]/[0.8] inline-block rounded font-bebas-neue text-xl">
 									SEASON
 								</h5>
 								<p className="uppercase mb-[6px]">{info?.season}</p>
 							</div>
 						)}
 						{info.studios && (
-							<>
-								<div>
-									<h5 className="font-black my-[2px] p-[6px] bg-[#282828]/[0.8] inline-block rounded">
-										STUDIO
-									</h5>
-									<p className="mb-[6px]">
-										{info?.studios.map((studio, i, arr) =>
-											i !== arr.length - 1 ? `${studio + ", "}` : `${studio}`
-										)}
-									</p>
-								</div>
-							</>
+							<div>
+								<h5 className="font-black my-[2px] p-[6px] bg-[#282828]/[0.8] inline-block rounded font-bebas-neue text-xl">
+									STUDIO
+								</h5>
+								<p className="mb-[6px]">
+									{info?.studios.map((studio, i, arr) =>
+										i !== arr.length - 1 ? `${studio + ", "}` : `${studio}`
+									)}
+								</p>
+							</div>
+						)}
+						{info.synonyms?.length > 0 && (
+							<div className="hidden lg:block">
+								<h5 className="font-black my-[2px] p-[6px] bg-[#282828]/[0.8] inline-block rounded font-bebas-neue text-xl">
+									SYNONYMS
+								</h5>
+								<p className="mb-[6px] flex flex-col gap-1 text-sm mx-2">
+									{info.synonyms.map((synonym, i) => (
+										<span key={i}>{synonym}</span>
+									))}
+								</p>
+							</div>
+						)}
+						{info.tags?.length > 0 && (
+							<div className="hidden lg:block">
+								<h5 className="font-black my-[2px] p-[6px] bg-[#282828]/[0.8] inline-block rounded font-bebas-neue text-xl">
+									TAGS
+								</h5>
+								<p className="mb-[6px] flex flex-col gap-1 text-sm mx-2">
+									{info.tags.map((tag, i) => (
+										<span key={i}>{tag}</span>
+									))}
+								</p>
+							</div>
 						)}
 					</>
 				)}

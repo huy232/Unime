@@ -4,6 +4,10 @@ module.exports = {
 	content: ["./src/**/*.{js,ts,jsx,tsx}"],
 	theme: {
 		extend: {
+			fontFamily: {
+				inter: ["Inter", "sans-serif"],
+				"bebas-neue": ["Bebas Neue", "sans-serif"],
+			},
 			animation: {
 				fadeIn: "fadeIn 0.3s ease-in-out",
 				fadeOut: "fadeOut 0.3s ease-in-out",

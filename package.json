@@ -21,6 +21,7 @@
     "artplayer-plugin-hls-quality": "^2.0.0",
     "axios": "^1.6.1",
     "bootstrap": "^5.1.3",
+    "clsx": "^2.1.0",
     "disqus-react": "^1.1.5",
     "flag-icons": "^6.9.3",
     "hls.js": "^1.4.6",

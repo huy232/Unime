@@ -42,7 +42,7 @@ function InfoDetailENG({
 		<div className="w-[70vw] max-lg:w-full">
 			<div className="eng-title">
 				<h1
-					className={`font-black max-lg:text-center`}
+					className={`font-black max-lg:text-center font-bebas-neue my-1 text-5xl`}
 					style={{ color: `${info?.color || "#fff"}` }}
 				>
 					{loading ? (
@@ -65,20 +65,22 @@ function InfoDetailENG({
 				</h1>
 			</div>
 			{!loading && (
-				<div className="flex max-md:justify-center my-2">
+				<div className="flex max-lg:justify-center max-md:justify-center my-2">
 					<button
 						onClick={() => executeScroll()}
 						className="flex justify-center items-center gap-1 mx-2 p-2 bg-yellow-600 border-transparent rounded hover:opacity-80 duration-200 hover:bg-transparent hover:border-yellow-600 border-2 text-white"
 					>
 						<FontAwesomeIcon icon={faArrowDown} />
-						<span className="mx-[6px]">Episode list</span>
+						<span className="mx-[6px] text-sm whitespace-nowrap">
+							Episode list
+						</span>
 					</button>
 					{watchNow && (
 						<Link
 							className="flex justify-center items-center gap-1 mx-2 p-2 bg-red-600 border-transparent rounded hover:opacity-80 duration-200 hover:bg-transparent hover:border-red-600 border-2 text-white"
 							to={`/eng/watch/${itemId}?current=${watchNow.id}&provider=${provider}&episodeNumber=${watchNow.number}`}
 						>
-							<span>Watch now</span>
+							<span className="whitespace-nowrap text-sm">Watch now</span>
 							<span>
 								<FaPlay className="mt-[2px]" />
 							</span>
@@ -138,7 +140,9 @@ function InfoDetailENG({
 					</div>
 					{info?.trailer && (
 						<div className="w-100 flex flex-col items-center mt-[20px]">
-							<h3 className="max-lg:text-center">IN CASE YOU INTERESTED</h3>
+							<h3 className="max-lg:text-center font-bebas-neue text-4xl">
+								IN CASE YOU INTERESTED
+							</h3>
 							<div className="w-full max-w-[560px] mx-auto aspect-video">
 								<iframe
 									className="w-full h-full"
@@ -164,7 +168,9 @@ function InfoDetailENG({
 					</div>
 					<div className="max-lg:text-center flex max-lg:flex-col justify-between lg:[&>*]:mx-[20px]">
 						<div className="flex flex-col">
-							<label htmlFor="provider">PROVIDER:</label>
+							<label htmlFor="provider" className="font-bold">
+								PROVIDER
+							</label>
 							<select
 								className="provider flex font-semibold uppercase rounded group bg-[#222] text-white p-[4px] cursor-pointer outline-none border-none"
 								onChange={(e) => {
@@ -185,8 +191,13 @@ function InfoDetailENG({
 							</select>
 						</div>
 					</div>
-					<div className="list-episode-title-main" ref={scrollToRef}>
-						<h4 style={{ marginTop: "30px" }}>EPISODE LIST</h4>
+					<div
+						className="list-episode-title-main font-bebas-neue"
+						ref={scrollToRef}
+					>
+						<h4 style={{ marginTop: "30px" }} className="text-2xl">
+							EPISODE LIST
+						</h4>
 					</div>
 					<div>
 						<AnimeInfoEpisodeHolderENG
