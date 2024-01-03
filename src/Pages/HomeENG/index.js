@@ -162,12 +162,12 @@ function HomeENG() {
 			<LazyLoad>
 				<SeasonLayoutENG data={seasonAnime} loading={loadingSeason} />
 			</LazyLoad>
-			<LazyLoad>
+			{/* <LazyLoad>
 				<AiringScheduleENG
 					loadingAiringSchedule={loadingAiringSchedule}
 					airingSchedule={airingSchedule}
 				/>
-			</LazyLoad>
+			</LazyLoad> */}
 			<LazyLoad>
 				<RandomAnimeENG
 					loadingRandomAnime={loadingRandomAnime}
