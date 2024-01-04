@@ -177,7 +177,7 @@ function HeaderVI() {
 											}}
 											className="inline-block p-[4px] m-[4px] rounded"
 										>
-											{genre}
+											{genre.name}
 										</p>
 									</div>
 								</Link>
