@@ -28,6 +28,47 @@
 	}
 }
 
+@-webkit-keyframes pulsing {
+	0% {
+		transform: scale(1);
+		-webkit-filter: brightness(50%);
+		filter: brightness(50%);
+	}
+	50% {
+		transform: scale(1.1);
+		-webkit-filter: brightness(100%);
+		filter: brightness(100%);
+	}
+	100% {
+		transform: scale(1);
+		-webkit-filter: brightness(50%);
+		filter: brightness(50%);
+	}
+}
+
+@keyframes pulsing {
+	0% {
+		transform: scale(1);
+		-webkit-filter: brightness(50%);
+		filter: brightness(50%);
+	}
+	50% {
+		transform: scale(1.1);
+		-webkit-filter: brightness(100%);
+		filter: brightness(100%);
+	}
+	100% {
+		transform: scale(1);
+		-webkit-filter: brightness(50%);
+		filter: brightness(50%);
+	}
+}
+
+.pulsing {
+	-webkit-animation: pulsing 1.5s infinite;
+	animation: pulsing 1.5s infinite; /* You can adjust the duration to control the speed */
+}
+
 body {
 	margin: 0;
 	-webkit-font-smoothing: antialiased;

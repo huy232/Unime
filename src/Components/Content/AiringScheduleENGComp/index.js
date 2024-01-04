@@ -69,7 +69,7 @@ function AiringScheduleENGComp({ airingSchedule }) {
 					))}
 				</div>
 
-				{selectedDay && (
+				{selectedDay && airingSchedule[selectedDay].length > 0 ? (
 					<div className="px-2 md:px-3 lg:px-5 w-full gap-1 scroll-smooth min-h-[28rem] max-h-[60rem] lg:max-h-[22.4rem] flex flex-col overflow-y-scroll scrollbar-hide">
 						{airingSchedule[selectedDay].map((item, index) => {
 							const title =
@@ -152,6 +152,12 @@ function AiringScheduleENGComp({ airingSchedule }) {
 								</Link>
 							)
 						})}
+					</div>
+				) : (
+					<div className="px-2 md:px-3 lg:px-5 w-full gap-1 flex flex-col justify-center items-center">
+						<span className="pulsing">
+							Currently, there's no anime schedule for this day.
+						</span>
 					</div>
 				)}
 			</div>

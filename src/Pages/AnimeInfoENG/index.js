@@ -9,7 +9,7 @@ import { API } from "../../constants"
 
 function AnimeInfoENG() {
 	const { animeId } = useParams()
-	const [infoENG, setInfoENG] = useState({})
+	const [info, setInfo] = useState({})
 	const [loading, setLoading] = useState(true)
 	const [provider, setProvider] = useState("")
 	const [loadingProvider, setLoadingProvider] = useState(true)
@@ -22,29 +22,16 @@ function AnimeInfoENG() {
 		const CancelToken = axios.CancelToken
 		const source = CancelToken.source()
 		const getInfo = async () => {
-			try {
-				const response = await axios.get(`${API}/eng/info/${animeId}`, {
+			await axios
+				.get(`${API}/eng/info/${animeId}`, {
 					cancelToken: source.token,
 				})
-
-				// Extracting infoENG from HTML response
-				const parser = new DOMParser()
-				const htmlDoc = parser.parseFromString(response.data, "text/html")
-				const scriptContent = htmlDoc.querySelector("script")?.textContent
-				if (scriptContent) {
-					const start = scriptContent.indexOf("{")
-					const end = scriptContent.lastIndexOf("}") + 1
-					const jsonContent = scriptContent.substring(start, end)
-					const infoENG = JSON.parse(jsonContent)
-					setInfoENG(infoENG)
-
+				.then((response) => {
+					const data = response.data.data
 					setTitle(
-						infoENG.title?.english ||
-							infoENG.title?.romaji ||
-							infoENG.title?.native
+						data.title?.english || data.title?.romaji || data.title?.native
 					)
-
-					const providers = infoENG.mappings.filter(
+					const providers = data.mappings.filter(
 						(provider) => provider.providerType === "ANIME"
 					)
 					let defaultProviderId = "gogoanime"
@@ -55,12 +42,13 @@ function AnimeInfoENG() {
 						defaultProvider?.providerId || providers[0]?.providerId || ""
 					setProvider(selectedProvider)
 					setProviderOptions(providers)
-					setWatchNow(infoENG.episodes[0] || null)
+					setInfo(data)
+					setWatchNow(data.episodes[0] || null)
 					setLoading(false)
-				}
-			} catch (thrown) {
-				if (axios.isCancel(thrown)) return
-			}
+				})
+				.catch((thrown) => {
+					if (axios.isCancel(thrown)) return
+				})
 		}
 
 		getInfo()
@@ -71,23 +59,22 @@ function AnimeInfoENG() {
 	}, [animeId])
 
 	useDocumentTitle(title)
-
 	return (
 		<div className="mb-8">
-			<InfoBannerENG loading={loading} info={infoENG} />
+			<InfoBannerENG loading={loading} info={info} />
 			<div className="w-full flex relative max-lg:flex-col">
-				<InfoBoxENG loading={loading} info={infoENG} />
+				<InfoBoxENG loading={loading} info={info} />
 				<InfoDetailENG
 					watchNow={watchNow}
 					loading={loading}
-					info={infoENG}
+					info={info}
 					setProvider={setProvider}
 					provider={provider}
 					loadingProvider={loadingProvider}
 					setLoadingProvider={setLoadingProvider}
 					setLoading={setLoading}
 					itemId={animeId}
-					setInfo={setInfoENG}
+					setInfo={setInfo}
 					setWatchNow={setWatchNow}
 					providerOptions={providerOptions}
 				/>
