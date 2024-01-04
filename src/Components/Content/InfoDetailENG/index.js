@@ -1,7 +1,6 @@
 import React from "react"
-import { ENG_GENRES, MAINSITE, PROVIDER } from "../../../constants"
+import { ENG_GENRES } from "../../../constants"
 import { Link } from "react-router-dom"
-import ReactPlayer from "react-player"
 import AnimeInfoEpisodeHolderENG from "../AnimeInfoEpisodeHolderENG"
 import RecommendENG from "../RecommendENG"
 import { Skeleton } from "@mui/material"
@@ -30,7 +29,7 @@ function InfoDetailENG({
 }) {
 	let resultCategory = ENG_GENRES.filter((genre) => {
 		if (info && Object.keys(info).length !== 0) {
-			return info.genres.find((selectedGenre) => selectedGenre === genre.name)
+			return info.genres.find((selectedGenre) => selectedGenre === genre)
 		}
 		return false
 	})
@@ -101,13 +100,13 @@ function InfoDetailENG({
 					<div className="genres flex flex-row max-lg:items-center pb-2 group md:flex-wrap max-md:overflow-x-scroll max-md:flex-nowrap">
 						{resultCategory.map((genre) => (
 							<Link
-								to={`/eng/anime/${genre.slug}`}
-								key={genre.slug}
+								to={`/eng/anime/${encodeURIComponent(genre)}`}
+								key={genre}
 								className="lg:first:ml-[6px] lg:last:mr-[6px] hover:opacity-80 duration-200 ease-in-out"
-								aria-label={genre.name}
+								aria-label={genre}
 							>
 								<div className="cursor-pointer rounded p-[10px] bg-[#5f5f5f29] mx-[10px] my-[6px] duration-200 hover:opacity-80 ease-in-out">
-									{genre.name}
+									{genre}
 								</div>
 							</Link>
 						))}

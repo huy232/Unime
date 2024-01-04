@@ -53,7 +53,9 @@ function AnimeBrowseENG() {
 	return (
 		<div>
 			{useDocumentTitle(`All Anime - Unime`)}
-			<h1 className="font-black">ALL ANIME</h1>
+			<h1 className="font-black font-bebas-neue text-5xl px-2 mt-4 text-center text-yellow-500">
+				ALL ANIME
+			</h1>
 			{loading ? (
 				<div className="block w-full mt-[50px] text-center">
 					<LoadingSpin primaryColor="red" />
@@ -79,14 +81,14 @@ function AnimeBrowseENG() {
 								title={
 									item.title?.english ||
 									item.title?.romaji ||
-									item.title?.native ||
-									item.title?.userPreferred
+									item.title?.userPreferred ||
+									item.title?.native
 								}
 								arial-label={
 									item.title?.english ||
 									item.title?.romaji ||
-									item.title?.native ||
-									item.title?.userPreferred
+									item.title?.userPreferred ||
+									item.title?.native
 								}
 								key={item.id}
 								className="group col-span-1 cursor-pointer flex flex-col items-center mb-[12px] relative float-left"
@@ -94,12 +96,18 @@ function AnimeBrowseENG() {
 								<div className="group-hover:opacity-70 anime-item-image relative aspect-w-2 aspect-h-3 duration-300 ease-linear pb-[156%] mb-0 w-full overflow-hidden">
 									<Image
 										className="object-fit absolute w-100 min-h-full duration-500 ease-in-out"
-										src={item.image || ""}
+										src={
+											item.coverImage.extraLarge ||
+											item.coverImage.large ||
+											item.coverImage.medium ||
+											item.image ||
+											""
+										}
 										alt={
 											item.title?.english ||
 											item.title?.romaji ||
-											item.title?.native ||
-											item.title?.userPreferred
+											item.title?.userPreferred ||
+											item.title?.native
 										}
 										loading="lazy"
 									/>
@@ -107,12 +115,14 @@ function AnimeBrowseENG() {
 								<div className="anime-item-title h-[60px] w-full mt-[4px]">
 									<p
 										className="line-clamp-2 px-[4px] text-base font-semibold"
-										style={{ color: item?.color || "#fffc" }}
+										style={{
+											color: item?.coverImage.color || item?.color || "#fffc",
+										}}
 									>
 										{item.title?.english ||
 											item.title?.romaji ||
-											item.title?.native ||
-											item.title?.userPreferred}
+											item.title?.userPreferred ||
+											item.title?.native}
 									</p>
 								</div>
 							</Link>

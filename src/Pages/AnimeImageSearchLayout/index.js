@@ -4,6 +4,7 @@ import { parseTime } from "../../Utilities/parseTime"
 import { API } from "../../constants"
 import { Link } from "react-router-dom"
 import Image from "../../Components/Content/Image"
+import slugify from "slugify"
 
 function AnimeImageSearchLayout({ searchResult, setToggle }) {
 	const [loading, setLoading] = useState(true)
@@ -16,7 +17,7 @@ function AnimeImageSearchLayout({ searchResult, setToggle }) {
 			setLoading(true)
 			if (prevAnilist.current !== searchResult.result[number].anilist.id) {
 				const { data } = await axios.get(
-					`${API}/eng/info/${searchResult.result[number].anilist.id}&gogoanime`
+					`${API}/eng/info/${searchResult.result[number].anilist.id}`
 				)
 				setView(data.data)
 			}
@@ -61,7 +62,7 @@ function AnimeImageSearchLayout({ searchResult, setToggle }) {
 							<div className="col-span-5">
 								<Image
 									className="w-full object-contain duration-500 ease-in-out"
-									src={item.image || ""}
+									src={item.image || item.coverImage || ""}
 									alt={
 										item.anilist.title.english ||
 										item.anilist.title.romaji ||
@@ -103,7 +104,7 @@ function AnimeImageSearchLayout({ searchResult, setToggle }) {
 								<div className="max-md:mx-auto w-[160px]">
 									<div className="relative aspect-w-2 aspect-h-3">
 										<Image
-											src={view.image || ""}
+											src={view.image || view.coverImage || ""}
 											alt={
 												view.title?.english ||
 												view.title?.romaji ||
@@ -126,20 +127,23 @@ function AnimeImageSearchLayout({ searchResult, setToggle }) {
 									<div className="flex flex-col mx-[12px]">
 										<div className="flex items-center flex-wrap max-md:justify-center">
 											{view.genres.map((genre) => (
-												<div
+												<Link
+													to={slugify(genre.toLowerCase())}
 													className="bg-white/20 rounded m-[4px] p-[4px]"
 													key={genre}
 												>
 													<p className="p-0">{genre}</p>
-												</div>
+												</Link>
 											))}
 										</div>
 										<div className="flex items-center my-[6px] max-md:justify-center">
-											<span className="font-bold">❤: {view.rating}%</span>
+											<span className="font-bold">
+												❤: {view.rating?.anilist}/10
+											</span>
 
 											<span className="dot w-[3px] h-[3px] mx-[6px] rounded-[50%] inline-block bg-[#6d7583]"></span>
 											<span className="font-bold">
-												🔥: {view.popularity.toLocaleString()}
+												🔥: {view.popularity?.anilist.toLocaleString()}
 											</span>
 										</div>
 										<div>

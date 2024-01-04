@@ -104,6 +104,7 @@ function App() {
 							path="/eng/anime/:genre"
 							element={<AnimeBrowseCategoryENG />}
 						/>
+						<Route path="/eng/tag/:tag" element={<AnimeBrowseCategoryENG />} />
 						<Route path="/eng/info/:animeId" element={<AnimeInfoENG />} />
 						<Route path="/eng/watch/:animeId" element={<AnimeWatchENG />} />
 						<Route

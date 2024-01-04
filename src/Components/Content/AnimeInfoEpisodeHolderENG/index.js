@@ -7,7 +7,6 @@ import {
 	faFastBackward,
 	faFastForward,
 } from "@fortawesome/free-solid-svg-icons"
-import axios from "axios"
 // SWIPER
 import { Swiper, SwiperSlide } from "swiper/react"
 
@@ -15,10 +14,8 @@ import "swiper/css"
 import "swiper/css/pagination"
 import "swiper/css/navigation"
 import SwiperCore, { Pagination, Navigation, Lazy } from "swiper"
-import { API } from "../../../constants"
 import EpisodeHolderSkeleton from "../EpisodeHolderSkeleton"
 import blackImage from "../../../Utilities/img/black.webp"
-import { useCallback } from "react"
 SwiperCore.use([Pagination, Navigation, Lazy])
 
 // ---------------------------
@@ -31,7 +28,7 @@ function AnimeInfoEpisodeHolderENG({ info, provider, animeId, setWatchNow }) {
 
 	useEffect(() => {
 		try {
-			const providerInfo = info.episodes.data.find(
+			const providerInfo = info.episodes.find(
 				(providerInfo) => providerInfo.providerId === provider
 			)
 			const episodeListDataCopy = [...providerInfo.episodes]
@@ -46,7 +43,7 @@ function AnimeInfoEpisodeHolderENG({ info, provider, animeId, setWatchNow }) {
 			setEpisodeList([])
 			setSelectedChunk(0)
 		}
-	}, [info.episodes.data, provider, setWatchNow])
+	}, [info.episodes, provider, setWatchNow])
 
 	const jump = (progress, speed) => {
 		if (swiper) {

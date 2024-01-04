@@ -1,23 +1,22 @@
 import { useState, useEffect } from "react"
 import { useParams, Link } from "react-router-dom"
-import { API, ENG_GENRES } from "../../constants"
+import { API } from "../../constants"
 import InfiniteScroll from "react-infinite-scroll-component"
 import axios from "axios"
 import LoadingSpin from "react-loading-spin"
 import useDocumentTitle from "../../Hooks/useDocumentTitle"
 import Image from "../../Components/Content/Image"
+import clsx from "clsx"
 
 const PAGE_NUMBER = 1
 
 function AnimeBrowseCategoryENG() {
-	const { genre } = useParams()
+	const { genre, tag } = useParams()
 
 	const [animeList, setAnimeList] = useState([])
-	const [genreAnime, setGenreAnime] = useState("")
 	const [page, setPage] = useState(PAGE_NUMBER)
 	const [loading, setLoading] = useState(true)
 	const [nextPage, setNextPage] = useState(true)
-	const [translateGenreAnime, setTranslateGenreAnime] = useState("")
 
 	const scrollThreshold = () => {
 		const newPage = page + 1
@@ -27,18 +26,18 @@ function AnimeBrowseCategoryENG() {
 	useEffect(() => {
 		const CancelToken = axios.CancelToken
 		const source = CancelToken.source()
-		const translateGenre = () => {
-			for (let i = 0; i < ENG_GENRES.length; i++) {
-				if (genreAnime === ENG_GENRES[i].slug) {
-					setTranslateGenreAnime(ENG_GENRES[i].name)
-				}
-			}
-		}
 
-		if (genre === genreAnime) {
-			const getList = async () => {
+		const getList = async () => {
+			try {
+				let listUrl
+				if (genre) {
+					listUrl = `${API}/eng/genre/${genre}?page=${page}`
+				}
+				if (tag) {
+					listUrl = `${API}/eng/tag/${tag}?page=${page}`
+				}
 				await axios
-					.get(`${API}/eng/genre/${translateGenreAnime}?page=${page}`, {
+					.get(listUrl, {
 						cancelToken: source.token,
 					})
 					.then((response) => {
@@ -61,26 +60,32 @@ function AnimeBrowseCategoryENG() {
 					.catch((thrown) => {
 						if (axios.isCancel(thrown)) return
 					})
+			} catch (err) {
+				setPage(1)
+				setAnimeList([])
 			}
-
-			getList()
-			translateGenre()
-		} else {
-			setPage(1)
-			setAnimeList([])
-			setGenreAnime(genre)
 		}
+
+		getList()
 
 		return () => {
 			source.cancel()
 		}
-	}, [genreAnime, genre, page, translateGenreAnime])
+	}, [genre, page, tag])
+
+	const titleHeading = clsx({
+		"text-cyan-500": !!genre,
+		"text-pink-600	": !!tag,
+	})
 
 	return (
 		<>
+			{useDocumentTitle(`Genre ${decodeURI(genre || tag)} - Unime`)}
 			<div>
-				{useDocumentTitle(`Genre ${translateGenreAnime} - Unime`)}
-				<h1 className="font-black">ANIME {translateGenreAnime}</h1>
+				<h1 className="font-black font-bebas-neue text-5xl px-2 mt-4 text-center">
+					{(genre && "GENRE") || (tag && "TAG")}/
+					<span className={titleHeading}>{decodeURI(genre || tag)}</span>
+				</h1>
 			</div>
 			<div className="anime-list">
 				{loading ? (
@@ -108,14 +113,14 @@ function AnimeBrowseCategoryENG() {
 									title={
 										item.title.english ||
 										item.title.romaji ||
-										item.title.native ||
-										item.title.userPreferred
+										item.title.userPreferred ||
+										item.title.native
 									}
 									aria-label={
 										item.title.english ||
 										item.title.romaji ||
-										item.title.native ||
-										item.title.userPreferred
+										item.title.userPreferred ||
+										item.title.native
 									}
 									key={item.id}
 									className="group col-span-1 cursor-pointer flex flex-col items-center mb-[12px] relative float-left"
@@ -123,12 +128,18 @@ function AnimeBrowseCategoryENG() {
 									<div className="group-hover:opacity-70 anime-item-image relative aspect-w-2 aspect-h-3 duration-300 ease-linear pb-[156%] mb-0 w-full overflow-hidden">
 										<Image
 											className="object-fit absolute w-100 min-h-full duration-500 ease-in-out"
-											src={item.image || ""}
+											src={
+												item.coverImage.extraLarge ||
+												item.coverImage.large ||
+												item.coverImage.medium ||
+												item.image ||
+												""
+											}
 											alt={
 												item.title?.english ||
 												item.title?.romaji ||
-												item.title?.native ||
-												item.title?.userPreferred
+												item.title?.userPreferred ||
+												item.title?.native
 											}
 											loading="lazy"
 										/>
@@ -136,12 +147,14 @@ function AnimeBrowseCategoryENG() {
 									<div className="anime-item-title h-[60px] w-full mt-[4px]">
 										<p
 											className="line-clamp-2 px-[4px] text-base font-semibold"
-											style={{ color: item?.color || "#fffc" }}
+											style={{
+												color: item?.coverImage.color || item?.color || "#fffc",
+											}}
 										>
 											{item.title?.english ||
 												item.title?.romaji ||
-												item.title?.native ||
-												item.title?.userPreferred}
+												item.title?.userPreferred ||
+												item.title?.native}
 										</p>
 									</div>
 								</Link>

@@ -1,6 +1,7 @@
 import { Skeleton } from "@mui/material"
 import React from "react"
 import Image from "../Image"
+import { Link } from "react-router-dom"
 
 function InfoBoxENG({ loading, info }) {
 	return (
@@ -133,11 +134,13 @@ function InfoBoxENG({ loading, info }) {
 								<h5 className="font-black my-[2px] p-[6px] bg-[#282828]/[0.8] inline-block rounded font-bebas-neue text-xl">
 									TAGS
 								</h5>
-								<p className="mb-[6px] flex flex-col gap-1 text-sm mx-2">
+								<div className="mb-[6px] flex flex-col gap-1 text-sm mx-2">
 									{info.tags.map((tag, i) => (
-										<span key={i}>{tag}</span>
+										<Link to={`/eng/tag/${encodeURIComponent(tag)}`} key={i}>
+											{tag}
+										</Link>
 									))}
-								</p>
+								</div>
 							</div>
 						)}
 					</>

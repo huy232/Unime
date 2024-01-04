@@ -202,14 +202,14 @@ function HeaderENG() {
 							>
 								{ENG_GENRES.map((genre, i) => (
 									<Link
-										to={`/eng/anime/${genre.slug}`}
-										key={genre.slug}
+										to={`/eng/anime/${encodeURIComponent(genre)}`}
+										key={genre}
 										onClick={() => {
 											handleScrollToTop()
 											setSidebar(false)
 										}}
 										className="hover:text-white hover:opacity-80 duration-200 ease-in-out"
-										aria-label={genre.slug}
+										aria-label={genre}
 									>
 										<div>
 											<p
@@ -218,7 +218,7 @@ function HeaderENG() {
 												}}
 												className="inline-block p-[4px] m-[4px] rounded"
 											>
-												{genre.name}
+												{genre}
 											</p>
 										</div>
 									</Link>
