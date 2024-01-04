@@ -75,7 +75,7 @@ function RandomAnimeENGComp({ randomAnime }) {
 				)}
 
 				<div className="layer-hero"></div>
-				<div className="w-[77%] lg:w-[45%] tracking-wide z-10 absolute flex flex-col gap-3 md:gap-6 bottom-[25%] left-[5%] lg:left-[8%] mix-blend-lighten">
+				<div className="w-[77%] lg:w-[45%] tracking-wide z-10 absolute flex flex-col gap-3 md:gap-6 bottom-[25%] left-[5%] lg:left-[8%]">
 					<div className="flex flex-col gap-2 md:gap-3 ">
 						<Link
 							to={`/eng/info/${randomAnime.id}`}
