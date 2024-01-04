@@ -30,7 +30,7 @@ const TopAllTimeENG = ({ topAnime, topLoading }) => {
 								anime.title.userPreferred ||
 								anime.title.native
 							return (
-								<div className="flex items-center smoothie my-1">
+								<div className="flex items-center smoothie my-1" key={anime.id}>
 									<span
 										className={`font-bebas-neue flex-grow hidden md:flex items-center justify-center text-xl md:text-2xl lg:text-3xl xl:text-4xl font-semibold tracking-wide mx-2 w-[2em]`}
 										style={{ color: `${anime.coverImage.color}` || "#ffc" }}
