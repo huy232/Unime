@@ -136,7 +136,7 @@ function AiringScheduleENGComp({ airingSchedule }) {
 										</div>
 									</div>
 									<div className="ml-auto flex items-center">
-										{item.rating.anilist && (
+										{item.rating?.anilist && (
 											<div className="hidden xl:flex">
 												<p className="mx-2 text-slate-300 text-xs">
 													{item.rating.anilist}/10 ❤
