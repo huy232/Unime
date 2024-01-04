@@ -44,7 +44,7 @@ function GenresENG() {
 				<div>
 					{ENG_GENRES.map((genre, i) => (
 						<Link
-							to={`/anime/${genre}`}
+							to={`/eng/anime/${genre}`}
 							key={genre}
 							aria-label={genre}
 							style={{ background: `none`, transition: "0.5s" }}
@@ -60,7 +60,7 @@ function GenresENG() {
 				<div>
 					{ENG_GENRES.map((genre, i) => (
 						<Link
-							to={`/anime/${genre}`}
+							to={`/eng/anime/${genre}`}
 							key={genre}
 							aria-label={genre}
 							style={{ background: `none`, transition: "0.5s" }}
