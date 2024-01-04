@@ -2,129 +2,128 @@ import "swiper/css"
 import "swiper/css/pagination"
 import "./movieanime.css"
 import { Link } from "react-router-dom"
-import { toSlug } from "../../../Utilities/toSlug"
-import { duration } from "../../../Utilities/duration"
-import { useState } from "react"
 import Image from "../Image"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faClosedCaptioning } from "@fortawesome/free-solid-svg-icons"
+import { MdOutlinePermDeviceInformation } from "react-icons/md"
+import { useEffect } from "react"
+import axios from "axios"
+import { useState } from "react"
 
 function RandomAnimeENGComp({ randomAnime }) {
-	const [showFullText, setShowFullText] = useState(false)
+	const [isVideoAvailable, setIsVideoAvailable] = useState(true)
 
-	// Your data
+	useEffect(() => {
+		const checkVideoAvailability = async () => {
+			if (randomAnime.trailer.site === "youtube") {
+				try {
+					const response = await axios.get(
+						`https://www.googleapis.com/youtube/v3/videos?id=${randomAnime.trailer.id}&part=status&key=${process.env.REACT_APP_YOUTUBE_API}`
+					)
+
+					const videoStatus = response?.data?.items[0]?.status
+					if (!videoStatus?.publicStatsViewable) {
+						setIsVideoAvailable(false)
+					}
+				} catch (error) {
+					console.error("Error checking video availability: ", error)
+				}
+			}
+		}
+
+		checkVideoAvailability()
+	}, [randomAnime.trailer.id, randomAnime.trailer.site])
+
 	const description = randomAnime.description?.replace(/<[br]+>/g, "")
-
-	// Check if the text is longer than 5 lines
-	const isLongText = description?.split("\n")?.length > 5
+	const animeTitle =
+		randomAnime.title.english ||
+		randomAnime.title.romaji ||
+		randomAnime.title.userPreferred ||
+		randomAnime.native
 	return (
-		<>
-			<h1 className="font-black ml-6 mr-6 mt-2 border-b-4 border-white text-rose-500 max-sm:text-center font-bebas-neue">
-				YOU MIGHT LIKE?
-			</h1>
-			<div className="random-anime-container px-4 md:px-12 lg:px-20 xl:px-28 2xl:px-36 w-full pb-12 flex max-lg:flex-col">
-				<div className="w-1/5 flex justify-center max-lg:w-full">
-					<Link
-						className="cursor-pointer hover:opacity-80 aspect-[2/3] duration-200 ease-in-out flex justify-center items-center"
-						to={`/eng/info/${randomAnime.id}`}
-						aria-label={randomAnime.id}
+		<div className="w-full">
+			<h1 className="font-black ml-6 mr-6 mt-2 mb-0 max-sm:text-center font-bebas-neue whitespace-nowrap overflow-hidden gap flex gap-4">
+				{[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((index) => (
+					<span
+						key={index}
+						className={`transform ${
+							index % 2 !== 0
+								? "scale-x-[-1] text-[#4A3EF4]"
+								: "scale-x-[1] text-rose-500"
+						}`}
+						style={{ display: "inline-block", whiteSpace: "nowrap" }}
 					>
-						<Image
-							className="object-fit duration-500 ease-in-out"
-							src={randomAnime.image || ""}
-							alt={
-								randomAnime.title.english ||
-								randomAnime.title.romaji ||
-								randomAnime.title.native
-							}
-							loading="lazy"
+						YOU MIGHT LIKE?
+					</span>
+				))}
+			</h1>
+			<div className="h-[44vh] sm:h-[77vh] lg:h-[85vh] z-0 relative aspect-3/1">
+				{isVideoAvailable && randomAnime.trailer.site === "youtube" ? (
+					<div className="youtube-container">
+						<iframe
+							className="brightness-70"
+							src={`https://www.youtube.com/embed/${randomAnime.trailer.id}?autoplay=1&controls=0&disablekb=1&loop=1&modestbranding=1&playsinline=1&color=white&mute=1&playlist=${randomAnime.trailer.id}`}
+							title="YouTube video player"
+							allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; autoplay"
+							allowFullScreen
 						/>
-					</Link>
-				</div>
-				<div className="w-4/5 max-lg:w-full mx-2">
-					<div>
-						<Link to={`/eng/info/${randomAnime.id}`}>
-							<h2
-								className="font-bold max-lg:text-center max-lg:mt-[6px]"
-								style={{ color: `${randomAnime?.color || "#fffc"}` }}
-							>
-								{randomAnime.title.english ||
-									randomAnime.title.romaji ||
-									randomAnime.title.native}
-							</h2>
-						</Link>
 					</div>
-					<div className="flex flex-row flex-wrap max-lg:justify-center">
-						{randomAnime.genres.map((genre) => (
-							<Link
-								to={`/eng/genre/${toSlug(genre)}`}
-								className="hover:opacity-80 duration-200 ease-in-out"
-								key={genre}
-								aria-label={toSlug(genre)}
-							>
-								<p className="m-[6px] p-[6px] bg-[#5f5f5f29] rounded">
-									{genre}
-								</p>
-							</Link>
-						))}
-					</div>
-					<div>
-						<div
-							className={`mx-[20px] ${showFullText ? "" : "line-clamp-5"}`}
-							dangerouslySetInnerHTML={{
-								__html: description,
-							}}
-						></div>
-						{isLongText && (
-							<button
-								className="p-[4px] bg-black/80 my-2 hover:opacity-80 duration-200 rounded"
-								onClick={() => setShowFullText(!showFullText)}
-							>
-								{showFullText ? "Show Less" : "Show More"}
-							</button>
-						)}
-					</div>
-					<div></div>
-					<div className="flex lg:flex-row [&>*]:p-[6px] [&>*]:m-[4px] max-lg:flex-col">
-						<div className="flex flex-col items-center">
-							<h6 className="m-0 font-semi-bold bg-[#ff420e] text-[#000000] text-base p-[6px] rounded">
-								TYPE
-							</h6>
-							<p className="my-0">{randomAnime.type}</p>
-						</div>
-						<div className="flex flex-col items-center">
-							<h6 className="m-0 font-semi-bold bg-[#f98866] text-[#000000] text-base p-[6px] rounded">
-								COUNTRY
-							</h6>
-							<p className="my-0">{randomAnime.countryOfOrigin}</p>
-						</div>
-						<div className="flex flex-col items-center">
-							<h6 className="m-0 font-semi-bold bg-[#80bd9e] text-[#000000] text-base p-[6px] rounded">
-								DURATION
-							</h6>
-							<p className="my-0">{duration(Number(randomAnime.duration))}</p>
-						</div>
-						<div className="flex flex-col items-center">
-							<h6 className="m-0 font-semi-bold bg-[#89da59] text-[#000000] text-base p-[6px] rounded">
-								VOICE
-							</h6>
-							<p className="my-0 uppercase">{randomAnime.subOrDub}</p>
-						</div>
-					</div>
-					<div className="mx-[12px] my-[14px] max-lg:text-center">
+				) : (
+					<Image
+						src={randomAnime.bannerImage}
+						className="absolute top-0 left-0 w-full h-full object-cover duration-500 ease-in-out"
+					/>
+				)}
+
+				<div className="layer-hero"></div>
+				<div className="w-[77%] lg:w-[45%] tracking-wide z-10 absolute flex flex-col gap-3 md:gap-6 bottom-[25%] left-[5%] lg:left-[8%] mix-blend-lighten">
+					<div className="flex flex-col gap-2 md:gap-3 ">
 						<Link
-							className="cursor-pointer hover:opacity-80 duration-200 ease-in-out p-[10px] bg-[#FF6E31] hover:text-[#1A120B] rounded text-lg"
 							to={`/eng/info/${randomAnime.id}`}
+							className="text-xl sm:text-2xl md:text-3xl lg:text-4xl line-clamp-2 font-bebas-neue duration-300 ease-in-out  hover:brightness-150 border-b-[1px] border-transparent hover:border-inherit w-fit"
+							style={{ color: `${randomAnime.coverImage.color}` || "#ffc" }}
 						>
-							<button
-								id="play-now-random-anime-btn"
-								aria-label="Play now random anime button"
-							>
-								PLAY NOW
-							</button>
+							{animeTitle}
+						</Link>
+						<span className="text-xs md:text-sm text-white/90 md:text-white flex items-center gap-3 md:gap-4">
+							<span>{randomAnime.averageScore}% ❤</span>
+							<span>{randomAnime.format}</span>
+							<span>{randomAnime.countryOfOrigin}</span>
+							<span className="flex justify-center items-center gap-1">
+								<span>
+									<FontAwesomeIcon icon={faClosedCaptioning} />
+								</span>
+								{randomAnime.episodes}
+							</span>
+							<span className="border-[1px] border-white rounded-lg px-[6px]">
+								{randomAnime.status}
+							</span>
+						</span>
+						<span className="hidden text-xs md:text-sm text-white/90 md:text-white md:flex items-center gap-3 md:gap-4">
+							{randomAnime.genres.map((genre) => (
+								<Link
+									to={`/eng/anime/${encodeURIComponent(genre)}`}
+									className="text-inherit opacity-70 hover:opacity-100 hover:brightness-125 duration-300 ease-in-out"
+									key={genre}
+								>
+									{genre}
+								</Link>
+							))}
+						</span>
+						<span className="line-clamp-3 text-xs">{description}</span>
+						<Link
+							to={`/eng/info/${randomAnime.id}`}
+							className="flex items-center gap-1 w-fit bg-[#FF004D] py-2 px-6 rounded-lg text-white hover:opacity-80 duration-300 ease-in-out"
+						>
+							<span>
+								<MdOutlinePermDeviceInformation />
+							</span>
+							<span>View details</span>
 						</Link>
 					</div>
 				</div>
 			</div>
-		</>
+		</div>
 	)
 }
 

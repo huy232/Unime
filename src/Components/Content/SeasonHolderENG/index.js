@@ -33,7 +33,7 @@ function SeasonHolderENG({ anime, title, color }) {
 								item.title?.native ||
 								item.title?.userPreferred
 							}
-							className="object-fit w-full h-full"
+							className="object-fit w-full h-full duration-500 ease-in-out"
 							loading="lazy"
 						/>
 					</div>

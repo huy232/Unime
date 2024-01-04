@@ -3,11 +3,7 @@ import RandomAnimeENGComp from "../RandomAnimeENGComp"
 function RandomAnimeENG({ loadingRandomAnime, randomAnime }) {
 	return (
 		<>
-			{loadingRandomAnime ? (
-				""
-			) : (
-				<RandomAnimeENGComp randomAnime={randomAnime} />
-			)}
+			{!loadingRandomAnime && <RandomAnimeENGComp randomAnime={randomAnime} />}
 		</>
 	)
 }

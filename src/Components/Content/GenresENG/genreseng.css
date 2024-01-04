@@ -1,0 +1,140 @@
+.scroll {
+	position: relative;
+	display: flex;
+	overflow: hidden;
+	-webkit-mask-image: linear-gradient(
+		90deg,
+		transparent,
+		#fff 20%,
+		#fff 80%,
+		transparent
+	);
+	mask-image: linear-gradient(
+		90deg,
+		transparent,
+		#fff 20%,
+		#fff 80%,
+		transparent
+	);
+}
+
+.scroll div {
+	white-space: nowrap;
+	-webkit-animation: scroll var(--time) linear infinite;
+	animation: scroll var(--time) linear infinite;
+	-webkit-animation-delay: calc(var(--time) * -1);
+	animation-delay: calc(var(--time) * -1);
+}
+
+.scroll div:nth-child(2) {
+	-webkit-animation: scroll2 var(--time) linear infinite;
+	animation: scroll2 var(--time) linear infinite;
+	-webkit-animation-delay: calc(var(--time) / -2);
+	animation-delay: calc(var(--time) / -2);
+}
+
+.scroll:nth-child(2) div {
+	white-space: nowrap;
+	-webkit-animation: reverseScroll var(--time) linear infinite;
+	animation: reverseScroll var(--time) linear infinite;
+	-webkit-animation-delay: calc(var(--time) * -1);
+	animation-delay: calc(var(--time) * -1);
+}
+
+.scroll:nth-child(2) div:nth-child(2) {
+	-webkit-animation: reverseScroll2 var(--time) linear infinite;
+	animation: reverseScroll2 var(--time) linear infinite;
+	-webkit-animation-delay: calc(var(--time) / -2);
+	animation-delay: calc(var(--time) / -2);
+}
+
+@-webkit-keyframes scroll {
+	0% {
+		transform: translateX(100%);
+	}
+
+	100% {
+		transform: translateX(-100%);
+	}
+}
+
+@keyframes scroll {
+	0% {
+		transform: translateX(100%);
+	}
+
+	100% {
+		transform: translateX(-100%);
+	}
+}
+
+@-webkit-keyframes reverseScroll {
+	0% {
+		transform: translateX(-100%);
+	}
+	100% {
+		transform: translateX(100%);
+	}
+}
+
+@keyframes reverseScroll {
+	0% {
+		transform: translateX(-100%);
+	}
+	100% {
+		transform: translateX(100%);
+	}
+}
+
+@-webkit-keyframes reverseScroll2 {
+	0% {
+		transform: translateX(-200%);
+	}
+	100% {
+		transform: translateX(0);
+	}
+}
+
+@keyframes reverseScroll2 {
+	0% {
+		transform: translateX(-200%);
+	}
+	100% {
+		transform: translateX(0);
+	}
+}
+
+@-webkit-keyframes scroll2 {
+	0% {
+		transform: translateX(0);
+	}
+
+	100% {
+		transform: translateX(-200%);
+	}
+}
+
+@keyframes scroll2 {
+	0% {
+		transform: translateX(0);
+	}
+
+	100% {
+		transform: translateX(-200%);
+	}
+}
+
+.scroll div a {
+	display: inline-flex;
+	margin: 10px;
+	letter-spacing: 0.2em;
+	background: #333;
+	color: #fff;
+	padding: 5px 10px;
+	border-radius: 5px;
+	transition: 0.5s;
+}
+
+.scroll div a:hover {
+	cursor: pointer;
+}

@@ -9,7 +9,9 @@ import axios from "axios"
 import useDocumentTitle from "../../Hooks/useDocumentTitle"
 import { API } from "../../constants"
 import SeasonLayoutENG from "../../Components/Content/SeasonLayoutENG"
-import CurrentSeason from "../../Components/CurrentSeason"
+import CurrentSeason from "../../Components/Content/CurrentSeason"
+import GenresENG from "../../Components/Content/GenresENG"
+import TopAllTimeENG from "../../Components/Content/TopAllTimeENG"
 
 function HomeENG() {
 	const [loadingAiring, setLoadingAiring] = useState(true)
@@ -23,6 +25,9 @@ function HomeENG() {
 	// ---------
 	const [loadingCurrentSeason, setLoadingCurrentSeason] = useState(true)
 	const [currentSeasonAnime, setCurrentSeasonAnime] = useState([])
+	// ---------
+	const [loadingTop, setLoadingTop] = useState(true)
+	const [topAnime, setTopAnime] = useState([])
 	// ---------
 	const [loadingSeason, setLoadingSeason] = useState(true)
 	const [seasonAnime, setSeasonAnime] = useState([])
@@ -99,6 +104,20 @@ function HomeENG() {
 				})
 		}
 
+		const getTopAnime = async () => {
+			await axios
+				.get(`${API}/eng/top-all-time`, { cancelToken: source.token })
+				.then((topAnime) => {
+					if (topAnime.data.success) {
+						setTopAnime(topAnime.data.data.results)
+						setLoadingTop(false)
+					}
+				})
+				.catch((thrown) => {
+					if (axios.isCancel(thrown)) return
+				})
+		}
+
 		const getSeason = async () => {
 			await axios
 				.get(`${API}/eng/upcoming-anime`, { cancelToken: source.token })
@@ -135,11 +154,14 @@ function HomeENG() {
 					cancelToken: source.token,
 				})
 				.then((randomAnime) => {
-					if (randomAnime.data.success === false) {
+					if (
+						randomAnime.data.success === false ||
+						randomAnime.data.data.results[0].length === 0
+					) {
 						setRandomAnime([])
 						setLoadingRandomAnime(true)
 					} else {
-						setRandomAnime(randomAnime.data.data)
+						setRandomAnime(randomAnime.data.data.results[0])
 						setLoadingRandomAnime(false)
 					}
 				})
@@ -152,6 +174,7 @@ function HomeENG() {
 		getRecentAnime()
 		getTrendingAnime()
 		getCurrentSeason()
+		getTopAnime()
 		getSeason()
 		getAiringSchedule()
 		getRandomAnime()
@@ -185,6 +208,9 @@ function HomeENG() {
 				/>
 			</LazyLoad>
 			<LazyLoad>
+				<TopAllTimeENG topAnime={topAnime} loadingTop={loadingTop} />
+			</LazyLoad>
+			<LazyLoad>
 				<SeasonLayoutENG data={seasonAnime} loading={loadingSeason} />
 			</LazyLoad>
 			<LazyLoad>
@@ -198,6 +224,9 @@ function HomeENG() {
 					loadingRandomAnime={loadingRandomAnime}
 					randomAnime={randomAnime}
 				/>
+			</LazyLoad>
+			<LazyLoad>
+				<GenresENG />
 			</LazyLoad>
 		</>
 	)

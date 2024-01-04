@@ -3,8 +3,8 @@ import "swiper/css"
 import "swiper/css/pagination"
 import { Lazy } from "swiper"
 import { Link } from "react-router-dom"
-import Image from "../Content/Image"
-import AnimeSkeleton from "../Content/AnimeSkeleton"
+import Image from "../Image"
+import AnimeSkeleton from "../AnimeSkeleton"
 import "./currentseason.css"
 
 const CurrentSeason = ({ currentSeason, loadingCurrentSeason }) => {

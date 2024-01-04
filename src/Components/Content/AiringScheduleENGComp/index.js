@@ -100,7 +100,7 @@ function AiringScheduleENGComp({ airingSchedule }) {
 										<div className="flex items-center gap-2">
 											<div className="aspect-2/3 w-[50px] h-[75px] relative flex-shrink-0">
 												<Image
-													className="w-full h-full rounded bg-white/10"
+													className="w-full h-full rounded bg-white/10 duration-500 ease-in-out"
 													src={item.coverImage}
 													alt="Image"
 												/>

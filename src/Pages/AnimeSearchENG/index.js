@@ -94,7 +94,7 @@ function AnimeSearchENG() {
 									item.title?.userPreferred
 								}
 								key={item.id}
-								className="group col-span-1 cursor-pointer flex flex-col items-center col-span-1 mb-[12px] relative float-left"
+								className="group cursor-pointer flex flex-col items-center col-span-1 mb-[12px] relative float-left"
 								aria-label={
 									item.title?.english ||
 									item.title?.romaji ||
