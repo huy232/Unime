@@ -12,10 +12,9 @@ import { useState } from "react"
 
 function RandomAnimeENGComp({ randomAnime }) {
 	const [isVideoAvailable, setIsVideoAvailable] = useState(true)
-
 	useEffect(() => {
 		const checkVideoAvailability = async () => {
-			if (randomAnime.trailer.site === "youtube") {
+			if (randomAnime?.trailer?.site === "youtube") {
 				try {
 					const response = await axios.get(
 						`https://www.googleapis.com/youtube/v3/videos?id=${randomAnime.trailer.id}&part=status&key=${process.env.REACT_APP_YOUTUBE_API}`
@@ -32,7 +31,7 @@ function RandomAnimeENGComp({ randomAnime }) {
 		}
 
 		checkVideoAvailability()
-	}, [randomAnime.trailer.id, randomAnime.trailer.site])
+	}, [randomAnime?.trailer?.id, randomAnime?.trailer?.site])
 
 	const description = randomAnime.description?.replace(/<[br]+>/g, "")
 	const animeTitle =
@@ -58,7 +57,7 @@ function RandomAnimeENGComp({ randomAnime }) {
 				))}
 			</h1>
 			<div className="h-[44vh] sm:h-[77vh] lg:h-[85vh] z-0 relative aspect-3/1">
-				{isVideoAvailable && randomAnime.trailer.site === "youtube" ? (
+				{isVideoAvailable && randomAnime?.trailer?.site === "youtube" ? (
 					<div className="youtube-container">
 						<iframe
 							className="brightness-70"
