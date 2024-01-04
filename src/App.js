@@ -62,7 +62,7 @@ function App() {
 	}, [])
 
 	return (
-		<div className="App">
+		<div className="App flex flex-col min-h-screen">
 			<AuthProvider>
 				{exclusionArray.indexOf(window.location.pathname) < 0 && (
 					<>
@@ -71,7 +71,7 @@ function App() {
 					</>
 				)}
 
-				<div className="content">
+				<div className="content flex-1">
 					<Routes>
 						{/* VIET ANIME*/}
 						<Route exact path="/" element={<Home instance={instance} />} />

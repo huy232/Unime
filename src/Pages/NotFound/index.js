@@ -16,7 +16,7 @@ function NotFound() {
 				className="w-full h-100"
 				style={{
 					background: `linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(${notFound})`,
-					backgroundSize: `cover`,
+					backgroundSize: `contain`,
 					backgroundRepeat: `no-repeat`,
 					backgroundPosition: "center",
 				}}
