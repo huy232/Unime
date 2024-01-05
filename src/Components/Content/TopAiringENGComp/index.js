@@ -101,7 +101,7 @@ function TopAiringENGComp({ topAiring }) {
 					<SwiperSlide key={i} className="rounded overflow-hidden">
 						<div className="h-[44vh] sm:h-[77vh] lg:h-[85vh] z-0 relative aspect-3/1">
 							<YouTube
-								className={youtubeClassName}
+								className={youtubeClassName(i)}
 								videoId={item.trailer.id}
 								opts={{
 									playerVars: {
