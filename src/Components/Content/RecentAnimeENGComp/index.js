@@ -28,15 +28,15 @@ function RecentAnimeENGComp({ recentAnime }) {
 							title={
 								anime.title.english ||
 								anime.title.romaji ||
-								anime.title.native ||
-								anime.userPreferred
+								anime.title.userPreferred ||
+								anime.title.native
 							}
 							key={anime.id}
 							aria-label={
 								anime.title.english ||
 								anime.title.romaji ||
-								anime.title.native ||
-								anime.userPreferred
+								anime.title.userPreferred ||
+								anime.title.native
 							}
 						>
 							<div className="group recent-anime-holder select-none cursor-pointer">
@@ -47,8 +47,8 @@ function RecentAnimeENGComp({ recentAnime }) {
 										alt={
 											anime.title.english ||
 											anime.title.romaji ||
-											anime.title.native ||
-											anime.userPreferred
+											anime.title.userPreferred ||
+											anime.title.native
 										}
 										loading="lazy"
 									/>

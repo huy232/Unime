@@ -4,6 +4,7 @@ import { useState } from "react"
 import { Link } from "react-router-dom"
 import Image from "../Image"
 import { formatDateTime } from "../../../Utilities/formatDayTime"
+
 function AiringScheduleENGComp({ airingSchedule }) {
 	const [selectedDay, setSelectedDay] = useState(null)
 	const [currentTime, setCurrentTime] = useState(new Date())
@@ -12,7 +13,6 @@ function AiringScheduleENGComp({ airingSchedule }) {
 		setSelectedDay(day)
 	}
 	useEffect(() => {
-		// Set the initial selected day to the current day
 		const currentDay = new Date().getDay()
 		const days = [
 			"sunday",

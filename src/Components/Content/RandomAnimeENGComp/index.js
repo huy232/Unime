@@ -7,6 +7,7 @@ import { faClosedCaptioning } from "@fortawesome/free-solid-svg-icons"
 import { MdOutlinePermDeviceInformation } from "react-icons/md"
 import axios from "axios"
 import "./movieanime.css"
+import { MAINSITE } from "../../../constants"
 
 function RandomAnimeENGComp({ randomAnime }) {
 	const [isVideoAvailable, setIsVideoAvailable] = useState(true)
@@ -24,7 +25,6 @@ function RandomAnimeENGComp({ randomAnime }) {
 						setIsVideoAvailable(false)
 					}
 				} catch (error) {
-					console.error("Error checking video availability: ", error)
 					setIsVideoAvailable(false) // Set to false on error
 				}
 			}
@@ -38,7 +38,7 @@ function RandomAnimeENGComp({ randomAnime }) {
 		randomAnime.title.english ||
 		randomAnime.title.romaji ||
 		randomAnime.title.userPreferred ||
-		randomAnime.native
+		randomAnime.title.native
 
 	return (
 		<div className="w-full">
@@ -73,10 +73,17 @@ function RandomAnimeENGComp({ randomAnime }) {
 								color: "white",
 								mute: 1,
 								playlist: randomAnime.trailer.id,
+								showinfo: 0,
+								start: 0,
+								cc_load_policy: 0,
+								iv_load_policy: 3,
+								rel: 0,
+								fs: 0,
+								enablejsapi: 1,
+								origin: MAINSITE,
 							},
 						}}
 						onError={(event) => {
-							console.log("Youtube error: ", event.data)
 							setIsVideoAvailable(false)
 						}}
 					/>

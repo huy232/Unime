@@ -4,7 +4,6 @@ import TopAiringENG from "../../Components/Content/TopAiringENG"
 import TrendingAnimeENG from "../../Components/Content/TrendingAnimeENG"
 import RandomAnimeENG from "../../Components/Content/RandomAnimeENG"
 import AiringScheduleENG from "../../Components/Content/AiringScheduleENG"
-import LazyLoad from "react-lazyload"
 import axios from "axios"
 import useDocumentTitle from "../../Hooks/useDocumentTitle"
 import { API } from "../../constants"
@@ -186,48 +185,30 @@ function HomeENG() {
 	useDocumentTitle(`HOME - Unime`)
 	return (
 		<>
-			<LazyLoad>
-				<TopAiringENG loadingAiring={loadingAiring} topAiring={topAiring} />
-			</LazyLoad>
-			<LazyLoad>
-				<RecentEpisodeENG
-					loadingRecentAnime={loadingRecentAnime}
-					recentAnime={recentAnime}
-				/>
-			</LazyLoad>
-			<LazyLoad>
-				<TrendingAnimeENG
-					loadingTrending={loadingTrending}
-					trendingAnime={trendingAnime}
-				/>
-			</LazyLoad>
-			<LazyLoad>
-				<CurrentSeason
-					currentSeason={currentSeasonAnime}
-					loadingCurrentSeason={loadingCurrentSeason}
-				/>
-			</LazyLoad>
-			<LazyLoad>
-				<TopAllTimeENG topAnime={topAnime} loadingTop={loadingTop} />
-			</LazyLoad>
-			<LazyLoad>
-				<SeasonLayoutENG data={seasonAnime} loading={loadingSeason} />
-			</LazyLoad>
-			<LazyLoad>
-				<AiringScheduleENG
-					loadingAiringSchedule={loadingAiringSchedule}
-					airingSchedule={airingSchedule}
-				/>
-			</LazyLoad>
-			<LazyLoad>
-				<RandomAnimeENG
-					loadingRandomAnime={loadingRandomAnime}
-					randomAnime={randomAnime}
-				/>
-			</LazyLoad>
-			<LazyLoad>
-				<GenresENG />
-			</LazyLoad>
+			<TopAiringENG loadingAiring={loadingAiring} topAiring={topAiring} />
+			<RecentEpisodeENG
+				loadingRecentAnime={loadingRecentAnime}
+				recentAnime={recentAnime}
+			/>
+			<TrendingAnimeENG
+				loadingTrending={loadingTrending}
+				trendingAnime={trendingAnime}
+			/>
+			<CurrentSeason
+				currentSeason={currentSeasonAnime}
+				loadingCurrentSeason={loadingCurrentSeason}
+			/>
+			<TopAllTimeENG topAnime={topAnime} loadingTop={loadingTop} />
+			<SeasonLayoutENG data={seasonAnime} loading={loadingSeason} />
+			<AiringScheduleENG
+				loadingAiringSchedule={loadingAiringSchedule}
+				airingSchedule={airingSchedule}
+			/>
+			<RandomAnimeENG
+				loadingRandomAnime={loadingRandomAnime}
+				randomAnime={randomAnime}
+			/>
+			<GenresENG />
 		</>
 	)
 }
