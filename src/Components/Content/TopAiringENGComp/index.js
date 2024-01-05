@@ -36,19 +36,17 @@ function TopAiringENGComp({ topAiring }) {
 		[players]
 	)
 
-	const onReady = useCallback(
-		(event, index) => {
-			const newPlayers = [...players]
-			newPlayers[index] = event.target
-			setPlayers(newPlayers)
-			if (index !== activeSlideIndex) {
-				event.target.pauseVideo()
-			} else {
-				event.target.playVideo()
-			}
-		},
-		[activeSlideIndex, players]
-	)
+	// const onReady = useCallback(
+	// 	(event, index) => {
+	// 		const newPlayers = [...players]
+	// 		newPlayers[index] = event.target
+	// 		setPlayers(newPlayers)
+	// 		if (index !== activeSlideIndex) {
+	// 			event.target.pauseVideo()
+	// 		}
+	// 	},
+	// 	[activeSlideIndex, players]
+	// )
 
 	const handleError = useCallback(
 		(index) => {
@@ -101,11 +99,14 @@ function TopAiringENGComp({ topAiring }) {
 					<SwiperSlide key={i} className="rounded overflow-hidden">
 						<div className="h-[44vh] sm:h-[77vh] lg:h-[85vh] z-0 relative aspect-3/1">
 							<YouTube
+								loading={"eager"}
 								className={youtubeClassName(i)}
 								videoId={item.trailer.id}
 								opts={{
 									playerVars: {
 										autoplay: 1,
+										mute: 1,
+										muted: 1,
 										controls: 0,
 										showinfo: 0,
 										disablekb: 1,
@@ -113,7 +114,6 @@ function TopAiringENGComp({ topAiring }) {
 										modestbranding: 1,
 										playsinline: 1,
 										color: "white",
-										mute: 1,
 										start: 0,
 										cc_load_policy: 0,
 										iv_load_policy: 3,
@@ -124,7 +124,7 @@ function TopAiringENGComp({ topAiring }) {
 									},
 								}}
 								onError={() => handleError(i)}
-								onReady={(event) => onReady(event, i)}
+								// onReady={(event) => onReady(event, i)}
 							/>
 							{youtubeErrors[i] && renderFallbackImage(i)}
 							<div className="layer-hero"></div>
