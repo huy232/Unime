@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react"
 import { Link, useLocation } from "react-router-dom"
-import { COLORLIST, ENG_GENRES } from "../../../constants"
-import { BsSearch } from "react-icons/bs"
+import { COLORLIST, ENG_GENRES, ENG_TAGS } from "../../../constants"
+import { BsSearch, BsTags } from "react-icons/bs"
 import { useNavigate } from "react-router-dom"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faBars, faSortUp, faSortDown } from "@fortawesome/free-solid-svg-icons"
@@ -143,20 +143,21 @@ function HeaderENG() {
 						</div>
 						{mangaUrlArray.indexOf(window.location.pathname) < 0 && (
 							<div
-								className="hidden sm:block cursor-pointer select-none relative mx-1 px-2"
+								className="hidden sm:block select-none relative mx-1 px-2"
 								ref={genreHeaderRef}
 								onClick={() => setGenreHeaderToggle(!genreHeaderToggle)}
 							>
-								<div className="flex items-center justify-center gap-1 duration-200 ease-linear opacity-80 hover:opacity-100">
-									<span>Genres</span>
+								<button className="flex items-center justify-center gap-1 duration-200 ease-linear opacity-80 hover:opacity-100">
+									<span>Genres & tags</span>
 									<FaArrowDownShortWide className="mt-[2px]" />
-								</div>
+								</button>
 								{genreHeaderToggle && (
 									<ul className="absolute min-w-[40vw] max-h-[80vh] overflow-y-scroll scrollbar-hide bg-black rounded p-2 mt-[6px] flex flex-wrap gap-1">
+										<span className="w-full cursor-normal">Genres</span>
 										{ENG_GENRES.map((genre, i) => (
 											<Link
 												to={`/eng/anime/${encodeURIComponent(genre)}`}
-												key={genre.slug}
+												key={genre}
 												onClick={() => {
 													handleScrollToTop()
 													setSidebar(false)
@@ -171,6 +172,28 @@ function HeaderENG() {
 													className="inline-block p-[4px] m-[4px] rounded border-2 hover:brightness-150 ease-in-out duration-200 bg-white/5"
 												>
 													{genre}
+												</p>
+											</Link>
+										))}
+										<span className="w-full">Tags</span>
+										{ENG_TAGS.map((tag, i) => (
+											<Link
+												to={`/eng/tag/${encodeURIComponent(tag)}`}
+												key={BsTags}
+												onClick={() => {
+													handleScrollToTop()
+													setSidebar(false)
+												}}
+												className="hover:text-white hover:opacity-80 duration-200 ease-in-out"
+												aria-label={tag}
+											>
+												<p
+													style={{
+														borderColor: `${COLORLIST[i]}`,
+													}}
+													className="inline-block p-[4px] m-[4px] rounded border-2 hover:brightness-150 ease-in-out duration-200 bg-white/5"
+												>
+													{tag}
 												</p>
 											</Link>
 										))}
@@ -236,7 +259,7 @@ function HeaderENG() {
 							onClick={() => setGenreToggle(!genreToggle)}
 						>
 							<h2 className="font-semibold text-[1.5rem] mr-[6px] my-0">
-								GENRES
+								GENRES & TAGS
 							</h2>
 							{genreToggle ? (
 								<FontAwesomeIcon icon={faSortUp} className="pt-2" />
@@ -248,31 +271,62 @@ function HeaderENG() {
 							<div
 								className={`${
 									genreToggle
-										? "opacity-100 h-[200px] overflow-y-scroll"
+										? "opacity-100 h-[200px] overflow-y-scroll scrollbar-hide"
 										: "opacity-0 h-[0px] overflow-y-hidden"
 								} duration-200 ease-in-out`}
 							>
-								{ENG_GENRES.map((genre, i) => (
-									<Link
-										to={`/eng/anime/${encodeURIComponent(genre)}`}
-										key={genre}
-										onClick={() => {
-											handleScrollToTop()
-											setSidebar(false)
-										}}
-										className="text-white w-fit"
-										aria-label={genre}
-									>
-										<p
-											style={{
-												borderColor: `${COLORLIST[i]}`,
+								<div className="w-full border-t-[1px] border-b-[1px] border-white text-center m-1">
+									<span className="text-white text-left">Genres</span>
+								</div>
+								<div className="flex flex-wrap gap-1 justify-end">
+									{ENG_GENRES.map((genre, i) => (
+										<Link
+											to={`/eng/anime/${encodeURIComponent(genre)}`}
+											key={genre}
+											onClick={() => {
+												handleScrollToTop()
+												setSidebar(false)
 											}}
-											className="inline-block p-[4px] m-[4px] rounded border-2 hover:brightness-150 ease-in-out duration-200 bg-white/5"
+											className="text-white w-fit"
+											aria-label={genre}
 										>
-											{genre}
-										</p>
-									</Link>
-								))}
+											<p
+												style={{
+													borderColor: `${COLORLIST[i]}`,
+												}}
+												className="inline-block p-[4px] m-[4px] rounded border-2 hover:brightness-150 ease-in-out duration-200 bg-white/5"
+											>
+												{genre}
+											</p>
+										</Link>
+									))}
+								</div>
+								<div className="w-full border-t-[1px] border-b-[1px] border-white text-center m-1">
+									<span className="text-white text-left">Tags</span>
+								</div>
+								<div className="flex flex-wrap gap-1 justify-end">
+									{ENG_TAGS.map((tag, i) => (
+										<Link
+											to={`/eng/tag/${encodeURIComponent(tag)}`}
+											key={tag}
+											onClick={() => {
+												handleScrollToTop()
+												setSidebar(false)
+											}}
+											className="text-white w-fit"
+											aria-label={tag}
+										>
+											<p
+												style={{
+													borderColor: `${COLORLIST[i]}`,
+												}}
+												className="inline-block p-[4px] m-[4px] rounded border-2 hover:brightness-150 ease-in-out duration-200 bg-white/5"
+											>
+												{tag}
+											</p>
+										</Link>
+									))}
+								</div>
 							</div>
 						</div>
 

@@ -111,6 +111,9 @@ const engGenres = [
 	"Sports",
 	"Supernatural",
 	"Thriller",
+]
+
+const engTags = [
 	"4-koma",
 	"Achromatic",
 	"Achronological Order",
@@ -896,6 +899,7 @@ export const MAINSITE = mainsite
 export const API = url
 export const GENRES = genres
 export const ENG_GENRES = engGenres
+export const ENG_TAGS = engTags
 export const COLLECTIONS = collections
 export const PROVIDER = provider
 export const MANGA_PROVIDER = mangaProvider
