@@ -89,7 +89,7 @@ function TopAiringENGComp({ topAiring }) {
 			onSlideChange={(swiper) => handleIndexChange(swiper)}
 		>
 			{topAiring.map((item, i) => {
-				const description = item.description?.replace(/<[br]+>/g, "")
+				const description = item.description?.replace(/<[br]+>/g, " ")
 				const animeTitle =
 					item.title.english ||
 					item.title.romaji ||
@@ -162,7 +162,12 @@ function TopAiringENGComp({ topAiring }) {
 											</Link>
 										))}
 									</span>
-									<span className="line-clamp-3 text-xs">{description}</span>
+									<span
+										className="line-clamp-3 text-xs"
+										dangerouslySetInnerHTML={{
+											__html: description,
+										}}
+									></span>
 									<Link
 										to={`/eng/info/${item.id}`}
 										className="flex items-center gap-1 w-fit bg-[#FF004D] py-2 px-6 rounded-lg text-white hover:opacity-80 duration-300 ease-in-out"

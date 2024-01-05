@@ -33,7 +33,7 @@ function RandomAnimeENGComp({ randomAnime }) {
 		checkVideoAvailability()
 	}, [randomAnime?.trailer?.id, randomAnime?.trailer?.site])
 
-	const description = randomAnime.description?.replace(/<[br]+>/g, "")
+	const description = randomAnime.description?.replace(/<[br]+>/g, " ")
 	const animeTitle =
 		randomAnime.title.english ||
 		randomAnime.title.romaji ||
@@ -129,7 +129,12 @@ function RandomAnimeENGComp({ randomAnime }) {
 								</Link>
 							))}
 						</span>
-						<span className="line-clamp-3 text-xs">{description}</span>
+						<span
+							className="line-clamp-3 text-xs"
+							dangerouslySetInnerHTML={{
+								__html: description,
+							}}
+						></span>
 						<Link
 							to={`/eng/info/${randomAnime.id}`}
 							className="flex items-center gap-1 w-fit bg-[#FF004D] py-2 px-6 rounded-lg text-white hover:opacity-80 duration-300 ease-in-out"

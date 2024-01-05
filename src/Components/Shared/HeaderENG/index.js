@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faBars, faSortUp, faSortDown } from "@fortawesome/free-solid-svg-icons"
 import { toSlug } from "../../../Utilities/toSlug"
+import { FaArrowDownShortWide } from "react-icons/fa6"
 import User from "../User"
 import LanguageButton from "../../Content/LanguageButton"
 import ContentToggleENG from "../../Content/ContentToggleENG"
@@ -18,7 +19,10 @@ function HeaderENG() {
 	const [input, setInput] = useState("")
 	const [sideBar, setSidebar] = useState(false)
 	const [genreToggle, setGenreToggle] = useState(false)
+	const [genreHeaderToggle, setGenreHeaderToggle] = useState(false)
 	const sidebarRef = useRef()
+	const genreHeaderRef = useRef()
+
 	const handleChange = (e) => {
 		setInput(e.target.value)
 	}
@@ -54,18 +58,31 @@ function HeaderENG() {
 		window.history.scrollRestoration = "manual"
 	}
 
-	const handleClickOutside = (event) => {
-		if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
-			setSidebar(false)
-		}
-	}
-
 	useEffect(() => {
-		document.addEventListener("click", handleClickOutside, true)
-		return () => {
-			document.removeEventListener("click", handleClickOutside, true)
+		const handleClickOutsideSidebar = (event) => {
+			if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
+				setSidebar(false)
+			}
 		}
-	}, [])
+
+		const handleClickOutsideGenre = (event) => {
+			if (
+				genreHeaderToggle &&
+				genreHeaderRef.current &&
+				!genreHeaderRef.current.contains(event.target)
+			) {
+				setGenreHeaderToggle(false)
+			}
+		}
+
+		document.addEventListener("click", handleClickOutsideSidebar)
+		document.addEventListener("click", handleClickOutsideGenre)
+
+		return () => {
+			document.removeEventListener("click", handleClickOutsideSidebar)
+			document.removeEventListener("click", handleClickOutsideGenre)
+		}
+	}, [genreHeaderToggle])
 
 	return (
 		<>
@@ -116,7 +133,7 @@ function HeaderENG() {
 										handleSubmit(e)
 									}}
 									type="submit"
-									className="submit-button ml-[4px] hover:opacity-80 duration-200 ease-in-out"
+									className="submit-button ml-[4px] hover:brightness-150 opacity-80 hover:opacity-100 duration-200 ease-in-out"
 									id="search-eng-btn"
 									aria-label="Search button - ENG"
 								>
@@ -124,6 +141,44 @@ function HeaderENG() {
 								</button>
 							</form>
 						</div>
+						{mangaUrlArray.indexOf(window.location.pathname) < 0 && (
+							<div
+								className="hidden sm:block cursor-pointer select-none relative mx-1 px-2"
+								ref={genreHeaderRef}
+								onClick={() => setGenreHeaderToggle(!genreHeaderToggle)}
+							>
+								<div className="flex items-center justify-center gap-1 duration-200 ease-linear opacity-80 hover:opacity-100">
+									<span>Genres</span>
+									<FaArrowDownShortWide className="mt-[2px]" />
+								</div>
+								{genreHeaderToggle && (
+									<ul className="absolute min-w-[40vw] max-h-[80vh] overflow-y-scroll scrollbar-hide bg-black rounded p-2 mt-[6px] flex flex-wrap gap-1">
+										{ENG_GENRES.map((genre, i) => (
+											<Link
+												to={`/eng/anime/${encodeURIComponent(genre)}`}
+												key={genre.slug}
+												onClick={() => {
+													handleScrollToTop()
+													setSidebar(false)
+												}}
+												className="hover:text-white hover:opacity-80 duration-200 ease-in-out"
+												aria-label={genre}
+											>
+												<p
+													style={{
+														borderColor: `${COLORLIST[i]}`,
+													}}
+													className="inline-block p-[4px] m-[4px] rounded border-2 hover:brightness-150 ease-in-out duration-200 bg-white/5"
+												>
+													{genre}
+												</p>
+											</Link>
+										))}
+									</ul>
+								)}
+							</div>
+						)}
+
 						<div className="ml-auto flex items-center justify-center">
 							<div className="hidden sm:block">
 								<ContentToggleENG
@@ -149,56 +204,53 @@ function HeaderENG() {
 					className={`mt-[40px] fixed duration-200 ease-in-out bg-[#222] h-100 z-50 ${
 						sideBar
 							? "opacity-100 w-[320px] right-0"
-							: "opacity-0 right-[-320px]"
+							: "opacity-0 w-[0px] -right-full"
 					}`}
 				>
-					<div className="flex flex-col text-right [&>div]:my-[8px] mx-[6px]">
+					<div className="flex flex-col gap-2 text-right [&>div]:my-[8px] mx-[6px]">
+						<Link
+							to="/eng"
+							className="hover:brightness-150 opacity-80 hover:opacity-100 duration-200 ease-in-out text-white"
+							onClick={() => {
+								handleScrollToTop()
+								setSidebar(false)
+							}}
+							aria-label="Home - English"
+						>
+							<h2 className=" font-semibold text-[1.5rem] my-0">HOME</h2>
+						</Link>
+
+						<Link
+							to="/eng/anime"
+							className="hover:brightness-150 opacity-80 hover:opacity-100 duration-200 ease-in-out text-white"
+							onClick={() => {
+								handleScrollToTop()
+								setSidebar(false)
+							}}
+							aria-label="All anime - English"
+						>
+							<h2 className=" font-semibold text-[1.5rem] my-0">ALL ANIME</h2>
+						</Link>
+						<button
+							className="cursor-pointer hover:brightness-150 opacity-80 hover:opacity-100 duration-200 ease-in-out flex flex-row items-center justify-end"
+							onClick={() => setGenreToggle(!genreToggle)}
+						>
+							<h2 className="font-semibold text-[1.5rem] mr-[6px] my-0">
+								GENRES
+							</h2>
+							{genreToggle ? (
+								<FontAwesomeIcon icon={faSortUp} className="pt-2" />
+							) : (
+								<FontAwesomeIcon icon={faSortDown} className="pb-1" />
+							)}
+						</button>
 						<div>
-							<Link
-								to="/eng"
-								className="hover:opacity-80 duration-200 ease-in-out"
-								onClick={() => {
-									handleScrollToTop()
-									setSidebar(false)
-								}}
-								aria-label="Home - English"
-							>
-								<h2 className=" font-semibold text-[1.5rem] my-0">HOME</h2>
-							</Link>
-						</div>
-						<div>
-							<Link
-								to="/eng/anime"
-								className="hover:opacity-80 duration-200 ease-in-out"
-								onClick={() => {
-									handleScrollToTop()
-									setSidebar(false)
-								}}
-								aria-label="All anime - English"
-							>
-								<h2 className=" font-semibold text-[1.5rem] my-0">ALL Anime</h2>
-							</Link>
-						</div>
-						<div>
-							<div
-								className="cursor-pointer hover:opacity-80 duration-200 ease-in-out flex flex-row items-center justify-end"
-								onClick={() => setGenreToggle(!genreToggle)}
-							>
-								<h2 className="font-semibold text-[1.5rem] mr-[6px] my-0">
-									GENRES
-								</h2>
-								{genreToggle ? (
-									<FontAwesomeIcon icon={faSortUp} className="pt-2" />
-								) : (
-									<FontAwesomeIcon icon={faSortDown} className="pb-1" />
-								)}
-							</div>
 							<div
 								className={`${
 									genreToggle
 										? "opacity-100 h-[200px] overflow-y-scroll"
-										: "opacity-0 h-0 overflow-y-hidden"
-								} duration-200 ease-in-out w-100`}
+										: "opacity-0 h-[0px] overflow-y-hidden"
+								} duration-200 ease-in-out`}
 							>
 								{ENG_GENRES.map((genre, i) => (
 									<Link
@@ -208,52 +260,45 @@ function HeaderENG() {
 											handleScrollToTop()
 											setSidebar(false)
 										}}
-										className="hover:text-white hover:opacity-80 duration-200 ease-in-out"
+										className="text-white w-fit"
 										aria-label={genre}
 									>
-										<div>
-											<p
-												style={{
-													background: `${COLORLIST[i]}`,
-												}}
-												className="inline-block p-[4px] m-[4px] rounded"
-											>
-												{genre}
-											</p>
-										</div>
+										<p
+											style={{
+												borderColor: `${COLORLIST[i]}`,
+											}}
+											className="inline-block p-[4px] m-[4px] rounded border-2 hover:brightness-150 ease-in-out duration-200 bg-white/5"
+										>
+											{genre}
+										</p>
 									</Link>
 								))}
 							</div>
 						</div>
-						<div>
-							<Link
-								to="/eng/search-image"
-								className="hover:opacity-80 duration-200 ease-in-out"
-								onClick={() => {
-									handleScrollToTop()
-									setSidebar(false)
-								}}
-								aria-label="Search image"
-							>
-								<h2 className="font-semibold text-[1.5rem] my-0">
-									IMAGE Search
-								</h2>
-							</Link>
-						</div>
-						<div>
-							<Link
-								to="/eng/manga"
-								className="hover:opacity-80 duration-200 ease-in-out"
-								onClick={() => {
-									handleScrollToTop()
-									setSidebar(false)
-								}}
-								aria-label="Manga"
-							>
-								<h2 className="font-semibold text-[1.5rem] my-0">Manga</h2>
-							</Link>
-						</div>
 
+						<Link
+							to="/eng/search-image"
+							className="hover:brightness-150 opacity-80 hover:opacity-100 duration-200 ease-in-out text-white"
+							onClick={() => {
+								handleScrollToTop()
+								setSidebar(false)
+							}}
+							aria-label="Search image"
+						>
+							<h2 className="font-semibold text-[1.5rem] my-0">IMAGE SEARCH</h2>
+						</Link>
+
+						<Link
+							to="/eng/manga"
+							className="hover:brightness-150 opacity-80 hover:opacity-100 duration-200 ease-in-out text-white"
+							onClick={() => {
+								handleScrollToTop()
+								setSidebar(false)
+							}}
+							aria-label="Manga"
+						>
+							<h2 className="font-semibold text-[1.5rem] my-0">MANGA</h2>
+						</Link>
 						<div className="block sm:hidden">
 							<ContentToggleENG
 								routeChecking={mangaUrlArray.indexOf(window.location.pathname)}
@@ -262,7 +307,7 @@ function HeaderENG() {
 						<div className="block sm:hidden">
 							<LanguageButton handleScrollToTop={handleScrollToTop} />
 						</div>
-						<div className="user-container">
+						<div className="user-container mt-auto">
 							<User
 								handleScrollToTop={handleScrollToTop}
 								setSidebar={setSidebar}
