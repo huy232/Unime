@@ -1,17 +1,16 @@
-import "swiper/css"
-import "swiper/css/pagination"
-import "./movieanime.css"
+import React, { useState, useEffect } from "react"
+import YouTube from "react-youtube"
 import { Link } from "react-router-dom"
 import Image from "../Image"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faClosedCaptioning } from "@fortawesome/free-solid-svg-icons"
 import { MdOutlinePermDeviceInformation } from "react-icons/md"
-import { useEffect } from "react"
 import axios from "axios"
-import { useState } from "react"
+import "./movieanime.css"
 
 function RandomAnimeENGComp({ randomAnime }) {
 	const [isVideoAvailable, setIsVideoAvailable] = useState(true)
+
 	useEffect(() => {
 		const checkVideoAvailability = async () => {
 			if (randomAnime?.trailer?.site === "youtube") {
@@ -26,6 +25,7 @@ function RandomAnimeENGComp({ randomAnime }) {
 					}
 				} catch (error) {
 					console.error("Error checking video availability: ", error)
+					setIsVideoAvailable(false) // Set to false on error
 				}
 			}
 		}
@@ -39,6 +39,7 @@ function RandomAnimeENGComp({ randomAnime }) {
 		randomAnime.title.romaji ||
 		randomAnime.title.userPreferred ||
 		randomAnime.native
+
 	return (
 		<div className="w-full">
 			<h1 className="font-black ml-6 mr-6 mt-2 mb-0 max-sm:text-center font-bebas-neue whitespace-nowrap overflow-hidden gap flex gap-4">
@@ -58,15 +59,27 @@ function RandomAnimeENGComp({ randomAnime }) {
 			</h1>
 			<div className="h-[44vh] sm:h-[77vh] lg:h-[85vh] z-0 relative aspect-3/1">
 				{isVideoAvailable && randomAnime?.trailer?.site === "youtube" ? (
-					<div className="youtube-container">
-						<iframe
-							className="brightness-70"
-							src={`https://www.youtube.com/embed/${randomAnime.trailer.id}?autoplay=1&controls=0&disablekb=1&loop=1&modestbranding=1&playsinline=1&color=white&mute=1&playlist=${randomAnime.trailer.id}`}
-							title="YouTube video player"
-							allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; autoplay"
-							allowFullScreen
-						/>
-					</div>
+					<YouTube
+						className="youtube-container"
+						videoId={randomAnime.trailer.id}
+						opts={{
+							playerVars: {
+								autoplay: 1,
+								controls: 0,
+								disablekb: 1,
+								loop: 1,
+								modestbranding: 1,
+								playsinline: 1,
+								color: "white",
+								mute: 1,
+								playlist: randomAnime.trailer.id,
+							},
+						}}
+						onError={(event) => {
+							console.log("Youtube error: ", event.data)
+							setIsVideoAvailable(false)
+						}}
+					/>
 				) : (
 					<Image
 						src={randomAnime.bannerImage}

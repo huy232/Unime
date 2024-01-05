@@ -102,10 +102,10 @@ function InfoDetailENG({
 							<Link
 								to={`/eng/anime/${encodeURIComponent(genre)}`}
 								key={genre}
-								className="lg:first:ml-[6px] lg:last:mr-[6px] hover:opacity-80 duration-200 ease-in-out"
+								className="lg:first:ml-[6px] lg:last:mr-[6px] hover:brightness-150 duration-200 ease-in-out"
 								aria-label={genre}
 							>
-								<div className="cursor-pointer rounded p-[10px] bg-[#5f5f5f29] mx-[10px] my-[6px] duration-200 hover:opacity-80 ease-in-out">
+								<div className="rounded p-[10px] bg-[#5f5f5f29] mx-[10px] my-[6px]">
 									{genre}
 								</div>
 							</Link>

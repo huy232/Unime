@@ -42,7 +42,7 @@ const TopAllTimeENG = ({ topAnime, topLoading }) => {
 										className="w-full flex gap-4 justify-between p-2 rounded-md overflow-hidden bg-white/5 hover:brightness-125 hover:bg-white/20 duration-300 ease-in-out"
 									>
 										<div className="w-full flex gap-3 sm:gap-4 h-full items-center">
-											<div className="aspect-2/3 w-[90px] min-w-[90px]">
+											<div className="aspect-[2/3] w-[90px] min-w-[90px]">
 												<Image
 													className="duration-500 ease-in-out object-cover w-full h-full rounded"
 													src={image}

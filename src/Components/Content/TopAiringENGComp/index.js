@@ -32,7 +32,9 @@ function TopAiringENGComp({ topAiring }) {
 			{topAiring.map((item, i) => (
 				<SwiperSlide key={i}>
 					<div
-						style={{ backgroundImage: `url(${item.cover})` }}
+						style={{
+							backgroundImage: `url(${item.bannerImage})`,
+						}}
 						className={`bg-cover bg-center h-full w-full bg-no-repeat rounded overflow-hidden`}
 						loading="lazy"
 					>
@@ -42,7 +44,7 @@ function TopAiringENGComp({ topAiring }) {
 									to={`/eng/info/${item.id}`}
 									className="hover:opacity-80 duration-200 ease-in-out"
 									style={{
-										color: item?.color || "#fffc",
+										color: item?.coverImage?.color || "#fffc",
 										textShadow: `3px 3px 3px rgba(0,0,0,0.7)`,
 									}}
 									aria-label={item.id}
@@ -80,7 +82,9 @@ function TopAiringENGComp({ topAiring }) {
 											key < item.genres.length - 1 ? (
 												<span
 													className={`mx-[2px] w-1.5 h-1.5 rounded-full inline-block mt-[4px] max-md:hidden`}
-													style={{ backgroundColor: item?.color || "#fffc" }}
+													style={{
+														backgroundColor: item?.coverImage?.color || "#fffc",
+													}}
 												></span>
 											) : (
 												""
