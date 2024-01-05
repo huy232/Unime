@@ -61,7 +61,7 @@ function TopAiringENGComp({ topAiring }) {
 		(index) => (
 			<Image
 				src={topAiring[index].bannerImage}
-				className="h-full w-full object-cover"
+				className="h-full w-full object-cover duration-300 ease-in-out"
 			/>
 		),
 		[topAiring]
