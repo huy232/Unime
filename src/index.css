@@ -126,7 +126,8 @@ pre {
 /* Works on Chrome, Edge, and Safari */
 *::-webkit-scrollbar {
 	width: 8px;
-	height: 0;
+	height: 8px;
+	border-radius: 20px;
 }
 
 *::-webkit-scrollbar-track {

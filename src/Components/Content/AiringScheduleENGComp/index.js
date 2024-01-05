@@ -53,7 +53,7 @@ function AiringScheduleENGComp({ airingSchedule }) {
 				<span className="bg-white/30 rounded p-1 mb-3">
 					{formatDateTime(currentTime)}
 				</span>
-				<div className="flex w-full relative overflow-x-auto justify-center">
+				<div className="flex w-full relative overflow-auto justify-center">
 					{Object.keys(airingSchedule).map((day, index) => (
 						<button
 							className={buttonClassName(day)}

@@ -15,11 +15,7 @@ const ClampedDiv = ({ children }) => {
 	return (
 		<div className="container">
 			<div className={`${textClass}`}>
-				<p
-					className=""
-					ref={ref}
-					dangerouslySetInnerHTML={{ __html: children }}
-				/>
+				<p ref={ref} dangerouslySetInnerHTML={{ __html: children }} />
 			</div>
 			{showLink && (
 				<button

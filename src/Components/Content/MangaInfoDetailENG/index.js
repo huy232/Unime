@@ -64,7 +64,7 @@ function MangaInfoDetailENG({
 			{!loading && (
 				<>
 					<p className="max-lg:text-center">Genres:</p>
-					<div className="genres flex flex-row max-lg:items-center pb-2 group md:flex-wrap max-md:overflow-x-scroll max-md:flex-nowrap">
+					<div className="genres flex flex-row max-lg:items-center pb-2 group md:flex-wrap max-md:overflow-auto max-md:flex-nowrap">
 						{resultCategory.map((genre) => (
 							<Link
 								to={`/eng/anime/${encodeURIComponent(genre)}`}

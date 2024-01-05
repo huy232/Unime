@@ -12,13 +12,16 @@ function CharacterListVI({ characters, loading }) {
 			{!loading && characters && (
 				<>
 					<h4 className="font-black pt-4">DÀN NHÂN VẬT</h4>
-					<div className="grid gap-4 xl:grid-cols-3 lg:grid-cols-2 sm:grid-cols-1 px-4 md:px-12 lg:px-20 xl:px-28 2xl:px-36 w-full py-4 [&>div]:max-lg:shrink-0 [&>div]:max-lg:flex overflow-y-scroll h-[500px]">
+					<div className="grid gap-4 xl:grid-cols-3 lg:grid-cols-2 sm:grid-cols-1 px-4 md:px-12 lg:px-20 xl:px-28 2xl:px-36 w-full py-4 [&>div]:max-lg:shrink-0 [&>div]:max-lg:flex overflow-y-scroll h-[500px] scrollbar-hide">
 						{characters.map((character, i) => (
-							<div className="min-h-28" key={character.node.id}>
+							<div
+								className="flex bg-[#0D0D0D] h-full w-full"
+								key={character.node.id}
+							>
 								<div className="flex bg-[#0D0D0D] h-full w-full">
-									<div className="w-1/3">
+									<div className="aspect-[2/3] h-[90px]">
 										<Image
-											className="h-full aspect-[2/3] duration-500 ease-in-out"
+											className="h-full w-full duration-500 ease-in-out rounded"
 											src={
 												character.node.image?.large ||
 												character.node.image?.medium ||
@@ -29,9 +32,9 @@ function CharacterListVI({ characters, loading }) {
 										/>
 									</div>
 
-									<div className="mx-2 flex flex-col w-2/3">
+									<div className="mx-2 flex flex-col w-full">
 										<p
-											className="text-lg font-bold break-all"
+											className="text-lg font-bold"
 											style={{ color: COLORLIST[i] }}
 										>
 											{character.node.name.full}

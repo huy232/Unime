@@ -1,13 +1,8 @@
 import { Skeleton } from "@mui/material"
 import Image from "../Image"
 import { Link } from "react-router-dom"
-import { useRef } from "react"
 
 function InfoBoxENG({ loading, info }) {
-	const containerRef = useRef(null)
-	const isContentOverflowing =
-		containerRef.current &&
-		containerRef.current.scrollWidth > containerRef.current.offsetWidth
 	return (
 		<div className="w-[30vw] max-lg:w-full">
 			<div className="info-image flex justify-center mt-[-5rem] mb-[20px]">
@@ -32,10 +27,7 @@ function InfoBoxENG({ loading, info }) {
 				)}
 			</div>
 			<div
-				ref={containerRef}
-				className={`flex flex-col ${
-					isContentOverflowing ? "justify-start" : "justify-center"
-				} max-lg:flex-row text-right max-lg:text-center max-lg:overflow-x-scroll [&>div]:lg:mx-4 [&>div]:max-lg:shrink-0 [&>div]:max-lg:flex-col [&>div]:max-lg:flex-nowrap [&>div]:max-lg:mx-2`}
+				className={`flex flex-col max-lg:flex-row text-right max-lg:text-center max-lg:overflow-auto [&>div]:lg:mx-4 [&>div]:max-lg:shrink-0 [&>div]:max-lg:flex-col [&>div]:max-lg:flex-nowrap [&>div]:max-lg:mx-2`}
 			>
 				{!loading && (
 					<>

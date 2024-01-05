@@ -42,21 +42,21 @@ function InfoHeadDetail({
 				</h2>
 			</div>
 			{!loading && (
-				<div className="flex max-md:justify-center my-2">
+				<div className={`flex flex-col sm:flex-row gap-3 my-2`}>
 					<button
 						onClick={() => executeScroll()}
 						className="flex justify-center items-center gap-1 mx-2 p-2 bg-yellow-600 border-transparent rounded hover:opacity-80 duration-200 hover:bg-transparent hover:border-yellow-600 border-2 text-white"
 					>
-						<FontAwesomeIcon icon={faArrowDown} />
-						<span className="mx-[6px]">Danh sách tập phim</span>
+						<FontAwesomeIcon icon={faArrowDown} className="text-xs" />
+						<span className="mx-[6px] text-xs">Danh sách tập phim</span>
 					</button>
 					<Link
 						to={`/watch/${anime}?index=${info.episodes[0].name}&type=normal`}
 						className="flex justify-center items-center gap-1 mx-2 p-2 bg-red-600 border-transparent rounded hover:opacity-80 duration-200 hover:bg-transparent hover:border-red-600 border-2 text-white"
 					>
-						<span>Xem ngay tập đầu</span>
+						<span className="text-xs">Xem ngay tập đầu</span>
 						<span>
-							<FaPlay className="mt-[2px]" />
+							<FaPlay className="mt-[2px] text-xs" />
 						</span>
 					</Link>
 					{continueToWatch && (
@@ -64,9 +64,9 @@ function InfoHeadDetail({
 							to={`/watch/${continueToWatch.anime_slug}`}
 							className="flex justify-center items-center gap-1 mx-2 p-2 bg-cyan-800 border-transparent rounded hover:opacity-80 duration-200 hover:bg-transparent hover:border-cyan-800 border-2 text-white"
 						>
-							<span>Tiếp tục xem</span>
+							<span className="text-xs">Tiếp tục xem</span>
 							<span>
-								<GiReturnArrow className="mt-[2px]" />
+								<GiReturnArrow className="mt-[2px] text-xs" />
 							</span>
 						</Link>
 					)}
@@ -88,7 +88,7 @@ function InfoHeadDetail({
 			{resultCategory?.length > 0 && (
 				<p className="anime-type-paragraph">Thể loại:</p>
 			)}
-			<div className="group flex md:flex-wrap duration-200 ease-in-out max-md:overflow-x-scroll max-md:flex-nowrap">
+			<div className="group flex md:flex-wrap duration-200 ease-in-out max-md:overflow-auto max-md:flex-nowrap">
 				{!loading &&
 					resultCategory.map((genre) => (
 						<div
@@ -108,7 +108,7 @@ function InfoHeadDetail({
 			{resultCollection?.length > 0 && (
 				<p className="anime-type-paragraph">Bộ sưu tập:</p>
 			)}
-			<div className="group flex md:flex-wrap duration-200 ease-in-out max-md:overflow-x-scroll max-md:flex-nowrap">
+			<div className="group flex md:flex-wrap duration-200 ease-in-out max-md:overflow-auto max-md:flex-nowrap">
 				{!loading &&
 					resultCollection.map((collection) => (
 						<div
@@ -125,7 +125,7 @@ function InfoHeadDetail({
 					))}
 			</div>
 
-			<div className="flex flex-row my-[10px] max-md:overflow-x-scroll md:justify-center md:items-center mt-1">
+			<div className="flex flex-row my-[10px] max-md:overflow-auto md:justify-center md:items-center mt-1">
 				{!!info?.countryOfOrigin && (
 					<div className="flex flex-col my-[10px] items-center px-1 max-md:shrink-0">
 						<h6 className="bg-[#f98866] font-bold rounded-[10px] text-[#282828] p-[4px] inline-block">

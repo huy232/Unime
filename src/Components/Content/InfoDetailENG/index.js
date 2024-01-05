@@ -97,7 +97,9 @@ function InfoDetailENG({
 			{!loading && (
 				<>
 					<p className="max-lg:text-center">Genres:</p>
-					<div className="genres flex flex-row max-lg:items-center pb-2 group md:flex-wrap max-md:overflow-x-scroll max-md:flex-nowrap">
+					<div
+						className={`genres flex flex-row max-lg:items-center pb-2 group md:flex-wrap max-md:overflow-auto max-md:flex-nowrap`}
+					>
 						{resultCategory.map((genre) => (
 							<Link
 								to={`/eng/anime/${encodeURIComponent(genre)}`}
@@ -105,13 +107,15 @@ function InfoDetailENG({
 								className="lg:first:ml-[6px] lg:last:mr-[6px] hover:brightness-150 duration-200 ease-in-out"
 								aria-label={genre}
 							>
-								<div className="rounded p-[10px] bg-[#5f5f5f29] mx-[10px] my-[6px]">
+								<div className="rounded p-[10px] bg-[#5f5f5f29] mx-[10px] my-[6px] w-max">
 									{genre}
 								</div>
 							</Link>
 						))}
 					</div>
-					<div className="flex w-100 mt-[12px] flex-row max-lg:items-center pb-2 group md:flex-wrap max-md:overflow-x-scroll max-md:flex-nowrap">
+					<div
+						className={`flex w-100 mt-[12px] flex-row max-lg:items-center pb-2 group md:flex-wrap max-md:overflow-auto max-md:flex-nowrap`}
+					>
 						{info?.countryOfOrigin && (
 							<div className="flex flex-col items-center mx-[10px]">
 								<span className="text-[#282828] font-semibold bg-[#f98866] p-[5px] rounded">

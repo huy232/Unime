@@ -178,7 +178,7 @@ function HeaderVI() {
 				}`}
 			>
 				<div className="flex flex-col text-right [&>div]:my-[8px] mx-[6px]">
-					<div className="">
+					<div>
 						<Link
 							to="/anime"
 							className="hover:brightness-150 opacity-80 hover:opacity-100 duration-200 ease-in-out text-white flex flex-row items-center justify-end"
@@ -235,7 +235,7 @@ function HeaderVI() {
 							))}
 						</div>
 					</div>
-					<div className="block sm:hidden">
+					<div className="block sm:hidden my-0">
 						<LanguageButton handleScrollToTop={handleScrollToTop} />
 					</div>
 					<div className="user-container">

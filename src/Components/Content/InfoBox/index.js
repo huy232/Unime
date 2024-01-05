@@ -37,7 +37,7 @@ function InfoBox({ info, loading }) {
 						/>
 					)}
 				</div>
-				<div className="flex flex-col max-lg:flex-row text-right max-lg:text-center max-lg:overflow-x-scroll [&>div]:lg:mx-4 [&>div]:max-lg:inline-flex [&>div]:max-lg:shrink-0 [&>div]:max-lg:flex-col [&>div]:max-lg:flex-nowrap [&>div]:max-lg:mx-2 [&>div:nth-child(2)]:max-lg:hidden">
+				<div className="flex flex-col max-lg:flex-row text-right max-lg:text-center max-lg:overflow-auto [&>div]:lg:mx-4 [&>div]:max-lg:inline-flex [&>div]:max-lg:shrink-0 [&>div]:max-lg:flex-col [&>div]:max-lg:flex-nowrap [&>div]:max-lg:mx-2 [&>div:nth-child(2)]:max-lg:hidden">
 					{info?.format && (
 						<div>
 							<h5 className="inline-block px-[10px] py-[2px] bg-[#282828] rounded-[14px] font-black m-0">

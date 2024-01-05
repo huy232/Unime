@@ -12,10 +12,3 @@
 .language-container button:hover {
 	opacity: 0.8;
 }
-
-@media screen and (max-width: 1024px) {
-	.language-container {
-		margin-top: 10px;
-		margin-bottom: 10px;
-	}
-}

@@ -353,12 +353,12 @@ function HeaderENG() {
 						>
 							<h2 className="font-semibold text-[1.5rem] my-0">MANGA</h2>
 						</Link>
-						<div className="block sm:hidden">
+						<div className="block sm:hidden my-0">
 							<ContentToggleENG
 								routeChecking={mangaUrlArray.indexOf(window.location.pathname)}
 							/>
 						</div>
-						<div className="block sm:hidden">
+						<div className="block sm:hidden my-0">
 							<LanguageButton handleScrollToTop={handleScrollToTop} />
 						</div>
 						<div className="user-container mt-auto">
