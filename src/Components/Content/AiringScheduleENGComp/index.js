@@ -70,7 +70,7 @@ function AiringScheduleENGComp({ airingSchedule }) {
 				</div>
 
 				{selectedDay && airingSchedule[selectedDay].length > 0 ? (
-					<div className="px-2 md:px-3 lg:px-5 w-full gap-1 scroll-smooth min-h-[28rem] max-h-[60rem] lg:max-h-[22.4rem] flex flex-col overflow-y-scroll scrollbar-hide">
+					<div className="px-2 md:px-3 lg:px-5 w-full gap-1 scroll-smooth min-h-fit max-h-[60rem] lg:max-h-[22.4rem] flex flex-col overflow-y-scroll scrollbar-hide">
 						{airingSchedule[selectedDay].map((item, index) => {
 							const title =
 								item.title.english ||
