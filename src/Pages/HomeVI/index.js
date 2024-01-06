@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react"
 import axios from "axios"
-import LazyLoad from "react-lazyload"
 // COMPONENTS
 import RandomAnime from "../../Components/Content/RandomAnime"
 import RecentAnimeVI from "../../Components/Content/RecentAnimeVI"
@@ -124,33 +123,16 @@ function HomeVI({ instance }) {
 
 	return (
 		<>
-			<LazyLoad>
-				<TopAiringVI data={slider} loading={loadingSlider} />
-			</LazyLoad>
-			<LazyLoad>
-				<RecentAnimeVI newAnime={newAnime} loadingNewAnime={loadingNewAnime} />
-			</LazyLoad>
-			<LazyLoad>
-				<MostWatchVI
-					rankToday={rankToday}
-					loadingRankToday={loadingRankToday}
-				/>
-			</LazyLoad>
-			<LazyLoad>
-				<MovieList data={movies} loading={loadingMovies} />
-			</LazyLoad>
-			<LazyLoad>
-				<CollectionsVI />
-			</LazyLoad>
-			<LazyLoad>
-				<RandomAnime
-					randomAnime={randomAnime}
-					loadingRandomAnime={loadingRandomAnime}
-				/>
-			</LazyLoad>
-			<LazyLoad>
-				<GenresVI />
-			</LazyLoad>
+			<TopAiringVI data={slider} loading={loadingSlider} />
+			<RecentAnimeVI newAnime={newAnime} loadingNewAnime={loadingNewAnime} />
+			<MostWatchVI rankToday={rankToday} loadingRankToday={loadingRankToday} />
+			<MovieList data={movies} loading={loadingMovies} />
+			<CollectionsVI />
+			<RandomAnime
+				randomAnime={randomAnime}
+				loadingRandomAnime={loadingRandomAnime}
+			/>
+			<GenresVI />
 		</>
 	)
 }

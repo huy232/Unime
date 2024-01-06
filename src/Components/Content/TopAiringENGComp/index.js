@@ -13,40 +13,7 @@ import { faClosedCaptioning } from "@fortawesome/free-solid-svg-icons"
 import { MAINSITE } from "../../../constants"
 
 function TopAiringENGComp({ topAiring }) {
-	const [activeSlideIndex, setActiveSlideIndex] = useState(0)
-	const [players, setPlayers] = useState([])
 	const [youtubeErrors, setYoutubeErrors] = useState([])
-
-	const handleIndexChange = useCallback(
-		(swiper) => {
-			setActiveSlideIndex(swiper.realIndex)
-
-			// Pause the previous video
-			const prevPlayer = players[swiper.previousIndex - 1]
-			if (prevPlayer) {
-				prevPlayer.pauseVideo()
-			}
-
-			// Play the current video
-			const currentPlayer = players[swiper.realIndex]
-			if (currentPlayer) {
-				currentPlayer.playVideo()
-			}
-		},
-		[players]
-	)
-
-	// const onReady = useCallback(
-	// 	(event, index) => {
-	// 		const newPlayers = [...players]
-	// 		newPlayers[index] = event.target
-	// 		setPlayers(newPlayers)
-	// 		if (index !== activeSlideIndex) {
-	// 			event.target.pauseVideo()
-	// 		}
-	// 	},
-	// 	[activeSlideIndex, players]
-	// )
 
 	const handleError = useCallback(
 		(index) => {
@@ -83,10 +50,8 @@ function TopAiringENGComp({ topAiring }) {
 			modules={[Pagination]}
 			centeredSlides={true}
 			spaceBetween={10}
-			loop={true}
 			className="top-airing-swiper w-full px-4 md:px-12 lg:px-20 xl:px-28 2xl:px-36"
 			slidesPerView={1}
-			onSlideChange={(swiper) => handleIndexChange(swiper)}
 		>
 			{topAiring.map((item, i) => {
 				const description = item.description?.replace(/<[br]+>/g, " ")
@@ -106,7 +71,6 @@ function TopAiringENGComp({ topAiring }) {
 									playerVars: {
 										autoplay: 1,
 										mute: 1,
-										muted: 1,
 										controls: 0,
 										showinfo: 0,
 										disablekb: 1,
@@ -119,16 +83,13 @@ function TopAiringENGComp({ topAiring }) {
 										iv_load_policy: 3,
 										rel: 0,
 										fs: 0,
-										enablejsapi: 1,
-										origin: MAINSITE,
 									},
 								}}
 								onError={() => handleError(i)}
-								// onReady={(event) => onReady(event, i)}
 							/>
 							{youtubeErrors[i] && renderFallbackImage(i)}
 							<div className="layer-hero"></div>
-							<div className="w-[77%] lg:w-[45%] tracking-wide z-10 absolute flex flex-col gap-3 md:gap-6 bottom-[25%] left-[5%] lg:left-[8%]">
+							<div className="w-[80%] lg:w-[45%] tracking-wide z-10 absolute flex flex-col gap-3 md:gap-6 bottom-[25%] left-[5%] lg:left-[8%]">
 								<div className="flex flex-col gap-2 md:gap-3 ">
 									<Link
 										to={`/eng/info/${item.id}`}
@@ -137,19 +98,19 @@ function TopAiringENGComp({ topAiring }) {
 									>
 										{animeTitle}
 									</Link>
-									<span className="text-xs md:text-sm text-white/90 md:text-white flex items-center gap-3 md:gap-4">
-										<span>{item.averageScore}% ❤</span>
-										<span>{item.format}</span>
-										<span>{item.countryOfOrigin}</span>
-										<span className="flex justify-center items-center gap-1">
+									<span className="text-xs md:text-sm bg-black/30 rounded-lg flex text-white/90 items-center gap-3 md:gap-4 w-fit p-1">
+										<span className="break-keep w-fit">
+											{item.averageScore}% ❤
+										</span>
+										<span className="w-fit">{item.format}</span>
+										<span className="w-fit">{item.countryOfOrigin}</span>
+										<span className="flex justify-center items-center gap-1 w-fit">
 											<span>
 												<FontAwesomeIcon icon={faClosedCaptioning} />
 											</span>
 											{item.episodes}
 										</span>
-										<span className="border-[1px] border-white rounded-lg px-[6px] text-teal-500">
-											{item.status}
-										</span>
+										<span className="text-teal-500 w-fit">{item.status}</span>
 									</span>
 									<span className="hidden text-xs md:text-sm text-white/90 md:text-white md:flex items-center gap-3 md:gap-4">
 										{item.genres.map((genre) => (
@@ -170,9 +131,9 @@ function TopAiringENGComp({ topAiring }) {
 									></span>
 									<Link
 										to={`/eng/info/${item.id}`}
-										className="flex items-center gap-1 w-fit bg-[#FF004D] py-2 px-6 rounded-lg text-white hover:opacity-80 duration-300 ease-in-out"
+										className="hidden sm:flex group items-center gap-1 w-fit bg-[#FF004D] py-2 px-6 rounded-lg text-white hover:opacity-80 duration-300 ease-in-out mt-1"
 									>
-										<span>
+										<span className="group-hover:animate-bounce">
 											<MdOutlinePermDeviceInformation />
 										</span>
 										<span>View details</span>

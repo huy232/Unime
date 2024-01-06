@@ -79,8 +79,6 @@ function RandomAnimeENGComp({ randomAnime }) {
 								iv_load_policy: 3,
 								rel: 0,
 								fs: 0,
-								enablejsapi: 1,
-								origin: MAINSITE,
 							},
 						}}
 						onError={(event) => {
@@ -95,7 +93,7 @@ function RandomAnimeENGComp({ randomAnime }) {
 				)}
 
 				<div className="layer-hero"></div>
-				<div className="w-[77%] lg:w-[45%] tracking-wide z-10 absolute flex flex-col gap-3 md:gap-6 bottom-[25%] left-[5%] lg:left-[8%]">
+				<div className="w-[80%] lg:w-[45%] tracking-wide z-10 absolute flex flex-col gap-3 md:gap-6 bottom-[25%] left-[5%] lg:left-[8%]">
 					<div className="flex flex-col gap-2 md:gap-3 ">
 						<Link
 							to={`/eng/info/${randomAnime.id}`}
@@ -104,19 +102,19 @@ function RandomAnimeENGComp({ randomAnime }) {
 						>
 							{animeTitle}
 						</Link>
-						<span className="text-xs md:text-sm text-white/90 md:text-white flex items-center gap-3 md:gap-4">
-							<span>{randomAnime.averageScore}% ❤</span>
-							<span>{randomAnime.format}</span>
-							<span>{randomAnime.countryOfOrigin}</span>
-							<span className="flex justify-center items-center gap-1">
+						<span className="text-xs md:text-sm bg-black/30 rounded-lg flex text-white/90 items-center gap-3 md:gap-4 w-fit p-1">
+							<span className="break-keep w-fit">
+								{randomAnime.averageScore}% ❤
+							</span>
+							<span className="w-fit">{randomAnime.format}</span>
+							<span className="w-fit">{randomAnime.countryOfOrigin}</span>
+							<span className="flex justify-center items-center gap-1 w-fit">
 								<span>
 									<FontAwesomeIcon icon={faClosedCaptioning} />
 								</span>
 								{randomAnime.episodes}
 							</span>
-							<span className="border-[1px] border-white rounded-lg px-[6px]">
-								{randomAnime.status}
-							</span>
+							<span className="w-fit">{randomAnime.status}</span>
 						</span>
 						<span className="hidden text-xs md:text-sm text-white/90 md:text-white md:flex items-center gap-3 md:gap-4">
 							{randomAnime.genres.map((genre) => (
@@ -137,7 +135,7 @@ function RandomAnimeENGComp({ randomAnime }) {
 						></span>
 						<Link
 							to={`/eng/info/${randomAnime.id}`}
-							className="flex items-center gap-1 w-fit bg-[#FF004D] py-2 px-6 rounded-lg text-white hover:opacity-80 duration-300 ease-in-out"
+							className="hidden sm:flex items-center gap-1 w-fit bg-[#FF004D] py-2 px-6 rounded-lg text-white hover:opacity-80 duration-300 ease-in-out"
 						>
 							<span>
 								<MdOutlinePermDeviceInformation />

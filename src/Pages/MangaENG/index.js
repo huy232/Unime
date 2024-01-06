@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react"
-import LazyLoad from "react-lazyload"
 import axios from "axios"
 import useDocumentTitle from "../../Hooks/useDocumentTitle"
 import { API } from "../../constants"
@@ -41,36 +40,31 @@ function MangaENG() {
 	useDocumentTitle("MANGA - Unime")
 	return (
 		<>
-			<LazyLoad>
-				<MangaHeadingENG content={manga.top} loading={loading} />
-			</LazyLoad>
-			<LazyLoad>
-				<MangaLayoutENG
-					content={manga.trending}
-					loading={loading}
-					headingTitle={"TRENDING"}
-					color={"#301E67"}
-					navigateUrl={"trending"}
-				/>
-			</LazyLoad>
-			<LazyLoad>
-				<MangaLayoutENG
-					content={manga.popular}
-					loading={loading}
-					headingTitle={"POPULAR"}
-					color={"#1e6743"}
-					navigateUrl={"popular"}
-				/>
-			</LazyLoad>
-			<LazyLoad>
-				<MangaLayoutENG
-					content={manga.manhwa}
-					loading={loading}
-					headingTitle={"MANHWA"}
-					color={"#67661e"}
-					navigateUrl={"manhwa"}
-				/>
-			</LazyLoad>
+			<MangaHeadingENG content={manga.top} loading={loading} />
+
+			<MangaLayoutENG
+				content={manga.trending}
+				loading={loading}
+				headingTitle={"TRENDING"}
+				color={"#301E67"}
+				navigateUrl={"trending"}
+			/>
+
+			<MangaLayoutENG
+				content={manga.popular}
+				loading={loading}
+				headingTitle={"POPULAR"}
+				color={"#1e6743"}
+				navigateUrl={"popular"}
+			/>
+
+			<MangaLayoutENG
+				content={manga.manhwa}
+				loading={loading}
+				headingTitle={"MANHWA"}
+				color={"#67661e"}
+				navigateUrl={"manhwa"}
+			/>
 		</>
 	)
 }
