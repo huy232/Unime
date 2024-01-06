@@ -37,6 +37,7 @@ import MangaBrowseENG from "./Components/Content/MangaBrowseENG"
 import MangaViewENG from "./Pages/MangaViewENG"
 import MangaSearchENG from "./Pages/MangaSearchENG"
 import Profile from "./Pages/Profile"
+import ScrollToTopButton from "./Components/Content/ScrollToTop"
 
 function App() {
 	const instance = axios.create({
@@ -70,8 +71,8 @@ function App() {
 						<div className="heading-hidden h-[40px]"></div>
 					</>
 				)}
-
 				<div className="content flex-1">
+					<ScrollToTopButton />
 					<Routes>
 						{/* VIET ANIME*/}
 						<Route exact path="/" element={<Home instance={instance} />} />
