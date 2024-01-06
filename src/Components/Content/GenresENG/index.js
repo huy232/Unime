@@ -5,7 +5,7 @@ import "./genreseng.css"
 function GenresENG() {
 	return (
 		<div>
-			<div className="scroll" style={{ "--time": "900s" }}>
+			<div className="scroll" style={{ "--time": "600s" }}>
 				<div>
 					{ENG_GENRES.map((genre, i) => (
 						<Link
@@ -40,7 +40,7 @@ function GenresENG() {
 				</div>
 			</div>
 
-			<div className="scroll" style={{ "--time": "1200s" }}>
+			<div className="scroll" style={{ "--time": "900s" }}>
 				<div>
 					{ENG_GENRES.map((genre, i) => (
 						<Link
