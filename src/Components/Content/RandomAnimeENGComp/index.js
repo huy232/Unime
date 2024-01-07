@@ -42,7 +42,7 @@ function RandomAnimeENGComp({ randomAnime }) {
 
 	return (
 		<div className="w-full">
-			<h1 className="font-black ml-6 mr-6 mt-2 mb-0 max-sm:text-center font-bebas-neue whitespace-nowrap overflow-hidden gap flex gap-4">
+			<h1 className="font-black mt-2 mb-0 max-sm:text-center font-bebas-neue whitespace-nowrap overflow-hidden flex justify-center gap-4">
 				{[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((index) => (
 					<span
 						key={index}
