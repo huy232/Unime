@@ -5,7 +5,6 @@ import Image from "../Image"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faClosedCaptioning } from "@fortawesome/free-solid-svg-icons"
 import { MdOutlinePermDeviceInformation } from "react-icons/md"
-import axios from "axios"
 import "./movieanime.css"
 
 function RandomAnimeENGComp({ randomAnime }) {
@@ -41,7 +40,8 @@ function RandomAnimeENGComp({ randomAnime }) {
 
 			return (
 				<YouTube
-					className="youtube-container"
+					loading="eager"
+					className="youtube-container pointer-events-none cursor-none"
 					videoId={randomAnime.trailer.id}
 					opts={{
 						playerVars: {
@@ -65,7 +65,7 @@ function RandomAnimeENGComp({ randomAnime }) {
 			return (
 				<Image
 					src={randomAnime.bannerImage}
-					className="absolute top-0 left-0 w-full h-full object-cover duration-500 ease-in-out"
+					className="absolute top-0 left-0 w-full h-full object-cover duration-500 ease-in-out pointer-events-none cursor-none"
 				/>
 			)
 		}
@@ -95,7 +95,7 @@ function RandomAnimeENGComp({ randomAnime }) {
 					</span>
 				))}
 			</h1>
-			<div className="h-[44vh] sm:h-[77vh] lg:h-[85vh] z-0 relative aspect-[3/1]">
+			<div className="h-[44vh] sm:h-[77vh] lg:h-[85vh] z-0 relative aspect-[3/1] w-full">
 				{renderMedia()}
 
 				<div className="layer-hero"></div>

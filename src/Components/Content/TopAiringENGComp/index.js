@@ -40,7 +40,8 @@ function TopAiringENGComp({ topAiring }) {
 			if (autoplaySupported && !youtubeErrors[index]) {
 				return (
 					<YouTube
-						className={`youtube-container rounded overflow-hidden`}
+						loading="eager"
+						className={`youtube-container rounded overflow-hidden pointer-events-none cursor-none`}
 						videoId={item.trailer.id}
 						opts={{
 							playerVars: {
@@ -68,8 +69,9 @@ function TopAiringENGComp({ topAiring }) {
 			} else {
 				return (
 					<Image
+						loading="eager"
 						src={item.bannerImage}
-						className="h-full w-full object-cover duration-300 ease-in-out"
+						className="h-full w-full object-cover duration-300 ease-in-out pointer-events-none cursor-none"
 					/>
 				)
 			}
@@ -98,7 +100,7 @@ function TopAiringENGComp({ topAiring }) {
 					item.title.native
 				return (
 					<SwiperSlide key={i} className="rounded overflow-hidden">
-						<div className="h-[44vh] sm:h-[77vh] lg:h-[85vh] z-0 relative aspect-[3/1]">
+						<div className="h-[44vh] sm:h-[77vh] lg:h-[85vh] z-0 relative aspect-[3/1] w-full">
 							{renderMedia(i)}
 							<div className="layer-hero"></div>
 							<div className="w-[80%] lg:w-[45%] tracking-wide z-10 absolute flex flex-col gap-3 md:gap-6 bottom-[25%] left-[5%] lg:left-[8%]">
