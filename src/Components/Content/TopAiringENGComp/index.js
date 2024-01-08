@@ -6,14 +6,19 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { Link } from "react-router-dom"
 import Image from "../Image"
 import YouTube from "react-youtube"
-import { useState, useCallback } from "react"
-import clsx from "clsx"
+import { useState, useCallback, useEffect } from "react"
 import { MdOutlinePermDeviceInformation } from "react-icons/md"
 import { faClosedCaptioning } from "@fortawesome/free-solid-svg-icons"
-import { MAINSITE } from "../../../constants"
 
 function TopAiringENGComp({ topAiring }) {
+	const [autoplaySupported, setAutoplaySupported] = useState(false)
 	const [youtubeErrors, setYoutubeErrors] = useState([])
+
+	useEffect(() => {
+		const testVideo = document.createElement("video")
+		const canAutoplay = testVideo.autoplay !== undefined
+		setAutoplaySupported(canAutoplay)
+	}, [])
 
 	const handleError = useCallback(
 		(index) => {
@@ -24,22 +29,52 @@ function TopAiringENGComp({ topAiring }) {
 		[youtubeErrors]
 	)
 
-	const renderFallbackImage = useCallback(
-		(index) => (
-			<Image
-				src={topAiring[index].bannerImage}
-				className="h-full w-full object-cover duration-300 ease-in-out"
-			/>
-		),
-		[topAiring]
-	)
+	const renderMedia = useCallback(
+		(index) => {
+			const item = topAiring[index]
 
-	const youtubeClassName = useCallback(
-		(index) =>
-			clsx(`youtube-container rounded overflow-hidden`, {
-				hidden: youtubeErrors[index],
-			}),
-		[youtubeErrors]
+			const onEnd = (event) => {
+				event.target.playVideo()
+			}
+
+			if (autoplaySupported && !youtubeErrors[index]) {
+				return (
+					<YouTube
+						className={`youtube-container rounded overflow-hidden`}
+						videoId={item.trailer.id}
+						opts={{
+							playerVars: {
+								autoplay: 1,
+								mute: 1,
+								controls: 0,
+								showinfo: 0,
+								disablekb: 1,
+								loop: 1,
+								modestbranding: 1,
+								playsinline: 1,
+								color: "white",
+								start: 0,
+								cc_load_policy: 0,
+								iv_load_policy: 3,
+								rel: 0,
+								fs: 0,
+							},
+						}}
+						muted={true}
+						onError={() => handleError(index)}
+						onEnd={onEnd}
+					/>
+				)
+			} else {
+				return (
+					<Image
+						src={item.bannerImage}
+						className="h-full w-full object-cover duration-300 ease-in-out"
+					/>
+				)
+			}
+		},
+		[autoplaySupported, youtubeErrors, topAiring, handleError]
 	)
 
 	return (
@@ -52,6 +87,7 @@ function TopAiringENGComp({ topAiring }) {
 			spaceBetween={10}
 			className="top-airing-swiper w-full px-4 md:px-12 lg:px-20 xl:px-28 2xl:px-36"
 			slidesPerView={1}
+			loop={true}
 		>
 			{topAiring.map((item, i) => {
 				const description = item.description?.replace(/<[br]+>/g, " ")
@@ -62,32 +98,8 @@ function TopAiringENGComp({ topAiring }) {
 					item.title.native
 				return (
 					<SwiperSlide key={i} className="rounded overflow-hidden">
-						<div className="h-[44vh] sm:h-[77vh] lg:h-[85vh] z-0 relative aspect-3/1">
-							<YouTube
-								loading={"eager"}
-								className={youtubeClassName(i)}
-								videoId={item.trailer.id}
-								opts={{
-									playerVars: {
-										autoplay: 1,
-										mute: 1,
-										controls: 0,
-										showinfo: 0,
-										disablekb: 1,
-										loop: 1,
-										modestbranding: 1,
-										playsinline: 1,
-										color: "white",
-										start: 0,
-										cc_load_policy: 0,
-										iv_load_policy: 3,
-										rel: 0,
-										fs: 0,
-									},
-								}}
-								onError={() => handleError(i)}
-							/>
-							{youtubeErrors[i] && renderFallbackImage(i)}
+						<div className="h-[44vh] sm:h-[77vh] lg:h-[85vh] z-0 relative aspect-[3/1]">
+							{renderMedia(i)}
 							<div className="layer-hero"></div>
 							<div className="w-[80%] lg:w-[45%] tracking-wide z-10 absolute flex flex-col gap-3 md:gap-6 bottom-[25%] left-[5%] lg:left-[8%]">
 								<div className="flex flex-col gap-2 md:gap-3 ">
@@ -110,7 +122,9 @@ function TopAiringENGComp({ topAiring }) {
 											</span>
 											{item.episodes}
 										</span>
-										<span className="text-teal-500 w-fit">{item.status}</span>
+										<span className="hidden md:block text-teal-500 w-fit">
+											{item.status}
+										</span>
 									</span>
 									<span className="hidden text-xs md:text-sm text-white/90 md:text-white md:flex items-center gap-3 md:gap-4">
 										{item.genres.map((genre) => (

@@ -7,31 +7,69 @@ import { faClosedCaptioning } from "@fortawesome/free-solid-svg-icons"
 import { MdOutlinePermDeviceInformation } from "react-icons/md"
 import axios from "axios"
 import "./movieanime.css"
-import { MAINSITE } from "../../../constants"
 
 function RandomAnimeENGComp({ randomAnime }) {
+	const [autoplaySupported, setAutoplaySupported] = useState(false)
 	const [isVideoAvailable, setIsVideoAvailable] = useState(true)
 
 	useEffect(() => {
-		const checkVideoAvailability = async () => {
-			if (randomAnime?.trailer?.site === "youtube") {
-				try {
-					const response = await axios.get(
-						`https://www.googleapis.com/youtube/v3/videos?id=${randomAnime.trailer.id}&part=status&key=${process.env.REACT_APP_YOUTUBE_API}`
-					)
+		const testVideo = document.createElement("video")
+		const canAutoplay = testVideo.autoplay !== undefined
+		setAutoplaySupported(canAutoplay)
 
-					const videoStatus = response?.data?.items[0]?.status
-					if (!videoStatus?.publicStatsViewable) {
-						setIsVideoAvailable(false)
-					}
-				} catch (error) {
-					setIsVideoAvailable(false) // Set to false on error
-				}
+		if (randomAnime?.trailer?.site === "youtube") {
+			// Check if the video ID is available
+			if (!randomAnime.trailer.id) {
+				setIsVideoAvailable(false)
+				return
 			}
-		}
 
-		checkVideoAvailability()
+			// Additional checks or API calls can be added here if needed
+		}
 	}, [randomAnime?.trailer?.id, randomAnime?.trailer?.site])
+
+	const renderMedia = () => {
+		if (
+			autoplaySupported &&
+			isVideoAvailable &&
+			randomAnime?.trailer?.site === "youtube"
+		) {
+			const onEnd = (event) => {
+				// Manually restart the video when it ends
+				event.target.playVideo()
+			}
+
+			return (
+				<YouTube
+					className="youtube-container"
+					videoId={randomAnime.trailer.id}
+					opts={{
+						playerVars: {
+							autoplay: 1,
+							mute: 1,
+							controls: 0,
+							showinfo: 0,
+							disablekb: 1,
+							modestbranding: 1,
+							playsinline: 1,
+							color: "white",
+							start: 0,
+						},
+					}}
+					muted={true}
+					onError={() => setIsVideoAvailable(false)}
+					onEnd={onEnd}
+				/>
+			)
+		} else {
+			return (
+				<Image
+					src={randomAnime.bannerImage}
+					className="absolute top-0 left-0 w-full h-full object-cover duration-500 ease-in-out"
+				/>
+			)
+		}
+	}
 
 	const description = randomAnime.description?.replace(/<[br]+>/g, " ")
 	const animeTitle =
@@ -57,40 +95,8 @@ function RandomAnimeENGComp({ randomAnime }) {
 					</span>
 				))}
 			</h1>
-			<div className="h-[44vh] sm:h-[77vh] lg:h-[85vh] z-0 relative aspect-3/1">
-				{isVideoAvailable && randomAnime?.trailer?.site === "youtube" ? (
-					<YouTube
-						className="youtube-container"
-						videoId={randomAnime.trailer.id}
-						opts={{
-							playerVars: {
-								autoplay: 1,
-								controls: 0,
-								disablekb: 1,
-								loop: 1,
-								modestbranding: 1,
-								playsinline: 1,
-								color: "white",
-								mute: 1,
-								playlist: randomAnime.trailer.id,
-								showinfo: 0,
-								start: 0,
-								cc_load_policy: 0,
-								iv_load_policy: 3,
-								rel: 0,
-								fs: 0,
-							},
-						}}
-						onError={(event) => {
-							setIsVideoAvailable(false)
-						}}
-					/>
-				) : (
-					<Image
-						src={randomAnime.bannerImage}
-						className="absolute top-0 left-0 w-full h-full object-cover duration-500 ease-in-out"
-					/>
-				)}
+			<div className="h-[44vh] sm:h-[77vh] lg:h-[85vh] z-0 relative aspect-[3/1]">
+				{renderMedia()}
 
 				<div className="layer-hero"></div>
 				<div className="w-[80%] lg:w-[45%] tracking-wide z-10 absolute flex flex-col gap-3 md:gap-6 bottom-[25%] left-[5%] lg:left-[8%]">
@@ -114,7 +120,9 @@ function RandomAnimeENGComp({ randomAnime }) {
 								</span>
 								{randomAnime.episodes}
 							</span>
-							<span className="w-fit">{randomAnime.status}</span>
+							<span className="w-fit hidden md:block">
+								{randomAnime.status}
+							</span>
 						</span>
 						<span className="hidden text-xs md:text-sm text-white/90 md:text-white md:flex items-center gap-3 md:gap-4">
 							{randomAnime.genres.map((genre) => (

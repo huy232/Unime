@@ -9,7 +9,7 @@ function TopAiringENG({ loadingAiring, topAiring }) {
 				POPULAR
 			</h1>
 			{loadingAiring ? (
-				<div className="h-[44vh] sm:h-[77vh] lg:h-[85vh] z-0 relative aspect-3/1">
+				<div className="h-[44vh] sm:h-[77vh] lg:h-[85vh] z-0 relative aspect-[3/1]">
 					<SkeletonTheme baseColor="#202020" highlightColor="#444">
 						<Skeleton className="h-[44vh] sm:h-[77vh] lg:h-[85vh]" />
 					</SkeletonTheme>
