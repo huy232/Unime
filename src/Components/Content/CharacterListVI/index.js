@@ -18,34 +18,32 @@ function CharacterListVI({ characters, loading }) {
 								className="flex bg-[#0D0D0D] h-full w-full"
 								key={character.node.id}
 							>
-								<div className="flex bg-[#0D0D0D] h-full w-full">
-									<div className="aspect-[2/3] h-[90px]">
-										<Image
-											className="h-full w-full duration-500 ease-in-out rounded"
-											src={
-												character.node.image?.large ||
-												character.node.image?.medium ||
-												""
-											}
-											alt={character.node.name.full}
-											loading="lazy"
-										/>
-									</div>
+								<div className="aspect-[2/3] h-[90px]">
+									<Image
+										className="h-full w-full duration-500 ease-in-out rounded"
+										src={
+											character.node.image?.large ||
+											character.node.image?.medium ||
+											""
+										}
+										alt={character.node.name.full}
+										loading="lazy"
+									/>
+								</div>
 
-									<div className="mx-2 flex flex-col w-full">
-										<p
-											className="text-lg font-bold"
-											style={{ color: COLORLIST[i] }}
-										>
-											{character.node.name.full}
-										</p>
-										<p
-											className="font-semibold mt-2 text-sm"
-											style={{ color: "rgb(188 188 188 / 70%)" }}
-										>
-											{trans[character.role]}
-										</p>
-									</div>
+								<div className="mx-2 flex flex-col w-full">
+									<p
+										className="text-lg font-bold"
+										style={{ color: COLORLIST[i] }}
+									>
+										{character.node.name.full}
+									</p>
+									<p
+										className="font-semibold mt-2 text-sm"
+										style={{ color: "rgb(188 188 188 / 70%)" }}
+									>
+										{trans[character.role]}
+									</p>
 								</div>
 							</div>
 						))}
