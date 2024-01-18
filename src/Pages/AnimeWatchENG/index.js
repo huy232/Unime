@@ -192,14 +192,7 @@ function AnimeWatchENG() {
 		return () => {
 			document.body.style.overflow = "auto"
 		}
-	}, [
-		animeId,
-		current,
-		provider,
-		listEpisode,
-		memoizedFilmEpisodeList,
-		memoizedFilmEpisodeWatch,
-	])
+	}, [memoizedFilmEpisodeList, memoizedFilmEpisodeWatch])
 	useDocumentTitle(watchDetail)
 	return (
 		<div className="flex max-lg:flex-col ">

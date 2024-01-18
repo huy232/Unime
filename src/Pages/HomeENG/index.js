@@ -59,7 +59,7 @@ function HomeENG() {
 
 		const getRecentAnime = async () => {
 			await axios
-				.get(`${API}/eng/recent-anime`, {
+				.get(`${API}/eng/recent-anime?page=1`, {
 					cancelToken: source.token,
 				})
 				.then((getRecentData) => {
@@ -75,7 +75,7 @@ function HomeENG() {
 
 		const getTrendingAnime = async () => {
 			await axios
-				.get(`${API}/eng/popular`, {
+				.get(`${API}/eng/popular?page=1`, {
 					cancelToken: source.token,
 				})
 				.then((trendingAnime) => {
