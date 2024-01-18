@@ -35,6 +35,7 @@ function AnimeWatch({ instance }) {
 		const CancelToken = axios.CancelToken
 		const source = CancelToken.source()
 		// FIX RUBBER SCROLL FOR SAFARI
+		window.scrollTo({ top: 0 })
 		document.body.style.overflow = "hidden"
 
 		if (prevAnilist.current !== anime) {

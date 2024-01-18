@@ -180,6 +180,7 @@ function AnimeWatchENG() {
 
 	useEffect(() => {
 		// FIX RUBBER SCROLL FOR SAFARI
+		window.scrollTo({ top: 0 })
 		document.body.style.overflow = "hidden"
 
 		const element = document.getElementsByClassName("active")[0]
