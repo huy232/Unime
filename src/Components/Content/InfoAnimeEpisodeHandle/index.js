@@ -1,13 +1,8 @@
 import { Card, Row, Col } from "react-bootstrap"
 import { BsFillPlayFill } from "react-icons/bs"
-import { Link } from "react-router-dom"
-
-// STORE
-// &episode=${(selectedChunk + 1) * 12 - (12 - i - 1)}
 
 function InfoAnimeEpisodeHandle({
 	anime,
-	info,
 	episodeList,
 	selectedChunk,
 	loading,
@@ -30,8 +25,8 @@ function InfoAnimeEpisodeHandle({
 								<Col key={i}>
 									<nav>
 										{
-											<Link
-												to={`/watch/${anime}?index=${eachEpisode.name}&type=normal`}
+											<a
+												href={`/watch/${anime}?index=${eachEpisode.name}&type=normal`}
 												title={eachEpisode?.full_name}
 												aria-label={eachEpisode?.full_name}
 											>
@@ -71,7 +66,7 @@ function InfoAnimeEpisodeHandle({
 														</Card.Title>
 													</Card.Body>
 												</Card>
-											</Link>
+											</a>
 										}
 									</nav>
 								</Col>

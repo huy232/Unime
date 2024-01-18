@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react"
 import { Card, Row, Col } from "react-bootstrap"
 import { BsFillPlayFill } from "react-icons/bs"
-import { Link } from "react-router-dom"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {
 	faFastBackward,
@@ -183,8 +182,8 @@ function AnimeInfoEpisodeHolderENG({ info, provider, animeId, setWatchNow }) {
 								{episodeList[selectedChunk]?.map((eachEpisode, i) => (
 									<Col key={i}>
 										<nav>
-											<Link
-												to={`/eng/watch/${info.id}?current=${eachEpisode.id}&provider=${provider}&episodeNumber=${eachEpisode.number}`}
+											<a
+												href={`/eng/watch/${info.id}?current=${eachEpisode.id}&provider=${provider}&episodeNumber=${eachEpisode.number}`}
 												title={
 													eachEpisode.title
 														? `EP ${eachEpisode.number} - ${eachEpisode.title}`
@@ -236,7 +235,7 @@ function AnimeInfoEpisodeHolderENG({ info, provider, animeId, setWatchNow }) {
 														</Card.Title>
 													</Card.Body>
 												</Card>
-											</Link>
+											</a>
 										</nav>
 									</Col>
 								))}

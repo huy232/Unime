@@ -13,6 +13,7 @@ import { useAuth } from "../../Contexts/auth"
 import { API } from "../../constants"
 
 function AnimeWatch({ instance }) {
+	const episodeListRef = useRef()
 	const { anime } = useParams()
 	const queryParams = new URLSearchParams(window.location.search)
 	const index = queryParams.get("index")
@@ -35,7 +36,7 @@ function AnimeWatch({ instance }) {
 		const CancelToken = axios.CancelToken
 		const source = CancelToken.source()
 		// FIX RUBBER SCROLL FOR SAFARI
-		window.scrollTo({ top: 0 })
+
 		document.body.style.overflow = "hidden"
 
 		if (prevAnilist.current !== anime) {
@@ -176,9 +177,21 @@ function AnimeWatch({ instance }) {
 			}
 		}
 
-		const element = document.getElementsByClassName("active")[0]
-		if (element) {
-			element.scrollIntoView({ behavior: "smooth" })
+		const episodeListElement = episodeListRef.current
+
+		if (episodeListElement) {
+			const activeEpisode = episodeListElement.querySelector(".active")
+
+			if (activeEpisode) {
+				const rect = activeEpisode.getBoundingClientRect()
+
+				if (rect.top < 0 || rect.bottom > window.innerHeight) {
+					episodeListElement.scrollTo({
+						top: activeEpisode.offsetTop - 80,
+						behavior: "smooth",
+					})
+				}
+			}
 		}
 	}, [index, instance, mainId, specialid])
 
@@ -239,7 +252,10 @@ function AnimeWatch({ instance }) {
 								</Link>
 							</div>
 						</div>
-						<div className="lg:h-[calc(var(--vh,1vh)*100-60px)] overflow-y-scroll bg-[#222] h-[calc(var(--vh,1vh)*50-80px)]">
+						<div
+							ref={episodeListRef}
+							className="lg:h-[calc(var(--vh,1vh)*100-60px)] overflow-y-scroll bg-[#222] h-[calc(var(--vh,1vh)*50-80px-90px)]"
+						>
 							{info.length > 0 && (
 								<>
 									<p className="text-center text-md font-black uppercase py-2 border-t-2 border-b-2 border-orange-300 border-solid">

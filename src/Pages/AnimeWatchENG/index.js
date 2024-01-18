@@ -14,6 +14,7 @@ import ErrorLoad from "../../Components/Content/ErrorLoad"
 import { useCallback } from "react"
 import { useMemo } from "react"
 function AnimeWatchENG() {
+	const episodeListRef = useRef()
 	const { animeId } = useParams()
 	const queryParams = new URLSearchParams(window.location.search)
 	const current = queryParams.get("current")
@@ -179,13 +180,23 @@ function AnimeWatchENG() {
 	)
 
 	useEffect(() => {
-		// FIX RUBBER SCROLL FOR SAFARI
-		window.scrollTo({ top: 0 })
 		document.body.style.overflow = "hidden"
 
-		const element = document.getElementsByClassName("active")[0]
-		if (element) {
-			element.scrollIntoView({ behavior: "smooth" })
+		const episodeListElement = episodeListRef.current
+
+		if (episodeListElement) {
+			const activeEpisode = episodeListElement.querySelector(".active")
+
+			if (activeEpisode) {
+				const rect = activeEpisode.getBoundingClientRect()
+
+				if (rect.top < 0 || rect.bottom > window.innerHeight) {
+					episodeListElement.scrollTo({
+						top: activeEpisode.offsetTop - 80,
+						behavior: "smooth",
+					})
+				}
+			}
 		}
 
 		memoizedFilmEpisodeList()
@@ -196,7 +207,7 @@ function AnimeWatchENG() {
 	}, [memoizedFilmEpisodeList, memoizedFilmEpisodeWatch])
 	useDocumentTitle(watchDetail)
 	return (
-		<div className="flex max-lg:flex-col ">
+		<div className="flex max-lg:flex-col h-[calc(var(--vh,1vh)*100)]">
 			{error ? (
 				<ErrorLoad />
 			) : videoLoading || listEpisode.length === 0 ? (
@@ -248,7 +259,10 @@ function AnimeWatchENG() {
 						</Link>
 					</div>
 				</div>
-				<div className="lg:h-[calc(var(--vh,1vh)*100-60px)] overflow-y-scroll bg-[#222] h-[calc(var(--vh,1vh)*50-80px)]">
+				<div
+					ref={episodeListRef}
+					className="lg:h-[calc(var(--vh,1vh)*100-60px)] overflow-y-scroll bg-[#222] h-[calc(var(--vh,1vh)*50-80px-90px)]"
+				>
 					{listEpisode.map((item, i) => (
 						<Link
 							to={`/eng/watch/${animeId}?current=${item.id}&provider=${provider}&episodeNumber=${item.number}`}

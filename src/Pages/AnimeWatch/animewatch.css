@@ -42,7 +42,6 @@
 .episode-bracket {
 	overflow: scroll;
 	background: rgb(68 75 82 / 40%);
-	height: calc(var(--vh, 1vh) * 100 - 60px);
 }
 
 .episode p {
@@ -56,7 +55,6 @@
 
 @media screen and (max-width: 1023px) {
 	.episode-content {
-		margin-top: 20px !important;
 		max-width: none !important;
 		min-width: unset !important;
 		width: 100% !important;

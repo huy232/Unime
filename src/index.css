@@ -28,6 +28,12 @@
 	}
 }
 
+@supports (-webkit-touch-callout: none) {
+	.h-screen {
+		height: -webkit-fill-available;
+	}
+}
+
 @-webkit-keyframes pulsing {
 	0% {
 		transform: scale(1);

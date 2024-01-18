@@ -1,5 +1,4 @@
 import { Card, Row, Col } from "react-bootstrap"
-import { Link } from "react-router-dom"
 import { BsFillPlayFill } from "react-icons/bs"
 // SWIPER
 import { Swiper, SwiperSlide } from "swiper/react"
@@ -83,8 +82,8 @@ function InfoSpecialEpisodeList({
 								(eachEpisode, i) => (
 									<Col key={i}>
 										<nav>
-											<Link
-												to={
+											<a
+												href={
 													type === "ova"
 														? `/watch/${anime}?index=${eachEpisode.name}&type=ova`
 														: `/watch/${anime}?specialid=${eachEpisode.id}&type=special`
@@ -124,7 +123,7 @@ function InfoSpecialEpisodeList({
 														</Card.Title>
 													</Card.Body>
 												</Card>
-											</Link>
+											</a>
 										</nav>
 									</Col>
 								)
