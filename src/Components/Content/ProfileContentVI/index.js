@@ -32,9 +32,7 @@ function ProfileContentVI({ userId }) {
 					setLoading(false)
 				}
 			})
-			.catch((error) => {
-				// Handle errors as needed
-			})
+			.catch((error) => {})
 	}
 
 	const handlePageClick = (event) => {
@@ -64,9 +62,7 @@ function ProfileContentVI({ userId }) {
 					}
 				}
 			})
-			.catch((err) => {
-				// Handle error
-			})
+			.catch((err) => {})
 	}
 
 	useEffect(() => {

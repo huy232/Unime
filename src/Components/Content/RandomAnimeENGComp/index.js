@@ -45,7 +45,6 @@ function RandomAnimeENGComp({ randomAnime }) {
 			const onEnd = (event) => {
 				event.target.playVideo()
 			}
-
 			return (
 				<YouTube
 					loading="eager"

@@ -48,15 +48,8 @@ function TopAiringENGComp({ topAiring }) {
 				event.target.playVideo()
 			}
 			const isMobile = windowWidth < 1024
-			if ((autoplaySupported && !youtubeErrors[index]) || isMobile) {
-				return (
-					<Image
-						loading="eager"
-						src={item.bannerImage}
-						className="h-full w-full object-cover duration-300 ease-in-out pointer-events-none cursor-none"
-					/>
-				)
-			} else {
+
+			if (autoplaySupported && !youtubeErrors[index] && !isMobile) {
 				return (
 					<YouTube
 						loading="eager"
@@ -83,6 +76,14 @@ function TopAiringENGComp({ topAiring }) {
 						muted={true}
 						onError={() => handleError(index)}
 						onEnd={onEnd}
+					/>
+				)
+			} else {
+				return (
+					<Image
+						loading="eager"
+						src={item.bannerImage}
+						className="h-full w-full object-cover duration-300 ease-in-out pointer-events-none cursor-none"
 					/>
 				)
 			}

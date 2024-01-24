@@ -131,11 +131,11 @@ function AnimeWatchENG() {
 										animeEpisode: `EP. ${episodeTitle.number} ${
 											episodeTitle.title ? `- ${episodeTitle.title}` : ""
 										}`,
-										animeImage: info?.image,
-										animeCover: info?.cover,
+										animeImage: info?.coverImage,
+										animeCover: info?.bannerImage,
 										animeColor: info?.color,
 										duration: info?.duration,
-										rating: info?.rating,
+										rating: info?.rating?.anilist,
 										totalEpisodes: info?.totalEpisodes,
 										type: info?.type,
 										animeStatus: info?.status,
