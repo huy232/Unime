@@ -198,165 +198,160 @@ function AnimeWatch({ instance }) {
 	useDocumentTitle(watchDetail)
 
 	return (
-		<>
-			<div>
-				<div className="flex max-lg:flex-col">
-					{videoLoading || info.length === 0 ? (
-						<FilmLoadingRequest />
-					) : videoUrl.length > 0 ? (
-						<VideoPlayer
-							videoUrl={videoUrl}
-							listEpisode={info}
-							setVideoLoading={setVideoLoading}
-							subtitles={subtitles}
-						/>
-					) : (
-						videoEmbed && <VideoEmbed videoEmbed={videoEmbed} />
-					)}
-					<div className="episode-content">
-						<div className="episode-section">
-							<div className="episode-section-fixed">
-								<Link
-									to={`/info/${anime}`}
-									className="group hover:opacity-80 duration-200 ease-in-out"
-									aria-label={anime}
+		<div>
+			<div className="flex max-lg:flex-col">
+				{videoLoading || info.length === 0 ? (
+					<FilmLoadingRequest />
+				) : videoUrl.length > 0 ? (
+					<VideoPlayer
+						videoUrl={videoUrl}
+						listEpisode={info}
+						setVideoLoading={setVideoLoading}
+						subtitles={subtitles}
+					/>
+				) : (
+					videoEmbed && <VideoEmbed videoEmbed={videoEmbed} />
+				)}
+				<div className="episode-content">
+					<div className="episode-section">
+						<div className="episode-section-fixed">
+							<Link
+								to={`/info/${anime}`}
+								className="group hover:opacity-80 duration-200 ease-in-out"
+								aria-label={anime}
+							>
+								<button
+									className="bg-[#000] border-none flex items-center justify-center"
+									id="back-to-info-btn"
+									aria-label="Back to info button"
 								>
-									<button
-										className="bg-[#000] border-none flex items-center justify-center"
-										id="back-to-info-btn"
-										aria-label="Back to info button"
-									>
-										<BsFillArrowLeftSquareFill style={{ color: "white" }} />
-									</button>
-								</Link>
-								<div className="episode-heading-section">
-									<h5 className="episode-section-title text-center text-white font-bold">
-										DANH SÁCH TẬP PHIM
-									</h5>
-								</div>
-								<Link
-									to={`/`}
-									className="group hover:opacity-80 duration-200 ease-in-out"
+									<BsFillArrowLeftSquareFill style={{ color: "white" }} />
+								</button>
+							</Link>
+							<div className="episode-heading-section">
+								<h5 className="episode-section-title text-center text-white font-bold">
+									DANH SÁCH TẬP PHIM
+								</h5>
+							</div>
+							<Link
+								to={`/`}
+								className="group hover:opacity-80 duration-200 ease-in-out"
+								aria-label="TRANG CHỦ"
+							>
+								<button
+									className="bg-[#000] border-none flex items-center justify-center"
+									id="back-to-home-vi-btn"
 									aria-label="TRANG CHỦ"
 								>
-									<button
-										className="bg-[#000] border-none flex items-center justify-center"
-										id="back-to-home-vi-btn"
-										aria-label="TRANG CHỦ"
+									<FontAwesomeIcon icon={faHouse} style={{ color: "white" }} />
+								</button>
+							</Link>
+						</div>
+					</div>
+					<div
+						ref={episodeListRef}
+						className="lg:h-[calc(var(--vh,1vh)*100-60px)] overflow-y-scroll bg-[#222] h-[calc(var(--vh,1vh)*50-80px-90px)]"
+					>
+						{info.length > 0 && (
+							<>
+								<p className="text-center text-md font-black uppercase py-2 border-t-2 border-b-2 border-orange-300 border-solid">
+									Thường
+								</p>
+								{info.map((item, i) => (
+									<Link
+										to={`/watch/${anime}?index=${item.name}&type=normal`}
+										key={i}
+										title={item.full_name}
+										className={`flex items-center h-[80px] px-[12px] py-[8px] w-full hover:text-white hover:opacity-80 hover:bg-white/20 duration-200 ease-in-out ${
+											parseInt(index) === parseInt(item.name)
+												? "bg-white/50 active"
+												: "odd:bg-[#111111] even:bg-[#272727]"
+										}`}
+										onClick={() => setVideoLoading(true)}
+										aria-label={item.full_name}
 									>
-										<FontAwesomeIcon
-											icon={faHouse}
-											style={{ color: "white" }}
-										/>
-									</button>
-								</Link>
-							</div>
-						</div>
-						<div
-							ref={episodeListRef}
-							className="lg:h-[calc(var(--vh,1vh)*100-60px)] overflow-y-scroll bg-[#222] h-[calc(var(--vh,1vh)*50-80px-90px)]"
-						>
-							{info.length > 0 && (
-								<>
-									<p className="text-center text-md font-black uppercase py-2 border-t-2 border-b-2 border-orange-300 border-solid">
-										Thường
-									</p>
-									{info.map((item, i) => (
-										<Link
-											to={`/watch/${anime}?index=${item.name}&type=normal`}
-											key={i}
-											title={item.full_name}
-											className={`flex items-center h-[80px] px-[12px] py-[8px] w-full hover:text-white hover:opacity-80 hover:bg-white/20 duration-200 ease-in-out ${
-												parseInt(index) === parseInt(item.name)
-													? "bg-white/50 active"
-													: "odd:bg-[#111111] even:bg-[#272727]"
-											}`}
-											onClick={() => setVideoLoading(true)}
-											aria-label={item.full_name}
-										>
-											<div className="mr-[6px] h-full flex items-center justify-center text-amber-400 ">
-												<p className="font-extrabold px-[4px] border-r-[2px] opacity-80">
-													{i + 1}
-												</p>
-											</div>
-											<div className="mx-[6px] w-full flex">
-												<p className="line-clamp-2 w-full text-[#E2DFD2]">
-													{item.full_name}
-												</p>
-											</div>
-										</Link>
-									))}
-								</>
-							)}
-							{ovaList.length > 0 && (
-								<>
-									<p className="text-center text-md font-black uppercase py-2 border-t-2 border-b-2 border-orange-300 border-solid">
-										OVA
-									</p>
-									{ovaList.map((item, i) => (
-										<Link
-											to={`/watch/${anime}?index=${item.name}&type=ova`}
-											key={i}
-											title={item.full_name}
-											className={`flex items-center h-[80px] px-[12px] py-[8px] w-full hover:text-white hover:opacity-80 hover:bg-white/20 duration-200 ease-in-out ${
-												parseInt(index) === parseInt(item.name)
-													? "bg-white/50 active"
-													: "odd:bg-[#111111] even:bg-[#272727]"
-											}`}
-											onClick={() => setVideoLoading(true)}
-											aria-label={item.full_name}
-										>
-											<div className="mr-[6px] h-full flex items-center justify-center text-amber-400 ">
-												<p className="font-extrabold px-[4px] border-r-[2px] opacity-80">
-													{i + 1}
-												</p>
-											</div>
-											<div className="mx-[6px] w-full flex">
-												<p className="line-clamp-2 w-full text-[#E2DFD2]">
-													{item.full_name}
-												</p>
-											</div>
-										</Link>
-									))}
-								</>
-							)}
-							{specialList.length > 0 && (
-								<>
-									<p className="text-center text-md font-black uppercase py-2 border-t-2 border-b-2 border-orange-300 border-solid">
-										Đặc biệt
-									</p>
-									{specialList.map((item, i) => (
-										<Link
-											to={`/watch/${anime}?specialid=${item.id}&type=special`}
-											key={i}
-											title={item.full_name}
-											className={`flex items-center h-[80px] px-[12px] py-[8px] w-full hover:text-white hover:opacity-80 hover:bg-white/20 duration-200 ease-in-out ${
-												parseInt(specialid) === parseInt(item.id)
-													? "bg-white/50 active"
-													: "odd:bg-[#111111] even:bg-[#272727]"
-											}`}
-											onClick={() => setVideoLoading(true)}
-											aria-label={item.full_name}
-										>
-											<div className="mr-[6px] h-full flex items-center justify-center text-amber-400 ">
-												<p className="font-extrabold px-[4px] border-r-[2px] opacity-80">
-													{i + 1}
-												</p>
-											</div>
-											<div className="mx-[6px] w-full flex">
-												<p className="line-clamp-2 w-full text-[#E2DFD2]">
-													{item.full_name}
-												</p>
-											</div>
-										</Link>
-									))}
-								</>
-							)}
-						</div>
+										<div className="mr-[6px] h-full flex items-center justify-center text-amber-400 ">
+											<p className="font-extrabold px-[4px] border-r-[2px] opacity-80">
+												{i + 1}
+											</p>
+										</div>
+										<div className="mx-[6px] w-full flex">
+											<p className="line-clamp-2 w-full text-[#E2DFD2]">
+												{item.full_name}
+											</p>
+										</div>
+									</Link>
+								))}
+							</>
+						)}
+						{ovaList.length > 0 && (
+							<>
+								<p className="text-center text-md font-black uppercase py-2 border-t-2 border-b-2 border-orange-300 border-solid">
+									OVA
+								</p>
+								{ovaList.map((item, i) => (
+									<Link
+										to={`/watch/${anime}?index=${item.name}&type=ova`}
+										key={i}
+										title={item.full_name}
+										className={`flex items-center h-[80px] px-[12px] py-[8px] w-full hover:text-white hover:opacity-80 hover:bg-white/20 duration-200 ease-in-out ${
+											parseInt(index) === parseInt(item.name)
+												? "bg-white/50 active"
+												: "odd:bg-[#111111] even:bg-[#272727]"
+										}`}
+										onClick={() => setVideoLoading(true)}
+										aria-label={item.full_name}
+									>
+										<div className="mr-[6px] h-full flex items-center justify-center text-amber-400 ">
+											<p className="font-extrabold px-[4px] border-r-[2px] opacity-80">
+												{i + 1}
+											</p>
+										</div>
+										<div className="mx-[6px] w-full flex">
+											<p className="line-clamp-2 w-full text-[#E2DFD2]">
+												{item.full_name}
+											</p>
+										</div>
+									</Link>
+								))}
+							</>
+						)}
+						{specialList.length > 0 && (
+							<>
+								<p className="text-center text-md font-black uppercase py-2 border-t-2 border-b-2 border-orange-300 border-solid">
+									Đặc biệt
+								</p>
+								{specialList.map((item, i) => (
+									<Link
+										to={`/watch/${anime}?specialid=${item.id}&type=special`}
+										key={i}
+										title={item.full_name}
+										className={`flex items-center h-[80px] px-[12px] py-[8px] w-full hover:text-white hover:opacity-80 hover:bg-white/20 duration-200 ease-in-out ${
+											parseInt(specialid) === parseInt(item.id)
+												? "bg-white/50 active"
+												: "odd:bg-[#111111] even:bg-[#272727]"
+										}`}
+										onClick={() => setVideoLoading(true)}
+										aria-label={item.full_name}
+									>
+										<div className="mr-[6px] h-full flex items-center justify-center text-amber-400 ">
+											<p className="font-extrabold px-[4px] border-r-[2px] opacity-80">
+												{i + 1}
+											</p>
+										</div>
+										<div className="mx-[6px] w-full flex">
+											<p className="line-clamp-2 w-full text-[#E2DFD2]">
+												{item.full_name}
+											</p>
+										</div>
+									</Link>
+								))}
+							</>
+						)}
 					</div>
 				</div>
 			</div>
-		</>
+		</div>
 	)
 }
 export default AnimeWatch

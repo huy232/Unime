@@ -13,11 +13,22 @@ import { faClosedCaptioning } from "@fortawesome/free-solid-svg-icons"
 function TopAiringENGComp({ topAiring }) {
 	const [autoplaySupported, setAutoplaySupported] = useState(false)
 	const [youtubeErrors, setYoutubeErrors] = useState([])
+	const [windowWidth, setWindowWidth] = useState(window.innerWidth)
 
 	useEffect(() => {
 		const testVideo = document.createElement("video")
 		const canAutoplay = testVideo.autoplay !== undefined
 		setAutoplaySupported(canAutoplay)
+
+		const handleResize = () => {
+			setWindowWidth(window.innerWidth)
+		}
+
+		window.addEventListener("resize", handleResize)
+
+		return () => {
+			window.removeEventListener("resize", handleResize)
+		}
 	}, [])
 
 	const handleError = useCallback(
@@ -36,8 +47,16 @@ function TopAiringENGComp({ topAiring }) {
 			const onEnd = (event) => {
 				event.target.playVideo()
 			}
-
-			if (autoplaySupported && !youtubeErrors[index]) {
+			const isMobile = windowWidth < 1024
+			if ((autoplaySupported && !youtubeErrors[index]) || isMobile) {
+				return (
+					<Image
+						loading="eager"
+						src={item.bannerImage}
+						className="h-full w-full object-cover duration-300 ease-in-out pointer-events-none cursor-none"
+					/>
+				)
+			} else {
 				return (
 					<YouTube
 						loading="eager"
@@ -66,17 +85,9 @@ function TopAiringENGComp({ topAiring }) {
 						onEnd={onEnd}
 					/>
 				)
-			} else {
-				return (
-					<Image
-						loading="eager"
-						src={item.bannerImage}
-						className="h-full w-full object-cover duration-300 ease-in-out pointer-events-none cursor-none"
-					/>
-				)
 			}
 		},
-		[autoplaySupported, youtubeErrors, topAiring, handleError]
+		[topAiring, windowWidth, autoplaySupported, youtubeErrors, handleError]
 	)
 
 	return (

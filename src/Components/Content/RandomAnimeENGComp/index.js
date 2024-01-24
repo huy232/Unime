@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useCallback } from "react"
 import YouTube from "react-youtube"
 import { Link } from "react-router-dom"
 import Image from "../Image"
@@ -10,6 +10,7 @@ import "./movieanime.css"
 function RandomAnimeENGComp({ randomAnime }) {
 	const [autoplaySupported, setAutoplaySupported] = useState(false)
 	const [isVideoAvailable, setIsVideoAvailable] = useState(true)
+	const [windowWidth, setWindowWidth] = useState(window.innerWidth)
 
 	useEffect(() => {
 		const testVideo = document.createElement("video")
@@ -17,24 +18,31 @@ function RandomAnimeENGComp({ randomAnime }) {
 		setAutoplaySupported(canAutoplay)
 
 		if (randomAnime?.trailer?.site === "youtube") {
-			// Check if the video ID is available
 			if (!randomAnime.trailer.id) {
 				setIsVideoAvailable(false)
 				return
 			}
+		}
+		const handleResize = () => {
+			setWindowWidth(window.innerWidth)
+		}
 
-			// Additional checks or API calls can be added here if needed
+		window.addEventListener("resize", handleResize)
+
+		return () => {
+			window.removeEventListener("resize", handleResize)
 		}
 	}, [randomAnime?.trailer?.id, randomAnime?.trailer?.site])
 
-	const renderMedia = () => {
+	const renderMedia = useCallback(() => {
+		const isMobile = windowWidth < 1024
 		if (
 			autoplaySupported &&
 			isVideoAvailable &&
-			randomAnime?.trailer?.site === "youtube"
+			randomAnime?.trailer?.site === "youtube" &&
+			!isMobile
 		) {
 			const onEnd = (event) => {
-				// Manually restart the video when it ends
 				event.target.playVideo()
 			}
 
@@ -69,7 +77,13 @@ function RandomAnimeENGComp({ randomAnime }) {
 				/>
 			)
 		}
-	}
+	}, [
+		autoplaySupported,
+		isVideoAvailable,
+		randomAnime.bannerImage,
+		randomAnime.trailer.id,
+		randomAnime.trailer?.site,
+	])
 
 	const description = randomAnime.description?.replace(/<[br]+>/g, " ")
 	const animeTitle =
