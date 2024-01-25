@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { useParams } from "react-router-dom"
 import axios from "axios"
 import InfiniteScroll from "react-infinite-scroll-component"
 import LoadingSpin from "react-loading-spin"
 import useDocumentTitle from "../../Hooks/useDocumentTitle"
 import { Link } from "react-router-dom"
-import { API } from "../../constants"
+import { API, COLORLIST } from "../../constants"
 import Image from "../../Components/Content/Image"
 
 const PAGE_NUMBER = 1
@@ -16,11 +16,17 @@ function AnimeBrowseMoreENG({ urlString, urlTitle }) {
 	let [page, setPage] = useState(PAGE_NUMBER)
 	const [hasNextPage, setHasNextPage] = useState(true)
 	const { query } = useParams()
-
+	const isLoadingRef = useRef(false)
+	const [error, setError] = useState(null)
+	const [randomColor, setRandomColor] = useState("#fffc")
 	useEffect(() => {
 		const CancelToken = axios.CancelToken
 		const source = CancelToken.source()
 		const getAnimeBrowse = async () => {
+			if (isLoadingRef.current) return
+			isLoadingRef.current = true
+			setError(null)
+
 			axios
 				.get(`${API}/eng/${urlString}?page=${page}`, {
 					cancelToken: source.token,
@@ -31,29 +37,51 @@ function AnimeBrowseMoreENG({ urlString, urlTitle }) {
 							return [...new Set([...prev, ...response.data.data.results])]
 						})
 						setHasNextPage(response.data.data.hasNextPage)
-						setLoading(false)
+					} else {
+						setHasNextPage(false)
 					}
 				})
 				.catch((thrown) => {
 					if (axios.isCancel(thrown)) return
+					setError(thrown)
+				})
+				.finally(() => {
+					isLoadingRef.current = false // Reset loading state
+					setLoading(false)
 				})
 		}
 
 		getAnimeBrowse()
+
 		return () => {
 			source.cancel()
 		}
 	}, [page, query, urlString])
 
+	useEffect(() => {
+		const getRandomColor =
+			COLORLIST[Math.floor(Math.random() * COLORLIST.length)]
+		setRandomColor(getRandomColor)
+	}, [])
+
 	const scrollThreshold = () => {
-		const newPage = page + 1
-		setPage(newPage)
+		if (!loading && !error) {
+			const newPage = page + 1
+			setPage(newPage)
+		}
 	}
 
 	useDocumentTitle(`${urlTitle} - Unime`)
 	return (
 		<div>
-			<h1 className="font-black">{urlTitle}</h1>
+			<h1
+				className="font-black font-bebas-neue text-center"
+				style={{
+					color: randomColor,
+				}}
+			>
+				{urlTitle}
+			</h1>
 			{loading ? (
 				<div className="block w-full mt-[50px] text-center">
 					<LoadingSpin primaryColor="red" />
