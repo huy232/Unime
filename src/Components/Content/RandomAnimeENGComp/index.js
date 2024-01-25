@@ -18,7 +18,7 @@ function RandomAnimeENGComp({ randomAnime }) {
 		setAutoplaySupported(canAutoplay)
 
 		if (randomAnime?.trailer?.site === "youtube") {
-			if (!randomAnime.trailer.id) {
+			if (!randomAnime?.trailer?.id) {
 				setIsVideoAvailable(false)
 				return
 			}
@@ -49,7 +49,7 @@ function RandomAnimeENGComp({ randomAnime }) {
 				<YouTube
 					loading="eager"
 					className="youtube-container pointer-events-none cursor-none"
-					videoId={randomAnime.trailer.id}
+					videoId={randomAnime?.trailer?.id}
 					opts={{
 						playerVars: {
 							autoplay: 1,
@@ -80,8 +80,8 @@ function RandomAnimeENGComp({ randomAnime }) {
 		autoplaySupported,
 		isVideoAvailable,
 		randomAnime.bannerImage,
-		randomAnime.trailer.id,
-		randomAnime.trailer?.site,
+		randomAnime?.trailer?.id,
+		randomAnime?.trailer?.site,
 	])
 
 	const description = randomAnime.description?.replace(/<[br]+>/g, " ")
