@@ -111,7 +111,10 @@ function RecommendENG({ recommend, setLoading, title = "RELATIONS" }) {
 													className="line-clamp-2 font-extrabold"
 													style={{
 														color:
-															item.coverImage.color || COLORLIST[i] || "#fffc",
+															item?.coverImage?.color ||
+															item?.color ||
+															COLORLIST[i] ||
+															"#fffc",
 													}}
 												>
 													{item.title.english ||
