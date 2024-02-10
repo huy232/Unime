@@ -4,11 +4,10 @@
 
 @layer utilities {
 	.scrollbar-hide::-webkit-scrollbar {
-		display: none; /* Hide scrollbar for Chrome and Safari */
+		display: none;
 	}
 }
 
-/* Optional: Customize scrollbar for WebKit browsers */
 @layer components {
 	.scrollbar-hide::-webkit-scrollbar-track {
 		background: transparent;
@@ -72,7 +71,7 @@
 
 .pulsing {
 	-webkit-animation: pulsing 1.5s infinite;
-	animation: pulsing 1.5s infinite; /* You can adjust the duration to control the speed */
+	animation: pulsing 1.5s infinite;
 }
 
 body {
@@ -125,7 +124,7 @@ pre {
 }
 
 * {
-	scrollbar-width: thin;
+	scrollbar-width: none;
 	scrollbar-color: var(--scroll-bar-color) var(--scroll-bar-bg-color);
 }
 

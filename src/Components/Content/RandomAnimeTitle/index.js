@@ -6,23 +6,29 @@ function RandomAnimeTitle({ randomAnime }) {
 	return (
 		<>
 			<Card>
-				<Card.Title
-					className="description-title"
-					style={{ color: `${randomAnime.cover.color || "#ffc"}` }}
+				<Link
+					to={`/info/${randomAnime.slug}`}
+					aria-label={randomAnime.slug}
+					className="hover:opacity-70 duration-200 ease-linear"
 				>
-					{randomAnime.title.romaji ||
-						randomAnime.title.english ||
-						randomAnime.name ||
-						randomAnime.title.userPreferred}
-				</Card.Title>
+					<Card.Title
+						className="description-title"
+						style={{ color: `${randomAnime.cover.color || "#ffc"}` }}
+					>
+						{randomAnime.title.romaji ||
+							randomAnime.title.english ||
+							randomAnime.name ||
+							randomAnime.title.userPreferred}
+					</Card.Title>
+				</Link>
 				{randomAnime?.banner && (
-					<nav>
+					<nav className="random-anime">
 						<Link
 							to={`/info/${randomAnime.slug}`}
 							aria-label={randomAnime.slug}
 						>
 							<Card.Img
-								className="today-banner-card-image object-cover hover:opacity-80 rounded-t-md"
+								className="today-banner-card-image object-cover hover:opacity-80"
 								variant="bottom"
 								src={randomAnime.banner}
 								alt={randomAnime.name}
@@ -39,16 +45,18 @@ function RandomAnimeTitle({ randomAnime }) {
 					</nav>
 				)}
 
-				<Card.Body className="description-card h-100 text-left">
+				<Card.Body className="description-card h-100 text-left text-md">
 					<ClampedDiv>{randomAnime?.description}</ClampedDiv>
 				</Card.Body>
 				<Card.Footer className="flex items-center w-full">
-					<span className="studio-text">
+					<span className="studio-text text-sm">
 						{randomAnime?.studio && (
-							<>
+							<div className="flex gap-2">
 								<span style={{ fontWeight: "700" }}>Studio: </span>
-								{randomAnime.studio}
-							</>
+								<div className="text-left text-gray-300">
+									{randomAnime.studio}
+								</div>
+							</div>
 						)}
 					</span>
 				</Card.Footer>

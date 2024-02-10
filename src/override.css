@@ -77,4 +77,7 @@ img[src=""] {
 	margin-top: 6px;
 }
 
-
+.random-anime img {
+	border-bottom-right-radius: 0px !important;
+	border-bottom-left-radius: 0px !important;
+}
