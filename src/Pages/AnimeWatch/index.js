@@ -84,6 +84,8 @@ function AnimeWatch({ instance }) {
 											default: true,
 											url: response.data.data.videoSource,
 											html: response.data.data.quality,
+											isM3U8: response.data.data.isM3U8,
+											type: response.data.data.type,
 										},
 									])
 								} else {
@@ -137,6 +139,8 @@ function AnimeWatch({ instance }) {
 									{
 										url: res.data.data.videoSource,
 										html: res.data.data?.quality ? res.data.data.quality : "",
+										isM3U8: res.data.data.isM3U8,
+										type: res.data.data.type,
 									},
 								])
 								setVideoLoading(false)
@@ -164,6 +168,8 @@ function AnimeWatch({ instance }) {
 									{
 										url: res.data.data.videoSource,
 										html: res.data.data?.quality ? res.data.data.quality : "",
+										isM3U8: res.data.data.isM3U8,
+										type: res.data.data.type,
 									},
 								])
 								setVideoLoading(false)

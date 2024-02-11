@@ -16,7 +16,11 @@ function ArtPlayer({
 	const artRef = useRef()
 
 	useEffect(() => {
-		if (videoUrl[0].url.includes(".mp4")) {
+		if (
+			videoUrl[0].url.includes(".mp4") ||
+			videoUrl[0].isM3U8 === false ||
+			videoUrl[0].type === "mp4"
+		) {
 			const art = new Artplayer({
 				...option,
 				url: videoUrl[0].url,
