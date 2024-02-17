@@ -40,7 +40,7 @@ function MangaInfoENG() {
 								language.push(current, next)
 							}
 						}
-						setMangaLanguageOption([...new Set(language)])
+						setMangaLanguageOption([new Set(language)])
 					} else {
 						setMangaLanguageOption([])
 					}

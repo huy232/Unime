@@ -32,7 +32,7 @@ function AnimeCollection({ instance }) {
 					}))
 					setTranslateGenreAnime(response.data.data.title || "")
 					setAnimeList((prev) => {
-						return [...new Set([...prev, ...newList])]
+						return [new Set([...prev, ...newList])]
 					})
 					setLoading(false)
 				})

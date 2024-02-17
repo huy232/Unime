@@ -27,7 +27,7 @@ function MangaBrowseENG({ subUrl, title }) {
 						const mangaPayload = data.data.data
 						const mangaObject = Object.values(mangaPayload)[0]
 						setMangaData((prev) => {
-							return [...new Set([...prev, ...mangaObject.media])]
+							return [new Set([...prev, ...mangaObject.media])]
 						})
 						setPage(mangaObject.pageInfo.currentPage)
 						setHasNextPage(mangaObject.pageInfo.hasNextPage)

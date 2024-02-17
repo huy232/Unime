@@ -28,7 +28,7 @@ function AnimeBrowseENG() {
 				.then((response) => {
 					if (response.data.success) {
 						setAllAnime((prev) => {
-							return [...new Set([...prev, ...response.data.data.results])]
+							return [new Set([...prev, ...response.data.data.results])]
 						})
 						setHasNextPage(response.data.data.hasNextPage)
 						setLoading(false)

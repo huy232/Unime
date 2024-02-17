@@ -55,7 +55,7 @@ function AnimeGenre({ instance }) {
 							}))
 							setTotalPage(response.data.pagination.totalPage)
 							setAnimeList((prev) => {
-								return [...new Set([...prev, ...newList])]
+								return [new Set([...prev, ...newList])]
 							})
 							setLoading(false)
 						}

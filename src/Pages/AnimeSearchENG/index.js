@@ -13,8 +13,8 @@ const PAGE_NUMBER = 1
 function AnimeSearchENG() {
 	const [loading, setLoading] = useState(true)
 	const [searchResult, setSearchResult] = useState([])
-	let [page, setPage] = useState(PAGE_NUMBER)
 	const [hasNextPage, setHasNextPage] = useState(true)
+	let [page, setPage] = useState(PAGE_NUMBER)
 	const { query } = useParams()
 	const prevQuery = useRef({ query, page: 1 })
 
@@ -31,20 +31,28 @@ function AnimeSearchENG() {
 					cancelToken: source.token,
 				})
 				.then((response) => {
-					if (response.data.success) {
+					if (response.data.success && response.data?.data) {
 						if (prevQuery.current.query !== query) {
 							prevQuery.current.query = query
 							setSearchResult(response.data.data.results)
 						} else {
 							setSearchResult((prev) => {
-								return [...new Set([...prev, ...response.data.data.results])]
+								return [new Set([...prev, ...response.data.data.results])]
 							})
 						}
 						setHasNextPage(response.data.data.hasNextPage)
 						setLoading(false)
+					} else {
+						if (response.data?.data) {
+							setSearchResult((prev) => {
+								return [new Set([...prev, ...response.data.data.results])]
+							})
+						}
+						setLoading(false)
 					}
 				})
 				.catch((thrown) => {
+					setLoading(false)
 					if (axios.isCancel(thrown)) return
 				})
 		}
@@ -64,11 +72,15 @@ function AnimeSearchENG() {
 
 	return (
 		<div>
-			<h1 className="font-black">SEARCH</h1>
+			<h1 className="font-black font-bebas-neue text-[#d3d9] text-center">
+				SEARCH
+			</h1>
 			{loading ? (
 				<div className="block w-full mt-[50px] text-center">
 					<LoadingSpin primaryColor="red" />
 				</div>
+			) : searchResult.length === 0 ? (
+				<p>There are no anime you're are looking for...</p>
 			) : (
 				<InfiniteScroll
 					initialScrollY={0}
