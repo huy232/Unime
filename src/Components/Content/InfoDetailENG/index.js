@@ -212,18 +212,20 @@ function InfoDetailENG({
 							setWatchNow={setWatchNow}
 						/>
 					</div>
-					{info.recommendation.length > 0 && (
+					{info?.recommendation?.length > 0 && (
 						<RecommendENG
 							recommend={info.recommendation}
 							setLoading={setLoading}
 							title={"RECOMMENDS"}
+							baseImage={info.coverImage}
 						/>
 					)}
-					{info.relations.length > 0 && (
+					{info?.relations?.length > 0 && (
 						<RecommendENG
 							recommend={info.relations}
 							setLoading={setLoading}
 							title={"RELATIONS"}
+							baseImage={info.coverImage}
 						/>
 					)}
 					{!loading && (

@@ -10,7 +10,12 @@ import { Lazy } from "swiper"
 import { COLORLIST } from "../../../constants"
 import Image from "../Image"
 
-function RecommendENG({ recommend, setLoading, title = "RELATIONS" }) {
+function RecommendENG({
+	recommend,
+	setLoading,
+	title = "RELATIONS",
+	baseImage,
+}) {
 	const recommendFilter = recommend.filter((item) => {
 		return (
 			item.status !== "Unknown" &&
@@ -49,17 +54,17 @@ function RecommendENG({ recommend, setLoading, title = "RELATIONS" }) {
 												: `/eng/info/${item.id}`
 										}
 										title={
-											item.title.english ||
-											item.title.romaji ||
-											item.title.native ||
-											item.title.userPreferred
+											item?.title?.english ||
+											item?.title?.romaji ||
+											item?.title?.native ||
+											item?.title?.userPreferred
 										}
 										onClick={() => setLoading(true)}
 										aria-label={
-											item.title.english ||
-											item.title.romaji ||
-											item.title.native ||
-											item.userPreferred
+											item?.title?.english ||
+											item?.title?.romaji ||
+											item?.title?.native ||
+											item?.title?.userPreferred
 										}
 									>
 										<div className="group recommend-item-holder select-none cursor-pointer">
@@ -67,18 +72,19 @@ function RecommendENG({ recommend, setLoading, title = "RELATIONS" }) {
 												<Image
 													className="object-fill object-center w-full h-full linear absolute duration-500 ease-in-out"
 													src={
-														item.image ||
-														item.coverImage.extraLarge ||
-														item.coverImage.large ||
-														item.coverImage.medium ||
-														item.coverImage ||
+														item?.image ||
+														item?.coverImage?.extraLarge ||
+														item?.coverImage?.large ||
+														item?.coverImage?.medium ||
+														item?.coverImage ||
+														baseImage ||
 														""
 													}
 													alt={
-														item.title.english ||
-														item.title.romaji ||
-														item.title.native ||
-														item.title.userPreferred
+														item?.title?.english ||
+														item?.title?.romaji ||
+														item?.title?.native ||
+														item?.title?.userPreferred
 													}
 													loading="lazy"
 												/>
@@ -117,17 +123,19 @@ function RecommendENG({ recommend, setLoading, title = "RELATIONS" }) {
 															"#fffc",
 													}}
 												>
-													{item.title.english ||
-														item.title.romaji ||
-														item.title.native ||
-														item.title.userPreferred}
+													{item?.title?.english ||
+														item?.title?.romaji ||
+														item?.title?.native ||
+														item?.title?.userPreferred}
 												</p>
 											</div>
-											<div className="text-[#fffc] text-sm inline-block p-[4px]">
-												<p className="border-2 rounded px-[4px]">
-													{item.status}
-												</p>
-											</div>
+											{item.status && (
+												<div className="text-[#fffc] text-sm inline-block p-[4px]">
+													<p className="border-2 rounded px-[4px]">
+														{item.status}
+													</p>
+												</div>
+											)}
 										</div>
 									</Link>
 								</SwiperSlide>

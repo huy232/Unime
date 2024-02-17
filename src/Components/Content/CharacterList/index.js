@@ -9,7 +9,7 @@ function CharacterList({ characters }) {
 				{characters.map((character, i) => (
 					<div
 						className="flex bg-[#0D0D0D] w-full"
-						key={character.id || character.name}
+						key={(character.id || character.name) + i}
 					>
 						<div className="aspect-[2/3] h-[90px]">
 							<Image
