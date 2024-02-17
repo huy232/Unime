@@ -43,12 +43,19 @@ function AnimeInfoENG() {
 					setProvider(selectedProvider)
 					setProviderOptions(providers)
 					setInfo(data)
-					setWatchNow(data.episodes[0] || null)
-					setLoading(false)
+					if (selectedProvider) {
+						const providerEpisode = data.episodes.find(
+							(list) => list.providerId === selectedProvider
+						)
+						setWatchNow(providerEpisode.episodes[0])
+					} else {
+						setWatchNow(null)
+					}
 				})
 				.catch((thrown) => {
 					if (axios.isCancel(thrown)) return
 				})
+				.finally(() => setLoading(false))
 		}
 
 		getInfo()
