@@ -44,13 +44,13 @@ function AnimeBrowseCategoryENG() {
 						if (response.data.success) {
 							if (response.data.data.results.length === 0) {
 								setAnimeList((prev) => {
-									return [new Set([...prev])]
+									return [...new Set([...prev])]
 								})
 								setNextPage(false)
 							} else {
 								setNextPage(true)
 								setAnimeList((prev) => {
-									return [new Set([...prev, ...response.data.data.results])]
+									return [...new Set([...prev, ...response.data.data.results])]
 								})
 							}
 

@@ -35,7 +35,7 @@ function MangaSearchENG() {
 							setSearchResult(response.data.data.results)
 						} else {
 							setSearchResult((prev) => {
-								return [new Set([...prev, ...response.data.data.results])]
+								return [...new Set([...prev, ...response.data.data.results])]
 							})
 						}
 						setHasNextPage(response.data.data.hasNextPage)

@@ -37,7 +37,7 @@ function AnimeSearchENG() {
 							setSearchResult(response.data.data.results)
 						} else {
 							setSearchResult((prev) => {
-								return [new Set([...prev, ...response.data.data.results])]
+								return [...new Set([...prev, ...response.data.data.results])]
 							})
 						}
 						setHasNextPage(response.data.data.hasNextPage)
@@ -45,7 +45,7 @@ function AnimeSearchENG() {
 					} else {
 						if (response.data?.data) {
 							setSearchResult((prev) => {
-								return [new Set([...prev, ...response.data.data.results])]
+								return [...new Set([...prev, ...response.data.data.results])]
 							})
 						}
 						setLoading(false)
@@ -72,6 +72,7 @@ function AnimeSearchENG() {
 
 	return (
 		<div>
+			{console.log(searchResult)}
 			<h1 className="font-black font-bebas-neue text-[#d3d9] text-center">
 				SEARCH
 			</h1>
@@ -96,7 +97,7 @@ function AnimeSearchENG() {
 					}
 				>
 					<div className="search-container md:px-12 lg:px-20 xl:px-28 2xl:px-36 w-full pb-12 grid gap-2 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7">
-						{searchResult.map((item) => (
+						{searchResult.map((item, i) => (
 							<Link
 								to={`/eng/info/${item.id}`}
 								title={
@@ -105,7 +106,7 @@ function AnimeSearchENG() {
 									item.title?.native ||
 									item.title?.userPreferred
 								}
-								key={item.id}
+								key={item.id + i}
 								className="group cursor-pointer flex flex-col items-center col-span-1 mb-[12px] relative float-left"
 								aria-label={
 									item.title?.english ||
