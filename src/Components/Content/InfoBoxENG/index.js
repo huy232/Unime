@@ -69,10 +69,12 @@ function InfoBoxENG({ loading, info }) {
 								<h5 className="font-black my-[2px] p-[6px] bg-[#282828]/[0.8] inline-block rounded font-bebas-neue text-xl">
 									STATUS
 								</h5>
-								<p className="mb-[6px]">{info?.status}</p>
+								<p className="mb-[6px]">
+									{info?.status || info?.status?.anilist}
+								</p>
 							</div>
 						)}
-						{!!info.popularity.anilist && (
+						{!!info?.popularity?.anilist && (
 							<div>
 								<h5 className="font-black my-[2px] p-[6px] bg-[#282828]/[0.8] inline-block rounded font-bebas-neue text-xl">
 									POPULARITY

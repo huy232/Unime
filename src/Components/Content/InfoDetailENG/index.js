@@ -159,7 +159,7 @@ function InfoDetailENG({
 							</div>
 						</div>
 					)}
-					{info.characters.length > 0 && (
+					{info?.characters?.length > 0 && (
 						<CharacterList characters={info.characters} />
 					)}
 					<div className="mt-[18px] mb-[8px]">
