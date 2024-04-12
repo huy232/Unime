@@ -17,12 +17,14 @@ function RecommendENG({
 	baseImage,
 }) {
 	const recommendFilter = recommend.filter((item) => {
-		return (
-			item.status !== "Unknown" &&
-			item.type !== "NOVEL" &&
-			item.relationType !== "ALTERNATIVE" &&
-			item.relationType !== "SOURCE"
-		)
+		if (item) {
+			return (
+				item.status !== "Unknown" &&
+				item.type !== "NOVEL" &&
+				item.relationType !== "ALTERNATIVE" &&
+				item.relationType !== "SOURCE"
+			)
+		}
 	})
 	return (
 		<>
