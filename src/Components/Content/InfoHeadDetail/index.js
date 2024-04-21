@@ -50,15 +50,17 @@ function InfoHeadDetail({
 						<FontAwesomeIcon icon={faArrowDown} className="text-xs" />
 						<span className="mx-[6px] text-xs">Danh sách tập phim</span>
 					</button>
-					<Link
-						to={`/watch/${anime}?index=${info.episodes[0].name}&type=normal`}
-						className="flex justify-center items-center gap-1 mx-2 p-2 bg-red-600 border-transparent rounded hover:opacity-80 duration-200 hover:bg-transparent hover:border-red-600 border-2 text-white"
-					>
-						<span className="text-xs">Xem ngay tập đầu</span>
-						<span>
-							<FaPlay className="mt-[2px] text-xs" />
-						</span>
-					</Link>
+					{!!info.episodes.length && (
+						<Link
+							to={`/watch/${anime}?index=${info.episodes[0].name}&type=normal`}
+							className="flex justify-center items-center gap-1 mx-2 p-2 bg-red-600 border-transparent rounded hover:opacity-80 duration-200 hover:bg-transparent hover:border-red-600 border-2 text-white"
+						>
+							<span className="text-xs">Xem ngay tập đầu</span>
+							<span>
+								<FaPlay className="mt-[2px] text-xs" />
+							</span>
+						</Link>
+					)}
 					{continueToWatch && (
 						<Link
 							to={`/watch/${continueToWatch.anime_slug}`}
