@@ -19,6 +19,12 @@
 	padding: 5px 5px !important;
 }
 
+.art-setting-item {
+	margin: 4px 2px !important;
+	height: 40px !important;
+	border-radius: 4px !important;
+}
+
 /* .art-video-player .art-subtitle::before,
 .art-video-player .art-subtitle::after {
 	content: "";
