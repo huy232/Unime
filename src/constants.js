@@ -25,6 +25,15 @@ const genres = [
 	{ slug: "phap-thuat", name: "Pháp Thuật" },
 ]
 
+const animeStatus = {
+	AIRING: "text-yellow-500",
+	RELEASING: "text-yellow-500",
+	FINISHED: "text-green-500",
+	NOT_YET_AIRED: "text-purple-500",
+	NOT_YET_RELEASED: "text-purple-500",
+	CANCELLED: "text-red-500",
+}
+
 const provider = [
 	"zoro",
 	"gogoanime",
@@ -905,3 +914,4 @@ export const PROVIDER = provider
 export const MANGA_PROVIDER = mangaProvider
 export const COLLECTION_COLOR = colorArray
 export const COLORLIST = colorList
+export const ANIME_STATUS = animeStatus

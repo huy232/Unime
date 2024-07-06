@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom"
 import Image from "../Image"
+import clsx from "clsx"
+import { ANIME_STATUS } from "../../../constants"
 
 function SeasonHolderENG({ anime, title, color }) {
 	return (
@@ -19,7 +21,7 @@ function SeasonHolderENG({ anime, title, color }) {
 						item.title?.userPreferred
 					}
 				>
-					<div className="w-[60px] aspect-[2/3] shrink-0 group-hover:opacity-50 duration-500 ease-in-out">
+					<div className="w-[80px] aspect-[2/3] shrink-0 group-hover:opacity-50 duration-500 ease-in-out">
 						<Image
 							src={
 								item.coverImage?.extraLarge ||
@@ -51,6 +53,19 @@ function SeasonHolderENG({ anime, title, color }) {
 							<span>{item.format}</span>
 							<span className="mx-1 mt-[3px] w-1.5 h-1.5 bg-[#DC8449] rounded-full inline-block align-middle"></span>
 							<span>{item.seasonYear}</span>
+						</div>
+						<div>
+							<span className="text-xs font-semibold">STATUS: </span>
+							<span
+								className={clsx(
+									item.status && ANIME_STATUS[item.status]
+										? ANIME_STATUS[item.status]
+										: "text-white-500",
+									"bg-gray/70 rounded p-1 text-[0.7rem] font-medium"
+								)}
+							>
+								{item.status}
+							</span>
 						</div>
 						<div className="line-clamp-1">
 							{item.genres.map((genre, i) => (

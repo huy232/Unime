@@ -5,6 +5,7 @@ import { Lazy } from "swiper"
 import { Link } from "react-router-dom"
 import Image from "../Image"
 import AnimeSkeleton from "../AnimeSkeleton"
+import StatusBadge from "../StatusBadge"
 import "./currentseason.css"
 
 const CurrentSeason = ({ currentSeason, loadingCurrentSeason }) => {
@@ -42,9 +43,9 @@ const CurrentSeason = ({ currentSeason, loadingCurrentSeason }) => {
 									aria-label={anime.id}
 								>
 									<div className="group select-none cursor-pointer">
-										<div className="aspect-[2/3] group-hover:opacity-80 duration-200 ease-in-out relative">
+										<div className="aspect-[2/3] group-hover:opacity-80 duration-500 ease-in-out relative group-hover:scale-90">
 											<Image
-												className="object-fill object-center w-full h-full group-hover:scale-90 duration-500 linear absolute"
+												className="object-fill object-center w-full h-full linear absolute"
 												src={
 													anime.image ||
 													anime.coverImage.extraLarge ||
@@ -60,6 +61,42 @@ const CurrentSeason = ({ currentSeason, loadingCurrentSeason }) => {
 												}
 												loading="lazy"
 											/>
+											{anime.averageScore && (
+												<StatusBadge
+													position="top-0 right-0"
+													className="rounded bg-black font-semibold"
+												>
+													<span className="text-[0.6rem]">
+														{anime.averageScore}
+													</span>
+													/💯
+												</StatusBadge>
+											)}
+											{anime.format && (
+												<StatusBadge
+													position="bottom-0 right-0"
+													className="rounded bg-black font-bold"
+												>
+													{anime.format}
+												</StatusBadge>
+											)}
+											{anime.status && (
+												<StatusBadge
+													position="bottom-0 left-0"
+													status={anime.status}
+													className="rounded bg-black font-semibold"
+												>
+													{anime.status}
+												</StatusBadge>
+											)}
+											{anime.countryOfOrigin && (
+												<StatusBadge
+													position="top-0 left-0"
+													className="rounded bg-black font-bold"
+												>
+													{anime.countryOfOrigin}
+												</StatusBadge>
+											)}
 										</div>
 										<div>
 											<p
