@@ -60,7 +60,7 @@ menu {
 }
 
 input {
-	outline: none;
+	outline-color: transparent;
 	border: none;
 }
 
