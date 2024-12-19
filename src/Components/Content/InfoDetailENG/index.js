@@ -87,13 +87,13 @@ function InfoDetailENG({
 					)}
 				</div>
 			)}
-			<div className="description">
-				{!loading && (
+			{!loading && info.description && (
+				<div className="description">
 					<div className="anime-description-paragraph">
 						<ClampedDivENG>{info.description}</ClampedDivENG>
 					</div>
-				)}
-			</div>
+				</div>
+			)}
 			{!loading && (
 				<>
 					<p className="max-lg:text-center">Genres:</p>
