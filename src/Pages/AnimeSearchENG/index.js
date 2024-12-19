@@ -72,7 +72,6 @@ function AnimeSearchENG() {
 
 	return (
 		<div>
-			{console.log(searchResult)}
 			<h1 className="font-black font-bebas-neue text-[#d3d9] text-center">
 				SEARCH
 			</h1>

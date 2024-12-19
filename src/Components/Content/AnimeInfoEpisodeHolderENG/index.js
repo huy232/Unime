@@ -177,7 +177,8 @@ function AnimeInfoEpisodeHolderENG({ info, provider, animeId, setWatchNow }) {
 								sm={2}
 								md={3}
 								lg={3}
-								xl={4}
+								xl={3}
+								xxl={4}
 								className="w-full g-4 episode-anime-row"
 							>
 								{episodeList[selectedChunk]?.map((eachEpisode, i) => (
