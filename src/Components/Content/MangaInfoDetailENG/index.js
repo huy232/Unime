@@ -54,10 +54,10 @@ function MangaInfoDetailENG({
 					)}
 				</h1>
 			</div>
-			{!loading && info.description && (
+			{!loading && info.description.trim() && (
 				<div className="description">
 					<div className="anime-description-paragraph">
-						<ClampedDivENG>{info.description}</ClampedDivENG>
+						<ClampedDivENG>{info.description.trim()}</ClampedDivENG>
 					</div>
 				</div>
 			)}

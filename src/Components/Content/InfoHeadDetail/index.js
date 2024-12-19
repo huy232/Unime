@@ -74,14 +74,15 @@ function InfoHeadDetail({
 					)}
 				</div>
 			)}
+
 			<div className="description">
 				{loading ? (
 					<DescriptionSkeleton />
 				) : (
 					<>
-						{info?.description && (
+						{info?.description.trim() && (
 							<div className="anime-description-paragraph">
-								<ClampedDiv>{info.description}</ClampedDiv>
+								<ClampedDiv>{info.description.trim()}</ClampedDiv>
 							</div>
 						)}
 					</>
