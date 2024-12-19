@@ -15,7 +15,8 @@ function EpisodeHolderSkeleton() {
 						xs={1}
 						sm={2}
 						md={3}
-						lg={4}
+						lg={3}
+						xl={4}
 						className="w-full g-4 episode-anime-row"
 					>
 						{[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((skeleton, i) => (
