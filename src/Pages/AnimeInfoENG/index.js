@@ -33,9 +33,7 @@ function AnimeInfoENG() {
 					setTitle(
 						data.title?.english || data.title?.romaji || data.title?.native
 					)
-					const providers = data.mappings.filter(
-						(provider) => provider.providerType === "ANIME"
-					)
+					const providers = data.episodes.map((provider) => provider)
 					let defaultProviderId = "gogoanime"
 					const defaultProvider = providers.find(
 						(provider) => provider.providerId === defaultProviderId
@@ -88,7 +86,6 @@ function AnimeInfoENG() {
 				</div>
 			) : (
 				<>
-					{" "}
 					<InfoBannerENG loading={loading} info={info} />
 					<div className="w-full flex relative max-lg:flex-col">
 						<InfoBoxENG loading={loading} info={info} />

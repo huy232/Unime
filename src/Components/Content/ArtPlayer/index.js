@@ -16,10 +16,12 @@ function ArtPlayer({
 	const artRef = useRef()
 
 	useEffect(() => {
+		console.log("This line here")
+		console.log(videoUrl)
 		if (
 			videoUrl[0].url.includes(".mp4") ||
-			videoUrl[0].isM3U8 === false ||
-			videoUrl[0].type === "mp4"
+			videoUrl[0].type === "mp4" ||
+			videoUrl[0].isM3U8 === false
 		) {
 			const art = new Artplayer({
 				...option,

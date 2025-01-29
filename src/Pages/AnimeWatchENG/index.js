@@ -13,6 +13,7 @@ import { useAuth } from "../../Contexts/auth"
 import ErrorLoad from "../../Components/Content/ErrorLoad"
 import { useCallback } from "react"
 import { useMemo } from "react"
+import EnglishIframe from "../../Components/Content/EnglishIframe"
 function AnimeWatchENG() {
 	const episodeListRef = useRef()
 	const { animeId } = useParams()
@@ -28,6 +29,7 @@ function AnimeWatchENG() {
 	const [thumbnail, setThumbnail] = useState(null)
 	const [intro, setIntro] = useState(null)
 	const [title, setTitle] = useState("")
+	const [videoType, setVideoType] = useState("")
 	const prevAnilist = useRef()
 	const [info, setInfo] = useState()
 	const { user } = useAuth()
@@ -93,6 +95,7 @@ function AnimeWatchENG() {
 			)
 			.then((response) => {
 				if (response.data.success !== false) {
+					setVideoType(response.data.data.type)
 					setVideoUrl(response.data.data.sources)
 					if (response.data.data.subtitles) {
 						let subs = response.data.data.subtitles.filter(
@@ -206,13 +209,13 @@ function AnimeWatchENG() {
 		}
 	}, [memoizedFilmEpisodeList, memoizedFilmEpisodeWatch])
 	useDocumentTitle(watchDetail)
-	return (
-		<div className="flex max-lg:flex-col h-[calc(var(--vh,1vh)*100)]">
-			{error ? (
-				<ErrorLoad />
-			) : videoLoading || listEpisode.length === 0 ? (
-				<FilmLoadingRequest />
-			) : (
+
+	const videoServeByType = (videoType) => {
+		if (videoType === "iframe") {
+			return <EnglishIframe iFrameSource={videoUrl} />
+		}
+		if (videoType === "m3u8") {
+			return (
 				<VideoPlayer
 					videoUrl={videoUrl}
 					subtitles={subtitles}
@@ -221,6 +224,18 @@ function AnimeWatchENG() {
 					setVideoLoading={setVideoLoading}
 					intro={intro}
 				/>
+			)
+		}
+	}
+
+	return (
+		<div className="flex max-lg:flex-col h-[calc(var(--vh,1vh)*100)]">
+			{error ? (
+				<ErrorLoad />
+			) : videoLoading || listEpisode.length === 0 ? (
+				<FilmLoadingRequest />
+			) : (
+				videoServeByType(videoType)
 			)}
 
 			<div className="episode-content">
