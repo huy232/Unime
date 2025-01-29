@@ -16,8 +16,6 @@ function ArtPlayer({
 	const artRef = useRef()
 
 	useEffect(() => {
-		console.log("This line here")
-		console.log(videoUrl)
 		if (
 			videoUrl[0].url.includes(".mp4") ||
 			videoUrl[0].type === "mp4" ||

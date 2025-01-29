@@ -14,7 +14,7 @@ function EnglishIframe(iFrameSource) {
 			title="videoFrame"
 			frame-src="self"
 			frame-ancestors="self"
-			className="english-iframe w-[80vw] max-lg:w-full h-[50vh] lg:h-[100vh]"
+			className="english-iframe w-[80svw] max-lg:w-full h-[50svh] lg:h-[100svh]"
 			scrolling="no"
 			style={{ maxWidth: "100%", maxHeight: "100%" }}
 		/>

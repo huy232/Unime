@@ -229,7 +229,7 @@ function AnimeWatchENG() {
 	}
 
 	return (
-		<div className="flex max-lg:flex-col h-[calc(var(--vh,1vh)*100)]">
+		<div className="flex max-lg:flex-col h-svh">
 			{error ? (
 				<ErrorLoad />
 			) : videoLoading || listEpisode.length === 0 ? (
@@ -276,7 +276,7 @@ function AnimeWatchENG() {
 				</div>
 				<div
 					ref={episodeListRef}
-					className="lg:h-[calc(var(--vh,1vh)*100-60px)] overflow-y-scroll bg-[#222] h-[calc(var(--vh,1vh)*50-80px-90px)]"
+					className="lg:h-[calc(100svh-60px)] overflow-y-scroll bg-[#222] h-[calc(50svh-60px)]"
 				>
 					{listEpisode.map((item, i) => (
 						<Link

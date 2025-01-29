@@ -6,7 +6,7 @@ import Image from "../Image"
 
 function ErrorLoad() {
 	return (
-		<div className="error-load w-[80vw] max-lg:w-full flex items-center flex-col overflow-y-scroll">
+		<div className="error-load w-[80svw] max-lg:w-full flex items-center flex-col overflow-y-scroll">
 			<p>
 				Oops, error, the provider for this episode currently is not available,
 				might to another change provider then

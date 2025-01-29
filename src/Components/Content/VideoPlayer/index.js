@@ -184,7 +184,7 @@ function VideoPlayer({
 			}}
 			subtitles={subtitles}
 			videoUrl={videoUrl}
-			className="w-[80vw] max-lg:w-full h-[50vh] lg:h-[100vh]"
+			className="w-[80svw] max-lg:w-full h-[50svh] lg:h-[100svh]"
 			intro={highlightInfo}
 			selectedSub={selectedSub}
 		/>
