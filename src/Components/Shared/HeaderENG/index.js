@@ -89,7 +89,7 @@ function HeaderENG() {
 			<header ref={sidebarRef}>
 				<div className="h-[40px] w-100 bg-[#222] fixed z-50 flex flex-col">
 					<div className="flex flex-row h-100 items-center">
-						<div className="h-100">
+						<div className="h-100 mx-2">
 							<Link
 								to={
 									mangaUrlArray.indexOf(window.location.pathname) < 0
@@ -111,7 +111,7 @@ function HeaderENG() {
 								</h1>
 							</Link>
 						</div>
-						<div className="mx-[10px]">
+						<div className="mx-[6px]">
 							<form className="flex">
 								<input
 									type="text"
@@ -133,7 +133,7 @@ function HeaderENG() {
 										handleSubmit(e)
 									}}
 									type="submit"
-									className="submit-button ml-[4px] hover:brightness-150 opacity-80 hover:opacity-100 duration-200 ease-in-out"
+									className="submit-button ml-[6px] hover:brightness-150 opacity-80 hover:opacity-100 duration-200 ease-in-out"
 									id="search-eng-btn"
 									aria-label="Search button - ENG"
 								>
