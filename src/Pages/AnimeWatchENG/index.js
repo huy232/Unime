@@ -212,7 +212,7 @@ function AnimeWatchENG() {
 
 	const videoServeByType = (videoType) => {
 		if (videoType === "iframe") {
-			return <EnglishIframe iFrameSource={videoUrl} />
+			return <EnglishIframe iFrameSource={videoUrl[0]} />
 		}
 		if (videoType === "m3u8") {
 			return (

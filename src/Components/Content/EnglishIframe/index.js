@@ -2,9 +2,10 @@ import React from "react"
 import "./englishiframe.css"
 
 function EnglishIframe(iFrameSource) {
+	let videoSource = iFrameSource.iFrameSource.url
 	return (
 		<iframe
-			src={iFrameSource.iFrameSource}
+			src={videoSource}
 			allow="autoplay; fullscreen"
 			frameBorder="0"
 			allowFullScreen={true}
@@ -13,7 +14,7 @@ function EnglishIframe(iFrameSource) {
 			title="videoFrame"
 			frame-src="self"
 			frame-ancestors="self"
-			className="english-iframe"
+			className="english-iframe w-[80vw] max-lg:w-full h-[50vh] lg:h-[100vh]"
 			scrolling="no"
 			style={{ maxWidth: "100%", maxHeight: "100%" }}
 		/>
