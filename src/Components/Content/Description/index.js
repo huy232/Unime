@@ -13,7 +13,7 @@ const ClampedDiv = ({ children }) => {
 	}, [ref])
 
 	return (
-		<div className="container">
+		<div className="container px-[6px]">
 			<div className={`${textClass}`}>
 				<p ref={ref} dangerouslySetInnerHTML={{ __html: children }} />
 			</div>
@@ -23,7 +23,7 @@ const ClampedDiv = ({ children }) => {
 						setOpen(!open)
 						setTextClass(open ? "line-clamp-5" : "line-clamp-none")
 					}}
-					className="p-[4px] bg-black/80 my-2 flex ml-auto hover:opacity-80 duration-200 rounded"
+					className="px-[4px] bg-black/80 my-2 flex ml-auto hover:opacity-80 duration-200 rounded"
 				>
 					{open ? "Rút gọn" : "Xem thêm"}
 				</button>

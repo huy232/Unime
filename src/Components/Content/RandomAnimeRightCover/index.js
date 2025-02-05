@@ -5,7 +5,7 @@ import Image from "../Image"
 function RandomAnimeRightCover({ randomAnime }) {
 	return (
 		<>
-			<div className="image-box mx-4">
+			<div className="image-box">
 				{!randomAnime?.cover ? (
 					<Skeleton
 						className="aspect-[2/3]"

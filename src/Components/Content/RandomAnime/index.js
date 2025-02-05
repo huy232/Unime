@@ -26,7 +26,7 @@ function RandomAnime({ randomAnime, loadingRandomAnime }) {
 								/>
 							</div>
 						</div>
-						<div className="col-3">
+						<div className="col-3 max-[640px]:w-full">
 							<RandomAnimeRightCover randomAnime={randomAnime} />
 						</div>
 					</div>

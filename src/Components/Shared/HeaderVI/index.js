@@ -171,7 +171,7 @@ function HeaderVI() {
 			</div>
 
 			<section
-				className={`right-0 mt-[40px] fixed duration-200 ease-in-out bg-[#222] h-100 z-50 ${
+				className={`mt-[40px] fixed duration-200 ease-in-out bg-[#222] h-100 z-50 ${
 					sideBar
 						? "opacity-100 w-[320px] right-0"
 						: "opacity-0 w-[0px] -right-full"
@@ -181,7 +181,7 @@ function HeaderVI() {
 					<div>
 						<Link
 							to="/anime"
-							className="hover:brightness-150 opacity-80 hover:opacity-100 duration-200 ease-in-out text-white flex flex-row items-center justify-end"
+							className="hover:brightness-150 opacity-80 hover:opacity-100 duration-200 ease-in-out text-white"
 							onClick={() => {
 								handleScrollToTop()
 								setSidebar(false)

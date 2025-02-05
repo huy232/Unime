@@ -143,7 +143,7 @@ function HeaderENG() {
 						</div>
 						{mangaUrlArray.indexOf(window.location.pathname) < 0 && (
 							<div
-								className="hidden sm:block select-none relative mx-1 px-2"
+								className="hidden md:block select-none relative mx-1 px-2"
 								ref={genreHeaderRef}
 								onClick={() => setGenreHeaderToggle(!genreHeaderToggle)}
 							>

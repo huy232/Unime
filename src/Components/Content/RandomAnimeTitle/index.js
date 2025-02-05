@@ -9,7 +9,7 @@ function RandomAnimeTitle({ randomAnime }) {
 				<Link
 					to={`/info/${randomAnime.slug}`}
 					aria-label={randomAnime.slug}
-					className="hover:opacity-70 duration-200 ease-linear"
+					className="hover:opacity-70 duration-200 ease-linear hidden md:block"
 				>
 					<Card.Title
 						className="description-title"
@@ -45,7 +45,7 @@ function RandomAnimeTitle({ randomAnime }) {
 					</nav>
 				)}
 
-				<Card.Body className="description-card h-100 text-left text-md">
+				<Card.Body className="description-card h-100 text-left text-sm py-2">
 					<ClampedDiv>{randomAnime?.description}</ClampedDiv>
 				</Card.Body>
 				<Card.Footer className="flex items-center w-full">

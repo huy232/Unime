@@ -53,7 +53,7 @@
 	transition: linear 0.25s;
 }
 
-@media screen and (max-width: 1023px) {
+@media screen and (max-width: 1024px) {
 	.episode-content {
 		max-width: none !important;
 		min-width: unset !important;

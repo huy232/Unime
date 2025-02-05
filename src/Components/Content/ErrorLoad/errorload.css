@@ -2,7 +2,7 @@
 	height: calc(var(--vh, 1vh) * 100) !important;
 }
 
-@media screen and (max-width: 1023px) {
+@media screen and (max-width: 1024px) {
 	.error-load {
 		height: calc(var(--vh, 1vh) * 50) !important;
 	}
