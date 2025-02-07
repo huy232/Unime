@@ -8,7 +8,7 @@ function TopAiringVI({ loading, data }) {
 			{!loading ? (
 				<div className="w-full">
 					<SkeletonTheme baseColor="#0D0D0D" highlightColor="#444">
-						<Skeleton className="h-[500px] mb-8" />
+						<Skeleton className="h-[320px] md:h-[440px] lg:h-[500px] mb-8" />
 					</SkeletonTheme>
 				</div>
 			) : (

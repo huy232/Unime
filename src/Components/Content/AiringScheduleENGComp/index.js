@@ -45,15 +45,15 @@ function AiringScheduleENGComp({ airingSchedule }) {
 		})
 
 	return (
-		<div className="w-full px-4 md:px-12 lg:px-20 xl:px-28 2xl:px-36 max-w-[1300px] 2xl:max-w-[85%] mx-auto pb-4">
+		<div className="w-full px-2 md:px-12 lg:px-20 xl:px-28 2xl:px-36 max-w-[320px] md:max-w-[720px] lg:max-w-[1280px] 2xl:max-w-[85%] mx-auto pb-4">
 			<div className="flex items-center flex-col">
 				<h1 className="mb-2 uppercase font-black text-[#B99B6B] max-md:text-center font-bebas-neue text-3xl">
 					Estimated Schedule
 				</h1>
-				<span className="bg-white/30 rounded p-1 mb-3">
+				<span className="bg-white/30 rounded p-1 mb-3 text-xs md:text-sm lg:text-base">
 					{formatDateTime(currentTime)}
 				</span>
-				<div className="flex w-full relative overflow-auto justify-center">
+				<div className="inline whitespace-nowrap relative overflow-x-auto w-full md:w-fit lg:mx-auto">
 					{Object.keys(airingSchedule).map((day, index) => (
 						<button
 							className={buttonClassName(day)}
@@ -70,7 +70,7 @@ function AiringScheduleENGComp({ airingSchedule }) {
 				</div>
 
 				{selectedDay && airingSchedule[selectedDay].length > 0 ? (
-					<div className="px-2 md:px-3 lg:px-5 w-full gap-1 scroll-smooth max-h-[60rem] lg:max-h-[22.4rem] flex flex-col overflow-y-scroll scrollbar-hide duration-200 transform ease-in-out">
+					<div className="px-2 md:px-3 lg:px-5 w-full gap-1 scroll-smooth max-h-[60svh] lg:max-h-[22.4rem] flex flex-col overflow-y-scroll scrollbar-hide duration-200 transform ease-in-out">
 						{airingSchedule[selectedDay].map((item, index) => {
 							const title =
 								item.title.english ||

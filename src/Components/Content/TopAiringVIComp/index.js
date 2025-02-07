@@ -24,7 +24,7 @@ function TopAiringVIComp({ data }) {
 			centeredSlides={true}
 			spaceBetween={10}
 			loop={true}
-			className="top-airing-swiper h-[500px] w-full px-4 md:px-12 lg:px-20 xl:px-28 2xl:px-36 mb-8"
+			className="top-airing-swiper h-[320px] md:h-[440px] lg:h-[500px] w-full px-4 md:px-12 lg:px-20 xl:px-28 2xl:px-36 mb-8"
 			slidesPerView={1}
 			preloadImages={false}
 			lazy={true}

@@ -108,11 +108,11 @@ function RandomAnimeENGComp({ randomAnime }) {
 					</span>
 				))}
 			</h1>
-			<div className="h-[44vh] sm:h-[77vh] lg:h-[85vh] z-0 relative aspect-[3/1] w-full">
+			<div className="h-[50svh] sm:h-[77svh] lg:h-[85svh] z-0 relative aspect-[3/1] w-full">
 				{renderMedia()}
 
 				<div className="layer-hero"></div>
-				<div className="w-[80%] lg:w-[45%] tracking-wide z-10 absolute flex flex-col gap-3 md:gap-6 bottom-[25%] left-[5%] lg:left-[8%]">
+				<div className="w-100svw lg:w-[45%] tracking-wide z-10 absolute flex flex-col gap-3 md:gap-6 bottom-[25%] mx-2 lg:mx-0 lg:left-[8%]">
 					<div className="flex flex-col gap-2 md:gap-3 ">
 						<Link
 							to={`/eng/info/${randomAnime.id}`}
@@ -148,12 +148,15 @@ function RandomAnimeENGComp({ randomAnime }) {
 								</Link>
 							))}
 						</span>
-						<span
-							className="line-clamp-3 text-xs"
-							dangerouslySetInnerHTML={{
-								__html: description,
-							}}
-						></span>
+						<div className="w-full">
+							<span
+								className="line-clamp-3 text-xs backdrop-blur-sm [text-shadow:_0_2px_4px_rgb(0_0_0_/_0.6)] rounded-lg w-fit p-1"
+								dangerouslySetInnerHTML={{
+									__html: description,
+								}}
+							></span>
+						</div>
+
 						<Link
 							to={`/eng/info/${randomAnime.id}`}
 							className="hidden sm:flex items-center gap-1 w-fit bg-[#FF004D] py-2 px-6 rounded-lg text-white hover:opacity-80 duration-300 ease-in-out"
