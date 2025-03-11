@@ -30,6 +30,16 @@ function AnimeInfoENG() {
 				})
 				.then((response) => {
 					const data = response.data.data
+					if (
+						!data.title?.english ||
+						!data.title?.romaji ||
+						!data.title?.native ||
+						!data.episodes.episodes.length ||
+						!data.episodes.length ||
+						!data
+					) {
+						setError(true)
+					}
 					setTitle(
 						data.title?.english || data.title?.romaji || data.title?.native
 					)
@@ -53,7 +63,7 @@ function AnimeInfoENG() {
 					}
 				})
 				.catch((thrown) => {
-					if (thrown.response.status === 404) {
+					if (thrown.response?.status === 404) {
 						setError(true)
 					}
 					if (axios.isCancel(thrown)) return

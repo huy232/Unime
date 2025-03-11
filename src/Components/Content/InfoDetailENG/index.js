@@ -29,7 +29,7 @@ function InfoDetailENG({
 }) {
 	let resultCategory = ENG_GENRES.filter((genre) => {
 		if (info && Object.keys(info).length !== 0) {
-			return info.genres.find((selectedGenre) => selectedGenre === genre)
+			return info?.genres?.find((selectedGenre) => selectedGenre === genre)
 		}
 		return false
 	})
@@ -87,32 +87,34 @@ function InfoDetailENG({
 					)}
 				</div>
 			)}
-			{!loading && info.description.trim() && (
+			{!loading && info?.description?.trim() && (
 				<div className="description">
 					<div className="anime-description-paragraph">
-						<ClampedDivENG>{info.description.trim()}</ClampedDivENG>
+						<ClampedDivENG>{info?.description?.trim()}</ClampedDivENG>
 					</div>
 				</div>
 			)}
 			{!loading && (
 				<>
 					<p className="max-lg:text-center">Genres:</p>
-					<div
-						className={`genres flex flex-row max-lg:items-center pb-2 group md:flex-wrap max-md:overflow-auto max-md:flex-nowrap`}
-					>
-						{resultCategory.map((genre) => (
-							<Link
-								to={`/eng/anime/${encodeURIComponent(genre)}`}
-								key={genre}
-								className="lg:first:ml-[6px] lg:last:mr-[6px] hover:brightness-150 duration-200 ease-in-out"
-								aria-label={genre}
-							>
-								<div className="rounded p-[10px] bg-[#5f5f5f29] mx-[10px] my-[6px] w-max">
-									{genre}
-								</div>
-							</Link>
-						))}
-					</div>
+					{resultCategory.length > 0 && (
+						<div
+							className={`genres flex flex-row max-lg:items-center pb-2 group md:flex-wrap max-md:overflow-auto max-md:flex-nowrap`}
+						>
+							{resultCategory.map((genre) => (
+								<Link
+									to={`/eng/anime/${encodeURIComponent(genre)}`}
+									key={genre}
+									className="lg:first:ml-[6px] lg:last:mr-[6px] hover:brightness-150 duration-200 ease-in-out"
+									aria-label={genre}
+								>
+									<div className="rounded p-[10px] bg-[#5f5f5f29] mx-[10px] my-[6px] w-max">
+										{genre}
+									</div>
+								</Link>
+							))}
+						</div>
+					)}
 					<div
 						className={`flex w-100 mt-[12px] flex-row max-lg:items-center pb-2 group md:flex-wrap max-md:overflow-auto max-md:flex-nowrap`}
 					>
