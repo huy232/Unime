@@ -26,7 +26,6 @@ function AnimeWatchENG() {
 	const [subtitles, setSubtitles] = useState([])
 	const [thumbnail, setThumbnail] = useState(null)
 	const [intro, setIntro] = useState(null)
-	const [title, setTitle] = useState("")
 	const [videoType, setVideoType] = useState("")
 	const [error, setError] = useState(false)
 	const [info, setInfo] = useState()
@@ -44,22 +43,25 @@ function AnimeWatchENG() {
 
 				setInfo(infoData.data)
 				setListEpisode(episodeListData.data)
-				setInfoLoaded(true)
 			} catch (err) {
 				console.error("Failed to fetch info or episodes", err)
+			} finally {
+				setInfoLoaded(true)
 			}
 		}
 		fetchInfoAndEpisodes()
 	}, [animeId, provider])
 
 	useEffect(() => {
-		if (infoLoaded) {
+		if (infoLoaded && listEpisode.length > 0) {
 			const episodeTitle = listEpisode.find((ep) => ep.id === current)
-			setTitle(
-				`${
-					info.title?.english || info.title?.romaji || info.title?.native
-				} - EP. ${episodeTitle?.number}${
-					episodeTitle?.title ? ` - ${episodeTitle.title}` : ""
+			const title =
+				info.title?.english || info.title?.romaji || info.title?.native
+			const episodeTitleText = episodeTitle?.title
+			const episodeNumberText = episodeTitle?.number
+			setWatchDetail(
+				`${title} - EP. ${episodeNumberText}${
+					episodeTitleText ? ` - ${episodeTitleText}` : ""
 				}`
 			)
 		}
@@ -104,16 +106,11 @@ function AnimeWatchENG() {
 				setIntro(data.intro || null)
 
 				const episodeTitle = listEpisode.find((ep) => ep.id === current)
-				setWatchDetail(
-					`${title} - EP. ${episodeTitle?.number}${
-						episodeTitle?.title ? ` - ${episodeTitle.title}` : ""
-					}`
-				)
 
 				if (user) {
 					await axios.post(`${API}/save-history`, {
 						userId: user.id,
-						animeName: title,
+						animeName: info.title?.english || info.title?.romaji,
 						animeEpisode: `EP. ${episodeTitle?.number}${
 							episodeTitle?.title ? ` - ${episodeTitle.title}` : ""
 						}`,

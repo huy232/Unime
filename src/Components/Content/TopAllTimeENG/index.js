@@ -52,10 +52,8 @@ const TopAllTimeENG = ({ topAnime, topLoading }) => {
 										}}
 									>
 										<div className="layer-hero backdrop-blur-xs z-0" />
-
-										{/* Top Row: Image + Title/Genres + Stats */}
 										<div className="w-full flex flex-row gap-3 sm:gap-4 items-center z-10">
-											<div className="aspect-[2/3] w-[90px] min-w-[90px]">
+											<div className="hidden sm:block aspect-[2/3] w-[90px] min-w-[90px]">
 												<Image
 													className="duration-500 ease-in-out object-cover w-full h-full rounded"
 													src={image}
@@ -65,15 +63,15 @@ const TopAllTimeENG = ({ topAnime, topLoading }) => {
 
 											<div className="flex flex-col flex-grow gap-2 lg:gap-1 tracking-wide">
 												<p className="font-bebas-neue font-medium text-sm !leading-tight xl:text-base line-clamp-1 tracking-wide xl:tracking-wider">
-													<span className="flex items-center gap-1 text-[0.7rem] text-yellow-300">
+													<span className="hidden sm:flex items-center gap-1 sm:text-[0.7rem] md:text-[1rem] text-yellow-300">
 														<SparklesIcon className="w-4 h-4 inline-block animate-pulse" />
-														{anime.popularity}
+														<span>{anime.popularity}</span>
 													</span>
 													<span
 														style={{
 															color: `${anime.coverImage.color}` || "#ffc",
 														}}
-														className="tracking-wider"
+														className="tracking-wider text-sm md:text-base lg:text-lg xl:text-xl font-semibold text-shadow-strong"
 													>
 														{title}
 													</span>
@@ -103,34 +101,32 @@ const TopAllTimeENG = ({ topAnime, topLoading }) => {
 											{/* Stats aligned to right */}
 											<div className="hidden sm:flex items-center ml-auto text-gray-200 text-xs font-semibold text-shadow-strong">
 												<div className="flex gap-2 items-center text-xs font-semibold">
-													<div className="transform skew-x-[-12deg] bg-black/60 px-3 py-0.5">
-														<span className="block transform skew-x-[12deg]">
+													<div className="transform skew-x-[-12deg] bg-black px-3 py-0.5">
+														<span className="block transform skew-x-[12deg] whitespace-nowrap">
 															❤ {anime.averageScore}%
 														</span>
 													</div>
-													<div className="transform skew-x-[-12deg] bg-black/60 px-3 py-0.5">
-														<span className="block transform skew-x-[12deg]">
+													<div className="transform skew-x-[-12deg] bg-black px-3 py-0.5">
+														<span className="block transform skew-x-[12deg] whitespace-nowrap">
 															{anime.format}
 														</span>
 													</div>
 													<div
 														className={clsx(
-															"transform skew-x-[-12deg] bg-black/60 px-3 py-0.5",
+															"transform skew-x-[-12deg] bg-black px-3 py-0.5",
 															statusColorClass(anime)
 														)}
 													>
-														<span className="block transform skew-x-[12deg]">
+														<span className="block transform skew-x-[12deg] whitespace-nowrap">
 															{anime.status}
 														</span>
 													</div>
 												</div>
 											</div>
 										</div>
-
-										{/* Slide-down description */}
-										<div className="hidden sm:block transition-all duration-300 ease-in-out max-h-0 opacity-0 overflow-hidden group-hover:max-h-32 group-hover:opacity-100 z-10 my-2 mx-4">
+										<div className="hidden sm:block transition-all duration-300 ease-linear max-h-0 opacity-0 overflow-hidden group-hover:max-h-32 group-hover:opacity-100 z-10 my-2 mx-4 backdrop-blur-sm skew-x-[-12deg] bg-black/80">
 											<span
-												className="line-clamp-5 text-xs text-white backdrop-blur-md transform skew-x-[-12deg] bg-black/60 px-3 py-0.5"
+												className="line-clamp-5 text-sm text-white font-medium leading-5 px-3 py-0.5 shadow-sm"
 												dangerouslySetInnerHTML={{
 													__html: anime.description,
 												}}
