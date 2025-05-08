@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react"
+import React, { useState, useEffect, useCallback, useRef } from "react"
 import YouTube from "react-youtube"
 import { Link } from "react-router-dom"
 import Image from "../Image"
@@ -11,6 +11,41 @@ function RandomAnimeENGComp({ randomAnime }) {
 	const [autoplaySupported, setAutoplaySupported] = useState(false)
 	const [isVideoAvailable, setIsVideoAvailable] = useState(true)
 	const [windowWidth, setWindowWidth] = useState(window.innerWidth)
+	const videoRef = useRef()
+	const playerRef = useRef(null)
+	const [shouldPlay, setShouldPlay] = useState(false)
+
+	useEffect(() => {
+		const observer = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry) => {
+					setShouldPlay(entry.isIntersecting)
+
+					if (
+						playerRef.current &&
+						typeof playerRef.current.playVideo === "function"
+					) {
+						if (entry.isIntersecting) {
+							playerRef.current.playVideo()
+						} else {
+							playerRef.current.pauseVideo()
+						}
+					}
+				})
+			},
+			{ threshold: 0.5 }
+		)
+
+		if (videoRef.current) {
+			observer.observe(videoRef.current)
+		}
+
+		return () => {
+			if (videoRef.current) {
+				observer.unobserve(videoRef.current)
+			}
+		}
+	}, [])
 
 	useEffect(() => {
 		const testVideo = document.createElement("video")
@@ -66,6 +101,12 @@ function RandomAnimeENGComp({ randomAnime }) {
 					muted={true}
 					onError={() => setIsVideoAvailable(false)}
 					onEnd={onEnd}
+					onReady={(event) => {
+						playerRef.current = event.target
+						if (!shouldPlay) {
+							event.target.pauseVideo()
+						}
+					}}
 				/>
 			)
 		} else {
@@ -82,6 +123,8 @@ function RandomAnimeENGComp({ randomAnime }) {
 		randomAnime.bannerImage,
 		randomAnime?.trailer?.id,
 		randomAnime?.trailer?.site,
+		shouldPlay,
+		windowWidth,
 	])
 
 	const description = randomAnime.description?.replace(/<[br]+>/g, " ")
@@ -108,7 +151,10 @@ function RandomAnimeENGComp({ randomAnime }) {
 					</span>
 				))}
 			</h1>
-			<div className="h-[50svh] sm:h-[77svh] lg:h-[85svh] z-0 relative aspect-[3/1] w-full">
+			<div
+				className="h-[50svh] sm:h-[77svh] lg:h-[85svh] z-0 relative aspect-[3/1] w-full"
+				ref={videoRef}
+			>
 				{renderMedia()}
 
 				<div className="layer-hero"></div>

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useMemo } from "react"
 import { Card, Row, Col } from "react-bootstrap"
 import { BsFillPlayFill } from "react-icons/bs"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -19,30 +19,33 @@ SwiperCore.use([Pagination, Navigation, Lazy])
 
 // ---------------------------
 
-function AnimeInfoEpisodeHolderENG({ info, provider, animeId, setWatchNow }) {
-	const [episodeList, setEpisodeList] = useState()
+function AnimeInfoEpisodeHolderENG({
+	info,
+	provider,
+	animeId,
+	setWatchNow,
+	episodeList,
+}) {
+	const chunkArray = (arr, size) => {
+		const chunked = []
+		for (let i = 0; i < arr.length; i += size) {
+			chunked.push(arr.slice(i, i + size))
+		}
+		return chunked
+	}
 	const [selectedChunk, setSelectedChunk] = useState(0)
 	const [swiper, setSwiper] = useState(null)
 	const [toggleButton, setToggleButton] = useState(true)
 
+	const chunkedEpisodeList = useMemo(() => {
+		return episodeList ? chunkArray(episodeList, 12) : []
+	}, [episodeList])
+
 	useEffect(() => {
-		try {
-			const providerInfo = info.episodes.find(
-				(providerInfo) => providerInfo.providerId === provider
-			)
-			const episodeListDataCopy = [...providerInfo.episodes]
-			setWatchNow(episodeListDataCopy[0])
-			const episodeListChunk = []
-			while (episodeListDataCopy.length) {
-				episodeListChunk.push(episodeListDataCopy.splice(0, 12))
-			}
-			setEpisodeList(episodeListChunk)
-			setSelectedChunk(0)
-		} catch (err) {
-			setEpisodeList([])
-			setSelectedChunk(0)
+		if (chunkedEpisodeList.length > 0) {
+			setWatchNow(chunkedEpisodeList[0][0])
 		}
-	}, [info.episodes, provider, setWatchNow])
+	}, [chunkedEpisodeList, setWatchNow])
 
 	const jump = (progress, speed) => {
 		if (swiper) {
@@ -71,19 +74,20 @@ function AnimeInfoEpisodeHolderENG({ info, provider, animeId, setWatchNow }) {
 							LIST
 						</label>
 						<select
-							name="chunk-episode-option"
-							className="font-semibold uppercase rounded group bg-[#222] text-white p-[4px] cursor-pointer outline-none border-none"
 							onChange={(e) => {
 								setSelectedChunk(Number(e.target.value))
 								slideTo(Number(e.target.value))
 							}}
 							value={selectedChunk}
+							className="font-semibold uppercase rounded group bg-[#222] text-white p-[4px] cursor-pointer outline-none border-none"
 						>
-							{episodeList.map((episodeChunk, i) => (
-								<option key={i} value={i}>{`${episodeChunk[0].number} - ${
-									episodeChunk[episodeChunk.length - 1].number
-								}`}</option>
-							))}
+							{chunkedEpisodeList.map((chunk, i) => {
+								return (
+									<option key={i} value={i}>
+										{`${chunk[0].number} - ${chunk[chunk.length - 1].number}`}
+									</option>
+								)
+							})}
 						</select>
 					</div>
 					<div className="episode-list">
@@ -132,7 +136,7 @@ function AnimeInfoEpisodeHolderENG({ info, provider, animeId, setWatchNow }) {
 									onSwiper={setSwiper}
 								>
 									<div className="swiper-episode-holder">
-										{episodeList.map((episodeChunk, i) => (
+										{chunkedEpisodeList.map((episodeChunk, i) => (
 											<SwiperSlide
 												key={i}
 												style={{
@@ -181,7 +185,7 @@ function AnimeInfoEpisodeHolderENG({ info, provider, animeId, setWatchNow }) {
 								xxl={4}
 								className="w-full g-4 episode-anime-row"
 							>
-								{episodeList[selectedChunk]?.map((eachEpisode, i) => (
+								{chunkedEpisodeList[selectedChunk]?.map((eachEpisode, i) => (
 									<Col key={i}>
 										<nav>
 											<a
@@ -219,6 +223,11 @@ function AnimeInfoEpisodeHolderENG({ info, provider, animeId, setWatchNow }) {
 															}}
 															onLoad={(e) => {
 																e.target.style.opacity = 1
+															}}
+															onError={(e) => {
+																e.target.onerror = null
+																e.target.src =
+																	info?.image || info?.coverImage || blackImage
 															}}
 														/>
 														<div className="overlay-card">

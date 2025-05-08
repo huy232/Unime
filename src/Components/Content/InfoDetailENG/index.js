@@ -1,5 +1,5 @@
 import React from "react"
-import { ENG_GENRES } from "../../../constants"
+import { ENG_GENRES, API } from "../../../constants"
 import { Link } from "react-router-dom"
 import AnimeInfoEpisodeHolderENG from "../AnimeInfoEpisodeHolderENG"
 import RecommendENG from "../RecommendENG"
@@ -13,6 +13,8 @@ import { useRef } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faArrowDown } from "@fortawesome/free-solid-svg-icons"
 import { FaPlay } from "react-icons/fa"
+import axios from "axios"
+import clsx from "clsx"
 
 function InfoDetailENG({
 	watchNow,
@@ -26,7 +28,33 @@ function InfoDetailENG({
 	setInfo,
 	setWatchNow,
 	providerOptions,
+	episodeList,
+	setEpisodeList,
 }) {
+	const [providerLoading, setProviderLoading] = React.useState(false)
+	const handleProviderChange = async (e) => {
+		try {
+			const CancelToken = axios.CancelToken
+			const source = CancelToken.source()
+			const response = await axios.get(
+				`${API}/eng/episode-list/${info.id}&${e.target.value}`,
+				{
+					cancelToken: source.token,
+				}
+			)
+			const episodeList = response.data.data
+			setWatchNow(episodeList[0])
+			setProvider(e.target.value)
+			setEpisodeList(episodeList)
+		} catch (thrown) {
+			setEpisodeList([])
+			setWatchNow(null)
+			if (axios.isCancel(thrown)) return
+		} finally {
+			setProviderLoading(false)
+		}
+	}
+
 	let resultCategory = ENG_GENRES.filter((genre) => {
 		if (info && Object.keys(info).length !== 0) {
 			return info?.genres?.find((selectedGenre) => selectedGenre === genre)
@@ -152,7 +180,7 @@ function InfoDetailENG({
 								<iframe
 									className="w-full h-full"
 									src={`https://www.youtube.com/embed/${
-										info.trailer.split("watch?v=")[1]
+										info.trailer?.id || info.trailer?.split("watch?v=")[1]
 									}`}
 									title="YouTube video player"
 									allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -166,9 +194,8 @@ function InfoDetailENG({
 					)}
 					<div className="mt-[18px] mb-[8px]">
 						<p className="inline-block text-white/50 border-l-[6px] border-white/70 px-[6px] bg-white/10 rounded-r">
-							<i>*Recommend</i>: <strong>Gogoanime</strong> and{" "}
-							<strong>Zoro</strong> providers for best and most stable
-							quality...
+							<i>*Recommend</i>: <strong>Zoro</strong> provider for best and
+							most stable quality...
 						</p>
 					</div>
 					<div className="max-lg:text-center flex max-lg:flex-col justify-between lg:[&>*]:mx-[20px]">
@@ -176,24 +203,32 @@ function InfoDetailENG({
 							<label htmlFor="provider" className="font-bold">
 								PROVIDER
 							</label>
-							<select
-								className="provider flex font-semibold uppercase rounded group bg-[#222] text-white p-[4px] cursor-pointer outline-none border-none"
-								onChange={(e) => {
-									setWatchNow({})
-									setProvider(e.target.value)
-								}}
-								defaultValue={provider}
-							>
-								{providerOptions.map((providerSource) => (
-									<option
-										value={providerSource.providerId}
-										key={providerSource.providerId}
-										className="uppercase text-white bg-[#222] font-semibold"
-									>
-										{providerSource.providerId}
-									</option>
-								))}
-							</select>
+							<div className="relative inline-flex items-center">
+								<select
+									className={clsx(
+										"provider flex font-semibold uppercase rounded group bg-[#222] p-[4px] outline-none border-none pr-8",
+										providerLoading
+											? "cursor-not-allowed text-gray-400"
+											: "text-white cursor-pointer"
+									)}
+									onChange={(e) => {
+										setProviderLoading(true)
+										handleProviderChange(e)
+									}}
+									defaultValue={provider}
+									disabled={providerLoading}
+								>
+									{providerOptions.map((providerSource) => (
+										<option
+											value={providerSource}
+											key={providerSource}
+											className="uppercase text-white bg-[#222] font-semibold"
+										>
+											{providerLoading ? "Loading..." : providerSource}
+										</option>
+									))}
+								</select>
+							</div>
 						</div>
 					</div>
 					<div
@@ -212,13 +247,14 @@ function InfoDetailENG({
 							animeId={itemId}
 							setInfo={setInfo}
 							setWatchNow={setWatchNow}
+							episodeList={episodeList}
 						/>
 					</div>
-					{info?.recommendation?.length > 0 && (
+					{info?.recommendations?.length > 0 && (
 						<RecommendENG
-							recommend={info.recommendation}
+							recommend={info.recommendations}
 							setLoading={setLoading}
-							title={"RECOMMENDS"}
+							title={"RECOMMENDATIONS"}
 							baseImage={info.coverImage}
 						/>
 					)}

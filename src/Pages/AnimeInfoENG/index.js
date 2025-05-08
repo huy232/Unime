@@ -5,7 +5,7 @@ import InfoBannerENG from "../../Components/Content/InfoBannerENG"
 import InfoBoxENG from "../../Components/Content/InfoBoxENG"
 import InfoDetailENG from "../../Components/Content/InfoDetailENG"
 import useDocumentTitle from "../../Hooks/useDocumentTitle"
-import { API } from "../../constants"
+import { API, PROVIDER } from "../../constants"
 import errorImage from "../../Utilities/img/error.webp"
 
 function AnimeInfoENG() {
@@ -18,6 +18,7 @@ function AnimeInfoENG() {
 	const [watchNow, setWatchNow] = useState(null)
 	const [providerOptions, setProviderOptions] = useState([])
 	const [error, setError] = useState(false)
+	const [episodeList, setEpisodeList] = useState([])
 
 	useEffect(() => {
 		window.scrollTo(0, 0)
@@ -34,8 +35,6 @@ function AnimeInfoENG() {
 						!data.title?.english ||
 						!data.title?.romaji ||
 						!data.title?.native ||
-						!data.episodes.episodes.length ||
-						!data.episodes.length ||
 						!data
 					) {
 						setError(true)
@@ -43,21 +42,20 @@ function AnimeInfoENG() {
 					setTitle(
 						data.title?.english || data.title?.romaji || data.title?.native
 					)
-					const providers = data.episodes.map((provider) => provider)
-					let defaultProviderId = "gogoanime"
+					const providers = PROVIDER
+					let defaultProviderId = "zoro"
+
 					const defaultProvider = providers.find(
-						(provider) => provider.providerId === defaultProviderId
+						(provider) => provider === defaultProviderId
 					)
-					const selectedProvider =
-						defaultProvider?.providerId || providers[0]?.providerId || ""
+					const selectedProvider = defaultProvider || providers[0] || ""
 					setProvider(selectedProvider)
 					setProviderOptions(providers)
+					setEpisodeList(data.episodes)
 					setInfo(data)
-					if (selectedProvider) {
-						const providerEpisode = data.episodes.find(
-							(list) => list.providerId === selectedProvider
-						)
-						setWatchNow(providerEpisode.episodes[0])
+					const providerEpisode = data.episodes
+					if (providerEpisode.length > 0) {
+						setWatchNow(providerEpisode[0])
 					} else {
 						setWatchNow(null)
 					}
@@ -112,6 +110,8 @@ function AnimeInfoENG() {
 							setInfo={setInfo}
 							setWatchNow={setWatchNow}
 							providerOptions={providerOptions}
+							episodeList={episodeList}
+							setEpisodeList={setEpisodeList}
 						/>
 					</div>
 				</>

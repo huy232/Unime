@@ -6,6 +6,8 @@ import "swiper/css/pagination"
 import { Lazy } from "swiper"
 import { Link } from "react-router-dom"
 import Image from "../Image"
+import StatusBadge from "../StatusBadge"
+import clsx from "clsx"
 
 function RecentAnimeENGComp({ recentAnime }) {
 	return (
@@ -21,58 +23,89 @@ function RecentAnimeENGComp({ recentAnime }) {
 					type: "progressbar",
 				}}
 			>
-				{recentAnime.map((anime, i) => (
-					<SwiperSlide key={i}>
-						<Link
-							to={`/eng/info/${anime.id}`}
-							title={
-								anime.title.english ||
-								anime.title.romaji ||
-								anime.title.userPreferred ||
-								anime.title.native
-							}
-							key={anime.id}
-							aria-label={
-								anime.title.english ||
-								anime.title.romaji ||
-								anime.title.userPreferred ||
-								anime.title.native
-							}
-						>
-							<div className="group recent-anime-holder select-none cursor-pointer">
-								<div className="recent-anime-image aspect-[2/3] group-hover:opacity-80 duration-200 ease-in-out relative">
-									<Image
-										className="object-fill object-center w-full h-full group-hover:scale-90 linear absolute duration-500 ease-in-out"
-										src={anime.image || anime.coverImage || ""}
-										alt={
-											anime.title.english ||
-											anime.title.romaji ||
-											anime.title.userPreferred ||
-											anime.title.native
-										}
-										loading="lazy"
-									/>
-									<div className="absolute group-hover:scale-90 duration-500 linear text-right w-full h-full">
-										<p className="inline-block mt-[4px] mr-[4px] p-[4px] bg-neutral-500/75 text-white rounded">
-											EP. {anime.episodeNumber || anime.currentEpisode}
+				{recentAnime.map((anime, i) => {
+					const title =
+						anime.title.english ||
+						anime.title.romaji ||
+						anime.title.userPreferred ||
+						anime.title.native
+					const color = anime.color || "#fffc"
+					const image = anime.image || anime.coverImage || ""
+					const episodeNumber =
+						anime.episodeNumber ||
+						anime.currentEpisode ||
+						anime.currentEpisodeCount
+					const status = anime.status || "Unknown"
+					const type = anime.type || "Unknown"
+					const rating = anime.rating || "?"
+
+					return (
+						<SwiperSlide key={i}>
+							<Link
+								to={`/eng/info/${anime.id}`}
+								title={title}
+								key={anime.id}
+								aria-label={title}
+							>
+								<div className="group recent-anime-holder select-none cursor-pointer">
+									<div className="recent-anime-image aspect-[2/3] group-hover:opacity-80 duration-200 ease-in-out relative">
+										<Image
+											className="object-fill object-center w-full h-full group-hover:scale-90 linear absolute duration-500 ease-in-out"
+											src={image}
+											alt={title}
+											loading="lazy"
+										/>
+										{episodeNumber && (
+											<StatusBadge
+												position="top-0 left-0"
+												className={`rounded bg-black font-semibold`}
+											>
+												<span className="text-[0.6rem]">
+													EP. {episodeNumber}
+												</span>
+											</StatusBadge>
+										)}
+
+										{rating && (
+											<StatusBadge
+												position="top-0 right-0"
+												className="rounded bg-black font-semibold"
+											>
+												<span className="text-[0.6rem]">{rating}</span>
+												/💯
+											</StatusBadge>
+										)}
+										{type && (
+											<StatusBadge
+												position="bottom-0 right-0"
+												className="rounded bg-black font-bold"
+											>
+												{type}
+											</StatusBadge>
+										)}
+										{status && (
+											<StatusBadge
+												position="bottom-0 left-0"
+												status={status}
+												className={clsx("rounded bg-black font-semibold")}
+											>
+												{status}
+											</StatusBadge>
+										)}
+									</div>
+									<div className="recent-anime-title">
+										<p
+											className="line-clamp-2 font-semibold"
+											style={{ color: `${color || "#fffc"}` }}
+										>
+											{title}
 										</p>
 									</div>
 								</div>
-								<div className="recent-anime-title">
-									<p
-										className="line-clamp-2 font-semibold"
-										style={{ color: `${anime?.color || "#fffc"}` }}
-									>
-										{anime.title.english ||
-											anime.title.romaji ||
-											anime.title.native ||
-											anime.userPreferred}
-									</p>
-								</div>
-							</div>
-						</Link>
-					</SwiperSlide>
-				))}
+							</Link>
+						</SwiperSlide>
+					)
+				})}
 			</Swiper>
 			<div className="text-right mt-[24px]">
 				<Link

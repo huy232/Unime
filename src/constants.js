@@ -1,6 +1,6 @@
 const mainsite = "https://unime.vercel.app"
 // const mainsite = "http://localhost:3000"
-// const url = "http://localhost:3000/api"
+// const url = "http://localhost:5000/api"
 const url = "https://mirai-backend.onrender.com/api"
 
 const genres = [
@@ -32,15 +32,18 @@ const animeStatus = {
 	NOT_YET_AIRED: "text-purple-500",
 	NOT_YET_RELEASED: "text-purple-500",
 	CANCELLED: "text-red-500",
+	COMPLETED: "text-green-500",
+	ONGOING: "text-yellow-500",
 }
 
 const provider = [
 	"zoro",
-	"gogoanime",
+	// "gogoanime",
 	// "enime",
 	// "nineanime",
-	// "animepahe",
+	"animepahe",
 	// "animefox",
+	"animekai",
 ]
 
 const mangaProvider = [
