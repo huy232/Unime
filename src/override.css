@@ -81,3 +81,7 @@ img[src=""] {
 	border-bottom-right-radius: 0px !important;
 	border-bottom-left-radius: 0px !important;
 }
+
+.text-shadow-strong {
+	text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9);
+}

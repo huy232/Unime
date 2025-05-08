@@ -11,7 +11,7 @@ import "./currentseason.css"
 const CurrentSeason = ({ currentSeason, loadingCurrentSeason }) => {
 	return (
 		<div>
-			<h1 className="font-black ml-6 mr-6 mt-2 border-b-4 border-white text-left text-[#B80000] max-sm:text-center uppercase font-bebas-neue">
+			<h1 className="font-black ml-6 mr-6 mt-2 border-b-4 border-white text-left text-[#B80000] max-sm:text-center uppercase font-bebas-neue tracking-wider">
 				Current season
 			</h1>
 			{loadingCurrentSeason ? (

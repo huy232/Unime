@@ -47,7 +47,7 @@ function AiringScheduleENGComp({ airingSchedule }) {
 	return (
 		<div className="w-full px-2 md:px-12 lg:px-20 xl:px-28 2xl:px-36 max-w-[320px] md:max-w-[720px] lg:max-w-[1280px] 2xl:max-w-[85%] mx-auto pb-4">
 			<div className="flex items-center flex-col">
-				<h1 className="mb-2 uppercase font-black text-[#B99B6B] max-md:text-center font-bebas-neue text-3xl">
+				<h1 className="mb-2 uppercase font-black text-[#B99B6B] max-md:text-center font-bebas-neue tracking-wider">
 					Estimated Schedule
 				</h1>
 				<span className="bg-white/30 rounded p-1 mb-3 text-xs md:text-sm lg:text-base">
@@ -139,7 +139,7 @@ function AiringScheduleENGComp({ airingSchedule }) {
 										{item.rating?.anilist && (
 											<div className="hidden xl:flex">
 												<p className="mx-2 text-slate-300 text-xs">
-													{item.rating.anilist}/10 ❤
+													{item.rating.anilist}/💯 ❤
 												</p>
 											</div>
 										)}

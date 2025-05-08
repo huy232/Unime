@@ -1,6 +1,7 @@
 import Image from "../Image"
 import clsx from "clsx"
 import { Link } from "react-router-dom"
+import { SparklesIcon } from "@heroicons/react/24/solid"
 
 const TopAllTimeENG = ({ topAnime, topLoading }) => {
 	const statusColorClass = (anime) =>
@@ -14,8 +15,12 @@ const TopAllTimeENG = ({ topAnime, topLoading }) => {
 		!topLoading && (
 			<div className="w-full px-4 md:px-12 lg:px-20 xl:px-28 2xl:px-36 max-w-[1300px] 2xl:max-w-[85%] mx-auto pb-4">
 				<div className="flex items-center flex-col">
-					<h1 className="uppercase text-center font-bebas-neue">
-						TOP ALL TIME
+					<h1 className="uppercase text-center font-bebas-neue tracking-wider font-black border-b-2 border-yellow-400 mb-2">
+						<span className="inline-block skew-x-6">TOP</span>
+						<span className="text-[1.1em] text-yellow-400 animate-pulse mx-1">
+							ALL
+						</span>
+						<span className="inline-block -skew-x-6">TIME</span>
 					</h1>
 					<div className="px-2 md:px-3 lg:px-5 w-full gap-1 scroll-smooth flex flex-col">
 						{topAnime.map((anime, index) => {
@@ -39,9 +44,17 @@ const TopAllTimeENG = ({ topAnime, topLoading }) => {
 									</span>
 									<Link
 										to={`/eng/info/${anime.id}`}
-										className="w-full flex gap-4 justify-between p-2 rounded-md overflow-hidden bg-white/5 hover:brightness-125 hover:bg-white/20 duration-300 ease-in-out"
+										className="relative group w-full flex flex-col justify-between p-2 rounded-md overflow-hidden duration-300 ease-linear hover:opacity-80 hover:backdrop-brightness-125 smoothie text-white border-none border-transparent"
+										style={{
+											backgroundImage: `url(${anime.bannerImage})`,
+											backgroundSize: "cover",
+											backgroundPosition: "center",
+										}}
 									>
-										<div className="w-full flex gap-3 sm:gap-4 h-full items-center">
+										<div className="layer-hero backdrop-blur-xs z-0" />
+
+										{/* Top Row: Image + Title/Genres + Stats */}
+										<div className="w-full flex flex-row gap-3 sm:gap-4 items-center z-10">
 											<div className="aspect-[2/3] w-[90px] min-w-[90px]">
 												<Image
 													className="duration-500 ease-in-out object-cover w-full h-full rounded"
@@ -49,51 +62,79 @@ const TopAllTimeENG = ({ topAnime, topLoading }) => {
 													alt={title}
 												/>
 											</div>
+
 											<div className="flex flex-col flex-grow gap-2 lg:gap-1 tracking-wide">
-												<p
-													className="font-bebas-neue font-medium text-sm !leading-tight xl:text-base line-clamp-1 tracking-wide xl:tracking-wider"
-													style={{
-														color: `${anime.coverImage.color}` || "#ffc",
-													}}
-												>
-													{title}
+												<p className="font-bebas-neue font-medium text-sm !leading-tight xl:text-base line-clamp-1 tracking-wide xl:tracking-wider">
+													<span className="flex items-center gap-1 text-[0.7rem] text-yellow-300">
+														<SparklesIcon className="w-4 h-4 inline-block animate-pulse" />
+														{anime.popularity}
+													</span>
+													<span
+														style={{
+															color: `${anime.coverImage.color}` || "#ffc",
+														}}
+														className="tracking-wider"
+													>
+														{title}
+													</span>
 												</p>
-												<div className="flex xl:hidden gap-2 h-[1.5rem] overflow-hidden flex-wrap items-center flex-shrink text-gray-200">
+												<div className="flex xl:hidden gap-2 h-[1.5rem] overflow-hidden flex-wrap items-center text-gray-200">
 													{anime.genres.slice(0, 3).map((genre, genreIndex) => (
 														<span
 															key={genreIndex}
-															className="bg-white/30 rounded-xl text-[.6rem] text-center whitespace-nowrap flex-shrink font-semibold p-1 px-2 tracking-wider"
+															className="bg-white/30 rounded-xl text-[.6rem] text-center whitespace-nowrap font-semibold p-1 px-2 tracking-wider"
 														>
 															{genre}
 														</span>
 													))}
 												</div>
-												<div className="hidden xl:flex gap-2 h-[1.5rem] overflow-hidden flex-wrap items-center flex-shrink text-gray-200">
+												<div className="hidden xl:flex gap-2 h-[1.5rem] overflow-hidden flex-wrap items-center text-gray-200">
 													{anime.genres.map((genre, genreIndex) => (
 														<span
 															key={genreIndex}
-															className="bg-white/30 rounded-xl text-[.6rem] text-center whitespace-nowrap flex-shrink font-semibold p-1 px-2 tracking-wider"
+															className="bg-white/30 rounded-xl text-[.6rem] text-center whitespace-nowrap font-semibold p-1 px-2 tracking-wider"
 														>
 															{genre}
 														</span>
 													))}
 												</div>
 											</div>
-										</div>
-										<div className="w-full hidden sm:flex items-center text-gray-200">
-											<div className="flex items-center justify-between ml-auto gap-4 w-full">
-												<div className="flex text-sm">
-													❤ {anime.averageScore}%
-												</div>
-												<div className="flex flex-col text-xs">
-													{anime.format}
-												</div>
-												<div className="flex flex-col text-xs">
-													<span className={statusColorClass(anime)}>
-														{anime.status}
-													</span>
+
+											{/* Stats aligned to right */}
+											<div className="hidden sm:flex items-center ml-auto text-gray-200 text-xs font-semibold text-shadow-strong">
+												<div className="flex gap-2 items-center text-xs font-semibold">
+													<div className="transform skew-x-[-12deg] bg-black/60 px-3 py-0.5">
+														<span className="block transform skew-x-[12deg]">
+															❤ {anime.averageScore}%
+														</span>
+													</div>
+													<div className="transform skew-x-[-12deg] bg-black/60 px-3 py-0.5">
+														<span className="block transform skew-x-[12deg]">
+															{anime.format}
+														</span>
+													</div>
+													<div
+														className={clsx(
+															"transform skew-x-[-12deg] bg-black/60 px-3 py-0.5",
+															statusColorClass(anime)
+														)}
+													>
+														<span className="block transform skew-x-[12deg]">
+															{anime.status}
+														</span>
+													</div>
 												</div>
 											</div>
+										</div>
+
+										{/* Slide-down description */}
+										<div className="hidden sm:block transition-all duration-300 ease-in-out max-h-0 opacity-0 overflow-hidden group-hover:max-h-32 group-hover:opacity-100 z-10 my-2 mx-4">
+											<span
+												className="line-clamp-5 text-xs text-white backdrop-blur-md transform skew-x-[-12deg] bg-black/60 px-3 py-0.5"
+												dangerouslySetInnerHTML={{
+													__html: anime.description,
+												}}
+											/>
 										</div>
 									</Link>
 								</div>

@@ -9,12 +9,14 @@ import "./recommend.css"
 import { Lazy } from "swiper"
 import { COLORLIST } from "../../../constants"
 import Image from "../Image"
+import clsx from "clsx"
 
 function RecommendENG({
 	recommend,
 	setLoading,
 	title = "RELATIONS",
 	baseImage,
+	titleColor = "text-[#B80000]",
 }) {
 	const recommendFilter = recommend.filter((item) => {
 		if (item) {
@@ -31,7 +33,10 @@ function RecommendENG({
 			{recommendFilter.length > 0 && (
 				<>
 					<h2
-						className={`font-black text-right max-lg:text-center py-4 font-bebas-neue mx-2 text-5xl`}
+						className={clsx(
+							`font-black text-right max-lg:text-center py-4 font-bebas-neue mx-2 text-4xl tracking-wider`,
+							titleColor
+						)}
 					>
 						{title}
 					</h2>

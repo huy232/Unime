@@ -235,7 +235,10 @@ function InfoDetailENG({
 						className="list-episode-title-main font-bebas-neue"
 						ref={scrollToRef}
 					>
-						<h4 style={{ marginTop: "30px" }} className="text-2xl">
+						<h4
+							style={{ marginTop: "30px" }}
+							className="text-4xl font-black text-[#B99B6B] max-lg:text-center"
+						>
 							EPISODE LIST
 						</h4>
 					</div>
@@ -256,6 +259,7 @@ function InfoDetailENG({
 							setLoading={setLoading}
 							title={"RECOMMENDATIONS"}
 							baseImage={info.coverImage}
+							titleColor="text-amber-500"
 						/>
 					)}
 					{info?.relations?.length > 0 && (
@@ -264,6 +268,7 @@ function InfoDetailENG({
 							setLoading={setLoading}
 							title={"RELATIONS"}
 							baseImage={info.coverImage}
+							titleColor="text-green-700"
 						/>
 					)}
 					{!loading && (

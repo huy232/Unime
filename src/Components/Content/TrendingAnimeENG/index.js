@@ -5,7 +5,7 @@ import TrendingAnimeENGComp from "../TrendingAnimeENGComp"
 function TrendingAnimeENG({ loadingTrending, trendingAnime }) {
 	return (
 		<div>
-			<h1 className="font-black ml-6 mr-6 mt-2 border-b-4 border-white text-right text-violet-500 max-sm:text-center font-bebas-neue">
+			<h1 className="font-black ml-6 mr-6 mt-2 border-b-4 border-white text-right text-violet-500 max-sm:text-center font-bebas-neue tracking-wider">
 				TRENDING
 			</h1>
 			{loadingTrending ? (

@@ -5,7 +5,7 @@ import TopAiringENGComp from "../TopAiringENGComp"
 function TopAiringENG({ loadingAiring, topAiring }) {
 	return (
 		<div className="mt-2">
-			<h1 className="font-black ml-6 mr-6 text-amber-200 font-bebas-neue">
+			<h1 className="font-black ml-6 mr-6 text-amber-200 font-bebas-neue tracking-wider">
 				POPULAR
 			</h1>
 			{loadingAiring ? (

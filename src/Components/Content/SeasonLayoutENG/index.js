@@ -6,7 +6,7 @@ function SeasonLayoutENG({ data, loading }) {
 		<>
 			{!loading && (
 				<>
-					<h1 className="font-black ml-6 mr-6 mt-2 border-white text-center text-violet-500 max-sm:text-center pb-2 font-bebas-neue">
+					<h1 className="font-black ml-6 mr-6 mt-2 border-white text-center text-violet-500 max-sm:text-center pb-2 font-bebas-neue tracking-wider">
 						UPCOMING SEASON
 					</h1>
 					<div className="grid gap-0 2xl:grid-cols-4 xl:grid-cols-2 lg:grid-cols-2 sm:grid-cols-1 w-full md:px-4 lg:px-8 xl:px-12 2xl:px-16 pb-12">
