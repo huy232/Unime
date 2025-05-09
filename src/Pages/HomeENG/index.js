@@ -11,6 +11,7 @@ import SeasonLayoutENG from "../../Components/Content/SeasonLayoutENG"
 import CurrentSeason from "../../Components/Content/CurrentSeason"
 import GenresENG from "../../Components/Content/GenresENG"
 import TopAllTimeENG from "../../Components/Content/TopAllTimeENG"
+import AnimeThemeENG from "../AnimeThemeENG"
 
 function HomeENG() {
 	const [loadingAiring, setLoadingAiring] = useState(true)
@@ -198,6 +199,7 @@ function HomeENG() {
 				currentSeason={currentSeasonAnime}
 				loadingCurrentSeason={loadingCurrentSeason}
 			/>
+			<AnimeThemeENG />
 			<TopAllTimeENG topAnime={topAnime} loadingTop={loadingTop} />
 			<SeasonLayoutENG data={seasonAnime} loading={loadingSeason} />
 			<AiringScheduleENG

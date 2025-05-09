@@ -124,9 +124,9 @@ const TopAllTimeENG = ({ topAnime, topLoading }) => {
 												</div>
 											</div>
 										</div>
-										<div className="hidden sm:block transition-all duration-300 ease-linear max-h-0 opacity-0 overflow-hidden group-hover:max-h-32 group-hover:opacity-100 z-10 my-2 mx-4 backdrop-blur-sm skew-x-[-12deg] bg-black/80">
+										<div className="hidden sm:block transition-all duration-300 ease-linear max-h-0 opacity-0 overflow-hidden group-hover:max-h-32 group-hover:opacity-100 z-10 my-2 mx-4 backdrop-blur-sm skew-x-[-12deg] bg-black/80 line-clamp-5 px-3 py-0.5 leading-5">
 											<span
-												className="line-clamp-5 text-sm text-white font-medium leading-5 px-3 py-0.5 shadow-sm"
+												className="text-sm text-white font-medium shadow-sm"
 												dangerouslySetInnerHTML={{
 													__html: anime.description,
 												}}

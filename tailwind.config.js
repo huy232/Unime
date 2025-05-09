@@ -7,6 +7,7 @@ module.exports = {
 			fontFamily: {
 				inter: ["Inter", "sans-serif"],
 				"bebas-neue": ["Bebas Neue", "sans-serif"],
+				knewave: ["Knewave", "sans-serif"],
 			},
 			animation: {
 				fadeIn: "fadeIn 0.3s ease-in-out",

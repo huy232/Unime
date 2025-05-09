@@ -10,6 +10,7 @@ import "./movieanime.css"
 function RandomAnimeENGComp({ randomAnime }) {
 	const [autoplaySupported, setAutoplaySupported] = useState(false)
 	const [isVideoAvailable, setIsVideoAvailable] = useState(true)
+	const [isPlayerReady, setIsPlayerReady] = useState(false)
 	const [windowWidth, setWindowWidth] = useState(window.innerWidth)
 	const videoRef = useRef()
 	const playerRef = useRef(null)
@@ -21,14 +22,20 @@ function RandomAnimeENGComp({ randomAnime }) {
 				entries.forEach((entry) => {
 					setShouldPlay(entry.isIntersecting)
 
+					const player = playerRef.current
+
 					if (
-						playerRef.current &&
-						typeof playerRef.current.playVideo === "function"
+						player &&
+						isPlayerReady &&
+						typeof player.getIframe === "function" &&
+						player.getIframe() !== null &&
+						typeof player.playVideo === "function" &&
+						typeof player.pauseVideo === "function"
 					) {
 						if (entry.isIntersecting) {
-							playerRef.current.playVideo()
+							player.playVideo()
 						} else {
-							playerRef.current.pauseVideo()
+							player.pauseVideo()
 						}
 					}
 				})
@@ -45,7 +52,7 @@ function RandomAnimeENGComp({ randomAnime }) {
 				observer.unobserve(videoRef.current)
 			}
 		}
-	}, [])
+	}, [isPlayerReady])
 
 	useEffect(() => {
 		const testVideo = document.createElement("video")
@@ -103,6 +110,7 @@ function RandomAnimeENGComp({ randomAnime }) {
 					onEnd={onEnd}
 					onReady={(event) => {
 						playerRef.current = event.target
+						setIsPlayerReady(true)
 						if (!shouldPlay) {
 							event.target.pauseVideo()
 						}
@@ -194,13 +202,13 @@ function RandomAnimeENGComp({ randomAnime }) {
 								</Link>
 							))}
 						</span>
-						<div className="w-full">
+						<div className="line-clamp-3 backdrop-blur-sm [text-shadow:_0_2px_4px_rgb(0_0_0_/_0.6)] rounded-lg w-fit p-1">
 							<span
-								className="line-clamp-3 text-xs backdrop-blur-sm [text-shadow:_0_2px_4px_rgb(0_0_0_/_0.6)] rounded-lg w-fit p-1"
+								className="text-xs"
 								dangerouslySetInnerHTML={{
 									__html: description,
 								}}
-							></span>
+							/>
 						</div>
 
 						<Link

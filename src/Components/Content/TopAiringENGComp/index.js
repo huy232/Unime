@@ -167,13 +167,13 @@ function TopAiringENGComp({ topAiring }) {
 												</Link>
 											))}
 										</span>
-										<div className="w-full">
+										<div className="line-clamp-3 backdrop-blur-sm [text-shadow:_0_2px_4px_rgb(0_0_0_/_0.6)] rounded-lg w-fit p-1">
 											<span
-												className="line-clamp-3 text-xs backdrop-blur-sm [text-shadow:_0_2px_4px_rgb(0_0_0_/_0.6)] rounded-lg w-fit p-1"
+												className="text-xs"
 												dangerouslySetInnerHTML={{
 													__html: description,
 												}}
-											></span>
+											/>
 										</div>
 										<Link
 											to={`/eng/info/${item.id}`}
