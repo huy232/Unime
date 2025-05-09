@@ -45,7 +45,7 @@ function ThemeVideo({ src, isActive }) {
 
 	return (
 		<div
-			className="relative rounded-lg overflow-hidden group"
+			className="relative lg:aspect-[3/1] rounded-lg overflow-hidden group"
 			onMouseEnter={() => setShowControls(true)}
 			onMouseLeave={() => setShowControls(false)}
 		>

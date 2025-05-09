@@ -143,7 +143,7 @@ export default function AnimeThemeENG() {
 												Math.abs(outerIndex - i) <= 1 ? (
 													<ThemeVideo src={theme.videoUrl} />
 												) : (
-													<Skeleton className="w-full aspect-[3/2] rounded-lg overflow-hidden" />
+													<Skeleton className="w-full lg:aspect-[3/1] rounded-lg overflow-hidden" />
 												)}
 												<span className="hidden md:block top-4 left-4 px-2 py-1 mx-2 text-xl uppercase tracking-wider font-knewave absolute backdrop-blur-md bg-black [text-shadow:_0_2px_4px_rgb(0_0_0_/_0.6)] skew-x-[-12deg]">
 													{theme.type === "OP" ? "Opening" : "Ending"}
