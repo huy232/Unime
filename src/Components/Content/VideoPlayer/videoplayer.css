@@ -28,6 +28,34 @@
 	display: block !important;
 }
 
+/* .art-video-player.art-control-show .art-bottom {
+	width: -webkit-fit-content;
+	width: -moz-fit-content;
+	width: fit-content;
+} */
+
+.artplayer-plugin-control .art-bottom {
+	height: 70px;
+	padding: 0 20px; /* optional: some horizontal padding */
+	width: auto; /* allow content-based width */
+	max-width: 90vw; /* optional: prevent from overflowing screen */
+
+	-webkit-backdrop-filter: saturate(180%) blur(20px);
+	backdrop-filter: saturate(180%) blur(20px);
+	background-color: #000000b3;
+	background-image: none;
+	border-radius: 10px;
+	align-items: center;
+	overflow: visible;
+	box-shadow: 0 10px 15px -3px #0003, 0 4px 6px -4px #0003;
+
+	/* Replace margin-left and inset with transform-based centering */
+	position: absolute;
+	left: 50%;
+	/* bottom: 10px; */
+	/* transform: translateX(-50%); */
+}
+
 @media screen and (max-width: 1024px) {
 	.art-video-player {
 		height: calc(var(--svh, 1svh) * 50) !important;
@@ -35,12 +63,18 @@
 }
 
 /* @media screen and (max-width: 768px) {
-	.art-video-player .art-subtitle {
-		font-size: 1rem !important;
+	.art-control.art-control-screenshot.hint--rounded.hint--top {
+		display: none;
 	}
-}
+	.art-control.art-control-pip.hint--rounded.hint--top {
+		display: none;
+	}
+	.art-control.art-control-fullscreenWeb.hint--rounded.hint--top {
+		display: none;
+	}
+} */
 
-@media screen and (max-width: 640px) {
+/* @media screen and (max-width: 640px) {
 	.art-video-player .art-subtitle {
 		font-size: 0.7rem !important;
 	}

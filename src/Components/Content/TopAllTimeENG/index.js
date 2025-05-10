@@ -44,7 +44,7 @@ const TopAllTimeENG = ({ topAnime, topLoading }) => {
 									</span>
 									<Link
 										to={`/eng/info/${anime.id}`}
-										className="relative group w-full flex flex-col justify-between p-2 rounded-md overflow-hidden duration-300 ease-linear hover:opacity-80 hover:backdrop-brightness-125 smoothie text-white border-none border-transparent"
+										className="max-sm:h-[140px] relative group w-full flex flex-col justify-between p-2 rounded-md overflow-hidden duration-300 ease-linear hover:opacity-80 hover:backdrop-brightness-125 smoothie text-white border-none border-transparent"
 										style={{
 											backgroundImage: `url(${anime.bannerImage})`,
 											backgroundSize: "cover",
@@ -52,7 +52,7 @@ const TopAllTimeENG = ({ topAnime, topLoading }) => {
 										}}
 									>
 										<div className="layer-hero backdrop-blur-xs z-0" />
-										<div className="w-full flex flex-row gap-3 sm:gap-4 items-center z-10">
+										<div className="max-sm:h-full w-full flex flex-row gap-3 sm:gap-4 items-center z-10">
 											<div className="hidden sm:block aspect-[2/3] w-[90px] min-w-[90px]">
 												<Image
 													className="duration-500 ease-in-out object-cover w-full h-full rounded"

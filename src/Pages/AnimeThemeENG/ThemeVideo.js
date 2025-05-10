@@ -1,75 +1,64 @@
 import { useEffect, useRef, useState } from "react"
-import { Play, Pause } from "lucide-react"
+import { Skeleton } from "../../Components/Content/Skeleton"
+import clsx from "clsx"
 
-const autoplayUnlockedRef = { current: false }
-
-function ThemeVideo({ src, isActive }) {
+export default function ThemeVideo({ src, isActive }) {
 	const videoRef = useRef(null)
-	const [playing, setPlaying] = useState(false)
-	const [showControls, setShowControls] = useState(false)
+	const [isLoaded, setIsLoaded] = useState(false)
 
 	useEffect(() => {
 		const video = videoRef.current
 		if (!video) return
 
 		if (isActive) {
-			if (autoplayUnlockedRef.current) {
-				video
-					.play()
-					.then(() => setPlaying(true))
-					.catch(console.error)
-			}
+			video.play().catch(() => {})
 		} else {
 			video.pause()
-			setPlaying(false)
+			video.removeAttribute("src")
+			video.load()
 		}
 	}, [isActive])
 
-	const handleTogglePlay = () => {
-		const video = videoRef.current
-		if (!video) return
+	const handleLoaded = () => {
+		setIsLoaded(true)
+	}
 
-		if (playing) {
-			video.pause()
-			setPlaying(false)
-		} else {
-			video
-				.play()
-				.then(() => {
-					autoplayUnlockedRef.current = true
-					setPlaying(true)
-				})
-				.catch(console.error)
-		}
+	if (!isActive) {
+		return (
+			<div className="relative md:aspect-[3/1] lg:aspect-[3/1] md:w-full lg:w-full rounded-lg overflow-hidden group">
+				<Skeleton
+					className={clsx(
+						`absolute inset-0 z-10 transition-opacity duration-300`,
+						isLoaded ? "opacity-0 pointer-events-none" : "opacity-100"
+					)}
+				/>
+			</div>
+		)
 	}
 
 	return (
-		<div
-			className="relative md:aspect-[3/1] lg:aspect-[3/1] md:w-full lg:w-full rounded-lg overflow-hidden group"
-			onMouseEnter={() => setShowControls(true)}
-			onMouseLeave={() => setShowControls(false)}
-		>
+		<div className="relative w-full md:aspect-[3/1] lg:aspect-[3/1] rounded-lg overflow-hidden group">
+			{!isLoaded && (
+				<Skeleton
+					className={clsx(
+						`absolute inset-0 z-10 transition-opacity duration-300`,
+						isLoaded ? "opacity-0 pointer-events-none" : "opacity-100"
+					)}
+				/>
+			)}
+
 			<video
 				ref={videoRef}
 				src={src}
+				className="w-full h-full object-fill sm:object-cover"
+				controls
 				loop
 				playsInline
-				className="w-full h-full object-fill sm:object-cover"
+				muted={false}
+				autoPlay={false}
+				preload="auto"
+				onLoadedData={handleLoaded}
 			/>
-			{showControls && (
-				<button
-					onClick={handleTogglePlay}
-					className="absolute inset-0 flex items-center justify-center bg-black/40 text-white text-3xl"
-				>
-					{playing ? (
-						<Pause size={48} className="drop-shadow" />
-					) : (
-						<Play size={48} className="drop-shadow" />
-					)}
-				</button>
-			)}
 		</div>
 	)
 }
-
-export default ThemeVideo

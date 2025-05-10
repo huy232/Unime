@@ -28,7 +28,6 @@ export default function AnimeThemeENG() {
 
 	const [outerIndex, setOuterIndex] = useState(0)
 	const [innerIndices, setInnerIndices] = useState({})
-	const [swiperReady, setSwiperReady] = useState(false)
 
 	const outerSwiperRef = useRef(null)
 	const innerSwiperRefs = useRef({})
@@ -43,7 +42,6 @@ export default function AnimeThemeENG() {
 		const fetchThemes = async () => {
 			try {
 				setLoading(true)
-				setSwiperReady(false)
 				const res = await axios.get(`${API}/eng/season-theme`, {
 					params: { year, season },
 				})
@@ -58,16 +56,11 @@ export default function AnimeThemeENG() {
 		fetchThemes()
 	}, [year, season])
 
-	useEffect(() => {
-		const timer = setTimeout(() => setSwiperReady(true), 50)
-		return () => clearTimeout(timer)
-	}, [animeTheme])
-
 	const updateInnerIndex = (animeId, index) => {
 		setInnerIndices((prev) => ({ ...prev, [animeId]: index }))
 	}
 
-	const isCurrentOuter = (i) => swiperReady && i === outerIndex
+	const isCurrentOuter = (i) => i === outerIndex
 	const isCurrentInner = (animeId, idx) => innerIndices[animeId] === idx
 
 	return (
@@ -110,14 +103,25 @@ export default function AnimeThemeENG() {
 					className="w-full h-[200px] sm:h-[40svh] md:h-[50svh] lg:h-[60svh] xl:h-[70svh]"
 				>
 					{animeTheme.map((anime, i) => (
-						<SwiperSlide key={anime.id}>
+						<SwiperSlide key={`${anime}-${i}`}>
 							<div className="h-full flex flex-col">
-								<p
-									className="line-clamp-2 font-bold font-bebas-neue text-base md:text-xl lg:text-2xl xl:text-3xl mb-2 tracking-wider w-full md:w-4/5 mx-auto text-center"
-									style={{ color: COLORLIST[i] }}
-								>
-									{anime.name}
-								</p>
+								<div className="flex flex-row h-[100px]">
+									<div className="w-full md:w-2/5 flex items-center justify-center">
+										<p
+											title={anime.name}
+											className="line-clamp-2 font-bold font-bebas-neue text-base md:text-xl lg:text-2xl xl:text-3xl mb-2 tracking-wider"
+											style={{ color: COLORLIST[i] }}
+										>
+											{anime.name}
+										</p>
+									</div>
+
+									<div className="hidden md:w-3/5 md:block backdrop-blur-sm [text-shadow:_0_2px_4px_rgb(0_0_0_/_0.6)] skew-x-[-12deg] bg-black px-3 py-0.5 z-10 mx-3">
+										<p className="text-sm line-clamp-3" title={anime.synopsis}>
+											{anime.synopsis}
+										</p>
+									</div>
+								</div>
 								<div className="flex-1 flex items-center justify-center overflow-hidden">
 									<Swiper
 										direction="vertical"
@@ -135,24 +139,21 @@ export default function AnimeThemeENG() {
 									>
 										{anime.themes.map((theme, idx) => (
 											<SwiperSlide
-												key={theme.id}
+												key={`${theme.id}-${idx}`}
 												className="flex flex-col items-center gap-2 justify-center"
 											>
-												{isCurrentOuter(i) &&
-												isCurrentInner(anime.id, idx) &&
-												Math.abs(outerIndex - i) <= 1 ? (
-													<ThemeVideo src={theme.videoUrl} />
-												) : (
-													<Skeleton className="w-full md:aspect-[3/1] lg:aspect-[3/1] rounded-lg overflow-hidden" />
-												)}
-												<span className="hidden md:block top-4 left-4 px-2 py-1 mx-2 text-xl uppercase tracking-wider font-knewave absolute backdrop-blur-md bg-black [text-shadow:_0_2px_4px_rgb(0_0_0_/_0.6)] skew-x-[-12deg]">
+												<ThemeVideo
+													key={theme.id}
+													src={theme.videoUrl}
+													isActive={
+														isCurrentOuter(i) && isCurrentInner(anime.id, idx)
+													}
+												/>
+												<span className="hidden md:block top-4 left-4 px-2 py-1 mx-2 text-xl uppercase tracking-wider font-knewave absolute backdrop-blur-md bg-black [text-shadow:_0_2px_4px_rgb(0_0_0_/_0.6)] skew-x-[-12deg] z-10">
 													{theme.type === "OP" ? "Opening" : "Ending"}
 												</span>
 											</SwiperSlide>
 										))}
-										<div className="hidden md:block md:absolute bottom-4 right-4 w-[320px] lg:w-[520px] xl:w-[720px] backdrop-blur-sm [text-shadow:_0_2px_4px_rgb(0_0_0_/_0.6)] skew-x-[-12deg] bg-black px-3 py-0.5 p-1 z-10">
-											<p className="text-sm line-clamp-3">{anime.synopsis}</p>
-										</div>
 									</Swiper>
 								</div>
 							</div>

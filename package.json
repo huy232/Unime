@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@artplayer/plugin-vtt-thumbnail": "^1.0.5",
     "@babel/preset-env": "^7.20.2",
     "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.11.0",
@@ -18,8 +19,10 @@
     "@tailwindcss/line-clamp": "^0.4.4",
     "@vercel/analytics": "^0.1.11",
     "artplayer": "^5.0.9",
+    "artplayer-plugin-ambilight": "^1.0.0",
     "artplayer-plugin-control": "^2.0.0",
     "artplayer-plugin-hls-quality": "^2.0.0",
+    "artplayer-plugin-vtt-thumbnail": "^1.0.3",
     "axios": "^1.6.1",
     "bootstrap": "^5.1.3",
     "clsx": "^2.1.0",

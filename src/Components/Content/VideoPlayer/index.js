@@ -9,6 +9,7 @@ function VideoPlayer({
 	listEpisode,
 	setVideoLoading,
 	intro,
+	thumbnails,
 }) {
 	const navigate = useNavigate()
 	const selectedSub = localStorage.getItem("artplayer-language")
@@ -81,7 +82,7 @@ function VideoPlayer({
 				setting: true,
 				muted: false,
 				autoplay: true,
-				pip: false,
+				pip: true,
 				autoSize: true,
 				autoMini: true,
 				screenshot: true,
@@ -96,7 +97,7 @@ function VideoPlayer({
 				backdrop: true,
 				playsInline: true,
 				volume: 1,
-				airplay: false,
+				airplay: true,
 				lang: navigator.language.toLowerCase(),
 				whitelist: ["*"],
 				moreVideoAttr: {
@@ -182,6 +183,7 @@ function VideoPlayer({
 				highlight: highlightInfo,
 			}}
 			subtitles={subtitles}
+			thumbnails={thumbnails}
 			videoUrl={videoUrl}
 			className="w-[80svw] max-lg:w-full h-[50svh] lg:h-[100svh]"
 			intro={highlightInfo}

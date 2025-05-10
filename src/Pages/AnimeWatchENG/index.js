@@ -24,7 +24,7 @@ function AnimeWatchENG() {
 	const [videoUrl, setVideoUrl] = useState([])
 	const [videoLoading, setVideoLoading] = useState(true)
 	const [subtitles, setSubtitles] = useState([])
-	const [thumbnail, setThumbnail] = useState(null)
+	const [thumbnails, setThumbnails] = useState(null)
 	const [intro, setIntro] = useState(null)
 	const [videoType, setVideoType] = useState("")
 	const [error, setError] = useState(false)
@@ -98,7 +98,7 @@ function AnimeWatchENG() {
 				setSubtitles(
 					subs.map((sub, i) => ({ html: `${i}. ${sub.lang}`, url: sub.url }))
 				)
-				setThumbnail(
+				setThumbnails(
 					data.subtitles?.find(
 						(sub) => sub.lang.toLowerCase() === "thumbnails"
 					) || null
@@ -148,7 +148,7 @@ function AnimeWatchENG() {
 				<VideoPlayer
 					videoUrl={videoUrl}
 					subtitles={subtitles}
-					thumbnail={thumbnail?.url ? thumbnail.url : ""}
+					thumbnails={thumbnails}
 					listEpisode={listEpisode}
 					setVideoLoading={setVideoLoading}
 					intro={intro}
