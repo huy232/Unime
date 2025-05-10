@@ -24,6 +24,9 @@
 	height: 30px !important;
 	border-radius: 4px !important;
 }
+.art-video-player.art-subtitle-show .art-subtitle {
+	display: block !important;
+}
 
 @media screen and (max-width: 1024px) {
 	.art-video-player {
@@ -31,7 +34,7 @@
 	}
 }
 
-@media screen and (max-width: 768px) {
+/* @media screen and (max-width: 768px) {
 	.art-video-player .art-subtitle {
 		font-size: 1rem !important;
 	}
@@ -41,4 +44,4 @@
 	.art-video-player .art-subtitle {
 		font-size: 0.7rem !important;
 	}
-}
+} */
