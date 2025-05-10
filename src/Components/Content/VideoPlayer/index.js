@@ -72,6 +72,9 @@ function VideoPlayer({
 		subtitles = []
 	}
 
+	const subtitleUrl =
+		subtitles?.find((sub) => selectedSub === sub.html.split(". ")[1])?.url || ""
+
 	return (
 		<Artplayer
 			option={{
@@ -156,14 +159,10 @@ function VideoPlayer({
 					},
 				],
 				subtitle: {
-					url: `${
-						subtitles &&
-						subtitles.find((sub) => selectedSub === sub.html.split(". ")[1])
-							?.url
-					}`,
+					url: subtitleUrl,
 					style: {
 						"font-weight": "400",
-						"font-size": "1.1em",
+						"font-size": "2.0rem",
 						"background-color": "rgba(0, 0, 0, 0.65)",
 						"border-radius": "0.25rem",
 						height: "fit-content",
@@ -187,6 +186,21 @@ function VideoPlayer({
 			className="w-[80svw] max-lg:w-full h-[50svh] lg:h-[100svh]"
 			intro={highlightInfo}
 			selectedSub={selectedSub}
+			getInstance={(art) => {
+				const savedFontSize =
+					localStorage.getItem("artplayer-subtitle-font-size") || "2rem"
+				const subtitleEl = art.template.$subtitle
+				if (subtitleEl) {
+					subtitleEl.style.fontSize = savedFontSize
+				}
+
+				art.on("subtitleUpdate", () => {
+					const saved = localStorage.getItem("artplayer-subtitle-font-size")
+					if (subtitleEl && saved) {
+						subtitleEl.style.fontSize = saved
+					}
+				})
+			}}
 		/>
 	)
 }
