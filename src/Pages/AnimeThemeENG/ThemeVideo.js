@@ -54,7 +54,7 @@ function ThemeVideo({ src, isActive }) {
 				src={src}
 				loop
 				playsInline
-				className="w-full h-full object-fill"
+				className="w-full h-full object-fill sm:object-cover"
 			/>
 			{showControls && (
 				<button

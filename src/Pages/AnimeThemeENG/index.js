@@ -107,7 +107,7 @@ export default function AnimeThemeENG() {
 						outerSwiperRef.current = swiper
 						setOuterIndex(swiper.activeIndex)
 					}}
-					className="w-full h-[200px] sm:h-[40svh] md:h-[40svh] lg:h-[50svh] xl:h-[50svh]"
+					className="w-full h-[200px] sm:h-[40svh] md:h-[50svh] lg:h-[60svh] xl:h-[70svh]"
 				>
 					{animeTheme.map((anime, i) => (
 						<SwiperSlide key={anime.id}>
