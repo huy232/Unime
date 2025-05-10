@@ -36,22 +36,22 @@
 
 .artplayer-plugin-control .art-bottom {
 	height: 70px;
-	padding: 0 20px; /* optional: some horizontal padding */
-	width: auto; /* allow content-based width */
-	max-width: 90vw; /* optional: prevent from overflowing screen */
+	padding: 0 20px;
+	width: auto !important;
+	max-width: 90vw !important;
 
-	-webkit-backdrop-filter: saturate(180%) blur(20px);
-	backdrop-filter: saturate(180%) blur(20px);
-	background-color: #000000b3;
-	background-image: none;
-	border-radius: 10px;
-	align-items: center;
-	overflow: visible;
-	box-shadow: 0 10px 15px -3px #0003, 0 4px 6px -4px #0003;
+	-webkit-backdrop-filter: saturate(180%) blur(20px) !important;
+	backdrop-filter: saturate(180%) blur(20px) !important;
+	background-color: #000000b3 !important;
+	background-image: none !important;
+	border-radius: 10px !important;
+	align-items: center !important;
+	overflow: visible !important;
+	box-shadow: 0 10px 15px -3px #0003, 0 4px 6px -4px #0003 !important;
 
 	/* Replace margin-left and inset with transform-based centering */
-	position: absolute;
-	left: 50%;
+	position: absolute !important;
+	left: 50% !important;
 	/* bottom: 10px; */
 	/* transform: translateX(-50%); */
 }
