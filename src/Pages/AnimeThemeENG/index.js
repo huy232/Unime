@@ -4,7 +4,6 @@ import dayjs from "dayjs"
 import { API, COLORLIST } from "../../constants"
 import { Swiper, SwiperSlide } from "swiper/react"
 import "swiper/css"
-import { ChevronLeft, ChevronRight, ChevronUp, ChevronDown } from "lucide-react"
 import SwiperCore, { Mousewheel } from "swiper"
 import { Skeleton } from "../../Components/Content/Skeleton" // 👈 update this import if needed
 import YearSeasonSelector from "./YearSeasonSelector"
@@ -28,6 +27,9 @@ export default function AnimeThemeENG() {
 
 	const [outerIndex, setOuterIndex] = useState(0)
 	const [innerIndices, setInnerIndices] = useState({})
+
+	const [volume, setVolume] = useState(0.25)
+	const [muted, setMuted] = useState(false)
 
 	const outerSwiperRef = useRef(null)
 	const innerSwiperRefs = useRef({})
@@ -148,6 +150,10 @@ export default function AnimeThemeENG() {
 													isActive={
 														isCurrentOuter(i) && isCurrentInner(anime.id, idx)
 													}
+													volume={volume}
+													muted={muted}
+													setVolume={setVolume}
+													setMuted={setMuted}
 												/>
 												<span className="hidden md:block top-4 left-4 px-2 py-1 mx-2 text-xl uppercase tracking-wider font-knewave absolute backdrop-blur-md bg-black [text-shadow:_0_2px_4px_rgb(0_0_0_/_0.6)] skew-x-[-12deg] z-10">
 													{theme.type === "OP" ? "Opening" : "Ending"}

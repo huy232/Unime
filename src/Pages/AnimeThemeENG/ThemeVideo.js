@@ -2,13 +2,23 @@ import { useEffect, useRef, useState } from "react"
 import { Skeleton } from "../../Components/Content/Skeleton"
 import clsx from "clsx"
 
-export default function ThemeVideo({ src, isActive }) {
+export default function ThemeVideo({
+	src,
+	isActive,
+	volume = 0.25,
+	muted = false,
+	setVolume,
+	setMuted,
+}) {
 	const videoRef = useRef(null)
 	const [isLoaded, setIsLoaded] = useState(false)
 
 	useEffect(() => {
 		const video = videoRef.current
 		if (!video) return
+
+		video.volume = volume
+		video.muted = muted
 
 		if (isActive) {
 			video.play().catch(() => {})
@@ -17,10 +27,18 @@ export default function ThemeVideo({ src, isActive }) {
 			video.removeAttribute("src")
 			video.load()
 		}
-	}, [isActive])
+	}, [isActive, volume, muted])
 
 	const handleLoaded = () => {
 		setIsLoaded(true)
+	}
+
+	// 🟢 Sync user mute/volume changes to parent state
+	const handleVolumeChange = () => {
+		const video = videoRef.current
+		if (!video) return
+		setVolume(video.volume)
+		setMuted(video.muted)
 	}
 
 	if (!isActive) {
@@ -58,6 +76,7 @@ export default function ThemeVideo({ src, isActive }) {
 				autoPlay={false}
 				preload="auto"
 				onLoadedData={handleLoaded}
+				onVolumeChange={handleVolumeChange}
 			/>
 		</div>
 	)
