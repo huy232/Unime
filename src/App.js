@@ -5,7 +5,6 @@ import axios from "axios"
 import { useEffect } from "react"
 import { AuthProvider } from "./Contexts/auth"
 import { Route, Routes, useLocation } from "react-router-dom"
-import { Analytics } from "@vercel/analytics/react"
 import Header from "./Components/Shared/Header"
 import Footer from "./Components/Shared/Footer"
 // VIET
