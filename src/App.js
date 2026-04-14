@@ -166,7 +166,6 @@ function App() {
 					exclusionArray.indexOf(window.location.pathname) < 0 &&
 					exclusionArrayFooter.indexOf(window.location.pathname)
 				) && <Footer />}
-				<Analytics />
 			</AuthProvider>
 		</div>
 	)
