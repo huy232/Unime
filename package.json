@@ -15,7 +15,7 @@
     "@heroicons/react": "^2.2.0",
     "@mui/material": "^5.13.3",
     "@supabase/auth-ui-react": "^0.2.8",
-    "@supabase/supabase-js": "^2.8.0",
+    "@supabase/supabase-js": "^2.39.7",
     "@tailwindcss/line-clamp": "^0.4.4",
     "artplayer": "^5.0.9",
     "artplayer-plugin-ambilight": "^1.0.0",
